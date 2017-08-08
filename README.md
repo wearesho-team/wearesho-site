@@ -1,4 +1,7 @@
 # Wearesho Studio Website
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Wearesho-team/wearesho-site/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Wearesho-team/wearesho-site/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/Wearesho-team/wearesho-site/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Wearesho-team/wearesho-site/build-status/master)
+
 [Visit us](https://wearesho.com)
 
 ## Running tests
