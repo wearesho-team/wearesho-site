@@ -1,0 +1,20 @@
+/**
+  Global styles
+ */
+html, body {
+
+  overflow-x: hidden;
+}
+
+body {
+
+  font: 16px $font-primary;
+
+  #content-overlay {
+
+    > span {
+
+      @include span(6);
+    }
+  }
+}
