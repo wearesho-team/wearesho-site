@@ -9,13 +9,13 @@
 @import "~compass-mixins/lib/compass/css3";
 @import "~susy/sass/susy";
 @import "~breakpoint-sass/stylesheets/breakpoint";
+@import '~normalize.css/normalize.css';
 
 // Base
 @import 'base/grid-settings';
 @import 'base/variables';
 @import 'base/mixins';
 @import 'base/global';
-@import 'base/normalize';
 @import 'base/reset';
 
 // Layout
