@@ -9,12 +9,4 @@ html, body {
 body {
 
   font: 16px $font-primary;
-
-  #content-overlay {
-
-    > span {
-
-      @include span(6);
-    }
-  }
 }

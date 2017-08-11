@@ -55,6 +55,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
     "compass-mixins": "^0.12.10",
+    "susy": "^2.2.12",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "cssnano": "^3.10.0",
