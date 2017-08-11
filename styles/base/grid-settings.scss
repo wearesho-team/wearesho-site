@@ -1,0 +1,11 @@
+/**
+  Grid settings
+ */
+$susy: (
+  columns: 12,
+  gutters: 1/3,
+  container: 58.75em,
+  math: fluid,
+  output: float,
+  gutter-position: after,
+);

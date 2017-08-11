@@ -1,0 +1,56 @@
+/**
+  Helpers styles
+ */
+
+// Text classes
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.color-marked {
+  color: #00ADEF;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-semibold {
+  font-weight: 600;
+}
+
+.text-upper {
+  text-transform: uppercase;
+}
+
+// Floats
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+// Display
+.hidden {
+  display: none !important;
+}
