@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Website for SHO Studio",
   "scripts": {
-    "unit": "mocha -r jsdom-global/register -r ts-node/register tests/unit/**.ts",
+    "test": "nyc mocha -r jsdom-global/register -r ts-node/register tests/unit/bootstrap.ts tests/unit/**-specs.ts",
     "e2e": "tsc --project tsconfig.codecept.json && codeceptjs run --steps",
-    "test": "npm run unit && npm run e2e",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack",
-    "dev": "./node_modules/.bin/webpack-dev-server",
-    "preview": "./node_modules/.bin/webpack",
-    "selenium": "selenium-standalone install && selenium-standalone start"
+    "dev": "webpack-dev-server",
+    "preview": "webpack",
+    "selenium": "selenium-standalone install && selenium-standalone start",
+    "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "repository": {
     "type": "git",
@@ -28,13 +28,20 @@
   "homepage": "https://github.com/Wearesho-team/wearesho-site#readme",
   "devDependencies": {
     "@types/chai": "^4.0.2",
+    "@types/chai-enzyme": "^0.6.2",
+    "@types/enzyme": "^2.8.5",
     "@types/mocha": "^2.2.41",
     "@types/react": "^16.0.1",
     "chai": "^4.1.1",
+    "chai-enzyme": "^0.8.0",
     "codeceptjs-webdriverio": "^1.1.0",
+    "codecov": "^2.3.0",
+    "enzyme": "^2.9.1",
     "jsdom": "11.1.0",
     "jsdom-global": "3.0.2",
     "mocha": "^3.5.0",
+    "nyc": "^11.1.0",
+    "react-test-renderer": "^15.6.1",
     "sass-loader": "^6.0.6",
     "selenium-standalone": "^6.6.0",
     "ts-node": "^3.3.0",
@@ -74,5 +81,22 @@
     "typescript": "^2.4.2",
     "webpack": "^3.5.1",
     "webpack-plugin-critical": "^1.0.0"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude:": [
+      "**/*.d.ts",
+      "webpack.config.js",
+      "codecept.conf.js",
+      "tests"
+    ],
+    "reporter": [
+      "clover",
+      "text-summary"
+    ],
+    "report-dir": "./tests/output"
   }
 }
