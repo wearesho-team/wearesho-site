@@ -7,4 +7,6 @@ tests/acceptance/*.js.map
 .nyc_output/
 coverage/
 tests/output/
+*.js
+*.js.map
 .DS_Store
