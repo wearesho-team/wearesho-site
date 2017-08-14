@@ -3,7 +3,8 @@ import {Router, Route, Switch} from 'react-router-dom';
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 import {MainPage} from "../pages/MainPage/MainPage";
 import {ContactPage} from "../pages/ContactPage/ContactPage";
-import Header from "../Header";
+import {Header} from "../Header";
+import {SideBar} from "../SideBar";
 
 export class Layout extends React.Component<LayoutProps, undefined> {
     static propTypes = LayoutPropTypes;
@@ -25,6 +26,7 @@ export class Layout extends React.Component<LayoutProps, undefined> {
             <Router history={this.props.history}>
                 <div id="content">
                     <Header/>
+                    <SideBar/>
                     <Switch>
                         <Route exact path="/" component={MainPage}/>
                         <Route path="/contact" component={ContactPage}/>
