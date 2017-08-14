@@ -13,7 +13,11 @@ build:
 
   tests:
     override:
-      - npm run unit
+      -
+        command: npm run test
+        coverage:
+          file: 'tests/output/clover.xml'
+          format: 'clover'
       - NODE_ENV=scrutinizer npm run e2e
 
   environment:
