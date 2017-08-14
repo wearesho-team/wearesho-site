@@ -1,0 +1,58 @@
+/**
+  Main nav styles
+ */
+.main-nav {
+
+  .main-nav__list {
+    position: absolute;
+
+    top: 50%;
+    right: 0;
+    left: 0;
+
+    transform: translateY(-50%);
+  }
+
+  .main-nav__item {
+    width: 8px;
+    height: 8px;
+
+    display: block;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    @include transition(background-color .3s ease);
+
+    &:before {
+      content: '+';
+      display: block;
+
+      // For vertical alignment
+      line-height: .5;
+
+      color: #797979;
+
+      @include transition(opacity .3s ease);
+    }
+
+    &_active {
+      background-color: #FFC60A;
+
+      &:before {
+
+        opacity: 0;
+      }
+    }
+
+    &:not(:last-child) {
+
+      margin-bottom: 3.5em;
+    }
+  }
+}

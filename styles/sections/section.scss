@@ -1,0 +1,25 @@
+/**
+  Section styles
+ */
+.section {
+  @include container;
+
+  padding-top: 9.75em;
+
+  > .section__title {
+    line-height: 1.4em;
+
+    font-size: 3.375em;
+    font-weight: 300;
+
+    > .section__title_part {
+
+      display: block;
+    }
+
+    .section__title_part-marked {
+
+      color: #FFC60A;
+    }
+  }
+}

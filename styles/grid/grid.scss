@@ -1,0 +1,19 @@
+/**
+  Grid styles
+ */
+.grid {
+  @include container;
+
+  > .grid__col {
+    @include span(2 of 12 inside no-gutter);
+
+    border-width: 0 0 0 1px;
+    border-style: solid;
+    border-color: #F7F2EA;
+
+    &:last-child {
+
+      border-width: 0 1px;
+    }
+  }
+}

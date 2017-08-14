@@ -7,6 +7,11 @@ html, body {
 }
 
 body {
-
   font: 16px $font-primary;
+  color: $color-primary;
+
+  a {
+
+    display: inline-block;
+  }
 }

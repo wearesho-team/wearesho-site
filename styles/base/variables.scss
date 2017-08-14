@@ -41,7 +41,7 @@ $font-primary: 'Roboto', sans-serif;
 $font-secondary: 'Roboto Mono', sans-serif;
 
 // Colors
-//$color-primary: ;
+$color-primary: #696969;
 //$color-secondary: ;
 //$color-marked: ;
 //$color-marked-darken: ;
@@ -58,7 +58,8 @@ $zindex: (
   popup           : 600,
   header          : 500,
   footer          : 400,
-  dropdown        : 300
+  dropdown        : 300,
+  aside           : 200,
 );
 
 $under-zindex: -1;
