@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Website for SHO Studio",
   "scripts": {
-    "test": "nyc mocha -r jsdom-global/register -r ts-node/register tests/unit/bootstrap.ts tests/unit/**-specs.ts",
+    "test": "TS_NODE_PROJECT=tsconfig.test.json ./node_modules/.bin/nyc mocha -r jsdom-global/register -r ts-node/register -r source-map-support/register tests/unit/bootstrap.ts tests/unit/**-specs.tsx tests/unit/**-specs.ts",
     "e2e": "tsc --project tsconfig.codecept.json && codeceptjs run --steps",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack",
     "dev": "webpack-dev-server",

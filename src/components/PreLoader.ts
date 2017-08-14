@@ -1,4 +1,4 @@
-import sleep from '../helpers/sleep';
+import {sleep} from '../helpers/sleep';
 
 /**
  * This class represents animations on plain DOM element because
