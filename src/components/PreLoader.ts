@@ -17,7 +17,7 @@ export default class PreLoader {
     async hide() {
         await sleep(500);
 
-        this.loader.setAttribute('class', 'loaded');
+        this.loader && this.loader.setAttribute('class', 'loaded');
         return this;
     }
 
@@ -25,7 +25,7 @@ export default class PreLoader {
      * @todo: Animations
      */
     async show() {
-        this.loader.removeAttribute('class');
+        this.loader && this.loader.removeAttribute('class');
 
         return this;
     }
