@@ -91,6 +91,34 @@ export default class Layout extends React.Component<LayoutProps, undefined> {
                         </ul>
                     </div>
                 </section>
+                <section className="section section-partnership">
+                    <h2 className="section__title">Партнерство</h2>
+                    <div className="section-half half-first">
+                        <h4 className="section__subtitle">
+                            Свяжитесь с нами
+                            <span className="section__subtitle_reduced">или укажите свои контактные данные в форме ниже. Наши специалисты ответят на все ваши вопросы.</span>
+                        </h4>
+                        <form className="form">
+                            <div className="form__group">
+                                <input type="text" className="form__control" placeholder="Ваше имя"/>
+                                <span className="form__control_underline"/>
+                            </div>
+                            <div className="form__group_inline">
+                                <div className="form__group">
+                                    <input type="tel" className="form__control" placeholder="Телефон"/>
+                                    <span className="form__control_underline"/>
+                                </div>
+                                <div className="form__group">
+                                    <input type="text" className="form__control" placeholder="Эл.почта"/>
+                                    <span className="form__control_underline"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="section-half half-second">
+                        dasd
+                    </div>
+                </section>
             </div>;
     }
 }

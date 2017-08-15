@@ -6,13 +6,37 @@
 
   padding-top: 9.75em;
 
+  // Temp
+  height: 100vh;
+  //
+
   &.section-main {
 
     > .section-half {
-      padding: 6em 0 0 1.875em;
 
-      font-size:.938em;
-      font-weight: $font-style-light;
+      padding: 6em 0 0 1.875em;
+    }
+
+    .section__subtitle_reduced {
+
+      width: 304px;
+    }
+  }
+
+  &.section-partnership {
+
+    > .section-half {
+      padding-top: 3.5em;
+
+      &.half-first {
+
+        @include span(4 of 12 inside no-gutters);
+      }
+
+      &.half-second {
+
+        @include span(6 of 12 inside no-gutters last);
+      }
     }
   }
 
@@ -34,7 +58,14 @@
     }
   }
 
+  .section-half {
+    font-size: .938em;
+    font-weight: $font-style-light;
+  }
+
   .section__subtitle {
+    line-height: 1.35em;
+
     font-size: 1.2em;
     font-weight: $font-style-medium;
 
@@ -54,8 +85,6 @@
     }
 
     &_reduced {
-      width: 304px;
-
       display: block;
 
       font-size: .833em;
