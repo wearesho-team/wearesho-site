@@ -12,7 +12,6 @@
 @import '~normalize.css/normalize.css';
 
 // Base
-@import 'base/grid-settings';
 @import 'base/variables';
 @import 'base/mixins';
 @import 'base/global';
@@ -23,14 +22,23 @@
 @import 'layout/helpers';
 @import 'layout/icons';
 
-// Pages
+// Header
+@import 'header/header';
 
-// Partials
-@import 'partials/buttons';
-@import 'partials/footer';
-@import 'partials/forms';
-@import 'partials/hamburger';
-@import 'partials/header';
-@import 'partials/main-nav';
-@import 'partials/preloader';
-@import 'partials/responsive-nav';
+// Sidebar
+@import 'sidebar/sidebar';
+@import 'sidebar/main-nav/main-nav';
+@import 'sidebar/social-list/social-list';
+
+// Sound switch
+@import 'sound-switch/sound-switch';
+
+// Grid
+@import 'grid/grid-settings';
+@import 'grid/grid';
+
+// Preloader
+@import 'preloader/preloader';
+
+// Section
+@import 'sections/section';

@@ -1,0 +1,61 @@
+/**
+  Header styles
+ */
+.header {
+  max-width: 1920px;
+
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  left: 0;
+
+  margin: 0 auto;
+  padding: 2.75em 2.75em 0;
+
+  font-family: $font-secondary;
+  font-weight: $font-style-medium;
+
+  z-index: map-get($zindex, header);
+}
+
+.header__right {
+  width: 110px;
+
+  float: right;
+
+  text-align: right;
+}
+
+.logo {
+
+  &__text {
+    display: block;
+
+    margin: 1em 0 0 .571em;
+  }
+}
+
+.logo__text,
+.header__lang-toggle,
+.header__new-project {
+  font-size: .875em;
+  color: #484848;
+}
+
+.header__new-project {
+  display: block;
+
+  position: relative;
+
+  &:before {
+
+    content: '+\00a0';
+  }
+}
+
+.header__lang-toggle {
+  margin-top: 1.571em;
+
+  text-transform: uppercase;
+}
