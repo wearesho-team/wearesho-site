@@ -13,6 +13,9 @@
   margin: 0 auto;
   padding: 2.75em 2.75em 0;
 
+  font-family: $font-secondary;
+  font-weight: $font-style-medium;
+
   z-index: map-get($zindex, header);
 }
 
@@ -26,7 +29,7 @@
 
 .logo {
 
-  .logo__text {
+  &__text {
     display: block;
 
     margin: 1em 0 0 .571em;

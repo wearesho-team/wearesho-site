@@ -1,3 +1,266 @@
 /**
   Animations
  */
+
+// Sound switch animation
+
+// Heights
+$height: 29px;
+
+$one: $height / 2.666666667;
+$two: $height / 7;
+$three: $height / 4.666666667;
+$four: $height / 3.5;
+$five: $height / 2.8;
+$six: $height / 2.333333333;
+$seven: $height / 2;
+$eight: $height / 1.75;
+$nine: $height / 1.555555556;
+$ten: $height / 1.4;
+$eleven: $height / 1.272727273;
+$twelve: $height / 1.166666667;
+$thirteen: $height / 1.076923077;
+$fourteen: $height;
+
+@keyframes bar-one-height {
+  0% {
+    height: $four;
+  }
+  4% {
+    height: $two;
+  }
+  8% {
+    height: $four;
+  }
+  12% {
+    height: $seven;
+  }
+  16% {
+    height: $ten;
+  }
+  20% {
+    height: $thirteen;
+  }
+  24% {
+    height: $twelve;
+  }
+  28% {
+    height: $eleven;
+  }
+  32% {
+    height: $eleven;
+  }
+  36% {
+    height: $eight;
+  }
+  40% {
+    height: $ten;
+  }
+  44% {
+    height: $ten;
+  }
+  48% {
+    height: $eleven;
+  }
+  52% {
+    height: $twelve;
+  }
+  56% {
+    height: $thirteen;
+  }
+  60% {
+    height: $twelve;
+  }
+  64% {
+    height: $twelve;
+  }
+  68% {
+    height: $eleven;
+  }
+  72% {
+    height: $ten;
+  }
+  76% {
+    height: $eleven;
+  }
+  80% {
+    height: $twelve;
+  }
+  84% {
+    height: $twelve;
+  }
+  88% {
+    height: $thirteen;
+  }
+  92% {
+    height: $ten;
+  }
+  96% {
+    height: $seven;
+  }
+  100% {
+    height: $four;
+  }
+}
+
+@keyframes bar-two-height {
+  0% {
+    height: $twelve;
+  }
+  4% {
+    height: $thirteen;
+  }
+  8% {
+    height: $twelve;
+  }
+  12% {
+    height: $twelve;
+  }
+  16% {
+    height: $eleven;
+  }
+  20% {
+    height: $eleven;
+  }
+  24% {
+    height: $eleven;
+  }
+  28% {
+    height: $twelve;
+  }
+  32% {
+    height: $twelve;
+  }
+  36% {
+    height: $thirteen;
+  }
+  40% {
+    height: $thirteen;
+  }
+  44% {
+    height: $thirteen;
+  }
+  48% {
+    height: $eleven;
+  }
+  52% {
+    height: $eight;
+  }
+  56% {
+    height: $six;
+  }
+  60% {
+    height: $eight;
+  }
+  64% {
+    height: $ten;
+  }
+  68% {
+    height: $eleven;
+  }
+  72% {
+    height: $thirteen;
+  }
+  76% {
+    height: $twelve;
+  }
+  80% {
+    height: $twelve;
+  }
+  84% {
+    height: $eleven;
+  }
+  88% {
+    height: $eleven;
+  }
+  92% {
+    height: $nine;
+  }
+  96% {
+    height: $eleven;
+  }
+  100% {
+    height: $twelve;
+  }
+}
+
+@keyframes bar-three-height {
+  0% {
+    height: $nine;
+  }
+  4% {
+    height: $seven;
+  }
+  8% {
+    height: $nine;
+  }
+  12% {
+    height: $eleven;
+  }
+  16% {
+    height: $thirteen;
+  }
+  20% {
+    height: $twelve;
+  }
+  24% {
+    height: $fourteen;
+  }
+  28% {
+    height: $eleven;
+  }
+  32% {
+    height: $nine;
+  }
+  36% {
+    height: $eight;
+  }
+  40% {
+    height: $seven;
+  }
+  44% {
+    height: $five;
+  }
+  48% {
+    height: $eight;
+  }
+  52% {
+    height: $ten;
+  }
+  56% {
+    height: $eleven;
+  }
+  60% {
+    height: $thirteen;
+  }
+  64% {
+    height: $twelve;
+  }
+  68% {
+    height: $eleven;
+  }
+  72% {
+    height: $eleven;
+  }
+  76% {
+    height: $ten;
+  }
+  80% {
+    height: $twelve;
+  }
+  84% {
+    height: $thirteen;
+  }
+  88% {
+    height: $fourteen;
+  }
+  92% {
+    height: $twelve;
+  }
+  96% {
+    height: $ten;
+  }
+  100% {
+    height: $nine;
+  }
+}

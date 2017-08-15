@@ -3,7 +3,7 @@
  */
 .main-nav {
 
-  .main-nav__list {
+  &__list {
     position: absolute;
 
     top: 50%;
@@ -13,7 +13,7 @@
     transform: translateY(-50%);
   }
 
-  .main-nav__item {
+  &__item {
     width: 8px;
     height: 8px;
 
@@ -42,7 +42,7 @@
     }
 
     &_active {
-      background-color: #FFC60A;
+      background-color: $color-secondary;
 
       &:before {
 

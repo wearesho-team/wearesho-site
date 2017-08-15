@@ -1,0 +1,41 @@
+/**
+  Sound switch styles
+ */
+.sound-switch {
+  $bar-width: 2px;
+
+  position: fixed;
+
+  bottom: 45px;
+  left: 45px;
+
+  cursor: pointer;
+
+  &__bar {
+    width: $bar-width;
+    height: 29px;
+
+    display: inline-block;
+
+    background-color: #484848;
+
+    animation: bar-two-height 2.5s steps(25, end) 0s infinite;
+
+    &:not(:last-child) {
+
+      margin-right: 5px;
+    }
+
+    &:nth-child(1) {
+      height: 12px;
+
+      animation-name: bar-one-height;
+    }
+
+    &:nth-child(3) {
+      height: 16px;
+
+      animation-name: bar-three-height;
+    }
+  }
+}

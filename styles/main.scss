@@ -30,18 +30,15 @@
 @import 'sidebar/main-nav/main-nav';
 @import 'sidebar/social-list/social-list';
 
+// Sound switch
+@import 'sound-switch/sound-switch';
+
 // Grid
 @import 'grid/grid-settings';
 @import 'grid/grid';
 
+// Preloader
+@import 'preloader/preloader';
+
 // Section
 @import 'sections/section';
-
-// Partials
-@import 'partials/buttons';
-@import 'partials/footer';
-@import 'partials/forms';
-@import 'partials/hamburger';
-@import 'header/header';
-@import 'partials/preloader';
-@import 'partials/responsive-nav';

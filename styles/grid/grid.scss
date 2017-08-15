@@ -5,7 +5,7 @@
   @include container;
 
   > .grid__col {
-    @include span(2 of 12 inside no-gutter);
+    @include span(2 of 12 inside no-gutters);
 
     border-width: 0 0 0 1px;
     border-style: solid;

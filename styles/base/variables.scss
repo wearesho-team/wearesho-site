@@ -37,12 +37,18 @@ $mobile-tablet: $mobile, $tablet;
 $tablet-laptop: $tablet, $laptop-not-large;
 
 // Fonts
-$font-primary: 'Roboto', sans-serif;
-$font-secondary: 'Roboto Mono', sans-serif;
+$font-primary: 'Roboto Mono', sans-serif;
+$font-secondary: 'Roboto', sans-serif;
+$font-style-thin: 100;
+$font-style-light: 300;
+$font-style-regular: 400;
+$font-style-medium: 500;
+$font-style-bold: 700;
+$font-style-black: 900;
 
 // Colors
 $color-primary: #696969;
-//$color-secondary: ;
+$color-secondary: #ffc60a;
 //$color-marked: ;
 //$color-marked-darken: ;
 

@@ -6,20 +6,106 @@
 
   padding-top: 9.75em;
 
-  > .section__title {
-    line-height: 1.4em;
+  &.section-main {
+
+    > .section-half {
+      padding: 6em 0 0 1.875em;
+
+      font-size:.938em;
+      font-weight: $font-style-light;
+    }
+  }
+
+  .section__title {
+    line-height: 1.35em;
 
     font-size: 3.375em;
-    font-weight: 300;
+    font-family: $font-secondary;
+    font-weight: $font-style-light;
 
-    > .section__title_part {
+    &_part {
 
       display: block;
     }
 
-    .section__title_part-marked {
+    &_part-marked {
 
-      color: #FFC60A;
+      color: $color-secondary;
+    }
+  }
+
+  .section__subtitle {
+    font-size: 1.2em;
+    font-weight: $font-style-medium;
+
+    &_marker {
+      position: relative;
+
+      &:before {
+        content: '+';
+        display: block;
+
+        position: absolute;
+
+        left: -34px;
+
+        font-weight: $font-style-bold;
+      }
+    }
+
+    &_reduced {
+      width: 304px;
+
+      display: block;
+
+      font-size: .833em;
+      font-weight: $font-style-light;
+    }
+  }
+
+  .services-list {
+
+    &__item {
+
+      margin: .65em 0;
+    }
+  }
+
+  > .section-half {
+
+    @include span(6 of 12 inside no-gutters);
+  }
+
+  .clients-list {
+    margin-top: 1.5em;
+
+    &__item {
+
+      &:not(:last-child) {
+
+        margin-bottom: .5em;
+      }
+
+      &:last-child {
+
+        > .clients-list__link {
+
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    &__link {
+      width: 150px;
+
+      font-size: 1.2em;
+      font-weight: $font-style-regular;
+      color: $color-secondary;
+    }
+
+    &__text {
+      font-size: .933em;
+      color: #c3c3c3;
     }
   }
 }
