@@ -5,4 +5,25 @@
   display: inline-block;
 
   background-repeat: no-repeat;
+
+  &_logo {
+    width: 62px;
+    height: 30px;
+
+    background-image: url('images/icon-sho.svg');
+  }
+
+  &_soc-gh {
+    width: 20px;
+    height: 22px;
+
+    background-image: url('images/icon_soc-gh.svg');
+  }
+
+  &_soc-li {
+    width: 16px;
+    height: 16px;
+
+    background-image: url('images/icon_soc-li.svg');
+  }
 }
