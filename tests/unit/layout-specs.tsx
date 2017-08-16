@@ -41,7 +41,7 @@ describe('<Layout>', () => {
                 }
             }
         });
-        wrapper.unmount();
+        wrapper.unmount().mount();
         expect(isShowTriggered).to.be.true;
     });
 
