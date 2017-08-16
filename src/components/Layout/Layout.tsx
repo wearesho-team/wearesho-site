@@ -1,5 +1,7 @@
 import * as React from 'react';
-import {Router, Route, Switch} from 'react-router-dom';
+
+import {Router, Route, Switch, Link} from 'react-router-dom';
+
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 import {MainPage} from "../pages/MainPage/MainPage";
 import {ContactPage} from "../pages/ContactPage/ContactPage";
@@ -25,6 +27,10 @@ export class Layout extends React.Component<LayoutProps, undefined> {
         return (
             <Router history={this.props.history}>
                 <div id="content">
+                    <ul>
+                        <li><Link to="/">MAIN</Link></li>
+                        <li><Link to="/contact">CONTACT</Link></li>
+                    </ul>
                     <Header/>
                     <SideBar/>
                     <Switch>
