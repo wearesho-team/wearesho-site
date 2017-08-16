@@ -82,6 +82,5 @@ describe('<Layout>', () => {
         expectElementsExist();
         history.push('/contact');
         expectElementsExist();
-    })
-
+    });
 });

@@ -29,7 +29,7 @@ export class Layout extends React.Component<LayoutProps, undefined> {
         return (
             <Router history={this.props.history}>
                 <div id="content">
-                    <Grid size={6}/>
+                    <Grid/>
                     <Header/>
                     <SideBar/>
                     <SoundSwitch/>

@@ -1,18 +1,22 @@
 import * as React from 'react';
 import {GridDefaultProps, GridProps, GridPropTypes} from "./GridProps";
 
-export const Grid = (props:GridProps = GridDefaultProps) => {
+export class Grid extends React.Component<GridProps, undefined> {
+    static defaultProps = GridDefaultProps;
 
-    let columns = Array(props.size)
-        .fill(undefined)
-        .map((x,i) => <li className="grid__col" key={i}/>);
+    static propTypes = GridPropTypes;
 
-    return (
-        <ul className="grid">
-            {columns}
-        </ul>
-    );
-};
+    render() {
+        let columns = Array(this.props.size)
+            .fill(undefined)
+            .map((x, i) => <li className="grid__col" key={i}/>);
 
-(Grid as any).propTypes = GridPropTypes;
+        return (
+            <ul className="grid">
+                {columns}
+            </ul>
+        );
+    }
+}
+
 
