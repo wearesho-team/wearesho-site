@@ -19,6 +19,8 @@
 
     display: block;
 
+    position: relative;
+
     margin: 0 auto;
 
     text-align: center;
@@ -29,8 +31,7 @@
 
     @include transition(background-color .3s ease);
 
-    &:before {
-      content: '+';
+    > .main-nav__link {
       display: block;
 
       // For vertical alignment
@@ -44,7 +45,7 @@
     &_active {
       background-color: $color-secondary;
 
-      &:before {
+      > .main-nav__link {
 
         opacity: 0;
       }

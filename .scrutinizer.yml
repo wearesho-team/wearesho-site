@@ -1,6 +1,4 @@
 # Config for scrutinizer-ci.com
-checks:
-  javascript: true
 
 filter:
   excluded_paths:
