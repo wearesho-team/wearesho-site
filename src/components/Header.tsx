@@ -4,9 +4,16 @@ export class Header extends React.Component<undefined, undefined> {
 
     render() {
         return (
-            <div>
-                SOME KIND OF HEADER
-            </div>
+            <header className="header">
+                <a href="#" className="logo">
+                    <i className="icon icon_logo"/>
+                    <span className="logo__text">Art &amp; Data Studio</span>
+                </a>
+                <div className="header__right">
+                    <a href="#" className="header__new-project">Новый проект</a>
+                    <a href="#" className="header__lang-toggle">eng</a>
+                </div>
+            </header>
         );
     }
 
