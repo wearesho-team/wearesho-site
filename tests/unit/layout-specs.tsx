@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {expect} from 'chai';
-import {mount, shallow} from 'enzyme';
+import {ReactWrapper, mount} from 'enzyme';
 
 import {createMemoryHistory, History} from 'history';
 
@@ -11,10 +11,11 @@ import {ContactPage} from "../../src/components/pages/ContactPage/ContactPage";
 import {SideBar} from "../../src/components/SideBar";
 import {Header} from "../../src/components/Header";
 import {SoundSwitch} from "../../src/components/SoundSwitch";
+import {LayoutProps} from "../../src/components/Layout/LayoutProps";
 const preLoaderElement = document.getElementById('pre-loader');
 
 describe('<Layout>', () => {
-    let wrapper;
+    let wrapper:ReactWrapper<LayoutProps,any>;
 
     let history: History;
 
@@ -24,6 +25,10 @@ describe('<Layout>', () => {
                     history={history = createMemoryHistory()}
             />
         );
+    });
+
+    afterEach(() => {
+        wrapper.unmount();
     });
 
     it('should render <MainPage/> on `/`', () => {
