@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import {createBrowserHistory} from 'history';
 
 import {Layout} from './components/Layout';
-import PreLoader from './components/PreLoader';
+import {PreLoader} from './components/PreLoader';
 
 const container = document.getElementById('content-overlay');
 const preLoaderElement = document.getElementById('pre-loader');

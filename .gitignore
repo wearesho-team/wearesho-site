@@ -7,8 +7,7 @@ tests/acceptance/*.js.map
 .nyc_output/
 coverage/
 tests/output/
-*.js
-*.js.map
+src/**/*.js
+src/**/*.js.map
 .DS_Store
-!/webpack.config.js
-!/codecept.conf.js
+

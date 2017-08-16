@@ -1,4 +1,4 @@
-import PreLoader from '../../src/components/PreLoader';
+import {PreLoader} from '../../src/components/PreLoader';
 import {expect} from 'chai';
 
 describe('PreLoader animations', () => {

@@ -3,12 +3,12 @@ import * as React from 'react';
 import {Router, Route, Switch} from 'react-router-dom';
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
-import {MainPage} from "../pages/MainPage/MainPage";
-import {ContactPage} from "../pages/ContactPage/ContactPage";
+import {MainPage} from "../MainPage";
+import {ContactPage} from "../ContactPage";
 
-import {Header} from "../Header";
-import {SideBar} from "../SideBar";
-import {SoundSwitch} from "../SoundSwitch";
+import {Header, SideBar} from "./Partials";
+import {SoundSwitch} from "./SoundSwitch";
+import {Grid} from "./Grid";
 
 export class Layout extends React.Component<LayoutProps, undefined> {
     static propTypes = LayoutPropTypes;
@@ -29,14 +29,7 @@ export class Layout extends React.Component<LayoutProps, undefined> {
         return (
             <Router history={this.props.history}>
                 <div id="content">
-                    <ul className="grid">
-                        <li className="grid__col"/>
-                        <li className="grid__col"/>
-                        <li className="grid__col"/>
-                        <li className="grid__col"/>
-                        <li className="grid__col"/>
-                        <li className="grid__col"/>
-                    </ul>
+                    <Grid size={6}/>
                     <Header/>
                     <SideBar/>
                     <SoundSwitch/>

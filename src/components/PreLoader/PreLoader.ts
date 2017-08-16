@@ -1,10 +1,11 @@
-import {sleep} from '../helpers/sleep';
+import {sleep} from '../../helpers/sleep';
+import {PreLoaderInterface} from "./PreLoaderInterface";
 
 /**
  * This class represents animations on plain DOM element because
  * pre-loader will be rendered before loading js bundle
  */
-export default class PreLoader {
+export class PreLoader implements PreLoaderInterface {
     private loader: HTMLElement;
 
     constructor(element: HTMLElement) {
