@@ -99,9 +99,10 @@ export default class Layout extends React.Component<LayoutProps, undefined> {
                             <span className="section__subtitle_reduced">или укажите свои контактные данные в форме ниже. Наши специалисты ответят на все ваши вопросы.</span>
                         </h4>
                         <form className="form">
-                            <div className="form__group">
+                            <div className="form__group form__group_has-error">
                                 <input type="text" className="form__control" placeholder="Ваше имя"/>
                                 <span className="form__control_underline"/>
+                                <span className="form__error-text">текст ошибки</span>
                             </div>
                             <div className="form__group_inline">
                                 <div className="form__group">
@@ -113,10 +114,38 @@ export default class Layout extends React.Component<LayoutProps, undefined> {
                                     <span className="form__control_underline"/>
                                 </div>
                             </div>
+                            <p className="text_medium">Мы ценим ваше время</p>
+                            <p>Укажите удобное вам время для обсуждения проекта:</p>
+                            <div className="form__group spinner__group">
+                                <div className="spinner">
+                                    <span className="spinner__label">с</span>
+                                    <input type="text" className="form__control" value="09:00"/>
+                                    <div className="spinner__controls">
+                                        <button className="btn btn_inc"></button>
+                                        <button className="btn btn_dec"></button>
+                                    </div>
+                                </div>
+                                <div className="spinner">
+                                    <span className="spinner__label">по</span>
+                                    <input type="text" className="form__control" value="18:00"/>
+                                    <div className="spinner__controls">
+                                        <button className="btn btn_inc"></button>
+                                        <button className="btn btn_dec"></button>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div className="section-half half-second">
-                        dasd
+                        <div className="contact-info">
+                            <h4 className="section__subtitle">Контакты</h4>
+                            <a href="tel:+380660249402" className="contact-info__link">380 66 024-94-02</a>
+                            <a href="mailto:office@wearesho.com" className="contact-info__link">office@wearesho.com</a>
+                            <p className="contact-info__text contact-info__text_indented">
+                                <span className="text_medium">Техническая поддержка</span>партнеров Cтудии<span className="contact-info__text_increased">24/7</span>
+                            </p>
+                            <p className="contact-info__text"><span className="text_medium">Локация</span>Украина / Харьков</p>
+                        </div>
                     </div>
                 </section>
             </div>;

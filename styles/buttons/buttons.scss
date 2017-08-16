@@ -1,0 +1,50 @@
+/**
+  Buttons styles
+ */
+.btn {
+  display: inline-block;
+
+  padding: 0;
+
+  &_inc,
+  &_dec {
+    position: relative;
+
+    opacity: .6;
+
+    @include transition(opacity .3s ease);
+
+    &:after {
+      content: '';
+      display: block;
+
+      width: 0;
+      height: 0;
+
+      border: solid transparent;
+      border-color: rgba(0, 0, 0, 0);
+    }
+
+    &:hover {
+
+      opacity: 1;
+    }
+  }
+
+  &_inc {
+    margin-bottom: 7px;
+
+    &:after {
+      border-width: 5px 5px 8px 5px;
+      border-bottom-color: $color-secondary;
+    }
+  }
+
+  &_dec {
+
+    &:after {
+      border-width: 8px 5px 5px 5px;
+      border-top-color: $color-secondary;
+    }
+  }
+}
