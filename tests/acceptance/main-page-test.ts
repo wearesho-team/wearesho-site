@@ -5,5 +5,5 @@ Feature("Main Page");
 Scenario('Main Page opening', async (I) => {
 
     I.amOnPage('/');
-    I.see('Hello, World!');
+    I.seeElement('.section-main');
 });
