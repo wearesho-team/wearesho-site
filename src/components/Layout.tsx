@@ -146,6 +146,16 @@ export default class Layout extends React.Component<LayoutProps, undefined> {
                             </p>
                             <p className="contact-info__text"><span className="text_medium">Локация</span>Украина / Харьков</p>
                         </div>
+                        <div className="location-indicator">
+                            <div className="location-indicator__bar"/>
+                            <div className="location-indicator__marker"/>
+                            <div className="location-indicator__info">
+                                <span className="location-indicator__info_country">Ukraine</span>
+                                <span className="location-indicator__info_city">Kharkiv</span>
+                                <span className="location-indicator__info_coordinates">49.9808100&deg;</span>
+                                <span className="location-indicator__info_coordinates">36.2527200&deg;</span>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>;
