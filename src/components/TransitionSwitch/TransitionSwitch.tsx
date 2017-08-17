@@ -1,9 +1,10 @@
 import * as React from "react";
 import {Route} from "react-router-dom";
-import {TransitionGroup, CSSTransition} from "react-transition-group";
+
+import * as TransitionGroup from "react-transition-group/TransitionGroup";
+import * as CSSTransition from "react-transition-group/CSSTransition";
 
 import {TransitionSwitchProps, TransitionSwitchPropTypes, TransitionSwitchDefaultProps} from "./TransitionSwitchProps";
-import {CSSTransitionProps} from "react-transition-group/CSSTransition";
 
 export class TransitionSwitch extends React.Component<TransitionSwitchProps, undefined> {
 
@@ -19,7 +20,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, und
     public render(): JSX.Element {
         const {history: {location}, ...props} = this.props;
 
-        const transitionProps: CSSTransitionProps = {
+        const transitionProps: CSSTransition.CSSTransitionProps = {
             ...props,
             ...{
                 key: location.pathname.split("/")[1],
