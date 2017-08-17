@@ -1,0 +1,136 @@
+/**
+  Location indicator styles
+ */
+.location-indicator {
+  $bar-height: 15px;
+  $marker-size: 32px;
+
+  width: 320px;
+
+  display: inline-block;
+
+  position: relative;
+
+  top: 19.5em;
+
+  &__bar {
+    width: 300px;
+    height: 1px;
+
+    position: relative;
+
+    background-color: #C3C3C3;
+
+    &:before {
+      content: '';
+      display: block;
+
+      width: 200px;
+      height: $bar-height;
+
+      position: absolute;
+
+      top: 50%;
+      right: 0;
+
+      margin-top: -($bar-height / 2);
+
+      background-color: #fff;
+
+      box-shadow: 3px 2px 6px 0 rgba(0, 0, 0, .2);
+
+      z-index: $under-zindex;
+    }
+  }
+
+  &__marker {
+    width: $marker-size;
+    height: $marker-size;
+
+    position: absolute;
+
+    top: 50%;
+    right: 0;
+
+    margin-top: -($marker-size / 2);
+
+    text-align: center;
+
+    border-radius: 50%;
+
+    background-color: #fff;
+
+    box-shadow: 3px 2px 6px 0 rgba(0, 0, 0, .2);
+
+    cursor: pointer;
+
+    &:after {
+      content: '+';
+      display: block;
+
+      line-height: ($marker-size - 2px);
+
+      font-size: 2em;
+      font-weight: $font-style-regular;
+      color: $color-secondary;
+
+      @include transition(transform .3s ease);
+    }
+
+    &_active {
+
+      &:after {
+
+        @include transform(rotate(90deg));
+      }
+    }
+  }
+
+  &__info {
+    position: absolute;
+
+    top: -36px;
+    right: -112px;
+
+    padding: 1em .75em 1em 1.75em;
+
+    background-color: #fff;
+
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .16);
+
+    z-index: $under-zindex;
+
+    > span {
+
+      display: block;
+    }
+
+    &_country {
+      text-transform: uppercase;
+      font-size: 1.067em;
+      font-weight: $font-style-medium;
+    }
+
+    &_city,
+    &_coordinates {
+
+      font-weight: $font-style-regular;
+    }
+
+    &_city {
+      margin: .1em 0 .5em;
+
+      font-size: .867em;
+    }
+
+    &_coordinates {
+      font-size: .933em;
+      color: $color-secondary;
+
+      & + & {
+
+        margin-top: .1em;
+      }
+    }
+  }
+}

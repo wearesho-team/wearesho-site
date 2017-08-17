@@ -6,14 +6,11 @@ export class MainPage extends React.Component<undefined, undefined> {
         return (
             <section className="section section-main">
                 <h2 className="section__title">
-                    <span className="section__title_part">Здесь ваши <span
-                        className="section__title_part-marked">смелые</span></span>
-                    <span className="section__title_part">идеи превращаются<span className="section__title_part-marked">&nbsp;
-                        в IT-продукт</span></span>
+                    <span className="section__title_part">Здесь ваши <span className="section__title_part-marked">смелые</span></span>
+                    <span className="section__title_part">идеи превращаются<span className="section__title_part-marked">&nbsp;в IT-продукт</span></span>
                 </h2>
                 <div className="section-half">
-                    <h4 className="section__subtitle section__subtitle_marker">Реализуем высокотехнологичные
-                        проекты</h4>
+                    <h4 className="section__subtitle section__subtitle_marker">Реализуем высокотехнологичные проекты</h4>
                     <ul className="services-list">
                         <li className="services-list__item">разработка сайтов</li>
                         <li className="services-list__item">брендинг и дизайн</li>

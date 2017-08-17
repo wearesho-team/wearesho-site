@@ -3,15 +3,15 @@
  */
 
 // Text classes
-.text-left {
+.text_left {
   text-align: left;
 }
 
-.text-right {
+.text_right {
   text-align: right;
 }
 
-.text-center {
+.text_center {
   text-align: center;
 }
 
@@ -21,23 +21,27 @@
   white-space: nowrap;
 }
 
-.no-wrap {
+.no_wrap {
   white-space: nowrap;
 }
 
-.color-marked {
-  color: #00ADEF;
+.text_regular {
+  font-weight: $font-style-regular;
 }
 
-.text-bold {
+.text_medium {
+  font-weight: $font-style-medium;
+}
+
+.text_bold {
   font-weight: bold;
 }
 
-.text-semibold {
+.text_semibold {
   font-weight: 600;
 }
 
-.text-upper {
+.text_upper {
   text-transform: uppercase;
 }
 

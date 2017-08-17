@@ -23,24 +23,24 @@ body {
 }
 
 // Too long placeholder
-.form-control[placeholder]:not([type="password"]) {
+.form__control[placeholder]:not([type="password"]) {
   text-overflow: ellipsis;
 }
 
-.form-control:not([type="password"])::-moz-placeholder {
+.form__control:not([type="password"])::-moz-placeholder {
   text-overflow: ellipsis;
 }
 
-.form-control:not([type="password"]):-moz-placeholder {
+.form__control:not([type="password"]):-moz-placeholder {
   text-overflow: ellipsis;
 }
 
-.form-control:not([type="password"]):-ms-.form-control-placeholder {
+.form__control:not([type="password"]):-ms-.form__control-placeholder {
   text-overflow: ellipsis;
 }
 
 // Hide placeholder on focus
-:focus::-webkit-.form-control-placeholder {
+:focus::-webkit-.form__control-placeholder {
   color: transparent;
 }
 
@@ -52,44 +52,44 @@ body {
   color: transparent;
 }
 
-:focus:-ms-.form-control-placeholder {
+:focus:-ms-.form__control-placeholder {
   color: transparent;
 }
 
-.form-control[type=number] {
+.form__control[type=number] {
   -moz-appearance: textfield;
 }
 
-.form-control::-webkit-outer-spin-button,
-.form-control::-webkit-inner-spin-button {
+.form__control::-webkit-outer-spin-button,
+.form__control::-webkit-inner-spin-button {
   /* display: none; <- Crashes Chrome on hover */
   -webkit-appearance: none;
   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 // Hide calendar-picker-indicator
-.form-control::-webkit-calendar-picker-indicator {
+.form__control::-webkit-calendar-picker-indicator {
   display: none;
 }
 
 // Hide clear button for IE
-.form-control::-ms-clear,
-.form-control::-ms-reveal {
+.form__control::-ms-clear,
+.form__control::-ms-reveal {
   display: none;
 }
 
-.form-control[type="date"]::-webkit-.form-control-placeholder {
+.form__control[type="date"]::-webkit-.form__control-placeholder {
   visibility: hidden !important;
 }
 
 // Hide outline and borders
 a:focus, a:active,
 button::-moz-focus-inner,
-.form-control[type="reset"]::-moz-focus-inner,
-.form-control[type="button"]::-moz-focus-inner,
-.form-control[type="submit"]::-moz-focus-inner,
+.form__control[type="reset"]::-moz-focus-inner,
+.form__control[type="button"]::-moz-focus-inner,
+.form__control[type="submit"]::-moz-focus-inner,
 select::-moz-focus-inner,
-.form-control[type="file"] > .form-control[type="button"]::-moz-focus-inner {
+.form__control[type="file"] > .form__control[type="button"]::-moz-focus-inner {
   border: 0;
   outline: 0;
 }
@@ -111,7 +111,7 @@ address {
 }
 
 // Remove default field outline
-.form-control:focus,
+.form__control:focus,
 textarea:focus {
   outline: none;
 }
@@ -150,7 +150,7 @@ canvas {
 }
 
 button,
-.form-control {
+.form__control {
   border: none;
 
   background: none;

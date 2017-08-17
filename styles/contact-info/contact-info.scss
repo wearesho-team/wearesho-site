@@ -1,0 +1,32 @@
+/**
+  Contact-info
+ */
+.contact-info {
+  @include span(4 of 12 inside no-gutter);
+
+  &__link {
+    font-size: 1.2em;
+    font-weight: $font-style-regular;
+    color: $color-secondary;
+  }
+
+  &__text {
+    line-height: 26px;
+
+    > span {
+
+      display: block;
+    }
+
+    &_indented {
+
+      margin: 4.25em 0 4.6em;
+    }
+
+    &_increased {
+      line-height: 40px;
+
+      font-size: 2em;
+    }
+  }
+}
