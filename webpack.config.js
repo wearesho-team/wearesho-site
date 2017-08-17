@@ -4,7 +4,7 @@
  *
  * This file is Dark and full of Terrors
  */
-
+// tslint:disable
 const
     path = require('path'),
     fs = require('fs'),
