@@ -174,7 +174,7 @@
 
   opacity: 0;
 
-  @include transition(all .2s ease);
+  @include transition(all .25s ease);
 }
 
 [placeholder]:focus::-moz-placeholder {
@@ -182,7 +182,7 @@
 
   opacity: 0;
 
-  @include transition(all .2s ease);
+  @include transition(all .25s ease);
 }
 
 [placeholder]:focus:-moz-placeholder {
@@ -190,7 +190,7 @@
 
   opacity: 0;
 
-  @include transition(all .2s ease);
+  @include transition(all .25s ease);
 }
 
 [placeholder]:focus:-ms-input-placeholder {
@@ -198,5 +198,5 @@
 
   opacity: 0;
 
-  @include transition(all .2s ease);
+  @include transition(all .25s ease);
 }
