@@ -1,0 +1,202 @@
+/**
+  Forms styles
+ */
+.form {
+  margin-top: 3.375em;
+
+  font-size: 1.067em;
+
+  &__group {
+    position: relative;
+
+    &.spinner__group {
+
+      margin-top: .65em;
+    }
+
+    &_has-error {
+
+      > .form__control {
+        color: #FF7453;
+
+        &::-webkit-input-placeholder {
+
+          color: #FF7453;
+        }
+
+        &::-moz-placeholder {
+
+          color: #FF7453;
+        }
+
+        &:-moz-placeholder {
+
+          color: #FF7453;
+        }
+
+        &:-ms-input-placeholder {
+
+          color: #FF7453;
+        }
+
+        &_underline {
+          background-color: #FF947B;
+
+          &:after {
+
+            background-color: #FF947B;
+          }
+        }
+      }
+    }
+
+    & + &_inline {
+
+      margin: 1.875em 0 3.75em;
+    }
+  }
+
+  &__group_inline {
+
+    > .form__group {
+      width: 194px;
+
+      display: inline-block;
+
+      &:last-child {
+        width: 230px;
+
+        float: right;
+
+        text-align: right;
+      }
+    }
+  }
+
+  &__control {
+    width: 100%;
+
+    padding: .5em 0;
+
+    border: 0;
+
+    font-weight: $font-style-regular;
+    color: $color-primary;
+
+    @include transition(color .3s ease);
+
+    &:focus {
+
+      & + .form__control_underline {
+
+        &:after {
+
+          width: 100%;
+        }
+      }
+    }
+
+    &::-webkit-input-placeholder {
+
+      color: $color-primary;
+    }
+
+    &::-moz-placeholder {
+
+      color: $color-primary;
+    }
+
+    &:-moz-placeholder {
+
+      color: $color-primary;
+    }
+
+    &:-ms-input-placeholder {
+
+      color: $color-primary;
+    }
+
+    &_underline {
+      height: 1px;
+
+      display: block;
+
+      position: relative;
+
+      background-color: #b5b5b5;
+
+      @include transition(background-color .3s ease);
+
+      &:after {
+        content: '';
+
+        width: 0;
+        height: 1px;
+
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        background-color: #808080;
+
+        @include transition(width .4s ease);
+      }
+    }
+  }
+
+  &__error-text {
+    position: absolute;
+
+    bottom: -24px;
+    left: 0;
+
+    font-size: .813em;
+    font-weight: $font-style-regular;
+    color: #FF7453;
+  }
+
+  > .btn_primary {
+
+    margin-top: 3.3em;
+  }
+
+  > p {
+    line-height: 26px;
+
+    font-size: .938em;
+  }
+}
+
+// Extinction effect
+[placeholder]:focus::-webkit-input-placeholder {
+  @include transform(translateX(10px));
+
+  opacity: 0;
+
+  @include transition(all .2s ease);
+}
+
+[placeholder]:focus::-moz-placeholder {
+  @include transform(translateX(10px));
+
+  opacity: 0;
+
+  @include transition(all .2s ease);
+}
+
+[placeholder]:focus:-moz-placeholder {
+  @include transform(translateX(10px));
+
+  opacity: 0;
+
+  @include transition(all .2s ease);
+}
+
+[placeholder]:focus:-ms-input-placeholder {
+  @include transform(translateX(10px));
+
+  opacity: 0;
+
+  @include transition(all .2s ease);
+}

@@ -38,4 +38,27 @@
       animation-name: bar-three-height;
     }
   }
+
+  &_disabled {
+
+    .sound-switch__bar {
+      height: 4px;
+
+      background-color: #c3c3c3;
+
+      animation-name: none;
+
+      &:nth-child(1) {
+        height: 4px;
+
+        animation-name: none;
+      }
+
+      &:nth-child(3) {
+        height: 4px;
+
+        animation-name: none;
+      }
+    }
+  }
 }
