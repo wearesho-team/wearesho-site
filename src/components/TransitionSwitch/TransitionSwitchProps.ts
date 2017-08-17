@@ -1,14 +1,16 @@
 import * as PropTypes from 'prop-types';
-import {Location} from 'history';
+import {History} from 'history';
 
 export interface TransitionSwitchProps {
-    location: Location,
+    history: History,
     classNames: string,
+    className?: string,
     timeout: number,
 }
 
 export const TransitionSwitchPropTypes = {
-    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
     classNames: PropTypes.string.isRequired,
+    className: PropTypes.string,
     timeout: PropTypes.number.isRequired,
 };

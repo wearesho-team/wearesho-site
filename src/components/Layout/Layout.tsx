@@ -1,9 +1,7 @@
 import * as React from 'react';
 import {Router, Route} from 'react-router-dom';
-import {Location} from 'history';
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
-import {LayoutState} from './LayoutState';
 import {MainPage} from "../MainPage";
 import {ContactPage} from "../ContactPage";
 
@@ -12,7 +10,7 @@ import {SoundSwitch} from "./SoundSwitch";
 import {Grid} from "./Grid";
 import {TransitionSwitch} from "../TransitionSwitch";
 
-export class Layout extends React.Component<LayoutProps, LayoutState> {
+export class Layout extends React.Component<LayoutProps, undefined> {
     static propTypes = LayoutPropTypes;
 
     constructor(props) {
@@ -21,14 +19,6 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
 
     async componentDidMount() {
         await this.props.preLoader.hide();
-
-        this.setState({page: this.props.history.location.pathname});
-
-        this.props.history.listen((location: Location) => {
-            if (location.pathname !== this.state.page) {
-                this.setState({page: location.pathname});
-            }
-        })
     }
 
     async componentWillUnmount() {
@@ -44,11 +34,12 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
                     <Header/>
                     <SideBar/>
                     <SoundSwitch/>
-                    <TransitionSwitch location={this.props.history.location}
-                                      classNames="test"
-                                      timeout={1000}>
+                    <TransitionSwitch className="translate-container"
+                                      classNames="translateY"
+                                      history={this.props.history}
+                                      timeout={50000}>
                         <Route exact path="/" component={MainPage}/>
-                        <Route exact path="/contact" component={ContactPage}/>
+                        <Route path="/contact" component={ContactPage}/>
                     </TransitionSwitch>
                 </div>
             </Router>
