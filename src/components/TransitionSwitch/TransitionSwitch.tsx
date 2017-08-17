@@ -1,12 +1,14 @@
 import * as React from "react";
-import {Route} from 'react-router-dom';
+import {Route} from "react-router-dom";
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 
-import {TransitionSwitchProps, TransitionSwitchPropTypes} from './TransitionSwitchProps';
+import {TransitionSwitchProps, TransitionSwitchPropTypes, TransitionSwitchDefaultProps} from "./TransitionSwitchProps";
+import {CSSTransitionProps} from "react-transition-group/CSSTransition";
 
 export class TransitionSwitch extends React.Component<TransitionSwitchProps, undefined> {
 
     public static propTypes = TransitionSwitchPropTypes;
+    public static defaultProps = TransitionSwitchDefaultProps;
 
     protected get routeProps(): object {
         return Object.keys(this.props.children)
@@ -14,20 +16,20 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, und
             .find(({path}) => path === this.props.history.location.pathname);
     }
 
-    render(): JSX.Element {
+    public render(): JSX.Element {
         const {history: {location}, ...props} = this.props;
 
-        const transitionProps = {
+        const transitionProps: CSSTransitionProps = {
             ...props,
             ...{
-                key: location.pathname.split('/')[1],
+                key: location.pathname.split("/")[1],
             }
-        };
+        } as any;
 
         const currentRouteProps = {
             ...this.routeProps,
             ...{
-                location: location,
+                location,
             }
         };
 

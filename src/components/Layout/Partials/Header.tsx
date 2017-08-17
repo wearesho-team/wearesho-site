@@ -1,8 +1,8 @@
-import * as React from 'react';
+import * as React from "react";
 
 export class Header extends React.Component<undefined, undefined> {
 
-    render() {
+    public render() {
         return (
             <header className="header">
                 <a href="#" className="logo">

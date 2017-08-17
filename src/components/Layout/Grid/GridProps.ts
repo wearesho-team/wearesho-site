@@ -1,4 +1,4 @@
-import * as PropTypes from 'prop-types';
+import * as PropTypes from "prop-types";
 
 export interface GridProps {
     size?: number
@@ -11,4 +11,3 @@ export const GridPropTypes = {
 export const GridDefaultProps = {
     size: 6
 };
-

@@ -1,1 +1,1 @@
-export * from './SoundSwitch';
+export * from "./SoundSwitch";

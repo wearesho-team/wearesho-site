@@ -1,4 +1,4 @@
-
+//tslint:disable
 type ICodeceptCallback = (i: CodeceptJS.I) => void;
 
 declare const actor: () => CodeceptJS.I;

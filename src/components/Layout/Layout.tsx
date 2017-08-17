@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {Router, Route} from 'react-router-dom';
+import * as React from "react";
+import {Router, Route} from "react-router-dom";
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 import {MainPage} from "../MainPage";
@@ -11,21 +11,21 @@ import {Grid} from "./Grid";
 import {TransitionSwitch} from "../TransitionSwitch";
 
 export class Layout extends React.Component<LayoutProps, undefined> {
-    static propTypes = LayoutPropTypes;
+    public static propTypes = LayoutPropTypes;
 
     constructor(props) {
         super(props);
     }
 
-    async componentDidMount() {
+    public async componentDidMount() {
         await this.props.preLoader.hide();
     }
 
-    async componentWillUnmount() {
+    public async componentWillUnmount() {
         await this.props.preLoader.show();
     }
 
-    render() {
+    public render() {
 
         return (
             <Router history={this.props.history}>
@@ -34,10 +34,11 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                     <Header/>
                     <SideBar/>
                     <SoundSwitch/>
-                    <TransitionSwitch className="translate-container"
-                                      classNames="translateY"
-                                      history={this.props.history}
-                                      timeout={500}>
+                    <TransitionSwitch
+                        className="translate-container"
+                        classNames="translateY"
+                        history={this.props.history}
+                    >
                         <Route exact path="/" component={MainPage}/>
                         <Route path="/contact" component={ContactPage}/>
                     </TransitionSwitch>

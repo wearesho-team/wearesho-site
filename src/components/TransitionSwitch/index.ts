@@ -1,2 +1,2 @@
-export * from './TransitionSwitch';
-export * from './TransitionSwitchProps';
+export * from "./TransitionSwitch";
+export * from "./TransitionSwitchProps";
