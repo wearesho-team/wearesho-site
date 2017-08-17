@@ -25,6 +25,8 @@
   float: right;
 
   text-align: right;
+
+
 }
 
 .logo {
@@ -34,6 +36,43 @@
     display: block;
 
     margin: .875em 0 0 .571em;
+  }
+}
+
+.header__lang-toggle,
+.header__new-project {
+  position: relative;
+
+  &:after {
+    content: '';
+    
+    width: 0%;
+    height: 9px;
+
+    position: absolute;
+
+    right: -8px;
+    bottom: 0;
+
+    background-image: linear-gradient(to right, #fff 0%, #ffda44 100%);
+    
+    transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    
+    z-index: $under-zindex;
+  }
+
+  &:hover {
+
+    &:before {
+      transform: translateX(-10px);
+
+      opacity: 1;
+    }
+
+    &:after {
+
+      width: calc(100% + 16px);
+    }
   }
 }
 
@@ -47,11 +86,13 @@
 .header__new-project {
   display: block;
 
-  position: relative;
-
   &:before {
-
     content: '+\00a0';
+    display: inline-block;
+
+    opacity: .5;
+
+    @include transition(transform .3s ease, opacity .3s ease);
   }
 }
 
