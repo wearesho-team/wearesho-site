@@ -37,7 +37,7 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                     <TransitionSwitch className="translate-container"
                                       classNames="translateY"
                                       history={this.props.history}
-                                      timeout={50000}>
+                                      timeout={500}>
                         <Route exact path="/" component={MainPage}/>
                         <Route path="/contact" component={ContactPage}/>
                     </TransitionSwitch>
