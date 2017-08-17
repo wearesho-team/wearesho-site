@@ -47,4 +47,92 @@
       border-top-color: $color-secondary;
     }
   }
+
+  &_primary {
+    position: relative;
+
+    padding: .6em 1em;
+
+    font-size: 1.25em;
+    color: $color-secondary;
+
+    &.is-hovered {
+
+      > .btn-corners {
+
+        &:before,
+        &:after {
+          animation: border-animation .6s ease;
+        }
+      }
+    }
+
+    > .btn-corners {
+
+      &:before,
+      &:after {
+        content: '';
+
+        width: 10px;
+        height: 10px;
+
+        position: absolute;
+
+        border-color: #989898;
+        border-style: solid;
+
+        @include transition(width .3s ease, height .3s ease);
+
+        animation-fill-mode: forwards;
+      }
+
+      &:before {
+
+        left: 0;
+      }
+
+      &:after {
+
+        right: 0;
+      }
+
+      &_top {
+
+        &:before,
+        &:after {
+
+          top: 0;
+        }
+
+        &:before {
+
+          border-width: 1px 0 0 1px;
+        }
+
+        &:after {
+
+          border-width: 1px 1px 0 0;
+        }
+      }
+
+      &_bottom {
+
+        &:before,
+        &:after {
+
+          bottom: 0;
+        }
+
+        &:before {
+
+          border-width: 0 0 1px 1px;
+        }
+
+        &:after {
+
+          border-width: 0 1px 1px 0;
+        }
+      }
+    }
+  }
 }

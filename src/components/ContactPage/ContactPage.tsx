@@ -47,6 +47,11 @@ export class ContactPage extends React.Component<undefined, undefined> {
                                 </div>
                             </div>
                         </div>
+                        <button className="btn btn_primary">
+                            Отправить
+                            <span className="btn-corners btn-corners_top"/>
+                            <span className="btn-corners btn-corners_bottom"/>
+                        </button>
                     </form>
                 </div>
                 <div className="section-half half-second">
