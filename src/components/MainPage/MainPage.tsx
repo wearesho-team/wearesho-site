@@ -5,12 +5,24 @@ export class MainPage extends React.Component<undefined, undefined> {
     public render() {
         return (
             <section className="section section-main">
-                <h2 className="section__title">
-                    <span className="section__title_part">
-                        Здесь ваши <span className="section__title_part-marked">смелые</span>
+                <h2 className="section-title">
+                    <span className="section-title__part">
+                        Здесь ваши&nbsp;
+                        <span className="section-title__part-container">
+                            <span className="section-title__part-variable">смелые</span>
+                            <span className="section-title__part-variable">смелые2</span>
+                            <span className="section-title__part-variable">смелые3</span>
+                            <span className="section-title__part-variable">смелые4</span>
+                        </span>
                     </span>
                     <span className="section__title_part">
-                        идеи превращаются<span className="section__title_part-marked">&nbsp;в IT-продукт</span>
+                        идеи превращаются&nbsp;
+                        <span className="section-title__part-container">
+                            <span className="section-title__part-variable">в IT-продукт</span>
+                            <span className="section-title__part-variable">в IT-продукт2</span>
+                            <span className="section-title__part-variable">в IT-продукт3</span>
+                            <span className="section-title__part-variable">в IT-продукт4</span>
+                        </span>
                     </span>
                 </h2>
                 <div className="section-half">

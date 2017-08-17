@@ -280,3 +280,28 @@ $fourteen: $height;
     height: 10px;
   }
 }
+
+// Change text animation
+@keyframes change-text {
+  0% {
+    @include transform(translateY(0));
+  }
+  10% {
+    @include transform(translateY(-70px));
+  }
+  33% {
+    @include transform(translateY(-70px));
+  }
+  43% {
+    @include transform(translateY(-140px));
+  }
+  67% {
+    @include transform(translateY(-140px));
+  }
+  77% {
+    @include transform(translateY(0));
+  }
+  100% {
+    @include transform(translateY(0));
+  }
+}

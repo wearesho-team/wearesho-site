@@ -6,10 +6,6 @@
 
   padding-top: 9.75em;
 
-  // Temp
-  height: 100vh;
-  //
-
   &.section-main {
 
     > .section-half {
@@ -40,21 +36,44 @@
     }
   }
 
-  .section__title {
+  .section-title {
     line-height: 1.35em;
 
     font-size: 3.375em;
     font-family: $font-secondary;
     font-weight: $font-style-light;
 
-    &_part {
+    &__part {
 
       display: block;
     }
 
-    &_part-marked {
+    &__part {
 
-      color: $color-secondary;
+      &-container {
+        height: 60px;
+
+        display: inline-block;
+
+        overflow: hidden;
+
+        vertical-align: middle;
+      }
+
+      &-variable {
+        display: block;
+
+        line-height: 1em;
+
+        color: $color-secondary;
+
+        animation: change-text 10s ease infinite;
+
+        &:not(:last-child) {
+
+          margin-bottom: 16px;
+        }
+      }
     }
   }
 
@@ -78,7 +97,7 @@
 
         position: absolute;
 
-        left: -34px;
+        left: -33px;
 
         font-weight: $font-style-bold;
       }
