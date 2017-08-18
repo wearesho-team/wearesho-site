@@ -1,2 +1,2 @@
-export * from './PreLoader';
-export * from './PreLoaderInterface';
+export * from "./PreLoader";
+export * from "./PreLoaderInterface";
