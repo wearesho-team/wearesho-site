@@ -1,10 +1,12 @@
-import {sleep} from '../../helpers/sleep';
+import {sleep} from "../../helpers/sleep";
 import {PreLoaderInterface} from "./PreLoaderInterface";
 
 /**
  * This class represents animations on plain DOM element because
  * pre-loader will be rendered before loading js bundle
  */
+const HIDE_DURATION = 500;
+
 export class PreLoader implements PreLoaderInterface {
     private loader: HTMLElement;
 
@@ -15,18 +17,18 @@ export class PreLoader implements PreLoaderInterface {
     /**
      * @todo: Animations
      */
-    async hide() {
-        await sleep(500);
+    public async hide() {
+        await sleep(HIDE_DURATION);
 
-        this.loader && this.loader.setAttribute('class', 'loaded');
+        this.loader && this.loader.setAttribute("class", "loaded");
         return this;
     }
 
     /**
      * @todo: Animations
      */
-    async show() {
-        this.loader && this.loader.removeAttribute('class');
+    public async show() {
+        this.loader && this.loader.removeAttribute("class");
 
         return this;
     }

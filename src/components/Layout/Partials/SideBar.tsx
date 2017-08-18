@@ -1,9 +1,9 @@
-import * as React from 'react';
-import {Link} from 'react-router-dom';
+import * as React from "react";
+import {Link} from "react-router-dom";
 
 export class SideBar extends React.Component<undefined, undefined> {
 
-    render() {
+    public render() {
         return (
             <aside className="sidebar">
                 <nav className="main-nav">
