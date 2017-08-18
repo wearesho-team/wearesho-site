@@ -10,7 +10,7 @@
     "preview": "webpack",
     "selenium": "selenium-standalone install && selenium-standalone start",
     "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "lint": "./node_modules/.bin/tslint --project . --fix"
+    "lint": "./node_modules/.bin/tslint --project . --exclude ./node_modules/**/* --exclude ./web/**/*"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,7 @@
     "jsdom-global": "3.0.2",
     "mocha": "^3.5.0",
     "nyc": "^11.1.0",
+    "pre-push": "^0.1.1",
     "pre-commit": "^1.2.2",
     "react-test-renderer": "^15.6.1",
     "sass-loader": "^6.0.6",
@@ -113,6 +114,9 @@
     "report-dir": "./tests/output"
   },
   "pre-commit": [
-
+    "lint"
+  ],
+  "pre-push": [
+    "test"
   ]
 }
