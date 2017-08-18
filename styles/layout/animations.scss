@@ -281,8 +281,8 @@ $fourteen: $height;
   }
 }
 
-// Change text animation
-@keyframes change-text {
+// Change title animation
+@keyframes change-title-1 {
   0% {
     @include transform(translateY(0));
   }
@@ -299,6 +299,39 @@ $fourteen: $height;
     @include transform(translateY(-140px));
   }
   77% {
+    @include transform(translateY(0));
+  }
+  100% {
+    @include transform(translateY(0));
+  }
+}
+
+@keyframes change-title-2 {
+  0% {
+    @include transform(translateY(0));
+  }
+  9% {
+    @include transform(translateY(0));
+  }
+  19% {
+    @include transform(translateY(-70px));
+  }
+  33% {
+    @include transform(translateY(-70px));
+  }
+  42% {
+    @include transform(translateY(-70px));
+  }
+  52% {
+    @include transform(translateY(-140px));
+  }
+  67% {
+    @include transform(translateY(-140px));
+  }
+  76% {
+    @include transform(translateY(-140px));
+  }
+  86% {
     @include transform(translateY(0));
   }
   100% {
