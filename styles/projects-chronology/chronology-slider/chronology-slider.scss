@@ -1,0 +1,131 @@
+/**
+  Chronology slider styles
+ */
+.chronology-slider {
+  $slider-size: 51px;
+  $slider-bar-height: 66px;
+
+  width: $slider-size;
+  height: $slider-size;
+
+  position: absolute;
+
+  top: 50%;
+
+  margin-top: (-$slider-size / 2);
+
+  z-index: 1;
+
+  @include transition(left .3s ease);
+
+  &.is-move {
+
+    > .chronology-slider__body {
+
+      &:before {
+
+        height: 0;
+      }
+    }
+
+    > .chronology-slider__description {
+
+      > .chronology-slider__projects,
+      > .chronology-slider__services,
+      > .chronology-slider__date {
+
+        @include transform(translateX(20px));
+
+        opacity: 0;
+      }
+
+      > .chronology-slider__projects {
+
+        transition-delay: .05s;
+      }
+
+      > .chronology-slider__services {
+
+        transition-delay: .1s;
+      }
+
+      > .chronology-slider__date {
+
+        transition-delay: .15s;
+      }
+    }
+  }
+
+  &__body {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .16);
+
+    &:before {
+      content: '';
+      display: block;
+
+      width: 1px;
+      height: $slider-bar-height;
+
+      position: absolute;
+
+      right: 0;
+      bottom: $slider-size;
+      left: 0;
+
+      margin: auto;
+
+      background-color: $color-secondary;
+
+      @include transition(height .3s ease)
+    }
+  }
+
+  &__description {
+    width: 320px;
+
+    position: absolute;
+
+    top: (-$slider-bar-height - 4px);
+    left: ($slider-size / 2 + 16px);
+
+    > span {
+
+      display: block;
+    }
+  }
+
+  &__projects,
+  &__services,
+  &__date {
+
+    @include transition(all .3s ease);
+  }
+
+  &__projects,
+  &__date {
+
+    font-weight: $font-style-medium;
+  }
+
+  &__projects {
+    font-size: .813em;
+    text-transform: uppercase;
+    color: $color-secondary;
+  }
+
+  &__services {
+    margin: .25em 0;
+
+    font-size: .75em;
+  }
+
+  &__date {
+    font-size: .688em;
+    font-weight: $font-style-medium;
+  }
+}

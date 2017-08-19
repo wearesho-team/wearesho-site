@@ -14,8 +14,8 @@
   }
 
   &__item {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
 
     display: block;
 
@@ -31,18 +31,23 @@
 
     @include transition(background-color .3s ease);
 
-    > .main-nav__link {
-      display: block;
 
-      // For vertical alignment
-      line-height: .5;
+    &:not(.is-active) {
 
-      color: #797979;
+      > .main-nav__link {
 
-      @include transition(opacity .3s ease);
+        opacity: .56;
+
+        @include transition(opacity .3s ease);
+
+        &:hover {
+
+          opacity: 1;
+        }
+      }
     }
 
-    &_active {
+    &.is-active {
       background-color: $color-secondary;
 
       > .main-nav__link {
@@ -55,5 +60,16 @@
 
       margin-bottom: 3.5em;
     }
+  }
+
+  &__link {
+    display: block;
+
+    // For vertical alignment
+    line-height: .65;
+
+    color: #797979;
+
+    @include transition(opacity .3s ease);
   }
 }
