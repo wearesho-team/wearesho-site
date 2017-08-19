@@ -1,7 +1,7 @@
 /**
   Projects chronology styles
  */
-.projects-chronology {
+.prj-chronology {
   $division-width: 11%;
   $divisions-numder: 6;
 
@@ -54,7 +54,7 @@
     }
   }
 
-  &__division {
+  &__div {
     display: inline-block;
 
     font-size: 11px;
