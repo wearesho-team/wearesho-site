@@ -5,11 +5,11 @@ export class ContactPage extends React.Component<undefined, undefined> {
     public render() {
         return (
             <section className="section section-partnership">
-                <h2 className="section__title">Партнерство</h2>
+                <h2 className="section-title">Партнерство</h2>
                 <div className="section-half half-first">
-                    <h4 className="section__subtitle">
+                    <h4 className="section-subtitle">
                         Свяжитесь с нами
-                        <span className="section__subtitle_reduced">
+                        <span className="section-subtitle_reduced">
                             или укажите свои контактные данные в форме ниже.
                             Наши специалисты ответят на все ваши вопросы.
                         </span>
@@ -59,7 +59,7 @@ export class ContactPage extends React.Component<undefined, undefined> {
                 </div>
                 <div className="section-half half-second">
                     <div className="contact-info">
-                        <h4 className="section__subtitle">Контакты</h4>
+                        <h4 className="section-subtitle">Контакты</h4>
                         <a href="tel:+380660249402" className="contact-info__link">380 66 024-94-02</a>
                         <a href="mailto:office@wearesho.com" className="contact-info__link">office@wearesho.com</a>
                         <p className="contact-info__text contact-info__text_indented">

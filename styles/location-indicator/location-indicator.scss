@@ -77,7 +77,7 @@
       @include transition(transform .3s ease);
     }
 
-    &_active {
+    &:hover {
 
       &:after {
 
