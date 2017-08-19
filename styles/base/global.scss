@@ -1,7 +1,8 @@
 /**
   Global styles
  */
-html, body {
+html,
+body {
 
   overflow-x: hidden;
 }
@@ -18,5 +19,50 @@ body {
   a {
 
     display: inline-block;
+  }
+}
+
+html,
+body,
+#content-overlay,
+#content,
+.translate-container,
+.section {
+
+  height: 100%;
+}
+
+.translate-container {
+
+  overflow: hidden;
+}
+
+.section {
+  @include transition(transform .5s ease, opacity .5s ease);
+
+  overflow: hidden;
+
+  &.translateY-enter {
+    @include transform(translate3d(0, 100%, 0));
+
+    opacity: 1;
+
+    &-active {
+      @include transform(translate3d(0, 0, 0));
+
+      opacity: 1;
+    }
+  }
+
+  &.translateY-exit {
+    @include transform(translate3d(0, 0, 0));
+
+    opacity: 1;
+
+    &-active {
+      @include transform(translate3d(0, 100%, 0));
+
+      opacity: 1;
+    }
   }
 }
