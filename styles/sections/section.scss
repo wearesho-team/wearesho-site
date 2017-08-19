@@ -44,11 +44,23 @@
     font-weight: $font-style-light;
 
     &__part {
-
       display: block;
-    }
 
-    &__part {
+      &:first-child {
+
+        .section-title__part-variable {
+
+          animation: change-title-1 12s ease infinite;
+        }
+      }
+
+      &:last-child {
+
+        .section-title__part-variable {
+
+          animation: change-title-2 12s ease infinite;
+        }
+      }
 
       &-container {
         height: 60px;
@@ -66,8 +78,6 @@
         line-height: 1em;
 
         color: $color-secondary;
-
-        animation: change-text 10s ease infinite;
 
         &:not(:last-child) {
 

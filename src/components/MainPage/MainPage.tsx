@@ -1,8 +1,8 @@
-import * as React from 'react';
+import * as React from "react";
 
 export class MainPage extends React.Component<undefined, undefined> {
 
-    render() {
+    public render() {
         return (
             <section className="section section-main">
                 <h2 className="section-title">
@@ -12,16 +12,14 @@ export class MainPage extends React.Component<undefined, undefined> {
                             <span className="section-title__part-variable">смелые</span>
                             <span className="section-title__part-variable">смелые2</span>
                             <span className="section-title__part-variable">смелые3</span>
-                            <span className="section-title__part-variable">смелые4</span>
                         </span>
                     </span>
-                    <span className="section__title_part">
+                    <span className="section-title__part">
                         идеи превращаются&nbsp;
                         <span className="section-title__part-container">
                             <span className="section-title__part-variable">в IT-продукт</span>
                             <span className="section-title__part-variable">в IT-продукт2</span>
                             <span className="section-title__part-variable">в IT-продукт3</span>
-                            <span className="section-title__part-variable">в IT-продукт4</span>
                         </span>
                     </span>
                 </h2>

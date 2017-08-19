@@ -21,4 +21,30 @@
       margin-bottom: 1.5em;
     }
   }
+
+  .icon {
+
+    &:hover {
+
+      .icon_fill {
+
+        fill: $color-secondary;
+      }
+    }
+
+    &_soc-gh {
+      width: 20px;
+      height: 22px;
+    }
+
+    &_soc-li {
+      width: 16px;
+      height: 16px;
+    }
+
+    .icon_fill {
+
+      @include transition(fill .3s ease);
+    }
+  }
 }

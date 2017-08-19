@@ -1,5 +1,5 @@
-import * as PropTypes from 'prop-types';
-import {History} from 'history';
+import * as PropTypes from "prop-types";
+import {History} from "history";
 import {PreLoaderInterface} from "../PreLoader/PreLoaderInterface";
 
 export interface LayoutProps {
@@ -14,4 +14,3 @@ export const LayoutPropTypes = {
         hide: PropTypes.func.isRequired,
     }).isRequired,
 };
-
