@@ -8,7 +8,7 @@ export class SideBar extends React.Component<undefined, undefined> {
             <aside className="sidebar">
                 <nav className="main-nav">
                     <ul className="main-nav__list">
-                        <li className="main-nav__item main-nav__item_active">
+                        <li className="main-nav__item main-nav__item is-active">
                             <Link className="main-nav__link" to="/">+</Link>
                         </li>
                         <li className="main-nav__item">

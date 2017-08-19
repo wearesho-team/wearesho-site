@@ -108,7 +108,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                         <span className="projects-chronology__division projects-chronology__division_left-indent is-filled"/>
                         <span className="projects-chronology__division projects-chronology__division_left-indent"/>
                         <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_wide">2018</span>
+                        <span className="projects-chronology__division projects-chronology__division_wide color-muted">2018</span>
                         <span className="projects-chronology__division projects-chronology__division_right-indent"/>
                         <span className="projects-chronology__division projects-chronology__division_right-indent"/>
                         <span className="projects-chronology__division projects-chronology__division_right-indent"/>
@@ -117,7 +117,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                         <span className="projects-chronology__division projects-chronology__division_left-indent is-filled"/>
                         <span className="projects-chronology__division projects-chronology__division_left-indent is-filled"/>
                         <span className="projects-chronology__division projects-chronology__division_left-indent is-filled"/>
-                        <span className="projects-chronology__division projects-chronology__division_wide is-filled">2019</span>
+                        <span className="projects-chronology__division projects-chronology__division_wide is-filled color-muted">2019</span>
                         <span className="projects-chronology__division projects-chronology__division_right-indent is-filled"/>
                         <span className="projects-chronology__division projects-chronology__division_right-indent"/>
                         <span className="projects-chronology__division projects-chronology__division_right-indent is-filled"/>

@@ -14,7 +14,47 @@
 
   margin-top: (-$slider-size / 2);
 
+  z-index: 1;
+
   @include transition(left .3s ease);
+
+  &.is-move {
+
+    > .chronology-slider__body {
+
+      &:before {
+
+        height: 0;
+      }
+    }
+
+    > .chronology-slider__description {
+
+      > .chronology-slider__projects,
+      > .chronology-slider__services,
+      > .chronology-slider__date {
+
+        @include transform(translateX(20px));
+
+        opacity: 0;
+      }
+
+      > .chronology-slider__projects {
+
+        transition-delay: .05s;
+      }
+
+      > .chronology-slider__services {
+
+        transition-delay: .1s;
+      }
+
+      > .chronology-slider__date {
+
+        transition-delay: .15s;
+      }
+    }
+  }
 
   &__body {
     width: 100%;
@@ -33,13 +73,15 @@
 
       position: absolute;
 
-      top: -$slider-bar-height;
       right: 0;
+      bottom: $slider-size;
       left: 0;
 
       margin: auto;
 
       background-color: $color-secondary;
+
+      @include transition(height .3s ease)
     }
   }
 
@@ -58,6 +100,13 @@
   }
 
   &__projects,
+  &__services,
+  &__date {
+
+    @include transition(all .3s ease);
+  }
+
+  &__projects,
   &__date {
 
     font-weight: $font-style-medium;
@@ -65,12 +114,13 @@
 
   &__projects {
     font-size: .813em;
+    text-transform: uppercase;
     color: $color-secondary;
   }
 
   &__services {
     margin: .25em 0;
-    
+
     font-size: .75em;
   }
 

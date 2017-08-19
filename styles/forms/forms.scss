@@ -169,34 +169,46 @@
 }
 
 // Extinction effect
+[placeholder]::-webkit-input-placeholder {
+
+  @include transition(all .25s ease);
+}
+
+[placeholder]::-moz-placeholder {
+
+  @include transition(all .25s ease);
+}
+
+[placeholder]:-moz-placeholder {
+
+  @include transition(all .25s ease);
+}
+
+[placeholder]:-ms-input-placeholder {
+
+  @include transition(all .25s ease);
+}
+
 [placeholder]:focus::-webkit-input-placeholder {
   @include transform(translateX(10px));
 
   opacity: 0;
-
-  @include transition(all .25s ease);
 }
 
 [placeholder]:focus::-moz-placeholder {
   @include transform(translateX(10px));
 
   opacity: 0;
-
-  @include transition(all .25s ease);
 }
 
 [placeholder]:focus:-moz-placeholder {
   @include transform(translateX(10px));
 
   opacity: 0;
-
-  @include transition(all .25s ease);
 }
 
 [placeholder]:focus:-ms-input-placeholder {
   @include transform(translateX(10px));
 
   opacity: 0;
-
-  @include transition(all .25s ease);
 }
