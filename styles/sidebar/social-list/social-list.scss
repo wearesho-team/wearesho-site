@@ -17,8 +17,12 @@
   &__item {
 
     &:not(:last-child) {
-
       margin-bottom: 1.5em;
+
+      @include breakpoint($tablet-laptop) {
+
+        margin-bottom: .75em;
+      }
     }
   }
 

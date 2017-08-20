@@ -12,12 +12,27 @@
   margin-top: 8em;
   padding: 3em 0;
 
+  @include breakpoint($mobile) {
+
+    display: none;
+  }
+
+  @include breakpoint($tablet-p) {
+
+    display: none;
+  }
+
   &__item {
     @include span (2 of 12 inside no-gutters);
 
     position: relative;
 
     font-size: 0;
+
+    @include breakpoint($tablet-laptop) {
+
+      @include span (3 of 12 inside no-gutters);
+    }
 
     &:before,
     &:after {
@@ -35,19 +50,19 @@
     }
 
     &:before {
+      content: none;
 
       left: 0;
     }
 
     &:after {
-      content: none;
 
       right: 0;
     }
 
-    &:last-child {
+    &:first-child {
 
-      &:after {
+      &:before {
 
         content: '';
       }
@@ -72,6 +87,11 @@
 
     &-outer {
       top: calc(50% + 2px);
+
+      @include breakpoint($tablet-laptop) {
+
+        display: none;
+      }
 
       &:before,
       &:after {
