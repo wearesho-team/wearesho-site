@@ -47,14 +47,40 @@
     > .section-half {
       padding-top: 3.5em;
 
-      &.half-first {
+      @include breakpoint($mobile-p) {
 
+        padding-top: 2.75em;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        padding-top: 2.5em;
+      }
+
+      &.half-first {
         @include span(4 of 12 inside no-gutters);
+
+        @include breakpoint($mobile-tablet) {
+
+          display: none;
+        }
+
+        .section-subtitle {
+
+          @include breakpoint($laptop-not-large) {
+
+            display: none;
+          }
+        }
       }
 
       &.half-second {
-
         @include span(6 of 12 inside no-gutters last);
+
+        @include breakpoint($mobile-tablet) {
+
+          @include span(12 of 12 inside no-gutters);
+        }
       }
     }
   }

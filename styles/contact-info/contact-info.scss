@@ -2,7 +2,20 @@
   Contact-info
  */
 .contact-info {
-  @include span(4 of 12 inside no-gutter);
+  @include span(4 of 12 inside no-gutters);
+
+  @include breakpoint($mobile-tablet) {
+
+    @include span(12 of 12 inside no-gutters);
+  }
+
+  > .align-container {
+
+    @include breakpoint($mobile-l) {
+
+      @include span(8 of 12 inside no-gutters);
+    }
+  }
 
   &__link {
     font-size: 1.2em;
@@ -19,8 +32,18 @@
     }
 
     &_indented {
-
       margin: 4.25em 0 4.6em;
+
+      @include breakpoint($mobile-p) {
+
+        margin: 2em 0;
+      }
+
+      @include breakpoint($mobile-l) {
+        @include span(4 of 12 inside no-gutters last);
+
+        margin: 0;
+      }
     }
 
     &_increased {

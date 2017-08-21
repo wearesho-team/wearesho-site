@@ -29,7 +29,7 @@
 
     font-size: 0;
 
-    @include breakpoint($tablet-laptop) {
+    @include breakpoint($tablet) {
 
       @include span (3 of 12 inside no-gutters);
     }

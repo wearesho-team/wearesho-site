@@ -59,9 +59,11 @@ export class ContactPage extends React.Component<undefined, undefined> {
                 </div>
                 <div className="section-half half-second">
                     <div className="contact-info">
-                        <h4 className="section-subtitle">Контакты</h4>
-                        <a href="tel:+380660249402" className="contact-info__link">380 66 024-94-02</a>
-                        <a href="mailto:office@wearesho.com" className="contact-info__link">office@wearesho.com</a>
+                        <div className="align-container">
+                            <h4 className="section-subtitle">Контакты</h4>
+                            <a href="tel:+380660249402" className="contact-info__link">380 66 024-94-02</a>
+                            <a href="mailto:office@wearesho.com" className="contact-info__link">office@wearesho.com</a>
+                        </div>
                         <p className="contact-info__text contact-info__text_indented">
                             <span className="text_medium">Техническая поддержка</span>
                             партнеров Cтудии<span className="contact-info__text_increased">24/7</span>

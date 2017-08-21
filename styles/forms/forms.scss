@@ -6,6 +6,11 @@
 
   font-size: 1.067em;
 
+  @include breakpoint($laptop-not-large) {
+
+    margin: 0;
+  }
+
   &__group {
     position: relative;
 
@@ -57,14 +62,17 @@
   }
 
   &__group_inline {
+    $group-inline-width: 460px;
+    $group-inline-first-group-width: 194px;
+    $group-inline-last-group-width: 230px;
 
     > .form__group {
-      width: 194px;
+      width: (($group-inline-first-group-width / $group-inline-width) * 100%);
 
       display: inline-block;
 
       &:last-child {
-        width: 230px;
+        width: (($group-inline-last-group-width / $group-inline-width) * 100%);
 
         float: right;
 
