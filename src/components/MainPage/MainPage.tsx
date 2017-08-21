@@ -55,9 +55,9 @@ export class MainPage extends React.Component<undefined, undefined> {
                         </ul>
                     </div>
                 </div>
-                <div className="projects-chronology">
-                    <div className="projects-chronology__division-outer projects-chronology__division-outer_left"/>
-                    <div className="projects-chronology__division-outer projects-chronology__division-outer_right"/>
+                <div className="prj-chronology">
+                    <div className="prj-chronology__div-outer prj-chronology__div-outer_left"/>
+                    <div className="prj-chronology__div-outer prj-chronology__div-outer_right"/>
                     <div className="chronology-slider">
                         <div className="chronology-slider__body"/>
                         <div className="chronology-slider__description">
@@ -69,63 +69,59 @@ export class MainPage extends React.Component<undefined, undefined> {
                             <span className="chronology-slider__date">18.08.2017</span>
                         </div>
                     </div>
-                    <div className="projects-chronology__item">
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_wide">2014</span>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
+                    <div className="prj-chronology__item">
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_wide">2014</span>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
                     </div>
-                    <div className="projects-chronology__item">
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_wide">2015</span>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
+                    <div className="prj-chronology__item">
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_wide">2015</span>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
                     </div>
-                    <div className="projects-chronology__item">
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_wide">2016</span>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
+                    <div className="prj-chronology__item">
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_wide">2016</span>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
                     </div>
-                    <div className="projects-chronology__item">
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_wide">2017</span>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
+                    <div className="prj-chronology__item">
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_wide">2017</span>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
                     </div>
-                    <div className="projects-chronology__item">
-                        <span className="projects-chronology__division projects-chronology__division_left-indent is-filled"/>
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_wide color-muted">
-                            2018
-                        </span>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
+                    <div className="prj-chronology__item">
+                        <span className="prj-chronology__div prj-chronology__div_left-indent is-filled"/>
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_left-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_wide color-muted">2018</span>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
                     </div>
-                    <div className="projects-chronology__item">
-                        <span className="projects-chronology__division projects-chronology__division_left-indent is-filled"/>
-                        <span className="projects-chronology__division projects-chronology__division_left-indent is-filled"/>
-                        <span className="projects-chronology__division projects-chronology__division_left-indent is-filled"/>
-                        <span className="projects-chronology__division projects-chronology__division_wide is-filled color-muted">
-                            2019
-                        </span>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent is-filled"/>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_right-indent is-filled"/>
+                    <div className="prj-chronology__item">
+                        <span className="prj-chronology__div prj-chronology__div_left-indent is-filled"/>
+                        <span className="prj-chronology__div prj-chronology__div_left-indent is-filled"/>
+                        <span className="prj-chronology__div prj-chronology__div_left-indent is-filled"/>
+                        <span className="prj-chronology__div prj-chronology__div_wide is-filled color-muted">2019</span>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent is-filled"/>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent"/>
+                        <span className="prj-chronology__div prj-chronology__div_right-indent is-filled"/>
                     </div>
                 </div>
             </section>

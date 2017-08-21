@@ -35,10 +35,6 @@
       true,
       200
     ],
-    "max-line-length": [
-      true,
-      130
-    ],
     "no-default-export": true,
     "no-duplicate-imports": true,
     "prefer-const": true,

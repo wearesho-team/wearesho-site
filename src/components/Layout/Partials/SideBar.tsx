@@ -1,6 +1,7 @@
 import * as React from "react";
 import {Link} from "react-router-dom";
 
+// tslint:disable:max-line-length
 export class SideBar extends React.Component<undefined, undefined> {
 // tslint:disable:max-line-length
     public render() {
@@ -40,3 +41,4 @@ export class SideBar extends React.Component<undefined, undefined> {
     }
 // tslint:enable:max-line-length
 }
+// tslint:enable:max-line-length
