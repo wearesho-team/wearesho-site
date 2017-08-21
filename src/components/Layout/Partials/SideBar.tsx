@@ -2,7 +2,7 @@ import * as React from "react";
 import {Link} from "react-router-dom";
 
 export class SideBar extends React.Component<undefined, undefined> {
-
+// tslint:disable:max-line-length
     public render() {
         return (
             <aside className="sidebar">
@@ -38,5 +38,5 @@ export class SideBar extends React.Component<undefined, undefined> {
             </aside>
         );
     }
-
+// tslint:enable:max-line-length
 }

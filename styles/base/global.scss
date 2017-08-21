@@ -35,34 +35,56 @@ body,
 .translate-container {
 
   overflow: hidden;
-}
 
-.section {
-  @include transition(transform .5s ease, opacity .5s ease);
+  &.up {
+    > .section {
 
-  overflow: hidden;
+      &.translateY-enter {
+        @include transform(translate3d(0, 100%, 0));
 
-  &.translateY-enter {
-    @include transform(translate3d(0, 100%, 0));
+        &-active {
+          @include transition(transform .5s ease .001s);
 
-    opacity: 1;
+          @include transform(translate3d(0, 0, 0));
+        }
+      }
 
-    &-active {
-      @include transform(translate3d(0, 0, 0));
+      &.translateY-exit {
+        @include transform(translate3d(0, -100%, 0));
 
-      opacity: 1;
+        &-active {
+          @include transition(transform .5s ease .001s);
+
+          @include transform(translate3d(0, -200%, 0));
+        }
+      }
     }
   }
 
-  &.translateY-exit {
-    @include transform(translate3d(0, 0, 0));
+  &.down {
+    > .section {
+      @include transform(translate3d(0, -100%, 0));
 
-    opacity: 1;
+      &.translateY-enter {
 
-    &-active {
-      @include transform(translate3d(0, 100%, 0));
+        &-active {
+          @include transition(transform .5s ease .001s);
 
-      opacity: 1;
+          @include transform(translate3d(0, 0, 0));
+        }
+      }
+
+      &.translateY-exit {
+        &-active {
+          @include transition(transform .5s ease .001s);
+
+          @include transform(translate3d(0, 0, 0));
+        }
+      }
     }
+  }
+
+  > .section {
+    overflow: hidden;
   }
 }

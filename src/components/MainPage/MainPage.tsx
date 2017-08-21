@@ -25,8 +25,9 @@ export class MainPage extends React.Component<undefined, undefined> {
                 </h2>
                 <div className="container">
                     <div className="section-half">
-                        <h4 className="section__subtitle section__subtitle_marker">Реализуем высокотехнологичные
-                            проекты</h4>
+                        <h4 className="section__subtitle section__subtitle_marker">
+                            Реализуем высокотехнологичные проекты
+                        </h4>
                         <ul className="services-list">
                             <li className="services-list__item">разработка сайтов</li>
                             <li className="services-list__item">брендинг и дизайн</li>
@@ -38,7 +39,9 @@ export class MainPage extends React.Component<undefined, undefined> {
                     <div className="section-half">
                         <h4 className="section__subtitle section__subtitle_marker">
                             Более 3 лет
-                            <span className="section__subtitle_reduced">профессионального сотрудничества с финансовыми компаниями:</span>
+                            <span className="section__subtitle_reduced">
+                                профессионального сотрудничества с финансовыми компаниями:
+                            </span>
                         </h4>
                         <ul className="clients-list">
                             <li className="clients-list__item">
@@ -53,10 +56,10 @@ export class MainPage extends React.Component<undefined, undefined> {
                     </div>
                 </div>
                 <div className="projects-chronology">
-                    <div className="projects-chronology__division-outer projects-chronology__division-outer_left"></div>
-                    <div className="projects-chronology__division-outer projects-chronology__division-outer_right"></div>
+                    <div className="projects-chronology__division-outer projects-chronology__division-outer_left"/>
+                    <div className="projects-chronology__division-outer projects-chronology__division-outer_right"/>
                     <div className="chronology-slider">
-                        <div className="chronology-slider__body"></div>
+                        <div className="chronology-slider__body"/>
                         <div className="chronology-slider__description">
                             <div className="chronology-slider__projects">
                                 <a href="#">NIKO</a>&nbsp;/&nbsp;
@@ -106,7 +109,9 @@ export class MainPage extends React.Component<undefined, undefined> {
                         <span className="projects-chronology__division projects-chronology__division_left-indent is-filled"/>
                         <span className="projects-chronology__division projects-chronology__division_left-indent"/>
                         <span className="projects-chronology__division projects-chronology__division_left-indent"/>
-                        <span className="projects-chronology__division projects-chronology__division_wide color-muted">2018</span>
+                        <span className="projects-chronology__division projects-chronology__division_wide color-muted">
+                            2018
+                        </span>
                         <span className="projects-chronology__division projects-chronology__division_right-indent"/>
                         <span className="projects-chronology__division projects-chronology__division_right-indent"/>
                         <span className="projects-chronology__division projects-chronology__division_right-indent"/>
@@ -115,7 +120,9 @@ export class MainPage extends React.Component<undefined, undefined> {
                         <span className="projects-chronology__division projects-chronology__division_left-indent is-filled"/>
                         <span className="projects-chronology__division projects-chronology__division_left-indent is-filled"/>
                         <span className="projects-chronology__division projects-chronology__division_left-indent is-filled"/>
-                        <span className="projects-chronology__division projects-chronology__division_wide is-filled color-muted">2019</span>
+                        <span className="projects-chronology__division projects-chronology__division_wide is-filled color-muted">
+                            2019
+                        </span>
                         <span className="projects-chronology__division projects-chronology__division_right-indent is-filled"/>
                         <span className="projects-chronology__division projects-chronology__division_right-indent"/>
                         <span className="projects-chronology__division projects-chronology__division_right-indent is-filled"/>

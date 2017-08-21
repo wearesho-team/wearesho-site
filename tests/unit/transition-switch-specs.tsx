@@ -15,6 +15,7 @@ describe("<TransitionSwitch/>", () => {
     const animationDuration = 500;
 
     const wrapperProps = {
+        className: "wrapper-test",
         classNames: "test",
         timeout: animationDuration,
     };
@@ -72,5 +73,21 @@ describe("<TransitionSwitch/>", () => {
 
         expect(wrapper).to.contain(<div id="p_1"/>);
         expect(wrapper.getDOMNode().children).to.have.length(1);
+    });
+
+    it("should contain direction in class name at least 500ms after url changed", () => {
+        history.push("/view-1");
+
+        timer.tick(animationDuration / 2);
+        expect(wrapper.getDOMNode().className).to.be.contain("up");
+        timer.tick(animationDuration / 2);
+        expect(wrapper.getDOMNode().className).to.be.not.contain("up");
+
+        history.push("/");
+
+        timer.tick(animationDuration / 2);
+        expect(wrapper.getDOMNode().className).to.be.contain("down");
+        timer.tick(animationDuration / 2);
+        expect(wrapper.getDOMNode().className).to.be.not.contain("down");
     });
 });
