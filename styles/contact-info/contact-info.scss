@@ -9,11 +9,23 @@
     @include span(12 of 12 inside no-gutters);
   }
 
-  > .align-container {
+  .align-container {
 
     @include breakpoint($mobile-l) {
 
-      @include span(8 of 12 inside no-gutters);
+      @include span(6 of 12 inside no-gutters);
+
+      float: none;
+
+      display: inline-block;
+    }
+  }
+
+  .section-subtitle {
+
+    @include breakpoint($mobile-p) {
+
+      margin-top: 2em;
     }
   }
 
@@ -26,9 +38,30 @@
   &__text {
     line-height: 26px;
 
-    > span {
+    @include breakpoint($mobile-l) {
+      display: inline-block;
 
+      vertical-align: top;
+    }
+
+    & + & {
+
+      @include breakpoint($mobile-l) {
+
+        @include span(4 of 12 inside no-gutters last);
+      }
+    }
+
+    > span {
       display: block;
+
+      &:first-child {
+
+        @include breakpoint($mobile) {
+
+          font-size: 1.2em;
+        }
+      }
     }
 
     &_indented {
@@ -36,13 +69,12 @@
 
       @include breakpoint($mobile-p) {
 
-        margin: 2em 0;
+        margin: 0 0 2em;
       }
 
       @include breakpoint($mobile-l) {
-        @include span(4 of 12 inside no-gutters last);
 
-        margin: 0;
+        margin: 0 0 3em;
       }
     }
 
@@ -51,5 +83,48 @@
 
       font-size: 2em;
     }
+  }
+
+  .btn {
+
+    @include breakpoint($mobile) {
+
+      font-size: 1.063em;
+    }
+
+    @include breakpoint($mobile-p) {
+      @include span(8 of 12 inside no-gutters);
+
+      float: none;
+
+      margin-top: 3.75em;
+    }
+
+    @include breakpoint($mobile-l) {
+
+      @include span(4 of 12 inside no-gutters last);
+    }
+  }
+
+  .social-list {
+    $item-width: 20px;
+
+    width: 100%;
+
+    position: static;
+
+    margin-top: 3.5em;
+
+    text-align: left;
+
+    &__item {
+      width: $item-width;
+
+      margin-right: calc(100% / 3 - 20px);
+      margin-bottom: 0;
+
+      vertical-align: middle;
+    }
+
   }
 }
