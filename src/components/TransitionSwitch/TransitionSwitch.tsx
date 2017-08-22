@@ -4,23 +4,23 @@ import {Route} from "react-router-dom";
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 import {TransitionSwitchProps, TransitionSwitchPropTypes, TransitionSwitchDefaultProps} from "./TransitionSwitchProps";
+import {TransitionSwitchState} from "./TransitionSwitchState";
+import * as ReactDOM from "react-dom";
 
-export class TransitionSwitch extends React.Component<TransitionSwitchProps, undefined> {
+export class TransitionSwitch extends React.Component<TransitionSwitchProps, TransitionSwitchState> {
 
     public static propTypes = TransitionSwitchPropTypes;
     public static defaultProps = TransitionSwitchDefaultProps;
 
-    protected direction: string = "";
-    protected previousKey: number = 0;
+    public state = {
+        direction: "",
+    };
+
+    protected previousRouteKey: number = 0;
 
     public componentWillReceiveProps() {
-        this.direction = this.previousKey > this.routeProps.key
-            ? " down"
-            : " up";
-
         setTimeout(() => {
-            this.direction = "";
-            this.forceUpdate();
+            this.setState({direction: ""});
         }, this.props.timeout);
     }
 
@@ -32,7 +32,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, und
                     ...this.props.children[field].props
                 }
             })
-            .find(({path, key}) => path === this.props.history.location.pathname);
+            .find(({path}) => path === this.props.history.location.pathname);
     }
 
     public render(): JSX.Element {
@@ -50,14 +50,24 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, und
             ...{location},
         };
 
-        this.previousKey = currentRouteProps.key;
+        this.setDirection(currentRouteProps.key);
 
         return (
-            <TransitionGroup className={`${this.props.className}${this.direction}`}>
+            <TransitionGroup className={`${this.props.className}${this.state.direction}`}>
                 <CSSTransition {...transitionProps}>
                     <Route {...currentRouteProps}/>
                 </CSSTransition>
             </TransitionGroup>
         );
+    }
+
+    protected setDirection(key: number) {
+        if (this.previousRouteKey === key) {
+            return;
+        }
+
+        this.state.direction = this.previousRouteKey > this.routeProps.key ? " down" : " up";
+
+        this.previousRouteKey = key;
     }
 }

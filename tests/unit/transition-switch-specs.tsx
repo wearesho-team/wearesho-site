@@ -5,11 +5,11 @@ import {useFakeTimers, SinonFakeTimers} from "sinon";
 
 import {createMemoryHistory, History} from "history";
 
-import {TransitionSwitch, TransitionSwitchProps} from "../../src/components/TransitionSwitch";
+import {TransitionSwitch, TransitionSwitchProps, TransitionSwitchState} from "../../src/components/TransitionSwitch";
 import {Router, Route} from "react-router";
 
 describe("<TransitionSwitch/>", () => {
-    let wrapper: ReactWrapper<TransitionSwitchProps, any>;
+    let wrapper: ReactWrapper<TransitionSwitchProps, TransitionSwitchState>;
     let history: History;
     let timer: SinonFakeTimers;
     const animationDuration = 500;
@@ -79,15 +79,15 @@ describe("<TransitionSwitch/>", () => {
         history.push("/view-1");
 
         timer.tick(animationDuration / 2);
-        expect(wrapper.getDOMNode().className).to.be.contain("up");
+        expect(wrapper.getDOMNode().className).to.contain("up");
         timer.tick(animationDuration / 2);
-        expect(wrapper.getDOMNode().className).to.be.not.contain("up");
+        expect(wrapper.getDOMNode().className).to.not.contain("up");
 
         history.push("/");
 
         timer.tick(animationDuration / 2);
-        expect(wrapper.getDOMNode().className).to.be.contain("down");
+        expect(wrapper.getDOMNode().className).to.contain("down");
         timer.tick(animationDuration / 2);
-        expect(wrapper.getDOMNode().className).to.be.not.contain("down");
+        expect(wrapper.getDOMNode().className).to.not.contain("down");
     });
 });
