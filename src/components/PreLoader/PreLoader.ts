@@ -8,11 +8,6 @@ import {PreLoaderInterface} from "./PreLoaderInterface";
 const HIDE_DURATION = 500;
 
 export class PreLoader implements PreLoaderInterface {
-    private loader: HTMLElement;
-
-    constructor(element: HTMLElement) {
-        this.loader = element;
-    }
 
     /**
      * @todo: Animations
