@@ -28,7 +28,7 @@ export class PreLoader implements PreLoaderInterface {
      * @todo: Animations
      */
     public async show() {
-        this.loader && this.loader.removeAttribute("class");
+        this.loader && document.body.removeAttribute("class");
 
         return this;
     }

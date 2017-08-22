@@ -3,18 +3,18 @@ import {expect} from "chai";
 
 describe("PreLoader animations", () => {
     const element = document.createElement("div");
-    element.setAttribute("id", "pre-loader");
+    element.setAttribute("id", "preloader");
 
     const preLoader = new PreLoader(element);
 
     it("should add `loaded` class on hiding", async () => {
         await preLoader.hide();
-        expect(element.outerHTML).to.equal('<div id="pre-loader" class="loaded"></div>');
+        expect(document.body.className).to.equal("loaded");
     });
 
     it("should remove classes (`loaded`) on showing", async () => {
-        expect(element.outerHTML).to.equal('<div id="pre-loader" class="loaded"></div>');
+        expect(document.body.className).to.equal("loaded");
         await preLoader.show();
-        expect(element.outerHTML).to.equal('<div id="pre-loader"></div>');
+        expect(document.body.className).to.not.equal("loaded");
     });
 });
