@@ -11,5 +11,15 @@
     height: 30px;
 
     background-image: url('images/icon-sho.svg');
+
+    @include breakpoint($mobile) {
+      width: 45px;
+      height: 22px;
+    }
+
+    @include breakpoint($tablet) {
+      width: 55px;
+      height: 27px;
+    }
   }
 }
