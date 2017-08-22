@@ -4,7 +4,6 @@ export const matchMedia = () => {
         return {
             matches: true,
             addListener: () => undefined,
-            removeListener: () => undefined
         };
     }) as any;
 };
