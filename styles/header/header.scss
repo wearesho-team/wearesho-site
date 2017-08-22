@@ -17,6 +17,18 @@
   font-weight: $font-style-medium;
 
   z-index: map-get($zindex, header);
+
+  @include breakpoint($mobile) {
+    padding: 1.875em 1.875em 0;
+
+    font-weight: $font-style-regular;
+  }
+
+  @include breakpoint($tablet) {
+    padding: 2.5em 1.875em 0;
+
+    font-weight: $font-style-regular;
+  }
 }
 
 .header__right {
@@ -34,6 +46,16 @@
     display: block;
 
     margin: .875em 0 0 .571em;
+
+    @include breakpoint($mobile) {
+
+      display: none;
+    }
+
+    @include breakpoint($tablet) {
+
+      display: none;
+    }
   }
 }
 
@@ -79,10 +101,32 @@
 .header__new-project {
   font-size: 14px;
   color: #484848;
+
+  @include breakpoint($mobile) {
+
+    font-size: 15px;
+  }
+
+  @include breakpoint($tablet) {
+
+    font-size: 16px;
+  }
 }
 
 .header__new-project {
   display: block;
+
+  margin-bottom: 1.571em;
+
+  @include breakpoint($mobile) {
+
+    display: none;
+  }
+
+  @include breakpoint($tablet) {
+
+    display: none;
+  }
 
   &:before {
     content: '+\00a0';
@@ -95,7 +139,15 @@
 }
 
 .header__lang-toggle {
-  margin-top: 1.571em;
-
   text-transform: uppercase;
+
+  @include breakpoint($mobile) {
+
+    line-height: 22px;
+  }
+
+  @include breakpoint($tablet) {
+
+    line-height: 27px;
+  }
 }
