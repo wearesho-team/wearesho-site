@@ -20,7 +20,7 @@ export class PreLoader implements PreLoaderInterface {
     public async hide() {
         await sleep(HIDE_DURATION);
 
-        this.loader && document.body.setAttribute("class", "loaded");
+        document.body.setAttribute("class", "loaded");
         return this;
     }
 
@@ -28,7 +28,7 @@ export class PreLoader implements PreLoaderInterface {
      * @todo: Animations
      */
     public async show() {
-        this.loader && document.body.removeAttribute("class");
+        document.body.removeAttribute("class");
 
         return this;
     }
