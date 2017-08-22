@@ -17,8 +17,12 @@
   &__item {
 
     &:not(:last-child) {
-
       margin-bottom: 1.5em;
+
+      @include breakpoint($tablet-laptop) {
+
+        margin-bottom: .75em;
+      }
     }
   }
 
@@ -32,9 +36,14 @@
       }
     }
 
-    &_soc-gh {
+    &_soc-git {
       width: 20px;
       height: 22px;
+    }
+
+    &_soc-be {
+      width: 20px;
+      height: 12px;
     }
 
     &_soc-li {

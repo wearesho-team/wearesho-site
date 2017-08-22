@@ -13,6 +13,26 @@
 
   z-index: $under-zindex;
 
+  @include breakpoint($mobile-p) {
+
+    padding: 0 1.875em;
+  }
+
+  @include breakpoint($mobile-l) {
+
+    padding: 0 4.688em;
+  }
+
+  @include breakpoint($tablet-laptop) {
+
+    padding: 0 5.313em;
+  }
+
+  @include breakpoint($laptop-large) {
+
+    max-width: 69em;
+  }
+
   > .grid__col {
     @include span(2 of 12 inside no-gutters);
 
@@ -21,6 +41,32 @@
     border-width: 0 0 0 1px;
     border-style: solid;
     border-color: #F7F2EA;
+
+    @include breakpoint($mobile) {
+
+      @include span(4 of 12 inside no-gutters);
+    }
+
+    @include breakpoint($tablet-laptop) {
+
+      @include span(3 of 12 inside no-gutters);
+    }
+
+    &:nth-child(3) {
+
+      @include breakpoint($mobile) {
+
+        border-width: 0 1px;
+      }
+    }
+
+    &:nth-child(4) {
+
+      @include breakpoint($tablet-laptop) {
+
+        border-width: 0 1px;
+      }
+    }
 
     &:last-child {
 

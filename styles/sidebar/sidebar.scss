@@ -13,4 +13,14 @@
   text-align: center;
 
   z-index: map-get($zindex, aside);
+
+  @include breakpoint($mobile) {
+
+    display: none;
+  }
+
+  @include breakpoint($tablet) {
+
+    width: 92px;
+  }
 }

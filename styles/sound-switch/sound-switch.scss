@@ -11,6 +11,16 @@
 
   cursor: pointer;
 
+  @include breakpoint($mobile) {
+
+    display: none;
+  }
+
+  @include breakpoint($tablet) {
+
+    display: none;
+  }
+
   &__bar {
     width: $bar-width;
     height: 29px;

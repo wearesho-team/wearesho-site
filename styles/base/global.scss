@@ -36,6 +36,30 @@ body,
 
   overflow: hidden;
 
+  padding: 0 1.5em;
+
+  @include breakpoint($mobile) {
+
+    padding: 0;
+  }
+
+  @include breakpoint($tablet) {
+
+    padding: 0;
+  }
+
+  @include breakpoint($laptop-medium) {
+
+    padding: 0;
+  }
+
+  @include breakpoint($laptop-large) {
+    max-width: 69em;
+
+    margin: auto;
+    padding: 0;
+  }
+
   &.up {
     > .section {
 
