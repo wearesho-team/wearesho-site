@@ -8,7 +8,7 @@ import {Layout} from "./components/Layout";
 import {PreLoader} from "./components/PreLoader";
 
 const container = document.getElementById("content-overlay");
-const preLoaderElement = document.getElementById("pre-loader");
+const preLoaderElement = document.getElementById("preloader");
 
 if (!container) {
     // tslint:disable-next-line
