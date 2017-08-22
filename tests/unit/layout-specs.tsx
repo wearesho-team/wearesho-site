@@ -4,6 +4,8 @@ import {ReactWrapper, mount} from "enzyme";
 
 import {createMemoryHistory, History} from "history";
 
+import {matchMedia} from "./helpers/matchMedia";
+
 import {Layout, LayoutProps} from "../../src/components/Layout";
 import {PreLoader} from "../../src/components/PreLoader";
 import {MainPage} from "../../src/components/MainPage";
@@ -13,6 +15,8 @@ import {SoundSwitch} from "../../src/components/Layout/SoundSwitch";
 import {Grid} from "../../src/components/Layout/Grid";
 
 const preLoaderElement = document.getElementById("pre-loader");
+
+matchMedia();
 
 describe("<Layout>", () => {
     let wrapper: ReactWrapper<LayoutProps, any>;
