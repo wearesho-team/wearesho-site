@@ -1,25 +1,150 @@
 /**
   Preloader
  */
-#pre-loader {
-  position: absolute;
-  font-size: 4em;
-  top: 0;
-  left: 0;
+body.loaded {
+
+  #preloader {
+
+    @include animation(preloader-disappearing 3s ease 2s);
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+
+  .section.section-preloader {
+
+    > .booting-info,
+    > .greeting {
+
+      @include transform(translateX(100%));
+    }
+
+    > .booting-info {
+
+      opacity: 0;
+    }
+
+    > .greeting {
+
+      opacity: 1;
+    }
+  }
+}
+
+#preloader {
   width: 100%;
   height: 100%;
-  background-color: aquamarine;
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  @include transition(all .3s ease);
+
+  color: #717171;
+
+  z-index: map-get($zindex, preloader);
 }
 
-#pre-loader .logo {
-  margin: calc(50vh - 0.5em) auto;
-  text-align: center;
-  width: 100%;
-  color: darkslategrey;
+.section.section-preloader {
+  @include container;
+
+  position: relative;
+
+  margin-top: 23em;
+  padding-top: 0;
+
+  &:before,
+  &:after {
+    content: '+';
+    display: block;
+
+    position: absolute;
+
+    top: 7px;
+
+    line-height: .65;
+
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(121, 121, 121, .7);
+  }
+
+  &:before {
+
+    left: calc((2 / 6) * 100% - 4px);
+  }
+
+  &:after {
+
+    right: calc((3 / 6) * 100% - 7px);
+  }
+
+  > .booting-info,
+  > .greeting {
+
+    @include span(4 of 12 inside no-gutters);
+
+    @include transition(transform 1s ease, opacity 1s ease);
+  }
+
+  > .greeting {
+    pointer-events: none;
+
+    opacity: 0;
+  }
+
+  .section-subtitle,
+  .logo {
+    @include span(6 of 12 inside no-gutters);
+
+    padding-left: 1.75em;
+  }
+
+  .logo {
+    font-size: inherit;
+
+    > .icon_logo {
+      width: 82px;
+      height: 40px;
+    }
+
+    > .logo__text {
+      margin-top: .7em;
+
+      font-size: .936em;
+      font-weight: $font-style-regular;
+    }
+  }
+
+  .section-subtitle {
+    font-size: 1.063em;
+    font-weight: $font-style-light;
+
+    > span.text_medium + span {
+      display: inline-block;
+
+      margin-top: .5em;
+
+      font-size: .824em;
+    }
+
+    &__percent-number,
+    &__measur-units {
+      line-height: .95;
+
+      font-size: 3.125em;
+    }
+
+    &__measur-units {
+
+      color: #d5d5d5;
+    }
+  }
 }
 
-#pre-loader.loaded {
-  opacity: 0;
-  transition: 0.5s;
-  z-index: -1;
-}
+
+
