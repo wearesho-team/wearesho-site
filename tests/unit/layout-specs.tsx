@@ -12,8 +12,6 @@ import {SideBar, Header} from "../../src/components/Layout/Partials";
 import {SoundSwitch} from "../../src/components/Layout/SoundSwitch";
 import {Grid} from "../../src/components/Layout/Grid";
 
-const preLoaderElement = document.getElementById("pre-loader");
-
 describe("<Layout>", () => {
     let wrapper: ReactWrapper<LayoutProps, any>;
 
@@ -22,7 +20,7 @@ describe("<Layout>", () => {
     beforeEach(() => {
         wrapper = mount(
             <Layout
-                preLoader={new PreLoader(preLoaderElement)}
+                preLoader={new PreLoader()}
                 history={history = createMemoryHistory()}
             />
         );

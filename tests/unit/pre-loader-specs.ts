@@ -5,7 +5,7 @@ describe("PreLoader animations", () => {
     const element = document.createElement("div");
     element.setAttribute("id", "preloader");
 
-    const preLoader = new PreLoader(element);
+    const preLoader = new PreLoader();
 
     it("should add `loaded` class on hiding", async () => {
         await preLoader.hide();
