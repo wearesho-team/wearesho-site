@@ -10,6 +10,14 @@ body {
   font: 16px $font-primary;
   color: $color-primary;
 
+  &.loaded {
+
+    #content-overlay {
+
+      opacity: 1;
+    }
+  }
+
   h1, h2, h3, h4, h5, h6, p {
 
     margin: 0;
@@ -21,28 +29,8 @@ body {
   }
 }
 
-.translate-container {
-  padding: 0 1.5em;
+#content-overlay {
+  opacity: 0;
 
-  @include breakpoint($mobile) {
-
-    padding: 0;
-  }
-
-  @include breakpoint($tablet) {
-
-    padding: 0;
-  }
-
-  @include breakpoint($laptop-medium) {
-
-    padding: 0;
-  }
-
-  @include breakpoint($laptop-large) {
-    max-width: 69em;
-
-    margin: auto;
-    padding: 0;
-  }
+  @include transition(opacity 1s ease 4s);
 }

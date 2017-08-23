@@ -56,7 +56,8 @@
     font-size: 1.25em;
     color: $color-secondary;
 
-    &.is-hovered {
+    &:hover,
+    &:active {
 
       > .btn-corners {
 
