@@ -5,6 +5,7 @@ import ReactModal from "react-modal";
 import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../helpers/Breakpoints";
 import {CooperateButton, CloseButton} from "../Buttons";
 import {Form} from "./Form";
+import {Config} from "../../Config";
 
 export class ContactPage extends React.Component<undefined, ContactPageState> {
 
@@ -13,6 +14,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
     };
 
     public render(): JSX.Element {
+
         const modalProps = {
             className: {
                 base: "modal-body",
@@ -25,7 +27,6 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                 beforeClose: "",
             },
         };
-
         return (
             <section className="section section-partnership">
                 <h2 className="section-title">Партнерство</h2>
@@ -46,13 +47,13 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                         <OnDesktop>
                             <div>
                                 <h4 className="section-subtitle">Контакты</h4>
-                                <a href="tel:+380660249402" className="contact-info__link">380 66 024-94-02</a>
                                 <a
-                                    href="mailto:office@wearesho.com"
+                                    href={`tel:+${Config.tel}`}
                                     className="contact-info__link"
                                 >
-                                    office@wearesho.com
+                                    {Config.tel.toString()}
                                 </a>
+                                <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 <p className="contact-info__text contact-info__text_indented">
                                     <span className="text_medium">Техническая поддержка</span>
                                     партнеров Cтудии
@@ -60,7 +61,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 </p>
                                 <p className="contact-info__text">
                                     <span className="text_medium">Локация</span>
-                                    Украина / Харьков
+                                    {Config.location}
                                 </p>
                             </div>
                         </OnDesktop>
@@ -72,20 +73,20 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
                                 <h4 className="section-subtitle">Контакты</h4>
-                                <a href="tel:+380660249402" className="contact-info__link">380 66 024-94-02</a>
                                 <a
-                                    href="mailto:office@wearesho.com"
+                                    href={`tel:+${Config.tel}`}
                                     className="contact-info__link"
                                 >
-                                    office@wearesho.com
+                                    {Config.tel.toString()}
                                 </a>
+                                <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 <CooperateButton
                                     className="btn btn_primary"
-                                    onClick={this.handleModalState(true)}
+                                    onClick={this.handleOpenModal}
                                 />
                                 <p className="contact-info__text">
                                     <span className="text_medium">Локация</span>
-                                    Украина / Харьков
+                                    {Config.location}
                                 </p>
                             </div>
                         </OnTablet>
@@ -98,26 +99,21 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 </p>
                                 <p className="contact-info__text">
                                     <span className="text_medium">Локация</span>
-                                    Украина / Харьков
+                                    {Config.location}
                                 </p>
                                 <h4 className="section-subtitle">Контакты</h4>
                                 <div className="align-container">
                                     <a
-                                        href="tel:+380660249402"
+                                        href={`tel:+${Config.tel}`}
                                         className="contact-info__link"
                                     >
-                                        380 66 024-94-02
+                                        {Config.tel.toString()}
                                     </a>
-                                    <a
-                                        href="mailto:office@wearesho.com"
-                                        className="contact-info__link"
-                                    >
-                                        office@wearesho.com
-                                    </a>
+                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
                                 <CooperateButton
                                     className="btn btn_primary"
-                                    onClick={this.handleModalState(true)}
+                                    onClick={this.handleOpenModal}
                                 />
                             </div>
                         </OnMobile>
@@ -141,7 +137,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                     >
                         <CloseButton
                             className="btn btn_primary"
-                            onClick={this.handleModalState(false)}
+                            onClick={this.handleCloseModal}
                         />
                         <Form/>
                     </ReactModal>
@@ -150,7 +146,8 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
         );
     }
 
-    protected handleModalState = (isModalOpen: boolean) => () => {
-        this.setState({isModalOpen});
-    };
+    protected handleCloseModal = () => this.setState({isModalOpen: false});
+
+    protected handleOpenModal = () => this.setState({isModalOpen: true});
+
 }

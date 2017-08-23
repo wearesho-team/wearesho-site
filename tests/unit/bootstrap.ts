@@ -1,14 +1,10 @@
 import * as chai from "chai";
 import * as chaiEnzyme from "chai-enzyme";
+import "./helpers/matchMedia";
 
 chai.use(chaiEnzyme());
 
-window.matchMedia = window.matchMedia || (() => {
-    return {
-        matches: true,
-        addListener: () => undefined,
-    };
-}) as any;
+process.env.NODE_ENV = "test";
 
 const placeholder = () => undefined;
 require.extensions[".png"] = placeholder;
