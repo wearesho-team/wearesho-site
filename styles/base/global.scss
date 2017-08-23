@@ -30,6 +30,7 @@ body {
 }
 
 #content-overlay {
-
   opacity: 0;
+
+  @include transition(opacity 1s ease 4s);
 }

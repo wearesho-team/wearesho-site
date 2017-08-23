@@ -4,12 +4,13 @@
 body.loaded {
 
   #preloader {
-    // Temp
-    display: none;
 
-    //opacity: 0;
+    @include animation(preloader-disappearing 3s ease 2s);
 
-    //z-index: $under-zindex;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
   }
 
   .section.section-preloader {
