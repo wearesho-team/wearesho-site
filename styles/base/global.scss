@@ -11,6 +11,14 @@ body {
   font: 16px $font-primary;
   color: $color-primary;
 
+  &.loaded {
+
+    #content-overlay {
+
+      opacity: 1;
+    }
+  }
+
   h1, h2, h3, h4, h5, h6, p {
 
     margin: 0;
@@ -111,4 +119,10 @@ body,
   > .section {
     overflow: hidden;
   }
+}
+
+#content-overlay {
+  opacity: 0;
+
+  @include transition(opacity 1s ease 4s);
 }

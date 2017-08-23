@@ -6,9 +6,40 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-<div id="pre-loader">
-    <div class="logo">wearesho</div>
+<div id="preloader">
+    <section class="section section-preloader">
+        <div class="greeting">
+            <a href="#" class="logo">
+                <i class="icon icon_logo"></i>
+                <span class="logo__text">Art &amp; Data Studio</span>
+            </a>
+            <h4 class="section-subtitle">
+                <span class="text_medium">Приветствуем</span>
+                <span>Команда готова реализовать ваши планы</span>
+            </h4>
+        </div>
+        <div class="booting-info">
+            <h4 class="section-subtitle">
+                <span class="section-subtitle__percent-number">78</span>
+                <span class="section-subtitle__measur-units">%</span>
+            </h4>
+            <h4 class="section-subtitle">
+                <span class="text_medium">Загрузка проектов</span>
+                <span>Подождите, осталось немного</span>
+            </h4>
+        </div>
+    </section>
 </div>
 <div id="content-overlay"></div>
+<div class="grid">
+    <div class="grid__col"></div>
+    <div class="grid__col"></div>
+    <div class="grid__col">
+        <div class="booting-indicator"></div>
+    </div>
+    <div class="grid__col"></div>
+    <div class="grid__col"></div>
+    <div class="grid__col"></div>
+</div>
 </body>
 </html>

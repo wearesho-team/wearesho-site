@@ -1,6 +1,27 @@
 /**
   Grid styles
  */
+body.loaded {
+
+  .grid {
+    z-index: $under-zindex;
+
+    > .grid__col {
+
+      &:after,
+      > .booting-indicator {
+
+        @include animation(preloader-disappearing 3s ease 2s);
+
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+        -o-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+}
+
 .grid {
   @include container;
 
@@ -11,36 +32,17 @@
   bottom: 0;
   left: 0;
 
-  z-index: $under-zindex;
-
-  @include breakpoint($mobile-p) {
-
-    padding: 0 1.875em;
-  }
-
-  @include breakpoint($mobile-l) {
-
-    padding: 0 4.688em;
-  }
-
-  @include breakpoint($tablet-laptop) {
-
-    padding: 0 5.313em;
-  }
-
-  @include breakpoint($laptop-large) {
-
-    max-width: 69em;
-  }
+  z-index: (map-get($zindex, preloader) - 1);
 
   > .grid__col {
     @include span(2 of 12 inside no-gutters);
-
     height: 100%;
+
+    position: relative;
 
     border-width: 0 0 0 1px;
     border-style: solid;
-    border-color: #F7F2EA;
+    border-color: #F8F4EE;
 
     @include breakpoint($mobile) {
 
@@ -68,9 +70,51 @@
       }
     }
 
-    &:last-child {
+    &:before,
+    &:after {
+      content: '';
+      display: block;
 
+      width: 1px;
+      height: 0;
+
+      position: absolute;
+
+      top: 0;
+
+      background-color: #fff;
+
+      @include animation(to-top 8s ease);
+    }
+
+    &:before {
+
+      left: -1px;
+    }
+
+    &:last-child {
       border-width: 0 1px;
+
+      &:after {
+
+        right: -1px;
+      }
+    }
+
+    .booting-indicator {
+      width: 1px;
+      height: 100%;
+
+      position: absolute;
+
+      top: 0;
+      left: -1px;
+
+      background-color: rgba(195, 195, 195, .8);
+
+      @include animation(to-bottom 8s ease);
+
+      z-index: 1;
     }
   }
 }
