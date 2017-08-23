@@ -57,6 +57,7 @@ $color-secondary: #ffc60a;
  */
 // z-index: map-get($zindex, ...);
 $zindex: (
+  preloader       : 1100,
   modal           : 1000,
   overlay         : 900,
   hamburger       : 800,

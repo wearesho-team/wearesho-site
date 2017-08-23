@@ -8,11 +8,6 @@ import {PreLoaderInterface} from "./PreLoaderInterface";
 const HIDE_DURATION = 500;
 
 export class PreLoader implements PreLoaderInterface {
-    private loader: HTMLElement;
-
-    constructor(element: HTMLElement) {
-        this.loader = element;
-    }
 
     /**
      * @todo: Animations
@@ -20,7 +15,7 @@ export class PreLoader implements PreLoaderInterface {
     public async hide() {
         await sleep(HIDE_DURATION);
 
-        this.loader && this.loader.setAttribute("class", "loaded");
+        document.body.classList.add("loaded");
         return this;
     }
 
@@ -28,7 +23,7 @@ export class PreLoader implements PreLoaderInterface {
      * @todo: Animations
      */
     public async show() {
-        this.loader && this.loader.removeAttribute("class");
+        document.body.classList.remove("loaded");
 
         return this;
     }
