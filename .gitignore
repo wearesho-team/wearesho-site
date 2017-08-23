@@ -11,5 +11,4 @@ src/**/*.js
 src/**/*.js.map
 .DS_Store
 
-!/config/config.test.js
-!/config/config.local.js
+!/config/**/*.js
