@@ -5,7 +5,7 @@ import {PreLoaderInterface} from "./PreLoaderInterface";
  * This class represents animations on plain DOM element because
  * pre-loader will be rendered before loading js bundle
  */
-const HIDE_DURATION = 8000;
+const HIDE_DURATION = 500;
 
 export class PreLoader implements PreLoaderInterface {
 

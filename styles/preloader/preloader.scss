@@ -52,7 +52,36 @@ body.loaded {
 .section.section-preloader {
   @include container;
 
-  padding-top: 23em;
+  position: relative;
+
+  margin-top: 23em;
+  padding-top: 0;
+
+  &:before,
+  &:after {
+    content: '+';
+    display: block;
+
+    position: absolute;
+
+    top: 7px;
+
+    line-height: .65;
+
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(121, 121, 121, .7);
+  }
+
+  &:before {
+
+    left: calc((2 / 6) * 100% - 4px);
+  }
+
+  &:after {
+
+    right: calc((3 / 6) * 100% - 7px);
+  }
 
   > .booting-info,
   > .greeting {
@@ -63,6 +92,7 @@ body.loaded {
   }
 
   > .greeting {
+    pointer-events: none;
 
     opacity: 0;
   }
@@ -72,33 +102,10 @@ body.loaded {
     @include span(6 of 12 inside no-gutters);
 
     padding-left: 1.75em;
-
-    &:before {
-      left: -4px;
-
-      font-size: 18px;
-      color: rgba(121, 121, 121, .7);
-    }
   }
 
-  .logo_marker {
-    position: relative;
-
-    font-size: 1em;
-
-    &:before {
-      content: '+';
-      display: block;
-
-      position: absolute;
-
-      top: 0;
-      left: -4px;
-
-      line-height: .65;
-
-      font-weight: 700;
-    }
+  .logo {
+    font-size: inherit;
 
     > .icon_logo {
       width: 82px;
