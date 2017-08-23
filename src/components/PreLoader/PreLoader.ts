@@ -5,7 +5,7 @@ import {PreLoaderInterface} from "./PreLoaderInterface";
  * This class represents animations on plain DOM element because
  * pre-loader will be rendered before loading js bundle
  */
-const HIDE_DURATION = 500;
+const HIDE_DURATION = 8000;
 
 export class PreLoader implements PreLoaderInterface {
 
@@ -15,7 +15,7 @@ export class PreLoader implements PreLoaderInterface {
     public async hide() {
         await sleep(HIDE_DURATION);
 
-        document.body.setAttribute("class", "loaded");
+        document.body.classList.add("loaded");
         return this;
     }
 
@@ -23,7 +23,7 @@ export class PreLoader implements PreLoaderInterface {
      * @todo: Animations
      */
     public async show() {
-        document.body.removeAttribute("class");
+        document.body.classList.remove("loaded");
 
         return this;
     }

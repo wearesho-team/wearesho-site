@@ -111,6 +111,13 @@ body.loaded {
       width: 82px;
       height: 40px;
     }
+
+    > .logo__text {
+      margin-top: .7em;
+
+      font-size: .936em;
+      font-weight: $font-style-regular;
+    }
   }
 
   .section-subtitle {
