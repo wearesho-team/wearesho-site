@@ -1,11 +1,15 @@
 import * as React from "react";
 import {Route} from "react-router-dom";
+import {concat} from "../../helpers/concat";
 
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 import {TransitionSwitchProps, TransitionSwitchPropTypes, TransitionSwitchDefaultProps} from "./TransitionSwitchProps";
 import {TransitionSwitchState} from "./TransitionSwitchState";
-import * as ReactDOM from "react-dom";
+
+const upDirectionClassName = "up";
+const downDirectionClassName = "down";
+const waitDirectionClassName = "";
 
 export class TransitionSwitch extends React.Component<TransitionSwitchProps, TransitionSwitchState> {
 
@@ -13,14 +17,14 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     public static defaultProps = TransitionSwitchDefaultProps;
 
     public state = {
-        direction: "",
+        directionClassName: waitDirectionClassName,
     };
 
     protected previousRouteKey: number = 0;
 
     public componentWillReceiveProps() {
         setTimeout(() => {
-            this.setState({direction: ""});
+            this.setState({directionClassName: waitDirectionClassName});
         }, this.props.timeout);
     }
 
@@ -53,7 +57,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
         this.setDirection(currentRouteProps.key);
 
         return (
-            <TransitionGroup className={`${this.props.className}${this.state.direction}`}>
+            <TransitionGroup className={concat(this.props.className, this.state.directionClassName)}>
                 <CSSTransition {...transitionProps}>
                     <Route {...currentRouteProps}/>
                 </CSSTransition>
@@ -66,7 +70,9 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
             return;
         }
 
-        this.state.direction = this.previousRouteKey > this.routeProps.key ? " down" : " up";
+        this.state.directionClassName = this.previousRouteKey > this.routeProps.key
+            ? downDirectionClassName
+            : upDirectionClassName;
 
         this.previousRouteKey = key;
     }

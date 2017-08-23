@@ -1,3 +1,3 @@
 export interface TransitionSwitchState {
-    direction: string,
+    directionClassName: string,
 }

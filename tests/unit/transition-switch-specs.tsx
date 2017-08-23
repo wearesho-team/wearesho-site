@@ -8,6 +8,9 @@ import {createMemoryHistory, History} from "history";
 import {TransitionSwitch, TransitionSwitchProps, TransitionSwitchState} from "../../src/components/TransitionSwitch";
 import {Router, Route} from "react-router";
 
+const upClassName = "up";
+const downClassName = "down";
+
 describe("<TransitionSwitch/>", () => {
     let wrapper: ReactWrapper<TransitionSwitchProps, TransitionSwitchState>;
     let history: History;
@@ -79,15 +82,15 @@ describe("<TransitionSwitch/>", () => {
         history.push("/view-1");
 
         timer.tick(animationDuration / 2);
-        expect(wrapper.getDOMNode().className).to.contain("up");
+        expect(wrapper.getDOMNode().className).to.contain(upClassName);
         timer.tick(animationDuration / 2);
-        expect(wrapper.getDOMNode().className).to.not.contain("up");
+        expect(wrapper.getDOMNode().className).to.not.contain(upClassName);
 
         history.push("/");
 
         timer.tick(animationDuration / 2);
-        expect(wrapper.getDOMNode().className).to.contain("down");
+        expect(wrapper.getDOMNode().className).to.contain(downClassName);
         timer.tick(animationDuration / 2);
-        expect(wrapper.getDOMNode().className).to.not.contain("down");
+        expect(wrapper.getDOMNode().className).to.not.contain(downClassName);
     });
 });
