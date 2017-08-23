@@ -2,9 +2,6 @@ import {PreLoader} from "../../src/components/PreLoader";
 import {expect} from "chai";
 
 describe("PreLoader animations", () => {
-    const element = document.createElement("div");
-    element.setAttribute("id", "preloader");
-
     const preLoader = new PreLoader();
 
     it("should add `loaded` class on hiding", async () => {
