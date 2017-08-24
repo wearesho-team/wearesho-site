@@ -1,8 +1,10 @@
 import * as React from "react";
+import {Map} from "../Widgets/Map"
 
 export class ContactPage extends React.Component<undefined, undefined> {
 
     public render() {
+
         return (
             <section className="section section-partnership">
                 <h2 className="section-title">Партнерство</h2>
@@ -80,6 +82,7 @@ export class ContactPage extends React.Component<undefined, undefined> {
                         </div>
                     </div>
                 </div>
+                <Map/>
             </section>
         );
     }
