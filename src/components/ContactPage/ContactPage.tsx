@@ -1,10 +1,13 @@
 import * as React from "react";
+import {TimeInput} from "../Inputs";
 
 export class ContactPage extends React.Component<undefined, undefined> {
 
     public render() {
+
         return (
             <section className="section section-partnership">
+                <TimeInput/>
                 <h2 className="section-title">Партнерство</h2>
                 <div className="section-half half-first">
                     <h4 className="section-subtitle">
