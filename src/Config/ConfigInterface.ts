@@ -1,5 +1,8 @@
 export interface ConfigInterface {
     mail: string,
     tel: number,
-    location: string,
+    location: {
+        country: string,
+        city: string,
+    },
 }

@@ -1,5 +1,8 @@
 const config = {
-    location: " Украина / Харьков",
+    location: {
+        city: "Харьков",
+        country: "Украина",
+    },
     mail: "office@wearesho.com",
     tel: 380660249402,
 };

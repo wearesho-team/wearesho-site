@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Route} from "react-router-dom";
 
-import {TransitionGroup, CSSTransition} from "../../../node_modules/react-transition-group";
+import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 import {TransitionSwitchProps, TransitionSwitchPropTypes, TransitionSwitchDefaultProps} from "./TransitionSwitchProps";
 

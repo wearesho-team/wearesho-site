@@ -32,14 +32,16 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                 <h2 className="section-title">Партнерство</h2>
                 <div className="section-half half-first">
                     <OnDesktop>
-                        <h4 className="section-subtitle">
-                            Свяжитесь с нами
-                            <span className="section-subtitle_reduced">
-                            или укажите свои контактные данные в форме ниже.
-                            Наши специалисты ответят на все ваши вопросы.
-                        </span>
-                        </h4>
-                        <Form/>
+                        <div>
+                            <h4 className="section-subtitle">
+                                Свяжитесь с нами
+                                <span className="section-subtitle_reduced">
+                                    или укажите свои контактные данные в форме ниже.
+                                    Наши специалисты ответят на все ваши вопросы.
+                                </span>
+                            </h4>
+                            <Form/>
+                        </div>
                     </OnDesktop>
                 </div>
                 <div className="section-half half-second">
@@ -61,7 +63,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 </p>
                                 <p className="contact-info__text">
                                     <span className="text_medium">Локация</span>
-                                    {Config.location}
+                                    {Config.location.country}/{Config.location.city}
                                 </p>
                             </div>
                         </OnDesktop>
@@ -86,7 +88,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 />
                                 <p className="contact-info__text">
                                     <span className="text_medium">Локация</span>
-                                    {Config.location}
+                                    {Config.location.country}/{Config.location.city}
                                 </p>
                             </div>
                         </OnTablet>
@@ -99,7 +101,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 </p>
                                 <p className="contact-info__text">
                                     <span className="text_medium">Локация</span>
-                                    {Config.location}
+                                    {Config.location.country}/{Config.location.city}
                                 </p>
                                 <h4 className="section-subtitle">Контакты</h4>
                                 <div className="align-container">

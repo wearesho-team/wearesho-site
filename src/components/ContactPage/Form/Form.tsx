@@ -48,7 +48,7 @@ export class Form extends React.Component<undefined, undefined> {
         );
     }
 
-    private handleSubmit = async (e) => {
+    private handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
     };
 }
