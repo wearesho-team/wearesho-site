@@ -6,6 +6,7 @@ import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../helpers/Break
 import {CooperateButton, CloseButton} from "../Buttons";
 import {Form} from "./Form";
 import {Config} from "../../Config";
+import {formatNumber} from "../../helpers/formatNumber";
 
 export class ContactPage extends React.Component<undefined, ContactPageState> {
 
@@ -27,6 +28,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                 beforeClose: "",
             },
         };
+
         return (
             <section className="section section-partnership">
                 <h2 className="section-title">Партнерство</h2>
@@ -53,7 +55,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     href={`tel:+${Config.tel}`}
                                     className="contact-info__link"
                                 >
-                                    {Config.tel.toString()}
+                                    {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
                                 </a>
                                 <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 <p className="contact-info__text contact-info__text_indented">
@@ -63,7 +65,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 </p>
                                 <p className="contact-info__text">
                                     <span className="text_medium">Локация</span>
-                                    {Config.location.country}/{Config.location.city}
+                                    {Config.location.country} / {Config.location.city}
                                 </p>
                             </div>
                         </OnDesktop>
@@ -79,7 +81,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     href={`tel:+${Config.tel}`}
                                     className="contact-info__link"
                                 >
-                                    {Config.tel.toString()}
+                                    {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
                                 </a>
                                 <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 <CooperateButton
@@ -88,7 +90,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 />
                                 <p className="contact-info__text">
                                     <span className="text_medium">Локация</span>
-                                    {Config.location.country}/{Config.location.city}
+                                    {Config.location.country} / {Config.location.city}
                                 </p>
                             </div>
                         </OnTablet>
@@ -101,7 +103,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 </p>
                                 <p className="contact-info__text">
                                     <span className="text_medium">Локация</span>
-                                    {Config.location.country}/{Config.location.city}
+                                    {Config.location.country} / {Config.location.city}
                                 </p>
                                 <h4 className="section-subtitle">Контакты</h4>
                                 <div className="align-container">
@@ -109,7 +111,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                         href={`tel:+${Config.tel}`}
                                         className="contact-info__link"
                                     >
-                                        {Config.tel.toString()}
+                                        {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
                                     </a>
                                     <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
