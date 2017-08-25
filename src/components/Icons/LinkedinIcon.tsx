@@ -1,7 +1,7 @@
 // tslint:disable:max-line-length
 import * as React from "react";
 
-export const linkedin = (
+export const LinkedinIcon: React.SFC<undefined> = () => (
     <svg className="icon icon_soc-li" xmlns="http://www.w3.org/2000/svg" viewBox="1855 893 16 15.776">
         <g transform="translate(1855 892.369)">
             <g transform="translate(0 0.631)">

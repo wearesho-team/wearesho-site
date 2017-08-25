@@ -20,9 +20,11 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
         directionClassName: this.waitDirectionClassName,
     };
 
-    protected previousRouteKey: number = 0;
+    protected previousRouteKey: number = this.routeProps.key;
 
     public componentWillReceiveProps() {
+        this.setDirection(this.routeProps.key);
+
         setTimeout(() => {
             this.setState({directionClassName: this.waitDirectionClassName});
         }, this.props.timeout);
@@ -54,8 +56,6 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
             ...{location},
         };
 
-        this.setDirection(currentRouteProps.key);
-
         return (
             <TransitionGroup className={concat(this.props.className, this.state.directionClassName)}>
                 <CSSTransition {...transitionProps}>
@@ -66,6 +66,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     }
 
     protected setDirection(key: number) {
+
         if (this.previousRouteKey === key) {
             return;
         }
