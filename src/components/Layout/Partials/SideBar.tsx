@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Link} from "react-router-dom";
-import {SocialLinks} from "../../SocialLinks/SocialLinks";
+import {SocialLinks} from "./SocialLinks";
 
 export class SideBar extends React.Component<undefined, undefined> {
 

@@ -1,17 +1,19 @@
 import * as React from "react";
-import {Icons} from "../Icons";
+import {git} from "../../Icons/git";
+import {behance} from "../../Icons/behance";
+import {linkedin} from "../../Icons/linkedin";
 
 export const SocialLinks = () => {
     return (
         <div className="social-list">
             <a href="#" className="social-list__item">
-                {Icons.git}
+                {git}
             </a>
             <a href="#" className="social-list__item">
-                {Icons.behance}
+                {behance}
             </a>
             <a href="#" className="social-list__item">
-                {Icons.linkedin}
+                {linkedin}
             </a>
         </div>
     );
