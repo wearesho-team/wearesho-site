@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Router, Route} from "react-router-dom";
+import {Router, Route, Link} from "react-router-dom";
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 import {MainPage} from "../MainPage";
@@ -32,7 +32,10 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                 <div id="content">
                     <Grid/>
                     <Header/>
-                    <SideBar/>
+                    <SideBar history={this.props.history}>
+                        <Link className="main-nav__link" to="/">+</Link>
+                        <Link className="main-nav__link" to="/contact">+</Link>
+                    </SideBar>
                     <SoundSwitch/>
                     <TransitionSwitch
                         className="translate-container"
