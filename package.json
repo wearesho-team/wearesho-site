@@ -49,6 +49,7 @@
     "mocha": "^3.5.0",
     "nyc": "^11.1.0",
     "pre-commit": "^1.2.2",
+    "pre-push": "^0.1.1",
     "react-test-renderer": "^15.6.1",
     "sass-loader": "^6.0.6",
     "selenium-standalone": "^6.6.0",

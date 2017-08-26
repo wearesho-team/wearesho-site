@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Link} from "react-router-dom";
+import {SocialLinks} from "./SocialLinks";
 
 export class SideBar extends React.Component<undefined, undefined> {
 
@@ -16,19 +17,8 @@ export class SideBar extends React.Component<undefined, undefined> {
                         </li>
                     </ul>
                 </nav>
-                <div className="social-list">
-                    <a href="#" className="social-list__item">
-                      {/*PASTE ICONS HERE*/}
-                    </a>
-                    <a href="#" className="social-list__item">
-                        {/*PASTE ICONS HERE*/}
-                    </a>
-                    <a href="#" className="social-list__item">
-                        {/*PASTE ICONS HERE*/}
-                    </a>
-                </div>
+                <SocialLinks/>
             </aside>
         );
     }
-
 }

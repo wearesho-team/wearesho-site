@@ -25,8 +25,9 @@ export class MainPage extends React.Component<undefined, undefined> {
                 </h2>
                 <div className="container">
                     <div className="section-half">
-                        <h4 className="section-subtitle section-subtitle_marker">Реализуем высокотехнологичные
-                            проекты</h4>
+                        <h4 className="section__subtitle section__subtitle_marker">
+                            Реализуем высокотехнологичные проекты
+                        </h4>
                         <ul className="services-list">
                             <li className="services-list__item">разработка сайтов</li>
                             <li className="services-list__item">брендинг и дизайн</li>
@@ -36,9 +37,9 @@ export class MainPage extends React.Component<undefined, undefined> {
                         </ul>
                     </div>
                     <div className="section-half">
-                        <h4 className="section-subtitle section-subtitle_marker">
+                        <h4 className="section__subtitle section__subtitle_marker">
                             Более 3 лет
-                            <span className="section-subtitle_reduced">
+                            <span className="section__subtitle_reduced">
                                 профессионального сотрудничества с финансовыми компаниями:
                             </span>
                         </h4>
