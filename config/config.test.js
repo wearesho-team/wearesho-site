@@ -1,4 +1,9 @@
 const config = {
+    links: {
+        behance: "#",
+        github: "https://github.com/wearesho-team",
+        linkedin: "https://ru.linkedin.com/company/студия-«шо-»",
+    },
     location: {
         city: "Харьков",
         country: "Украина",

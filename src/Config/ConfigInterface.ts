@@ -3,6 +3,11 @@ export interface ConfigInterface {
         city: string,
         country: string,
     },
+    links: {
+        behance: string,
+        linkedin: string,
+        github: string,
+    }
     mail: string,
     tel: number,
 }
