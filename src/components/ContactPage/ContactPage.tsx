@@ -51,10 +51,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                         <OnDesktop>
                             <div>
                                 <h4 className="section-subtitle">Контакты</h4>
-                                <a
-                                    href={`tel:+${Config.tel}`}
-                                    className="contact-info__link"
-                                >
+                                <a href={`tel:+${Config.tel}`} className="contact-info__link">
                                     {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
                                 </a>
                                 <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
@@ -77,10 +74,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
                                 <h4 className="section-subtitle">Контакты</h4>
-                                <a
-                                    href={`tel:+${Config.tel}`}
-                                    className="contact-info__link"
-                                >
+                                <a href={`tel:+${Config.tel}`} className="contact-info__link">
                                     {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
                                 </a>
                                 <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
@@ -107,13 +101,12 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 </p>
                                 <h4 className="section-subtitle">Контакты</h4>
                                 <div className="align-container">
-                                    <a
-                                        href={`tel:+${Config.tel}`}
-                                        className="contact-info__link"
-                                    >
+                                    <a href={`tel:+${Config.tel}`} className="contact-info__link">
                                         {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
                                     </a>
-                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
+                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">
+                                        {Config.mail}
+                                    </a>
                                 </div>
                                 <CooperateButton
                                     className="btn btn_primary"
