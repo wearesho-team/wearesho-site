@@ -1,7 +1,8 @@
 /**
   Global styles
  */
-html, body {
+html,
+body {
 
   overflow-x: hidden;
 }
@@ -26,6 +27,97 @@ body {
   a {
 
     display: inline-block;
+  }
+}
+
+html,
+body,
+#content-overlay,
+#content,
+.translate-container,
+.section {
+
+  height: 100%;
+}
+
+.translate-container {
+
+  overflow: hidden;
+
+  padding: 0 1.5em;
+
+  @include breakpoint($mobile) {
+
+    padding: 0;
+  }
+
+  @include breakpoint($tablet) {
+
+    padding: 0;
+  }
+
+  @include breakpoint($laptop-medium) {
+
+    padding: 0;
+  }
+
+  @include breakpoint($laptop-large) {
+    max-width: 69em;
+
+    margin: auto;
+    padding: 0;
+  }
+
+  &.up {
+    > .section {
+
+      &.translateY-enter {
+        @include transform(translate3d(0, 100%, 0));
+
+        &-active {
+          @include transition(transform .5s ease .001s);
+
+          @include transform(translate3d(0, 0, 0));
+        }
+      }
+
+      &.translateY-exit {
+        @include transform(translate3d(0, -100%, 0));
+
+        &-active {
+          @include transition(transform .5s ease .001s);
+
+          @include transform(translate3d(0, -200%, 0));
+        }
+      }
+    }
+  }
+
+  &.down {
+    > .section {
+      &.translateY-enter {
+        @include transform(translate3d(0, -100%, 0));
+
+        &-active {
+          @include transition(transform .5s ease .001s);
+
+          @include transform(translate3d(0, 0, 0));
+        }
+      }
+
+      &.translateY-exit {
+        @include transform(translate3d(0, -100%, 0));
+        &-active {
+          @include transition(transform .5s ease .001s);
+
+          @include transform(translate3d(0, 0, 0));
+        }
+      }
+    }
+  }
+
+  > .section {
+    overflow: hidden;
   }
 }
 
