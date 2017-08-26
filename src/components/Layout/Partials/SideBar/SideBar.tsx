@@ -5,36 +5,31 @@ import {SideBarProps, SideBarPropTypes} from "./SideBarProps";
 import {SocialLinks} from "../SocialLinks";
 import {concat} from "../../../../helpers/concat";
 
-export class SideBar extends React.Component<SideBarProps, undefined> {
+export const SideBar: React.SFC<SideBarProps> = (props) => {
 
-    public static propTypes = SideBarPropTypes;
-
-    get menuItems() {
-        const path = this.props.history.location.pathname;
-
-        return (this.props.children as React.ReactHTML).map((element, i) => {
-            return (
-                <li
-                    className={concat("main-nav__item main-nav__item", path === element.props.to ? "is-active" : "")}
-                    key={i}
-                >
-                    {element}
-                </li>
-            );
-        });
-    }
-
-    public render() {
+    const MenuItem = (element: JSX.Element): JSX.Element => {
+        const className = concat(
+            "main-nav__item main-nav__item",
+            props.history.location.pathname === element.props.to ? "is-active" : ""
+        );
 
         return (
-            <aside className="sidebar">
-                <nav className="main-nav">
-                    <ul className="main-nav__list">
-                        {this.menuItems}
-                    </ul>
-                </nav>
-                <SocialLinks/>
-            </aside>
-        );
-    }
-}
+            <li className={className} key={element.props.to}>
+                {element}
+            </li>
+        )
+    };
+
+    return (
+        <aside className="sidebar">
+            <nav className="main-nav">
+                <ul className="main-nav__list">
+                    {(props.children as JSX.Element []).map((element, i) => <MenuItem {...element} key={i}/>)}
+                </ul>
+            </nav>
+            <SocialLinks/>
+        </aside>
+    );
+};
+
+SideBar.propTypes = SideBarPropTypes;
