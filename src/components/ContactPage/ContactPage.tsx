@@ -10,7 +10,7 @@ import {formatNumber} from "../../helpers/formatNumber";
 
 export class ContactPage extends React.Component<undefined, ContactPageState> {
 
-    public state = {
+    public state: ContactPageState = {
         isModalOpen: false,
     };
 

@@ -12,12 +12,12 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     public static propTypes = TransitionSwitchPropTypes;
     public static defaultProps = TransitionSwitchDefaultProps;
 
-    public readonly upDirectionClassName = "up";
-    public readonly downDirectionClassName = "down";
-    public readonly standByClassName = "";
+    public static readonly upDirectionClassName = "up";
+    public static readonly downDirectionClassName = "down";
+    public static readonly standByClassName = "";
 
     public state: TransitionSwitchState = {
-        directionClassName: this.standByClassName,
+        directionClassName: TransitionSwitch.standByClassName,
     };
 
     protected previousRouteKey: number = this.routeProps.key;
@@ -26,7 +26,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
         this.setDirection(this.routeProps.key);
 
         setTimeout(() => {
-            this.setState({directionClassName: this.standByClassName});
+            this.setState({directionClassName: TransitionSwitch.standByClassName});
         }, this.props.timeout);
     }
 
@@ -72,8 +72,8 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
         }
 
         this.state.directionClassName = this.previousRouteKey > this.routeProps.key
-            ? this.downDirectionClassName
-            : this.upDirectionClassName;
+            ? TransitionSwitch.downDirectionClassName
+            : TransitionSwitch.upDirectionClassName;
 
         this.previousRouteKey = key;
     }
