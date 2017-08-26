@@ -4,7 +4,7 @@ import "./helpers/matchMedia";
 
 chai.use(chaiEnzyme());
 
-process.env.NODE_ENV = "test";
+process.env.NODE_ENV = process.env.NODE_ENV || "test";
 
 const placeholder = () => undefined;
 require.extensions[".png"] = placeholder;
