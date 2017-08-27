@@ -7,24 +7,22 @@ import {concat} from "../../../../helpers/concat";
 
 export const SideBar: React.SFC<SideBarProps> = (props) => {
 
-    const MenuItem = (element: JSX.Element): JSX.Element => {
-        const className = concat(
-            "main-nav__item main-nav__item",
-            props.history.location.pathname === element.props.to ? "is-active" : ""
-        );
-
-        return (
-            <li className={className} key={element.props.to}>
-                {element}
-            </li>
-        )
+    const getItemProps = (element: JSX.Element): object => {
+        return {
+            className: concat(
+                "main-nav__item main-nav__item",
+                props.history.location.pathname === element.props.to ? "is-active" : ""
+            ),
+            key: element.props.to,
+        };
     };
 
     return (
+        // tslint:disable:jsx-key
         <aside className="sidebar">
             <nav className="main-nav">
                 <ul className="main-nav__list">
-                    {(props.children as JSX.Element []).map((element, i) => <MenuItem {...element} key={i}/>)}
+                    {props.children.map((element) => <li {...getItemProps(element)}>{element}</li>)}
                 </ul>
             </nav>
             <SocialLinks/>

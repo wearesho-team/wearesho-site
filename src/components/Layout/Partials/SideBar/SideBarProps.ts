@@ -3,6 +3,7 @@ import {History} from "history";
 
 export interface SideBarProps {
     history: History,
+    children: JSX.Element [],
 }
 
 export const SideBarPropTypes = {
