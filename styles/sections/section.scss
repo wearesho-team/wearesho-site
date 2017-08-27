@@ -6,6 +6,8 @@
 
   padding-top: 9.75em;
 
+  position: relative;
+
   @include breakpoint($mobile-p) {
 
     padding: 6.5em 1.875em 0;

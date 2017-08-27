@@ -2,6 +2,8 @@ import * as React from "react";
 import {ContactPageState} from "./ContactPageState";
 import ReactModal from "react-modal";
 
+import {Map} from "../Widgets/Map"
+
 import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../helpers/Breakpoints";
 import {CooperateButton, CloseButton} from "../Buttons";
 import {Form} from "./Form";
@@ -126,6 +128,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                         </div>
                     </div>
                 </div>
+                <Map/>
                 <OnMobileTablet>
                     <ReactModal
                         isOpen={this.state.isModalOpen}
