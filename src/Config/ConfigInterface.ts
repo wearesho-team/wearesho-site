@@ -8,6 +8,7 @@ export interface ConfigInterface {
         linkedin: string,
         github: string,
     }
+    mapApiKey: string,
     mail: string,
     tel: number,
 }

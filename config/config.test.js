@@ -9,6 +9,7 @@ const config = {
         country: "Украина",
     },
     mail: "office@wearesho.com",
+    mapApiKey: "AIzaSyDAq3RWOHVldSRJRvX90QG9IOkNMApLPwM",
     tel: 380660249402,
 };
 
