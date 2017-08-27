@@ -33,7 +33,6 @@ describe("<TransitionSwitch/>", () => {
         wrapper = mount(
             <Router history={history}>
                 <TransitionSwitch
-                    history={history}
                     {...wrapperProps}
                 >
                     <Route exact path="/" component={PageFirst}/>

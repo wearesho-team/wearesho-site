@@ -6,11 +6,13 @@ import {concat} from "../../helpers/concat";
 
 import {TransitionSwitchProps, TransitionSwitchPropTypes, TransitionSwitchDefaultProps} from "./TransitionSwitchProps";
 import {TransitionSwitchState} from "./TransitionSwitchState";
+import {RouterContextTypes} from "../../data/RouterContext";
 
 export class TransitionSwitch extends React.Component<TransitionSwitchProps, TransitionSwitchState> {
 
     public static propTypes = TransitionSwitchPropTypes;
     public static defaultProps = TransitionSwitchDefaultProps;
+    public static contextTypes = RouterContextTypes;
 
     public static readonly upDirectionClassName = "up";
     public static readonly downDirectionClassName = "down";
@@ -38,14 +40,13 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
                     ...this.props.children[field].props
                 }
             })
-            .find(({path}) => path === this.props.history.location.pathname);
+            .find(({path}) => path === this.context.history.location.pathname);
     }
 
     public render(): JSX.Element {
-        const {history: {location}, ...props} = this.props;
 
         const transitionProps: any = {
-            ...props,
+            ...this.props,
             ...{
                 key: this.routeProps.key,
             }
@@ -53,7 +54,9 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
 
         const currentRouteProps = {
             ...this.routeProps,
-            ...{location},
+            ...{
+                location: this.context.history.location,
+            },
         };
 
         return (

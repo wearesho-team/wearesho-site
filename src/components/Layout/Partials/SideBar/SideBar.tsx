@@ -1,17 +1,16 @@
 import * as React from "react";
 
-import {SideBarProps, SideBarPropTypes} from "./SideBarProps";
-
 import {SocialLinks} from "../SocialLinks";
 import {concat} from "../../../../helpers/concat";
+import {RouterContextTypes} from "../../../../data/RouterContext";
 
-export const SideBar: React.SFC<SideBarProps> = (props) => {
+export const SideBar: React.SFC<undefined> = ({children}, context) => {
 
     const getItemProps = (element: JSX.Element): object => {
         return {
             className: concat(
                 "main-nav__item main-nav__item",
-                props.history.location.pathname === element.props.to ? "is-active" : ""
+                context.history.location.pathname === element.props.to ? "is-active" : ""
             ),
             key: element.props.to,
         };
@@ -22,7 +21,7 @@ export const SideBar: React.SFC<SideBarProps> = (props) => {
         <aside className="sidebar">
             <nav className="main-nav">
                 <ul className="main-nav__list">
-                    {props.children.map((element) => <li {...getItemProps(element)}>{element}</li>)}
+                    {(children as JSX.Element []).map((element) => <li {...getItemProps(element)}>{element}</li>)}
                 </ul>
             </nav>
             <SocialLinks/>
@@ -30,4 +29,4 @@ export const SideBar: React.SFC<SideBarProps> = (props) => {
     );
 };
 
-SideBar.propTypes = SideBarPropTypes;
+SideBar.contextTypes = RouterContextTypes;

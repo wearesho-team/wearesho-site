@@ -4,11 +4,11 @@ import {ReactWrapper, mount} from "enzyme";
 
 import {createMemoryHistory, History} from "history";
 
-import {SideBar, SideBarProps} from "../../src/components/Layout/Partials";
+import {SideBar} from "../../src/components/Layout/Partials";
 import {Link, Router} from "react-router-dom";
 
 describe("<SideBar/>", () => {
-    let wrapper: ReactWrapper<SideBarProps, any>;
+    let wrapper: ReactWrapper<any, any>;
 
     let history: History;
 
@@ -17,7 +17,7 @@ describe("<SideBar/>", () => {
 
         wrapper = mount(
             <Router history={history}>
-                <SideBar history={history}>
+                <SideBar>
                     <Link className="main-nav__link" to="/">+</Link>
                     <Link className="main-nav__link" to="/contact">+</Link>
                 </SideBar>

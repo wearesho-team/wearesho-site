@@ -9,12 +9,17 @@ import {Header, SideBar} from "./Partials";
 import {SoundSwitch} from "./SoundSwitch";
 import {Grid} from "./Grid";
 import {TransitionSwitch} from "../TransitionSwitch";
+import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 
 export class Layout extends React.Component<LayoutProps, undefined> {
-    public static propTypes = LayoutPropTypes;
 
-    constructor(props) {
-        super(props);
+    public static propTypes = LayoutPropTypes;
+    public static childContextTypes = RouterContextTypes;
+
+    public getChildContext(): RouterContext {
+        return {
+            history: this.props.history,
+        };
     }
 
     public async componentDidMount() {
@@ -32,16 +37,12 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                 <div id="content">
                     <Grid/>
                     <Header/>
-                    <SideBar history={this.props.history}>
+                    <SideBar>
                         <Link className="main-nav__link" to="/">+</Link>
                         <Link className="main-nav__link" to="/contact">+</Link>
                     </SideBar>
                     <SoundSwitch/>
-                    <TransitionSwitch
-                        className="translate-container"
-                        classNames="translateY"
-                        history={this.props.history}
-                    >
+                    <TransitionSwitch className="translate-container" classNames="translateY">
                         <Route exact path="/" component={MainPage}/>
                         <Route path="/contact" component={ContactPage}/>
                     </TransitionSwitch>

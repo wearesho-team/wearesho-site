@@ -74,7 +74,7 @@ describe("<Layout>", () => {
 
         const expectElementsExist = () => {
             expect(wrapper).to.containMatchingElement(
-                <SideBar history={history}>
+                <SideBar>
                     <Link className="main-nav__link" to="/">+</Link>
                     <Link className="main-nav__link" to="/contact">+</Link>
                 </SideBar>
