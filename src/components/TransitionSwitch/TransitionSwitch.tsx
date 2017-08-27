@@ -33,6 +33,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     }
 
     protected get routeProps(): any {
+        const d = this.context;
         return Object.keys(this.props.children)
             .map((field, key) => {
                 return {

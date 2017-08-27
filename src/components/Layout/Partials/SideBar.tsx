@@ -1,18 +1,21 @@
 import * as React from "react";
 
-import {SocialLinks} from "../SocialLinks";
-import {concat} from "../../../../helpers/concat";
-import {RouterContextTypes} from "../../../../data/RouterContext";
+import {SocialLinks} from "./SocialLinks";
+import {concat} from "../../../helpers/concat";
+import {RouterContextTypes} from "../../../data/RouterContext";
 
 export const SideBar: React.SFC<undefined> = ({children}, context) => {
+
+    const defaultClassName = "main-nav__item main-nav__item";
+    const activeClassName = "is-active";
 
     const getItemProps = (element: JSX.Element): object => {
         return {
             className: concat(
-                "main-nav__item main-nav__item",
-                context.history.location.pathname === element.props.to ? "is-active" : ""
+                defaultClassName,
+                context.history.location.pathname === element.props.to ? activeClassName : ""
             ),
-            key: element.props.to,
+            key: element.props.to
         };
     };
 
