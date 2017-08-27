@@ -1,0 +1,23 @@
+/**
+  Map styles
+ */
+.map-container {
+  width: calc(33.3333% - 100px);
+  height: 100vh;
+
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  pointer-events: none;
+
+  /*Hide default UI*/
+  .gm-style {
+    > div:not([tabindex = "0"]) {
+
+      display: none !important;
+    }
+  }
+
+}
