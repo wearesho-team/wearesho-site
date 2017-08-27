@@ -1,1 +1,1 @@
-export * from "./mapStyles";
+export * from "./MapStyles";
