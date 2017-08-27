@@ -1,75 +1,121 @@
 import * as React from "react";
+import {ContactPageState} from "./ContactPageState";
+import ReactModal from "react-modal";
+
 import {Map} from "../Widgets/Map"
 
-export class ContactPage extends React.Component<undefined, undefined> {
+import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../helpers/Breakpoints";
+import {CooperateButton, CloseButton} from "../Buttons";
+import {Form} from "./Form";
+import {Config} from "../../Config";
+import {formatNumber} from "../../helpers/formatNumber";
 
-    public render() {
+export class ContactPage extends React.Component<undefined, ContactPageState> {
+
+    public state: ContactPageState = {
+        isModalOpen: false,
+    };
+
+    public render(): JSX.Element {
+
+        const modalProps = {
+            className: {
+                base: "modal-body",
+                afterOpen: "",
+                beforeClose: "",
+            },
+            overlayClassName: {
+                base: "modal-overlay",
+                afterOpen: "",
+                beforeClose: "",
+            },
+        };
 
         return (
             <section className="section section-partnership">
                 <h2 className="section-title">Партнерство</h2>
                 <div className="section-half half-first">
-                    <h4 className="section-subtitle">
-                        Свяжитесь с нами
-                        <span className="section-subtitle_reduced">
-                            или укажите свои контактные данные в форме ниже.
-                            Наши специалисты ответят на все ваши вопросы.
-                        </span>
-                    </h4>
-                    <form className="form">
-                        <div className="form__group form__group_has-error">
-                            <input type="text" className="form__control" placeholder="Ваше имя"/>
-                            <span className="form__control_underline"/>
-                            <span className="form__error-text">текст ошибки</span>
+                    <OnDesktop>
+                        <div>
+                            <h4 className="section-subtitle">
+                                Свяжитесь с нами
+                                <span className="section-subtitle_reduced">
+                                    или укажите свои контактные данные в форме ниже.
+                                    Наши специалисты ответят на все ваши вопросы.
+                                </span>
+                            </h4>
+                            <Form/>
                         </div>
-                        <div className="form__group_inline">
-                            <div className="form__group">
-                                <input type="tel" className="form__control" placeholder="Телефон"/>
-                                <span className="form__control_underline"/>
-                            </div>
-                            <div className="form__group">
-                                <input type="text" className="form__control" placeholder="Эл.почта"/>
-                                <span className="form__control_underline"/>
-                            </div>
-                        </div>
-                        <p className="text_medium">Мы ценим ваше время</p>
-                        <p>Укажите удобное вам время для обсуждения проекта:</p>
-                        <div className="form__group spinner__group">
-                            <div className="spinner">
-                                <span className="spinner__label">с</span>
-                                <input type="text" className="form__control" value="09:00"/>
-                                <div className="spinner__controls">
-                                    <button className="btn btn_inc"/>
-                                    <button className="btn btn_dec"/>
-                                </div>
-                            </div>
-                            <div className="spinner">
-                                <span className="spinner__label">по</span>
-                                <input type="text" className="form__control" value="18:00"/>
-                                <div className="spinner__controls">
-                                    <button className="btn btn_inc"/>
-                                    <button className="btn btn_dec"/>
-                                </div>
-                            </div>
-                        </div>
-                        <button className="btn btn_primary">
-                            Отправить
-                            <span className="btn-corners btn-corners_top"/>
-                            <span className="btn-corners btn-corners_bottom"/>
-                        </button>
-                    </form>
+                    </OnDesktop>
                 </div>
                 <div className="section-half half-second">
                     <div className="contact-info">
-                        <h4 className="section-subtitle">Контакты</h4>
-                        <a href="tel:+380660249402" className="contact-info__link">380 66 024-94-02</a>
-                        <a href="mailto:office@wearesho.com" className="contact-info__link">office@wearesho.com</a>
-                        <p className="contact-info__text contact-info__text_indented">
-                            <span className="text_medium">Техническая поддержка</span>
-                            партнеров Cтудии<span className="contact-info__text_increased">24/7</span>
-                        </p>
-                        <p className="contact-info__text"><span className="text_medium">Локация</span>Украина / Харьков
-                        </p>
+                        <OnDesktop>
+                            <div>
+                                <h4 className="section-subtitle">Контакты</h4>
+                                <a href={`tel:+${Config.tel}`} className="contact-info__link">
+                                    {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
+                                </a>
+                                <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
+                                <p className="contact-info__text contact-info__text_indented">
+                                    <span className="text_medium">Техническая поддержка</span>
+                                    партнеров Cтудии
+                                    <span className="contact-info__text_increased">24/7</span>
+                                </p>
+                                <p className="contact-info__text">
+                                    <span className="text_medium">Локация</span>
+                                    {Config.location.country} / {Config.location.city}
+                                </p>
+                            </div>
+                        </OnDesktop>
+                        <OnTablet>
+                            <div>
+                                <p className="contact-info__text contact-info__text_indented">
+                                    <span className="text_medium">Техническая поддержка</span>
+                                    партнеров Cтудии
+                                    <span className="contact-info__text_increased">24/7</span>
+                                </p>
+                                <h4 className="section-subtitle">Контакты</h4>
+                                <a href={`tel:+${Config.tel}`} className="contact-info__link">
+                                    {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
+                                </a>
+                                <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
+                                <CooperateButton
+                                    className="btn btn_primary"
+                                    onClick={this.handleOpenModal}
+                                />
+                                <p className="contact-info__text">
+                                    <span className="text_medium">Локация</span>
+                                    {Config.location.country} / {Config.location.city}
+                                </p>
+                            </div>
+                        </OnTablet>
+                        <OnMobile>
+                            <div>
+                                <p className="contact-info__text contact-info__text_indented">
+                                    <span className="text_medium">Техническая поддержка</span>
+                                    партнеров Cтудии
+                                    <span className="contact-info__text_increased">24/7</span>
+                                </p>
+                                <p className="contact-info__text">
+                                    <span className="text_medium">Локация</span>
+                                    {Config.location.country} / {Config.location.city}
+                                </p>
+                                <h4 className="section-subtitle">Контакты</h4>
+                                <div className="align-container">
+                                    <a href={`tel:+${Config.tel}`} className="contact-info__link">
+                                        {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
+                                    </a>
+                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">
+                                        {Config.mail}
+                                    </a>
+                                </div>
+                                <CooperateButton
+                                    className="btn btn_primary"
+                                    onClick={this.handleOpenModal}
+                                />
+                            </div>
+                        </OnMobile>
                     </div>
                     <div className="location-indicator">
                         <div className="location-indicator__bar"/>
@@ -83,8 +129,25 @@ export class ContactPage extends React.Component<undefined, undefined> {
                     </div>
                 </div>
                 <Map/>
+                <OnMobileTablet>
+                    <ReactModal
+                        isOpen={this.state.isModalOpen}
+                        contentLabel="Modal-partnership"
+                        {...modalProps}
+                    >
+                        <CloseButton
+                            className="btn btn_primary"
+                            onClick={this.handleCloseModal}
+                        />
+                        <Form/>
+                    </ReactModal>
+                </OnMobileTablet>
             </section>
         );
     }
+
+    protected handleCloseModal = () => this.setState({isModalOpen: false});
+
+    protected handleOpenModal = () => this.setState({isModalOpen: true});
 
 }
