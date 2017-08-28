@@ -7,10 +7,6 @@ import {createMemoryHistory, History} from "history";
 import {SideBar} from "../../src/components/Layout/Partials";
 import {Router, Link} from "react-router-dom";
 
-const CustomLink: any = (to: string, className: string): JSX.Element => {
-    return <a className={className} href={to}>+</a>
-};
-
 describe("<SideBar/>", () => {
     let wrapper: ReactWrapper<any, any>;
     let history: History;
