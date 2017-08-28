@@ -34,6 +34,31 @@ body.loaded {
 
   z-index: (map-get($zindex, preloader) - 1);
 
+  @include breakpoint($mobile-p) {
+
+    padding: 0 1.875em;
+  }
+
+  @include breakpoint($mobile-l) {
+
+    padding: 0 4.5em;
+  }
+
+  @include breakpoint($tablet) {
+
+    padding: 0 5.375em;
+  }
+
+  @include breakpoint($laptop) {
+
+    padding: 0 7.25em;
+  }
+
+  @include breakpoint($laptop-large) {
+    margin: 0 7.25em;
+    padding: 0;
+  }
+
   > .grid__col {
     @include span(2 of 12 inside no-gutters);
     height: 100%;
@@ -44,29 +69,87 @@ body.loaded {
     border-style: solid;
     border-color: #F8F4EE;
 
-    @include breakpoint($mobile) {
+    @include breakpoint($mobile-p) {
 
       @include span(4 of 12 inside no-gutters);
     }
 
-    @include breakpoint($tablet) {
+    @include breakpoint($mobile-l) {
 
       @include span(3 of 12 inside no-gutters);
     }
 
-    &:nth-child(3) {
+    @include breakpoint($tablet-p) {
 
-      @include breakpoint($mobile) {
+      @include span(6 of 12 inside no-gutters);
+    }
+
+    @include breakpoint($tablet-l) {
+
+      @include span(3 of 12 inside no-gutters);
+    }
+
+    @include breakpoint($laptop-small) {
+
+      @include span(3 of 12 inside no-gutters);
+    }
+
+    &:nth-child(2) {
+
+      @include breakpoint($tablet-p) {
 
         border-width: 0 1px;
+
+        &:after {
+
+          right: -1px;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+
+      @include breakpoint($mobile-p) {
+
+        border-width: 0 1px;
+
+        &:after {
+
+          right: -1px;
+        }
       }
     }
 
     &:nth-child(4) {
 
-      @include breakpoint($tablet) {
+      @include breakpoint($mobile-l) {
 
         border-width: 0 1px;
+
+        &:after {
+
+          right: -1px;
+        }
+      }
+
+      @include breakpoint($tablet-l) {
+
+        border-width: 0 1px;
+
+        &:after {
+
+          right: -1px;
+        }
+      }
+
+      @include breakpoint($laptop-small) {
+
+        border-width: 0 1px;
+
+        &:after {
+
+          right: -1px;
+        }
       }
     }
 
@@ -115,6 +198,30 @@ body.loaded {
       @include animation(to-bottom 8s ease);
 
       z-index: 1;
+
+      @include breakpoint($mobile-tablet) {
+
+        display: none;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        display: none;
+      }
+
+      &.touch-only {
+        display: none;
+
+        @include breakpoint($mobile-tablet) {
+
+          display: block;
+        }
+
+        @include breakpoint($laptop-small) {
+
+          display: block;
+        }
+      }
     }
   }
 }

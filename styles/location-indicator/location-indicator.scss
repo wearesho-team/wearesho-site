@@ -2,10 +2,12 @@
   Location indicator styles
  */
 .location-indicator {
+  $bar-width: 320px;
+  $bar-height-mob: 130px;
   $bar-height: 15px;
   $marker-size: 32px;
 
-  width: 320px;
+  width: $bar-width;
 
   display: inline-block;
 
@@ -15,13 +17,36 @@
 
   z-index: 1;
 
+  @include breakpoint($mobile) {
+    width: $bar-height;
+    height: $bar-height-mob;
+
+    top: auto;
+    margin-bottom: (-$bar-height-mob - 4px);
+  }
+
+  @include breakpoint($mobile-p) {
+
+    left: (100% / $cols-number-mobp * 2);
+  }
+
+  @include breakpoint($mobile-l) {
+
+    left: (100% / $cols-number-mobl * 2);
+  }
+
   &__bar {
-    width: 300px;
+    width: ($bar-width - 20px);
     height: 1px;
 
     position: relative;
 
     background-color: #C3C3C3;
+
+    @include breakpoint($mobile) {
+      width: 1px;
+      height: $bar-height-mob;
+    }
 
     &:before {
       content: '';
@@ -35,13 +60,25 @@
       top: 50%;
       right: 0;
 
-      margin-top: -($bar-height / 2);
+      margin-top: (-$bar-height / 2);
 
       background-color: #fff;
 
       box-shadow: 3px 2px 6px 0 rgba(0, 0, 0, .2);
 
       z-index: $under-zindex;
+
+      @include breakpoint($mobile) {
+        width: $bar-height;
+        height: $bar-height-mob;
+
+        top: auto;
+        left: 50%;
+        margin-top: auto;
+        margin-left: (-$bar-height / 2);
+
+        box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
+      }
     }
   }
 
@@ -65,6 +102,12 @@
     box-shadow: 3px 2px 6px 0 rgba(0, 0, 0, .2);
 
     cursor: pointer;
+
+    @include breakpoint($mobile) {
+      top: 100%;
+
+      box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
+    }
 
     &:after {
       content: '+';
@@ -91,7 +134,12 @@
 
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .16);
 
-        > span {
+        @include breakpoint($mobile) {
+
+          width: 220px;
+        }
+
+        span {
           @include transform(translateX(0));
 
           opacity: 1;
@@ -114,7 +162,46 @@
 
     @include transition(width .3s ease, box-shadow .3s ease);
 
-    > span {
+    @include breakpoint($mobile) {
+
+      white-space: nowrap;
+    }
+
+    @include breakpoint($mobile-p) {
+      top: 130px;
+      left: -156px;
+    }
+
+    @include breakpoint($mobile-l) {
+      top: 94px;
+      left: -221px;
+    }
+
+    > .align-container {
+
+      @include breakpoint($mobile) {
+        width: 50%;
+
+        display: inline-block;
+      }
+
+      &:first-child {
+
+        @include breakpoint($mobile) {
+
+          padding-left: 1.25em;
+        }
+      }
+      &:last-child {
+
+        @include breakpoint($mobile) {
+
+          padding-right: 1.25em;
+        }
+      }
+    }
+
+    span {
       display: block;
 
       @include transform(translateX(-80px));
@@ -125,6 +212,11 @@
       opacity: 0;
 
       @include transition(transform .3s ease, opacity .3s ease);
+
+      @include breakpoint($mobile) {
+        margin-right: auto;
+        margin-left: auto;
+      }
     }
 
     &_country {
@@ -152,8 +244,12 @@
       color: $color-secondary;
 
       & + & {
-
         margin: .1em 0 1em 28px;
+
+        @include breakpoint($mobile) {
+
+          margin: .1em 0 1em 0;
+        }
       }
     }
   }
