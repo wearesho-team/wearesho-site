@@ -65,7 +65,7 @@
 }
 
 .tablet-hidden {
-  @include breakpoint($tablet-laptop) {
+  @include breakpoint($tablet) {
 
     display: none !important;
   }

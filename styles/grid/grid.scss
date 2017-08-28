@@ -49,7 +49,7 @@ body.loaded {
       @include span(4 of 12 inside no-gutters);
     }
 
-    @include breakpoint($tablet-laptop) {
+    @include breakpoint($tablet) {
 
       @include span(3 of 12 inside no-gutters);
     }
@@ -64,7 +64,7 @@ body.loaded {
 
     &:nth-child(4) {
 
-      @include breakpoint($tablet-laptop) {
+      @include breakpoint($tablet) {
 
         border-width: 0 1px;
       }
