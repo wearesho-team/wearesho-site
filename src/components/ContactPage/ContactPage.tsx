@@ -7,7 +7,7 @@ import {Map} from "../Widgets/Map"
 import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../helpers/Breakpoints";
 import {CooperateButton, CloseButton} from "../Buttons";
 import {Form} from "./Form";
-import {Config} from "../../Config";
+import {Config} from "../../data/Config";
 import {formatNumber} from "../../helpers/formatNumber";
 
 export class ContactPage extends React.Component<undefined, ContactPageState> {

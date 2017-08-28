@@ -1,42 +1,63 @@
 import * as React from "react"
 import {routeProps} from "../../data/routeProps";
 import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
+import {SwitchControlContext, SwitchControlContextTypes} from "./SwitchControlContext";
+
+const wheelEvent = "wheel";
+const keyEvent = "keydown";
 
 // tslint:disable
-export class SwitchControl extends React.Component<any, any> {
-    public static readonly wheelEvent = "wheel";
-    public static readonly keyEvent = "keypress";
 
+export class SwitchControl extends React.Component<any, any> {
     public static contextTypes = RouterContextTypes;
     public context: RouterContext;
 
-    protected currentPath: string;
+    public static childContextTypes = SwitchControlContextTypes;
 
-    protected handleRouteChange = (event) => {
-        event.preventDefault();
+    protected isScrollDisabled: boolean = false;
 
-        if (event.type === SwitchControl.wheelEvent) {
-            let routeIndex = routeProps.findIndex(({path}) => path === this.currentPath);
+    public getChildContext(): SwitchControlContext {
+        return {
+            setScrollDisabled: this.handleScrollDisabledChange
+        }
+    }
 
-            event.deltaY > 0
-                ? routeIndex++
-                : routeIndex--;
+    protected handleScrollDisabledChange = (state: boolean) => this.isScrollDisabled = state;
 
-            routeProps[routeIndex] && this.context.router.history.push(routeProps[routeIndex].path);
+    protected changeRoute(routeIndexDelta) {
+        if(this.isScrollDisabled) {
+            return;
+        }
+
+        const currentRouteIndex = routeProps.findIndex(({path}) => path === this.context.router.history.location.pathname);
+
+        const nextRouteIndex = currentRouteIndex + routeIndexDelta;
+
+        routeProps[nextRouteIndex] && this.context.router.history.push(routeProps[nextRouteIndex].path);
+    }
+
+    protected handleKeyPress = (event: KeyboardEvent) => {
+
+        if (event.key === "ArrowDown") {
+            this.changeRoute(1);
+        } else if (event.key === "ArrowUp") {
+            this.changeRoute(-1);
         }
 
     };
 
-    public componentDidMount() {
-        this.currentPath = this.context.router.history.path;
+    protected handleWheel = (event: MouseWheelEvent) => {
+         this.changeRoute(event.deltaY > 0 ? 1 : -1);
+    };
 
-        window.addEventListener(SwitchControl.wheelEvent, this.handleRouteChange);
-        window.addEventListener(SwitchControl.keyEvent, this.handleRouteChange);
+    public componentDidMount() {
+        window.addEventListener("wheel", this.handleWheel);
+        window.addEventListener("keydown", this.handleKeyPress);
     }
 
     public componentWillUnmount() {
-        window.removeEventListener(SwitchControl.wheelEvent, this.handleRouteChange);
-        window.removeEventListener(SwitchControl.keyEvent, this.handleRouteChange);
+        window.removeEventListener("wheel", this.handleWheel);
+        window.removeEventListener("keydown", this.handleKeyPress);
     }
 
     public render() {

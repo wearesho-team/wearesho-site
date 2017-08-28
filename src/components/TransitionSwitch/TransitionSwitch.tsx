@@ -9,17 +9,22 @@ import {TransitionSwitchState} from "./TransitionSwitchState";
 import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 import {RouteProps} from "react-router";
 
+import {SwitchControlContext, SwitchControlContextTypes} from "../SwitchControl/SwitchControlContext";
+
 export class TransitionSwitch extends React.Component<TransitionSwitchProps, TransitionSwitchState> {
 
     public static propTypes = TransitionSwitchPropTypes;
     public static defaultProps = TransitionSwitchDefaultProps;
-    public static contextTypes = RouterContextTypes;
+    public static contextTypes = {
+        ...RouterContextTypes,
+        ...SwitchControlContextTypes
+    };
 
     public static readonly upDirectionClassName = "up";
     public static readonly downDirectionClassName = "down";
     public static readonly standByClassName = "";
 
-    public context: RouterContext;
+    public context: RouterContext & SwitchControlContext;
 
     public state: TransitionSwitchState = {
         directionClassName: TransitionSwitch.standByClassName,
@@ -30,7 +35,10 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     public componentWillReceiveProps() {
         this.setDirection(this.routeProps.key);
 
+        this.context.setScrollDisabled(true);
+
         setTimeout(() => {
+            this.context.setScrollDisabled(false);
             this.setState({directionClassName: TransitionSwitch.standByClassName});
         }, this.props.timeout);
     }
