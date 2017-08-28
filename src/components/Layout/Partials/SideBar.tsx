@@ -2,9 +2,12 @@ import * as React from "react";
 
 import {SocialLinks} from "./SocialLinks";
 import {concat} from "../../../helpers/concat";
-import {RouterContextTypes} from "../../../data/RouterContext";
+import {RouterContext, RouterContextTypes} from "../../../data/RouterContext";
 
-export const SideBar: React.SFC<undefined> = ({children}, {router: {history}}) => {
+export const SideBar: React.SFC<undefined> = (props, context: RouterContext) => {
+
+    const {location} = context.router.history;
+    const children = props.children as JSX.Element [];
 
     const defaultClassName = "main-nav__item main-nav__item";
     const activeClassName = "is-active";
@@ -13,7 +16,7 @@ export const SideBar: React.SFC<undefined> = ({children}, {router: {history}}) =
         return {
             className: concat(
                 defaultClassName,
-                history.location.pathname === element.props.to ? activeClassName : ""
+                location.pathname === element.props.to ? activeClassName : ""
             ),
             key: element.props.to
         };
@@ -24,7 +27,7 @@ export const SideBar: React.SFC<undefined> = ({children}, {router: {history}}) =
         <aside className="sidebar">
             <nav className="main-nav">
                 <ul className="main-nav__list">
-                    {(children as JSX.Element []).map((element) => <li {...getItemProps(element)}>{element}</li>)}
+                    {children.map((element) => <li {...getItemProps(element)}>{element}</li>)}
                 </ul>
             </nav>
             <SocialLinks/>

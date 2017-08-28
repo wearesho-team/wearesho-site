@@ -1,11 +1,13 @@
 import * as PropTypes from "prop-types";
 
+export interface RouterContext {
+    router: {
+        history: any
+    }
+}
+
 export const RouterContextTypes = {
     router: PropTypes.shape({
-        history: PropTypes.shape({
-            push: PropTypes.func.isRequired,
-            replace: PropTypes.func.isRequired,
-            createHref: PropTypes.func.isRequired
-        }).isRequired
+        history: PropTypes.object.isRequired
     }).isRequired
 };

@@ -6,7 +6,7 @@ import {concat} from "../../helpers/concat";
 
 import {TransitionSwitchProps, TransitionSwitchPropTypes, TransitionSwitchDefaultProps} from "./TransitionSwitchProps";
 import {TransitionSwitchState} from "./TransitionSwitchState";
-import {RouterContextTypes} from "../../data/RouterContext";
+import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 import {RouteProps} from "react-router";
 
 export class TransitionSwitch extends React.Component<TransitionSwitchProps, TransitionSwitchState> {
@@ -18,6 +18,8 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     public static readonly upDirectionClassName = "up";
     public static readonly downDirectionClassName = "down";
     public static readonly standByClassName = "";
+
+    public context: RouterContext;
 
     public state: TransitionSwitchState = {
         directionClassName: TransitionSwitch.standByClassName,
