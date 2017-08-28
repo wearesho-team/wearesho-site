@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as PropTypes from "prop-types";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 import {useFakeTimers, SinonFakeTimers} from "sinon";
@@ -12,9 +13,7 @@ const upClassName = "up";
 const downClassName = "down";
 
 describe("<TransitionSwitch/>", () => {
-    let wrapper: ReactWrapper<any, any>;
-
-    let Switch: ReactWrapper<TransitionSwitchProps, TransitionSwitchState>;
+    let wrapper: ReactWrapper<TransitionSwitchProps, TransitionSwitchState>;
 
     let history: History;
     let timer: SinonFakeTimers;
@@ -32,24 +31,25 @@ describe("<TransitionSwitch/>", () => {
     beforeEach(() => {
         history = createMemoryHistory();
 
-        Switch = mount(<TransitionSwitch {...wrapperProps}/>, {context: {history}});
-
-        Switch.getNode().props.children = [
-            <Route exact path="/" component={PageFirst} key="0"/>,
-            <Route path="/view-1" component={PageSecond} key="1"/>
-        ];
-
         wrapper = mount(
             <Router history={history}>
-                {Switch}
-            </Router>
+                <TransitionSwitch {...wrapperProps}>
+                    <Route exact path="/" component={PageFirst} key="0"/>
+                    <Route path="/view-1" component={PageSecond} key="1"/>
+                </TransitionSwitch>
+            </Router>, {
+                context: {history},
+                childContextTypes: {
+                    history: PropTypes.object
+                }
+            }
         );
-        wrapper.setContext({history});
 
         timer = useFakeTimers();
     });
 
     afterEach(() => {
+        wrapper.unmount();
         timer.restore();
     });
 
