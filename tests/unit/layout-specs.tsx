@@ -11,6 +11,7 @@ import {ContactPage} from "../../src/components/ContactPage";
 import {SideBar, Header} from "../../src/components/Layout/Partials";
 import {SoundSwitch} from "../../src/components/Layout/SoundSwitch";
 import {Grid} from "../../src/components/Layout/Grid";
+import {Link} from "react-router-dom";
 
 describe("<Layout>", () => {
     let wrapper: ReactWrapper<LayoutProps, any>;
@@ -72,7 +73,12 @@ describe("<Layout>", () => {
     it("should contain <SideBar/>,<Header/> and <SoundSwitch/> on each page", () => {
 
         const expectElementsExist = () => {
-            expect(wrapper).to.containMatchingElement(<SideBar/>);
+            expect(wrapper).to.containMatchingElement(
+                <SideBar>
+                    <Link className="main-nav__link" to="/">+</Link>
+                    <Link className="main-nav__link" to="/contact">+</Link>
+                </SideBar>
+            );
             expect(wrapper).to.containMatchingElement(<Header/>);
             expect(wrapper).to.containMatchingElement(<SoundSwitch/>);
             expect(wrapper).to.containMatchingElement(<Grid/>);

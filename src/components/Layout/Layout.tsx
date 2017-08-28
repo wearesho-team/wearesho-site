@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Router, Route} from "react-router-dom";
+import {Router, Route, Link} from "react-router-dom";
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 
@@ -11,11 +11,8 @@ import {SwitchControl} from "../SwitchControl";
 import {routeProps} from "../../data/routeProps";
 
 export class Layout extends React.Component<LayoutProps, undefined> {
-    public static propTypes = LayoutPropTypes;
 
-    constructor(props) {
-        super(props);
-    }
+    public static propTypes = LayoutPropTypes;
 
     public async componentDidMount() {
         await this.props.preLoader.hide();
@@ -32,14 +29,13 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                 <div id="content">
                     <Grid/>
                     <Header/>
-                    <SideBar/>
+                    <SideBar>
+                        <Link className="main-nav__link" to="/">+</Link>
+                        <Link className="main-nav__link" to="/contact">+</Link>
+                    </SideBar>
                     <SoundSwitch/>
                     <SwitchControl>
-                        <TransitionSwitch
-                            className="translate-container"
-                            classNames="translateY"
-                            history={this.props.history}
-                        >
+                        <TransitionSwitch className="translate-container" classNames="translateY">
                             {routeProps.map((props) => <Route {...props} key={props.path}/>)}
                         </TransitionSwitch>
                     </SwitchControl>

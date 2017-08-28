@@ -13,6 +13,7 @@ const downClassName = "down";
 
 describe("<TransitionSwitch/>", () => {
     let wrapper: ReactWrapper<TransitionSwitchProps, TransitionSwitchState>;
+
     let history: History;
     let timer: SinonFakeTimers;
     const animationDuration = 500;
@@ -27,17 +28,13 @@ describe("<TransitionSwitch/>", () => {
     const PageSecond = () => <div id="p_1"/>;
 
     beforeEach(() => {
-
         history = createMemoryHistory();
 
         wrapper = mount(
             <Router history={history}>
-                <TransitionSwitch
-                    history={history}
-                    {...wrapperProps}
-                >
-                    <Route exact path="/" component={PageFirst}/>
-                    <Route path="/view-1" component={PageSecond}/>
+                <TransitionSwitch {...wrapperProps}>
+                    <Route exact path="/" component={PageFirst} key="0"/>
+                    <Route path="/view-1" component={PageSecond} key="1"/>
                 </TransitionSwitch>
             </Router>
         );
@@ -46,6 +43,7 @@ describe("<TransitionSwitch/>", () => {
     });
 
     afterEach(() => {
+        wrapper.unmount();
         timer.restore();
     });
 

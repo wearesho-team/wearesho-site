@@ -1,13 +1,14 @@
 import * as React from "react"
 import {routeProps} from "../../data/routeProps";
-
+import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 
 // tslint:disable
 export class SwitchControl extends React.Component<any, any> {
-
-
     public static readonly wheelEvent = "wheel";
     public static readonly keyEvent = "keypress";
+
+    public static contextTypes = RouterContextTypes;
+    public context: RouterContext;
 
     protected currentPath: string;
 
@@ -21,13 +22,13 @@ export class SwitchControl extends React.Component<any, any> {
                 ? routeIndex++
                 : routeIndex--;
 
-            routeProps[routeIndex] && console.log(routeProps[routeIndex].path);
+            routeProps[routeIndex] && this.context.router.history.push(routeProps[routeIndex].path);
         }
 
     };
 
     public componentDidMount() {
-        this.currentPath = "/";
+        this.currentPath = this.context.router.history.path;
 
         window.addEventListener(SwitchControl.wheelEvent, this.handleRouteChange);
         window.addEventListener(SwitchControl.keyEvent, this.handleRouteChange);
