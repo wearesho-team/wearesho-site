@@ -4,7 +4,7 @@ import {SocialLinks} from "./SocialLinks";
 import {concat} from "../../../helpers/concat";
 import {RouterContextTypes} from "../../../data/RouterContext";
 
-export const SideBar: React.SFC<undefined> = ({children}, context) => {
+export const SideBar: React.SFC<undefined> = ({children}, {router: {history}}) => {
 
     const defaultClassName = "main-nav__item main-nav__item";
     const activeClassName = "is-active";
@@ -13,7 +13,7 @@ export const SideBar: React.SFC<undefined> = ({children}, context) => {
         return {
             className: concat(
                 defaultClassName,
-                context.history.location.pathname === element.props.to ? activeClassName : ""
+                history.location.pathname === element.props.to ? activeClassName : ""
             ),
             key: element.props.to
         };

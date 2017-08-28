@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as PropTypes from "prop-types";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 import {useFakeTimers, SinonFakeTimers} from "sinon";
@@ -37,12 +36,7 @@ describe("<TransitionSwitch/>", () => {
                     <Route exact path="/" component={PageFirst} key="0"/>
                     <Route path="/view-1" component={PageSecond} key="1"/>
                 </TransitionSwitch>
-            </Router>, {
-                context: {history},
-                childContextTypes: {
-                    history: PropTypes.object
-                }
-            }
+            </Router>
         );
 
         timer = useFakeTimers();

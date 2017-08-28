@@ -1,8 +1,11 @@
 import * as PropTypes from "prop-types";
-import {RouterProps} from "react-router";
-
-export type RouterContext = RouterProps;
 
 export const RouterContextTypes = {
-    history: PropTypes.object,
+    router: PropTypes.shape({
+        history: PropTypes.shape({
+            push: PropTypes.func.isRequired,
+            replace: PropTypes.func.isRequired,
+            createHref: PropTypes.func.isRequired
+        }).isRequired
+    }).isRequired
 };

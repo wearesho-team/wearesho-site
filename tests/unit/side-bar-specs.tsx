@@ -5,6 +5,7 @@ import {ReactWrapper, mount} from "enzyme";
 import {createMemoryHistory, History} from "history";
 
 import {SideBar} from "../../src/components/Layout/Partials";
+import {Router, Link} from "react-router-dom";
 
 const CustomLink: any = (to: string, className: string): JSX.Element => {
     return <a className={className} href={to}>+</a>
@@ -18,10 +19,12 @@ describe("<SideBar/>", () => {
         history = createMemoryHistory();
 
         wrapper = mount(
-            <SideBar>
-                <CustomLink className="test" to="/"/>
-                <CustomLink className="test" to="/contact"/>
-            </SideBar>, {context: {history}}
+            <Router history={history}>
+                <SideBar>
+                    <Link className="test" to="/"/>
+                    <Link className="test" to="/contact"/>
+                </SideBar>
+            </Router>
         );
 
     });
@@ -30,17 +33,15 @@ describe("<SideBar/>", () => {
 
     it("should set active class to link with url `/` when url = `/`", () => {
         history.push("/");
-        wrapper.setContext({history});
 
-        expect(wrapper.find(CustomLink).first().parent().getDOMNode().className).to.contain("is-active");
-        expect(wrapper.find(CustomLink).last().parent().getDOMNode().className).to.not.contain("is-active");
+        expect(wrapper.find(Link).first().parent().getDOMNode().className).to.contain("is-active");
+        expect(wrapper.find(Link).last().parent().getDOMNode().className).to.not.contain("is-active");
     });
 
     it("should set active class to link with url `/contact` when url = `/contact`", () => {
         history.push("/contact");
-        wrapper.setContext({history});
 
-        expect(wrapper.find(CustomLink).first().parent().getDOMNode().className).to.not.contain("is-active");
-        expect(wrapper.find(CustomLink).last().parent().getDOMNode().className).to.contain("is-active");
+        expect(wrapper.find(Link).first().parent().getDOMNode().className).to.not.contain("is-active");
+        expect(wrapper.find(Link).last().parent().getDOMNode().className).to.contain("is-active");
     });
 });

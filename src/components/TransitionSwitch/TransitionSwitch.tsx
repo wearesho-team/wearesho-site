@@ -7,6 +7,7 @@ import {concat} from "../../helpers/concat";
 import {TransitionSwitchProps, TransitionSwitchPropTypes, TransitionSwitchDefaultProps} from "./TransitionSwitchProps";
 import {TransitionSwitchState} from "./TransitionSwitchState";
 import {RouterContextTypes} from "../../data/RouterContext";
+import {RouteProps} from "react-router";
 
 export class TransitionSwitch extends React.Component<TransitionSwitchProps, TransitionSwitchState> {
 
@@ -33,7 +34,6 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     }
 
     protected get routeProps(): any {
-        const d = this.context;
         return Object.keys(this.props.children)
             .map((field, key) => {
                 return {
@@ -41,7 +41,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
                     ...this.props.children[field].props
                 }
             })
-            .find(({path}) => path === this.context.history.location.pathname);
+            .find(({path}) => path === this.context.router.history.location.pathname);
     }
 
     public render(): JSX.Element {
@@ -51,12 +51,12 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
             ...{
                 key: this.routeProps.key,
             }
-        } as any;
+        };
 
-        const currentRouteProps = {
+        const currentRouteProps: RouteProps = {
             ...this.routeProps,
             ...{
-                location: this.context.history.location,
+                location: this.context.router.history.location,
             },
         };
 

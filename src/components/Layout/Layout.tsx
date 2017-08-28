@@ -9,18 +9,10 @@ import {Header, SideBar} from "./Partials";
 import {SoundSwitch} from "./SoundSwitch";
 import {Grid} from "./Grid";
 import {TransitionSwitch} from "../TransitionSwitch";
-import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 
 export class Layout extends React.Component<LayoutProps, undefined> {
 
     public static propTypes = LayoutPropTypes;
-    public static childContextTypes = RouterContextTypes;
-
-    public getChildContext(): RouterContext {
-        return {
-            history: this.props.history,
-        };
-    }
 
     public async componentDidMount() {
         await this.props.preLoader.hide();
