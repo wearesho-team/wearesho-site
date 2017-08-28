@@ -2,13 +2,13 @@ import * as React from "react";
 import {Router, Route} from "react-router-dom";
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
-import {MainPage} from "../MainPage";
-import {ContactPage} from "../ContactPage";
 
 import {Header, SideBar} from "./Partials";
 import {SoundSwitch} from "./SoundSwitch";
 import {Grid} from "./Grid";
 import {TransitionSwitch} from "../TransitionSwitch";
+import {SwitchControl} from "../SwitchControl";
+import {routeProps} from "../../data/routeProps";
 
 export class Layout extends React.Component<LayoutProps, undefined> {
     public static propTypes = LayoutPropTypes;
@@ -34,14 +34,15 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                     <Header/>
                     <SideBar/>
                     <SoundSwitch/>
-                    <TransitionSwitch
-                        className="translate-container"
-                        classNames="translateY"
-                        history={this.props.history}
-                    >
-                        <Route exact path="/" component={MainPage}/>
-                        <Route path="/contact" component={ContactPage}/>
-                    </TransitionSwitch>
+                    <SwitchControl>
+                        <TransitionSwitch
+                            className="translate-container"
+                            classNames="translateY"
+                            history={this.props.history}
+                        >
+                            {routeProps.map((props) => <Route {...props} key={props.path}/>)}
+                        </TransitionSwitch>
+                    </SwitchControl>
                 </div>
             </Router>
         );

@@ -66,7 +66,6 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     }
 
     protected setDirection(key: number) {
-
         if (this.previousRouteKey === key) {
             return;
         }
