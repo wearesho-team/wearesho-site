@@ -5,6 +5,11 @@ import {routeProps} from "../../data/routeProps";
 import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 import {SwitchControlContext, SwitchControlContextTypes} from "./SwitchControlContext";
 
+export enum RouteIndexType {
+    up = 1,
+    down = -1,
+}
+
 export class SwitchControl extends React.Component<any, undefined> {
     public static childContextTypes = SwitchControlContextTypes;
     public static contextTypes = RouterContextTypes;
@@ -34,7 +39,7 @@ export class SwitchControl extends React.Component<any, undefined> {
 
     protected handleScrollDisabledChange = (state: boolean) => this.isScrollDisabled = state;
 
-    protected changeRoute(routeIndexDelta: number) {
+    protected changeRoute(routeIndexDelta: RouteIndexType) {
         if (this.isScrollDisabled) {
             return;
         }
@@ -56,6 +61,6 @@ export class SwitchControl extends React.Component<any, undefined> {
     };
 
     protected handleWheel = (event: MouseWheelEvent) => {
-        this.changeRoute(event.deltaY > 0 ? 1 : -1);
+        this.changeRoute(event.deltaY > 0 ? RouteIndexType.up : RouteIndexType.down);
     };
 }
