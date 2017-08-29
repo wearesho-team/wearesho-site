@@ -1,24 +1,38 @@
 import * as React from "react";
-import {Link} from "react-router-dom";
+
 import {SocialLinks} from "./SocialLinks";
+import {concat} from "../../../helpers/concat";
+import {RouterContext, RouterContextTypes} from "../../../data/RouterContext";
 
-export class SideBar extends React.Component<undefined, undefined> {
+export const SideBar: React.SFC<undefined> = (props, context: RouterContext) => {
 
-    public render() {
-        return (
-            <aside className="sidebar">
-                <nav className="main-nav">
-                    <ul className="main-nav__list">
-                        <li className="main-nav__item main-nav__item is-active">
-                            <Link className="main-nav__link" to="/">+</Link>
-                        </li>
-                        <li className="main-nav__item">
-                            <Link className="main-nav__link" to="/contact">+</Link>
-                        </li>
-                    </ul>
-                </nav>
-                <SocialLinks/>
-            </aside>
-        );
-    }
-}
+    const {location} = context.router.history;
+    const children = props.children as JSX.Element [];
+
+    const defaultClassName = "main-nav__item main-nav__item";
+    const activeClassName = "is-active";
+
+    const getItemProps = (element: JSX.Element): object => {
+        return {
+            className: concat(
+                defaultClassName,
+                location.pathname === element.props.to ? activeClassName : ""
+            ),
+            key: element.props.to
+        };
+    };
+
+    return (
+        // tslint:disable:jsx-key
+        <aside className="sidebar">
+            <nav className="main-nav">
+                <ul className="main-nav__list">
+                    {children.map((element) => <li {...getItemProps(element)}>{element}</li>)}
+                </ul>
+            </nav>
+            <SocialLinks/>
+        </aside>
+    );
+};
+
+SideBar.contextTypes = RouterContextTypes;
