@@ -2,13 +2,14 @@ import * as React from "react";
 import {Router, Route, Link} from "react-router-dom";
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
-import {MainPage} from "../MainPage";
-import {ContactPage} from "../ContactPage";
 
 import {Header, SideBar} from "./Partials";
 import {SoundSwitch} from "./SoundSwitch";
 import {Grid} from "./Grid";
 import {TransitionSwitch} from "../TransitionSwitch";
+import {SwitchControl} from "../SwitchControl";
+import {getLinksWithProps} from "../../helpers/linksWithProps";
+import {getRoutesWithProps} from "../../helpers/routesWithProps";
 
 export class Layout extends React.Component<LayoutProps, undefined> {
 
@@ -29,14 +30,14 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                 <div id="content">
                     <Header/>
                     <SideBar>
-                        <Link className="main-nav__link" to="/">+</Link>
-                        <Link className="main-nav__link" to="/contact">+</Link>
+                        {getLinksWithProps()}
                     </SideBar>
                     <SoundSwitch/>
-                    <TransitionSwitch className="translate-container" classNames="translateY">
-                        <Route exact path="/" component={MainPage}/>
-                        <Route path="/contact" component={ContactPage}/>
-                    </TransitionSwitch>
+                    <SwitchControl>
+                        <TransitionSwitch className="translate-container" classNames="translateY">
+                            {getRoutesWithProps()}
+                        </TransitionSwitch>
+                    </SwitchControl>
                 </div>
             </Router>
         );

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import {Config} from "../../../Config";
+import {Config} from "../../../data/Config";
 
 import {GitIcon} from "../../Icons/GitIcon";
 import {BehanceIcon} from "../../Icons/BehanceIcon";
