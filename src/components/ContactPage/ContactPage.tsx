@@ -7,7 +7,7 @@ import {Map} from "../Widgets/Map"
 import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../helpers/Breakpoints";
 import {CooperateButton, CloseButton} from "../Buttons";
 import {Form} from "./Form";
-import {Config} from "../../Config";
+import {Config} from "../../data/Config";
 import {formatNumber} from "../../helpers/formatNumber";
 import {SocialLinks} from "../Layout/Partials/SocialLinks";
 
@@ -94,29 +94,31 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                             </div>
                         </OnTablet>
                         <OnMobile>
-                            <p className="contact-info__text contact-info__text_indented">
-                                <span className="text_medium">Техническая поддержка</span>
-                                партнеров Cтудии
-                                <span className="contact-info__text_increased">24/7</span>
-                            </p>
-                            <p className="contact-info__text">
-                                <span className="text_medium">Локация</span>
-                                {Config.location.country} / {Config.location.city}
-                            </p>
-                            <h4 className="section-subtitle">Контакты</h4>
-                            <div className="align-container">
-                                <a href={`tel:+${Config.tel}`} className="contact-info__link">
-                                    {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
-                                </a>
-                                <a href={`mailto:${Config.mail}`} className="contact-info__link">
-                                    {Config.mail}
-                                </a>
+                            <div>
+                                <p className="contact-info__text contact-info__text_indented">
+                                    <span className="text_medium">Техническая поддержка</span>
+                                    партнеров Cтудии
+                                    <span className="contact-info__text_increased">24/7</span>
+                                </p>
+                                <p className="contact-info__text">
+                                    <span className="text_medium">Локация</span>
+                                    {Config.location.country} / {Config.location.city}
+                                </p>
+                                <h4 className="section-subtitle">Контакты</h4>
+                                <div className="align-container">
+                                    <a href={`tel:+${Config.tel}`} className="contact-info__link">
+                                        {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
+                                    </a>
+                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">
+                                        {Config.mail}
+                                    </a>
+                                </div>
+                                <CooperateButton
+                                    className="btn btn_primary"
+                                    onClick={this.handleOpenModal}
+                                />
+                                <SocialLinks/>
                             </div>
-                            <CooperateButton
-                                className="btn btn_primary"
-                                onClick={this.handleOpenModal}
-                            />
-                            <SocialLinks/>
                         </OnMobile>
                     </div>
                     <div className="location-indicator">

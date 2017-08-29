@@ -1,7 +1,7 @@
 import * as React from "react";
 import GoogleMapReact from "google-map-react";
 
-import {Config} from "../../../Config";
+import {Config} from "../../../data/Config";
 
 import {styles} from "../../../data/Widgets/Map";
 import {MapDefaultProps, MapProps, MapPropTypes} from "./MapProps";

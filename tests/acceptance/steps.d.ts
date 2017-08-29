@@ -94,8 +94,7 @@ declare namespace CodeceptJS {
     scrollPageToBottom: () => any; 
     debug: (msg) => any; 
     debugSection: (section, msg) => any; 
-    say: (msg) => any; 
-
+    say: (msg) => any;
   }
 }
 
