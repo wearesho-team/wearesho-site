@@ -3,10 +3,23 @@
  */
 html,
 body {
-
   overflow-x: hidden;
+  overflow-y: hidden;
 
-  height: 100%;
+  @include breakpoint($mobile) {
+
+    overflow-y: auto;
+  }
+
+  @include breakpoint($tablet) {
+
+    overflow-y: auto;
+  }
+
+  @include breakpoint($laptop-small) {
+
+    overflow-y: auto;
+  }
 }
 
 body {
@@ -44,30 +57,24 @@ body,
 
 .translate-container {
 
-  overflow: hidden;
+  @include breakpoint($mobile-p) {
 
-  padding: 0 1.5em;
+    padding: 0 1.875em;
+  }
 
-  @include breakpoint($mobile) {
+  @include breakpoint($mobile-l) {
 
-    padding: 0;
+    padding: 0 4.5em;
   }
 
   @include breakpoint($tablet) {
 
-    padding: 0;
+    padding: 0 5.375em;
   }
 
-  @include breakpoint($laptop-medium) {
+  @include breakpoint($laptop) {
 
-    padding: 0;
-  }
-
-  @include breakpoint($laptop-large) {
-    max-width: 69em;
-
-    margin: auto;
-    padding: 0;
+    padding: 0 7.25em;
   }
 
   &.up {
@@ -116,10 +123,6 @@ body,
         }
       }
     }
-  }
-
-  > .section {
-    overflow: hidden;
   }
 }
 

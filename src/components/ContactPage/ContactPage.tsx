@@ -9,6 +9,7 @@ import {CooperateButton, CloseButton} from "../Buttons";
 import {Form} from "./Form";
 import {Config} from "../../Config";
 import {formatNumber} from "../../helpers/formatNumber";
+import {SocialLinks} from "../Layout/Partials/SocialLinks";
 
 export class ContactPage extends React.Component<undefined, ContactPageState> {
 
@@ -76,10 +77,12 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
                                 <h4 className="section-subtitle">Контакты</h4>
-                                <a href={`tel:+${Config.tel}`} className="contact-info__link">
-                                    {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
-                                </a>
-                                <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
+                                <div className="align-container">
+                                    <a href={`tel:+${Config.tel}`} className="contact-info__link">
+                                        {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
+                                    </a>
+                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
+                                </div>
                                 <CooperateButton
                                     className="btn btn_primary"
                                     onClick={this.handleOpenModal}
@@ -91,40 +94,43 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                             </div>
                         </OnTablet>
                         <OnMobile>
-                            <div>
-                                <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_medium">Техническая поддержка</span>
-                                    партнеров Cтудии
-                                    <span className="contact-info__text_increased">24/7</span>
-                                </p>
-                                <p className="contact-info__text">
-                                    <span className="text_medium">Локация</span>
-                                    {Config.location.country} / {Config.location.city}
-                                </p>
-                                <h4 className="section-subtitle">Контакты</h4>
-                                <div className="align-container">
-                                    <a href={`tel:+${Config.tel}`} className="contact-info__link">
-                                        {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
-                                    </a>
-                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">
-                                        {Config.mail}
-                                    </a>
-                                </div>
-                                <CooperateButton
-                                    className="btn btn_primary"
-                                    onClick={this.handleOpenModal}
-                                />
+                            <p className="contact-info__text contact-info__text_indented">
+                                <span className="text_medium">Техническая поддержка</span>
+                                партнеров Cтудии
+                                <span className="contact-info__text_increased">24/7</span>
+                            </p>
+                            <p className="contact-info__text">
+                                <span className="text_medium">Локация</span>
+                                {Config.location.country} / {Config.location.city}
+                            </p>
+                            <h4 className="section-subtitle">Контакты</h4>
+                            <div className="align-container">
+                                <a href={`tel:+${Config.tel}`} className="contact-info__link">
+                                    {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
+                                </a>
+                                <a href={`mailto:${Config.mail}`} className="contact-info__link">
+                                    {Config.mail}
+                                </a>
                             </div>
+                            <CooperateButton
+                                className="btn btn_primary"
+                                onClick={this.handleOpenModal}
+                            />
+                          <SocialLinks/>
                         </OnMobile>
                     </div>
                     <div className="location-indicator">
                         <div className="location-indicator__bar"/>
                         <div className="location-indicator__marker"/>
                         <div className="location-indicator__info">
-                            <span className="location-indicator__info_country">Ukraine</span>
-                            <span className="location-indicator__info_city">Kharkiv</span>
-                            <span className="location-indicator__info_coordinates">49.9808100&deg;</span>
-                            <span className="location-indicator__info_coordinates">36.2527200&deg;</span>
+                            <div className="align-container">
+                                <span className="location-indicator__info_country">Ukraine</span>
+                                <span className="location-indicator__info_city">Kharkiv</span>
+                            </div>
+                            <div className="align-container">
+                                <span className="location-indicator__info_coordinates">49.9808100&deg;</span>
+                                <span className="location-indicator__info_coordinates">36.2527200&deg;</span>
+                            </div>
                         </div>
                     </div>
                 </div>

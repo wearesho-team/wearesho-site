@@ -10,18 +10,14 @@
 
   @include breakpoint($mobile-p) {
 
-    padding: 6.5em 1.875em 0;
+    padding-top: 6.5em;
   }
 
   @include breakpoint($mobile-l) {
 
-    padding: 6.5em 4.688em;
+    padding-top: 6.5em;
   }
 
-  @include breakpoint($tablet-laptop) {
-
-    padding: 9.75em 5.313em;
-  }
 
   &.section-main {
 
@@ -82,6 +78,8 @@
         @include breakpoint($mobile-tablet) {
 
           @include span(12 of 12 inside no-gutters);
+
+          float: none;
         }
       }
     }

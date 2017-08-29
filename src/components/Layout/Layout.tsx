@@ -27,7 +27,6 @@ export class Layout extends React.Component<LayoutProps, undefined> {
         return (
             <Router history={this.props.history}>
                 <div id="content">
-                    <Grid/>
                     <Header/>
                     <SideBar>
                         <Link className="main-nav__link" to="/">+</Link>
