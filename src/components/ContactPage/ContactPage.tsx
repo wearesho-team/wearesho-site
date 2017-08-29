@@ -21,7 +21,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
 
         const modalProps = {
             className: {
-                base: "modal-body",
+                base: "modal",
                 afterOpen: "",
                 beforeClose: "",
             },
@@ -116,7 +116,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 className="btn btn_primary"
                                 onClick={this.handleOpenModal}
                             />
-                          <SocialLinks/>
+                            <SocialLinks/>
                         </OnMobile>
                     </div>
                     <div className="location-indicator">
@@ -141,11 +141,19 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                         contentLabel="Modal-partnership"
                         {...modalProps}
                     >
-                        <CloseButton
-                            className="btn btn_primary"
-                            onClick={this.handleCloseModal}
-                        />
-                        <Form/>
+                        <div className="modal__header">
+                            <a href="#" className="logo">
+                                <i className="icon icon_logo"/>
+                            </a>
+                            <CloseButton
+                                className="btn btn_close"
+                                onClick={this.handleCloseModal}
+                            />
+                            <h3 className="modal__title">Свяжитесь с нами</h3>
+                        </div>
+                        <div className="modal__body">
+                            <Form/>
+                        </div>
                     </ReactModal>
                 </OnMobileTablet>
             </section>
