@@ -9,6 +9,16 @@
     @include span(12 of 12 inside no-gutters);
   }
 
+  @include breakpoint($tablet) {
+
+    margin-bottom: 3em;
+  }
+
+  @include breakpoint($laptop-small) {
+
+    margin-bottom: 3em;
+  }
+
   .align-container {
 
     @include breakpoint($mobile-l) {
@@ -18,6 +28,31 @@
       float: none;
 
       display: inline-block;
+    }
+
+    @include breakpoint($tablet) {
+
+      margin-bottom: 3em;
+    }
+
+    > .contact-info__link {
+
+      @include breakpoint($tablet) {
+
+        display: block;
+      }
+
+      @include breakpoint($tablet-p) {
+        @include span(4.5 of 12 inside no-gutters);
+
+        float: none;
+      }
+
+      @include breakpoint($tablet-l) {
+        @include span(3 of 12 inside no-gutters);
+
+        float: none;
+      }
     }
   }
 
@@ -76,6 +111,11 @@
 
         margin: 0 0 3em;
       }
+
+      @include breakpoint($tablet) {
+
+        margin: 0 0 3em;
+      }
     }
 
     &_increased {
@@ -104,6 +144,16 @@
 
       @include span(4 of 12 inside no-gutters last);
     }
+
+    & + .contact-info__text {
+
+      @include breakpoint($tablet) {
+
+        @include span(6 of 12 inside no-gutters);
+
+        float: right;
+      }
+    }
   }
 
   .social-list {
@@ -124,16 +174,10 @@
 
       vertical-align: middle;
 
-      @include breakpoint($mobile-p) {
+      @include breakpoint($mobile) {
 
         margin-right: calc(100% / 3 - 20px);
       }
-
-      @include breakpoint($mobile-l) {
-
-        margin-right: calc(100% / 4 - 20px);
-      }
-
     }
   }
 }

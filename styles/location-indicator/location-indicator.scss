@@ -4,6 +4,7 @@
 .location-indicator {
   $bar-width: 320px;
   $bar-height-mob: 130px;
+  $bar-height-tabletp: 130px;
   $bar-height: 15px;
   $marker-size: 32px;
 
@@ -22,17 +23,36 @@
     height: $bar-height-mob;
 
     top: auto;
+    left: (100% / $cols-number-mob * 2);
     margin-bottom: (-$bar-height-mob - 4px);
   }
 
-  @include breakpoint($mobile-p) {
+  @include breakpoint($tablet) {
+    width: $bar-height;
 
-    left: (100% / $cols-number-mobp * 2);
+    top: auto;
   }
 
-  @include breakpoint($mobile-l) {
+  @include breakpoint($tablet-p) {
+    height: $bar-height-tabletp;
 
-    left: (100% / $cols-number-mobl * 2);
+    left: (100% / $cols-number-tabletp);
+    margin-bottom: (-$bar-height-tabletp - 4px);
+
+  }
+
+  @include breakpoint($tablet-l) {
+    height: $bar-height-mob;
+
+    left: (100% / $cols-number-tabletl * 2);
+    margin-bottom: (-$bar-height-mob - 4px);
+  }
+
+  @include breakpoint($laptop-small) {
+    height: $bar-height-mob;
+
+    left: (100% / $cols-number-tabletl * 2);
+    margin-bottom: (-$bar-height-mob - 4px);
   }
 
   &__bar {
@@ -45,6 +65,26 @@
 
     @include breakpoint($mobile) {
       width: 1px;
+      height: $bar-height-mob;
+    }
+
+    @include breakpoint($tablet) {
+      width: 1px;
+      height: $bar-height-mob;
+    }
+
+    @include breakpoint($tablet-p) {
+
+      height: $bar-height-tabletp;
+    }
+
+    @include breakpoint($tablet-l) {
+
+      height: $bar-height-mob;
+    }
+
+    @include breakpoint($laptop-small) {
+
       height: $bar-height-mob;
     }
 
@@ -74,10 +114,38 @@
 
         top: auto;
         left: 50%;
+
         margin-top: auto;
         margin-left: (-$bar-height / 2);
 
         box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
+      }
+
+      @include breakpoint($tablet) {
+        width: $bar-height;
+
+        top: auto;
+        left: 50%;
+
+        margin-top: auto;
+        margin-left: (-$bar-height / 2);
+
+        box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
+      }
+
+      @include breakpoint($tablet-p) {
+
+        height: $bar-height-tabletp;
+      }
+
+      @include breakpoint($tablet-l) {
+
+        height: $bar-height-mob;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        height: $bar-height-mob;
       }
     }
   }
@@ -104,6 +172,18 @@
     cursor: pointer;
 
     @include breakpoint($mobile) {
+      top: 100%;
+
+      box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
+    }
+
+    @include breakpoint($tablet) {
+      top: 100%;
+
+      box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
+    }
+
+    @include breakpoint($laptop-small) {
       top: 100%;
 
       box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
@@ -139,6 +219,16 @@
           width: 220px;
         }
 
+        @include breakpoint($tablet) {
+
+          width: 220px;
+        }
+
+        @include breakpoint($laptop-small) {
+
+          width: 220px;
+        }
+
         span {
           @include transform(translateX(0));
 
@@ -162,7 +252,7 @@
 
     @include transition(width .3s ease, box-shadow .3s ease);
 
-    @include breakpoint($mobile) {
+    @include breakpoint($mobile-tablet) {
 
       white-space: nowrap;
     }
@@ -177,9 +267,33 @@
       left: -221px;
     }
 
+    @include breakpoint($tablet) {
+      top: 94px;
+      left: -221px;
+    }
+
+    @include breakpoint($laptop-small) {
+      top: 94px;
+      left: -221px;
+
+      white-space: nowrap;
+    }
+
     > .align-container {
 
       @include breakpoint($mobile) {
+        width: 50%;
+
+        display: inline-block;
+      }
+
+      @include breakpoint($tablet) {
+        width: 50%;
+
+        display: inline-block;
+      }
+
+      @include breakpoint($laptop-small) {
         width: 50%;
 
         display: inline-block;
@@ -191,10 +305,31 @@
 
           padding-left: 1.25em;
         }
+
+        @include breakpoint($tablet) {
+
+          padding-left: 1.25em;
+        }
+
+        @include breakpoint($laptop-small) {
+
+          padding-left: 1.25em;
+        }
       }
+
       &:last-child {
 
         @include breakpoint($mobile) {
+
+          padding-right: 1.25em;
+        }
+
+        @include breakpoint($tablet) {
+
+          padding-right: 1.25em;
+        }
+
+        @include breakpoint($laptop-small) {
 
           padding-right: 1.25em;
         }
@@ -214,6 +349,16 @@
       @include transition(transform .3s ease, opacity .3s ease);
 
       @include breakpoint($mobile) {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      @include breakpoint($tablet) {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      @include breakpoint($laptop-small) {
         margin-right: auto;
         margin-left: auto;
       }
@@ -247,6 +392,16 @@
         margin: .1em 0 1em 28px;
 
         @include breakpoint($mobile) {
+
+          margin: .1em 0 1em 0;
+        }
+
+        @include breakpoint($tablet) {
+
+          margin: .1em 0 1em 0;
+        }
+
+        @include breakpoint($laptop-small) {
 
           margin: .1em 0 1em 0;
         }
