@@ -2,8 +2,8 @@
   Map styles
  */
 .map-container {
-  width: calc(33.3333% - 100px);
-  height: 100vh;
+  width: calc(100% / 3 - 100px);
+  height: 100%;
 
   position: absolute;
 
@@ -11,6 +11,42 @@
   right: 0;
 
   pointer-events: none;
+
+  @include breakpoint($mobile-tablet) {
+    width: auto;
+
+    position: static;
+  }
+
+  @include breakpoint($mobile) {
+
+    height: 260px;
+  }
+
+  @include breakpoint($mobile-p) {
+
+    margin: 0 -1.875em;
+  }
+
+  @include breakpoint($mobile-l) {
+
+    margin: 0 -4.5em;
+  }
+
+  @include breakpoint($tablet) {
+
+    margin: 0 -5.375em;
+  }
+
+  @include breakpoint($tablet-p) {
+
+    height: 350px;
+  }
+
+  @include breakpoint($tablet-l) {
+
+    height: 270px;
+  }
 
   /*Hide default UI*/
   .gm-style {

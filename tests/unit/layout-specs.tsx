@@ -81,7 +81,6 @@ describe("<Layout>", () => {
             );
             expect(wrapper).to.containMatchingElement(<Header/>);
             expect(wrapper).to.containMatchingElement(<SoundSwitch/>);
-            expect(wrapper).to.containMatchingElement(<Grid/>);
         };
 
         expectElementsExist();
