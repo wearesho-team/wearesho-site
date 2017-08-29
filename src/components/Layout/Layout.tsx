@@ -8,7 +8,8 @@ import {SoundSwitch} from "./SoundSwitch";
 import {Grid} from "./Grid";
 import {TransitionSwitch} from "../TransitionSwitch";
 import {SwitchControl} from "../SwitchControl";
-import {routeProps} from "../../data/routeProps";
+import {getLinksWithProps} from "../../helpers/linksWithProps";
+import {getRoutesWithProps} from "../../helpers/routesWithProps";
 
 export class Layout extends React.Component<LayoutProps, undefined> {
 
@@ -30,13 +31,12 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                     <Grid/>
                     <Header/>
                     <SideBar>
-                        <Link className="main-nav__link" to="/">+</Link>
-                        <Link className="main-nav__link" to="/contact">+</Link>
+                        {getLinksWithProps()}
                     </SideBar>
                     <SoundSwitch/>
                     <SwitchControl>
                         <TransitionSwitch className="translate-container" classNames="translateY">
-                            {routeProps.map((props) => <Route {...props} key={props.path}/>)}
+                            {getRoutesWithProps()}
                         </TransitionSwitch>
                     </SwitchControl>
                 </div>
