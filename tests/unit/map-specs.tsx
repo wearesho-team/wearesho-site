@@ -4,7 +4,7 @@ import {ReactWrapper, mount} from "enzyme";
 
 import {MapProps, Map} from "../../src/components/Widgets/Map";
 import GoogleMapReact from "google-map-react";
-import {Config} from "../../src/Config";
+import {Config} from "../../src/data/Config";
 
 describe("<Map/>", () => {
 

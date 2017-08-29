@@ -6,6 +6,8 @@ import {createMemoryHistory, History} from "history";
 
 import {SideBar} from "../../src/components/Layout/Partials";
 import {Router, Link} from "react-router-dom";
+import {getLinksWithProps} from "../../src/helpers/linksWithProps";
+import {routeProps} from "../../src/data/routeProps";
 
 describe("<SideBar/>", () => {
     let wrapper: ReactWrapper<any, any>;
@@ -17,8 +19,7 @@ describe("<SideBar/>", () => {
         wrapper = mount(
             <Router history={history}>
                 <SideBar>
-                    <Link className="test" to="/"/>
-                    <Link className="test" to="/contact"/>
+                    {getLinksWithProps()}
                 </SideBar>
             </Router>
         );
@@ -27,15 +28,13 @@ describe("<SideBar/>", () => {
 
     afterEach(() => wrapper.unmount());
 
-    it("should set active class to link with url `/` when url = `/`", () => {
-        history.push("/");
+    it("should set active class to menu item which prop `to` equals to URL path", () => {
+        history.push(routeProps[0].path);
 
         expect(wrapper.find(Link).first().parent().getDOMNode().className).to.contain("is-active");
         expect(wrapper.find(Link).last().parent().getDOMNode().className).to.not.contain("is-active");
-    });
 
-    it("should set active class to link with url `/contact` when url = `/contact`", () => {
-        history.push("/contact");
+        history.push(routeProps[1].path);
 
         expect(wrapper.find(Link).first().parent().getDOMNode().className).to.not.contain("is-active");
         expect(wrapper.find(Link).last().parent().getDOMNode().className).to.contain("is-active");
