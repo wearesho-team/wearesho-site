@@ -31,7 +31,7 @@ describe("<ContactPage/>", () => {
 
         expect(modal.querySelector(".form")).to.exist;
 
-        const buttonClose = document.body.querySelector(".ReactModalPortal .modal-body > .btn") as HTMLButtonElement;
+        const buttonClose = document.body.querySelector(".ReactModalPortal .modal .btn_close") as HTMLButtonElement;
 
         buttonClose.click();
 
