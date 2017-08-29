@@ -1,4 +1,5 @@
 import * as React from "react";
+import {TimeLine} from "../TimeLine";
 
 export class MainPage extends React.Component<undefined, undefined> {
 
@@ -55,89 +56,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                         </ul>
                     </div>
                 </div>
-                <div className="prj-chronology">
-                    <div className="prj-chronology__div-outer prj-chronology__div-outer_left"/>
-                    <div className="prj-chronology__div-outer prj-chronology__div-outer_right"/>
-                    <div className="chronology-slider">
-                        <div className="chronology-slider__body"/>
-                        <div className="chronology-slider__description">
-                            <div className="chronology-slider__projects">
-                                <a href="#">NIKO</a>&nbsp;/&nbsp;
-                                <a href="#">Infinance</a>
-                            </div>
-                            <span className="chronology-slider__services">Техническая поддержка</span>
-                            <span className="chronology-slider__date">18.08.2017</span>
-                        </div>
-                    </div>
-                    <div className="container">
-                        <div className="prj-chronology__item">
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_wide">
-                                2014
-                            </span>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                        </div>
-                        <div className="prj-chronology__item">
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_wide">
-                                2015
-                            </span>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                        </div>
-                        <div className="prj-chronology__item">
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_wide">
-                                2016
-                            </span>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                        </div>
-                        <div className="prj-chronology__item">
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_wide">
-                                2017
-                            </span>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                        </div>
-                        <div className="prj-chronology__item tablet-hidden">
-                            <span className="prj-chronology__div prj-chronology__div_left-indent is-filled"/>
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_left-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_wide color-muted">
-                                2018
-                            </span>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                        </div>
-                        <div className="prj-chronology__item tablet-hidden">
-                            <span className="prj-chronology__div prj-chronology__div_left-indent is-filled"/>
-                            <span className="prj-chronology__div prj-chronology__div_left-indent is-filled"/>
-                            <span className="prj-chronology__div prj-chronology__div_left-indent is-filled"/>
-                            <span className="prj-chronology__div prj-chronology__div_wide is-filled color-muted">
-                                2019
-                            </span>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent is-filled"/>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent"/>
-                            <span className="prj-chronology__div prj-chronology__div_right-indent is-filled"/>
-                        </div>
-                    </div>
-                </div>
+                <TimeLine range={{min: 2014, max: 2019}}/>
             </section>
         );
     }
