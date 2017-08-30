@@ -48,6 +48,15 @@
     height: 270px;
   }
 
+  @include breakpoint($laptop-small) {
+    width: auto;
+    height: 270px;
+
+    position: static;
+
+    margin: 0 -7.25em;
+  }
+
   /*Hide default UI*/
   .gm-style {
     > div:not([tabindex = "0"]) {

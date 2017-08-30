@@ -286,60 +286,72 @@ $indent: -70px;
 $indent-mob: -54px;
 $indent-tablet: -66px;
 
-@keyframes change-title-1 {
+@keyframes change-title-part-1 {
   0% {
     @include transform(translateY(0));
   }
-  10% {
-    @include transform(translateY($indent));
-  }
-  33% {
-    @include transform(translateY($indent));
-  }
-  43% {
-    @include transform(translateY($indent * 2));
-  }
-  67% {
-    @include transform(translateY($indent * 2));
-  }
-  77% {
+  13.33% {
     @include transform(translateY(0));
+  }
+  23.33% {
+    @include transform(translateY($indent));
+    opacity: 1;
+  }
+  23.34% {
+    opacity: 0;
+  }
+  25% {
+    @include transform(translateY(-$indent));
+    opacity: 0;
+  }
+  90% {
+    @include transform(translateY(-$indent));
+    opacity: 1;
   }
   100% {
     @include transform(translateY(0));
   }
 }
 
-@keyframes change-title-2 {
+@keyframes change-title-part-2 {
   0% {
+    @include transform(translateY(-$indent));
+  }
+  13.33% {
+    @include transform(translateY(-$indent));
+  }
+  23.33% {
     @include transform(translateY(0));
   }
-  9% {
+  46.66% {
     @include transform(translateY(0));
   }
-  19% {
+  56.66% {
     @include transform(translateY($indent));
-  }
-  33% {
-    @include transform(translateY($indent));
-  }
-  42% {
-    @include transform(translateY($indent));
-  }
-  52% {
-    @include transform(translateY($indent * 2));
-  }
-  67% {
-    @include transform(translateY($indent * 2));
-  }
-  76% {
-    @include transform(translateY($indent * 2));
-  }
-  86% {
-    @include transform(translateY(0));
   }
   100% {
+    @include transform(translateY($indent));
+  }
+}
+
+@keyframes change-title-part-3 {
+  0% {
+    @include transform(translateY(-$indent));
+  }
+  46.66% {
+    @include transform(translateY(-$indent));
+  }
+  56.66% {
     @include transform(translateY(0));
+  }
+  79.99% {
+    @include transform(translateY(0));
+  }
+  90% {
+    @include transform(translateY($indent));
+  }
+  100% {
+    @include transform(translateY($indent));
   }
 }
 
