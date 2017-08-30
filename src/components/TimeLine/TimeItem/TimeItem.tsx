@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import {concat} from "../../../helpers/concat";
 
 import {projectsList} from "../../../data/Projects/projectsDescriptionList";

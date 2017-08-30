@@ -2,7 +2,8 @@
   Chronology slider styles
  */
 .chronology-slider {
-  $slider-size: 51px;
+  $slider-size: 44px;
+  $point-size: 6px;
   $slider-bar-height: 66px;
 
   width: $slider-size;
@@ -13,6 +14,7 @@
   top: 50%;
 
   margin-top: (-$slider-size / 2);
+  margin-left: -($slider-size / 2 - $point-size / 2);
 
   z-index: 1;
 
