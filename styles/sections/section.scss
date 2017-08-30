@@ -161,17 +161,17 @@
         vertical-align: middle;
 
         @include breakpoint($mobile) {
-
+          width: 100%;
           height: 43px;
         }
 
         @include breakpoint($tablet) {
-
+          width: 350px;
           height: 55px;
         }
 
         @include breakpoint($laptop-small) {
-
+          width: 350px;
           height: 55px;
         }
 
@@ -219,12 +219,12 @@
 
         @include breakpoint($tablet) {
 
-          top: 1px;
+          top: 0;
         }
 
         @include breakpoint($laptop-small) {
 
-          top: 1px;
+          top: 0;
         }
       }
     }
