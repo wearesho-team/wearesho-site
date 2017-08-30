@@ -45,6 +45,18 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     Наши специалисты ответят на все ваши вопросы.
                                 </span>
                             </h4>
+                            <p className="section-text">
+                                <span className="section-text_increased">Мефодий,</span>
+                                <span>спасибо за проявленный интерес к Студии.</span>
+                                <span>Мы обязательно перезвоним Вам в указанное время:</span>
+                                <span>
+                                    с
+                                    <span className="section-text_increased">&nbsp;9:00&nbsp;</span>
+                                    до
+                                    <span className="section-text_increased">&nbsp;18:00&nbsp;</span>
+                                </span>
+                                <span>С уважением, команда Студии &laquo;ШО?!&raquo;</span>
+                            </p>
                             <Form/>
                         </div>
                     </OnDesktop>
