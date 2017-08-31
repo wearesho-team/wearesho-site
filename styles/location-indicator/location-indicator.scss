@@ -63,7 +63,7 @@
 
     position: relative;
 
-    background-color: #C3C3C3;
+    background-color: rgba(195, 195, 195, .58);
 
     @include breakpoint($mobile) {
       width: 1px;
@@ -206,6 +206,7 @@
       line-height: ($marker-size - 2px);
 
       font-size: 2em;
+      font-family: $font-secondary;
       font-weight: $font-style-regular;
       color: $color-secondary;
 

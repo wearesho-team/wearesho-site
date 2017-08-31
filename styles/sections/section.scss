@@ -4,8 +4,6 @@
 .section {
   @include container;
 
-  padding-top: 9.75em;
-
   position: relative;
 
   @include breakpoint($mobile-p) {
@@ -18,6 +16,10 @@
     padding-top: 6.5em;
   }
 
+  @include breakpoint($tablet-laptop) {
+
+    padding-top: 9.75em;
+  }
 
   &.section-main {
 
@@ -42,7 +44,7 @@
 
   &.section-partnership {
 
-    > .section__half {
+    .section__half {
       padding-top: 3.5em;
 
       @include breakpoint($mobile-p) {
@@ -122,6 +124,15 @@
     &-part {
       display: block;
 
+      > span {
+
+        &:first-child {
+          line-height: 66px;
+
+          vertical-align: top;
+        }
+      }
+
       &-variable {
 
         &:first-child {
@@ -142,7 +153,7 @@
 
       &:last-child {
 
-        .section-title__part-variable {
+        .section__title-part-variable {
 
          animation-delay: 1s;
         }
@@ -150,7 +161,7 @@
 
       &-container {
         width: 400px;
-        height: 60px;
+        height: 70px;
 
         display: inline-block;
 
@@ -158,21 +169,23 @@
 
         overflow: hidden;
 
-        vertical-align: middle;
+        vertical-align: top;
 
         @include breakpoint($mobile) {
           width: 100%;
-          height: 43px;
+          height: 48px;
+
+          vertical-align: middle;
         }
 
         @include breakpoint($tablet) {
           width: 350px;
-          height: 55px;
+          height: 66px;
         }
 
         @include breakpoint($laptop-small) {
           width: 350px;
-          height: 55px;
+          height: 66px;
         }
 
         &:before,
@@ -202,29 +215,26 @@
       }
 
       &-variable {
+        height: 100%;
+
         display: block;
 
         position: absolute;
 
-        top: -1px;
+        top: 0;
 
-        line-height: 1em;
+        line-height: 66px;
 
         color: $color-secondary;
 
         @include breakpoint($mobile) {
 
-          top: 1px;
+          line-height: 1.2em;
         }
 
-        @include breakpoint($tablet) {
+        @include breakpoint($tablet-p) {
 
-          top: 0;
-        }
-
-        @include breakpoint($laptop-small) {
-
-          top: 0;
+          line-height: 1.2em;
         }
       }
     }
@@ -267,9 +277,13 @@
 
         position: absolute;
 
-        left: -33px;
+        left: -34px;
 
-        font-weight: $font-style-bold;
+        line-height: 1.25em;
+
+        font-size: 22px;
+        font-weight: $font-style-regular;
+        font-family: $font-secondary;
 
         @include breakpoint($mobile) {
 
@@ -290,12 +304,12 @@
 
     &__item {
 
-      margin: .65em 0;
+      margin: .7em 0;
     }
   }
 
   .clients-list {
-    margin-top: 1.5em;
+    margin-top: 1.1em;
 
     &__item {
 
