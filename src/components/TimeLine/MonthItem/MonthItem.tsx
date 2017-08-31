@@ -6,7 +6,6 @@ import {concat} from "../../../helpers/concat";
 
 import {TimeLineContext, TimeLineContextTypes} from "../TimeLineContext";
 import {MonthItemPointInterface, MonthItemProps, MonthItemPropTypes} from "./MonthItemProps";
-import {TimeLine} from "../TimeLine";
 import {projects, ProjectInterface} from "../../../data/Projects";
 
 export enum SideTypes {
@@ -35,12 +34,19 @@ export class MonthItem extends React.Component<MonthItemProps, undefined> {
         this.setDefaultProject();
     }
 
-    public componentWillReceiveProps() {
+    public componentDidUpdate() {
 
-        // change point state after slider start moving
-        setTimeout(() => {
-            this.isActive = false;
-        }, TimeLine.animationDuration);
+        // remove active state when slider animation start
+        this.isActive = false;
+    }
+
+    public shouldComponentUpdate(nextProps) {
+
+        if (!nextProps.activeProject) {
+            return false;
+        }
+
+        return moment(nextProps.activeProject.date).month() !== this.projectMonth;
     }
 
     public render() {
@@ -57,14 +63,8 @@ export class MonthItem extends React.Component<MonthItemProps, undefined> {
             return;
         }
 
-        const latestFilledPoint = ReactDOM.findDOMNode(this);
-
-        latestFilledPoint.className = concat(
-            this.pointClassName,
-            this.pointActiveClassName
-        );
-
-        this.setActiveProject(latestFilledPoint, projects[projects.length - 1]);
+        this.setActiveProject(ReactDOM.findDOMNode(this), projects[projects.length - 1]);
+        this.forceUpdate();
     }
 
     private updateProjectList() {

@@ -6,7 +6,7 @@ import {projects} from "../../../data/Projects";
 
 import {MonthItem} from "../MonthItem";
 
-export const YearItem: React.SFC<undefined> = (props): JSX.Element => {
+export const YearItem: React.SFC<any> = (props): JSX.Element => {
     const yearClassName = "prj-chronology__div prj-chronology__div_wide";
     const yearMutedClassName = "color-muted";
     const pointsCount = 7;
@@ -20,9 +20,11 @@ export const YearItem: React.SFC<undefined> = (props): JSX.Element => {
                 yearClassName,
                 props.children > moment().year() ? yearMutedClassName : ""
             );
+
             const monthItemProps = {
                 pos: i,
                 year: currentYear,
+                activeProject: props.project,
             };
 
             return i === 3

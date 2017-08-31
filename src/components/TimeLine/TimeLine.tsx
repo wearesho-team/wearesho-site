@@ -19,8 +19,8 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
     public readonly sliderMoveClassName = "is-move";
 
     public state = {
-        activeProject: projects[projects.length - 1],
-        pointPosition: 0,
+        activeProject: undefined,
+        pointPosition: undefined,
         sliderClassName: this.sliderDefaultClassName,
     };
 
@@ -28,7 +28,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
 
     public getChildContext(): TimeLineContext {
         return {
-            setNextProject: this.setNextProject
+            setNextProject: this.setNextProject,
         }
     }
 
@@ -45,7 +45,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
 
         return (
             <div className="prj-chronology">
-                <Slider {...sliderProps}/>
+                {this.state.activeProject && <Slider {...sliderProps}/>}
                 <div className="prj-chronology__div-outer prj-chronology__div-outer_left"/>
                 <this.yearsContainer/>
                 <div className="prj-chronology__div-outer prj-chronology__div-outer_right"/>
@@ -73,7 +73,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
     protected yearsContainer = (): JSX.Element => {
         return (
             <div className="container">
-                {this.years.map((item) => <YearItem key={item}>{item}</YearItem>)}
+                {this.years.map((item) => <YearItem key={item} project={this.state.activeProject}>{item}</YearItem>)}
             </div>
         );
     };
