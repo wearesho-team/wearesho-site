@@ -5,27 +5,27 @@ export class MainPage extends React.Component<undefined, undefined> {
     public render() {
         return (
             <section className="section section-main">
-                <h2 className="section-title">
-                    <span className="section-title__part">
+                <h2 className="section__title">
+                    <span className="section__title-part">
                         Здесь ваши&nbsp;
-                        <span className="section-title__part-container">
-                            <span className="section-title__part-variable">смелые</span>
-                            <span className="section-title__part-variable">смелые2</span>
-                            <span className="section-title__part-variable">смелые3</span>
+                        <span className="section__title-part-container">
+                            <span className="section__title-part-variable">смелые</span>
+                            <span className="section__title-part-variable">смелые2</span>
+                            <span className="section__title-part-variable">смелые3</span>
                         </span>
                     </span>
                     <span className="section-title__part">
                         идеи превращаются&nbsp;
-                        <span className="section-title__part-container">
-                            <span className="section-title__part-variable">в IT-продукт</span>
-                            <span className="section-title__part-variable">в IT-продукт2</span>
-                            <span className="section-title__part-variable">в IT-продукт3</span>
+                        <span className="section__title-part-container">
+                            <span className="section__title-part-variable">в IT-продукт</span>
+                            <span className="section__title-part-variable">в IT-продукт2</span>
+                            <span className="section__title-part-variable">в IT-продукт3</span>
                         </span>
                     </span>
                 </h2>
                 <div className="container">
-                    <div className="section-half">
-                        <h4 className="section-subtitle section-subtitle_marker">
+                    <div className="section__half">
+                        <h4 className="section__subtitle section__subtitle_marker">
                             Реализуем высокотехнологичные проекты
                         </h4>
                         <ul className="services-list">
@@ -36,10 +36,10 @@ export class MainPage extends React.Component<undefined, undefined> {
                             <li className="services-list__item">техническая поддержка проектов</li>
                         </ul>
                     </div>
-                    <div className="section-half">
-                        <h4 className="section-subtitle section-subtitle_marker">
+                    <div className="section__half">
+                        <h4 className="section__subtitle section__subtitle_marker">
                             Более 3 лет
-                            <span className="section-subtitle_reduced">
+                            <span className="section__subtitle_reduced">
                                 профессионального сотрудничества с финансовыми компаниями:
                             </span>
                         </h4>

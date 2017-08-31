@@ -8,12 +8,17 @@
 
   @include breakpoint($mobile) {
 
-    margin-top: 2em;
+    margin-top: 0;
   }
 
-  @include breakpoint($tablet-laptop) {
+  @include breakpoint($tablet) {
 
-    margin-top: 2.5em;
+    margin-top: 0;
+  }
+
+  @include breakpoint($laptop-small) {
+
+    margin-top: 0;
   }
 
   > .form-half {
@@ -351,4 +356,110 @@
   @include transform(translateX(10px));
 
   opacity: 0;
+}
+
+
+.request-sent {
+  line-height: 1.733em;
+
+  > span {
+    display: block;
+
+    @include breakpoint($tablet) {
+
+      display: inline;
+    }
+
+    @include breakpoint($laptop-small) {
+
+      display: inline;
+    }
+
+    &:first-child,
+    &:last-child {
+
+      @include breakpoint($tablet) {
+
+        display: block;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        display: block;
+      }
+    }
+
+
+    &:first-child {
+
+      @include breakpoint($mobile-p) {
+
+        margin: 2.222em 0 1.222em;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        margin: 1em 0;
+      }
+
+      @include breakpoint($tablet) {
+
+        margin-bottom: 1.5em;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        margin-bottom: 1.5em;
+      }
+    }
+
+    &:last-child {
+      margin-top: 2.25em;
+
+      @include breakpoint($mobile-p) {
+        width: 200px;
+
+        position: absolute;
+
+        right: 0;
+        bottom: 30px;
+        left: 0;
+
+        margin: auto;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        display: none;
+      }
+
+      @include breakpoint($tablet) {
+
+        margin-top: 1.75em;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        margin-top: 1.75em;
+      }
+    }
+  }
+
+  .section__text_increased {
+    font-size: 1.2em;
+    font-weight: $font-style-medium;
+  }
+
+  .section__text_indented {
+
+    @include breakpoint($mobile-p) {
+
+      margin-top: 1.222em;
+    }
+
+    @include breakpoint($mobile-l) {
+
+      margin-top: 1em;
+    }
+  }
 }
