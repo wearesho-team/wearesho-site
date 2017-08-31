@@ -1,10 +1,10 @@
 import * as PropTypes from "prop-types";
-import {ProjectInterface} from "../../../data/Projects/ProjectInterface";
+import {ProjectInterface} from "../../data/Projects/ProjectInterface";
 
-export interface TimeItemProps {
+export interface TimeLineContext {
     setNextProject: (project: ProjectInterface, position: number) => void;
 }
 
-export const TimeItemPropTypes = {
+export const TimeLineContextTypes = {
     setNextProject: PropTypes.func.isRequired,
 };

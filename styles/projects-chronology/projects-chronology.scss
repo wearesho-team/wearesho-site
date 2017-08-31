@@ -175,6 +175,8 @@
         display: block;
 
         position: absolute;
+
+        @include transition(all .3s ease .3s);
       }
 
       &:after {
@@ -191,8 +193,6 @@
         margin: auto;
 
         background-color: rgba(149, 152, 154, .53);
-
-        @include transition(height .3s ease);
       }
 
       &:not(.is-filled) {
@@ -235,6 +235,13 @@
     }
 
     &.is-active {
+
+      &:before {
+        width: 0;
+        height: 0;
+
+        opacity: 0;
+      }
 
       &:after {
 

@@ -17,17 +17,15 @@ export const SideBar: React.SFC<undefined> = (props, context: RouterContext) => 
             className: concat(
                 defaultClassName,
                 location.pathname === element.props.to ? activeClassName : ""
-            ),
-            key: element.props.to
+            )
         };
     };
 
     return (
-        // tslint:disable:jsx-key
         <aside className="sidebar">
             <nav className="main-nav">
                 <ul className="main-nav__list">
-                    {children.map((element) => <li {...getItemProps(element)}>{element}</li>)}
+                    {children.map((element, i) => <li {...getItemProps(element)} key={i}>{element}</li>)}
                 </ul>
             </nav>
             <SocialLinks/>

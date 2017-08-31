@@ -1,2 +1,2 @@
-export * from "./projectsDescriptionList";
+export * from "./projects";
 export * from "./ProjectInterface";

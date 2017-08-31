@@ -1,4 +1,4 @@
 export * from "./TimeLine";
 export * from "./TimeLineProps";
-export * from "./TimeLineContex";
+export * from "./TimeLineContext";
 export * from "./TimeLineState";

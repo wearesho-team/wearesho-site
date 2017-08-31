@@ -3,10 +3,6 @@ export interface ProjectInterface {
         name: string,
         url: string
     }>,
-    description: string,
-    date: {
-        day: string,
-        month: string,
-        year: string
-    }
+    description: string [],
+    date: string
 }

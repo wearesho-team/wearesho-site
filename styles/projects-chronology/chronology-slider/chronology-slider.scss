@@ -27,6 +27,8 @@
       &:before {
 
         height: 0;
+
+        transition-delay: 0s;
       }
     }
 
@@ -83,7 +85,9 @@
 
       background-color: $color-secondary;
 
-      @include transition(height .3s ease)
+      @include transition(height .3s ease);
+
+      transition-delay: .3s;
     }
   }
 
@@ -105,7 +109,7 @@
   &__services,
   &__date {
 
-    @include transition(all .3s ease);
+    @include transition(all .2s ease .3s);
   }
 
   &__projects,
