@@ -34,6 +34,22 @@ body {
     }
   }
 
+  &.ReactModal__Body--open {
+    overflow: hidden;
+
+    position: fixed;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    #content-overlay {
+
+      pointer-events: none;
+    }
+  }
+
   h1, h2, h3, h4, h5, h6, p {
 
     margin: 0;
@@ -121,6 +137,31 @@ body,
 
           @include transform(translate3d(0, 0, 0));
         }
+      }
+    }
+  }
+
+  .section {
+
+    > .align-container {
+      @include clearfix;
+
+      position: relative;
+
+      top: 50%;
+
+      @include transform(translateY(-50%));
+
+      @include breakpoint($mobile) {
+        top: auto;
+
+        @include transform(translateY(0));
+      }
+
+      @include breakpoint($tablet-laptop) {
+        top: auto;
+
+        @include transform(translateY(0));
       }
     }
   }

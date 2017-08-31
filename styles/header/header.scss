@@ -45,7 +45,7 @@
   &__text {
     display: block;
 
-    margin: .875em 0 0 .571em;
+    margin: .785em 0 0 .571em;
 
     @include breakpoint($mobile) {
 
@@ -74,8 +74,8 @@
     right: -8px;
     bottom: 0;
 
-    background-image: linear-gradient(to right, #fff 0%, #ffda44 100%);
-    
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #ffda44 100%);
+
     transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
     
     z-index: $under-zindex;
@@ -84,14 +84,14 @@
   &:hover {
 
     &:before {
-      transform: translateX(-10px);
+      @include transform(translateX(-14px));
 
       opacity: 1;
     }
 
     &:after {
 
-      width: calc(100% + 16px);
+      width: calc(100% + 14px);
     }
   }
 }
@@ -132,7 +132,11 @@
     content: '+\00a0';
     display: inline-block;
 
+    @include transform(translateX(-6px));
+
     opacity: .5;
+
+    font-family: $font-secondary;
 
     @include transition(transform .3s ease, opacity .3s ease);
   }

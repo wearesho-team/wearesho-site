@@ -4,7 +4,7 @@
 import {layoutGenerator} from "react-break";
 
 const layout: any = layoutGenerator({
-    desktop: 1025,
+    desktop: 1280,
     mobile: 0,
     tablet: 768,
 });

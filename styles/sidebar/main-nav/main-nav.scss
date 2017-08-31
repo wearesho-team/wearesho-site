@@ -14,8 +14,8 @@
   }
 
   &__item {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
 
     display: block;
 
@@ -68,6 +68,7 @@
     // For vertical alignment
     line-height: .65;
 
+    font-family: $font-secondary;
     color: #797979;
 
     @include transition(opacity .3s ease);

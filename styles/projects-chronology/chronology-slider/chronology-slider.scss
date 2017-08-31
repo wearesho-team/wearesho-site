@@ -115,7 +115,7 @@
   &__projects,
   &__date {
 
-    font-weight: $font-style-medium;
+    font-weight: $font-style-regular;
   }
 
   &__projects {
@@ -125,13 +125,14 @@
   }
 
   &__services {
-    margin: .25em 0;
+    margin: .35em 0;
 
     font-size: .75em;
+    font-weight: $font-style-light;
   }
 
   &__date {
     font-size: .688em;
-    font-weight: $font-style-medium;
+    color: #c3c3c3;
   }
 }

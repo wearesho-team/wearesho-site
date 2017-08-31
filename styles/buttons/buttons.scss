@@ -138,4 +138,37 @@
       }
     }
   }
+
+  &_close {
+    width: 18px;
+    height: 18px;
+
+    position: relative;
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+
+      width: 25px;
+      height: 1px;
+
+      position: absolute;
+
+      top: 50%;
+      left: -4px;
+
+      background-color: $color-primary;
+    }
+
+    &:before {
+
+      @include transform(rotate(45deg));
+    }
+
+    &:after {
+
+      @include transform(rotate(-45deg));
+    }
+  }
 }

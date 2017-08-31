@@ -6,17 +6,73 @@
 
   font-size: 1.067em;
 
-  @include breakpoint($laptop-not-large) {
+  @include breakpoint($mobile) {
 
-    margin: 0;
+    margin-top: 0;
+  }
+
+  @include breakpoint($tablet) {
+
+    margin-top: 0;
+  }
+
+  @include breakpoint($laptop-small) {
+
+    margin-top: 0;
+  }
+
+  > .form-half {
+
+    @include breakpoint($tablet-l) {
+      width: 50%;
+
+      display: inline-block;
+
+      vertical-align: top;
+    }
+
+    @include breakpoint($laptop-small) {
+      width: 50%;
+
+      display: inline-block;
+
+      vertical-align: top;
+    }
+
+    &:first-child {
+
+      @include breakpoint($laptop-small) {
+
+        padding-right: 3.5em;
+      }
+    }
+
+    &_second {
+
+      @include breakpoint($laptop-small) {
+
+        padding-left: 3.5em;
+      }
+    }
   }
 
   &__group {
     position: relative;
 
     &.spinner__group {
-
       margin-top: .65em;
+
+      @include breakpoint($mobile) {
+        max-width: 256px;
+
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      @include breakpoint($tablet-l) {
+
+        margin-top: 2.85em;
+      }
     }
 
     &_has-error {
@@ -56,8 +112,12 @@
     }
 
     & + &_inline {
-
       margin: 1.875em 0 3.75em;
+
+      @include breakpoint($tablet-l) {
+
+        margin: 1.875em 0 3em;
+      }
     }
   }
 
@@ -66,10 +126,30 @@
     $group-inline-first-group-width: 194px;
     $group-inline-last-group-width: 230px;
 
+    @include breakpoint($mobile-l) {
+
+      @include clearfix;
+    }
+
     > .form__group {
       width: (($group-inline-first-group-width / $group-inline-width) * 100%);
 
       display: inline-block;
+
+      @include breakpoint($mobile-p) {
+
+        width: 100%;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        float: left;
+      }
+
+      @include breakpoint($tablet) {
+
+        width: 100%;
+      }
 
       &:last-child {
         width: (($group-inline-last-group-width / $group-inline-width) * 100%);
@@ -77,6 +157,26 @@
         float: right;
 
         text-align: right;
+
+        @include breakpoint($mobile-p) {
+          width: 100%;
+
+          float: none;
+
+          margin-top: 1.875em;
+
+          text-align: left;
+        }
+
+        @include breakpoint($tablet) {
+          width: 100%;
+
+          float: none;
+
+          margin-top: 1.875em;
+
+          text-align: left;
+        }
       }
     }
   }
@@ -164,15 +264,52 @@
     color: #FF7453;
   }
 
-  > .btn_primary {
-
+  .btn_primary {
     margin-top: 3.3em;
+
+    @include breakpoint($tablet-l) {
+
+      margin-top: 0;
+    }
   }
 
-  > p {
+  p {
     line-height: 26px;
 
     font-size: .938em;
+
+    &.text_medium {
+
+      @include breakpoint($tablet-p) {
+
+        font-size: 1.176em;
+      }
+
+      @include breakpoint($tablet-l) {
+        margin-top: .35em;
+
+        font-size: 1.059em;
+      }
+    }
+
+    & + p {
+
+      @include breakpoint($mobile) {
+        margin-top: .75em;
+
+        font-size: .82em;
+      }
+
+      @include breakpoint($tablet) {
+
+        margin-top: .75em;
+      }
+
+      @include breakpoint($tablet-l) {
+
+        font-size: .882em;
+      }
+    }
   }
 }
 
@@ -219,4 +356,113 @@
   @include transform(translateX(10px));
 
   opacity: 0;
+}
+
+
+.request-sent {
+  // Temp
+  display: none;
+
+  line-height: 1.733em;
+
+  > span {
+    display: block;
+
+    @include breakpoint($tablet) {
+
+      display: inline;
+    }
+
+    @include breakpoint($laptop-small) {
+
+      display: inline;
+    }
+
+    &:first-child,
+    &:last-child {
+
+      @include breakpoint($tablet) {
+
+        display: block;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        display: block;
+      }
+    }
+
+
+    &:first-child {
+
+      @include breakpoint($mobile-p) {
+
+        margin: 2.222em 0 1.222em;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        margin: 1em 0;
+      }
+
+      @include breakpoint($tablet) {
+
+        margin-bottom: 1.5em;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        margin-bottom: 1.5em;
+      }
+    }
+
+    &:last-child {
+      margin-top: 2.25em;
+
+      @include breakpoint($mobile-p) {
+        width: 200px;
+
+        position: absolute;
+
+        right: 0;
+        bottom: 30px;
+        left: 0;
+
+        margin: auto;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        display: none;
+      }
+
+      @include breakpoint($tablet) {
+
+        margin-top: 1.75em;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        margin-top: 1.75em;
+      }
+    }
+  }
+
+  .section__text_increased {
+    font-size: 1.2em;
+    font-weight: $font-style-medium;
+  }
+
+  .section__text_indented {
+
+    @include breakpoint($mobile-p) {
+
+      margin-top: 1.222em;
+    }
+
+    @include breakpoint($mobile-l) {
+
+      margin-top: 1em;
+    }
+  }
 }

@@ -160,6 +160,8 @@
 
       background-color: transparent;
 
+      color: rgba(113, 113, 113, .97);
+
       font-weight: $font-style-regular;
     }
 
@@ -211,18 +213,18 @@
         cursor: pointer;
 
         &:before {
-          width: 200%;
-          height: 200%;
+          width: 400%;
+          height: 400%;
 
           top: 50%;
           left: 50%;
 
-          margin-left: -100%;
-          margin-top: -100%;
+          margin-left: -200%;
+          margin-top: -200%;
 
           border-radius: 50%;
 
-          background-color: rgba(0, 0, 0, .5);
+          border: 1px solid $color-secondary;
 
           @include animation(pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite);
         }

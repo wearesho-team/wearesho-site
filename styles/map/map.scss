@@ -12,10 +12,12 @@
 
   pointer-events: none;
 
+  z-index: $under-zindex;
+
   @include breakpoint($mobile-tablet) {
     width: auto;
 
-    position: static;
+    position: relative;
   }
 
   @include breakpoint($mobile) {
@@ -46,6 +48,15 @@
   @include breakpoint($tablet-l) {
 
     height: 270px;
+  }
+
+  @include breakpoint($laptop-small) {
+    width: auto;
+    height: 270px;
+
+    position: relative;
+
+    margin: 0 -7.25em;
   }
 
   /*Hide default UI*/

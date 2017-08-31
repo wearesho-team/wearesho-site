@@ -49,8 +49,10 @@
   }
 
   @include breakpoint($laptop-small) {
+    width: $bar-height;
     height: $bar-height-mob;
 
+    top: auto;
     left: (100% / $cols-number-tabletl * 2);
     margin-bottom: (-$bar-height-mob - 4px);
   }
@@ -61,7 +63,7 @@
 
     position: relative;
 
-    background-color: #C3C3C3;
+    background-color: rgba(195, 195, 195, .58);
 
     @include breakpoint($mobile) {
       width: 1px;
@@ -84,7 +86,7 @@
     }
 
     @include breakpoint($laptop-small) {
-
+      width: 1px;
       height: $bar-height-mob;
     }
 
@@ -144,8 +146,16 @@
       }
 
       @include breakpoint($laptop-small) {
-
+        width: $bar-height;
         height: $bar-height-mob;
+
+        top: auto;
+        left: 50%;
+
+        margin-top: auto;
+        margin-left: (-$bar-height / 2);
+
+        box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
       }
     }
   }
@@ -196,6 +206,7 @@
       line-height: ($marker-size - 2px);
 
       font-size: 2em;
+      font-family: $font-secondary;
       font-weight: $font-style-regular;
       color: $color-secondary;
 
@@ -391,12 +402,7 @@
       & + & {
         margin: .1em 0 1em 28px;
 
-        @include breakpoint($mobile) {
-
-          margin: .1em 0 1em 0;
-        }
-
-        @include breakpoint($tablet) {
+        @include breakpoint($mobile-tablet) {
 
           margin: .1em 0 1em 0;
         }
