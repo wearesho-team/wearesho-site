@@ -34,26 +34,26 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
 
         return (
             <section className="section section-partnership">
-                <h2 className="section-title">Партнерство</h2>
-                <div className="section-half half-first">
+                <h2 className="section__title">Партнерство</h2>
+                <div className="section__half half_first">
                     <OnDesktop>
                         <div>
-                            <h4 className="section-subtitle">
+                            <h4 className="section__subtitle">
                                 Свяжитесь с нами
-                                <span className="section-subtitle_reduced">
+                                <span className="section__subtitle_reduced">
                                     или укажите свои контактные данные в форме ниже.
                                     Наши специалисты ответят на все ваши вопросы.
                                 </span>
                             </h4>
-                            <p className="section-text">
-                                <span className="section-text_increased">Мефодий,</span>
+                            <p className="section__text request-sent">
+                                <span className="section__text_increased">Мефодий,</span>
                                 <span>спасибо за проявленный интерес к Студии.</span>
                                 <span>Мы обязательно перезвоним Вам в указанное время:</span>
-                                <span>
+                                <span className="section__text_indented">
                                     с
-                                    <span className="section-text_increased">&nbsp;9:00&nbsp;</span>
+                                    <span className="section__text_increased">&nbsp;9:00&nbsp;</span>
                                     до
-                                    <span className="section-text_increased">&nbsp;18:00&nbsp;</span>
+                                    <span className="section__text_increased">&nbsp;18:00&nbsp;</span>
                                 </span>
                                 <span>С уважением, команда Студии &laquo;ШО?!&raquo;</span>
                             </p>
@@ -61,11 +61,11 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                         </div>
                     </OnDesktop>
                 </div>
-                <div className="section-half half-second">
+                <div className="section__half half_second">
                     <div className="contact-info">
                         <OnDesktop>
                             <div>
-                                <h4 className="section-subtitle">Контакты</h4>
+                                <h4 className="section__subtitle">Контакты</h4>
                                 <a href={`tel:+${Config.tel}`} className="contact-info__link">
                                     {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
                                 </a>
@@ -88,7 +88,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     партнеров Cтудии
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
-                                <h4 className="section-subtitle">Контакты</h4>
+                                <h4 className="section__subtitle">Контакты</h4>
                                 <div className="align-container">
                                     <a href={`tel:+${Config.tel}`} className="contact-info__link">
                                         {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
@@ -116,7 +116,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     <span className="text_medium">Локация</span>
                                     {Config.location.country} / {Config.location.city}
                                 </p>
-                                <h4 className="section-subtitle">Контакты</h4>
+                                <h4 className="section__subtitle">Контакты</h4>
                                 <div className="align-container">
                                     <a href={`tel:+${Config.tel}`} className="contact-info__link">
                                         {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}

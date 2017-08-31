@@ -163,7 +163,7 @@ body.loaded {
 
     opacity: 0;
 
-    > .section-subtitle {
+    > .section__subtitle {
 
       @include breakpoint($mobile) {
 
@@ -172,7 +172,7 @@ body.loaded {
     }
   }
 
-  .section-subtitle,
+  .section__subtitle,
   .logo {
     @include span(6 of 12 inside no-gutters);
 
@@ -220,11 +220,11 @@ body.loaded {
     }
   }
 
-  .section-subtitle {
+  .section__subtitle {
     font-size: 1.063em;
     font-weight: $font-style-light;
 
-    & + .section-subtitle {
+    & + .section__subtitle {
 
       @include breakpoint($mobile) {
 
@@ -252,8 +252,8 @@ body.loaded {
       font-size: .824em;
     }
 
-    &__percent-number,
-    &__measur-units {
+    &_percent-number,
+    &_measur-units {
       line-height: .95;
 
       font-size: 3.125em;
@@ -264,7 +264,7 @@ body.loaded {
       }
     }
 
-    &__measur-units {
+    &_measur-units {
       color: #d5d5d5;
 
       @include breakpoint($mobile) {
