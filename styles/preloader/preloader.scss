@@ -98,34 +98,35 @@ body.loaded {
 
     top: 7px;
 
-    line-height: .65;
+    line-height: .45;
 
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: $font-style-regular;
+    font-family: $font-secondary;
     color: rgba(121, 121, 121, .7);
   }
 
   &:before {
-    left: calc((2 / 6) * 100% - 4px);
+    left: calc((2 / 6) * 100% - 5px);
 
     @include breakpoint($tablet-p) {
 
-      left: calc((3 / 6) * 100% - 4px);
+      left: calc((3 / 6) * 100% - 5px);
     }
 
     @include breakpoint($tablet-l) {
 
-      left: calc((1.5 / 6) * 100% - 4px);
+      left: calc((1.5 / 6) * 100% - 5px);
     }
 
     @include breakpoint($laptop-small) {
 
-      left: calc((1.5 / 6) * 100% - 4px);
+      left: calc((1.5 / 6) * 100% - 5px);
     }
   }
 
   &:after {
-    right: calc((3 / 6) * 100% - 7px);
+    right: calc((3 / 6) * 100% - 8px);
 
     @include breakpoint($mobile) {
 

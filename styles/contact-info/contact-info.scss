@@ -79,7 +79,7 @@
   }
 
   &__link {
-    margin-top: .2em;
+    margin-top: .15em;
 
     font-size: 1.2em;
     font-weight: $font-style-regular;
@@ -144,6 +144,12 @@
 
       font-size: 2em;
     }
+  }
+
+  .separator {
+    display: inline-block;
+
+    color: #c3c3c3;
   }
 
   .btn {

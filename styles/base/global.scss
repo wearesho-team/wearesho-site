@@ -140,6 +140,31 @@ body,
       }
     }
   }
+
+  .section {
+
+    > .align-container {
+      @include clearfix;
+
+      position: relative;
+
+      top: 50%;
+
+      @include transform(translateY(-50%));
+
+      @include breakpoint($mobile) {
+        top: auto;
+
+        @include transform(translateY(0));
+      }
+
+      @include breakpoint($tablet-laptop) {
+        top: auto;
+
+        @include transform(translateY(0));
+      }
+    }
+  }
 }
 
 #content-overlay {

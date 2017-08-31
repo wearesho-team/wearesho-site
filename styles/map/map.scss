@@ -12,10 +12,12 @@
 
   pointer-events: none;
 
+  z-index: $under-zindex;
+
   @include breakpoint($mobile-tablet) {
     width: auto;
 
-    position: static;
+    position: relative;
   }
 
   @include breakpoint($mobile) {
@@ -52,7 +54,7 @@
     width: auto;
     height: 270px;
 
-    position: static;
+    position: relative;
 
     margin: 0 -7.25em;
   }
