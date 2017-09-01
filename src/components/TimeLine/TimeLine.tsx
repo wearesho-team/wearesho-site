@@ -1,10 +1,13 @@
 import * as React from "react";
 
+import {concat} from "../../helpers/concat";
+import {compareMonthWithScale} from "../../helpers/compareMonthWithScale";
+import {getOffset} from "../../helpers/getElementOffset";
+
+import {projects} from "../../data/Projects/projects";
+
 import {TimeLineProps, TimeLinePropTypes} from "./TimeLineProps";
 import {TimeLineState} from "./TimeLineState";
-
-import {ProjectInterface, projects} from "../../data/Projects";
-import {concat} from "../../helpers/concat";
 
 import {Slider} from "./Slider";
 import {YearItem} from "./YearItem";
@@ -12,13 +15,14 @@ import {YearItem} from "./YearItem";
 export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
     public static propTypes = TimeLinePropTypes;
     public static readonly animationDuration = 300;
+    public static readonly pointsCount = 6;
 
     public readonly sliderDefaultClassName = "chronology-slider";
     public readonly sliderMoveClassName = "is-move";
 
     public state = {
-        activeProject: undefined,
-        pointPosition: undefined,
+        activeProject: projects[projects.length - 1],
+        sliderPosition: 0,
         sliderClassName: this.sliderDefaultClassName,
     };
 
@@ -30,14 +34,14 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
             .map((x, i) => this.props.range.min + i);
 
         const sliderProps = {
-            offset: this.state.pointPosition,
+            offset: this.state.sliderPosition,
             className: this.state.sliderClassName,
             project: this.state.activeProject
         };
 
         return (
             <div className="prj-chronology">
-                {this.state.activeProject && <Slider {...sliderProps}/>}
+                {this.state.sliderPosition && <Slider {...sliderProps}/>}
                 <div className="prj-chronology__div-outer prj-chronology__div-outer_left"/>
                 <this.yearsContainer/>
                 <div className="prj-chronology__div-outer prj-chronology__div-outer_right"/>
@@ -45,7 +49,10 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
         );
     }
 
-    protected setNextProject = (project: ProjectInterface, position: number) => {
+    protected setNextProject = (element: HTMLElement, position: number, yearActive: number) => {
+        const activeProject = projects.find(({date: {year, month}}) =>
+        year === yearActive && compareMonthWithScale(month, position, TimeLine.pointsCount));
+
         this.setState({
             sliderClassName: concat(
                 this.sliderDefaultClassName,
@@ -56,22 +63,23 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
         setTimeout(() => {
             this.setState({
                 sliderClassName: this.sliderDefaultClassName,
-                pointPosition: position,
-                activeProject: project
-            });
+                sliderPosition: getOffset(element),
+                activeProject
+            })
         }, TimeLine.animationDuration);
     };
 
     protected yearsContainer = (): JSX.Element => {
-
-        const YearItemProps = {
-            activeProject: this.state.activeProject,
-            setNextProject: this.setNextProject
+        const props = {
+            currentDate: this.state.activeProject.date,
+            onChangeProject: this.setNextProject
         };
+
+        const content = this.years.map((item) => <YearItem {...props} key={item}>{item}</YearItem>);
 
         return (
             <div className="container">
-                {this.years.map((item) => <YearItem {...YearItemProps} key={item}>{item}</YearItem>)}
+                {content}
             </div>
         );
     };

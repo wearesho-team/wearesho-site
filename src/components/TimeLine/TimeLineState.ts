@@ -2,6 +2,7 @@ import {ProjectInterface} from "../../data/Projects/ProjectInterface";
 
 export interface TimeLineState {
     activeProject: ProjectInterface;
-    pointPosition: number;
+    sliderPosition: number;
     sliderClassName: string;
+    activeElement: HTMLElement;
 }

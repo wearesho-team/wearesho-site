@@ -1,12 +1,14 @@
 import * as PropTypes from "prop-types";
-import {ProjectInterface} from "../../../data/Projects";
+import {DateInterface} from "../../../data/Projects";
 
 export interface YearItemProps {
-    activeProject?: ProjectInterface,
-    setNextProject: (project: ProjectInterface, position: number) => void;
+    currentDate: DateInterface;
+    onChangeProject: (element: HTMLElement, position: number, year: number) => void;
+    children: number;
 }
 
 export const YearItemPropTypes = {
-    activeProject: PropTypes.object,
-    setNextProject: PropTypes.func.isRequired,
+    currentDate: PropTypes.object.isRequired,
+    onChangeProject: PropTypes.func.isRequired,
+    children: PropTypes.number.isRequired,
 };

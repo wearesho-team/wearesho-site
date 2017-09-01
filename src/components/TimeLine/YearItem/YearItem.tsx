@@ -1,46 +1,68 @@
 import * as React from "react";
 import {concat} from "../../../helpers/concat";
+import {compareMonthWithScale} from "../../../helpers/compareMonthWithScale";
 
-import {projects} from "../../../data/Projects";
+import {projects, ProjectInterface} from "../../../data/Projects";
 
-import {MonthItem} from "../MonthItem";
 import {YearItemProps, YearItemPropTypes} from "./YearItemProps";
 
-export const YearItem: React.SFC<YearItemProps> = (props): JSX.Element => {
-    const yearClassName = "prj-chronology__div prj-chronology__div_wide";
-    const yearMutedClassName = "color-muted";
-    const pointsCount = 7;
+import {EmptyPoint} from "./EmptyPoint";
+import {ActivePoint} from "./ActivePoint";
+import {TimeLine} from "../TimeLine";
 
-    const currentYear = projects.filter(({date: {year}}) => Number(year) === props.children);
+export class YearItem extends React.Component<YearItemProps, undefined> {
+    public static propTypes = YearItemPropTypes;
 
-    const scaleItems = Array(pointsCount)
-        .fill(undefined)
-        .map((x, i) => {
-            const yearLabelClassName = concat(
-                yearClassName,
-                props.children > (new Date()).getFullYear() ? yearMutedClassName : ""
-            );
+    public readonly yearClassName = "prj-chronology__div prj-chronology__div_wide";
+    public readonly yearMutedClassName = "color-muted";
 
-            const monthItemProps = {
-                ...{
-                    pos: i,
-                    projectsList: currentYear
-                },
-                ...props
-            };
+    protected currentYearProjects: ProjectInterface [];
 
-            // 7 / 2 = 3.5 => 4 - 1 = 3: middle
-            return i === Math.round(pointsCount / 2) - 1
-                ? <span className={yearLabelClassName} key={i}>{props.children}</span>
-                : <MonthItem {...monthItemProps} key={i}/>
-        });
+    public componentWillMount() {
+        this.currentYearProjects = projects.filter(({date: {year}}) => year === this.props.children);
+    }
 
-    return (
-        <div className="prj-chronology__item">
-            {scaleItems}
-        </div>
-    );
+    public render() {
 
-};
+        return (
+            <div className="prj-chronology__item">
+                {this.scaleItems}
+            </div>
+        );
+    }
 
-YearItem.propTypes = YearItemPropTypes;
+    protected onChangeProject = (element: HTMLElement, position: number) => {
+        this.props.onChangeProject(element, position, this.props.children);
+    };
+
+    protected get scaleItems(): JSX.Element [] {
+        return Array(TimeLine.pointsCount + 1)
+            .fill(undefined)
+            .map((x, i) => {
+
+                // Future years must be lighter
+                const yearLabelClassName = concat(
+                    this.yearClassName,
+                    this.props.children > (new Date()).getFullYear() ? this.yearMutedClassName : ""
+                );
+
+                // 7 / 2 = 3.5 => 4 - 1 = 3: if middle
+                if (i === Math.round(TimeLine.pointsCount / 2) - 1) {
+                    return <span className={yearLabelClassName} key={i}>{this.props.children}</span>;
+                }
+
+                const isActive = this.props.currentDate.year === this.props.children
+                    && compareMonthWithScale(this.props.currentDate.month, i, TimeLine.pointsCount);
+
+                // set project if it exist in current month
+                const projectMonth = this.currentYearProjects
+                    .find(({date: {month}}) => compareMonthWithScale(month, i, TimeLine.pointsCount));
+
+                return projectMonth
+                    ? <ActivePoint setProject={this.onChangeProject} isActive={isActive} index={i} key={i}/>
+                    : <EmptyPoint key={i} position={i}/>
+
+            });
+    }
+
+}
