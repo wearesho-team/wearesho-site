@@ -42,8 +42,8 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 <h4 className="section__subtitle">
                                     Свяжитесь с нами
                                     <span className="section__subtitle_reduced">
-                                    или укажите свои контактные данные в форме ниже.
-                                    Наши специалисты ответят на все ваши вопросы.
+                                    или укажите контактные данные в форме ниже.
+                                    Наши специалисты ответят на все вопросы.
                                 </span>
                                 </h4>
                                 <p className="section__text request-sent">

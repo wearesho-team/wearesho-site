@@ -93,6 +93,11 @@ body,
     padding: 0 7.25em;
   }
 
+  @include breakpoint($laptop-large) {
+
+    padding: 0 11em;
+  }
+
   &.up {
     > .section {
 

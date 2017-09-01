@@ -78,6 +78,11 @@ body.loaded {
 
     padding: 0 7.25em;
   }
+
+  @include breakpoint($laptop-large) {
+
+    padding: 0 11em;
+  }
 }
 
 .section.section-preloader {
