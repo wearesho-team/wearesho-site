@@ -3,6 +3,8 @@
  */
 .chronology-slider {
   $slider-size: 44px;
+  $slider-size-laptop-m: 41px;
+  $slider-size-laptop-l: 39px;
   $point-size: 6px;
   $slider-bar-height: 66px;
 
@@ -19,6 +21,20 @@
   z-index: 1;
 
   @include transition(left .3s ease);
+
+  @include breakpoint($laptop-medium) {
+    width: $slider-size-laptop-m;
+    height: $slider-size-laptop-m;
+
+    margin-top: (-$slider-size-laptop-m / 2);;
+  }
+
+  @include breakpoint($laptop-large) {
+    width: $slider-size-laptop-l;
+    height: $slider-size-laptop-l;
+
+    margin-top: (-$slider-size-laptop-l / 2);;
+  }
 
   &.is-move {
 
@@ -77,8 +93,8 @@
 
       position: absolute;
 
+      top: -$slider-bar-height;
       right: 0;
-      bottom: $slider-size;
       left: 0;
 
       margin: auto;

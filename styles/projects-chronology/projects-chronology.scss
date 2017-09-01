@@ -22,6 +22,11 @@
     display: none;
   }
 
+  @include breakpoint($laptop-large) {
+
+    margin-top: 5.5em;
+  }
+
   &__item {
     @include span (2 of 12 inside no-gutters);
 
@@ -49,7 +54,7 @@
 
       position: absolute;
 
-      top: 1px;
+      top: 0;
 
       background-color: rgba(149, 152, 154, .53);
     }
@@ -83,7 +88,11 @@
   }
 
   &__div {
+    $empty-div-height: 3px;
+
     display: inline-block;
+
+    vertical-align: middle;
 
     font-size: 11px;
 
@@ -99,7 +108,7 @@
     }
 
     &-outer {
-      top: calc(50% + 2px);
+      top: calc(50% - 1px);
 
       @include breakpoint($tablet-laptop) {
 
@@ -153,9 +162,12 @@
       width: (100% - $division-width * $divisions-numder);
       height: auto;
 
+      line-height: 12px;
+
       margin-right: 0;
       margin-left: 0;
 
+      vertical-align: middle;
       text-align: center;
 
       background-color: transparent;
@@ -190,10 +202,9 @@
         display: block;
 
         width: 1px;
-        height: 3px;
+        height: $empty-div-height;
 
         right: 0;
-        bottom: 0;
         left: 0;
 
         margin: auto;
@@ -204,8 +215,9 @@
       &:not(.is-filled) {
 
         &:after {
+          top: 50%;
 
-          bottom: -1px;
+          margin-top: (-$empty-div-height / 2);
         }
       }
 

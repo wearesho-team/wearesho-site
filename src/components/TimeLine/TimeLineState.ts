@@ -4,5 +4,4 @@ export interface TimeLineState {
     activeProject: ProjectInterface;
     sliderPosition: number;
     sliderClassName: string;
-    activeElement: HTMLElement;
 }

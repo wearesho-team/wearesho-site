@@ -4,7 +4,7 @@
 body.loaded {
 
   .grid {
-    z-index: $under-zindex;
+    z-index: ($under-zindex - 1);
 
     > .grid__col {
 
@@ -55,7 +55,7 @@ body.loaded {
   }
 
   @include breakpoint($laptop-large) {
-    margin: 0 7.25em;
+    margin: 0 11em;
     padding: 0;
   }
 

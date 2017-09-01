@@ -137,6 +137,11 @@
 
         margin: 0 0 2.8em;
       }
+
+      @include breakpoint($laptop-large) {
+
+        margin: 3.4em 0 1.6em;
+      }
     }
 
     &_increased {

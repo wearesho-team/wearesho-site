@@ -33,9 +33,7 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
         return <span className={className} onClick={!this.props.isActive && this.handleClick} ref={this.setElement}/>
     }
 
-    protected handleClick = ({currentTarget}) => {
-        this.props.setProject(currentTarget, this.props.index);
-    };
+    protected handleClick = ({currentTarget}) => this.props.setProject(currentTarget, this.props.index);
 
     protected setElement = (element: HTMLElement) => this.element = element;
 }
