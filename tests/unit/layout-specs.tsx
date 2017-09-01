@@ -10,7 +10,6 @@ import {MainPage} from "../../src/components/MainPage";
 import {ContactPage} from "../../src/components/ContactPage";
 import {SideBar, Header} from "../../src/components/Layout/Partials";
 import {SoundSwitch} from "../../src/components/Layout/SoundSwitch";
-import {Grid} from "../../src/components/Layout/Grid";
 import {Link} from "react-router-dom";
 
 describe("<Layout>", () => {

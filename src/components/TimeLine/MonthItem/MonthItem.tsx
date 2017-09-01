@@ -1,10 +1,7 @@
 import * as React from "react";
-import ReactDOM from "react-dom";
-import moment from "moment";
-
+import * as ReactDOM from "react-dom";
 import {concat} from "../../../helpers/concat";
 
-import {TimeLineContext, TimeLineContextTypes} from "../TimeLineContext";
 import {MonthItemPointInterface, MonthItemProps, MonthItemPropTypes} from "./MonthItemProps";
 import {projects, ProjectInterface} from "../../../data/Projects";
 
@@ -14,14 +11,11 @@ export enum SideTypes {
 }
 
 export class MonthItem extends React.Component<MonthItemProps, undefined> {
-    public static contextTypes = TimeLineContextTypes;
     public static propTypes = MonthItemPropTypes;
 
     public readonly pointClassName = "prj-chronology__div";
     public readonly pointFilledClassName = "is-filled";
     public readonly pointActiveClassName = "is-active";
-
-    public context: TimeLineContext;
 
     protected projectsPerYear: number [];
     protected pointSide: SideTypes;
@@ -34,19 +28,12 @@ export class MonthItem extends React.Component<MonthItemProps, undefined> {
         this.setDefaultProject();
     }
 
-    public componentDidUpdate() {
-
-        // remove active state when slider animation start
-        this.isActive = false;
-    }
-
-    public shouldComponentUpdate(nextProps) {
-
+    public componentWillReceiveProps(nextProps: MonthItemProps) {
         if (!nextProps.activeProject) {
-            return false;
+            return;
         }
 
-        return moment(nextProps.activeProject.date).month() !== this.projectMonth;
+        this.isActive = Number(nextProps.activeProject.date.month) === this.projectMonth
     }
 
     public render() {
@@ -56,7 +43,7 @@ export class MonthItem extends React.Component<MonthItemProps, undefined> {
     }
 
     private setDefaultProject() {
-        const latestProjectMonth = moment(projects[projects.length - 1].date).month();
+        const latestProjectMonth = Number(projects[projects.length - 1].date.month);
 
         // if current project not equals to latest project
         if (this.projectMonth !== latestProjectMonth) {
@@ -64,11 +51,14 @@ export class MonthItem extends React.Component<MonthItemProps, undefined> {
         }
 
         this.setActiveProject(ReactDOM.findDOMNode(this), projects[projects.length - 1]);
+
+        this.isActive = true;
+
         this.forceUpdate();
     }
 
     private updateProjectList() {
-        this.projectsPerYear = this.props.year.map(({date}) => moment(date).month());
+        this.projectsPerYear = this.props.projectsList.map(({date: {month}}) => Number(month));
     }
 
     private setActiveProject(element: any, project: ProjectInterface) {
@@ -77,19 +67,15 @@ export class MonthItem extends React.Component<MonthItemProps, undefined> {
         // and single year item offset respect to parent(container of all year items)
         const offset = element.offsetLeft + element.parentNode.offsetLeft;
 
-        this.isActive = true;
-
         // pass options to TimeLine component
-        this.context.setNextProject(project, offset);
+        this.props.setNextProject(project, offset);
     }
 
     private handleClick = ({currentTarget}) => {
 
         // search project description by month in projects of current year
-        const selectedProject = this.props.year
-            .find(({date}) => {
-                return moment(date).month() >= this.projectMonth - 1 && moment(date).month() <= this.projectMonth
-            });
+        const selectedProject = this.props.projectsList
+            .find(({date: {month}}) => Number(month) >= this.projectMonth - 1 && Number(month) <= this.projectMonth);
 
         this.setActiveProject(currentTarget, selectedProject);
     };

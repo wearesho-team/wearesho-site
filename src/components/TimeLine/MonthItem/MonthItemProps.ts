@@ -4,14 +4,16 @@ import {ProjectInterface} from "../../../data/Projects/ProjectInterface";
 
 export interface MonthItemProps {
     pos: number,
-    year: ProjectInterface [],
-    activeProject?: ProjectInterface
+    projectsList: ProjectInterface [],
+    activeProject?: ProjectInterface,
+    setNextProject: (project: ProjectInterface, position: number) => void;
 }
 
 export const MonthItemPropTypes = {
     pos: PropTypes.number.isRequired,
-    year: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    activeProject: PropTypes.object
+    projectsList: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    activeProject: PropTypes.object,
+    setNextProject: PropTypes.func.isRequired
 };
 
 export interface MonthItemPointInterface {

@@ -4,5 +4,9 @@ export interface ProjectInterface {
         url: string
     }>,
     description: string [],
-    date: string
+    date: {
+        year: number,
+        month: number,
+        day: number
+    }
 }

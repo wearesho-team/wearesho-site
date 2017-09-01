@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import {TimeLineContextTypes, TimeLineContext} from "./TimeLineContext";
 import {TimeLineProps, TimeLinePropTypes} from "./TimeLineProps";
 import {TimeLineState} from "./TimeLineState";
 
@@ -12,7 +11,6 @@ import {YearItem} from "./YearItem";
 
 export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
     public static propTypes = TimeLinePropTypes;
-    public static childContextTypes = TimeLineContextTypes;
     public static readonly animationDuration = 300;
 
     public readonly sliderDefaultClassName = "chronology-slider";
@@ -25,12 +23,6 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
     };
 
     protected years: number [];
-
-    public getChildContext(): TimeLineContext {
-        return {
-            setNextProject: this.setNextProject,
-        }
-    }
 
     public render(): JSX.Element {
         this.years = Array.from(Array(this.props.range.max - this.props.range.min + 1))
@@ -71,9 +63,15 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
     };
 
     protected yearsContainer = (): JSX.Element => {
+
+        const YearItemProps = {
+            activeProject: this.state.activeProject,
+            setNextProject: this.setNextProject
+        };
+
         return (
             <div className="container">
-                {this.years.map((item) => <YearItem key={item} project={this.state.activeProject}>{item}</YearItem>)}
+                {this.years.map((item) => <YearItem {...YearItemProps} key={item}>{item}</YearItem>)}
             </div>
         );
     };
