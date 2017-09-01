@@ -3,6 +3,7 @@
  */
 .location-indicator {
   $bar-width: 320px;
+  $bar-width-laptop: 276px;
   $bar-height-mob: 130px;
   $bar-height-tabletp: 130px;
   $bar-height: 15px;
@@ -57,6 +58,12 @@
     margin-bottom: (-$bar-height-mob - 4px);
   }
 
+  @include breakpoint($laptop-large) {
+    width: $bar-width-laptop;
+
+    top: 18.9em;
+  }
+
   &__bar {
     width: ($bar-width - 20px);
     height: 1px;
@@ -88,6 +95,11 @@
     @include breakpoint($laptop-small) {
       width: 1px;
       height: $bar-height-mob;
+    }
+
+    @include breakpoint($laptop-large) {
+
+      width: ($bar-width-laptop - 20px);
     }
 
     &:before {
@@ -156,6 +168,11 @@
         margin-left: (-$bar-height / 2);
 
         box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
+      }
+
+      @include breakpoint($laptop-large) {
+
+        width: 158px;
       }
     }
   }
