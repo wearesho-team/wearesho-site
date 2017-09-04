@@ -20,13 +20,18 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
     public static readonly sliderDefaultClassName = "chronology-slider";
     public static readonly sliderMoveClassName = "is-move";
 
-    public state = {
+    public state: TimeLineState = {
         activeProject: projects[projects.length - 1],
         sliderPosition: 0,
         sliderClassName: TimeLine.sliderDefaultClassName,
     };
 
     protected years: number [];
+    protected timer: any;
+
+    public componentWillUnmount() {
+        this.timer && clearTimeout(this.timer);
+    }
 
     public render(): JSX.Element {
         this.years = Array.from(Array(this.props.range.max - this.props.range.min + 1))
@@ -51,7 +56,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
 
     protected setNextProject = (element: HTMLElement, position: number, yearActive: number) => {
         const activeProject = projects.find(({date: {year, month}}) =>
-        year === yearActive && compareMonthWithScale(month, position, TimeLine.pointsCount));
+            year === yearActive && compareMonthWithScale(month, position, TimeLine.pointsCount));
 
         this.setState({
             sliderClassName: concat(
@@ -60,7 +65,8 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
             ),
         });
 
-        setTimeout(() => {
+        this.timer && clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
             this.setState({
                 sliderClassName: TimeLine.sliderDefaultClassName,
                 sliderPosition: getElementOffset(element),

@@ -2,7 +2,7 @@ import * as React from "react";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
-import {SinonSpy, sinon} from "sinon";
+import {SinonSpy, spy} from "sinon";
 
 import {ActivePoint, ActivePointProps} from "../../src/components/TimeLine/YearItem/ActivePoint";
 
@@ -67,7 +67,7 @@ describe("<ActivePoint/>", () => {
     });
 
     it("should set ref element", () => {
-        sinon.spy(node as any, "setElement");
+        spy(node as any, "setElement");
         wrapper.update();
 
         expect(((node as any).setElement as SinonSpy).called).to.be.true;

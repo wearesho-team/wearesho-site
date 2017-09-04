@@ -33,12 +33,19 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
 
     protected previousRouteKey: number = this.routeProps.key;
 
+    protected timer: any;
+
+    public componentWillUnmount() {
+        this.timer && clearTimeout(this.timer);
+    }
+
     public componentWillReceiveProps() {
         this.setDirection(this.routeProps.key);
 
         this.context.setScrollDisabled(true);
 
-        setTimeout(() => {
+        this.timer && clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
             this.context.setScrollDisabled(false);
             this.setState({directionClassName: TransitionSwitch.standByClassName});
         }, this.props.timeout + TransitionSwitch.additionalTimeout);
