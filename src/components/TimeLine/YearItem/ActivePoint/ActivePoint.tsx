@@ -2,16 +2,16 @@ import * as React from "react";
 
 import {concat} from "../../../../helpers/concat";
 
-import {SideTypes} from "../SideTypes";
 import {ActivePointProps, ActivePointPropTypes} from "./ActivePointProps";
 
 export class ActivePoint extends React.Component<ActivePointProps, undefined> {
     public static propTypes = ActivePointPropTypes;
 
-    public readonly sideClassName = `${this.props.index < 3 ? SideTypes.left : SideTypes.right}-indent`;
-    public readonly defaultClassName = "prj-chronology__div";
-    public readonly filledClassName = "is-filled";
-    public readonly activeClassName = "is-active";
+    public static  readonly defaultClassName = "prj-chronology__div";
+    public static  readonly filledClassName = "is-filled";
+    public static  readonly activeClassName = "is-active";
+
+    public sideClassName: string;
 
     protected element: HTMLElement;
 
@@ -20,20 +20,20 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
             return;
         }
 
-        this.props.setProject(this.element, this.props.index);
+        this.props.onProjectChange(this.element, this.props.index);
     }
 
     public render() {
         const className = concat(
-            this.defaultClassName,
-            `${this.defaultClassName}_${this.sideClassName}`,
-            this.props.isActive ? this.activeClassName : this.filledClassName
+            ActivePoint.defaultClassName,
+            `${ActivePoint.defaultClassName}_${this.props.sideClassName}`,
+            this.props.isActive ? ActivePoint.activeClassName : ActivePoint.filledClassName
         );
 
         return <span className={className} onClick={!this.props.isActive && this.handleClick} ref={this.setElement}/>
     }
 
-    protected handleClick = ({currentTarget}) => this.props.setProject(currentTarget, this.props.index);
+    protected handleClick = ({currentTarget}) => this.props.onProjectChange(currentTarget, this.props.index);
 
     protected setElement = (element: HTMLElement) => this.element = element;
 }

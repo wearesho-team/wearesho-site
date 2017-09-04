@@ -1,3 +1,3 @@
-export function getOffset(element: HTMLElement): number {
+export function getElementOffset(element: HTMLElement): number {
     return element.offsetLeft + (element.parentNode as HTMLElement).offsetLeft;
 }

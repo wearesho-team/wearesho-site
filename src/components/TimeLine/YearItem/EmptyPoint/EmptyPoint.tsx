@@ -1,11 +1,9 @@
 import * as React from "react";
 
-import {SideTypes} from "../SideTypes";
-
 import {concat} from "../../../../helpers/concat";
+import {EmptyPointProps, EmptyPointPropTypes} from "./EmptyPointProps";
 
-export const EmptyPoint: React.SFC<any> = (props): JSX.Element => {
-    const sideClassName = `${props.position < 3 ? SideTypes.left : SideTypes.right}-indent`
+export const EmptyPoint: React.SFC<EmptyPointProps> = ({sideClassName}): JSX.Element => {
     const defaultClassName = "prj-chronology__div";
 
     const className = concat(
@@ -15,3 +13,5 @@ export const EmptyPoint: React.SFC<any> = (props): JSX.Element => {
 
     return <span className={className}/>
 };
+
+EmptyPoint.propTypes = EmptyPointPropTypes;

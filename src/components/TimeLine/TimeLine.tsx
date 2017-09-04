@@ -2,7 +2,7 @@ import * as React from "react";
 
 import {concat} from "../../helpers/concat";
 import {compareMonthWithScale} from "../../helpers/compareMonthWithScale";
-import {getOffset} from "../../helpers/getElementOffset";
+import {getElementOffset} from "../../helpers/getElementOffset";
 
 import {projects} from "../../data/Projects/projects";
 
@@ -17,13 +17,13 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
     public static readonly animationDuration = 300;
     public static readonly pointsCount = 6;
 
-    public readonly sliderDefaultClassName = "chronology-slider";
-    public readonly sliderMoveClassName = "is-move";
+    public static readonly sliderDefaultClassName = "chronology-slider";
+    public static readonly sliderMoveClassName = "is-move";
 
     public state = {
         activeProject: projects[projects.length - 1],
         sliderPosition: 0,
-        sliderClassName: this.sliderDefaultClassName,
+        sliderClassName: TimeLine.sliderDefaultClassName,
     };
 
     protected years: number [];
@@ -55,15 +55,15 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
 
         this.setState({
             sliderClassName: concat(
-                this.sliderDefaultClassName,
-                this.sliderMoveClassName
+                TimeLine.sliderDefaultClassName,
+                TimeLine.sliderMoveClassName
             ),
         });
 
         setTimeout(() => {
             this.setState({
-                sliderClassName: this.sliderDefaultClassName,
-                sliderPosition: getOffset(element),
+                sliderClassName: TimeLine.sliderDefaultClassName,
+                sliderPosition: getElementOffset(element),
                 activeProject
             })
         }, TimeLine.animationDuration);
