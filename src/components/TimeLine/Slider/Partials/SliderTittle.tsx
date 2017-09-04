@@ -16,7 +16,7 @@ export const SliderTitlePropTypes = {
 };
 
 export const SliderTitle: React.SFC<SliderTitleProps> = ({title}): JSX.Element => {
-    const content: Array<JSX.Element | string> = Array(title.length);
+    const content: Array<JSX.Element | string> = Array(title.length * 2 - 1);
 
     const linkProps = {
         target: "_blank",

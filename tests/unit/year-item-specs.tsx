@@ -22,7 +22,7 @@ describe("<YearItem/>", () => {
         day: 1,
     };
 
-    const props: YearItemProps = {
+    let props: YearItemProps = {
         currentDate: date,
         onChangeProject,
         children: date.year,
@@ -36,12 +36,8 @@ describe("<YearItem/>", () => {
     });
 
     afterEach(() => {
-        date.year = projects[projects.length - 1].date.year;
-
-        props.children = date.year;
-        props.currentDate = date;
-
         onChangeProjectHasCalled = false;
+        props.children = date.year;
 
         wrapper.unmount();
     });
@@ -63,11 +59,12 @@ describe("<YearItem/>", () => {
     it("should add `muted` class name to label for future years", () => {
         expect(DOMNode.getElementsByClassName(node.yearClassName)[0].className).to.not.contain(node.yearMutedClassName);
 
-        props.children = (new Date()).getFullYear() + 10;
+        props = {
+            ...props,
+            children: (new Date()).getFullYear() + 10
+        };
 
         wrapper.setProps(props);
-
-        wrapper.update();
 
         expect(DOMNode.getElementsByClassName(node.yearClassName)[0].className).to.contain(node.yearMutedClassName);
     });
@@ -81,11 +78,12 @@ describe("<YearItem/>", () => {
     });
 
     it("should render `EmptyPoint` if it date not equals to one of item from `projects`", () => {
-        props.children = (new Date()).getFullYear() + 10;
+        props = {
+            ...props,
+            children: (new Date()).getFullYear() + 10
+        };
 
         wrapper.setProps(props);
-
-        wrapper.update();
 
         expect(wrapper.find(EmptyPoint).length).to.equal(TimeLine.pointsCount - 1)
     });
@@ -103,7 +101,10 @@ describe("<YearItem/>", () => {
     });
 
     it("should call `onChangeProject` if `ActivePoint` has been clicked", () => {
-        props.children = (new Date()).getFullYear() + 10;
+        props = {
+            ...props,
+            children: (new Date()).getFullYear() + 10
+        };
 
         wrapper.setProps(props);
 

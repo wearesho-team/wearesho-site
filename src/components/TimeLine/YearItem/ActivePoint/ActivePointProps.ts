@@ -4,7 +4,8 @@ export interface ActivePointProps {
     isActive: boolean;
     sideClassName: string;
     index: number;
-    onProjectChange: (element: HTMLElement, position: number) => void;
+    // arg index - for comparing with month
+    onProjectChange: (element: HTMLElement, index: number) => void;
 }
 
 export const ActivePointPropTypes = {

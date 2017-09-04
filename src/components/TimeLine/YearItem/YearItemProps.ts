@@ -8,7 +8,11 @@ export interface YearItemProps {
 }
 
 export const YearItemPropTypes = {
-    currentDate: PropTypes.object.isRequired,
+    currentDate: PropTypes.shape({
+        year: PropTypes.number.isRequired,
+        month: PropTypes.number.isRequired,
+        day: PropTypes.number.isRequired
+    }).isRequired,
     onChangeProject: PropTypes.func.isRequired,
     children: PropTypes.number.isRequired,
 };

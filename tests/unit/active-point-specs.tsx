@@ -12,9 +12,13 @@ describe("<ActivePoint/>", () => {
     let DOMNode: Element;
 
     let onProjectChangeHasCalled: boolean;
-    const onProjectChange = (element: HTMLElement, position: number) => onProjectChangeHasCalled = true;
+    const onProjectChange = (element: HTMLElement, position: number) => {
+        if (element instanceof HTMLElement) {
+            onProjectChangeHasCalled = true;
+        }
+    };
 
-    const props: ActivePointProps = {
+    let props: ActivePointProps = {
         isActive: true,
         index: 0,
         sideClassName: "test",
@@ -30,6 +34,8 @@ describe("<ActivePoint/>", () => {
 
     afterEach(() => {
         wrapper.unmount();
+
+        onProjectChangeHasCalled = false;
     });
 
     it("should set project if active on mount", () => {
@@ -37,9 +43,13 @@ describe("<ActivePoint/>", () => {
     });
 
     it("should not set project if not active on mount", () => {
-        onProjectChangeHasCalled = false;
 
-        props.isActive = false;
+        props = {
+            ...props,
+            isActive: false
+        };
+
+        onProjectChangeHasCalled = false;
 
         wrapper = mount(<ActivePoint {...props}/>);
 
@@ -47,7 +57,10 @@ describe("<ActivePoint/>", () => {
     });
 
     it("should set active class name if `isActive` equals true", () => {
-        props.isActive = true;
+        props = {
+            ...props,
+            isActive: true
+        };
 
         wrapper.setProps(props);
 
@@ -57,7 +70,10 @@ describe("<ActivePoint/>", () => {
     });
 
     it("should set filled class name if `isActive` equals false", () => {
-        props.isActive = false;
+        props = {
+            ...props,
+            isActive: false
+        };
 
         wrapper.setProps(props);
 
@@ -66,17 +82,13 @@ describe("<ActivePoint/>", () => {
         expect(DOMNode.className).to.contain(ActivePoint.filledClassName);
     });
 
-    it("should set ref element", () => {
-        spy(node as any, "setElement");
-        wrapper.update();
-
-        expect(((node as any).setElement as SinonSpy).called).to.be.true;
-    });
-
     it("should set project on click if `isActive` equals false", () => {
-        onProjectChangeHasCalled = false;
-
-        props.isActive = false;
+        props = {
+            ...props,
+            ...{
+                isActive: false,
+            }
+        };
 
         wrapper.setProps(props);
 
@@ -88,9 +100,10 @@ describe("<ActivePoint/>", () => {
     });
 
     it("should ignore click if `isActive` equals true", () => {
-        onProjectChangeHasCalled = false;
-
-        props.isActive = true;
+        props = {
+            ...props,
+            isActive: true
+        };
 
         wrapper.setProps(props);
 

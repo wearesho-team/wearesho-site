@@ -13,6 +13,8 @@ describe("<TimeLine/>", () => {
     let timer: SinonFakeTimers;
     const animationDuration = 300;
 
+    const halfOfMonth = Math.round(projects[projects.length - 1].date.month / 2);
+
     const props = {
         range: {
             max: projects[projects.length - 1].date.year,
@@ -52,16 +54,14 @@ describe("<TimeLine/>", () => {
 
     it("should set `move` class name to `<Slider/>` when `setNextProject` called", () => {
         (wrapper.getNode() as any)
-            .setNextProject(wrapper.getDOMNode(),
-                Math.round(projects[projects.length - 1].date.month  / 2), projects[projects.length - 1].date.year);
+            .setNextProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
         expect(wrapper.state().sliderClassName).to.contain(TimeLine.sliderMoveClassName);
     });
 
     it("should remove `move` class name from `<Slider/>` after animation delay when `setNextProject` called", () => {
         (wrapper.getNode() as any)
-            .setNextProject(wrapper.getDOMNode(),
-                Math.round(projects[projects.length - 1].date.month / 2) , projects[projects.length - 1].date.year);
+            .setNextProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
         timer.tick(animationDuration / 2);
 

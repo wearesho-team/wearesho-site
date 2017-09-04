@@ -11,8 +11,6 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
     public static  readonly filledClassName = "is-filled";
     public static  readonly activeClassName = "is-active";
 
-    public sideClassName: string;
-
     protected element: HTMLElement;
 
     public componentDidMount() {

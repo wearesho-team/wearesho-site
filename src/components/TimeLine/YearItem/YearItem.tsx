@@ -38,6 +38,8 @@ export class YearItem extends React.Component<YearItemProps, undefined> {
     };
 
     protected get scaleItems(): JSX.Element [] {
+        const middle = Math.round(TimeLine.pointsCount / 2);
+
         return Array(TimeLine.pointsCount + 1)
             .fill(undefined)
             .map((x, i) => {
@@ -47,8 +49,6 @@ export class YearItem extends React.Component<YearItemProps, undefined> {
                     this.yearClassName,
                     this.props.children > (new Date()).getFullYear() ? this.yearMutedClassName : ""
                 );
-
-                const middle = Math.round(TimeLine.pointsCount / 2);
 
                 if (i === middle) {
                     return <span className={yearLabelClassName} key={i}>{this.props.children}</span>;

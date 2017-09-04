@@ -25,7 +25,7 @@ export const SideBar: React.SFC<undefined> = (props, context: RouterContext) => 
         <aside className="sidebar">
             <nav className="main-nav">
                 <ul className="main-nav__list">
-                    {children.map((element, i) => <li {...getItemProps(element)} key={i}>{element}</li>)}
+                    {children.map((element) => <li {...getItemProps(element)} key={element.props.to}>{element}</li>)}
                 </ul>
             </nav>
             <SocialLinks/>

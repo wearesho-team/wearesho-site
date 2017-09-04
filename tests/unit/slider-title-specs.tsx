@@ -33,6 +33,8 @@ describe("<SliderTitle/>", () => {
 
     it("should paste `/` symbol between <a/> items", () => {
         expect(DOMNode.innerHTML.split(" / ").length).to.equal(props.title.length);
+
+        expect(DOMNode.innerHTML.split("</a>").length).to.equal(props.title.length + 1);
     });
 
 });
