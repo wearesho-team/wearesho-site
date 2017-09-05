@@ -1,6 +1,3 @@
-/**
- * Created by horat1us on 6/13/17.
- */
 import {layoutGenerator} from "react-break";
 
 const layout: any = layoutGenerator({

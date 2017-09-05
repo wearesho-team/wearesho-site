@@ -14,6 +14,7 @@ import {SwitchControl} from "../SwitchControl";
 
 import {routeProps} from "../../data/routeProps";
 import {ScrollControl} from "../ScrollControl";
+import {SmartBreakpoint} from "../SmartBreakpoint";
 
 export class Layout extends React.Component<LayoutProps, undefined> {
 
@@ -39,18 +40,18 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                         {getLinksWithProps()}
                     </SideBar>
                     <SoundSwitch/>
-                    {/*<OnFullPage>*/}
-                    {/*<SwitchControl>*/}
-                    {/*<TransitionSwitch className="translate-container" classNames="translateY">*/}
-                    {/*{getRoutesWithProps()}*/}
-                    {/*</TransitionSwitch>*/}
-                    {/*</SwitchControl>*/}
-                    {/*</OnFullPage>*/}
-                    {/*<OnWholePage>*/}
-                    <ScrollControl>
-                        {routeProps.map((prop) => <prop.component key={prop.path}/>)}
-                    </ScrollControl>
-                    {/*</OnWholePage>*/}
+                    <SmartBreakpoint match="min-width: 1441px">
+                        <SwitchControl>
+                            <TransitionSwitch className="translate-container" classNames="translateY">
+                                {getRoutesWithProps()}
+                            </TransitionSwitch>
+                        </SwitchControl>
+                    </SmartBreakpoint>
+                    <SmartBreakpoint match="max-width: 1440px">
+                        <ScrollControl>
+                            {routeProps.map((prop) => <prop.component key={prop.path}/>)}
+                        </ScrollControl>
+                    </SmartBreakpoint>
                 </div>
             </Router>
         );
