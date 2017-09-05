@@ -3,6 +3,7 @@ import {Route} from "react-router-dom";
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 import {concat} from "../../helpers/concat";
+import {smartClearTimeout, ElementWithTimer} from "../../helpers/smartClearTimeout";
 
 import {TransitionSwitchProps, TransitionSwitchPropTypes, TransitionSwitchDefaultProps} from "./TransitionSwitchProps";
 import {TransitionSwitchState} from "./TransitionSwitchState";
@@ -11,7 +12,8 @@ import {RouteProps} from "react-router";
 
 import {SwitchControlContext, SwitchControlContextTypes} from "../SwitchControl/SwitchControlContext";
 
-export class TransitionSwitch extends React.Component<TransitionSwitchProps, TransitionSwitchState> {
+export class TransitionSwitch extends React.Component<TransitionSwitchProps, TransitionSwitchState>
+    implements ElementWithTimer {
 
     public static propTypes = TransitionSwitchPropTypes;
     public static defaultProps = TransitionSwitchDefaultProps;
@@ -26,19 +28,26 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     protected static readonly additionalTimeout = 100;
 
     public context: RouterContext & SwitchControlContext;
-
+    public timer: any;
     public state: TransitionSwitchState = {
         directionClassName: TransitionSwitch.standByClassName,
     };
 
     protected previousRouteKey: number = this.routeProps.key;
 
+    protected clearTimeout = smartClearTimeout.bind(this);
+
+    public componentWillUnmount() {
+        this.clearTimeout(this.timer);
+    }
+
     public componentWillReceiveProps() {
         this.setDirection(this.routeProps.key);
 
         this.context.setScrollDisabled(true);
 
-        setTimeout(() => {
+        this.clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
             this.context.setScrollDisabled(false);
             this.setState({directionClassName: TransitionSwitch.standByClassName});
         }, this.props.timeout + TransitionSwitch.additionalTimeout);

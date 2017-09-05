@@ -3,7 +3,7 @@ import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 import {useFakeTimers, SinonFakeTimers} from "sinon";
 
-import {Router} from "react-router";
+import {Route, Router} from "react-router";
 import {createMemoryHistory, History} from "history";
 
 import {TransitionSwitch} from "../../src/components/TransitionSwitch";
@@ -27,6 +27,14 @@ describe("<SwitchControl/>", () => {
         timeout: animationDuration,
     };
 
+    const componentOne = (): JSX.Element => {
+        return <div id="component_1"/>;
+    };
+
+    const componentTwo = (): JSX.Element => {
+        return <div id="component_2"/>;
+    };
+
     beforeEach(() => {
         history = createMemoryHistory();
 
@@ -34,7 +42,8 @@ describe("<SwitchControl/>", () => {
             <Router history={history}>
                 <SwitchControl>
                     <TransitionSwitch {...props}>
-                        {getRoutesWithProps()}
+                        <Route exact path={routeProps[0].path} component={componentOne}/>
+                        <Route path={routeProps[1].path} component={componentTwo}/>
                     </TransitionSwitch>
                 </SwitchControl>
             </Router>

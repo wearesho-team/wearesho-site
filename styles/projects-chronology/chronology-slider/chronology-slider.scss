@@ -2,9 +2,10 @@
   Chronology slider styles
  */
 .chronology-slider {
-  $slider-size: 51px;
+  $slider-size: 44px;
   $slider-size-laptop-m: 41px;
   $slider-size-laptop-l: 39px;
+  $point-size: 6px;
   $slider-bar-height: 66px;
 
   width: $slider-size;
@@ -15,6 +16,7 @@
   top: 50%;
 
   margin-top: (-$slider-size / 2);
+  margin-left: -($slider-size / 2 - $point-size / 2);
 
   z-index: 1;
 
@@ -41,6 +43,8 @@
       &:before {
 
         height: 0;
+
+        transition-delay: 0s;
       }
     }
 
@@ -97,7 +101,9 @@
 
       background-color: $color-secondary;
 
-      @include transition(height .3s ease)
+      @include transition(height .3s ease);
+
+      transition-delay: .3s;
     }
   }
 
@@ -119,7 +125,7 @@
   &__services,
   &__date {
 
-    @include transition(all .3s ease);
+    @include transition(all .2s ease .3s);
   }
 
   &__projects,

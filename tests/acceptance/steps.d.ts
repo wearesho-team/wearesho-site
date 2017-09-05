@@ -23,7 +23,7 @@ declare namespace CodeceptJS {
     grabTextFrom: (grabTextFrom) => any; 
     grabHTMLFrom: (locator) => any; 
     grabValueFrom: (grabValueFrom) => any; 
-    grabCssPropertyFrom: (grabCssPropertyFrom) => any; 
+    grabCssPropertyFrom: (grabCssPropertyFrom) => any;
     grabAttributeFrom: (grabAttributeFrom) => any; 
     seeInTitle: (seeInTitle) => any; 
     seeTitleEquals: (seeTitleEquals) => any; 
@@ -46,7 +46,7 @@ declare namespace CodeceptJS {
     dontSeeInSource: (dontSeeInSource) => any; 
     seeNumberOfElements: (selector, num) => any; 
     seeNumberOfVisibleElements: (locator, num) => any; 
-    seeCssPropertiesOnElements: (seeCssPropertiesOnElements) => any; 
+    seeCssPropertiesOnElements: (locator, cssProperties) => any;
     seeAttributesOnElements: (seeAttributesOnElements) => any; 
     grabNumberOfVisibleElements: (grabNumberOfVisibleElements) => any; 
     seeInCurrentUrl: (url) => any; 
