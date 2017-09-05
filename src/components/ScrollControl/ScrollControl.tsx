@@ -2,11 +2,12 @@ import * as React from "react";
 import {Location} from "history";
 
 import {compareArrays} from "../../helpers/compareArrays";
+import {smartClearTimeout, ElementWithTimer} from "../../helpers/smartClearTimeout";
 
 import {routeProps} from "../../data/routeProps";
 import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 
-export class ScrollControl extends React.Component<any, any> {
+export class ScrollControl extends React.Component<any, any> implements ElementWithTimer {
     public static contextTypes = RouterContextTypes;
     public readonly scrollListenDelay = 50;
 
@@ -14,9 +15,10 @@ export class ScrollControl extends React.Component<any, any> {
     public readonly viewZoneRange = 0.15;
 
     public context: RouterContext;
+    public timer: any;
 
     protected childrenDOM: HTMLCollection;
-    protected timer: any;
+    protected clearTimeout = smartClearTimeout.bind(this);
 
     public componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
@@ -25,6 +27,7 @@ export class ScrollControl extends React.Component<any, any> {
 
     public componentWillUnmount() {
         window.removeEventListener("scroll", this.handleScroll);
+        this.context.router.history.listen(() => undefined);
     }
 
     public shouldComponentUpdate(nextProps: any) {
@@ -66,7 +69,7 @@ export class ScrollControl extends React.Component<any, any> {
     };
 
     protected handleScroll = () => {
-        clearTimeout(this.timer);
+        this.clearTimeout(this.timer);
 
         this.timer = setTimeout(this.changePath, this.scrollListenDelay);
     };
