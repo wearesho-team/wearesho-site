@@ -12,6 +12,8 @@
 
   margin: 0 auto;
   padding: 2.75em 2.75em 0;
+  
+  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .7) 25%, rgba(255, 255, 255, .95) 100%);
 
   font-family: $font-secondary;
   font-weight: $font-style-medium;
@@ -19,15 +21,20 @@
   z-index: map-get($zindex, header);
 
   @include breakpoint($mobile) {
-    padding: 1.875em 1.875em 0;
+    padding: 1.875em 1.875em .75em;
 
     font-weight: $font-style-regular;
   }
 
   @include breakpoint($tablet) {
-    padding: 2.5em 1.875em 0;
+    padding: 2.5em 1.875em .75em;
 
     font-weight: $font-style-regular;
+  }
+
+  @include breakpoint($laptop-not-large) {
+
+    padding: 2.75em 2.75em .75em;
   }
 }
 

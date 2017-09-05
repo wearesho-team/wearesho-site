@@ -44,7 +44,9 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                         </SwitchControl>
                     </OnFullPage>
                     <OnWholePage>
-                        {routeProps.map((prop) => <prop.component key={prop.path}/>)}
+                        <div className="scroll-container">
+                            {routeProps.map((prop) => <prop.component key={prop.path}/>)}
+                        </div>
                     </OnWholePage>
                 </div>
             </Router>
