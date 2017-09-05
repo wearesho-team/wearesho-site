@@ -1,8 +1,13 @@
-export function smartClearTimeout(timer: any) {
-    if (!timer) {
+export interface ElementWithTimer {
+    timer: any,
+}
+
+// tslint:disable:no-invalid-this
+export function smartClearTimeout() {
+    if (!(this as ElementWithTimer).timer) {
         return;
     }
 
-    clearTimeout(timer);
-    timer = undefined;
+    clearTimeout((this as ElementWithTimer).timer);
+    (this as ElementWithTimer).timer = undefined;
 }

@@ -3,7 +3,7 @@ import * as React from "react";
 import {concat} from "../../helpers/concat";
 import {compareMonthWithScale} from "../../helpers/compareMonthWithScale";
 import {getElementOffset} from "../../helpers/getElementOffset";
-import {smartClearTimeout} from "../../helpers/smartClearTimeout";
+import {smartClearTimeout, ElementWithTimer} from "../../helpers/smartClearTimeout";
 
 import {projects} from "../../data/Projects/projects";
 
@@ -13,7 +13,8 @@ import {TimeLineState} from "./TimeLineState";
 import {Slider} from "./Slider";
 import {YearItem} from "./YearItem";
 
-export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
+export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
+    implements ElementWithTimer {
 
     public static propTypes = TimeLinePropTypes;
     public static readonly animationDuration = 300;
@@ -22,13 +23,13 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
     public static readonly sliderDefaultClassName = "chronology-slider";
     public static readonly sliderMoveClassName = "is-move";
 
+    public timer: any;
     public state: TimeLineState = {
         activeProject: projects[projects.length - 1],
         sliderPosition: 0,
         sliderClassName: TimeLine.sliderDefaultClassName,
     };
 
-    protected timer: any;
     protected clearTimeout = smartClearTimeout.bind(this);
 
     public componentWillUnmount() {
