@@ -13,6 +13,7 @@ import {TransitionSwitch} from "../TransitionSwitch";
 import {SwitchControl} from "../SwitchControl";
 
 import {routeProps} from "../../data/routeProps";
+import {ScrollControl} from "../ScrollControl";
 
 export class Layout extends React.Component<LayoutProps, undefined> {
 
@@ -20,6 +21,8 @@ export class Layout extends React.Component<LayoutProps, undefined> {
 
     public async componentDidMount() {
         await this.props.preLoader.hide();
+
+        window.scrollTo(0, 0);
     }
 
     public async componentWillUnmount() {
@@ -36,16 +39,18 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                         {getLinksWithProps()}
                     </SideBar>
                     <SoundSwitch/>
-                    <OnFullPage>
-                        <SwitchControl>
-                            <TransitionSwitch className="translate-container" classNames="translateY">
-                                {getRoutesWithProps()}
-                            </TransitionSwitch>
-                        </SwitchControl>
-                    </OnFullPage>
-                    <OnWholePage>
+                    {/*<OnFullPage>*/}
+                    {/*<SwitchControl>*/}
+                    {/*<TransitionSwitch className="translate-container" classNames="translateY">*/}
+                    {/*{getRoutesWithProps()}*/}
+                    {/*</TransitionSwitch>*/}
+                    {/*</SwitchControl>*/}
+                    {/*</OnFullPage>*/}
+                    {/*<OnWholePage>*/}
+                    <ScrollControl>
                         {routeProps.map((prop) => <prop.component key={prop.path}/>)}
-                    </OnWholePage>
+                    </ScrollControl>
+                    {/*</OnWholePage>*/}
                 </div>
             </Router>
         );
