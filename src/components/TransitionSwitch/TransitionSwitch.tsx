@@ -57,7 +57,6 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     }
 
     public render(): JSX.Element {
-
         const transitionProps: any = {
             ...this.props,
             ...{

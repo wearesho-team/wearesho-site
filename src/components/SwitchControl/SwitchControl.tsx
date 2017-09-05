@@ -48,7 +48,10 @@ export class SwitchControl extends React.Component<any, undefined> {
 
         const nextRouteIndex = routeProps.findIndex(({path}) => path === pathname) + routeIndexDelta;
 
-        routeProps[nextRouteIndex] && this.context.router.history.push(routeProps[nextRouteIndex].path);
+        if (routeProps[nextRouteIndex]) {
+            this.context.router.history.push(routeProps[nextRouteIndex].path);
+            this.forceUpdate();
+        }
     }
 
     protected handleKeyPress = (event: KeyboardEvent) => {

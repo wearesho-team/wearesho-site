@@ -1,15 +1,18 @@
 import * as React from "react";
-import {Router, Route, Link} from "react-router-dom";
+import {Router, Route} from "react-router-dom";
+
+import {OnFullPage, OnWholePage} from "../../helpers/Breakpoints";
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
+import {getLinksWithProps} from "../../helpers/linksWithProps";
+import {getRoutesWithProps} from "../../helpers/routesWithProps";
 
 import {Header, SideBar} from "./Partials";
 import {SoundSwitch} from "./SoundSwitch";
-import {Grid} from "./Grid";
 import {TransitionSwitch} from "../TransitionSwitch";
 import {SwitchControl} from "../SwitchControl";
-import {getLinksWithProps} from "../../helpers/linksWithProps";
-import {getRoutesWithProps} from "../../helpers/routesWithProps";
+
+import {routeProps} from "../../data/routeProps";
 
 export class Layout extends React.Component<LayoutProps, undefined> {
 
@@ -33,11 +36,16 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                         {getLinksWithProps()}
                     </SideBar>
                     <SoundSwitch/>
-                    <SwitchControl>
-                        <TransitionSwitch className="translate-container" classNames="translateY">
-                            {getRoutesWithProps()}
-                        </TransitionSwitch>
-                    </SwitchControl>
+                    <OnFullPage>
+                        <SwitchControl>
+                            <TransitionSwitch className="translate-container" classNames="translateY">
+                                {getRoutesWithProps()}
+                            </TransitionSwitch>
+                        </SwitchControl>
+                    </OnFullPage>
+                    <OnWholePage>
+                        {routeProps.map((prop) => <prop.component key={prop.path}/>)}
+                    </OnWholePage>
                 </div>
             </Router>
         );
