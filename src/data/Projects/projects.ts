@@ -3,8 +3,8 @@ import {ProjectInterface} from "./ProjectInterface";
 // tslint:disable:no-var-requires
 export const projects: ProjectInterface [] = require("./projectsList.json")
     .sort((prev, next) => {
-        const prevStringFormat = Object.keys(prev.date).map((key) => prev.date[key]).join("");
-        const nextStringFormat = Object.keys(next.date).map((key) => next.date[key]).join("");
+        const prevStringFormat = `${prev.date.year}${prev.date.month}${prev.date.day}`;
+        const nextStringFormat = `${next.date.year}${next.date.month}${next.date.day}`;
 
         return prevStringFormat > nextStringFormat;
     });
