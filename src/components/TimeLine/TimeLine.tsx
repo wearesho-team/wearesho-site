@@ -3,6 +3,7 @@ import * as React from "react";
 import {concat} from "../../helpers/concat";
 import {compareMonthWithScale} from "../../helpers/compareMonthWithScale";
 import {getElementOffset} from "../../helpers/getElementOffset";
+import {smartClearTimeout} from "../../helpers/smartClearTimeout";
 
 import {projects} from "../../data/Projects/projects";
 
@@ -13,6 +14,7 @@ import {Slider} from "./Slider";
 import {YearItem} from "./YearItem";
 
 export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
+
     public static propTypes = TimeLinePropTypes;
     public static readonly animationDuration = 300;
     public static readonly pointsCount = 6;
@@ -26,15 +28,16 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
         sliderClassName: TimeLine.sliderDefaultClassName,
     };
 
-    protected years: number [];
     protected timer: any;
+    protected clearTimeout = smartClearTimeout.bind(this);
 
     public componentWillUnmount() {
-        this.timer && clearTimeout(this.timer);
+        this.clearTimeout(this.timer);
     }
 
     public render(): JSX.Element {
-        this.years = Array.from(Array(this.props.range.max - this.props.range.min + 1))
+
+        const yearsList = Array.from(Array(this.props.range.max - this.props.range.min + 1))
             .fill(undefined)
             .map((x, i) => this.props.range.min + i);
 
@@ -48,7 +51,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
             <div className="prj-chronology">
                 {this.state.sliderPosition && <Slider {...sliderProps}/>}
                 <div className="prj-chronology__div-outer prj-chronology__div-outer_left"/>
-                <this.yearsContainer/>
+                <this.years yearsList={yearsList}/>
                 <div className="prj-chronology__div-outer prj-chronology__div-outer_right"/>
             </div>
         );
@@ -65,7 +68,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
             ),
         });
 
-        this.timer && clearTimeout(this.timer);
+        this.clearTimeout(this.timer);
         this.timer = setTimeout(() => {
             this.setState({
                 sliderClassName: TimeLine.sliderDefaultClassName,
@@ -75,13 +78,13 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
         }, TimeLine.animationDuration);
     };
 
-    protected yearsContainer = (): JSX.Element => {
-        const props = {
+    protected years = ({yearsList}): JSX.Element => {
+        const childProps = {
             currentDate: this.state.activeProject.date,
             onChangeProject: this.handleChangeProject
         };
 
-        const content = this.years.map((item) => <YearItem {...props} key={item}>{item}</YearItem>);
+        const content = yearsList.map((item: number) => <YearItem {...childProps} key={item}>{item}</YearItem>);
 
         return (
             <div className="container">

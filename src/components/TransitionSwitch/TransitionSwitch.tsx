@@ -3,6 +3,7 @@ import {Route} from "react-router-dom";
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 import {concat} from "../../helpers/concat";
+import {smartClearTimeout} from "../../helpers/smartClearTimeout";
 
 import {TransitionSwitchProps, TransitionSwitchPropTypes, TransitionSwitchDefaultProps} from "./TransitionSwitchProps";
 import {TransitionSwitchState} from "./TransitionSwitchState";
@@ -34,9 +35,10 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     protected previousRouteKey: number = this.routeProps.key;
 
     protected timer: any;
+    protected clearTimeout = smartClearTimeout.bind(this);
 
     public componentWillUnmount() {
-        this.timer && clearTimeout(this.timer);
+        this.clearTimeout(this.timer);
     }
 
     public componentWillReceiveProps() {
@@ -44,7 +46,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
 
         this.context.setScrollDisabled(true);
 
-        this.timer && clearTimeout(this.timer);
+        this.clearTimeout(this.timer);
         this.timer = setTimeout(() => {
             this.context.setScrollDisabled(false);
             this.setState({directionClassName: TransitionSwitch.standByClassName});
