@@ -31,9 +31,13 @@ describe("<Slider/>", () => {
         expect(DOMNode.getAttribute("style")).to.contain(`left: ${props.offset}px`);
     });
 
-    it("should format date to `DD.m.YYYY`", () => {
+    it("should format date to `d.m.Y`", () => {
+        const {date} = props.project;
+
+        const format = `${date.day}.${String("0" + date.month).slice(-2)}.${date.year}`;
+
         expect(DOMNode.getElementsByClassName("chronology-slider__date")[0].innerHTML)
-            .to.equal(`${props.project.date.day}.${props.project.date.month}.${props.project.date.year}`)
+            .to.equal(format);
     });
 
 });

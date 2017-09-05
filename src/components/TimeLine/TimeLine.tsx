@@ -54,7 +54,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
         );
     }
 
-    protected setNextProject = (element: HTMLElement, position: number, yearActive: number) => {
+    protected handleChangeProject = (element: HTMLElement, position: number, yearActive: number) => {
         const activeProject = projects.find(({date: {year, month}}) =>
             year === yearActive && compareMonthWithScale(month, position, TimeLine.pointsCount));
 
@@ -78,7 +78,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState> {
     protected yearsContainer = (): JSX.Element => {
         const props = {
             currentDate: this.state.activeProject.date,
-            onChangeProject: this.setNextProject
+            onChangeProject: this.handleChangeProject
         };
 
         const content = this.years.map((item) => <YearItem {...props} key={item}>{item}</YearItem>);

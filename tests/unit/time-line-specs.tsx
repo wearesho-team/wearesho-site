@@ -52,16 +52,16 @@ describe("<TimeLine/>", () => {
         expect(wrapper.find(Slider)).to.exist;
     });
 
-    it("should set `move` class name to `<Slider/>` when `setNextProject` called", () => {
+    it("should set `move` class name to `<Slider/>` when active project changed", () => {
         (wrapper.getNode() as any)
-            .setNextProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
+            .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
         expect(wrapper.state().sliderClassName).to.contain(TimeLine.sliderMoveClassName);
     });
 
-    it("should remove `move` class name from `<Slider/>` after animation delay when `setNextProject` called", () => {
+    it("should remove `move` class name from `<Slider/>` after animation delay when active project changed", () => {
         (wrapper.getNode() as any)
-            .setNextProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
+            .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
         timer.tick(animationDuration / 2);
 

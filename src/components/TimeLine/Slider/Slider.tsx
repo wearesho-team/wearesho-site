@@ -12,11 +12,7 @@ export const Slider: React.SFC<SliderProps> = (props): JSX.Element => {
     const getFormattedDate = () => {
         const {date} = props.project;
 
-        return new Date(date.year, date.month - 1, date.day).toLocaleString("ru", {
-            year: "numeric",
-            month: "numeric",
-            day: "numeric"
-        });
+        return `${date.day}.${String("0" + date.month).slice(-2)}.${date.year}`;
     };
 
     return (
