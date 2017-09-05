@@ -2,28 +2,24 @@
   Global styles
  */
 
-.section {
-  height: 100vh !important;
-}
-
 html,
 body {
-  //overflow-x: hidden;
-  //overflow-y: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 
   @include breakpoint($mobile) {
 
-    overflow-y: auto;
+    overflow-y: visible;
   }
 
-  @include breakpoint($tablet) {
+  @include breakpoint($tablet-laptop) {
 
-    overflow-y: auto;
+    overflow-y: visible;
   }
 
   @include breakpoint($laptop-small) {
-
-    overflow-y: auto;
+    // Double vertical scroll bug fix
+    overflow-x: visible;
   }
 }
 
@@ -72,31 +68,21 @@ body,
 #content,
 .translate-container,
 .section {
-
   height: 100%;
+
+  @include breakpoint($mobile) {
+
+    height: auto;
+  }
+
+  @include breakpoint($tablet-laptop) {
+
+    height: auto;
+  }
+
 }
 
 .translate-container {
-
-  @include breakpoint($mobile-p) {
-
-    padding: 0 1.875em;
-  }
-
-  @include breakpoint($mobile-l) {
-
-    padding: 0 4.5em;
-  }
-
-  @include breakpoint($tablet) {
-
-    padding: 0 5.375em;
-  }
-
-  @include breakpoint($laptop) {
-
-    padding: 0 7.25em;
-  }
 
   @include breakpoint($laptop-large) {
 
@@ -174,6 +160,30 @@ body,
         @include transform(translateY(0));
       }
     }
+  }
+}
+
+.scroll-container {
+  @include container;
+
+  @include breakpoint($mobile-p) {
+
+    padding: 0 1.875em;
+  }
+
+  @include breakpoint($mobile-l) {
+
+    padding: 0 4.5em;
+  }
+
+  @include breakpoint($tablet) {
+
+    padding: 0 5.375em;
+  }
+
+  @include breakpoint($laptop) {
+
+    padding: 0 7.25em;
   }
 }
 

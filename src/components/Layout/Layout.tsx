@@ -22,8 +22,6 @@ export class Layout extends React.Component<LayoutProps, undefined> {
 
     public async componentDidMount() {
         await this.props.preLoader.hide();
-
-        window.scrollTo(0, 0);
     }
 
     public async componentWillUnmount() {
