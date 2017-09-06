@@ -5,7 +5,6 @@ import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 
 import {Header, SideBar} from "./Partials";
 import {SoundSwitch} from "./SoundSwitch";
-import {Grid} from "./Grid";
 import {TransitionSwitch} from "../TransitionSwitch";
 import {SwitchControl} from "../SwitchControl";
 import {getLinksWithProps} from "../../helpers/linksWithProps";

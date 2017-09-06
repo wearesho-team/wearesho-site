@@ -6,6 +6,7 @@
     "removeComments": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
     "allowJs": true
   },
   "exclude": [

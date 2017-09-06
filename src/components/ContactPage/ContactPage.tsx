@@ -6,7 +6,7 @@ import {Map} from "../Widgets/Map"
 
 import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../helpers/Breakpoints";
 import {CooperateButton, CloseButton} from "../Buttons";
-import {Form} from "./Form";
+import {ContactForm} from "./ContactForm";
 import {Config} from "../../data/Config";
 import {formatNumber} from "../../helpers/formatNumber";
 import {SocialLinks} from "../Layout/Partials/SocialLinks";
@@ -58,7 +58,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 </span>
                                     <span>С уважением, команда Студии &laquo;ШО?!&raquo;</span>
                                 </p>
-                                <Form/>
+                                <ContactForm/>
                             </div>
                         </OnDesktop>
                     </div>
@@ -173,7 +173,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 <h3 className="modal__title">Свяжитесь с нами</h3>
                             </div>
                             <div className="modal__body">
-                                <Form/>
+                                <ContactForm/>
                             </div>
                         </ReactModal>
                     </OnMobileTablet>

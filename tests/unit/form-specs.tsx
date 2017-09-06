@@ -2,14 +2,14 @@ import * as React from "react";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
-import {Form} from "../../src/components/ContactPage/Form";
+import {ContactForm} from "../../src/components/ContactPage/ContactForm";
 
 describe("<Form/>", () => {
 
     let wrapper: ReactWrapper<any, any>;
 
     beforeEach(() => {
-        wrapper = mount(<Form/>);
+        wrapper = mount(<ContactForm/>);
     });
 
     afterEach(() => wrapper.unmount());
