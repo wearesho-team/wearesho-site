@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Location} from "history";
+import {animateScroll} from "react-scroll";
 
 import {compareArrays} from "../../helpers/compareArrays";
 import {smartClearTimeout, ElementWithTimer} from "../../helpers/smartClearTimeout";
@@ -7,8 +8,10 @@ import {smartClearTimeout, ElementWithTimer} from "../../helpers/smartClearTimeo
 import {routeProps} from "../../data/routeProps";
 import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 
-export class ScrollControl extends React.Component<any, any> implements ElementWithTimer {
+export class ScrollControl extends React.Component<undefined, undefined> implements ElementWithTimer {
     public static contextTypes = RouterContextTypes;
+    public static readonly scrollAnimationDelay = 500;
+
     public readonly scrollListenDelay = 50;
 
     // 0 - exactly
@@ -19,25 +22,26 @@ export class ScrollControl extends React.Component<any, any> implements ElementW
 
     protected childrenDOM: HTMLCollection;
     protected clearTimeout = smartClearTimeout.bind(this);
+    protected unlisten: () => void;
 
     public componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
-        this.context.router.history.listen(this.changePathListener);
+        this.unlisten = this.context.router.history.listen(this.changePathListener);
     }
 
     public componentWillUnmount() {
         window.removeEventListener("scroll", this.handleScroll);
-        this.context.router.history.listen(() => undefined);
+        this.unlisten();
     }
 
-    public shouldComponentUpdate(nextProps: any) {
+    public shouldComponentUpdate(nextProps: any): boolean {
         return compareArrays(
             React.Children.toArray(nextProps.children),
             React.Children.toArray(this.props.children)
         )
     }
 
-    public render() {
+    public render(): JSX.Element {
         return (
             <div className="scroll-container" ref={this.setChildren}>
                 {this.props.children}
@@ -45,9 +49,13 @@ export class ScrollControl extends React.Component<any, any> implements ElementW
         );
     }
 
-    protected setChildren = (ref: HTMLElement) => this.childrenDOM = ref && ref.children;
+    protected setChildren = (element: HTMLElement) => this.childrenDOM = element && element.children;
 
     protected changePath = () => {
+        if (!this.childrenDOM) {
+            return;
+        }
+
         const activeZone = window.screen.height * this.viewZoneRange + window.pageYOffset;
         const {location: {pathname}} = this.context.router.history;
 
@@ -70,7 +78,6 @@ export class ScrollControl extends React.Component<any, any> implements ElementW
 
     protected handleScroll = () => {
         this.clearTimeout(this.timer);
-
         this.timer = setTimeout(this.changePath, this.scrollListenDelay);
     };
 
@@ -81,6 +88,10 @@ export class ScrollControl extends React.Component<any, any> implements ElementW
 
         const currentPathIndex = routeProps.findIndex(({path}) => location.pathname === path);
 
-        (this.childrenDOM.item(currentPathIndex) as HTMLElement).scrollIntoView();
+        animateScroll.scrollTo((this.childrenDOM.item(currentPathIndex) as HTMLElement).offsetTop, {
+            duration: ScrollControl.scrollAnimationDelay,
+            delay: 0,
+            smooth: true
+        });
     }
 }

@@ -33,7 +33,7 @@ export class SwitchControl extends React.Component<any, undefined> {
         window.removeEventListener("keydown", this.handleKeyPress);
     }
 
-    public render() {
+    public render(): JSX.Element {
         return this.props.children;
     }
 

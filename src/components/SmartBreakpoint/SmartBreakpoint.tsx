@@ -1,6 +1,8 @@
 import * as React from "react";
+import {SmartBreakpointProps, SmartBreakpointPropTypes} from "./SmartBreakpointProps";
 
-export class SmartBreakpoint extends React.Component<any, any> {
+export class SmartBreakpoint extends React.Component<SmartBreakpointProps, undefined> {
+    public static propTypes = SmartBreakpointPropTypes;
 
     protected matches: boolean = false;
 
@@ -16,7 +18,7 @@ export class SmartBreakpoint extends React.Component<any, any> {
         window.removeEventListener("resize", this.handleResize);
     }
 
-    public render() {
+    public render(): any {
         return this.matches && this.props.children;
     }
 

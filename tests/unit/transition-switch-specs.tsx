@@ -36,8 +36,8 @@ describe("<TransitionSwitch/>", () => {
             <Router history={history}>
                 <SwitchControl>
                     <TransitionSwitch {...wrapperProps}>
-                        <Route exact path="/" component={PageFirst} key="0"/>
-                        <Route path="/view-1" component={PageSecond} key="1"/>
+                        <Route exact path="/" component={PageFirst}/>
+                        <Route path="/view-1" component={PageSecond}/>
                     </TransitionSwitch>
                 </SwitchControl>
             </Router>

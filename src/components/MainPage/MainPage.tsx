@@ -3,7 +3,7 @@ import {TimeLine} from "../TimeLine";
 
 export class MainPage extends React.Component<undefined, undefined> {
 
-    public render() {
+    public render(): JSX.Element {
         return (
             <section className="section section-main">
                 <div className="align-container">

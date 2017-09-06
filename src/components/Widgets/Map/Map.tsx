@@ -11,7 +11,7 @@ export class Map extends React.Component<MapProps, undefined> {
     public static defaultProps = MapDefaultProps;
     public static propTypes = MapPropTypes;
 
-    public render() {
+    public render(): JSX.Element {
         const props = {
             ...{
                 options: {styles},

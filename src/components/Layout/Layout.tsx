@@ -1,18 +1,16 @@
 import * as React from "react";
-import {Router, Route} from "react-router-dom";
-
-import {OnFullPage, OnWholePage} from "../../helpers/Breakpoints";
+import {Router} from "react-router-dom";
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
-import {getLinksWithProps} from "../../helpers/linksWithProps";
-import {getRoutesWithProps} from "../../helpers/routesWithProps";
+import {getLinksWithProps} from "../../helpers/getLinksWithProps";
+import {getRoutesWithProps} from "../../helpers/getRoutesWithProps";
+import {getWholePageList} from "../../helpers/getWholePageList";
 
 import {Header, SideBar} from "./Partials";
 import {SoundSwitch} from "./SoundSwitch";
 import {TransitionSwitch} from "../TransitionSwitch";
 import {SwitchControl} from "../SwitchControl";
 
-import {routeProps} from "../../data/routeProps";
 import {ScrollControl} from "../ScrollControl";
 import {SmartBreakpoint} from "../SmartBreakpoint";
 
@@ -28,7 +26,7 @@ export class Layout extends React.Component<LayoutProps, undefined> {
         await this.props.preLoader.show();
     }
 
-    public render() {
+    public render(): JSX.Element {
 
         return (
             <Router history={this.props.history}>
@@ -38,16 +36,16 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                         {getLinksWithProps()}
                     </SideBar>
                     <SoundSwitch/>
-                    <SmartBreakpoint match="min-width: 1441px">
+                    <SmartBreakpoint match="min-width: 1440px">
                         <SwitchControl>
                             <TransitionSwitch className="translate-container" classNames="translateY">
                                 {getRoutesWithProps()}
                             </TransitionSwitch>
                         </SwitchControl>
                     </SmartBreakpoint>
-                    <SmartBreakpoint match="max-width: 1440px">
+                    <SmartBreakpoint match="max-width: 1439px">
                         <ScrollControl>
-                            {routeProps.map((prop) => <prop.component key={prop.path}/>)}
+                            {getWholePageList()}
                         </ScrollControl>
                     </SmartBreakpoint>
                 </div>

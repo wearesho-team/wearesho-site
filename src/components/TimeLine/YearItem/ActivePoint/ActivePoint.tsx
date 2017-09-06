@@ -21,7 +21,7 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
         this.props.onProjectChange(this.element, this.props.index);
     }
 
-    public render() {
+    public render(): JSX.Element {
         const className = concat(
             ActivePoint.defaultClassName,
             `${ActivePoint.defaultClassName}_${this.props.sideClassName}`,
