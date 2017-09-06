@@ -9,10 +9,12 @@ function getCorners(): JSX.Element[] {
 }
 
 function loadingComponent() {
-    return <span>
-        Отправка
-        {getCorners()}
-    </span>
+    return (
+        <span>
+            Отправка
+            {getCorners()}
+        </span>
+    )
 }
 
 export const SubmitButton: React.SFC<any> = (props): JSX.Element => {

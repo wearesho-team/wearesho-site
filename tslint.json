@@ -18,6 +18,7 @@
     "jsx-wrap-multiline": true,
     "no-magic-numbers": [
       true,
+      -2,
       -1,
       0,
       1,

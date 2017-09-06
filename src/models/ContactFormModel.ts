@@ -5,6 +5,8 @@ import Match = Chai.Match;
 export const NameMinLength = 2;
 export const NameMaxLength = 24;
 
+export const PhoneMaxLength = 16;
+
 export const ContactFromDefaultValue = "09:00";
 export const ContactToDefaultValue = "18:00";
 
@@ -12,6 +14,9 @@ export class ContactFormModel extends Model {
     @IsDefined()
     @Matches(/\d{9,}/, {
         message: "Некорректный телефон",
+    })
+    @MaxLength(PhoneMaxLength, {
+        message: "Телефон должен не превышать $constraint1 символов",
     })
     public phone;
 
@@ -40,7 +45,7 @@ export class ContactFormModel extends Model {
     public to = ContactToDefaultValue;
 
     public attributes(): string[] {
-        return ["phone", "mail", "name", "from", "to",];
+        return ["phone", "mail", "name", "from", "to"];
     }
 }
 

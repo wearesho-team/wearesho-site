@@ -5,11 +5,11 @@ Feature("Switch control");
 
 Scenario("Arrows control", async (I) => {
     I.amOnPage("/");
-    I.waitForElement(".section-main", 30);
+    I.waitForElement(".section-main", timeout);
 
     I.pressKey("ArrowDown");
-    I.waitForElement(".section-partnership", 2);
+    I.waitForElement(".section-partnership", timeout);
 
     I.pressKey("ArrowUp");
-    I.waitForElement(".section-main", 2);
+    I.waitForElement(".section-main", timeout);
 });

@@ -5,9 +5,9 @@ Feature("Time line");
 
 Scenario("Project selection", async (I) => {
     I.amOnPage("/");
-    I.waitForElement(".prj-chronology", 30);
+    I.waitForElement(".prj-chronology", timeout);
 
-    I.waitForElement(".container .is-filled", 30);
+    I.waitForElement(".container .is-filled", timeout);
     I.wait(1);
     I.click(".container .is-filled");
 
