@@ -20,13 +20,13 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
     public context: RouterContext;
     public timer: any;
 
-    protected childrenDOM: HTMLCollection;
+    protected childrenDom: HTMLCollection;
     protected clearTimeout = smartClearTimeout.bind(this);
     protected unlisten: () => void;
 
     public componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
-        this.unlisten = this.context.router.history.listen(this.changePathListener);
+        this.unlisten = this.context.router.history.listen(this.listenPathChange);
     }
 
     public componentWillUnmount() {
@@ -49,49 +49,46 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
         );
     }
 
-    protected setChildren = (element: HTMLElement) => this.childrenDOM = element && element.children;
+    protected setChildren = (element: HTMLElement) => this.childrenDom = element && element.children;
 
-    protected changePath = () => {
-        if (!this.childrenDOM) {
+    protected updateLocation = () => {
+        if (!this.childrenDom) {
             return;
         }
 
         const activeZone = window.screen.height * this.viewZoneRange + window.pageYOffset;
-        const {location: {pathname}} = this.context.router.history;
 
-        routeProps.forEach(({path}, i) => {
-            if (path === pathname) {
-                return;
-            }
+        const currentPathIndex = routeProps
+            .map((x, i): HTMLElement => this.childrenDom.item(i) as HTMLElement)
+            .findIndex((element) => {
+                const fullOffset = element.offsetTop + element.offsetHeight;
+                const topOffset = element.offsetTop;
 
-            const elementHTML = this.childrenDOM.item(i) as HTMLElement;
-            const fullOffset = elementHTML.offsetTop + elementHTML.offsetHeight;
-            const topOffset = elementHTML.offsetTop;
+                // View must be between top(topOffset) and bottom(fullOffset) offsets
+                // with considering to view coefficient(viewZoneRange)
+                return activeZone > topOffset && activeZone < fullOffset;
+            });
 
-            // View must be between top(topOffset) and bottom(fullOffset) offsets
-            // with considering to view coefficient(viewZoneRange)
-            if (activeZone > topOffset && activeZone < fullOffset) {
-                this.context.router.history.push(path, {scroll: true});
-            }
-        });
+        currentPathIndex + 1 && this.context.router.history.push(routeProps[currentPathIndex].path, {scroll: true});
     };
 
     protected handleScroll = () => {
         this.clearTimeout(this.timer);
-        this.timer = setTimeout(this.changePath, this.scrollListenDelay);
+        this.timer = setTimeout(this.updateLocation, this.scrollListenDelay);
     };
 
-    protected changePathListener = (location: Location) => {
+    protected listenPathChange = (location: Location) => {
         if (location.state && location.state.scroll) {
             return;
         }
 
         const currentPathIndex = routeProps.findIndex(({path}) => location.pathname === path);
 
-        animateScroll.scrollTo((this.childrenDOM.item(currentPathIndex) as HTMLElement).offsetTop, {
-            duration: ScrollControl.scrollAnimationDelay,
-            delay: 0,
-            smooth: true
-        });
+        currentPathIndex + 1 && animateScroll
+            .scrollTo((this.childrenDom.item(currentPathIndex) as HTMLElement).offsetTop, {
+                duration: ScrollControl.scrollAnimationDelay,
+                delay: 0,
+                smooth: true
+            });
     }
 }

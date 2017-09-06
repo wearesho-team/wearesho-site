@@ -178,7 +178,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                         </ReactModal>
                     </OnMobileTablet>
                 </div>
-                {/*<Map/>*/}
+                <Map/>
             </section>
         );
     }

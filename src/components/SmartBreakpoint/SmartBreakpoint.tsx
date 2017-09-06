@@ -1,13 +1,14 @@
 import * as React from "react";
 import {SmartBreakpointProps, SmartBreakpointPropTypes} from "./SmartBreakpointProps";
+import {SmartBreakpointState} from "./SmartBreakpointState";
 
-export class SmartBreakpoint extends React.Component<SmartBreakpointProps, undefined> {
+export class SmartBreakpoint extends React.Component<SmartBreakpointProps, SmartBreakpointState> {
     public static propTypes = SmartBreakpointPropTypes;
 
-    protected matches: boolean = false;
-
     public componentWillMount() {
-        this.matches = window.matchMedia(`(${this.props.match})`).matches;
+        this.state = {
+            matches: window.matchMedia(`(${this.props.match})`).matches
+        };
     }
 
     public componentDidMount() {
@@ -19,15 +20,17 @@ export class SmartBreakpoint extends React.Component<SmartBreakpointProps, undef
     }
 
     public render(): any {
-        return this.matches && this.props.children;
+        return this.state.matches && this.props.children;
     }
 
     protected handleResize = () => {
-        if (window.matchMedia(`(${this.props.match})`).matches === this.matches) {
+        if (window.matchMedia(`(${this.props.match})`).matches === this.state.matches) {
             return;
         }
 
-        this.matches = window.matchMedia(`(${this.props.match})`).matches;
-        this.forceUpdate();
+        this.setState({
+            matches: window.matchMedia(`(${this.props.match})`).matches
+        });
     }
+
 }

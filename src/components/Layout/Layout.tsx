@@ -4,7 +4,8 @@ import {Router} from "react-router-dom";
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 import {getLinksWithProps} from "../../helpers/getLinksWithProps";
 import {getRoutesWithProps} from "../../helpers/getRoutesWithProps";
-import {getWholePageList} from "../../helpers/getWholePageList";
+
+import {routeProps} from "../../data/routeProps";
 
 import {Header, SideBar} from "./Partials";
 import {SoundSwitch} from "./SoundSwitch";
@@ -44,12 +45,20 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                         </SwitchControl>
                     </SmartBreakpoint>
                     <SmartBreakpoint match="max-width: 1439px">
-                        <ScrollControl>
-                            {getWholePageList()}
-                        </ScrollControl>
+                        <this.wholePageList/>
                     </SmartBreakpoint>
                 </div>
             </Router>
+        );
+    }
+
+    protected wholePageList(): JSX.Element {
+        const content = routeProps.map((prop) => <prop.component key={prop.path}/>);
+
+        return (
+            <ScrollControl>
+                {content}
+            </ScrollControl>
         );
     }
 }
