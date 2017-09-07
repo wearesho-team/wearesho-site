@@ -23,10 +23,11 @@ export class Map extends React.Component<MapProps, undefined> {
             ...this.props
         };
 
-        return (
-            <div className="map-container">
-                <GoogleMapReact {...props}/>
-            </div>
-        );
+        // return (
+        //     <div className="map-container">
+        //         <GoogleMapReact {...props}/>
+        //     </div>
+        // );
+        return null;
     }
 }
