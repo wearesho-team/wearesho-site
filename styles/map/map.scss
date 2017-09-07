@@ -14,6 +14,12 @@
 
   z-index: $under-zindex;
 
+  opacity: 0;
+
+  @include animation(show-map .5s ease);
+
+  @include animation-fill-mode(forwards);
+
   @include breakpoint($mobile-tablet) {
     width: auto;
 

@@ -100,6 +100,8 @@ body,
 
   > .section {
     will-change: transform;
+
+    @include backface-visibility(hidden);
   }
 
   &.up {
