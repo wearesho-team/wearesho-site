@@ -17,6 +17,10 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
         isModalOpen: false,
     };
 
+    public shouldComponentUpdate() {
+        return false;
+    }
+
     public render(): JSX.Element {
 
         const modalProps = {
@@ -31,6 +35,8 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                 beforeClose: "",
             },
         };
+
+        console.log("contactPage");
 
         return (
             <section className="section section-partnership">
