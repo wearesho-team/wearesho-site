@@ -17,9 +17,8 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
         isModalOpen: false,
     };
 
-    // Add `if` when props or state will be present
-    public shouldComponentUpdate(): boolean {
-        return false;
+    public shouldComponentUpdate(nextProps: undefined, nextState: ContactPageState): boolean {
+        return this.state.isModalOpen !== nextState.isModalOpen;
     }
 
     public render(): JSX.Element {
