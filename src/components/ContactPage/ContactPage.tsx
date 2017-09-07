@@ -17,7 +17,8 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
         isModalOpen: false,
     };
 
-    public shouldComponentUpdate() {
+    // Add `if` when props or state will be present
+    public shouldComponentUpdate(): boolean {
         return false;
     }
 
@@ -35,8 +36,6 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                 beforeClose: "",
             },
         };
-
-        console.log("contactPage");
 
         return (
             <section className="section section-partnership">

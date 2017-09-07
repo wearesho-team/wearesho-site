@@ -3,13 +3,12 @@ import {TimeLine} from "../TimeLine";
 
 export class MainPage extends React.Component<undefined, undefined> {
 
-    public shouldComponentUpdate() {
+    // Add `if` when props or state will be present
+    public shouldComponentUpdate(): boolean {
         return false;
     }
 
-    public render() {
-        console.log("mainPage");
-
+    public render(): JSX.Element {
         return (
             <section className="section section-main">
                 <div className="align-container">

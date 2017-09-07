@@ -24,12 +24,12 @@ export class YearItem extends React.Component<YearItemProps, undefined> {
         this.currentYearProjects = projects.filter(({date: {year}}) => year === this.props.children);
     }
 
-    public shouldComponentUpdate(): boolean {
-        return this.props.currentDate.year === this.props.children;
+    public shouldComponentUpdate(nextProps: YearItemProps): boolean {
+        return nextProps.currentDate.year === this.props.children
+            || this.props.currentDate.year === this.props.children;
     }
 
     public render() {
-        console.log("yearItem");
 
         return (
             <div className="prj-chronology__item">

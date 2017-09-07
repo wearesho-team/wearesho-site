@@ -36,14 +36,12 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
         this.clearTimeout(this.timer);
     }
 
-    public shouldComponentUpdate(nextProps: TimeLineProps, nextSate: TimeLineState) {
+    public shouldComponentUpdate(nextProps: TimeLineProps, nextSate: TimeLineState): boolean {
         return nextSate.sliderPosition !== this.state.sliderPosition
             || nextSate.sliderClassName !== this.state.sliderClassName;
     }
 
     public render(): JSX.Element {
-        console.log("timeline");
-
         const yearsList = Array.from(Array(this.props.range.max - this.props.range.min + 1))
             .fill(undefined)
             .map((x, i) => this.props.range.min + i);
@@ -68,7 +66,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
         const activeProject = projects.find(({date: {year, month}}) =>
             year === yearActive && compareMonthWithScale(month, position, TimeLine.pointsCount));
 
-        if(!activeProject) {
+        if (!activeProject) {
             return;
         }
 

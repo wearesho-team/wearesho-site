@@ -1,11 +1,10 @@
 import * as React from "react";
-import {Router, Route, Link} from "react-router-dom";
+import {Router} from "react-router-dom";
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 
 import {Header, SideBar} from "./Partials";
 import {SoundSwitch} from "./SoundSwitch";
-import {Grid} from "./Grid";
 import {TransitionSwitch} from "../TransitionSwitch";
 import {SwitchControl} from "../SwitchControl";
 import {getLinksWithProps} from "../../helpers/linksWithProps";
