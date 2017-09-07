@@ -1,9 +1,9 @@
 import {layoutGenerator} from "react-break";
 
 const layout: any = layoutGenerator({
-    desktop: 1280,
     mobile: 0,
     tablet: 768,
+    desktop: 1280
 });
 
 export const OnMobile = layout.is("mobile");
