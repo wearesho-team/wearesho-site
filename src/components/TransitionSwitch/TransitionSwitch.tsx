@@ -5,7 +5,7 @@ import {TransitionGroup, CSSTransition} from "react-transition-group";
 import {concat} from "../../helpers/concat";
 import {smartClearTimeout, ElementWithTimer} from "../../helpers/smartClearTimeout";
 
-import {TransitionSwitchProps, TransitionSwitchPropTypes, TransitionSwitchDefaultProps} from "./TransitionSwitchProps";
+import {TransitionSwitchProps, TransitionSwitchPropTypes} from "./TransitionSwitchProps";
 import {TransitionSwitchState} from "./TransitionSwitchState";
 import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 import {RouteProps} from "react-router";
@@ -16,7 +16,6 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     implements ElementWithTimer {
 
     public static propTypes = TransitionSwitchPropTypes;
-    public static defaultProps = TransitionSwitchDefaultProps;
     public static contextTypes = {
         ...RouterContextTypes,
         ...SwitchControlContextTypes
@@ -25,13 +24,15 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     public static readonly upDirectionClassName = "up";
     public static readonly downDirectionClassName = "down";
     public static readonly standByClassName = "";
-    protected static readonly additionalTimeout = 100;
+    public static readonly animationDuration = 500;
 
     public context: RouterContext & SwitchControlContext;
     public timer: any;
     public state: TransitionSwitchState = {
         directionClassName: TransitionSwitch.standByClassName,
     };
+
+    protected readonly additionalTimeout = 100;
 
     protected previousRouteKey: number = this.routeProps.key;
 
@@ -50,7 +51,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
         this.timer = setTimeout(() => {
             this.context.setScrollDisabled(false);
             this.setState({directionClassName: TransitionSwitch.standByClassName});
-        }, this.props.timeout + TransitionSwitch.additionalTimeout);
+        }, TransitionSwitch.animationDuration + this.additionalTimeout);
 
     }
 
@@ -66,11 +67,11 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     }
 
     public render(): JSX.Element {
-
         const transitionProps: any = {
             ...this.props,
             ...{
                 key: this.routeProps.key,
+                timeout: TransitionSwitch.animationDuration
             }
         };
 
