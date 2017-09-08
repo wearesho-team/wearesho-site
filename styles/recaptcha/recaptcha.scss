@@ -1,0 +1,26 @@
+body.recaptcha-check {
+
+  @include breakpoint($mobile) {
+    position: static;
+  }
+}
+
+.recaptcha-badge {
+  display: none;
+}
+
+.recaptcha-modal {
+  position: static !important;
+
+  .iframe-wrap {
+    bottom: 0 !important;
+    margin: auto !important;
+
+    -webkit-box-shadow: 0 6px 27px 0 rgba(0, 0, 0, 0.21);
+    box-shadow: 0 6px 27px 0 rgba(0, 0, 0, 0.21);
+
+    @include breakpoint($mobile) {
+      bottom: auto !important;
+    }
+  }
+}
