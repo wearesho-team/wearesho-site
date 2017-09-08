@@ -14,5 +14,6 @@ export interface ConfigInterface {
     }
     mapApiKey: string,
     mail: string,
-    tel: number,
+    reCaptchaApiKey: string,
+    tel: number
 }
