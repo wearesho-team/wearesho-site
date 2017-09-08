@@ -3,15 +3,20 @@ import * as React from "react";
 import {concat} from "../../../../helpers/concat";
 import {EmptyPointProps, EmptyPointPropTypes} from "./EmptyPointProps";
 
-export const EmptyPoint: React.SFC<EmptyPointProps> = ({sideClassName}): JSX.Element => {
-    const defaultClassName = "prj-chronology__div";
+export class EmptyPoint extends React.Component<EmptyPointProps, undefined> {
+    public static propTypes = EmptyPointPropTypes;
+    public readonly defaultClassName = "prj-chronology__div";
 
-    const className = concat(
-        defaultClassName,
-        `${defaultClassName}_${sideClassName}`
-    );
+    public shouldComponentUpdate(nextProps: EmptyPointProps): boolean {
+        return nextProps.sideClassName !== this.props.sideClassName;
+    }
 
-    return <span className={className}/>
-};
+    public render() {
+        const className = concat(
+            this.defaultClassName,
+            `${this.defaultClassName}_${this.props.sideClassName}`
+        );
 
-EmptyPoint.propTypes = EmptyPointPropTypes;
+        return <span className={className}/>
+    }
+}
