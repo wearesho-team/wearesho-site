@@ -118,7 +118,7 @@
     }
 
     &_indented {
-      margin: 4.05em 0 4.4em;
+      margin: 4.7em 0 3.25em;
 
       @include breakpoint($mobile-p) {
 
@@ -147,7 +147,7 @@
     }
 
     &_increased {
-      line-height: 40px;
+      line-height: 47px;
 
       font-size: 2em;
     }
