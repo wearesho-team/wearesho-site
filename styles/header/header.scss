@@ -54,6 +54,8 @@
 
     margin: .785em 0 0 .571em;
 
+    font-family: $font-secondary;
+
     @include breakpoint($mobile) {
 
       display: none;
