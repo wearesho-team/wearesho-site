@@ -69,7 +69,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
                 return activeZone > topOffset && activeZone < fullOffset;
             });
 
-        currentPathIndex + 1 && this.context.router.history.push(routeProps[currentPathIndex].path, {scroll: true});
+        (currentPathIndex + 1) && this.context.router.history.push(routeProps[currentPathIndex].path, {scroll: true});
     };
 
     protected handleScroll = () => {
@@ -84,7 +84,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
 
         const currentPathIndex = routeProps.findIndex(({path}) => location.pathname === path);
 
-        currentPathIndex + 1 && animateScroll
+        (currentPathIndex + 1) && animateScroll
             .scrollTo((this.childrenDom.item(currentPathIndex) as HTMLElement).offsetTop, {
                 duration: ScrollControl.scrollAnimationDelay,
                 delay: 0,

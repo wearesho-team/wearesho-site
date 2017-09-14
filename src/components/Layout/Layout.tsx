@@ -45,20 +45,12 @@ export class Layout extends React.Component<LayoutProps, undefined> {
                         </SwitchControl>
                     </SmartBreakpoint>
                     <SmartBreakpoint match="max-width: 1439px">
-                        <this.wholePageList/>
+                        <ScrollControl>
+                            {routeProps.map((prop) => <prop.component key={prop.path}/>)}
+                        </ScrollControl>
                     </SmartBreakpoint>
                 </div>
             </Router>
-        );
-    }
-
-    protected wholePageList(): JSX.Element {
-        const content = routeProps.map((prop) => <prop.component key={prop.path}/>);
-
-        return (
-            <ScrollControl>
-                {content}
-            </ScrollControl>
         );
     }
 }
