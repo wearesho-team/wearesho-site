@@ -17,6 +17,10 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
         isModalOpen: false,
     };
 
+    public shouldComponentUpdate(nextProps: undefined, nextState: ContactPageState): boolean {
+        return this.state.isModalOpen !== nextState.isModalOpen;
+    }
+
     public render(): JSX.Element {
 
         const modalProps = {

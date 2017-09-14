@@ -89,6 +89,12 @@ body,
     padding: 0 11em;
   }
 
+  > .section {
+    will-change: transform;
+
+    @include backface-visibility(hidden);
+  }
+
   &.up {
     > .section {
 

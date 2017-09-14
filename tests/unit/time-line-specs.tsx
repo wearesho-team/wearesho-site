@@ -15,7 +15,7 @@ describe("<TimeLine/>", () => {
 
     const halfOfMonth = Math.round(projects[projects.length - 1].date.month / 2);
 
-    const props = {
+    let props = {
         range: {
             max: projects[projects.length - 1].date.year,
             min: projects[0].date.year
@@ -31,6 +31,12 @@ describe("<TimeLine/>", () => {
     afterEach(() => {
         wrapper.unmount();
         timer.restore();
+        props = {
+            range: {
+                max: projects[projects.length - 1].date.year,
+                min: projects[0].date.year
+            }
+        };
     });
 
     it("should set latest project on mount", () => {
@@ -57,6 +63,22 @@ describe("<TimeLine/>", () => {
             .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
         expect(wrapper.state().sliderClassName).to.contain(TimeLine.sliderMoveClassName);
+    });
+
+    it("should return if active project dos not exist in list", () => {
+        props = {
+            range: {
+                max: projects[0].date.year - 1,
+                min: projects[0].date.year - 2
+            }
+        };
+
+        wrapper = mount(<TimeLine {...props}/>);
+
+        expect((wrapper.getNode() as any)
+            .handleChangeProject(wrapper.getDOMNode(), 0, 2021)).to.not.exist;
+
+        expect(wrapper.state().sliderClassName).to.not.contain(TimeLine.sliderMoveClassName);
     });
 
     it("should remove `move` class name from `<Slider/>` after animation delay when active project changed", () => {

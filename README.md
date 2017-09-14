@@ -1,5 +1,4 @@
 # Wearesho Studio Website
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Wearesho-team/wearesho-site/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Wearesho-team/wearesho-site/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/Wearesho-team/wearesho-site/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Wearesho-team/wearesho-site/build-status/master)
 [![Build Status](https://travis-ci.org/wearesho-team/wearesho-site.svg?branch=master)](https://travis-ci.org/wearesho-team/wearesho-site)
 [![codecov](https://codecov.io/gh/wearesho-team/wearesho-site/branch/master/graph/badge.svg)](https://codecov.io/gh/wearesho-team/wearesho-site)
