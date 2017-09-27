@@ -45,7 +45,6 @@ export class ReCaptcha extends React.Component<ReCaptchaProps, undefined> {
                 ref: this.setRecaptchaElement
             }
         };
-
         return <ReCAPTCHA {...childProps}/>
     }
 
