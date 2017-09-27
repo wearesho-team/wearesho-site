@@ -5,7 +5,7 @@ import {ReactWrapper, mount} from "enzyme";
 import {Config} from "../../src/data/Config";
 import {ReCaptcha, ReCaptchaProps} from "../../src/components/Widgets/ReCaptcha";
 
-describe("<RE/>", () => {
+describe("<ReCaptcha/>", () => {
     let wrapper: ReactWrapper<ReCaptchaProps, any>;
     let node: ReCaptcha;
 
