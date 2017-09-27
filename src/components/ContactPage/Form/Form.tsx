@@ -1,24 +1,17 @@
 import * as React from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 
 import {Config} from "../../../data/Config";
 import {OnMobile} from "../../../helpers/Breakpoints";
 
 import {SubmitButton} from "../../Buttons";
+import {ReCaptcha} from "../../Widgets/ReCaptcha";
 
 export class Form extends React.Component<undefined, undefined> {
-
-    protected recaptcha: ReCAPTCHA;
-    protected recaptchaWrap: HTMLElement;
-
-    public componentWillUnmount() {
-        this.cleanUpDOM();
-    }
 
     // TODO: input components
     public render(): JSX.Element {
         return (
-            <form className="form" onSubmit={this.validateRecaptcha}>
+            <form className="form" onSubmit={this.handleSubmit}>
                 <div className="form-half">
                     <div className="form__group form__group_has-error">
                         <input type="text" className="form__control" placeholder="Ваше имя"/>
@@ -62,10 +55,9 @@ export class Form extends React.Component<undefined, undefined> {
                     </div>
                 </div>
                 <SubmitButton className="btn btn_primary"/>
-                <ReCAPTCHA
-                    ref={this.setRecaptchaElement}
+                <ReCaptcha
                     sitekey={Config.reCaptchaApiKey}
-                    onChange={this.handleSubmit}
+                    onChange={this.handleCaptchaValidated}
                     size="invisible"
                     className="recaptcha-badge"
                 />
@@ -75,40 +67,11 @@ export class Form extends React.Component<undefined, undefined> {
 
     // TODO: confirmation
     // tslint:disable-next-line
-    protected handleSubmit = async () => {};
+    protected handleCaptchaValidated = async () => {};
 
-    protected validateRecaptcha = (e: React.FormEvent<HTMLFormElement>) => {
+    protected handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        this.recaptcha.execute();
-        this.setRecaptchaClasses();
+        ReCaptcha.execute();
     };
-
-    protected setRecaptchaElement = (el: ReCAPTCHA) => this.recaptcha = el;
-
-    protected setRecaptchaClasses() {
-        // frame
-        let element = document.body.querySelector("iframe[title~='recaptcha']");
-
-        if (!element) {
-            return;
-        }
-
-        document.body.classList.add("recaptcha-check");
-
-        (element.parentNode as HTMLElement).className = "iframe-wrap";
-
-        while ((element.parentNode as HTMLElement).tagName !== "BODY") {
-            element = element.parentNode as HTMLElement;
-        }
-
-        // root parent frame
-        element.className = "recaptcha-modal";
-        this.recaptchaWrap = element as HTMLElement;
-    }
-
-    protected cleanUpDOM() {
-        this.recaptchaWrap && document.body.removeChild(this.recaptchaWrap);
-        document.body.classList.remove("recaptcha-check");
-    }
 }
