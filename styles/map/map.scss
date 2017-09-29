@@ -12,8 +12,6 @@
 
   pointer-events: none;
 
-  z-index: $under-zindex;
-
   opacity: 0;
 
   @include animation(show-map .5s ease);
@@ -71,6 +69,14 @@
 
       display: none !important;
     }
+
+    //left: 23px !important;
+    //top: 112px !important;
+    //
+    //@include breakpoint($tablet-laptop) {
+    //  left: 51px !important;
+    //  top: 175px !important;
+    //}
   }
 
 }

@@ -10,6 +10,7 @@ import {MapDefaultProps, MapProps, MapPropTypes} from "./MapProps";
 
 import {TransitionSwitch} from "../../TransitionSwitch";
 import {MapState} from "./MapState";
+import {Marker} from "./Marker";
 
 export class Map extends React.Component<MapProps, MapState> implements ElementWithTimer {
     public static defaultProps = MapDefaultProps;
@@ -19,6 +20,8 @@ export class Map extends React.Component<MapProps, MapState> implements ElementW
     public state: MapState = {
         readyToMount: false
     };
+
+    public element: GoogleMapReact;
 
     protected readonly additionalTimeout = 100;
     protected clearTimeout = smartClearTimeout.bind(this);
@@ -43,14 +46,37 @@ export class Map extends React.Component<MapProps, MapState> implements ElementW
                     key: Config.mapApiKey,
                     language: "en"
                 },
+                yesIWantToUseGoogleMapApiInternals: true,
+                onGoogleApiLoaded: this.onMapLoad,
+                ref: this.setElement
             },
             ...this.props
         };
 
         return this.state.readyToMount && (
             <div className="map-container">
-                <GoogleMapReact {...props}/>
+                <GoogleMapReact {...props}>
+                    {this.Marker}
+                </GoogleMapReact>
             </div>
+        );
+    }
+
+    protected setElement = (element: GoogleMapReact) => element && (this.element = element);
+
+    protected onMapLoad = () => {
+        const map = this.element as any;
+
+        map && map.maps_.event.addDomListener(window, "resize", () => {
+            map.map_ && map.map_.setCenter(this.props.center);
+        });
+    };
+
+    protected get Marker(): JSX.Element {
+        return this.props.children && (
+            <Marker lat={this.props.center.lat} lng={this.props.center.lng}>
+                {this.props.children}
+            </Marker>
         );
     }
 }

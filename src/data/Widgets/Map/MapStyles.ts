@@ -22,7 +22,7 @@ export const styles = [
         elementType: "labels.icon",
         stylers: [
             {
-                visibility: "off"
+                // visibility: "off"
             }
         ]
     },
