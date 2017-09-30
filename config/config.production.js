@@ -6,6 +6,10 @@ const config = {
     },
     location: {
         city: "Харьков",
+        coords: {
+            lat: 49.9808100,
+            lng: 36.2527200,
+        },
         country: "Украина",
     },
     mail: "office@wearesho.com",

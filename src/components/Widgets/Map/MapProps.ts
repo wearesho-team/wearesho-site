@@ -1,15 +1,18 @@
 import {Props} from "google-map-react";
 import * as PropTypes from "prop-types";
 
-export type MapProps = Props;
+export interface MapProps extends Props {
+    marker?: JSX.Element
+}
 
 export const MapDefaultProps  = {
-    center: {lat: 52.78, lng: 35.18},
+    center: {lat: 50, lng: 36.229167},
     zoom: 5,
     scrollwheel: false,
 };
 
 export const MapPropTypes = {
+    marker: PropTypes.element,
     center: PropTypes.shape({
         lat: PropTypes.number.isRequired,
         lng: PropTypes.number.isRequired,
