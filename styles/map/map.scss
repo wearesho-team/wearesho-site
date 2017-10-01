@@ -12,8 +12,6 @@
 
   pointer-events: none;
 
-  z-index: $under-zindex;
-
   opacity: 0;
 
   @include animation(show-map .5s ease);
