@@ -2,7 +2,7 @@ import * as React from "react";
 
 export class Header extends React.Component<undefined, undefined> {
 
-    public render() {
+    public render(): JSX.Element {
         return (
             <header className="header">
                 <a href="#" className="logo">

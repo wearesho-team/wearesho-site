@@ -27,8 +27,8 @@ $tablet-l: (min-width 1024px) (max-width 1024px);
 $laptop: (min-width 1025px) (max-width 1440px);
 $laptop-not-large: (min-width 1025px) (max-width 1439px) (max-height 899px);
 $laptop-small: (min-width 1025px) (max-width 1279px);
-$laptop-medium: (min-width 1280px) (max-width 1280px);
-$laptop-large: (min-width 1281px) (max-width 1440px) (min-height 900px);
+$laptop-medium: (min-width 1280px) (max-width 1439px);
+$laptop-large: (min-width 1440px) (max-width 1440px) (min-height 900px);
 
 // Mobile & laptop
 $mobile-tablet: $mobile, $tablet;
@@ -37,7 +37,7 @@ $mobile-tablet: $mobile, $tablet;
 $tablet-laptop: $tablet, $laptop-not-large;
 
 // Fonts
-$font-primary: 'Roboto Mono', sans-serif;
+$font-primary: 'Roboto Mono', monospace;
 $font-secondary: 'Roboto', sans-serif;
 $font-style-thin: 100;
 $font-style-light: 300;

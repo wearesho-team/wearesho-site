@@ -6,7 +6,7 @@ export class Grid extends React.Component<GridProps, undefined> {
 
     public static propTypes = GridPropTypes;
 
-    public render() {
+    public render(): JSX.Element {
         const columns = Array(this.props.size)
             .fill(undefined)
             .map((x, i) => <li className="grid__col" key={i}/>);

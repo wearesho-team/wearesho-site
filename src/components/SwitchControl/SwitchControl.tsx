@@ -33,7 +33,7 @@ export class SwitchControl extends React.Component<any, undefined> {
         window.removeEventListener("keydown", this.handleKeyPress);
     }
 
-    public render() {
+    public render(): JSX.Element {
         return this.props.children;
     }
 
@@ -48,7 +48,10 @@ export class SwitchControl extends React.Component<any, undefined> {
 
         const nextRouteIndex = routeProps.findIndex(({path}) => path === pathname) + routeIndexDelta;
 
-        routeProps[nextRouteIndex] && this.context.router.history.push(routeProps[nextRouteIndex].path);
+        if (routeProps[nextRouteIndex]) {
+            this.context.router.history.push(routeProps[nextRouteIndex].path);
+            this.forceUpdate();
+        }
     }
 
     protected handleKeyPress = (event: KeyboardEvent) => {
