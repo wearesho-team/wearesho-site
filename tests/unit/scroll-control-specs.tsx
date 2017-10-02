@@ -33,7 +33,7 @@ describe("<ScrollControl/>", () => {
             </Router>
         );
 
-        node = wrapper.find(ScrollControl).getNode() as any;
+        node = wrapper.find(ScrollControl).instance() as any;
         DOMNode = wrapper.find(ScrollControl).getDOMNode();
         timer = useFakeTimers();
     });

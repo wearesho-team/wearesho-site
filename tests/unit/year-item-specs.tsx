@@ -31,7 +31,7 @@ describe("<YearItem/>", () => {
     beforeEach(() => {
         wrapper = mount(<YearItem {...props}/>);
 
-        node = wrapper.getNode() as any;
+        node = wrapper.instance() as any;
         DOMNode = wrapper.getDOMNode();
     });
 

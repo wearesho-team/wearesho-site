@@ -6,7 +6,6 @@ import {useFakeTimers, SinonFakeTimers} from "sinon";
 import {TimeLine, TimeLineState, TimeLineProps} from "../../src/components/TimeLine";
 import {YearItem} from "../../src/components/TimeLine/YearItem";
 import {projects} from "../../src/data/Projects";
-import {Slider} from "../../src/components/TimeLine/Slider";
 
 describe("<TimeLine/>", () => {
     let wrapper: ReactWrapper<TimeLineProps, TimeLineState>;
@@ -49,17 +48,17 @@ describe("<TimeLine/>", () => {
     });
 
     it("should render <Slider/> only if `state.sliderPosition` not equals zero", () => {
-        expect(wrapper.find(Slider)).to.not.exist;
-
         wrapper.setState({
             sliderPosition: 1
         });
 
-        expect(wrapper.find(Slider)).to.exist;
+        expect(
+            Array.from(wrapper.getDOMNode().children).find(({className}) => !className.search("chronology-slider"))
+        ).to.exist;
     });
 
     it("should set `move` class name to `<Slider/>` when active project changed", () => {
-        (wrapper.getNode() as any)
+        (wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
         expect(wrapper.state().sliderClassName).to.contain(TimeLine.sliderMoveClassName);
@@ -75,14 +74,14 @@ describe("<TimeLine/>", () => {
 
         wrapper = mount(<TimeLine {...props}/>);
 
-        expect((wrapper.getNode() as any)
+        expect((wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), 0, 2021)).to.not.exist;
 
         expect(wrapper.state().sliderClassName).to.not.contain(TimeLine.sliderMoveClassName);
     });
 
     it("should remove `move` class name from `<Slider/>` after animation delay when active project changed", () => {
-        (wrapper.getNode() as any)
+        (wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
         timer.tick(animationDuration / 2);

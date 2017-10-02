@@ -47,7 +47,7 @@ describe("<SwitchControl/>", () => {
                 </SwitchControl>
             </Router>
         );
-        component = wrapper.find(SwitchControl).getNode();
+        component = wrapper.find(SwitchControl).instance();
         timer = useFakeTimers();
     });
 
