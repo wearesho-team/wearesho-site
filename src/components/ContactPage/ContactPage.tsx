@@ -71,8 +71,8 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                             <OnDesktop>
                                 <div>
                                     <h4 className="section__subtitle">Контакты</h4>
-                                    <a href={`tel:+${Config.tel}`} className="contact-info__link">
-                                        {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
+                                    <a href={`tel:+${Config.phone}`} className="contact-info__link">
+                                        {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                     </a>
                                     <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                     <p className="contact-info__text contact-info__text_indented">
@@ -99,8 +99,8 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     </p>
                                     <h4 className="section__subtitle">Контакты</h4>
                                     <div className="align-container">
-                                        <a href={`tel:+${Config.tel}`} className="contact-info__link">
-                                            {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
+                                        <a href={`tel:+${Config.phone}`} className="contact-info__link">
+                                            {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                         </a>
                                         <a href={`mailto:${Config.mail}`} className="contact-info__link">
                                             {Config.mail}
@@ -129,8 +129,8 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     </p>
                                     <h4 className="section__subtitle">Контакты</h4>
                                     <div className="align-container">
-                                        <a href={`tel:+${Config.tel}`} className="contact-info__link">
-                                            {formatNumber(Config.tel, "xxx xx xxx-xx-xx")}
+                                        <a href={`tel:+${Config.phone}`} className="contact-info__link">
+                                            {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                         </a>
                                         <a href={`mailto:${Config.mail}`} className="contact-info__link">
                                             {Config.mail}
@@ -168,7 +168,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                         </ReactModal>
                     </OnMobileTablet>
                 </div>
-                <Map center={Config.location.coords}>
+                <Map center={Config.location.coordinates}>
                     <div className="location-indicator">
                         <div className="location-indicator__bar"/>
                         <div className="location-indicator__marker"/>
@@ -179,10 +179,10 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                             </div>
                             <div className="align-container">
                                 <span className="location-indicator__info_coordinates">
-                                    {Config.location.coords.lat}&deg;
+                                    {Config.location.coordinates.lat}&deg;
                                 </span>
                                 <span className="location-indicator__info_coordinates">
-                                    {Config.location.coords.lng}&deg;
+                                    {Config.location.coordinates.lng}&deg;
                                 </span>
                             </div>
                         </div>

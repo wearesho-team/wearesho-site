@@ -5,16 +5,17 @@ import {ReactWrapper, mount} from "enzyme";
 import {Form} from "../../src/components/ContactPage/Form";
 
 describe("<Form/>", () => {
-
     let wrapper: ReactWrapper<any, any>;
 
     beforeEach(() => {
         wrapper = mount(<Form/>);
     });
 
-    afterEach(() => wrapper.unmount());
+    afterEach(() => {
+        wrapper.unmount();
+    });
 
-    it("should prevent default on submit", () => {
+    it("should prevent default on validating ReCAPTCHA", () => {
         let isDefaultPrevented = false;
 
         wrapper.simulate("submit", {
