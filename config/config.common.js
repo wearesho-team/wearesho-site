@@ -6,10 +6,14 @@ module.exports = {
     },
     location: {
         city: "Харьков",
+        coordinates: {
+            lat: 49.98081,
+            lng: 36.25272,
+        },
         country: "Украина",
     },
     mail: "office@wearesho.com",
     mapApiKey: "AIzaSyDAq3RWOHVldSRJRvX90QG9IOkNMApLPwM",
+    phone: 380660249402,
     reCaptchaApiKey: "6Leq6S8UAAAAAD7G73kEGY7Y4_TiD2HtQ-y_simp",
-    tel: 380660249402,
 };

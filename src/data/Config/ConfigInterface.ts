@@ -2,7 +2,7 @@ export interface ConfigInterface {
     location: {
         city: string,
         country: string,
-        coords: {
+        coordinates: {
             lat: number,
             lng: number
         }
@@ -15,5 +15,5 @@ export interface ConfigInterface {
     mapApiKey: string,
     mail: string,
     reCaptchaApiKey: string,
-    tel: number
+    phone: number
 }
