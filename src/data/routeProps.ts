@@ -11,5 +11,5 @@ export const routeProps = [
         exact: false,
         path: "/contact",
         component: ContactPage,
-    },
+    }
 ];

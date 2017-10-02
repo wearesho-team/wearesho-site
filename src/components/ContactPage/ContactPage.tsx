@@ -144,20 +144,6 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 </div>
                             </OnMobile>
                         </div>
-                        <div className="location-indicator">
-                            <div className="location-indicator__bar"/>
-                            <div className="location-indicator__marker"/>
-                            <div className="location-indicator__info">
-                                <div className="align-container">
-                                    <span className="location-indicator__info_country">Ukraine</span>
-                                    <span className="location-indicator__info_city">Kharkiv</span>
-                                </div>
-                                <div className="align-container">
-                                    <span className="location-indicator__info_coordinates">49.9808100&deg;</span>
-                                    <span className="location-indicator__info_coordinates">36.2527200&deg;</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <OnMobileTablet>
@@ -182,7 +168,26 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                         </ReactModal>
                     </OnMobileTablet>
                 </div>
-                <Map/>
+                <Map center={Config.location.coords}>
+                    <div className="location-indicator">
+                        <div className="location-indicator__bar"/>
+                        <div className="location-indicator__marker"/>
+                        <div className="location-indicator__info">
+                            <div className="align-container">
+                                <span className="location-indicator__info_country">Ukraine</span>
+                                <span className="location-indicator__info_city">Kharkiv</span>
+                            </div>
+                            <div className="align-container">
+                                <span className="location-indicator__info_coordinates">
+                                    {Config.location.coords.lat}&deg;
+                                </span>
+                                <span className="location-indicator__info_coordinates">
+                                    {Config.location.coords.lng}&deg;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </Map>
             </section>
         );
     }
@@ -190,5 +195,4 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
     protected handleCloseModal = () => this.setState({isModalOpen: false});
 
     protected handleOpenModal = () => this.setState({isModalOpen: true});
-
 }

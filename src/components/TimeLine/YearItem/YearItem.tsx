@@ -29,7 +29,7 @@ export class YearItem extends React.Component<YearItemProps, undefined> {
             || this.props.currentDate.year === this.props.children;
     }
 
-    public render() {
+    public render(): JSX.Element {
 
         return (
             <div className="prj-chronology__item">

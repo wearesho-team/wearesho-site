@@ -10,7 +10,7 @@ import {MainPage} from "../../src/components/MainPage";
 import {ContactPage} from "../../src/components/ContactPage";
 import {SideBar, Header} from "../../src/components/Layout/Partials";
 import {SoundSwitch} from "../../src/components/Layout/SoundSwitch";
-import {Link} from "react-router-dom";
+import {getLinksWithProps} from "../../src/helpers/getLinksWithProps";
 
 describe("<Layout>", () => {
     let wrapper: ReactWrapper<LayoutProps, any>;
@@ -74,8 +74,7 @@ describe("<Layout>", () => {
         const expectElementsExist = () => {
             expect(wrapper).to.containMatchingElement(
                 <SideBar>
-                    <Link className="main-nav__link" to="/">+</Link>
-                    <Link className="main-nav__link" to="/contact">+</Link>
+                    {getLinksWithProps()}
                 </SideBar>
             );
             expect(wrapper).to.containMatchingElement(<Header/>);
