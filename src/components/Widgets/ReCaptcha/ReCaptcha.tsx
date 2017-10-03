@@ -33,14 +33,10 @@ export class ReCaptcha extends AbstractWidget<ReCaptchaProps> {
             return;
         }
 
-        let element = document.body.querySelector("iframe[title~='recaptcha']");
-
-        if (!(element instanceof HTMLElement)) {
-            return;
-        }
+        const element = document.body.querySelector("iframe[title~='recaptcha']");
 
         document.body.classList.add(ReCaptcha.bodyClassName);
-        (element.parentNode as HTMLElement).classList.add("iframe-wrap");
+        element && (element.parentNode as HTMLElement).classList.add("iframe-wrap");
 
         (addedNodes[0] as HTMLElement).classList.add(ReCaptcha.modalClassName);
     });
@@ -52,13 +48,14 @@ export class ReCaptcha extends AbstractWidget<ReCaptchaProps> {
     }
 
     public componentWillUnmount() {
-        this.cleanUpDom();
         this.clearTimeout(this.timer);
+        this.cleanUpDom();
         this.observer.disconnect();
     }
 
     public render(): JSX.Element {
         if (!this.state.readyToMount) {
+            // tslint:disable:no-null-keyword
             return null;
         }
 

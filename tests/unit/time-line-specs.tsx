@@ -28,14 +28,14 @@ describe("<TimeLine/>", () => {
     });
 
     afterEach(() => {
-        wrapper.unmount();
-        timer.restore();
         props = {
             range: {
                 max: projects[projects.length - 1].date.year,
                 min: projects[0].date.year
             }
         };
+        timer.restore();
+        wrapper.unmount();
     });
 
     it("should set latest project on mount", () => {
@@ -58,6 +58,7 @@ describe("<TimeLine/>", () => {
     });
 
     it("should set `move` class name to `<Slider/>` when active project changed", () => {
+        timer.restore();
         (wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
@@ -81,15 +82,14 @@ describe("<TimeLine/>", () => {
     });
 
     it("should remove `move` class name from `<Slider/>` after animation delay when active project changed", () => {
+        wrapper = mount(<TimeLine {...props}/>);
+
         (wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
         timer.tick(animationDuration / 2);
-
         expect(wrapper.state().sliderClassName).to.contain(TimeLine.sliderMoveClassName);
-
         timer.tick(animationDuration / 2);
-
         expect(wrapper.state().sliderClassName).to.not.contain(TimeLine.sliderMoveClassName);
     });
 

@@ -22,8 +22,8 @@ describe("<Map/>", () => {
     });
 
     afterEach(() => {
-        wrapper.unmount();
         timer.restore();
+        wrapper.unmount();
     });
 
     // TODO: lang assertion

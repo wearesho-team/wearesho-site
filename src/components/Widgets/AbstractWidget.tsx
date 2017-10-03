@@ -4,12 +4,13 @@ import {AbstractWidgetState} from "./AbstractWidgetState";
 import {TransitionSwitch} from "../TransitionSwitch/TransitionSwitch";
 
 export abstract class AbstractWidget<T>extends React.Component<T, AbstractWidgetState> implements ElementWithTimer {
-    protected additionalTimeout = 100;
-
     public timer: any;
     public state: AbstractWidgetState = {
         readyToMount: false
     };
+
+    protected additionalTimeout = 100;
+    protected clearTimeout = smartClearTimeout.bind(this);
 
     public componentWillMount() {
         this.clearTimeout(this.timer);
@@ -20,6 +21,4 @@ export abstract class AbstractWidget<T>extends React.Component<T, AbstractWidget
     }
 
     public abstract componentWillUnmount();
-
-    protected clearTimeout = smartClearTimeout.bind(this);
 }

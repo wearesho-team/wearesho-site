@@ -52,8 +52,8 @@ describe("<SwitchControl/>", () => {
     });
 
     afterEach(() => {
-        wrapper.unmount();
         timer.restore();
+        wrapper.unmount();
     });
 
     it("should set scroll disabled for 600ms when URL change", () => {

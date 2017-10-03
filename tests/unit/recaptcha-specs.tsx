@@ -14,6 +14,7 @@ describe("<ReCaptcha/>", () => {
 
     const additionalDuration = 100;
     const animationDuration = TransitionSwitch.animationDuration + additionalDuration;
+    const onChangeHandler = () => undefined;
 
     let recaptcha: HTMLElement;
 
@@ -29,11 +30,8 @@ describe("<ReCaptcha/>", () => {
         recaptcha.setAttribute("style", "height: 10px");
         document.body.appendChild(recaptcha);
 
-        const onChangeHandler = () => undefined;
-
         (MutationObserver as any).mutations[0].type = "childList";
         (MutationObserver as any).mutations[0].addedNodes[0] = recaptcha as Node;
-        (new MutationObserver(() => undefined)).takeRecords();
 
         timer = useFakeTimers();
 
@@ -48,11 +46,14 @@ describe("<ReCaptcha/>", () => {
 
         timer.tick(animationDuration);
         node = wrapper.instance() as any;
+
+        // just for coverage
+        ReCaptcha.execute();
     });
 
     afterEach(() => {
-        wrapper.unmount();
         timer.restore();
+        wrapper.unmount();
         (MutationObserver as any).mutations[0].type = undefined;
         (MutationObserver as any).mutations[0].addedNodes[0] = undefined;
     });
@@ -64,24 +65,29 @@ describe("<ReCaptcha/>", () => {
         expect(document.body.querySelector(".recaptcha-modal")).to.exist;
     });
 
-    it("should not set classes on mount when recaptcha wrap is not exist", () => {
-        document.body.querySelector("iframe[title~='recaptcha']").remove();
-
-        (MutationObserver as any).callBack((MutationObserver as any).mutations);
-
-       const a  = (MutationObserver as any).callBack;
-
+    it("should remove classes for ReCAPTCHA on unmount", () => {
+        wrapper.unmount();
         expect(document.body.className).to.not.contain("recaptcha-check");
 
         expect(document.body.querySelector(".iframe-wrap")).to.not.exist;
         expect(document.body.querySelector(".recaptcha-modal")).to.not.exist;
     });
 
-    it("should remove classes for ReCAPTCHA on unmount", () => {
+    it("should not set class `recaptchaModal` if observer catch wrong element", () => {
         wrapper.unmount();
-        expect(document.body.className).to.not.contain("recaptcha-check");
 
-        expect(document.body.querySelector(".iframe-wrap")).to.not.exist;
+        (MutationObserver as any).mutations[0].type = "childList";
+        (MutationObserver as any).mutations[0].addedNodes[0] = document.createElement("span") as Node;
+
+        wrapper = mount(
+            <ReCaptcha
+                sitekey={Config.reCaptchaApiKey}
+                onChange={onChangeHandler}
+                size="invisible"
+                className="recaptcha-badge"
+            />
+        );
+
         expect(document.body.querySelector(".recaptcha-modal")).to.not.exist;
     });
 });

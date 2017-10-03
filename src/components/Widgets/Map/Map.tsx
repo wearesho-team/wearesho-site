@@ -21,6 +21,7 @@ export class Map extends AbstractWidget<MapProps> {
 
     public render(): JSX.Element {
         if (!this.state.readyToMount) {
+            // tslint:disable:no-null-keyword
             return null;
         }
 

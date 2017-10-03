@@ -47,8 +47,8 @@ describe("<TransitionSwitch/>", () => {
     });
 
     afterEach(() => {
-        wrapper.unmount();
         timer.restore();
+        wrapper.unmount();
     });
 
     it("should render one page on mount", () => {
