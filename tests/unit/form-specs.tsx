@@ -15,7 +15,7 @@ describe("<Form/>", () => {
         wrapper.unmount();
     });
 
-    it("should prevent default on submit", () => {
+    it("should prevent default on validating ReCAPTCHA", () => {
         let isDefaultPrevented = false;
 
         wrapper.simulate("submit", {
