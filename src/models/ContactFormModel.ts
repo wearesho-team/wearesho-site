@@ -1,51 +1,61 @@
 import {Model} from "react-context-form";
-import {IsDefined, IsEmail, IsString, Length, Matches, MaxLength, MinLength} from "class-validator";
-import Match = Chai.Match;
+import {IsDefined, IsEmail, Matches, MaxLength, MinLength} from "class-validator";
 
-export const NameMinLength = 2;
-export const NameMaxLength = 24;
-
-export const PhoneMaxLength = 16;
-
-export const ContactFromDefaultValue = "09:00";
-export const ContactToDefaultValue = "18:00";
+import {NameRange, phonePattern, TimeDefaults} from "./common/Rules";
 
 export class ContactFormModel extends Model {
-    @IsDefined()
-    @Matches(/\d{9,}/, {
+    @Matches(phonePattern, {
         message: "Некорректный телефон",
+        groups: ["phone"]
     })
-    @MaxLength(PhoneMaxLength, {
-        message: "Телефон должен не превышать $constraint1 символов",
+    @IsDefined({
+        message: "Обязательно для заполнения",
+        groups: ["phone"]
     })
     public phone;
 
-    @IsDefined()
     @IsEmail({}, {
         message: "Некорректный E-Mail",
+        groups: ["mail"]
+    })
+    @IsDefined({
+        message: "Обязательно для заполнения",
+        groups: ["mail"]
     })
     public mail;
 
-    @IsDefined()
-    @IsString()
-    @MinLength(NameMinLength, {
+    @MinLength(NameRange.min, {
         message: "Имя должно содержать не менее $constraint1 букв",
+        groups: ["name"]
     })
-    @MaxLength(NameMaxLength, {
+    @MaxLength(NameRange.max, {
         message: "Имя должно содержать не более $constraint1 букв",
+        groups: ["name"]
+    })
+    @IsDefined({
+        message: "Обязательно для заполнения",
+        groups: ["name"]
     })
     public name;
 
     @IsDefined()
-    @Matches(/\d{1,2}\:\d{2}/)
-    public from = ContactFromDefaultValue;
+    public from = TimeDefaults.from;
 
     @IsDefined()
-    @Matches(/\d{2}\:\d{2}/)
-    public to = ContactToDefaultValue;
+    public to = TimeDefaults.to;
 
-    public attributes(): string[] {
+    public attributes() {
         return ["phone", "mail", "name", "from", "to"];
+    }
+
+    public groups() {
+        return {
+            phone: ["phone"],
+            mail: ["mail"],
+            name: ["name"],
+            from: ["from"],
+            to: ["to"]
+        }
     }
 }
 

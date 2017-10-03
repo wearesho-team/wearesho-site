@@ -1,18 +1,22 @@
 import * as React from "react";
-import {AutoValidate, Form, FormGroup, Hint, Input, Label} from "react-context-form";
+import {
+    AutoValidate,
+    Form,
+    FormGroup,
+    Hint,
+    Input,
+    Label
+} from "react-context-form";
 
 import {OnMobile} from "../../../helpers/Breakpoints";
 
 import {
     ContactFormModel,
-    ContactFromDefaultValue,
-    ContactToDefaultValue,
     instantiateContactFormModel,
-    NameMaxLength,
-    PhoneMaxLength
 } from "../../../models/ContactFormModel";
 
 import {SubmitButton} from "../../Buttons/SubmitButton";
+import {NameRange, PhoneRange, TimeDefaults} from "../../../models/common/Rules";
 
 export class ContactForm extends React.Component<undefined, undefined> {
 
@@ -25,30 +29,39 @@ export class ContactForm extends React.Component<undefined, undefined> {
             >
                 <div className="form-half">
                     <FormGroup className="form__group" errorClassName="form__group_has-error" name="name">
-                        <Input
-                            type="text"
-                            className="form__control"
-                            placeholder="Ваше имя"
-                            maxLength={NameMaxLength}
-                            required
-                        />
+                        <AutoValidate groupName="name" onLength={NameRange.min}>
+                            <Input
+                                className="form__control"
+                                placeholder="Ваше имя"
+                                maxLength={NameRange.max}
+                                required
+                            />
+                        </AutoValidate>
                         <span className="form__control_underline"/>
                         <Hint className="form__error-text"/>
                     </FormGroup>
                     <div className="form__group_inline">
                         <FormGroup name="phone" className="form__group" errorClassName="form__group_has-error">
-                            <Input
-                                type="tel"
-                                className="form__control"
-                                placeholder="Телефон"
-                                maxLength={PhoneMaxLength}
-                                required
-                            />
+                            <AutoValidate groupName="phone" onLength={PhoneRange.min}>
+                                <Input
+                                    className="form__control"
+                                    placeholder="Телефон"
+                                    type="number"
+                                    required
+                                />
+                            </AutoValidate>
                             <span className="form__control_underline"/>
                             <Hint className="form__error-text"/>
                         </FormGroup>
                         <FormGroup className="form__group" errorClassName="form__group_has-error" name="mail">
-                            <Input type="text" className="form__control" placeholder="Эл.почта" required/>
+                            <AutoValidate groupName="mail">
+                                <Input
+                                    className="form__control"
+                                    type="email"
+                                    placeholder="Эл.почта"
+                                    required
+                                />
+                            </AutoValidate>
                             <span className="form__control_underline"/>
                             <Hint className="form__error-text"/>
                         </FormGroup>
@@ -61,10 +74,9 @@ export class ContactForm extends React.Component<undefined, undefined> {
                         <FormGroup name="from" className="spinner">
                             <Label className="spinner__label">с</Label>
                             <Input
-                                type="text"
                                 className="form__control"
+                                defaultValue={TimeDefaults.from}
                                 required
-                                defaultValue={ContactFromDefaultValue}
                             />
                             <div className="spinner__controls">
                                 <button className="btn btn_inc"/>
@@ -76,7 +88,11 @@ export class ContactForm extends React.Component<undefined, undefined> {
                         </OnMobile>
                         <FormGroup name="to" className="spinner">
                             <Label className="spinner__label">до</Label>
-                            <Input type="text" className="form__control" required defaultValue={ContactToDefaultValue}/>
+                            <Input
+                                className="form__control"
+                                defaultValue={TimeDefaults.from}
+                                required
+                            />
                             <div className="spinner__controls">
                                 <button className="btn btn_inc"/>
                                 <button className="btn btn_dec"/>
