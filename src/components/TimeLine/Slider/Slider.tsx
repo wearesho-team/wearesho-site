@@ -9,7 +9,7 @@ export const Slider: React.SFC<SliderProps> = (props): JSX.Element => {
         left: `${props.offset}px`
     };
 
-    const getFormattedDate = () => {
+    const getFormattedDate = (): string => {
         const {date} = props.project;
 
         return `${date.day}.${String("0" + date.month).slice(-2)}.${date.year}`;

@@ -68,7 +68,7 @@ declare namespace CodeceptJS {
     cancelPopup: () => any; 
     seeInPopup: (text) => any; 
     pressKey: (key) => any; 
-    resizeWindow: (resizeWindow) => any; 
+    resizeWindow: (width: number, height: number) => any;
     dragAndDrop: (srcElement, destElement) => any; 
     closeOtherTabs: (closeOtherTabs) => any; 
     wait: (sec) => any; 

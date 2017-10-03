@@ -8,7 +8,6 @@ import {createMemoryHistory, History} from "history";
 
 import {TransitionSwitch} from "../../src/components/TransitionSwitch";
 import {SwitchControl} from "../../src/components/SwitchControl";
-import {getRoutesWithProps} from "../../src/helpers/routesWithProps";
 import {routeProps} from "../../src/data/routeProps";
 
 describe("<SwitchControl/>", () => {

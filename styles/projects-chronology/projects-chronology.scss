@@ -251,24 +251,5 @@
         }
       }
     }
-
-    &.is-active {
-
-      &:before {
-        width: 0;
-        height: 0;
-
-        opacity: 0;
-
-        transition-delay: .3s;
-      }
-
-      &:after {
-
-        height: 12px;
-
-        transition-delay: .3s;
-      }
-    }
   }
 }

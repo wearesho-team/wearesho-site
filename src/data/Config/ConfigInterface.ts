@@ -2,6 +2,10 @@ export interface ConfigInterface {
     location: {
         city: string,
         country: string,
+        coordinates: {
+            lat: number,
+            lng: number
+        }
     },
     links: {
         behance: string,
@@ -10,5 +14,6 @@ export interface ConfigInterface {
     }
     mapApiKey: string,
     mail: string,
-    tel: number,
+    reCaptchaApiKey: string,
+    phone: number
 }

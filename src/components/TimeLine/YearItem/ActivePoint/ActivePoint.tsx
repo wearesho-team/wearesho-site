@@ -7,9 +7,9 @@ import {ActivePointProps, ActivePointPropTypes} from "./ActivePointProps";
 export class ActivePoint extends React.Component<ActivePointProps, undefined> {
     public static propTypes = ActivePointPropTypes;
 
-    public static  readonly defaultClassName = "prj-chronology__div";
-    public static  readonly filledClassName = "is-filled";
-    public static  readonly activeClassName = "is-active";
+    public static readonly defaultClassName = "prj-chronology__div";
+    public static readonly filledClassName = "is-filled";
+    public static readonly activeClassName = "is-active";
 
     protected element: HTMLElement;
 
@@ -21,7 +21,11 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
         this.props.onProjectChange(this.element, this.props.index);
     }
 
-    public render() {
+    public shouldComponentUpdate(nextProps: ActivePointProps): boolean {
+        return nextProps.isActive !== this.props.isActive;
+    }
+
+    public render(): JSX.Element {
         const className = concat(
             ActivePoint.defaultClassName,
             `${ActivePoint.defaultClassName}_${this.props.sideClassName}`,

@@ -49,6 +49,11 @@
 
   &.section-partnership {
 
+    @include breakpoint($laptop-not-large) {
+
+      padding-bottom: 9.75em;
+    }
+
     .section__half {
       padding-top: 3.5em;
 
@@ -321,6 +326,7 @@
         }
 
         @include breakpoint($laptop-large) {
+          left: -31px;
 
           font-size: 20px;
         }

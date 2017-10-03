@@ -59,12 +59,12 @@ describe("<YearItem/>", () => {
     });
 
     it("should add `muted` class name to label for future years", () => {
-        expect(DOMNode.getElementsByClassName(node.yearClassName)[0].className).to.not.contain(node.yearMutedClassName);
-
         props = {
             ...props,
             children: futureYear
         };
+
+        expect(DOMNode.getElementsByClassName(node.yearClassName)[0].className).to.not.contain(node.yearMutedClassName);
 
         wrapper.setProps(props);
 
