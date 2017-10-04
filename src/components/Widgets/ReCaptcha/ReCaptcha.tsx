@@ -25,8 +25,8 @@ export class ReCaptcha extends AbstractWidget<ReCaptchaProps> {
             && addedNodes[0].attributes.getNamedItem("style");
 
         // this is magic too
-        if (type !== "childList"
-            || addedNodes.length !== 1
+        if (
+            type !== "childList"
             || addedNodes[0].nodeName.toUpperCase() !== "DIV"
             || !isStyleAttrOnly
         ) {
