@@ -60,7 +60,6 @@ export class SwitchControl extends React.Component<any, undefined> {
         } else if (event.key === "ArrowUp") {
             this.changeRoute(-1);
         }
-
     };
 
     protected handleWheel = (event: MouseWheelEvent) => {

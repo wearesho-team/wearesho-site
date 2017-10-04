@@ -2,8 +2,6 @@ import * as React from "react";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
-import {SinonSpy, spy} from "sinon";
-
 import {ActivePoint, ActivePointProps} from "../../src/components/TimeLine/YearItem/ActivePoint";
 
 describe("<ActivePoint/>", () => {
@@ -28,7 +26,7 @@ describe("<ActivePoint/>", () => {
     beforeEach(() => {
         wrapper = mount(<ActivePoint {...props}/>);
 
-        node = wrapper.getNode() as any;
+        node = wrapper.instance() as any;
         DOMNode = wrapper.getDOMNode();
     });
 

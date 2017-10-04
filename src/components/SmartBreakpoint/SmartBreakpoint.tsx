@@ -5,7 +5,9 @@ import {SmartBreakpointState} from "./SmartBreakpointState";
 export class SmartBreakpoint extends React.Component<SmartBreakpointProps, SmartBreakpointState> {
     public static propTypes = SmartBreakpointPropTypes;
 
-    public componentWillMount() {
+    constructor(props) {
+        super(props);
+
         this.state = {
             matches: window.matchMedia(`(${this.props.match})`).matches
         };

@@ -31,17 +31,18 @@ describe("<SideBar/>", () => {
     it("should set active class to menu item which prop `to` equals to URL path", () => {
         history.push(routeProps[0].path);
 
-        expect(wrapper.find(Link).first().parent().getDOMNode().className).to.contain("is-active");
-        wrapper.find(Link).parent()
+        expect((wrapper.find(Link).first().getDOMNode().parentNode as HTMLElement).className).to.contain("is-active");
+
+        wrapper.find(Link)
             .slice(1)
-            .map((el) => expect(el.getDOMNode().className).to.not.contain("is-active"));
+            .map((el) => expect(el.parent().props().className).to.not.contain("is-active"));
 
         history.push(routeProps[routeProps.length - 1].path);
 
-        expect(wrapper.find(Link).last().parent().getDOMNode().className).to.contain("is-active");
+        expect((wrapper.find(Link).last().getDOMNode().parentNode as HTMLElement).className).to.contain("is-active");
 
-        wrapper.find(Link).parent()
-            .slice(0, 1)
-            .map((el) => expect(el.getDOMNode().className).to.not.contain("is-active"));
+        wrapper.find(Link)
+            .slice(-1)
+            .map((el) => expect(el.parent().props().className).to.not.contain("is-active"));
     });
 });

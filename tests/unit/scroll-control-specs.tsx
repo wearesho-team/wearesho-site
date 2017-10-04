@@ -33,15 +33,15 @@ describe("<ScrollControl/>", () => {
             </Router>
         );
 
-        node = wrapper.find(ScrollControl).getNode() as any;
+        node = wrapper.find(ScrollControl).instance() as any;
         DOMNode = wrapper.find(ScrollControl).getDOMNode();
         timer = useFakeTimers();
     });
 
     afterEach(() => {
         history.push(routeProps[0].path);
-        wrapper.unmount();
         timer.restore();
+        wrapper.unmount();
     });
 
     it("Should set timer on scroll", () => {
@@ -84,8 +84,8 @@ describe("<ScrollControl/>", () => {
     });
 
     it("Should return on scroll if element dose not exist", () => {
+        timer.restore();
         wrapper.unmount();
-
         // we cant emulate window events
         (node as any).handleScroll();
         timer.tick(ScrollControl.scrollListenDelay);

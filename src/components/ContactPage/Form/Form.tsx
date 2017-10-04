@@ -1,10 +1,8 @@
 import * as React from "react";
 
-import {Config} from "../../../data/Config";
 import {OnMobile} from "../../../helpers/Breakpoints";
 
 import {SubmitButton} from "../../Buttons";
-import {ReCaptcha} from "../../Widgets/ReCaptcha";
 
 export class Form extends React.Component<undefined, undefined> {
 
@@ -55,23 +53,12 @@ export class Form extends React.Component<undefined, undefined> {
                     </div>
                 </div>
                 <SubmitButton className="btn btn_primary"/>
-                <ReCaptcha
-                    sitekey={Config.reCaptchaApiKey}
-                    onChange={this.handleCaptchaValidated}
-                    size="invisible"
-                    className="recaptcha-badge"
-                />
             </form>
         );
     }
 
     // TODO: confirmation
-    // tslint:disable-next-line
-    protected handleCaptchaValidated = async () => {};
-
     protected handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        ReCaptcha.execute();
     };
 }

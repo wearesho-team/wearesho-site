@@ -10,9 +10,9 @@ export const SliderDescriptionPropTypes = {
 };
 
 export const SliderDescription: React.SFC<SliderDescriptionProps> = ({items}): JSX.Element => {
-    const content: Array<JSX.Element | string> = Array(items.length * 2 - 1);
+    const content: string[] = [];
 
-    items.forEach((name) => content.push(<span key={name}>{name}</span>, " / "));
+    items.forEach((name) => content.push(name, " / "));
 
     content.pop();
 
