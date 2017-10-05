@@ -47,13 +47,13 @@ describe("<SwitchControl/>", () => {
                 </SwitchControl>
             </Router>
         );
-        component = wrapper.find(SwitchControl).getNode();
+        component = wrapper.find(SwitchControl).instance();
         timer = useFakeTimers();
     });
 
     afterEach(() => {
-        wrapper.unmount();
         timer.restore();
+        wrapper.unmount();
     });
 
     it("should set scroll disabled for 600ms when URL change", () => {

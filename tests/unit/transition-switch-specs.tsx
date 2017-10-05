@@ -47,36 +47,37 @@ describe("<TransitionSwitch/>", () => {
     });
 
     afterEach(() => {
-        wrapper.unmount();
         timer.restore();
+        wrapper.unmount();
     });
 
     it("should render one page on mount", () => {
-
-        expect(wrapper).to.contain(<div id="p_0"/>);
+        expect(wrapper.contains(<div id="p_0"/>)).to.be.true;
         expect(wrapper.getDOMNode().children).to.have.length(1);
     });
 
     it("should render two pages when url changed", () => {
         history.push("/view-1");
+        wrapper.update();
 
-        expect(wrapper).to.contain(<div id="p_0"/>);
-        expect(wrapper).to.contain(<div id="p_1"/>);
+        expect(wrapper.contains(<div id="p_0"/>)).to.be.true;
+        expect(wrapper.contains(<div id="p_1"/>)).to.be.true;
         expect(wrapper.getDOMNode().children).to.have.length(2);
     });
 
     it("should contain two pages in dom at least 600ms after url changed", () => {
         history.push("/view-1");
+        wrapper.update();
 
         timer.tick(animationDuration / 2 + additionalDuration / 2);
 
-        expect(wrapper).to.contain(<div id="p_0"/>);
-        expect(wrapper).to.contain(<div id="p_1"/>);
+        expect(wrapper.contains(<div id="p_0"/>)).to.be.true;
+        expect(wrapper.contains(<div id="p_1"/>)).to.be.true;
         expect(wrapper.getDOMNode().children).to.have.length(2);
 
         timer.tick(animationDuration / 2 + additionalDuration / 2);
 
-        expect(wrapper).to.contain(<div id="p_1"/>);
+        expect(wrapper.contains(<div id="p_1"/>)).to.be.true;
         expect(wrapper.getDOMNode().children).to.have.length(1);
     });
 

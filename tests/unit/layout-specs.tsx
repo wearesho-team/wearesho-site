@@ -60,25 +60,26 @@ describe("<Layout>", () => {
 
     it("should render <MainPage/> on `/`", () => {
 
-        expect(wrapper).to.containMatchingElement(<MainPage/>);
+        expect(wrapper.contains(<MainPage/>)).to.be.true;
     });
 
     it("should render <ContactPage/> on `/contact`", () => {
 
         history.push("/contact");
-        expect(wrapper).to.containMatchingElement(<ContactPage/>);
+        expect(wrapper.contains(<ContactPage/>)).to.be.true;
     });
 
     it("should contain <SideBar/>,<Header/> and <SoundSwitch/> on each page", () => {
 
         const expectElementsExist = () => {
-            expect(wrapper).to.containMatchingElement(
+            expect(wrapper.contains(
                 <SideBar>
                     {getLinksWithProps()}
                 </SideBar>
-            );
-            expect(wrapper).to.containMatchingElement(<Header/>);
-            expect(wrapper).to.containMatchingElement(<SoundSwitch/>);
+            )).to.be.true;
+
+            expect(wrapper.contains(<Header/>)).to.be.true;
+            expect(wrapper.contains(<SoundSwitch/>)).to.be.true;
         };
 
         expectElementsExist();

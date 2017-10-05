@@ -22,7 +22,7 @@ describe("<SmartBreakpoint/>", () => {
         );
 
         DOMNode = wrapper.getDOMNode();
-        node = wrapper.getNode() as any;
+        node = wrapper.instance() as any;
     });
 
     afterEach(() => {

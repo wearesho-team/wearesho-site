@@ -9,6 +9,7 @@ export const MapDefaultProps  = {
     center: {lat: 50, lng: 36.229167},
     zoom: 5,
     scrollwheel: false,
+    draggable: false
 };
 
 export const MapPropTypes = {
