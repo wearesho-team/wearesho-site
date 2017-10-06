@@ -42,110 +42,101 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                     <h2 className="section__title">Партнерство</h2>
                     <div className="section__half half_first">
                         <OnDesktop>
-                            <div>
-                                <h4 className="section__subtitle">
-                                    Свяжитесь с нами
-                                    <span className="section__subtitle_reduced">
+                            <h4 className="section__subtitle">
+                                Свяжитесь с нами
+                                <span className="section__subtitle_reduced">
                                     или укажите контактные данные в форме ниже.
                                     Наши специалисты ответят на все вопросы.
                                 </span>
-                                </h4>
-                                <p className="section__text request-sent">
-                                    <span className="section__text_increased">Мефодий,</span>
-                                    <span>спасибо за проявленный интерес к Студии.</span>
-                                    <span>Мы обязательно перезвоним Вам в указанное время:</span>
-                                    <span className="section__text_indented">
+                            </h4>
+                            <p className="section__text request-sent">
+                                <span className="section__text_increased">Мефодий,</span>
+                                <span>спасибо за проявленный интерес к Студии.</span>
+                                <span>Мы обязательно перезвоним Вам в указанное время:</span>
+                                <span className="section__text_indented">
                                     с
                                     <span className="section__text_increased">&nbsp;9:00&nbsp;</span>
                                     до
                                     <span className="section__text_increased">&nbsp;18:00&nbsp;</span>
                                 </span>
-                                    <span>С уважением, команда Студии &laquo;ШО?!&raquo;</span>
-                                </p>
-                                <ContactForm/>
-                            </div>
+                                <span>С уважением, команда Студии &laquo;ШО?!&raquo;</span>
+                            </p>
+                            <ContactForm/>
                         </OnDesktop>
                     </div>
                     <div className="section__half half_second">
                         <div className="contact-info">
                             <OnDesktop>
-                                <div>
-                                    <h4 className="section__subtitle">Контакты</h4>
+                                <h4 className="section__subtitle">Контакты</h4>
+                                <a href={`tel:+${Config.phone}`} className="contact-info__link">
+                                    {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
+                                </a>
+                                <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
+                                <p className="contact-info__text contact-info__text_indented">
+                                    <span className="text_medium">Техническая поддержка</span>
+                                    партнеров Cтудии
+                                    <span className="contact-info__text_increased">
+                                            24<span className="separator">/</span>7
+                                        </span>
+                                </p>
+                                <p className="contact-info__text">
+                                    <span className="text_medium">Локация</span>
+                                    {Config.location.country}&nbsp;
+                                    <span className="separator">/</span>
+                                    &nbsp;{Config.location.city}
+                                </p>
+                            </OnDesktop>
+                            <OnTablet>
+                                <p className="contact-info__text contact-info__text_indented">
+                                    <span className="text_medium">Техническая поддержка</span>
+                                    партнеров Cтудии
+                                    <span className="contact-info__text_increased">24/7</span>
+                                </p>
+                                <h4 className="section__subtitle">Контакты</h4>
+                                <div className="align-container">
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                         {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                     </a>
-                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
-                                    <p className="contact-info__text contact-info__text_indented">
-                                        <span className="text_medium">Техническая поддержка</span>
-                                        партнеров Cтудии
-                                        <span className="contact-info__text_increased">
-                                            24<span className="separator">/</span>7
-                                        </span>
-                                    </p>
-                                    <p className="contact-info__text">
-                                        <span className="text_medium">Локация</span>
-                                        {Config.location.country}&nbsp;
-                                        <span className="separator">/</span>
-                                        &nbsp;{Config.location.city}
-                                    </p>
+                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">
+                                        {Config.mail}
+                                    </a>
                                 </div>
-                            </OnDesktop>
-                            <OnTablet>
-                                <div>
-                                    <p className="contact-info__text contact-info__text_indented">
-                                        <span className="text_medium">Техническая поддержка</span>
-                                        партнеров Cтудии
-                                        <span className="contact-info__text_increased">24/7</span>
-                                    </p>
-                                    <h4 className="section__subtitle">Контакты</h4>
-                                    <div className="align-container">
-                                        <a href={`tel:+${Config.phone}`} className="contact-info__link">
-                                            {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
-                                        </a>
-                                        <a href={`mailto:${Config.mail}`} className="contact-info__link">
-                                            {Config.mail}
-                                        </a>
-                                    </div>
-                                    <CooperateButton
-                                        className="btn btn_primary"
-                                        onClick={this.handleOpenModal}
-                                    />
-                                    <p className="contact-info__text">
-                                        <span className="text_medium">Локация</span>
-                                        {Config.location.country} / {Config.location.city}
-                                    </p>
-                                </div>
+                                <CooperateButton
+                                    className="btn btn_primary"
+                                    onClick={this.handleOpenModal}
+                                />
+                                <p className="contact-info__text">
+                                    <span className="text_medium">Локация</span>
+                                    {Config.location.country} / {Config.location.city}
+                                </p>
                             </OnTablet>
                             <OnMobile>
-                                <div>
-                                    <p className="contact-info__text contact-info__text_indented">
-                                        <span className="text_medium">Техническая поддержка</span>
-                                        партнеров Cтудии
-                                        <span className="contact-info__text_increased">24/7</span>
-                                    </p>
-                                    <p className="contact-info__text">
-                                        <span className="text_medium">Локация</span>
-                                        {Config.location.country} / {Config.location.city}
-                                    </p>
-                                    <h4 className="section__subtitle">Контакты</h4>
-                                    <div className="align-container">
-                                        <a href={`tel:+${Config.phone}`} className="contact-info__link">
-                                            {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
-                                        </a>
-                                        <a href={`mailto:${Config.mail}`} className="contact-info__link">
-                                            {Config.mail}
-                                        </a>
-                                    </div>
-                                    <CooperateButton
-                                        className="btn btn_primary"
-                                        onClick={this.handleOpenModal}
-                                    />
-                                    <SocialLinks/>
+                                <p className="contact-info__text contact-info__text_indented">
+                                    <span className="text_medium">Техническая поддержка</span>
+                                    партнеров Cтудии
+                                    <span className="contact-info__text_increased">24/7</span>
+                                </p>
+                                <p className="contact-info__text">
+                                    <span className="text_medium">Локация</span>
+                                    {Config.location.country} / {Config.location.city}
+                                </p>
+                                <h4 className="section__subtitle">Контакты</h4>
+                                <div className="align-container">
+                                    <a href={`tel:+${Config.phone}`} className="contact-info__link">
+                                        {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
+                                    </a>
+                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">
+                                        {Config.mail}
+                                    </a>
                                 </div>
+                                <CooperateButton
+                                    className="btn btn_primary"
+                                    onClick={this.handleOpenModal}
+                                />
+                                <SocialLinks/>
                             </OnMobile>
                         </div>
                     </div>
-
                     <OnMobileTablet>
                         <ReactModal
                             isOpen={this.state.isModalOpen}

@@ -12,7 +12,7 @@ export class ContactFormModel extends Model {
         message: "Обязательно для заполнения",
         groups: ["phone"]
     })
-    public phone;
+    public phone: string;
 
     @IsEmail({}, {
         message: "Некорректный E-Mail",
@@ -22,7 +22,7 @@ export class ContactFormModel extends Model {
         message: "Обязательно для заполнения",
         groups: ["mail"]
     })
-    public mail;
+    public mail: string;
 
     @MinLength(NameRange.min, {
         message: "Имя должно содержать не менее $constraint1 букв",
@@ -36,13 +36,16 @@ export class ContactFormModel extends Model {
         message: "Обязательно для заполнения",
         groups: ["name"]
     })
-    public name;
+    public name: string;
+
+    @IsDefined({
+        message: "Обязательно для заполнения",
+        groups: ["from"]
+    })
+    public from: string;
 
     @IsDefined()
-    public from = TimeDefaults.from;
-
-    @IsDefined()
-    public to = TimeDefaults.to;
+    public to: string;
 
     public attributes() {
         return ["phone", "mail", "name", "from", "to"];

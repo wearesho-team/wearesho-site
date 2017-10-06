@@ -2,10 +2,10 @@
   Section styles
  */
 .section {
-  //@include container;
+  @include container;
 
   // temp
-  max-width: 100%;
+  /*max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: 0 16.8em;
@@ -15,7 +15,7 @@
   background: -webkit-linear-gradient(45deg, #27121f 0%,#0c233c 100%);
   background: linear-gradient(45deg, #27121f 0%,#0c233c 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#27121f', endColorstr='#0c233c',GradientType=1 );
-
+*/
   position: relative;
 
   @include breakpoint($mobile-p) {
@@ -242,14 +242,14 @@
           top: 0;
 
           // temp
-          //background: linear-gradient(to bottom, #fff 0%, rgba(255, 255, 255, 0) 100%);
+          background: linear-gradient(to bottom, #fff 0%, rgba(255, 255, 255, 0) 100%);
         }
 
         &:after {
           bottom: 0;
 
           // temp
-          //background: linear-gradient(to top, #fff 0%, rgba(255, 255, 255, 0) 100%);
+          background: linear-gradient(to top, #fff 0%, rgba(255, 255, 255, 0) 100%);
         }
       }
 

@@ -5,18 +5,16 @@ import {
     FormGroup,
     Hint,
     Input,
-    Label
+    Label, TransformTypes
 } from "react-context-form";
+
+import {ContactFormModel, instantiateContactFormModel} from "../../../models/ContactFormModel";
+import {NameRange, PhoneRange, TimeDefaults} from "../../../models/common";
 
 import {OnMobile} from "../../../helpers/Breakpoints";
 
-import {
-    ContactFormModel,
-    instantiateContactFormModel,
-} from "../../../models/ContactFormModel";
-
 import {SubmitButton} from "../../Buttons/SubmitButton";
-import {NameRange, PhoneRange, TimeDefaults} from "../../../models/common/Rules";
+import {TimeInput} from "./TimeInput";
 
 export class ContactForm extends React.Component<undefined, undefined> {
 
@@ -32,8 +30,9 @@ export class ContactForm extends React.Component<undefined, undefined> {
                         <AutoValidate groupName="name" onLength={NameRange.min}>
                             <Input
                                 className="form__control"
-                                placeholder="Ваше имя"
+                                transform={TransformTypes.capitalize}
                                 maxLength={NameRange.max}
+                                placeholder="Ваше имя"
                                 required
                             />
                         </AutoValidate>
@@ -57,8 +56,8 @@ export class ContactForm extends React.Component<undefined, undefined> {
                             <AutoValidate groupName="mail">
                                 <Input
                                     className="form__control"
-                                    type="email"
                                     placeholder="Эл.почта"
+                                    type="email"
                                     required
                                 />
                             </AutoValidate>
@@ -73,30 +72,14 @@ export class ContactForm extends React.Component<undefined, undefined> {
                     <div className="form__group spinner__group">
                         <FormGroup name="from" className="spinner">
                             <Label className="spinner__label">с</Label>
-                            <Input
-                                className="form__control"
-                                defaultValue={TimeDefaults.from}
-                                required
-                            />
-                            <div className="spinner__controls">
-                                <button className="btn btn_inc"/>
-                                <button className="btn btn_dec"/>
-                            </div>
+                            <TimeInput className="form__control" defaultTime={TimeDefaults.from}/>
                         </FormGroup>
                         <OnMobile>
                             <span className="separator">до</span>
                         </OnMobile>
                         <FormGroup name="to" className="spinner">
                             <Label className="spinner__label">до</Label>
-                            <Input
-                                className="form__control"
-                                defaultValue={TimeDefaults.from}
-                                required
-                            />
-                            <div className="spinner__controls">
-                                <button className="btn btn_inc"/>
-                                <button className="btn btn_dec"/>
-                            </div>
+                            <TimeInput className="form__control" defaultTime={TimeDefaults.to}/>
                         </FormGroup>
                     </div>
                 </div>
