@@ -1,6 +1,6 @@
-export function toFixed(precision: number, value: number): string {
+export function toFixed(precision: number, value: number): string | undefined {
     if (precision <= 0) {
-        return;
+        return undefined;
     }
     const beforeValue = Array(precision - 1).fill("0").join("");
 

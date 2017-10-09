@@ -25,7 +25,7 @@ export const SubmitButton: React.SFC<any> = (props): JSX.Element => {
     };
     return (
         <SlowSubmitButton {...childProps as any}>
-            Отправить
+            {props.label}
             {getCorners()}
         </SlowSubmitButton>
     );

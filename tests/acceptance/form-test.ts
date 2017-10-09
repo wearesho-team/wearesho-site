@@ -1,6 +1,5 @@
 // tslint:disable-next-line
 /// <reference path="./steps.d.ts" />
-
 Feature("Form");
 
 const contactLink = ".main-nav__link[href='/contact']";
@@ -8,8 +7,6 @@ const submitButton = "button.btn_primary[type='submit']";
 
 const errorClass = ".form__group_has-error";
 const focusClass = ".has-focus";
-
-const timeout = 30;
 
 const CorrectValues = {
     phone: "+38(050) 6453250",
@@ -36,6 +33,7 @@ const Fields = {
 };
 
 const init = (I) => {
+    const timeout = 30;
     I.amOnPage("/");
 
     I.waitForElement(contactLink, timeout);
@@ -48,6 +46,7 @@ const init = (I) => {
 };
 
 Scenario("Empty fields", async (I) => {
+    const timeout = 30;
     init(I);
 
     // name
@@ -67,6 +66,7 @@ Scenario("Empty fields", async (I) => {
 });
 
 Scenario("Wrong fields", async (I) => {
+    const timeout = 30;
     init(I);
 
     // name
@@ -74,19 +74,16 @@ Scenario("Wrong fields", async (I) => {
     I.seeInField(Fields.name, WrongValues.name.trim());
 
     // phone
-    I.fillField(Fields.email, CorrectValues.email);
     // short
     I.fillField(Fields.phone, WrongValues.phone);
     I.click(submitButton);
     I.waitForElement(`${Wrappers.phone}${errorClass}`, timeout);
     // long
     I.fillField(Fields.phone, `${CorrectValues.phone}${WrongValues.phone}`);
-    I.click(submitButton);
-    I.seeInField(Fields.phone, CorrectValues.phone);
+    I.waitForElement(`${Wrappers.phone}${errorClass}`, timeout);
 
     // email
     I.fillField(Fields.phone, CorrectValues.phone);
     I.fillField(Fields.email, WrongValues.email);
-    I.click(submitButton);
     I.waitForElement(`${Wrappers.email}${errorClass}`, timeout);
 });

@@ -4,6 +4,7 @@
 Feature("Switch control");
 
 Scenario("Arrows control", async (I) => {
+    const timeout = 30;
     I.amOnPage("/");
     I.waitForElement(".section-main", timeout);
 

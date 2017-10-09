@@ -1,15 +1,16 @@
 import * as React from "react";
-import {ContactPageState} from "./ContactPageState";
 import ReactModal from "react-modal";
 
-import {Map} from "../Widgets/Map"
+import {Config} from "../../data/Config";
 
 import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../helpers/Breakpoints";
-import {CooperateButton, CloseButton} from "../Buttons";
-import {ContactForm} from "./ContactForm";
-import {Config} from "../../data/Config";
 import {formatNumber} from "../../helpers/formatNumber";
+
+import {CloseButton, SubmitButton} from "../Buttons";
+import {ContactPageState} from "./ContactPageState";
+import {ContactForm} from "./ContactForm";
 import {SocialLinks} from "../Layout/Partials/SocialLinks";
+import {Map} from "../Widgets/Map"
 
 export class ContactPage extends React.Component<undefined, ContactPageState> {
 
@@ -76,8 +77,10 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     <span className="text_medium">Техническая поддержка</span>
                                     партнеров Cтудии
                                     <span className="contact-info__text_increased">
-                                            24<span className="separator">/</span>7
-                                        </span>
+                                        24
+                                        <span className="separator">/</span>
+                                        7
+                                    </span>
                                 </p>
                                 <p className="contact-info__text">
                                     <span className="text_medium">Локация</span>
@@ -101,10 +104,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                         {Config.mail}
                                     </a>
                                 </div>
-                                <CooperateButton
-                                    className="btn btn_primary"
-                                    onClick={this.handleOpenModal}
-                                />
+                                <SubmitButton type="button" onClick={this.handleOpenModal} label="Сотрудничать"/>
                                 <p className="contact-info__text">
                                     <span className="text_medium">Локация</span>
                                     {Config.location.country} / {Config.location.city}
@@ -129,10 +129,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                         {Config.mail}
                                     </a>
                                 </div>
-                                <CooperateButton
-                                    className="btn btn_primary"
-                                    onClick={this.handleOpenModal}
-                                />
+                                <SubmitButton type="button" onClick={this.handleOpenModal} label="Сотрудничать"/>
                                 <SocialLinks/>
                             </OnMobile>
                         </div>
@@ -147,10 +144,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 <a href="#" className="logo">
                                     <i className="icon icon_logo"/>
                                 </a>
-                                <CloseButton
-                                    className="btn btn_close"
-                                    onClick={this.handleCloseModal}
-                                />
+                                <CloseButton className="btn btn_close" onClick={this.handleCloseModal}/>
                                 <h3 className="modal__title">Свяжитесь с нами</h3>
                             </div>
                             <div className="modal__body">

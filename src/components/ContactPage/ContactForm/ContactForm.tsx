@@ -83,7 +83,7 @@ export class ContactForm extends React.Component<undefined, undefined> {
                         </FormGroup>
                     </div>
                 </div>
-                <SubmitButton/>
+                <SubmitButton label="Отправить"/>
             </Form>
         );
     }

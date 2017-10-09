@@ -4,6 +4,7 @@
 Feature("Time line");
 
 Scenario("Project selection", async (I) => {
+    const timeout = 30;
     I.amOnPage("/");
     I.waitForElement(".prj-chronology", timeout);
 

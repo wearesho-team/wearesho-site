@@ -5,21 +5,32 @@ Feature("Smart breakpoint");
 
 // default 1600x1000
 Scenario("Window resizing", async (I) => {
+    const timeout = 30;
     I.amOnPage("/");
 
-    I.waitForElement(".translate-container", 30);
+    let size = {
+        w: 1200,
+        h: 1000
+    };
+
+    I.waitForElement(".translate-container", timeout);
     I.seeElementInDOM(".translate-container");
     I.dontSeeElementInDOM(".scroll-container");
 
-    I.resizeWindow(1200, 1000);
+    I.resizeWindow(size.w, size.h);
 
-    I.waitForElement(".scroll-container", 30);
+    I.waitForElement(".scroll-container", timeout);
     I.seeElementInDOM(".scroll-container");
     I.dontSeeElementInDOM(".translate-container");
 
-    I.resizeWindow(1600, 1000);
+    size = {
+        w: 1600,
+        h: 1000
+    };
 
-    I.waitForElement(".translate-container", 30);
+    I.resizeWindow(size.w, size.h);
+
+    I.waitForElement(".translate-container", timeout);
     I.seeElementInDOM(".translate-container");
     I.dontSeeElementInDOM(".scroll-container");
 });

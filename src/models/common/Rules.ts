@@ -4,6 +4,7 @@ export const PhoneRange = {
 };
 
 export const phonePattern = new RegExp(`^\\d{${PhoneRange.min},${PhoneRange.max}}$`);
+export const namePattern = /^[\sa-zA-ZА-Яа-яЄЇІєїіыЫёЁъЪ`'\\-]{2,}$/;
 
 export const TimeDefaults = {
     from: "09:00",

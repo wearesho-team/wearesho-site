@@ -1,8 +1,10 @@
 import * as React from "react";
-import Mask from "react-input-mask";
+// tslint:disable-next-line
+const ReactInputMask = require("react-input-mask/lib");
 import {BaseInput, BaseInputDefaultProps} from "react-context-form";
 
 import {TimeInputDefaultProps, TimeInputProps, TimeInputPropTypes} from "./TimeInputProps";
+import {toFixed} from "../../../../helpers/toFixed";
 
 export class TimeInput extends BaseInput<HTMLInputElement> {
     public static readonly propTypes = TimeInputPropTypes;
@@ -11,8 +13,17 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         ...BaseInputDefaultProps
     };
 
+    public readonly hoursFormat = 24;
+    public readonly minutesFormat = 59;
+
     public props: TimeInputProps;
-    public maskElement: Mask;
+    protected maskElement: typeof ReactInputMask;
+
+    public get inputValue(): string {
+        return this.maskElement
+            ? this.maskElement.value
+            : undefined;
+    }
 
     public render(): any {
         const {defaultTime, ...childProps} = this.childProps as TimeInputProps;
@@ -26,17 +37,19 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
             }
         };
 
+        // tslint:disable:jsx-wrap-multiline
         return [
-            <Mask {...inputProps} key="input"/>,
+            <ReactInputMask {...inputProps} key="input"/>,
             <div className="spinner__controls" key="controls">
                 <button type="button" className="btn btn_inc" onClick={this.handleIncrement}/>
                 <button type="button" className="btn btn_dec" onClick={this.handleDecrement}/>
             </div>
-        ]
+        ];
     }
 
-    protected setElement = (element: Mask) => {
-        if(!(element instanceof Mask)) {
+    protected setElement = (element: typeof ReactInputMask) => {
+        if (!(element instanceof ReactInputMask)) {
+            this.maskElement = undefined;
             return;
         }
 
@@ -46,20 +59,14 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         }
     };
 
-    protected get inputValue(): string {
-        return this.maskElement
-            ? this.maskElement.value
-            : undefined;
-    }
-
     protected handleChangeControl = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
         const value = event.currentTarget.value.replace(/-/g, "0").split(":");
 
         let hours: string | number = Number(value[0]);
         let minutes: string | number = Number(value[1]);
 
-        hours = hours > 24 ? "24" : String("0" + hours).slice(-2);
-        minutes = minutes > 59 ? "59" : String("0" + minutes).slice(-2);
+        hours = hours > this.hoursFormat ? this.hoursFormat : toFixed(2, hours);
+        minutes = minutes > this.minutesFormat ? this.minutesFormat : toFixed(2, minutes);
 
         this.maskElement && this.maskElement.setInputValue(`${hours}:${minutes}`);
 
@@ -84,12 +91,13 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
 
     protected changeHours(value: number): React.ChangeEvent<HTMLInputElement> {
         const valuesArray = this.inputValue.split(":");
-        let hours = String("0" + (Number(valuesArray[0]) + value)).slice(-2);
+        let hours = toFixed(2, (Number(valuesArray[0]) + value));
 
         if (Number(hours) < 0) {
-            hours = "00";
+            hours = toFixed(2, 0);
         }
 
+        // tslint:disable:no-object-literal-type-assertion
         return {
             currentTarget: {
                 value: `${hours}:${valuesArray[1]}`

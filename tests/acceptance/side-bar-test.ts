@@ -4,6 +4,7 @@
 Feature("Side bar");
 
 Scenario("Menu navigation", async (I) => {
+    const timeout = 30;
     I.amOnPage("/");
     I.waitForElement(".section-main", timeout);
 

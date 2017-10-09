@@ -3,7 +3,7 @@ import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
 import {ContactPage, ContactPageState} from "../../src/components/ContactPage";
-import {CooperateButton} from "../../src/components/Buttons";
+import {SubmitButton} from "../../src/components/Buttons";
 
 describe("<ContactPage/>", () => {
 
@@ -19,15 +19,15 @@ describe("<ContactPage/>", () => {
     afterEach(() => wrapper.unmount());
 
     it("should open modal when click cooperate button", () => {
-        const button = wrapper.find(CooperateButton);
-        button.first().simulate("click");
+        const button = wrapper.find(SubmitButton);
+        button.last().simulate("click");
 
         expect(modal.querySelector(".form")).to.exist;
     });
 
     it("should close modal when click close button", () => {
-        const buttonOpen = wrapper.find(CooperateButton);
-        buttonOpen.first().simulate("click");
+        const buttonOpen = wrapper.find(SubmitButton);
+        buttonOpen.last().simulate("click");
 
         expect(modal.querySelector(".form")).to.exist;
 
