@@ -13,9 +13,11 @@ export class PreLoader implements PreLoaderInterface {
      * @todo: Animations
      */
     public async hide() {
+        (window as any).bundleLoaded = true;
         await sleep(HIDE_DURATION);
 
         document.body.classList.add("loaded");
+
         return this;
     }
 

@@ -10,7 +10,7 @@
     <section class="section section-preloader">
         <div class="greeting">
             <a href="#" class="logo">
-                <i class="icon icon_logo"></i>
+                <i class="icon icon_logo"></i>секунды в миллисекунды
                 <span class="logo__text">Art &amp; Data Studio</span>
             </a>
             <h4 class="section__subtitle">
@@ -43,5 +43,26 @@
     <div class="grid__col"></div>
     <div class="grid__col"></div>
 </div>
+<script type="text/javascript">
+        var percents = 0;
+        var indicator = document.getElementsByClassName("booting-indicator");
+
+        (function decrease() {
+            if(window.bundleLoaded){
+                for (var item of indicator) {
+                    item.classList.add("loaded");
+                    item.removeAttribute("style");
+                }
+                return;
+            }
+            setTimeout(function () {
+                percents += Math.random() * 1 + 2;
+                for (var item of indicator) {
+                    item.style.height = percents + "%";
+                }
+                (percents < 85) && decrease();
+            }, Math.floor(Math.random() * 100) + 300);
+        })();
+</script>
 </body>
 </html>

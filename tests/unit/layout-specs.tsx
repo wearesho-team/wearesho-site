@@ -51,7 +51,7 @@ describe("<Layout>", () => {
                 hide: async () => {
                     isHideTriggered = true;
                 },
-                show: async () => undefined,
+                show: async () => undefined
             }
         });
         wrapper.unmount().mount();
