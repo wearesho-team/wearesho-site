@@ -7,7 +7,7 @@ import {useFakeTimers, SinonFakeTimers} from "sinon";
 
 import {ScrollControl} from "../../src/components/ScrollControl";
 import {routeProps} from "../../src/data/routeProps";
-
+// tslint:disable:no-magic-numbers
 describe("<ScrollControl/>", () => {
     let wrapper: ReactWrapper<undefined, undefined>;
     let node: ScrollControl;

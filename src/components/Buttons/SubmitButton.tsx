@@ -1,11 +1,32 @@
 import * as React from "react";
+import {SlowSubmitButton, SlowSubmitButtonProps} from "react-context-form";
 
-export const SubmitButton: React.SFC<React.HTMLProps<HTMLButtonElement>> = (props): JSX.Element => {
+function getCorners(): JSX.Element[] {
+    return [
+        <span className="btn-corners btn-corners_top" key="top"/>,
+        <span className="btn-corners btn-corners_bottom" key="bottom"/>
+    ];
+}
+
+function loadingComponent() {
     return (
-        <button {...props} type="submit">
-            Отправить
-            <span className="btn-corners btn-corners_top"/>
-            <span className="btn-corners btn-corners_bottom"/>
-        </button>
+        <span>
+            Отправка
+            {getCorners()}
+        </span>
+    )
+}
+
+export const SubmitButton: React.SFC<any> = (props): JSX.Element => {
+    const childProps: SlowSubmitButtonProps = {
+        ...props,
+        className: "btn btn_primary",
+        loadingComponent: loadingComponent(),
+    };
+    return (
+        <SlowSubmitButton {...childProps as any}>
+            {props.label}
+            {getCorners()}
+        </SlowSubmitButton>
     );
 };

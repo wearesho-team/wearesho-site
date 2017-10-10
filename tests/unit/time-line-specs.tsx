@@ -6,7 +6,7 @@ import {useFakeTimers, SinonFakeTimers} from "sinon";
 import {TimeLine, TimeLineState, TimeLineProps} from "../../src/components/TimeLine";
 import {YearItem} from "../../src/components/TimeLine/YearItem";
 import {projects} from "../../src/data/Projects";
-
+// tslint:disable:no-magic-numbers
 describe("<TimeLine/>", () => {
     let wrapper: ReactWrapper<TimeLineProps, TimeLineState>;
     let timer: SinonFakeTimers;

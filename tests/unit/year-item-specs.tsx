@@ -16,6 +16,8 @@ describe("<YearItem/>", () => {
     let onChangeProjectHasCalled: boolean;
     const onChangeProject = (element: HTMLElement, position: number, year: number) => onChangeProjectHasCalled = true;
 
+    const futureYear = (new Date()).getFullYear() + (new Date()).getFullYear();
+
     const date: DateInterface = {
         year: projects[projects.length - 1].date.year,
         month: projects[projects.length - 1].date.month,
@@ -59,7 +61,7 @@ describe("<YearItem/>", () => {
     it("should add `muted` class name to label for future years", () => {
         props = {
             ...props,
-            children: (new Date()).getFullYear() + 10
+            children: futureYear
         };
 
         expect(DOMNode.getElementsByClassName(node.yearClassName)[0].className).to.not.contain(node.yearMutedClassName);
@@ -80,7 +82,7 @@ describe("<YearItem/>", () => {
     it("should render `EmptyPoint` if it date not equals to one of item from `projects`", () => {
         props = {
             ...props,
-            children: (new Date()).getFullYear() + 10
+            children: futureYear
         };
 
         wrapper.setProps(props);
@@ -103,7 +105,7 @@ describe("<YearItem/>", () => {
     it("should call `onChangeProject` if `ActivePoint` has been clicked", () => {
         props = {
             ...props,
-            children: (new Date()).getFullYear() + 10
+            children: futureYear
         };
 
         wrapper.setProps(props);

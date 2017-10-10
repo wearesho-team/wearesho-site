@@ -4,19 +4,27 @@
 Feature("Scroll control");
 
 Scenario("Scrolling", async (I) => {
+    const timeout = 30;
+    const size = {
+        w: 1300,
+        h: 800
+    };
+
     I.amOnPage("/");
 
-    I.resizeWindow(1300, 800);
-    I.waitForElement(".scroll-container", 30);
+    I.resizeWindow(size.w, size.h);
+    I.waitForElement(".scroll-container", timeout);
 
-    for (let i = 0; i < 17; i++) {
+    const count = 17;
+
+    for (let i = 0; i < count; i++) {
         I.pressKey("ArrowDown");
     }
 
     I.wait(1);
     I.seeInCurrentUrl("/contact");
 
-    for (let i = 0; i < 17; i++) {
+    for (let i = 0; i < count; i++) {
         I.pressKey("ArrowUp");
     }
 
