@@ -21,7 +21,7 @@ const
 
 const debug = process.env.NODE_ENV !== 'production';
 const env = debug ? 'local' : 'production';
-const favicon = path.resolve('./images/favicon.png');
+const favicon = path.resolve('./templates/favicon.png');
 
 const isApache = (process.env.APACHE || 0) === '1';
 console.log("Running in " + env + " environment. Debug: " + debug.toString());
