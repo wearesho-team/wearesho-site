@@ -17,6 +17,8 @@ describe("<Layout>", () => {
 
     let history: History;
 
+    const commonHandler = async () => undefined;
+
     beforeEach(() => {
         wrapper = mount(
             <Layout
@@ -34,13 +36,13 @@ describe("<Layout>", () => {
         let isShowTriggered = false;
         wrapper.setProps({
             preLoader: {
-                hide: async () => undefined,
+                hide: commonHandler,
                 show: async () => {
                     isShowTriggered = true;
                 }
             }
         });
-        await (wrapper.unmount() as any);
+        await (wrapper.mount().unmount() as any);
         expect(isShowTriggered).to.be.true;
     });
 
@@ -51,7 +53,7 @@ describe("<Layout>", () => {
                 hide: async () => {
                     isHideTriggered = true;
                 },
-                show: async () => undefined
+                show: commonHandler
             }
         });
         await (wrapper.unmount().mount() as any);
