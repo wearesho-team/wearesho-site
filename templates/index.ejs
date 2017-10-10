@@ -60,69 +60,72 @@
     </div>
 </div>
 <script type="text/javascript">
-    var percents = 0;
-    var indicators = document.getElementsByClassName("booting-indicator");
-    var grid = document.getElementsByClassName("grid__col");
-    var label = document.getElementsByClassName("section__subtitle_percent-number")[0];
-    var timer;
+    var hideTimeout = 2000;
+    (function () {
+        var percents = 0;
+        var indicators = document.getElementsByClassName("booting-indicator");
+        var grid = document.getElementsByClassName("grid__col");
+        var label = document.getElementsByClassName("section__subtitle_percent-number")[0];
+        var timer;
 
-    // emitted form PreLoaded component
-    window.onBundleLoaded = function () {
-        // now control take CSS
-        clearTimeout(timer);
-        increase = undefined;
-        // need some delay for styles
-        setTimeout(function () {
-            for (var gridItem of grid) {
-                gridItem.classList.add("loaded");
+        // triggering form PreLoaded component
+        window.onBundleLoaded = function () {
+            // now control take CSS
+            clearTimeout(timer);
+            increase = undefined;
 
-                const innerItems = gridItem.getElementsByTagName("div");
-                for (var item of innerItems) {
-                    item.removeAttribute("style");
-                }
-            }
-        }, 100);
-
-        // at the last stage it is necessary to increase percents to 100
-        var counter = 0;
-        (function ending() {
+            // need some delay for styles
             setTimeout(function () {
-                // searching current visible indicator
-                for (var indicator of indicators) {
-                    var height = parseInt(indicator.getBoundingClientRect().height);
-                    if (!height) {
-                        continue;
+                for (var gridItem of grid) {
+                    gridItem.classList.add("loaded");
+
+                    const innerItems = gridItem.getElementsByTagName("div");
+                    for (var item of innerItems) {
+                        item.removeAttribute("style");
                     }
-                    label.innerHTML = Math.floor(height / window.innerHeight * 100);
-                    counter++;
                 }
-                // HIDE_TIMEOUT from PreLoader component divide by 50 ms
-                (counter < 40) && ending();
-            }, 50)
-        })();
-    }
+            }, 100);
 
-    function increase() {
-        timer = setTimeout(function () {
-            percents++;
-            label.innerHTML = percents;
-            // set height to all indicators
-            for (var item of grid) {
-                const growItems = item.getElementsByClassName("grow-item");
-                for (var growItem of growItems) {
-                    growItem.style.height = (100 - percents) + "%";
+            // at the last stage it is necessary to finish increasing percents
+            var counter = 0;
+            (function ending() {
+                setTimeout(function () {
+                    // searching current visible indicator
+                    for (var indicator of indicators) {
+                        var height = parseInt(indicator.getBoundingClientRect().height);
+                        if (!height) {
+                            continue;
+                        }
+                        // calculate percentage height of indicator
+                        label.innerHTML = Math.floor(height / window.innerHeight * 100);
+                        counter++;
+                    }
+                    (counter < (hideTimeout / 50)) && ending();
+                }, 50)
+            })();
+        }
+
+        function increase() {
+            timer = setTimeout(function () {
+                percents++;
+                label.innerHTML = percents;
+                // set height to all indicators
+                for (var item of grid) {
+                    const growItems = item.getElementsByClassName("grow-item");
+                    for (var growItem of growItems) {
+                        growItem.style.height = (100 - percents) + "%";
+                    }
                 }
-            }
+                for (var indicator of indicators) {
+                    indicator.style.height = percents + "%";
+                }
 
-            for (var indicator of indicators) {
-                indicator.style.height = percents + "%";
-            }
-            increase && (percents < 85) && increase();
+                increase && (percents < 85) && increase();
+            }, percents * (percents / 5));
+        }
 
-        }, percents * (percents / 5));
-    }
-
-    increase();
+        increase();
+    })();
 </script>
 </body>
 </html>

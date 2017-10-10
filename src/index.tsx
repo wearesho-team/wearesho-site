@@ -14,7 +14,7 @@ if (!container) {
     console.error("Can not found element for mounting Layout!");
 } else {
     ReactDOM.render(
-        <Layout preLoader={new PreLoader(2000)} history={createBrowserHistory()}/>,
+        <Layout preLoader={new PreLoader((window as any).hideTimeout || 2000)} history={createBrowserHistory()}/>,
         container
     );
 }
