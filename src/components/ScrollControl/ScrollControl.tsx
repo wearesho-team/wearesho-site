@@ -9,7 +9,7 @@ import {routeProps} from "../../data/routeProps";
 import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 
 export class ScrollControl extends React.Component<undefined, undefined> implements ElementWithTimer {
-    public static contextTypes = RouterContextTypes;
+    public static readonly contextTypes = RouterContextTypes;
     public static readonly scrollAnimationDelay = 500;
     public static readonly scrollListenDelay = 50;
 
@@ -74,6 +74,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
 
     protected handleScroll = () => {
         this.clearTimeout(this.timer);
+
         this.timer = setTimeout(this.updateLocation, ScrollControl.scrollListenDelay);
     };
 

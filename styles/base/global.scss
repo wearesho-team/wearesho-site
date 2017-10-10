@@ -27,10 +27,23 @@ body {
   font: 16px $font-primary;
   color: $color-primary;
 
+  #content-overlay {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    opacity: 0;
+
+    @include transition(opacity 1s ease 4s);
+  }
+
   &.loaded {
 
     #content-overlay {
-
+      position: static;
       opacity: 1;
     }
   }
@@ -191,10 +204,4 @@ body,
 
     padding: 0 7.25em;
   }
-}
-
-#content-overlay {
-  opacity: 0;
-
-  @include transition(opacity 1s ease 4s);
 }
