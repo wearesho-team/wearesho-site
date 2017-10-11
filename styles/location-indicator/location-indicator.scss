@@ -179,25 +179,41 @@
       box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
     }
 
-    &:after {
-      content: '+';
-      display: block;
+    &:after,
+    &:before {
+      content: '';
 
-      line-height: ($marker-size - 2px);
+      width: 2px;
+      height: 10px;
 
-      font-size: 2em;
-      font-family: $font-secondary;
-      font-weight: $font-style-regular;
-      color: $color-secondary;
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      margin: auto;
+
+      background-color: $color-secondary;
 
       @include transition(transform .3s ease);
+    }
+
+    &:after {
+      @include transform(rotateZ(90deg));
     }
 
     &:hover {
 
       &:after {
 
-        @include transform(rotate(90deg));
+        @include transform(rotateZ(180deg));
+      }
+
+      &:before {
+
+        @include transform(rotateZ(90deg));
       }
 
       ~ .location-indicator__info {
