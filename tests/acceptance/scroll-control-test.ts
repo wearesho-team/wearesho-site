@@ -13,7 +13,7 @@ Scenario("Scrolling", async (I) => {
     I.amOnPage("/");
 
     I.resizeWindow(size.w, size.h);
-    I.waitForElement(".scroll-container", timeout);
+    I.waitForElement("body.loaded", timeout);
 
     const count = 17;
 

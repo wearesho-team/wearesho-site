@@ -13,10 +13,7 @@ body.loaded {
 
         @include animation(preloader-disappearing 3s ease 2s);
 
-        -webkit-animation-fill-mode: forwards;
-        -moz-animation-fill-mode: forwards;
-        -o-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
+        @include animation-fill-mode(forwards);
       }
     }
   }
@@ -95,7 +92,7 @@ body.loaded {
 
         border-width: 0 1px;
 
-        &:after {
+        > .grow-item-right {
 
           right: -1px;
         }
@@ -108,7 +105,7 @@ body.loaded {
 
         border-width: 0 1px;
 
-        &:after {
+        > .grow-item-right {
 
           right: -1px;
         }
@@ -121,7 +118,7 @@ body.loaded {
 
         border-width: 0 1px;
 
-        &:after {
+        > .grow-item-right {
 
           right: -1px;
         }
@@ -131,20 +128,18 @@ body.loaded {
 
         border-width: 0 1px;
 
-        &:after {
+        > .grow-item-right {
 
           right: -1px;
         }
       }
     }
 
-    &:before,
-    &:after {
-      content: '';
+    > .grow-item {
       display: block;
 
       width: 1px;
-      height: 0;
+      height: 100%;
 
       position: absolute;
 
@@ -152,10 +147,10 @@ body.loaded {
 
       background-color: #fff;
 
-      @include animation(to-top 8s ease);
+      @include transition(height .5s ease);
     }
 
-    &:before {
+    > .grow-item-left {
 
       left: -1px;
     }
@@ -163,7 +158,7 @@ body.loaded {
     &:last-child {
       border-width: 0 1px;
 
-      &:after {
+      > .grow-item-right {
 
         right: -1px;
       }
@@ -171,7 +166,7 @@ body.loaded {
 
     .booting-indicator {
       width: 1px;
-      height: 100%;
+      height: 0;
 
       position: absolute;
 
@@ -180,7 +175,7 @@ body.loaded {
 
       background-color: rgba(195, 195, 195, .8);
 
-      @include animation(to-bottom 8s ease);
+      @include transition(height .5s ease);
 
       z-index: 1;
 
@@ -206,6 +201,19 @@ body.loaded {
 
           display: block;
         }
+      }
+    }
+
+    &.loaded {
+      > .grow-item {
+        height: 0;
+
+        @include transition-duration(1500ms);
+      }
+      > .booting-indicator {
+        height: 100%;
+
+        @include transition-duration(1500ms);
       }
     }
   }

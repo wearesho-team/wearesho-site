@@ -4,6 +4,7 @@ import {routeProps} from "../../data/routeProps";
 
 import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 import {SwitchControlContext, SwitchControlContextTypes} from "./SwitchControlContext";
+import {LayoutContext, LayoutContextTypes} from "../Layout/LayoutContext";
 
 export enum RouteIndexType {
     up = 1,
@@ -11,11 +12,15 @@ export enum RouteIndexType {
 }
 
 export class SwitchControl extends React.Component<any, undefined> {
-    public static childContextTypes = SwitchControlContextTypes;
-    public static contextTypes = RouterContextTypes;
-    public context: RouterContext;
+    public static readonly childContextTypes = SwitchControlContextTypes;
+    public static readonly contextTypes = {
+        ...RouterContextTypes,
+        ...LayoutContextTypes
+    };
 
-    protected isScrollDisabled: boolean = false;
+    public context: RouterContext & LayoutContext;
+
+    protected isScrollDisabled: boolean = this.context.isScrollDisabled;
 
     public getChildContext(): SwitchControlContext {
         return {

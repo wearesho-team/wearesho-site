@@ -17,10 +17,12 @@ describe("<Layout>", () => {
 
     let history: History;
 
+    const commonHandler = async () => undefined;
+
     beforeEach(() => {
         wrapper = mount(
             <Layout
-                preLoader={new PreLoader()}
+                preLoader={new PreLoader(500)}
                 history={history = createMemoryHistory()}
             />
         );
@@ -30,31 +32,31 @@ describe("<Layout>", () => {
         wrapper.unmount();
     });
 
-    it("should show preloader on unmount", () => {
+    it("should show preloader on unmount", async () => {
         let isShowTriggered = false;
         wrapper.setProps({
             preLoader: {
-                hide: async () => undefined,
+                hide: commonHandler,
                 show: async () => {
                     isShowTriggered = true;
                 }
             }
         });
-        wrapper.unmount().mount();
+        await (wrapper.mount().unmount() as any);
         expect(isShowTriggered).to.be.true;
     });
 
-    it("should hide preloader on mount", () => {
+    it("should hide preloader on mount", async () => {
         let isHideTriggered = false;
         wrapper.setProps({
             preLoader: {
                 hide: async () => {
                     isHideTriggered = true;
                 },
-                show: async () => undefined,
+                show: commonHandler
             }
         });
-        wrapper.unmount().mount();
+        await (wrapper.unmount().mount() as any);
         expect(isHideTriggered).to.be.true;
     });
 
@@ -70,7 +72,6 @@ describe("<Layout>", () => {
     });
 
     it("should contain <SideBar/>,<Header/> and <SoundSwitch/> on each page", () => {
-
         const expectElementsExist = () => {
             expect(wrapper.contains(
                 <SideBar>

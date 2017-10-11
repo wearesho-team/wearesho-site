@@ -14,13 +14,26 @@ import {SwitchControl} from "../SwitchControl";
 
 import {ScrollControl} from "../ScrollControl";
 import {SmartBreakpoint} from "../SmartBreakpoint";
+import {LayoutContext, LayoutContextTypes} from "./LayoutContext";
+import {LayoutState} from "./LayoutState";
 
-export class Layout extends React.Component<LayoutProps, undefined> {
+export class Layout extends React.Component<LayoutProps, LayoutState> {
+    public static readonly propTypes = LayoutPropTypes;
+    public static readonly childContextTypes = LayoutContextTypes;
 
-    public static propTypes = LayoutPropTypes;
+    public state: LayoutState = {
+        isScrollDisabled: true
+    };
+
+    public getChildContext(): LayoutContext {
+        return {
+            isScrollDisabled: this.state.isScrollDisabled
+        }
+    }
 
     public async componentDidMount() {
         await this.props.preLoader.hide();
+        this.setState({isScrollDisabled: false});
     }
 
     public async componentWillUnmount() {
@@ -28,7 +41,6 @@ export class Layout extends React.Component<LayoutProps, undefined> {
     }
 
     public render(): JSX.Element {
-
         return (
             <Router history={this.props.history}>
                 <div id="content">

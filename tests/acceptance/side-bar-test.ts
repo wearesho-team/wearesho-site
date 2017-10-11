@@ -6,7 +6,8 @@ Feature("Side bar");
 Scenario("Menu navigation", async (I) => {
     const timeout = 30;
     I.amOnPage("/");
-    I.waitForElement(".section-main", timeout);
+    I.waitForElement("body.loaded", timeout);
+    I.wait(2);
 
     I.waitForElement(`.main-nav__link[href="/contact"]`, timeout);
     I.wait(1);
