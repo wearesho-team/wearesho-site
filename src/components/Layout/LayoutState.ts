@@ -1,3 +1,6 @@
+import {Languages} from "../../data/Languages";
+
 export interface LayoutState {
-    isScrollDisabled: boolean
+    isScrollDisabled: boolean,
+    language: Languages
 }

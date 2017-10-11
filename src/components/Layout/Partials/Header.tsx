@@ -1,6 +1,14 @@
 import * as React from "react";
+import translate from "counterpart";
+
+import {LayoutContext, LayoutContextTypes} from "../LayoutContext";
+import {Languages} from "../../../data/Languages";
+import {MouseEvent} from "react";
 
 export class Header extends React.Component<undefined, undefined> {
+    public static readonly contextTypes = LayoutContextTypes;
+
+    public context: LayoutContext;
 
     public render(): JSX.Element {
         return (
@@ -10,11 +18,28 @@ export class Header extends React.Component<undefined, undefined> {
                     <span className="logo__text">Art &amp; Data Studio</span>
                 </a>
                 <div className="header__right">
-                    <a href="#" className="header__new-project">Новый проект</a>
-                    <a href="#" className="header__lang-toggle">eng</a>
+                    <a href="#" className="header__new-project">{translate("header.newProject")}</a>
+                    <button type="button" className="header__lang-toggle" onClick={this.changeLanguage}>
+                        {this.languageLabel}
+                    </button>
                 </div>
             </header>
         );
+    }
+
+    protected changeLanguage = (event: MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+
+        const nextLanguage = this.context.language === Languages.ru
+            ? Languages.en
+            : Languages.ru;
+        this.context.setLanguage(nextLanguage);
+    };
+
+    protected get languageLabel() {
+        return this.context.language === Languages.ru
+            ? "ENG"
+            : "РУС";
     }
 
 }

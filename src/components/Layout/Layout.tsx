@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Router} from "react-router-dom";
+import translate from "counterpart";
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 import {getLinksWithProps} from "../../helpers/getLinksWithProps";
@@ -16,18 +17,30 @@ import {ScrollControl} from "../ScrollControl";
 import {SmartBreakpoint} from "../SmartBreakpoint";
 import {LayoutContext, LayoutContextTypes} from "./LayoutContext";
 import {LayoutState} from "./LayoutState";
+import {Languages} from "../../data/Languages";
 
 export class Layout extends React.Component<LayoutProps, LayoutState> {
     public static readonly propTypes = LayoutPropTypes;
     public static readonly childContextTypes = LayoutContextTypes;
 
-    public state: LayoutState = {
-        isScrollDisabled: true
-    };
+    public constructor(props) {
+        super(props);
+
+        this.state = {
+            language: localStorage.getItem("app.language") === Languages.ru
+                ? Languages.ru
+                : Languages.en,
+            isScrollDisabled: true
+        };
+
+        translate.setLocale(this.state.language);
+    }
 
     public getChildContext(): LayoutContext {
         return {
-            isScrollDisabled: this.state.isScrollDisabled
+            language: this.state.language,
+            isScrollDisabled: this.state.isScrollDisabled,
+            setLanguage: this.setLanguage
         }
     }
 
@@ -64,5 +77,11 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
                 </div>
             </Router>
         );
+    }
+
+    protected setLanguage = (nextLanguage: Languages) => {
+        localStorage.setItem("app.language", nextLanguage);
+        translate.setLocale(nextLanguage);
+        this.setState({language: nextLanguage});
     }
 }
