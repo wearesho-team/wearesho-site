@@ -80,6 +80,11 @@
 
       margin-top: 2em;
     }
+
+    @include breakpoint($iphone4-l) {
+
+      margin-top: 2em;
+    }
   }
 
   &__link {
@@ -106,6 +111,12 @@
       @include breakpoint($mobile-l) {
 
         @include span(4 of 12 inside no-gutters last);
+      }
+
+      @include breakpoint($iphone4-l) {
+        float: none;
+
+        width: auto;
       }
     }
 
@@ -180,6 +191,19 @@
       margin-top: 3.75em;
     }
 
+    @include breakpoint($mobile-l) {
+
+      @include span(4 of 12 inside no-gutters last);
+    }
+
+    @include breakpoint($iphone4-l) {
+      @include span(8 of 12 inside no-gutters);
+
+      float: none;
+
+      margin-top: 3.75em;
+    }
+
     @include breakpoint($tablet) {
       @include span(6 of 12 inside no-gutters);
 
@@ -190,11 +214,6 @@
       @include span(6 of 12 inside no-gutters);
 
       width: auto;
-    }
-
-    @include breakpoint($mobile-l) {
-
-      @include span(4 of 12 inside no-gutters last);
     }
 
     & + .contact-info__text {
