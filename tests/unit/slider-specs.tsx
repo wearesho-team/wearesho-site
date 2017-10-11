@@ -28,7 +28,7 @@ describe("<Slider/>", () => {
     });
 
     it("should set offset left value from props", () => {
-        expect(DOMNode.getAttribute("style")).to.contain(`left: ${props.offset}px`);
+        expect(DOMNode.getAttribute("style")).to.contain(`left: ${props.offset}%`);
     });
 
     it("should format date to `d.m.Y`", () => {

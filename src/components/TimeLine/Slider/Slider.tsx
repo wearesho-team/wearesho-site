@@ -7,7 +7,7 @@ import {toFixed} from "../../../helpers/toFixed";
 
 export const Slider: React.SFC<SliderProps> = (props): JSX.Element => {
     const sliderStyle = {
-        left: `${props.offset}px`
+        left: `${props.offset}%`
     };
 
     const getFormattedDate = (): string => {

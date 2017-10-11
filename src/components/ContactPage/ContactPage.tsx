@@ -95,8 +95,8 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     партнеров Cтудии
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
-                                <h4 className="section__subtitle">Контакты</h4>
                                 <div className="align-container">
+                                    <h4 className="section__subtitle">Контакты</h4>
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                         {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                     </a>

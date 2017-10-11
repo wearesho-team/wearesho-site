@@ -43,9 +43,14 @@
         padding: 9em 0 0 0;
       }
 
+      @include breakpoint($tablet-l) {
+
+        padding: 4.3em 0 0 1.875em;
+      }
+
       @include breakpoint($laptop-large) {
 
-        padding: 3.5em 0 0 1.875em;
+        padding: 6em 0 0 1.875em;
       }
     }
 
@@ -388,6 +393,10 @@
       font-size: 1.2em;
       font-weight: $font-style-regular;
       color: $color-secondary;
+
+      @include breakpoint($tablet-l) {
+        margin: .3em 0;
+      }
     }
 
     &__text {
@@ -395,6 +404,11 @@
       color: #c3c3c3;
 
       @include breakpoint($mobile-p) {
+
+        display: block;
+      }
+
+      @include breakpoint($tablet-l) {
 
         display: block;
       }
