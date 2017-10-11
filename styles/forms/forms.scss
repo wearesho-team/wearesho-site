@@ -54,6 +54,11 @@
 
     &_second {
 
+      @include breakpoint($tablet-l) {
+
+        padding-left: 3.5em;
+      }
+
       @include breakpoint($laptop-small) {
 
         padding-left: 3.5em;

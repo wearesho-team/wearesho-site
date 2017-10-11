@@ -1,8 +1,8 @@
 import {PreLoader} from "../../src/components/PreLoader";
 import {expect} from "chai";
-
+const time = 500;
 describe("PreLoader animations", () => {
-    const preLoader = new PreLoader(500);
+    const preLoader = new PreLoader(time);
 
     it("should add `loaded` class on hiding", async () => {
         await preLoader.hide();

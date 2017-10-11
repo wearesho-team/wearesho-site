@@ -10,8 +10,8 @@ import {projects} from "../../data/Projects/projects";
 import {TimeLineProps, TimeLinePropTypes} from "./TimeLineProps";
 import {TimeLineState} from "./TimeLineState";
 
-import {Slider} from "./Slider";
 import {YearItem} from "./YearItem";
+import {Slider} from "./Slider/Slider";
 
 export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
     implements ElementWithTimer {
@@ -22,6 +22,8 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
 
     public static readonly sliderDefaultClassName = "chronology-slider";
     public static readonly sliderMoveClassName = "is-move";
+
+    public readonly widthRange = 85;
 
     public timer: any;
     public state: TimeLineState = {
@@ -70,9 +72,11 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
             return;
         }
 
+        const offset = getElementOffset(element);
+
         this.setState({
             sliderClassName: concat(
-                TimeLine.sliderDefaultClassName,
+                this.state.sliderClassName,
                 TimeLine.sliderMoveClassName
             ),
         });
@@ -80,8 +84,8 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
         this.clearTimeout(this.timer);
         this.timer = setTimeout(() => {
             this.setState({
-                sliderClassName: TimeLine.sliderDefaultClassName,
-                sliderPosition: getElementOffset(element),
+                sliderClassName: concat(TimeLine.sliderDefaultClassName, offset > this.widthRange ? "swap" : ""),
+                sliderPosition: offset,
                 activeProject
             });
         }, TimeLine.animationDuration);

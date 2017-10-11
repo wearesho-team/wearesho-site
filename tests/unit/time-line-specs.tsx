@@ -59,6 +59,19 @@ describe("<TimeLine/>", () => {
 
     it("should set `move` class name to `<Slider/>` when active project changed", () => {
         timer.restore();
+
+        Object.defineProperty(wrapper.getDOMNode().parentNode, "parentNode", {
+            get: () => {
+                return {
+                    getBoundingClientRect: () => {
+                        return {
+                            width: 100
+                        }
+                    }
+                }
+            }
+        });
+
         (wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
@@ -83,6 +96,18 @@ describe("<TimeLine/>", () => {
 
     it("should remove `move` class name from `<Slider/>` after animation delay when active project changed", () => {
         wrapper = mount(<TimeLine {...props}/>);
+
+        Object.defineProperty(wrapper.getDOMNode().parentNode, "parentNode", {
+            get: () => {
+                return {
+                    getBoundingClientRect: () => {
+                        return {
+                            width: 100
+                        }
+                    }
+                }
+            }
+        });
 
         (wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);

@@ -22,6 +22,11 @@
     display: none;
   }
 
+  @include breakpoint($tablet-l) {
+
+    margin-top: 7em;
+  }
+
   @include breakpoint($laptop-large) {
 
     margin-top: 5.5em;

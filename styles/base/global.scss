@@ -17,6 +17,16 @@ body {
     overflow-y: visible;
   }
 
+  @include breakpoint($laptop-medium) {
+
+    overflow-y: visible;
+  }
+
+  @include breakpoint($laptop-small) {
+
+    overflow-y: visible;
+  }
+
   @include breakpoint($laptop-small) {
     // Double vertical scroll bug fix
     overflow-x: visible;
@@ -194,22 +204,28 @@ body,
 
     @include breakpoint($mobile-p) {
 
-      padding: 0 1.875em;
+      padding: 6.4em 1.875em 0;
     }
 
     @include breakpoint($mobile-l) {
 
-      padding: 0 4.5em;
+      padding: 6.4em 4.5em 0;
     }
 
     @include breakpoint($tablet) {
 
-      padding: 0 5.375em;
+      padding: 6.8em 5.375em 0;
     }
 
     @include breakpoint($laptop) {
 
-      padding: 0 7.25em;
+      padding: 6.4em 7.25em;
     }
+
+    @include breakpoint($laptop-small) {
+
+      padding: 6.8em 7.25em 0;
+    }
+
   }
 }

@@ -25,6 +25,7 @@ if (!container) {
     }
 
     ReactDOM.render(
+        // tslint:disable:no-magic-numbers
         <Layout preLoader={new PreLoader((window as any).hideTimeout || 2000)} history={createBrowserHistory()}/>,
         container
     );
