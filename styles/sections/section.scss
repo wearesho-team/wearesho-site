@@ -403,7 +403,7 @@
       font-size: .933em;
       color: #c3c3c3;
 
-      @include breakpoint($mobile-p) {
+      @include breakpoint($mobile) {
 
         display: block;
       }
