@@ -24,16 +24,8 @@ export class ContactFormModel extends Model {
     })
     public mail: string;
 
-    @MinLength(NameRange.min, {
-        message: "Имя должно содержать не менее $constraint1 букв",
-        groups: ["name"]
-    })
-    @MaxLength(NameRange.max, {
-        message: "Имя должно содержать не более $constraint1 букв",
-        groups: ["name"]
-    })
     @Matches(namePattern, {
-        message: "Имя не должно содержать специальных символов и цифр",
+        message: `Только латиница или кириллица длинной от ${NameRange.min} до ${NameRange.max} символов`,
         groups: ["name"]
     })
     @IsDefined({
