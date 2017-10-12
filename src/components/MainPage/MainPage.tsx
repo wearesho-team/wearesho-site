@@ -1,5 +1,6 @@
 import * as React from "react";
 import {TimeLine} from "../TimeLine";
+import {SmartBreakpoint} from "../SmartBreakpoint/SmartBreakpoint";
 
 export class MainPage extends React.Component<undefined, undefined> {
 
@@ -62,7 +63,9 @@ export class MainPage extends React.Component<undefined, undefined> {
                             </ul>
                         </div>
                     </div>
-                    <TimeLine range={{min: 2014, max: 2019}}/>
+                    <SmartBreakpoint match="min-width: 1024px">
+                        <TimeLine range={{min: 2014, max: 2019}}/>
+                    </SmartBreakpoint>
                 </div>
 
             </section>

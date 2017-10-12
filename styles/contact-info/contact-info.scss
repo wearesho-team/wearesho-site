@@ -11,7 +11,7 @@
 
   @include breakpoint($tablet) {
 
-    margin-bottom: 3em;
+    margin-bottom: 4.8em;
   }
 
   @include breakpoint($laptop-small) {
@@ -32,13 +32,17 @@
     }
 
     @include breakpoint($tablet) {
+      @include span(6 of 12 inside no-gutters);
+      float: right;
 
-      margin-bottom: 3em;
+      margin-bottom: 3.9em;
     }
 
     @include breakpoint($laptop-small) {
+      @include span(6 of 12 inside no-gutters);
+      float: right;
 
-      margin-bottom: 3em;
+      margin-bottom: 3.9em;
     }
 
     > .contact-info__link {
@@ -76,6 +80,11 @@
 
       margin-top: 2em;
     }
+
+    @include breakpoint($iphone4-l) {
+
+      margin-top: 2em;
+    }
   }
 
   &__link {
@@ -102,6 +111,12 @@
       @include breakpoint($mobile-l) {
 
         @include span(4 of 12 inside no-gutters last);
+      }
+
+      @include breakpoint($iphone4-l) {
+        float: none;
+
+        width: auto;
       }
     }
 
@@ -131,13 +146,15 @@
       }
 
       @include breakpoint($tablet) {
+        @include span(6 of 12 inside no-gutters);
 
-        margin: 0 0 2.8em;
+        margin: 0 0 2.5em;
       }
 
       @include breakpoint($laptop-small) {
+        @include span(6 of 12 inside no-gutters);
 
-        margin: 0 0 2.8em;
+        margin: 0 0 2.5em;
       }
 
       @include breakpoint($laptop-large) {
@@ -177,6 +194,26 @@
     @include breakpoint($mobile-l) {
 
       @include span(4 of 12 inside no-gutters last);
+    }
+
+    @include breakpoint($iphone4-l) {
+      @include span(8 of 12 inside no-gutters);
+
+      float: none;
+
+      margin-top: 3.75em;
+    }
+
+    @include breakpoint($tablet) {
+      @include span(6 of 12 inside no-gutters);
+
+      width: auto;
+    }
+
+    @include breakpoint($laptop-small) {
+      @include span(6 of 12 inside no-gutters);
+
+      width: auto;
     }
 
     & + .contact-info__text {

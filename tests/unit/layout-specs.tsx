@@ -12,6 +12,8 @@ import {SideBar, Header} from "../../src/components/Layout/Partials";
 import {SoundSwitch} from "../../src/components/Layout/SoundSwitch";
 import {getLinksWithProps} from "../../src/helpers/getLinksWithProps";
 
+const time = 500;
+
 describe("<Layout>", () => {
     let wrapper: ReactWrapper<LayoutProps, any>;
 
@@ -22,7 +24,7 @@ describe("<Layout>", () => {
     beforeEach(() => {
         wrapper = mount(
             <Layout
-                preLoader={new PreLoader(500)}
+                preLoader={new PreLoader(time)}
                 history={history = createMemoryHistory()}
             />
         );

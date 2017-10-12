@@ -14,6 +14,7 @@ if (!container) {
     console.error("Can not found element for mounting Layout!");
 } else {
     ReactDOM.render(
+        // tslint:disable:no-magic-numbers
         <Layout preLoader={new PreLoader((window as any).hideTimeout || 2000)} history={createBrowserHistory()}/>,
         container
     );

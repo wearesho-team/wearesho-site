@@ -6,6 +6,7 @@ import {useFakeTimers, SinonFakeTimers} from "sinon";
 import {TimeLine, TimeLineState, TimeLineProps} from "../../src/components/TimeLine";
 import {YearItem} from "../../src/components/TimeLine/YearItem";
 import {projects} from "../../src/data/Projects";
+import {ActivePoint} from "../../src/components/TimeLine/YearItem/ActivePoint/ActivePoint";
 // tslint:disable:no-magic-numbers
 describe("<TimeLine/>", () => {
     let wrapper: ReactWrapper<TimeLineProps, TimeLineState>;
@@ -59,6 +60,19 @@ describe("<TimeLine/>", () => {
 
     it("should set `move` class name to `<Slider/>` when active project changed", () => {
         timer.restore();
+
+        Object.defineProperty(wrapper.getDOMNode().parentNode, "parentNode", {
+            get: () => {
+                return {
+                    getBoundingClientRect: () => {
+                        return {
+                            width: 100
+                        }
+                    }
+                }
+            }
+        });
+
         (wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
@@ -84,6 +98,18 @@ describe("<TimeLine/>", () => {
     it("should remove `move` class name from `<Slider/>` after animation delay when active project changed", () => {
         wrapper = mount(<TimeLine {...props}/>);
 
+        Object.defineProperty(wrapper.getDOMNode().parentNode, "parentNode", {
+            get: () => {
+                return {
+                    getBoundingClientRect: () => {
+                        return {
+                            width: 100
+                        }
+                    }
+                }
+            }
+        });
+
         (wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
@@ -93,4 +119,27 @@ describe("<TimeLine/>", () => {
         expect(wrapper.state().sliderClassName).to.not.contain(TimeLine.sliderMoveClassName);
     });
 
+    it("Should set `swap` class name when slider near with right edge of screen", () => {
+        Object.defineProperty(wrapper.getDOMNode().parentNode, "parentNode", {
+            get: () => {
+                return {
+                    getBoundingClientRect: () => {
+                        return {
+                            width: 100
+                        }
+                    }
+                }
+            }
+        });
+
+        Object.defineProperty(wrapper.getDOMNode(), "offsetLeft", {
+            get: () => 5000
+        });
+
+        (wrapper.instance() as any)
+            .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
+
+        timer.tick(animationDuration);
+        expect(wrapper.state().sliderClassName).to.contain("swap");
+    })
 });

@@ -26,14 +26,16 @@
     width: $slider-size-laptop-m;
     height: $slider-size-laptop-m;
 
-    margin-top: (-$slider-size-laptop-m / 2);;
+    margin-top: (-$slider-size-laptop-m / 2);
+    margin-left: (-$slider-size-laptop-m / 2) + 3.5;
   }
 
   @include breakpoint($laptop-large) {
     width: $slider-size-laptop-l;
     height: $slider-size-laptop-l;
 
-    margin-top: (-$slider-size-laptop-l / 2);;
+    margin-top: (-$slider-size-laptop-l / 2);
+    margin-left: (-$slider-size-laptop-l / 2);
   }
 
   &.is-move {
@@ -108,7 +110,8 @@
   }
 
   &__description {
-    width: 320px;
+    max-width: 320px;
+    min-width: 190px;
 
     position: absolute;
 
@@ -118,6 +121,15 @@
     > span {
 
       display: block;
+    }
+  }
+
+  &.swap {
+    .chronology-slider__description {
+      left: auto;
+      right: ($slider-size / 2 + 16px);
+
+      text-align: right;
     }
   }
 

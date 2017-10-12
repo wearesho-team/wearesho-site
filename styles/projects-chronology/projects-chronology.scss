@@ -12,14 +12,9 @@
   margin-top: 8em;
   padding: 3em 0;
 
-  @include breakpoint($mobile) {
+  @include breakpoint($tablet-l) {
 
-    display: none;
-  }
-
-  @include breakpoint($tablet-p) {
-
-    display: none;
+    margin-top: 7em;
   }
 
   @include breakpoint($laptop-large) {

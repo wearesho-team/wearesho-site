@@ -15,7 +15,7 @@ Scenario("Scrolling", async (I) => {
     I.resizeWindow(size.w, size.h);
     I.waitForElement("body.loaded", timeout);
 
-    const count = 17;
+    const count = 19;
 
     for (let i = 0; i < count; i++) {
         I.pressKey("ArrowDown");
