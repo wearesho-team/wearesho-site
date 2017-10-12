@@ -177,7 +177,22 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
         );
     }
 
-    protected handleCloseModal = () => this.setState({isModalOpen: false});
+    protected handleCloseModal = () => {
+        this.setState({isModalOpen: false});
 
-    protected handleOpenModal = () => this.setState({isModalOpen: true});
+        window.onwheel = window.onmousewheel = document.onmousewheel = document.onkeydown = undefined;
+    };
+
+    protected handleOpenModal = () => {
+        this.setState({isModalOpen: true});
+
+        document.onkeydown = (event: any) => event.target.nodeName.toLowerCase() === "input";
+        window.onwheel = window.onmousewheel = document.onmousewheel = this.preventEvent;
+    };
+
+    protected preventEvent = (event: any) => {
+        event.preventDefault();
+        event.returnValue = false;
+        return false;
+    }
 }

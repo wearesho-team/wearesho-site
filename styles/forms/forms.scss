@@ -206,6 +206,10 @@
     font-weight: $font-style-regular;
     color: $color-primary;
 
+    &:required {
+
+    }
+
     @include transition(color .3s ease);
 
     &:focus {

@@ -56,7 +56,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
 
         return (
             <div className="prj-chronology">
-                {this.state.sliderPosition && <Slider {...sliderProps}/>}
+                <Slider {...sliderProps}/>
                 <div className="prj-chronology__div-outer prj-chronology__div-outer_left"/>
                 <this.years yearsList={yearsList}/>
                 <div className="prj-chronology__div-outer prj-chronology__div-outer_right"/>

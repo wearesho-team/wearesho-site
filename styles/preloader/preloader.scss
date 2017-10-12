@@ -230,6 +230,10 @@ body.loaded {
     font-size: 1.063em;
     font-weight: $font-style-light;
 
+    &:first-child {
+      white-space: nowrap;
+    }
+
     & + .section__subtitle {
 
       @include breakpoint($mobile) {

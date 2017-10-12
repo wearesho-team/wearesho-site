@@ -50,7 +50,7 @@
     "mocha": "^3.5.3",
     "nyc": "^11.1.0",
     "pre-commit": "^1.2.2",
-    "react-context-form": "^1.6.4",
+    "react-context-form": "^1.6.5",
     "react-test-renderer": "^16.0.0",
     "sass-loader": "^6.0.6",
     "selenium-standalone": "^6.6.0",
