@@ -167,37 +167,6 @@
         }
       }
 
-      &-variable {
-
-        &:first-child {
-
-          animation: change-title-part-1 12s ease infinite;
-        }
-
-        &:nth-child(2) {
-
-          animation: change-title-part-2 12s ease infinite;
-        }
-
-        &:nth-child(3) {
-
-          animation: change-title-part-3 12s ease infinite;
-        }
-      }
-
-      &:last-child {
-
-        .section__title-part-variable {
-          animation-delay: 1s;
-
-          &:nth-child(2),
-          &:nth-child(3) {
-            // Overlap bug due to animation delay when page appears in DOM
-            @include transform(translateY(-70px));
-          }
-        }
-      }
-
       &-container {
         width: 400px;
         height: 70px;
@@ -321,6 +290,17 @@
 
     &_marker {
       position: relative;
+      white-space: pre;
+
+      @include breakpoint($mobile) {
+        white-space: pre-line;
+        min-height: 52px;
+      }
+
+      @include breakpoint($tablet-l) {
+        white-space: pre-line;
+        min-height: 52px;
+      }
 
       &:before {
         content: '+';
@@ -337,7 +317,6 @@
         font-family: $font-secondary;
 
         @include breakpoint($mobile) {
-
           content: none;
         }
 
@@ -352,12 +331,18 @@
     &_reduced {
       display: block;
 
+      white-space: pre-line;
+
       font-size: .833em;
       font-weight: $font-style-light;
+
     }
   }
 
   .services-list {
+    white-space: pre;
+
+    line-height: 2.1em;
 
     &__item {
 

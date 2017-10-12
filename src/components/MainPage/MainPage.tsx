@@ -1,6 +1,15 @@
 import * as React from "react";
+
 import {TimeLine} from "../TimeLine";
 import {SmartBreakpoint} from "../SmartBreakpoint/SmartBreakpoint";
+import {CodeStyleAnimation} from "../Animations/CodeStyleAnimation";
+import {CodeStyleAnimationSpeed} from "../Animations/CodeStyleAnimation/CodeStyleAnimationSpeed";
+import {CustomAnimation} from "../Animations/CustomAnimation";
+
+const time = 400;
+const test = 1000;
+
+const preLoaderDelay = (window as any).hideTimeout;
 
 export class MainPage extends React.Component<undefined, undefined> {
 
@@ -13,54 +22,83 @@ export class MainPage extends React.Component<undefined, undefined> {
         return (
             <section className="section section-main">
                 <div className="align-container">
-                    <h2 className="section__title">
-                        <span className="section__title-part">
-                            <span>Здесь ваши&nbsp;</span>
-                            <span className="section__title-part-container">
-                                <span className="section__title-part-variable">смелые</span>
-                                <span className="section__title-part-variable">смелые2</span>
-                                <span className="section__title-part-variable">смелые3</span>
+                    <CustomAnimation duration={2000} delay={preLoaderDelay*2+time} actionClassName="slide-to-left">
+                        <h2 className="section__title">
+                            <span className="section__title-part">
+                                <span>Здесь ваши&nbsp;</span>
+                                <span className="section__title-part-container">
+                                    <span className="section__title-part-variable">смелые</span>
+                                </span>
                             </span>
-                        </span>
-                        <span className="section__title-part">
-                            <span>идеи превращаются&nbsp;</span>
-                            <span className="section__title-part-container">
-                                <span className="section__title-part-variable">в IT-продукт</span>
-                                <span className="section__title-part-variable">в IT-продукт2</span>
-                                <span className="section__title-part-variable">в IT-продукт3</span>
+                            <span className="section__title-part">
+                                <span>идеи превращаются&nbsp;</span>
+                                    <span className="section__title-part-container">
+                                    <span className="section__title-part-variable">в IT-продукт</span>
+                                </span>
                             </span>
-                        </span>
-                    </h2>
+                        </h2>
+                    </CustomAnimation>
                     <div className="container">
                         <div className="section__half">
-                            <h4 className="section__subtitle section__subtitle_marker">
-                                Реализуем высокотехнологичные проекты
-                            </h4>
-                            <ul className="services-list">
-                                <li className="services-list__item">разработка сайтов</li>
-                                <li className="services-list__item">брендинг и дизайн</li>
-                                <li className="services-list__item">формирование ERP и CRM-систем</li>
-                                <li className="services-list__item">аналитика и реклама</li>
-                                <li className="services-list__item">техническая поддержка проектов</li>
-                            </ul>
+                            <div className="section__subtitle section__subtitle_marker">
+                                <CodeStyleAnimation
+                                    delay={preLoaderDelay*2+time+test}
+                                    speed={CodeStyleAnimationSpeed.fast}
+                                    caretTimeout={100}
+                                >
+                                    Реализуем высокотехнологичные проекты
+                                </CodeStyleAnimation>
+                            </div>
+                            <div className="services-list">
+                                <CodeStyleAnimation
+                                    delay={preLoaderDelay*2+1000+time+test}
+                                    speed={CodeStyleAnimationSpeed.fast}
+                                    caretTimeout={1500}
+                                >
+                                    разработка сайтов{"\n"}
+                                    брендинг и дизайн{"\n"}
+                                    формирование ERP и CRM-систем{"\n"}
+                                    аналитика и реклама{"\n"}
+                                    техническая поддержка проектов
+                                </CodeStyleAnimation>
+                            </div>
                         </div>
                         <div className="section__half">
                             <h4 className="section__subtitle section__subtitle_marker">
-                                Более 3 лет
+                                <CodeStyleAnimation
+                                    delay={preLoaderDelay*2+time+test}
+                                    speed={CodeStyleAnimationSpeed.medium}
+                                    caretTimeout={100}
+                                >
+                                    Более 3 лет
+                                </CodeStyleAnimation>
                                 <span className="section__subtitle_reduced">
-                                    профессионального сотрудничества с финансовыми компаниями:
+                                     <CodeStyleAnimation
+                                         delay={preLoaderDelay*2+1000+time+test}
+                                         speed={CodeStyleAnimationSpeed.fast}
+                                         caretTimeout={1500}
+                                     >
+                                        профессионального сотрудничества с финансовыми компаниями:
+                                     </CodeStyleAnimation>
                                 </span>
                             </h4>
-                            <ul className="clients-list">
-                                <li className="clients-list__item">
-                                    <a href="#" className="clients-list__link">NIKO Holding</a>
-                                    <span className="clients-list__text">#автодилер&nbsp;#логистика&nbsp;#финансы</span>
-                                </li>
-                                <li className="clients-list__item">
-                                    <a href="#" className="clients-list__link">Infinance</a>
-                                    <span className="clients-list__text">#кредитование&nbsp;#финансы</span>
-                                </li>
-                            </ul>
+                            <CustomAnimation
+                                duration={1500}
+                                delay={preLoaderDelay*2+2500+time+test}
+                                actionClassName="slide-to-left"
+                            >
+                                <ul className="clients-list">
+                                    <li className="clients-list__item">
+                                        <a href="#" className="clients-list__link">NIKO Holding</a>
+                                        <span className="clients-list__text">#автодилер&nbsp;#логистика&nbsp;
+                                            #финансы</span>
+                                    </li>
+                                    <li className="clients-list__item">
+                                        <a href="#" className="clients-list__link">Infinance</a>
+                                        <span className="clients-list__text">#кредитование&nbsp;#финансы</span>
+                                    </li>
+                                </ul>
+                            </CustomAnimation>
                         </div>
                     </div>
                     <SmartBreakpoint match="min-width: 1024px">

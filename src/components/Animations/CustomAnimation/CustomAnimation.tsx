@@ -1,0 +1,75 @@
+import * as React from "react";
+
+import {concat} from "../../../helpers/concat";
+import {ElementWithTimer, smartClearTimeout} from "../../../helpers/smartClearTimeout";
+
+import {CustomAnimationDefaultProps, CustomAnimationProps, CustomAnimationPropTypes} from "./CustomAnimationProps";
+import {CustomAnimationState} from "./CustomAnimationState";
+
+export class CustomAnimation extends React.Component<CustomAnimationProps, CustomAnimationState>
+    implements ElementWithTimer {
+
+    public static readonly propTypes = CustomAnimationPropTypes;
+    public static readonly defaultProps = CustomAnimationDefaultProps;
+
+    public timer: any;
+    protected clearTimeout = smartClearTimeout.bind(this);
+
+    public constructor(props) {
+        super(props);
+
+        if (document.body.className.includes("loaded")) {
+            this.state = {
+                children: this.props.children
+            };
+            return;
+        }
+
+        this.observer.observe(document.body, {attributeFilter: ["class"], attributes: true});
+        this.state = {
+            children: React.cloneElement(this.props.children, {style: {opacity: 0}})
+        };
+    }
+
+    public componentWillUnmount() {
+        this.clearTimeout(this.timer);
+        this.observer.disconnect();
+    }
+
+    public render(): JSX.Element {
+        return this.state.children;
+    }
+
+    protected observer = new MutationObserver((mutations) => {
+        const {target} = mutations[0];
+        if (target !== document.body || target.attributes.getNamedItem("class").value !== "loaded") {
+            return;
+        }
+
+        this.clearTimeout(this.timer);
+        this.timer = setTimeout(this.setNewChild, this.props.delay);
+    });
+
+    protected setNewChild = () => {
+        const childProps = {
+            className: concat(
+                this.props.children.props.className,
+                this.props.actionClassName
+            )
+        };
+
+        this.setState({
+            children: React.cloneElement(this.props.children, childProps)
+        });
+
+        this.clearTimeout(this.timer);
+        this.timer = setTimeout(this.setOldChild, this.props.duration);
+    };
+
+    protected setOldChild = () => {
+        this.setState({
+            children: this.props.children
+        });
+        this.observer.disconnect();
+    };
+}

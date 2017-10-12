@@ -32,9 +32,10 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
             },
             overlayClassName: {
                 base: "modal-overlay",
-                afterOpen: "",
-                beforeClose: "",
+                afterOpen: "modal-opened",
+                beforeClose: "modal-close",
             },
+            closeTimeoutMS: 500
         };
 
         return (
