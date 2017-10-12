@@ -1,6 +1,7 @@
 import * as React from "react";
 import {Router} from "react-router-dom";
 import translate from "counterpart";
+import axios from "axios";
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 import {getLinksWithProps} from "../../helpers/getLinksWithProps";
@@ -82,6 +83,7 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
     protected setLanguage = (nextLanguage: Languages) => {
         localStorage.setItem("app.language", nextLanguage);
         translate.setLocale(nextLanguage);
+        axios.defaults.headers.common["app-language"] = nextLanguage;
         this.setState({language: nextLanguage});
     }
 }

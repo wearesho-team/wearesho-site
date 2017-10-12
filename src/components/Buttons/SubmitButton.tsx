@@ -1,5 +1,6 @@
 import * as React from "react";
 import {SlowSubmitButton, SlowSubmitButtonProps} from "react-context-form";
+import translate from "counterpart";
 
 function getCorners(): JSX.Element[] {
     return [
@@ -11,7 +12,7 @@ function getCorners(): JSX.Element[] {
 function loadingComponent() {
     return (
         <span>
-            Отправка
+            {translate("buttons.sending")}
             {getCorners()}
         </span>
     )

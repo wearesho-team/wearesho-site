@@ -9,7 +9,7 @@ export const NameRange = {
 };
 
 export const phonePattern = new RegExp(`^\\d{${PhoneRange.min},${PhoneRange.max}}$`);
-export const namePattern = new RegExp(`^[\sa-zA-ZА-Яа-яЄЇІєїіыЫёЁъЪ'\\-]{${NameRange.min},${NameRange.max}}$`);
+export const namePattern = new RegExp(`^[\\sa-zA-ZА-Яа-яЄЇІєїіыЫёЁъЪ'\\-]{${NameRange.min},${NameRange.max}}$`);
 
 export const TimeDefaults = {
     from: "09:00",

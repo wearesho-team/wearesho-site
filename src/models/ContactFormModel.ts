@@ -1,5 +1,5 @@
 import {Model} from "react-context-form";
-import {IsDefined, IsEmail, Matches, MaxLength, MinLength} from "class-validator";
+import {IsDefined, IsEmail, Matches} from "class-validator";
 
 import {namePattern, NameRange, phonePattern, TimeDefaults} from "./common/Rules";
 

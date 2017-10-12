@@ -5,8 +5,12 @@ import {
     FormGroup,
     Hint,
     Input,
-    Label, TransformTypes
+    Label,
+    TransformTypes,
+    FormContext, ModelError
 } from "react-context-form";
+import translate from "counterpart";
+import axios from "axios";
 
 import {ContactFormModel, instantiateContactFormModel} from "../../../models/ContactFormModel";
 import {NameRange, PhoneRange, TimeDefaults} from "../../../models/common";
@@ -32,7 +36,7 @@ export class ContactForm extends React.Component<undefined, undefined> {
                                 className="form__control"
                                 transform={TransformTypes.capitalize}
                                 maxLength={NameRange.max}
-                                placeholder="Ваше имя"
+                                placeholder={translate("contactPage.form.placeholders.name")}
                                 required
                             />
                         </AutoValidate>
@@ -44,7 +48,7 @@ export class ContactForm extends React.Component<undefined, undefined> {
                             <AutoValidate groupName="phone" onLength={PhoneRange.min}>
                                 <Input
                                     className="form__control"
-                                    placeholder="Телефон"
+                                    placeholder={translate("contactPage.form.placeholders.phone")}
                                     type="number"
                                     required
                                 />
@@ -56,7 +60,7 @@ export class ContactForm extends React.Component<undefined, undefined> {
                             <AutoValidate groupName="mail">
                                 <Input
                                     className="form__control"
-                                    placeholder="Эл.почта"
+                                    placeholder={translate("contactPage.form.placeholders.mail")}
                                     type="email"
                                     required
                                 />
@@ -67,29 +71,52 @@ export class ContactForm extends React.Component<undefined, undefined> {
                     </div>
                 </div>
                 <div className="form-half form-half_second">
-                    <p className="text_medium">Мы ценим ваше время</p>
-                    <p>Укажите удобное вам время для обсуждения проекта:</p>
+                    <p className="text_medium">{translate("contactPage.form.time.title")}</p>
+                    <p>{translate("contactPage.form.time.subTitle")}</p>
                     <div className="form__group spinner__group">
                         <FormGroup name="from" className="spinner">
-                            <Label className="spinner__label">с</Label>
+                            <Label className="spinner__label">
+                                {translate("contactPage.form.time.from")}
+                            </Label>
                             <TimeInput className="form__control" defaultTime={TimeDefaults.from}/>
                         </FormGroup>
                         <OnMobile>
-                            <span className="separator">до</span>
+                            <span className="separator">
+                                 {translate("contactPage.form.time.to")}
+                            </span>
                         </OnMobile>
                         <FormGroup name="to" className="spinner">
-                            <Label className="spinner__label">до</Label>
+                            <Label className="spinner__label">
+                                {translate("contactPage.form.time.to")}
+                            </Label>
                             <TimeInput className="form__control" defaultTime={TimeDefaults.to}/>
                         </FormGroup>
                     </div>
                 </div>
-                <SubmitButton label="Отправить"/>
+                <SubmitButton label={translate("buttons.send")}/>
             </Form>
         );
     }
 
-    // todo: connect to backend
-    private handleSubmit = async (model: ContactFormModel) => {
-        // ...
+    private handleSubmit = async (model: ContactFormModel, context: FormContext) => {
+        let data = {};
+        model.attributes()
+            .forEach((field) => data = {...data, ...{[field]: model[field]}});
+
+        try {
+            await axios.post("/callback", data);
+        }
+        catch ({response: {data}}) {
+            if (!data.hasOwnProperty("errors") || data.errors.length === 0) {
+                return;
+            }
+
+            data.errors.forEach(({code, ...error}) => context.addError(error as ModelError));
+            const element = context.getDOMElement(
+                data.errors
+                    .reduce((carry: ModelError, error: ModelError) => carry || error).attribute
+            );
+            element && element.focus();
+        }
     };
 }
