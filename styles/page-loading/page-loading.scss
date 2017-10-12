@@ -14,10 +14,7 @@
 }
 
 .section__title {
-  -webkit-filter: blur(5px);
-  filter: blur(5px);
-
-  @include transition(opacity .5s ease, filter 1.5s ease, -webkit-filter 1.5s ease);
+  @include transition(opacity .5s ease, filter 1.5s ease);
   @include transition-delay(5s);
 }
 
@@ -64,11 +61,6 @@ body.loaded {
   .prj-chronology {
 
     opacity: 1;
-  }
-
-  .section__title {
-    -webkit-filter: blur(0);
-    filter: blur(0);
   }
 
   .prj-chronology {
