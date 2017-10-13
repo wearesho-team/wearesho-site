@@ -2,11 +2,11 @@
   Chronology slider styles
  */
 .chronology-slider {
-  $slider-size: 51px;
+  $slider-size: 78px;
   $slider-size-laptop-m: 41px;
   $slider-size-laptop-l: 39px;
   $point-size: 6px;
-  $slider-bar-height: 66px;
+  $slider-bar-height: 90px;
 
   width: $slider-size;
   height: $slider-size;
@@ -37,6 +37,25 @@
     margin-top: (-$slider-size-laptop-l / 2);
     margin-left: (-$slider-size-laptop-l / 2);
   }
+  
+  &:before {
+    content: '';
+    display: block;
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+    background: url('images/slider-orbit.svg') no-repeat;
+
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+
+    @include animation(spin 8s linear infinite);
+  }
 
   &.is-move {
 
@@ -47,6 +66,11 @@
         height: 0;
 
         transition-delay: 0s;
+      }
+
+      &:after {
+
+        opacity: 0;
       }
     }
 
@@ -84,28 +108,40 @@
 
     border-radius: 50%;
 
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .16);
-
-    &:before {
+    &:before,
+    &:after {
       content: '';
       display: block;
 
-      width: 1px;
-      height: $slider-bar-height;
-
       position: absolute;
 
-      top: -$slider-bar-height;
       right: 0;
       left: 0;
 
       margin: auto;
+    }
 
-      background-color: $color-secondary;
+    &:before {
+      width: 1px;
+      height: $slider-bar-height;
+
+      top: -56px;
+
+      background: linear-gradient(to bottom, rgba(19, 151, 199, 1) 0%, rgba(19, 151, 199, .47) 100%);
 
       @include transition(height .3s ease);
+      @include transition-delay(.3s);
+    }
 
-      transition-delay: .3s;
+    &:after {
+      width: 24px;
+      height: 92px;
+
+      top: -34px;
+
+      background: url('images/slider-glow.svg') no-repeat;
+
+      @include transition(opacity .3s ease);
     }
   }
 
@@ -115,7 +151,7 @@
 
     position: absolute;
 
-    top: (-$slider-bar-height - 4px);
+    top: -64px;
     left: ($slider-size / 2 + 16px);
 
     > span {
@@ -157,10 +193,11 @@
 
     font-size: .75em;
     font-weight: $font-style-light;
+    color: #A3B0B7;
   }
 
   &__date {
     font-size: .688em;
-    color: #c3c3c3;
+    color: rgba(148, 177, 188, .31);
   }
 }

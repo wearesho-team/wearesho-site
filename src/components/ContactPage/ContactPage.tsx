@@ -43,13 +43,10 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                     <h2 className="section__title">Партнерство</h2>
                     <div className="section__half half_first">
                         <OnDesktop>
-                            <h4 className="section__subtitle">
-                                Свяжитесь с нами
-                                <span className="section__subtitle_reduced">
-                                    или укажите контактные данные в форме ниже.
-                                    Наши специалисты ответят на все вопросы.
-                                </span>
-                            </h4>
+                            <p className="section__text">
+                                Свяжитесь с нами или укажите контактные данные в форме.
+                                Наши специалисты ответят на все ваши вопросы.
+                            </p>
                             <p className="section__text request-sent">
                                 <span className="section__text_increased">Мефодий,</span>
                                 <span>спасибо за проявленный интерес к Студии.</span>
@@ -68,7 +65,6 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                     <div className="section__half half_second">
                         <div className="contact-info">
                             <OnDesktop>
-                                <h4 className="section__subtitle">Контакты</h4>
                                 <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                     {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                 </a>
@@ -96,7 +92,6 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
                                 <div className="align-container">
-                                    <h4 className="section__subtitle">Контакты</h4>
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                         {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                     </a>

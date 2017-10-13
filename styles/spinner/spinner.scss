@@ -56,8 +56,14 @@
     }
   }
 
-  &__label {
+  &__label,
+  > .form__control {
 
+    color: #C5D5E0;
+  }
+
+  &__label {
+    font-size: 1em;
     font-weight: $font-style-regular;
   }
 
@@ -67,9 +73,12 @@
     margin-left: .6em;
     padding: 0;
 
+    opacity: .5;
+
     font-size: 1.875em;
     font-weight: $font-style-light;
-    color: rgba(105, 105, 105, .8);
+
+    @include transition(opacity .3s ease);
 
     @include breakpoint($mobile) {
       width: 88px;
@@ -87,9 +96,10 @@
       border-bottom: 1px solid $color-primary;
     }
 
+    &:hover,
     &:focus {
 
-      color: rgba(105, 105, 105, 1);
+      opacity: 1;
     }
   }
 

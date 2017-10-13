@@ -64,7 +64,9 @@ body.loaded {
 
     border-width: 0 0 0 1px;
     border-style: solid;
-    border-color: #F8F4EE;
+    border-color: rgba(244, 244, 244, .04);
+
+    opacity: .8;
 
     @include breakpoint($mobile) {
 
@@ -145,7 +147,7 @@ body.loaded {
 
       top: 0;
 
-      background-color: #fff;
+      background-color: #1D1A33;
 
       @include transition(height .5s ease);
     }

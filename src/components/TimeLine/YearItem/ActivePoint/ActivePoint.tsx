@@ -29,7 +29,8 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
         const className = concat(
             ActivePoint.defaultClassName,
             `${ActivePoint.defaultClassName}_${this.props.sideClassName}`,
-            this.props.isActive ? ActivePoint.activeClassName : ActivePoint.filledClassName
+            ActivePoint.filledClassName,
+            this.props.isActive ? ActivePoint.activeClassName : ""
         );
 
         return <span className={className} onClick={this.handleClick} ref={this.setElement}/>

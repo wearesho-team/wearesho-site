@@ -11,6 +11,8 @@
 
   cursor: pointer;
 
+  z-index: 1;
+
   @include breakpoint($mobile) {
 
     display: none;
@@ -19,6 +21,15 @@
   @include breakpoint($tablet) {
 
     display: none;
+  }
+
+  &:hover,
+  &.is-active {
+
+    > .sound-switch__bar {
+
+      background-color: #F2F2F2;
+    }
   }
 
   &__bar {
@@ -30,6 +41,8 @@
     background-color: #484848;
 
     animation: bar-two-height 2.5s steps(25, end) 0s infinite;
+
+    @include transition(background-color .3s ease);
 
     &:not(:last-child) {
 

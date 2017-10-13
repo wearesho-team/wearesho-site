@@ -553,3 +553,10 @@ $indent-tablet: -66px;
     opacity: 1;
   }
 }
+
+// Projects chronology orbit animation
+@keyframes spin {
+  100% {
+    @include transform(rotate(360deg));
+  }
+}
