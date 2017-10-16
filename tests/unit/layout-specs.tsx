@@ -17,6 +17,8 @@ import {translate} from "../../src/helpers/translate";
 
 const time = 500;
 
+const time = 500;
+
 describe("<Layout>", () => {
     let wrapper: ReactWrapper<LayoutProps, any>;
 
