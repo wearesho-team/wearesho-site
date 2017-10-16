@@ -1,6 +1,7 @@
 import "../styles/main.scss";
 import "bootstrap";
 
+// tslint:disable:no-submodule-imports
 import "translations/en";
 import "translations/ru";
 
@@ -20,7 +21,7 @@ if (!container) {
 } else {
     if (!localStorage.getItem("app.language")) {
         let browserLanguage = navigator.language || (navigator as any).userLanguage;
-        browserLanguage = browserLanguage && (browserLanguage.replace(/[^enru]/g,"")).toLowerCase();
+        browserLanguage = browserLanguage && (browserLanguage.replace(/[^enru]/g, "")).toLowerCase();
 
         localStorage.setItem("app.language", browserLanguage || Languages.ru);
     }

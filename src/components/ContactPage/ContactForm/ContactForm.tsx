@@ -7,10 +7,8 @@ import {
     Input,
     Label,
     TransformTypes,
-    FormContext, ModelError
+    FormContext
 } from "react-context-form";
-import translate from "counterpart";
-import axios from "axios";
 
 import {ContactFormModel, instantiateContactFormModel} from "../../../models/ContactFormModel";
 import {NameRange, PhoneRange, TimeDefaults} from "../../../models/common";
@@ -19,6 +17,7 @@ import {OnMobile} from "../../../helpers/Breakpoints";
 
 import {SubmitButton} from "../../Buttons/SubmitButton";
 import {TimeInput} from "./TimeInput";
+import {translate} from "../../../helpers/translate";
 
 export class ContactForm extends React.Component<undefined, undefined> {
 
@@ -99,24 +98,6 @@ export class ContactForm extends React.Component<undefined, undefined> {
     }
 
     private handleSubmit = async (model: ContactFormModel, context: FormContext) => {
-        let data = {};
-        model.attributes()
-            .forEach((field) => data = {...data, ...{[field]: model[field]}});
-
-        try {
-            await axios.post("/callback", data);
-        }
-        catch ({response: {data}}) {
-            if (!data.hasOwnProperty("errors") || data.errors.length === 0) {
-                return;
-            }
-
-            data.errors.forEach(({code, ...error}) => context.addError(error as ModelError));
-            const element = context.getDOMElement(
-                data.errors
-                    .reduce((carry: ModelError, error: ModelError) => carry || error).attribute
-            );
-            element && element.focus();
-        }
+       // ...
     };
 }

@@ -11,6 +11,9 @@ import {ContactPage} from "../../src/components/ContactPage";
 import {SideBar, Header} from "../../src/components/Layout/Partials";
 import {SoundSwitch} from "../../src/components/Layout/SoundSwitch";
 import {getLinksWithProps} from "../../src/helpers/getLinksWithProps";
+import {LayoutContext} from "../../src/components/Layout/LayoutContext";
+import {Languages} from "../../src/data/Languages";
+import {translate} from "../../src/helpers/translate";
 
 const time = 500;
 
@@ -89,4 +92,14 @@ describe("<Layout>", () => {
         history.push("/contact");
         expectElementsExist();
     });
+
+    it("Should set next language on `change language`", () => {
+        ((wrapper.instance() as any).getChildContext() as LayoutContext).setLanguage(Languages.en);
+        expect(wrapper.instance().state.language).to.equal(Languages.en);
+        expect(translate.getLocale()).to.equal(Languages.en);
+
+        ((wrapper.instance() as any).getChildContext() as LayoutContext).setLanguage(Languages.ru);
+        expect(wrapper.instance().state.language).to.equal(Languages.ru);
+        expect(translate.getLocale()).to.equal(Languages.ru);
+    })
 });

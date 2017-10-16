@@ -29,7 +29,6 @@
   "homepage": "https://github.com/Wearesho-team/wearesho-site#readme",
   "devDependencies": {
     "@types/chai": "^4.0.4",
-    "@types/counterpart": "^0.18.0",
     "@types/enzyme": "^2.8.9",
     "@types/google-map-react": "^0.23.0",
     "@types/history": "^4.6.0",

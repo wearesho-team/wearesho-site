@@ -1,6 +1,6 @@
 import * as React from "react";
 import {SlowSubmitButton, SlowSubmitButtonProps} from "react-context-form";
-import translate from "counterpart";
+import {translate} from "../../helpers/translate";
 
 function getCorners(): JSX.Element[] {
     return [

@@ -16,5 +16,4 @@ module.exports = {
     mapApiKey: "AIzaSyDAq3RWOHVldSRJRvX90QG9IOkNMApLPwM",
     phone: 380660249402,
     reCaptchaApiKey: "6Leq6S8UAAAAAD7G73kEGY7Y4_TiD2HtQ-y_simp",
-    baseUrl: "http://localhost:3000/",
 };

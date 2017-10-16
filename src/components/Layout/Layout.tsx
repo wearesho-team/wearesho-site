@@ -1,7 +1,5 @@
 import * as React from "react";
 import {Router} from "react-router-dom";
-import translate from "counterpart";
-import axios from "axios";
 
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 import {getLinksWithProps} from "../../helpers/getLinksWithProps";
@@ -19,6 +17,7 @@ import {SmartBreakpoint} from "../SmartBreakpoint";
 import {LayoutContext, LayoutContextTypes} from "./LayoutContext";
 import {LayoutState} from "./LayoutState";
 import {Languages} from "../../data/Languages";
+import {translate} from "../../helpers/translate";
 
 export class Layout extends React.Component<LayoutProps, LayoutState> {
     public static readonly propTypes = LayoutPropTypes;
@@ -33,7 +32,6 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
                 : Languages.en,
             isScrollDisabled: true
         };
-
         translate.setLocale(this.state.language);
     }
 
@@ -83,7 +81,6 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
     protected setLanguage = (nextLanguage: Languages) => {
         localStorage.setItem("app.language", nextLanguage);
         translate.setLocale(nextLanguage);
-        axios.defaults.headers.common["app-language"] = nextLanguage;
         this.setState({language: nextLanguage});
     }
 }

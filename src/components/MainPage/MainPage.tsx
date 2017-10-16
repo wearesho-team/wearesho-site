@@ -1,14 +1,16 @@
 import * as React from "react";
-import translate from "counterpart";
 
 import {TimeLine} from "../TimeLine";
 import {SmartBreakpoint} from "../SmartBreakpoint/SmartBreakpoint";
+import {LayoutContext, LayoutContextTypes} from "../Layout/LayoutContext";
+import {translate} from "../../helpers/translate";
 
 export class MainPage extends React.Component<undefined, undefined> {
+    public static readonly contextTypes = LayoutContextTypes;
+    public context: LayoutContext;
 
-    // Add `if` when props or state will be present
-    public shouldComponentUpdate(): boolean {
-        return false;
+    public shouldComponentUpdate(nextProps, nextState, nextContext: LayoutContext): boolean {
+        return this.context.language !== nextContext.language;
     }
 
     public render(): JSX.Element {
@@ -87,7 +89,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                                 <li className="clients-list__item">
                                     <a href="#" className="clients-list__link">Infinance</a>
                                     <span className="clients-list__text">
-                                        {translate("hashTags.krediting")}&nbsp;
+                                        {translate("hashTags.crediting")}&nbsp;
                                         {translate("hashTags.finances")}
                                     </span>
                                 </li>
@@ -98,7 +100,6 @@ export class MainPage extends React.Component<undefined, undefined> {
                         <TimeLine range={{min: 2014, max: 2019}}/>
                     </SmartBreakpoint>
                 </div>
-
             </section>
         );
     }

@@ -1,9 +1,8 @@
 import * as React from "react";
-import translate from "counterpart";
 
 import {LayoutContext, LayoutContextTypes} from "../LayoutContext";
 import {Languages} from "../../../data/Languages";
-import {MouseEvent} from "react";
+import {translate} from "../../../helpers/translate";
 
 export class Header extends React.Component<undefined, undefined> {
     public static readonly contextTypes = LayoutContextTypes;
@@ -27,7 +26,7 @@ export class Header extends React.Component<undefined, undefined> {
         );
     }
 
-    protected changeLanguage = (event: MouseEvent<HTMLButtonElement>) => {
+    protected changeLanguage = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
 
         const nextLanguage = this.context.language === Languages.ru

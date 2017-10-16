@@ -1,30 +1,32 @@
 import * as React from "react";
 import ReactModal from "react-modal";
-import translate from "counterpart";
 
 import {Config} from "../../data/Config";
 
 import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../helpers/Breakpoints";
 import {formatNumber} from "../../helpers/formatNumber";
+import {translate} from "../../helpers/translate";
 
 import {CloseButton, SubmitButton} from "../Buttons";
 import {ContactPageState} from "./ContactPageState";
 import {ContactForm} from "./ContactForm";
 import {SocialLinks} from "../Layout/Partials/SocialLinks";
 import {Map} from "../Widgets/Map"
+import {LayoutContext, LayoutContextTypes} from "../Layout/LayoutContext";
 
 export class ContactPage extends React.Component<undefined, ContactPageState> {
+    public static readonly contextTypes = LayoutContextTypes;
+    public context: LayoutContext;
 
     public state: ContactPageState = {
         isModalOpen: false,
     };
 
-    public shouldComponentUpdate(nextProps: undefined, nextState: ContactPageState): boolean {
-        return this.state.isModalOpen !== nextState.isModalOpen;
+    public shouldComponentUpdate(nextProps, nextState: ContactPageState, nextContext: LayoutContext): boolean {
+        return this.state.isModalOpen !== nextState.isModalOpen || this.context.language !== nextContext.language;
     }
 
     public render(): JSX.Element {
-
         const modalProps = {
             className: {
                 base: "modal",
@@ -54,10 +56,8 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 <span className="section__text_increased">Мефодий,</span>
                                 <span>спасибо за проявленный интерес к Студии.</span>
                                 <span>Мы обязательно перезвоним Вам в указанное время:</span>
-                                <span className="section__text_indented">
-                                    с
-                                    <span className="section__text_increased">&nbsp;9:00&nbsp;</span>
-                                    до
+                                <span className="section__text_indented">с
+                                    <span className="section__text_increased">&nbsp;9:00&nbsp;</span>до
                                     <span className="section__text_increased">&nbsp;18:00&nbsp;</span>
                                 </span>
                                 <span>С уважением, команда Студии &laquo;ШО?!&raquo;</span>
@@ -76,16 +76,13 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 <p className="contact-info__text contact-info__text_indented">
                                     <span className="text_medium">{translate("contactPage.support.title")}</span>
                                     {translate("contactPage.support.subTitle")}
-                                    <span className="contact-info__text_increased">
-                                        24
-                                        <span className="separator">/</span>
-                                        7
+                                    <span className="contact-info__text_increased">24
+                                        <span className="separator">/</span>7
                                     </span>
                                 </p>
                                 <p className="contact-info__text">
                                     <span className="text_medium">{translate("contactPage.location.title")}</span>
-                                    {translate(Config.location.country)}&nbsp;
-                                    <span className="separator">/</span>&nbsp;
+                                    {translate(Config.location.country)}&nbsp;<span className="separator">/</span>&nbsp;
                                     {translate(Config.location.city)}
                                 </p>
                             </OnDesktop>
@@ -129,9 +126,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                         {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                     </a>
-                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">
-                                        {Config.mail}
-                                    </a>
+                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
                                 <SubmitButton
                                     type="button"
@@ -187,13 +182,11 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
 
     protected handleCloseModal = () => {
         this.setState({isModalOpen: false});
-
         window.onwheel = window.onmousewheel = document.onmousewheel = document.onkeydown = undefined;
     };
 
     protected handleOpenModal = () => {
         this.setState({isModalOpen: true});
-
         document.onkeydown = (event: any) => event.target.nodeName.toLowerCase() === "input";
         window.onwheel = window.onmousewheel = document.onmousewheel = this.preventEvent;
     };
