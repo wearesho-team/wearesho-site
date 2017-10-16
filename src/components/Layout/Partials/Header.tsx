@@ -32,6 +32,7 @@ export class Header extends React.Component<undefined, undefined> {
         const nextLanguage = this.context.language === Languages.ru
             ? Languages.en
             : Languages.ru;
+
         this.context.setLanguage(nextLanguage);
     };
 

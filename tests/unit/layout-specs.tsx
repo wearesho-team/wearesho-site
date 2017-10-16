@@ -34,6 +34,7 @@ describe("<Layout>", () => {
     });
 
     afterEach(() => {
+        localStorage.getItem = (arg: string) => arg;
         wrapper.unmount();
     });
 
@@ -101,5 +102,15 @@ describe("<Layout>", () => {
         ((wrapper.instance() as any).getChildContext() as LayoutContext).setLanguage(Languages.ru);
         expect(wrapper.instance().state.language).to.equal(Languages.ru);
         expect(translate.getLocale()).to.equal(Languages.ru);
-    })
+    });
+
+    it("Should set language from localStorage on mount", () => {
+        localStorage.getItem = () => Languages.en;
+        wrapper.unmount().mount();
+        expect(wrapper.instance().state.language).to.equal(Languages.en);
+
+        localStorage.getItem = () => Languages.ru;
+        wrapper.unmount().mount();
+        expect(wrapper.instance().state.language).to.equal(Languages.ru);
+    });
 });

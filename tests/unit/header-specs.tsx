@@ -31,6 +31,12 @@ describe("<Header/>", () => {
 
         expect(context.language).to.equal(Languages.ru);
         expect(isDefaultPrevented).to.be.true;
+
+        wrapper.setContext(context);
+
+        wrapper.find(".header__lang-toggle").simulate("click");
+
+        expect(context.language).to.equal(Languages.en);
     });
 
 });
