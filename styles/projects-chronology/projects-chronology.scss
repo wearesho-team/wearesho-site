@@ -87,7 +87,11 @@
 
     display: inline-block;
 
+    position: relative;
+
     vertical-align: middle;
+
+    background-color: transparent;
 
     font-size: 11px;
 
@@ -266,15 +270,39 @@
         }
 
         &.is-active {
-
-          &:before,
-          &:after {
-
-          }
-
           @include transform(scale(1.5));
+
+          > .prj-chronology__div-glow {
+
+            opacity: 1;
+          }
         }
       }
     }
+  }
+
+  &__div-glow {
+    $glow-size: 13px;
+
+    width: $glow-size;
+    height: $glow-size;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    margin: (-$glow-size / 2) 0 0 (-$glow-size / 2);
+
+    border-radius: 50%;
+
+    background-color: rgba(206, 206, 206, 0.21);
+
+    opacity: 0;
+
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
+
+    @include transition(opacity .3s ease);
   }
 }

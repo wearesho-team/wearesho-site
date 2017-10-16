@@ -33,7 +33,11 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
             this.props.isActive ? ActivePoint.activeClassName : ""
         );
 
-        return <span className={className} onClick={this.handleClick} ref={this.setElement}/>
+        return (
+            <span className={className} onClick={this.handleClick} ref={this.setElement}>
+                <span className="prj-chronology__div-glow"/>
+            </span>
+        );
     }
 
     protected handleClick = ({currentTarget}) => {

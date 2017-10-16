@@ -69,6 +69,15 @@
   &__group {
     position: relative;
 
+    &:hover,
+    &:focus {
+
+      > .form__control {
+
+        opacity: 1;
+      }
+    }
+
     &.spinner__group {
       margin-top: .65em;
 
@@ -88,7 +97,11 @@
     &_has-error {
 
       > .form__control {
+        border-bottom-color: #EB4B89;
+
         color: rgba(235, 75, 124, .5);
+
+        box-shadow: 0px 3px 5px -2px rgba(196, 58, 100, .3);
 
         &::-webkit-input-placeholder {
 
@@ -108,15 +121,6 @@
         &:-ms-input-placeholder {
 
           color: rgba(235, 75, 124, .5);
-        }
-
-        &_underline {
-          background-color: #EB4B89;
-
-          &:after {
-
-            background-color: #EB4B89;
-          }
         }
       }
     }
@@ -201,37 +205,17 @@
 
     padding: .5em 0;
 
-    border: 0;
+    border: 1px solid transparent;
+    border-bottom-color: $color-secondary;
 
     font-weight: $font-style-regular;
     color: $color-secondary;
 
     opacity: .6;
 
-    @include transition(opacity .3s ease);
+    box-shadow: 0px 3px 5px -2px rgba(106, 215, 255, .3);
 
-    &:hover,
-    &:focus {
-
-      opacity: 1;
-    }
-
-    &:required {
-
-    }
-
-    @include transition(color .3s ease);
-
-    &:focus {
-
-      & + .form__control_underline {
-
-        &:after {
-
-          width: 100%;
-        }
-      }
-    }
+    @include transition(opacity .3s ease, box-shadow .3s ease);
 
     &::-webkit-input-placeholder {
 
@@ -251,34 +235,6 @@
     &:-ms-input-placeholder {
 
       color: $color-secondary;
-    }
-
-    &_underline {
-      height: 1px;
-
-      display: block;
-
-      position: relative;
-
-      background-color: $color-secondary;
-
-      @include transition(background-color .3s ease);
-
-      &:after {
-        content: '';
-
-        width: 0;
-        height: 1px;
-
-        position: absolute;
-
-        top: 0;
-        left: 0;
-
-        background-color: $color-secondary;
-
-        @include transition(width .4s ease);
-      }
     }
   }
 

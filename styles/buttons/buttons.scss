@@ -60,12 +60,20 @@
 
     &:hover,
     &:active {
+      box-shadow: 0 0 6px 0 rgba(216, 238, 255, .7), inset 0 0 6px rgba(216, 238, 255, .7);
+
+      @include transition(box-shadow .4s ease);
 
       > .btn-corners {
 
         &:before,
         &:after {
-          animation: border-animation .6s ease;
+          width: 100%;
+          height: 100%;
+
+          border-color: #7BC6F5;
+
+          color: #7BC6F5;
         }
       }
     }
@@ -81,12 +89,15 @@
 
         position: absolute;
 
-        border-color: #989898;
+        border-color: $color-secondary;
         border-style: solid;
 
-        @include transition(width .3s ease, height .3s ease);
-
-        animation-fill-mode: forwards;
+        @include transition(
+                            width .2s ease,
+                            height .2s ease,
+                            border-color .2s ease,
+                            color .2s ease
+        );
       }
 
       &:before {

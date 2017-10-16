@@ -38,7 +38,7 @@ export class Map extends AbstractWidget<MapProps> {
             },
             ...this.props
         };
-
+        return null;
         return (
             <div className="map-container">
                 <GoogleMapReact {...props}>

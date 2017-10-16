@@ -148,6 +148,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                         </ReactModal>
                     </OnMobileTablet>
                 </div>
+
                 <Map center={Config.location.coordinates}>
                     <div className="location-indicator">
                         <div className="location-indicator__bar"/>

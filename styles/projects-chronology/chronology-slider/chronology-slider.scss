@@ -1,5 +1,5 @@
 /**
-  Chronology slider styles
+* Chronology slider styles
  */
 .chronology-slider {
   $slider-size: 78px;
@@ -37,8 +37,9 @@
     margin-top: (-$slider-size-laptop-l / 2);
     margin-left: (-$slider-size-laptop-l / 2);
   }
-  
-  &:before {
+
+  &:before,
+  &:after {
     content: '';
     display: block;
 
@@ -48,13 +49,19 @@
     right: 0;
     bottom: 0;
     left: 0;
-    
+  }
+  
+  &:before {
     background: url('images/slider-orbit.svg') no-repeat;
 
     -webkit-filter: blur(3px);
     filter: blur(3px);
 
     @include animation(spin 8s linear infinite);
+  }
+
+  &:after {
+
   }
 
   &.is-move {
@@ -137,7 +144,7 @@
       width: 24px;
       height: 92px;
 
-      top: -34px;
+      top: -32px;
 
       background: url('images/slider-glow.svg') no-repeat;
 
