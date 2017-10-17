@@ -1,74 +1,155 @@
 /**
-  Map styles
+* Map styles
  */
 .map-container {
-  width: calc(100% / 3 - 100px);
-  height: 100%;
+  width: 657px;
+  height: 646px;
 
   position: absolute;
 
   top: 0;
-  right: 0;
+  right: -330px;
+  bottom: 0;
+
+  margin: auto;
+
+  background-image: url('images/map.svg');
 
   pointer-events: none;
 
-  opacity: 0;
+  z-index: 1;
 
-  @include animation(show-map .5s ease);
+  &:before,
+  &:after {
+    content: '';
+    display: block;
 
-  @include animation-fill-mode(forwards);
+    position: absolute;
 
-  @include breakpoint($mobile-tablet) {
-    width: auto;
-
-    position: relative;
+    z-index: $under-zindex;
   }
 
-  @include breakpoint($mobile) {
+  &:before {
+    width: 587px;
+    height: 308px;
 
-    height: 260px;
+    top: 0;
+    right: 0;
+
+    background: url('images/map-glow1.svg') no-repeat;
+
+    opacity: .57;
+
+    -webkit-filter: blur(50px);
+    filter: blur(50px);
   }
 
-  @include breakpoint($mobile-p) {
+  &:after {
+    width: 587px;
+    height: 308px;
 
-    margin: 0 -1.875em;
+    top: 0;
+    right: 0;
+
+    //background: url('images/map-glow2.svg') no-repeat;
+
+    opacity: .64;
+
+    -webkit-filter: blur(26px);
+    filter: blur(26px);
   }
 
-  @include breakpoint($mobile-l) {
+  .slider {
+    top: 50%;
+    left: 50%;
 
-    margin: 0 -4.5em;
-  }
+    margin: -150px 0 0 -148px;
 
-  @include breakpoint($tablet) {
+    .slider__dot {
+      width: 9px;
+      height: 9px;
 
-    margin: 0 -5.375em;
-  }
+      position: absolute;
 
-  @include breakpoint($tablet-p) {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
 
-    height: 350px;
-  }
+      margin: auto;
 
-  @include breakpoint($tablet-l) {
+      border-radius: 50%;
 
-    height: 270px;
-  }
+      background-color: #fff;
 
-  @include breakpoint($laptop-small) {
-    width: auto;
-    height: 270px;
+      &:before,
+      &:after {
+        content: '';
+        display: block;
 
-    position: relative;
+        position: absolute;
 
-    margin: 0 -7.25em;
-  }
+        border-radius: 50%;
+      }
 
-  /*Hide default UI*/
-  .gm-style {
-    > div:not([tabindex = "0"]) {
+      &:before {
+        width: 400%;
+        height: 400%;
 
-      display: none !important;
+        top: 50%;
+        left: 50%;
+
+        margin-top: -200%;
+        margin-left: -200%;
+
+        border: 1px solid #fff;
+
+        @include animation(pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite);
+
+        -webkit-filter: blur(2px);
+        filter: blur(2px);
+      }
+
+      &:after {
+        $glow-size: 17px;
+
+        width: $glow-size;
+        height: $glow-size;
+
+        @include transform(scale(1.5));
+
+        top: 50%;
+        left: 50%;
+
+        margin: (-$glow-size / 2) 0 0 (-$glow-size / 2);
+
+        border-radius: 50%;
+        border: 1px solid rgba(83, 86, 119, .1);
+
+        background-color: rgba(206, 206, 206, 0.08);
+
+        @include transition(opacity .3s ease);
+      }
+    }
+
+    &__description {
+      right: 55px;
+      left: auto;
+
+      text-align: right;
+    }
+
+    &__location {
+      font-size: 1.125em;
+      color: #1397C7;
+    }
+
+    &__coordinates {
+      margin-top: .5em;
+
+      white-space: nowrap;
+
+      font-size: .875em;
     }
   }
-
 }

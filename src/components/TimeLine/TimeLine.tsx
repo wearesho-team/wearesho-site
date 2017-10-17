@@ -20,7 +20,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
     public static readonly animationDuration = 300;
     public static readonly pointsCount = 6;
 
-    public static readonly sliderDefaultClassName = "chronology-slider";
+    public static readonly sliderDefaultClassName = "slider";
     public static readonly sliderMoveClassName = "is-move";
 
     public readonly widthRange = 85;
@@ -57,9 +57,13 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
         return (
             <div className="prj-chronology">
                 <Slider {...sliderProps}/>
-                <div className="prj-chronology__div-outer prj-chronology__div-outer_left"/>
+                <div className="prj-chronology__div-outer prj-chronology__div-outer_left">
+                    <span>2013</span>
+                </div>
                 <this.years yearsList={yearsList}/>
-                <div className="prj-chronology__div-outer prj-chronology__div-outer_right"/>
+                <div className="prj-chronology__div-outer prj-chronology__div-outer_right">
+                    <span>2020</span>
+                </div>
             </div>
         );
     }

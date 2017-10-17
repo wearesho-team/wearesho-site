@@ -137,13 +137,32 @@
       }
 
       &_left {
-
         left: -40px;
+
+        > span {
+
+          left: -60px;
+        }
       }
 
       &_right {
-
         right: -40px;
+
+        > span {
+
+          right: -60px;
+        }
+      }
+
+      > span {
+        display: inline-block;
+
+        position: absolute;
+
+        top: -7px;
+
+        font-size: 11px;
+        color: rgba(155, 138, 151, .25);
       }
     }
 
@@ -234,7 +253,7 @@
 
           border-radius: 50%;
 
-          border: 1px solid rgba(206, 206, 206, .21);
+          border: 1px solid rgba(206, 206, 206, .3);
 
           -webkit-filter: blur(2px);
           filter: blur(2px);
@@ -282,7 +301,7 @@
   }
 
   &__div-glow {
-    $glow-size: 13px;
+    $glow-size: 17px;
 
     width: $glow-size;
     height: $glow-size;
@@ -295,13 +314,14 @@
     margin: (-$glow-size / 2) 0 0 (-$glow-size / 2);
 
     border-radius: 50%;
+    border: 1px solid rgba(83, 86, 119, .1);
 
-    background-color: rgba(206, 206, 206, 0.21);
+    background-color: rgba(206, 206, 206, .08);
 
     opacity: 0;
 
-    -webkit-filter: blur(2px);
-    filter: blur(2px);
+    //-webkit-filter: blur(2px);
+    //filter: blur(2px);
 
     @include transition(opacity .3s ease);
   }

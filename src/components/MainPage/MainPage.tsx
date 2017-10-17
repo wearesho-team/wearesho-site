@@ -67,7 +67,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                         <TimeLine range={{min: 2014, max: 2019}}/>
                     </SmartBreakpoint>
                 </div>
-
+                <div className="section-gradient"/>
             </section>
         );
     }

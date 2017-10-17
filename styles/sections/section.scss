@@ -1,9 +1,7 @@
 /**
-  Section styles
+* Section styles
  */
 .section {
-  @include container;
-
   position: relative;
 
   @include breakpoint($mobile-p) {
@@ -61,12 +59,7 @@
   }
 
   &.section-partnership {
-
-    // Temp
-    //@include breakpoint($laptop-not-large) {
-    //
-    //  padding-bottom: 9.75em;
-    //}
+    position: relative;
 
     .section__half {
       padding-top: 3.5em;

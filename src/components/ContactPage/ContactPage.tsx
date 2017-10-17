@@ -147,8 +147,22 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                             </div>
                         </ReactModal>
                     </OnMobileTablet>
+                    <div className="map-container">
+                        <div className="slider">
+                            <div className="slider__body">
+                                <div className="slider__dot"/>
+                            </div>
+                            <div className="slider__description">
+                            <span className="slider__location">
+                                UA / Kharkiv
+                            </span>
+                                <span className="slider__coordinates">
+                                49.9808100&deg; 36.2527200&deg;
+                            </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
                 <Map center={Config.location.coordinates}>
                     <div className="location-indicator">
                         <div className="location-indicator__bar"/>

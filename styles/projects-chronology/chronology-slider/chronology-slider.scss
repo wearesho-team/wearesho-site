@@ -1,7 +1,7 @@
 /**
-* Chronology slider styles
+* Slider styles
  */
-.chronology-slider {
+.slider {
   $slider-size: 78px;
   $slider-size-laptop-m: 41px;
   $slider-size-laptop-l: 39px;
@@ -17,6 +17,8 @@
 
   margin-top: (-$slider-size / 2);
   margin-left: -($slider-size / 2 - $point-size / 2);
+
+  border-radius: 50%;
 
   z-index: 1;
 
@@ -60,13 +62,11 @@
     @include animation(spin 8s linear infinite);
   }
 
-  &:after {
-
-  }
-
   &.is-move {
+    animation: motion-blur .1s;
+    animation-delay: .3s;
 
-    > .chronology-slider__body {
+    > .slider__body {
 
       &:before {
 
@@ -81,28 +81,28 @@
       }
     }
 
-    > .chronology-slider__description {
+    > .slider__description {
 
-      > .chronology-slider__projects,
-      > .chronology-slider__services,
-      > .chronology-slider__date {
+      > .slider__projects,
+      > .slider__services,
+      > .slider__date {
 
         @include transform(translateX(20px));
 
         opacity: 0;
       }
 
-      > .chronology-slider__projects {
+      > .slider__projects {
 
         transition-delay: .05s;
       }
 
-      > .chronology-slider__services {
+      > .slider__services {
 
         transition-delay: .1s;
       }
 
-      > .chronology-slider__date {
+      > .slider__date {
 
         transition-delay: .15s;
       }
@@ -168,7 +168,7 @@
   }
 
   &.swap {
-    .chronology-slider__description {
+    .slider__description {
       left: auto;
       right: ($slider-size / 2 + 16px);
 

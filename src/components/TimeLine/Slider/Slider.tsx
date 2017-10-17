@@ -23,11 +23,11 @@ export const Slider: React.SFC<SliderProps> = (props): JSX.Element => {
 
     return (
         <div className={props.className} style={sliderStyle}>
-            <div className="chronology-slider__body"/>
-            <div className="chronology-slider__description">
+            <div className="slider__body"/>
+            <div className="slider__description">
                 <SliderTitle title={props.project.title}/>
                 <SliderDescription items={props.project.description}/>
-                <span className="chronology-slider__date">{getFormattedDate()}</span>
+                <span className="slider__date">{getFormattedDate()}</span>
             </div>
         </div>
     );
