@@ -33,7 +33,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                     </h2>
                     <div className="container">
                         <div className="section__half">
-                            <h4 className="section__subtitle section__subtitle_marker">
+                            <h4 className="section__subtitle marker">
                                 Реализуем высокотехнологичные проекты
                             </h4>
                             <ul className="services-list">
@@ -45,7 +45,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                             </ul>
                         </div>
                         <div className="section__half">
-                            <h4 className="section__subtitle section__subtitle_marker">
+                            <h4 className="section__subtitle marker">
                                 Более 3 лет
                                 <span className="section__subtitle_reduced">
                                     профессионального сотрудничества с финансовыми компаниями:
@@ -67,7 +67,6 @@ export class MainPage extends React.Component<undefined, undefined> {
                         <TimeLine range={{min: 2014, max: 2019}}/>
                     </SmartBreakpoint>
                 </div>
-                <div className="section-gradient"/>
             </section>
         );
     }

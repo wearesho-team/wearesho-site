@@ -115,7 +115,6 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     <span className="text_medium">Локация</span>
                                     {Config.location.country} / {Config.location.city}
                                 </p>
-                                <h4 className="section__subtitle">Контакты</h4>
                                 <div className="align-container">
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                         {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}

@@ -39,13 +39,13 @@ export class Map extends AbstractWidget<MapProps> {
             ...this.props
         };
         return null;
-        return (
-            <div className="map-container">
-                <GoogleMapReact {...props}>
-                    {this.Marker}
-                </GoogleMapReact>
-            </div>
-        );
+        // return (
+        //     <div className="map-container">
+        //         <GoogleMapReact {...props}>
+        //             {this.Marker}
+        //         </GoogleMapReact>
+        //     </div>
+        // );
     }
 
     protected setElement = (element: GoogleMapReact) => element && (this.element = element);

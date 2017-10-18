@@ -4,7 +4,9 @@
 body.loaded {
 
   .grid {
-    z-index: ($under-zindex - 1);
+    pointer-events: none;
+
+    z-index: auto;
 
     > .grid__col {
 

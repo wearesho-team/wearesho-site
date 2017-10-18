@@ -1,0 +1,112 @@
+/**
+* Stages styles
+ */
+.stage,
+.stages-group {
+  @include span(3 of 12 inside no-gutters);
+  
+  > .stage {
+    @include span(12 of 12 inside no-gutters);
+
+    float: none;
+  }
+}
+
+.stage {
+  padding-left: 1em;
+
+  cursor: pointer;
+
+  &:hover {
+
+    .stage__title {
+
+      opacity: 1;
+    }
+  }
+
+  &:nth-child(2) {
+
+    margin-top: 19em;
+  }
+
+  &:nth-child(3) {
+
+    margin-top: 9.5em;
+  }
+
+  &-body {
+    @include transition(transform .3s ease);
+
+    &:hover {
+      @include transform(translateX(24px));
+
+      > .stage__detail {
+
+        opacity: 1;
+      }
+    }
+  }
+
+  &__number {
+    line-height: 1em;
+
+    font-size: 2.938em;
+    color: #C5D5E0;
+
+    @include transition(text-shadow .3s ease);
+
+    &.glow {
+
+      text-shadow: 2px 1px 8px rgba(255, 255, 255, .49);
+    }
+
+    &.marker {
+
+      &:before {
+
+        left: -20px;
+      }
+    }
+  }
+
+  &__title {
+    margin: .5em 0 .25em;
+
+    opacity: .45;
+
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: $font-style-regular;
+    color: $color-secondary;
+
+    @include transition(opacity .3s ease);
+  }
+
+  &__description {
+    white-space: nowrap;
+
+    font-size: .8em;
+  }
+
+  &__detail {
+    display: block;
+
+    margin-top: .4em;
+
+    opacity: 0;
+
+    @include transition(opacity .3s ease);
+  }
+}
+
+.stages-group {
+
+  > .stage {
+
+    &:first-child {
+
+      height: 0;
+    }
+  }
+}
