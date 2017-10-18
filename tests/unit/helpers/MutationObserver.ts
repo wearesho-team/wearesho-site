@@ -4,6 +4,7 @@ if (typeof MutationObserver === "undefined") {
             {
                 type: undefined,
                 addedNodes: [],
+                target: undefined
             }
         ];
 

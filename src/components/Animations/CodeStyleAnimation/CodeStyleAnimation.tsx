@@ -9,7 +9,6 @@ import {
     CodeStyleAnimationProps,
     CodeStyleAnimationPropTypes
 } from "./CodeStyleAnimationProps";
-import {CodeStyleAnimationSpeed, CodeStyleAnimationSpeedInterface} from "./CodeStyleAnimationSpeed";
 import {CodeStyleAnimationState} from "./CodeStyleAnimationState";
 
 export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps, CodeStyleAnimationState>
@@ -21,8 +20,19 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
     public timer: any;
 
     protected clearTimeout = smartClearTimeout.bind(this);
-    protected speed: CodeStyleAnimationSpeedInterface;
     protected sourceChild: string;
+
+    protected observer = new MutationObserver((mutations) => {
+        const {target} = mutations[0];
+        if (target !== document.body || target.attributes.getNamedItem("class").value !== "loaded") {
+            return;
+        }
+
+        this.clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+            this.type();
+        }, this.props.delay);
+    });
 
     public constructor(props) {
         super(props);
@@ -31,30 +41,6 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             counter: 0,
             children: "",
         };
-
-        switch (this.props.speed) {
-            case CodeStyleAnimationSpeed.fast:
-                this.speed = {
-                    max: 25,
-                    min: 5
-                };
-                break;
-            case CodeStyleAnimationSpeed.medium:
-                this.speed = {
-                    max: 40,
-                    min: 10
-                };
-                break;
-            case CodeStyleAnimationSpeed.slow:
-                this.speed = {
-                    max: 100,
-                    min: 50
-                };
-                break;
-            default:
-                this.speed = this.props.speed;
-                break;
-        }
 
         // if on mount document loaded - show child completely
         if (document.body.className.includes("loaded")) {
@@ -73,23 +59,14 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             this.sourceChild = (this.props.children as string []).join("");
         }
 
-        // if children is instance of string or string[] - wait until document will be loaded
-        if (this.sourceChild) {
-            this.state = {
-                ...this.state,
-                ...{
-                    children: ["", undefined, this.sourceChild.replace(/[^\n]/g, " ")]
-                }
-            };
-            this.observer.observe(document.body, {attributeFilter: ["class"], attributes: true});
-        } else {
-            this.state = {
-                ...this.state,
-                ...{
-                    children: this.props.children,
-                }
-            };
-        }
+        this.state = {
+            ...this.state,
+            ...{
+                children: ["", undefined, this.sourceChild.replace(/[^\n]/g, " ")]
+            }
+        };
+
+        this.observer.observe(document.body, {attributeFilter: ["class"], attributes: true});
     }
 
     public componentWillUnmount() {
@@ -125,20 +102,8 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             }));
 
             this.type();
-        }, Math.random() * (this.speed.max - this.speed.min) + this.speed.min);
+        }, Math.random() * (this.props.speed.max - this.props.speed.min) + this.props.speed.min);
     }
-
-    protected observer = new MutationObserver((mutations) => {
-        const {target} = mutations[0];
-        if (target !== document.body || target.attributes.getNamedItem("class").value !== "loaded") {
-            return;
-        }
-
-        this.clearTimeout(this.timer);
-        this.timer = setTimeout(() => {
-            this.type();
-        }, this.props.delay);
-    });
 
     protected get caret(): JSX.Element {
         return <i key="caret" className="caret"/>;

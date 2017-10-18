@@ -3,8 +3,9 @@ import {CodeStyleAnimationSpeed, CodeStyleAnimationSpeedInterface} from "./CodeS
 
 export interface CodeStyleAnimationProps {
     delay?: number;
+    // tslint:disable-next-line
     children: string | String | string [];
-    speed?: CodeStyleAnimationSpeed | CodeStyleAnimationSpeedInterface;
+    speed?: CodeStyleAnimationSpeedInterface;
     caretTimeout?: number;
 }
 
@@ -14,13 +15,10 @@ export const CodeStyleAnimationPropTypes = {
         PropTypes.string.isRequired,
         PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
     ]).isRequired,
-    speed: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.shape({
-            max: PropTypes.number.isRequired,
-            min: PropTypes.number.isRequired
-        })
-    ]),
+    speed: PropTypes.shape({
+        max: PropTypes.number.isRequired,
+        min: PropTypes.number.isRequired
+    }),
     caretTimeout: PropTypes.number
 };
 

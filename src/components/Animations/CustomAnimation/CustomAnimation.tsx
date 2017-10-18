@@ -13,7 +13,17 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
     public static readonly defaultProps = CustomAnimationDefaultProps;
 
     public timer: any;
+
     protected clearTimeout = smartClearTimeout.bind(this);
+    protected observer = new MutationObserver((mutations) => {
+        const {target} = mutations[0];
+        if (target !== document.body || target.attributes.getNamedItem("class").value !== "loaded") {
+            return;
+        }
+
+        this.clearTimeout(this.timer);
+        this.timer = setTimeout(this.setNewChild.bind(this), this.props.delay);
+    });
 
     public constructor(props) {
         super(props);
@@ -40,17 +50,7 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
         return this.state.children;
     }
 
-    protected observer = new MutationObserver((mutations) => {
-        const {target} = mutations[0];
-        if (target !== document.body || target.attributes.getNamedItem("class").value !== "loaded") {
-            return;
-        }
-
-        this.clearTimeout(this.timer);
-        this.timer = setTimeout(this.setNewChild, this.props.delay);
-    });
-
-    protected setNewChild = () => {
+    protected setNewChild() {
         const childProps = {
             className: concat(
                 this.props.children.props.className,
@@ -63,10 +63,10 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
         });
 
         this.clearTimeout(this.timer);
-        this.timer = setTimeout(this.setOldChild, this.props.duration);
+        this.timer = setTimeout(this.setOldChild.bind(this), this.props.duration);
     };
 
-    protected setOldChild = () => {
+    protected setOldChild() {
         this.setState({
             children: this.props.children
         });

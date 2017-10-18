@@ -6,10 +6,8 @@ import {CodeStyleAnimation} from "../Animations/CodeStyleAnimation";
 import {CodeStyleAnimationSpeed} from "../Animations/CodeStyleAnimation/CodeStyleAnimationSpeed";
 import {CustomAnimation} from "../Animations/CustomAnimation";
 
-const time = 400;
-const test = 1000;
-
-const preLoaderDelay = (window as any).hideTimeout;
+// tslint:disable:no-magic-numbers
+const delay = (window as any).hideTimeout * 2.5;
 
 export class MainPage extends React.Component<undefined, undefined> {
 
@@ -22,7 +20,7 @@ export class MainPage extends React.Component<undefined, undefined> {
         return (
             <section className="section section-main">
                 <div className="align-container">
-                    <CustomAnimation duration={2000} delay={preLoaderDelay*2+time} actionClassName="slide-to-left">
+                    <CustomAnimation duration={2000} delay={delay} actionClassName="slide-to-left">
                         <h2 className="section__title">
                             <span className="section__title-part">
                                 <span>Здесь ваши&nbsp;</span>
@@ -40,18 +38,18 @@ export class MainPage extends React.Component<undefined, undefined> {
                     </CustomAnimation>
                     <div className="container">
                         <div className="section__half">
-                            <div className="section__subtitle section__subtitle_marker">
+                            <h4 className="section__subtitle section__subtitle_marker">
                                 <CodeStyleAnimation
-                                    delay={preLoaderDelay*2+time+test}
+                                    delay={delay}
                                     speed={CodeStyleAnimationSpeed.fast}
                                     caretTimeout={100}
                                 >
                                     Реализуем высокотехнологичные проекты
                                 </CodeStyleAnimation>
-                            </div>
+                            </h4>
                             <div className="services-list">
                                 <CodeStyleAnimation
-                                    delay={preLoaderDelay*2+1000+time+test}
+                                    delay={delay}
                                     speed={CodeStyleAnimationSpeed.fast}
                                     caretTimeout={1500}
                                 >
@@ -66,7 +64,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                         <div className="section__half">
                             <h4 className="section__subtitle section__subtitle_marker">
                                 <CodeStyleAnimation
-                                    delay={preLoaderDelay*2+time+test}
+                                    delay={delay}
                                     speed={CodeStyleAnimationSpeed.medium}
                                     caretTimeout={100}
                                 >
@@ -74,7 +72,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                                 </CodeStyleAnimation>
                                 <span className="section__subtitle_reduced">
                                      <CodeStyleAnimation
-                                         delay={preLoaderDelay*2+1000+time+test}
+                                         delay={delay}
                                          speed={CodeStyleAnimationSpeed.fast}
                                          caretTimeout={1500}
                                      >
@@ -84,7 +82,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                             </h4>
                             <CustomAnimation
                                 duration={1500}
-                                delay={preLoaderDelay*2+2500+time+test}
+                                delay={delay}
                                 actionClassName="slide-to-left"
                             >
                                 <ul className="clients-list">

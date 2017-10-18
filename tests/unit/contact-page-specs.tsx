@@ -1,28 +1,35 @@
 import * as React from "react";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
+import {useFakeTimers, SinonFakeTimers} from "sinon";
 
 import {ContactPage, ContactPageState} from "../../src/components/ContactPage";
 import {SubmitButton} from "../../src/components/Buttons";
 
 describe("<ContactPage/>", () => {
-
     let wrapper: ReactWrapper<any, ContactPageState>;
-
+    let timer: SinonFakeTimers;
     let modal: Element;
+
+    const animationDuration = 500;
 
     beforeEach(() => {
         wrapper = mount(<ContactPage/>);
         modal = document.body.querySelector(".ReactModalPortal");
+        timer = useFakeTimers();
     });
 
-    afterEach(() => wrapper.unmount());
+    afterEach(() => {
+        timer.restore();
+        wrapper.unmount();
+    });
 
     it("should open modal when click cooperate button", () => {
         const button = wrapper.find(SubmitButton);
         button.last().simulate("click");
 
         expect(modal.querySelector(".form")).to.exist;
+        document.body.innerHTML = "";
     });
 
     it("should close modal when click close button", () => {
@@ -31,7 +38,6 @@ describe("<ContactPage/>", () => {
 
         let defaultPrevented = false;
 
-        // temp
         const event = {
             preventDefault: () => {
                 defaultPrevented = true;
@@ -44,10 +50,10 @@ describe("<ContactPage/>", () => {
 
         expect(modal.querySelector(".form")).to.exist;
 
-        const buttonClose = document.body.querySelector(".ReactModalPortal .modal .btn_close") as HTMLButtonElement;
-
+        const buttonClose = modal.querySelector(".modal .btn_close") as HTMLButtonElement;
         buttonClose.click();
+        timer.tick(animationDuration);
 
-        expect(modal.querySelector(".form")).to.not.exist;
+        expect(modal.querySelector(".modal")).to.not.exist;
     });
 });
