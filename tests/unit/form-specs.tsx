@@ -4,6 +4,7 @@ import {ReactWrapper, mount} from "enzyme";
 
 import {ContactForm} from "../../src/components/ContactPage/ContactForm";
 import {instantiateContactFormModel} from "../../src/models/ContactFormModel";
+import {compareArrays} from "../../src/helpers/compareArrays";
 
 describe("<Form/>", () => {
     let wrapper: ReactWrapper<any, any>;
@@ -34,7 +35,12 @@ describe("<Form/>", () => {
         model.groups();
         model.to = model.from = undefined;
 
-        expect((await model.validate()).length).to.equal(model.attributes().length);
+        expect(
+            compareArrays(
+                (await model.validate()).map(({attribute}) => attribute),
+                model.attributes()
+            )
+        ).to.be.true;
 
         model.from = "1";
         model.to = "1";
@@ -42,6 +48,11 @@ describe("<Form/>", () => {
         model.phone = "1";
         model.mail = "1";
 
-        expect((await model.validate()).length).to.equal(model.attributes().length);
+        expect(
+            compareArrays(
+                (await model.validate()).map(({attribute}) => attribute),
+                model.attributes()
+            )
+        ).to.be.true;
     })
 });
