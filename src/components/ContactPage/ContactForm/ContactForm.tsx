@@ -5,7 +5,9 @@ import {
     FormGroup,
     Hint,
     Input,
-    Label, TransformTypes
+    Label,
+    TransformTypes,
+    FormContext
 } from "react-context-form";
 
 import {ContactFormModel, instantiateContactFormModel} from "../../../models/ContactFormModel";
@@ -15,6 +17,7 @@ import {OnMobile} from "../../../helpers/Breakpoints";
 
 import {SubmitButton} from "../../Buttons/SubmitButton";
 import {TimeInput} from "./TimeInput";
+import {translate} from "../../../helpers/translate";
 
 export class ContactForm extends React.Component<undefined, undefined> {
 
@@ -32,7 +35,7 @@ export class ContactForm extends React.Component<undefined, undefined> {
                                 className="form__control"
                                 transform={TransformTypes.capitalize}
                                 maxLength={NameRange.max}
-                                placeholder="Ваше имя"
+                                placeholder={translate("contactPage.form.placeholders.name")}
                                 required
                             />
                         </AutoValidate>
@@ -44,7 +47,7 @@ export class ContactForm extends React.Component<undefined, undefined> {
                             <AutoValidate groupName="phone" onLength={PhoneRange.min}>
                                 <Input
                                     className="form__control"
-                                    placeholder="Телефон"
+                                    placeholder={translate("contactPage.form.placeholders.phone")}
                                     type="number"
                                     required
                                 />
@@ -56,7 +59,7 @@ export class ContactForm extends React.Component<undefined, undefined> {
                             <AutoValidate groupName="mail">
                                 <Input
                                     className="form__control"
-                                    placeholder="Эл.почта"
+                                    placeholder={translate("contactPage.form.placeholders.mail")}
                                     type="email"
                                     required
                                 />
@@ -67,29 +70,34 @@ export class ContactForm extends React.Component<undefined, undefined> {
                     </div>
                 </div>
                 <div className="form-half form-half_second">
-                    <p className="text_medium">Мы ценим ваше время</p>
-                    <p>Укажите удобное вам время для обсуждения проекта:</p>
+                    <p className="text_medium">{translate("contactPage.form.time.title")}</p>
+                    <p>{translate("contactPage.form.time.subTitle")}</p>
                     <div className="form__group spinner__group">
                         <FormGroup name="from" className="spinner">
-                            <Label className="spinner__label">с</Label>
+                            <Label className="spinner__label">
+                                {translate("contactPage.form.time.from")}
+                            </Label>
                             <TimeInput className="form__control" defaultTime={TimeDefaults.from}/>
                         </FormGroup>
                         <OnMobile>
-                            <span className="separator">до</span>
+                            <span className="separator">
+                                 {translate("contactPage.form.time.to")}
+                            </span>
                         </OnMobile>
                         <FormGroup name="to" className="spinner">
-                            <Label className="spinner__label">до</Label>
+                            <Label className="spinner__label">
+                                {translate("contactPage.form.time.to")}
+                            </Label>
                             <TimeInput className="form__control" defaultTime={TimeDefaults.to}/>
                         </FormGroup>
                     </div>
                 </div>
-                <SubmitButton label="Отправить"/>
+                <SubmitButton label={translate("buttons.send")}/>
             </Form>
         );
     }
 
-    // todo: connect to backend
-    private handleSubmit = async (model: ContactFormModel) => {
-        // ...
+    private handleSubmit = async (model: ContactFormModel, context: FormContext) => {
+       // ...
     };
 }
