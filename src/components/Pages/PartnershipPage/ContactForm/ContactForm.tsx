@@ -8,12 +8,12 @@ import {
     Label, TransformTypes
 } from "react-context-form";
 
-import {ContactFormModel, instantiateContactFormModel} from "../../../models/ContactFormModel";
-import {NameRange, PhoneRange, TimeDefaults} from "../../../models/common";
+import {ContactFormModel, instantiateContactFormModel} from "../../../../models/ContactFormModel";
+import {NameRange, PhoneRange, TimeDefaults} from "../../../../models/common";
 
-import {OnMobile} from "../../../helpers/Breakpoints";
+import {OnMobile} from "../../../../helpers/Breakpoints";
 
-import {SubmitButton} from "../../Buttons/SubmitButton";
+import {SubmitButton} from "../../../Buttons/SubmitButton";
 import {TimeInput} from "./TimeInput";
 
 export class ContactForm extends React.Component<undefined, undefined> {

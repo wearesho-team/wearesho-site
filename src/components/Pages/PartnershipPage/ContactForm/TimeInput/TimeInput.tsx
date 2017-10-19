@@ -4,7 +4,7 @@ const ReactInputMask = require("react-input-mask/lib");
 import {BaseInput, BaseInputDefaultProps} from "react-context-form";
 
 import {TimeInputDefaultProps, TimeInputProps, TimeInputPropTypes} from "./TimeInputProps";
-import {toFixed} from "../../../../helpers/toFixed";
+import {toFixed} from "../../../../../helpers/toFixed";
 
 export class TimeInput extends BaseInput<HTMLInputElement> {
     public static readonly propTypes = TimeInputPropTypes;

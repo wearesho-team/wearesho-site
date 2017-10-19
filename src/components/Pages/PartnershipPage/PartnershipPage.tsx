@@ -1,16 +1,15 @@
 import * as React from "react";
 import ReactModal from "react-modal";
 
-import {Config} from "../../data/Config";
+import {Config} from "../../../data/Config";
 
-import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../helpers/Breakpoints";
-import {formatNumber} from "../../helpers/formatNumber";
+import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../../helpers/Breakpoints";
+import {formatNumber} from "../../../helpers/formatNumber";
 
-import {CloseButton, SubmitButton} from "../Buttons";
+import {CloseButton, SubmitButton} from "../../Buttons";
 import {ContactPageState} from "./ContactPageState";
 import {ContactForm} from "./ContactForm";
-import {SocialLinks} from "../Layout/Partials/SocialLinks";
-import {Map} from "../Widgets/Map"
+import {SocialLinks} from "../../Layout/Partials/SocialLinks";
 
 export class ContactPage extends React.Component<undefined, ContactPageState> {
 
@@ -162,26 +161,6 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                         </div>
                     </div>
                 </div>
-                <Map center={Config.location.coordinates}>
-                    <div className="location-indicator">
-                        <div className="location-indicator__bar"/>
-                        <div className="location-indicator__marker"/>
-                        <div className="location-indicator__info">
-                            <div className="align-container">
-                                <span className="location-indicator__info_country">Ukraine</span>
-                                <span className="location-indicator__info_city">Kharkiv</span>
-                            </div>
-                            <div className="align-container">
-                                <span className="location-indicator__info_coordinates">
-                                    {Config.location.coordinates.lat}&deg;
-                                </span>
-                                <span className="location-indicator__info_coordinates">
-                                    {Config.location.coordinates.lng}&deg;
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </Map>
             </section>
         );
     }

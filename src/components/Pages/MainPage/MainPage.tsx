@@ -48,7 +48,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                             <h4 className="section__subtitle marker">
                                 Более 3 лет
                                 <span className="section__subtitle_reduced">
-                                    профессионального сотрудничества с финансовыми компаниями:
+                                    сотрудничества с финансовыми компаниями:
                                 </span>
                             </h4>
                             <ul className="clients-list">

@@ -2,7 +2,7 @@ import * as React from "react";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
-import {ContactPage, ContactPageState} from "../../src/components/ContactPage";
+import {ContactPage, ContactPageState} from "../../src/components/Pages/ContactPage";
 import {SubmitButton} from "../../src/components/Buttons";
 
 describe("<ContactPage/>", () => {

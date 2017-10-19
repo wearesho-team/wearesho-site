@@ -17,14 +17,14 @@
 
   pointer-events: none;
 
-  z-index: 1;
-
   &:before,
   &:after {
     content: '';
     display: block;
 
     position: absolute;
+
+    opacity: .7;
 
     z-index: $under-zindex;
   }
@@ -33,27 +33,23 @@
     width: 587px;
     height: 308px;
 
-    top: 0;
-    right: 0;
+    top: 35px;
+    left: -25px;
 
     background: url('images/map-glow1.svg') no-repeat;
-
-    opacity: .57;
 
     -webkit-filter: blur(50px);
     filter: blur(50px);
   }
 
   &:after {
-    width: 587px;
-    height: 308px;
+    width: 720px;
+    height: 246px;
 
-    top: 0;
-    right: 0;
+    top: 73px;
+    right: 10px;
 
-    //background: url('images/map-glow2.svg') no-repeat;
-
-    opacity: .64;
+    background: url('images/map-glow2.svg') no-repeat;
 
     -webkit-filter: blur(26px);
     filter: blur(26px);

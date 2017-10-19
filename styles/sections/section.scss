@@ -49,7 +49,7 @@
     }
 
     .section__subtitle_reduced {
-      width: 304px;
+      width: 230px;
 
       @include breakpoint($mobile-p) {
 
@@ -99,7 +99,7 @@
       }
     }
 
-    .half_second{
+    .half_second {
 
       @include span(8 of 12 inside no-gutters);
     }
@@ -407,6 +407,8 @@
     }
 
     &__text {
+      opacity: .25;
+
       font-size: .933em;
       color: #94B1BC;
 
