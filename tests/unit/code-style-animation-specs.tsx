@@ -66,10 +66,11 @@ describe("<CodeStyleAnimation/>", () => {
 
     it("Should render string with spaces instead symbols if children is string array", () => {
         wrapper.unmount();
-        wrapper.setProps({
-            children: textArray,
-        });
-        wrapper.mount();
+        wrapper = mount(
+            <CodeStyleAnimation startFeature={startFeature}>
+                {textArray}
+            </CodeStyleAnimation>
+        );
 
         expect((wrapper.getDOMNode() as any).wholeText).to.equal(textArray.join("").replace(/[^\n]/g, " "));
     });
@@ -96,5 +97,19 @@ describe("<CodeStyleAnimation/>", () => {
 
         timer.tick(CodeStyleAnimationSpeed.fast.max * text.length);
         expect(wrapper.instance().state.children).to.equal(text);
+    });
+
+    it("Should set new child on receive new props", () => {
+        wrapper.setProps({
+            children: text
+        });
+
+        expect((wrapper.getDOMNode() as any).wholeText).to.equal(text);
+
+        wrapper.setProps({
+            children: textArray
+        });
+
+        expect((wrapper.getDOMNode() as any).wholeText).to.equal(textArray.join(""));
     });
 });

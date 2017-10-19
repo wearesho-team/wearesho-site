@@ -93,4 +93,18 @@ describe("<CustomAnimation/>", () => {
         timer.tick(duration);
         expect(wrapper.getDOMNode().className).to.not.contains(actionClassName);
     });
+
+    it("Should set new child on receive new props", () => {
+        wrapper.setProps({
+            children: child
+        });
+
+        expect(wrapper.getDOMNode().className).to.contains("child");
+
+        wrapper.setProps({
+            children: <span className="span"/>
+        });
+
+        expect(wrapper.getDOMNode().className).to.contains("span");
+    });
 });

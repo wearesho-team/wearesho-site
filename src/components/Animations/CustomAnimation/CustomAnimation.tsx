@@ -48,6 +48,14 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
         this.observer.disconnect();
     }
 
+    public componentWillReceiveProps(nextProps: CustomAnimationProps) {
+        if (this.state.children === nextProps.children) {
+            return;
+        }
+
+        this.setState({children: nextProps.children});
+    }
+
     public render(): JSX.Element {
         return this.state.children;
     }

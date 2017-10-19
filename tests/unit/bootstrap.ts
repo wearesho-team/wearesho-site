@@ -7,6 +7,7 @@ import "./helpers/requestAnimationFrame";
 import "./helpers/scrollTo";
 import "./helpers/matchMedia";
 import "./helpers/MutationObserver";
+import "./helpers/localStorage";
 
 Enzyme.configure({ adapter: new Adapter() });
 

@@ -74,6 +74,14 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
         this.observer.disconnect();
     }
 
+    public componentWillReceiveProps(nextProps: CodeStyleAnimationProps) {
+        if (this.state.children === nextProps.children) {
+            return;
+        }
+
+        this.setState({children: nextProps.children});
+    }
+
     public render(): any {
         return this.state.children;
     }

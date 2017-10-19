@@ -1,24 +1,29 @@
 import * as React from "react";
 
+import {translate} from "../../helpers/translate";
+
 import {TimeLine} from "../TimeLine";
 import {SmartBreakpoint} from "../SmartBreakpoint/SmartBreakpoint";
 import {CodeStyleAnimation} from "../Animations/CodeStyleAnimation";
 import {CodeStyleAnimationSpeed} from "../Animations/CodeStyleAnimation/CodeStyleAnimationSpeed";
 import {CustomAnimation} from "../Animations/CustomAnimation";
+import {LayoutContext, LayoutContextTypes} from "../Layout/LayoutContext";
 
 // tslint:disable:no-magic-numbers
 const delay = ((window as any).hideTimeout || 2000) * 2.5;
 
 export class MainPage extends React.Component<undefined, undefined> {
+    public static readonly contextTypes = LayoutContextTypes;
+    public context: LayoutContext;
+
     public startFeature = {
         element: document.body,
         attribute: "class",
         value: "loaded"
     };
 
-    // Add `if` when props or state will be present
-    public shouldComponentUpdate(): boolean {
-        return false;
+    public shouldComponentUpdate(nextProps, nextState, nextContext: LayoutContext): boolean {
+        return this.context.language !== nextContext.language;
     }
 
     public render(): JSX.Element {
@@ -33,15 +38,15 @@ export class MainPage extends React.Component<undefined, undefined> {
                     >
                         <h2 className="section__title">
                             <span className="section__title-part">
-                                <span>Здесь ваши&nbsp;</span>
+                                <span>{translate("mainPage.title.mainOne.base")}&nbsp;</span>
                                 <span className="section__title-part-container">
-                                    <span className="section__title-part-variable">смелые</span>
+                                    <span className="section__title-part-variable">{translate("mainPage.title.mainOne.additions.1")}</span>
                                 </span>
                             </span>
                             <span className="section__title-part">
-                                <span>идеи превращаются&nbsp;</span>
+                                <span>{translate("mainPage.title.mainTwo.base")}&nbsp;</span>
                                     <span className="section__title-part-container">
-                                    <span className="section__title-part-variable">в IT-продукт</span>
+                                    <span className="section__title-part-variable">{translate("mainPage.title.mainTwo.additions.1")}</span>
                                 </span>
                             </span>
                         </h2>
@@ -55,7 +60,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                                     caretTimeout={100}
                                     delay={delay}
                                 >
-                                    Реализуем высокотехнологичные проекты
+                                    {translate("mainPage.articles.whatWeDo.title")}
                                 </CodeStyleAnimation>
                             </h4>
                             <div className="services-list">
@@ -65,11 +70,11 @@ export class MainPage extends React.Component<undefined, undefined> {
                                     caretTimeout={1500}
                                     delay={delay}
                                 >
-                                    разработка сайтов{"\n"}
-                                    брендинг и дизайн{"\n"}
-                                    формирование ERP и CRM-систем{"\n"}
-                                    аналитика и реклама{"\n"}
-                                    техническая поддержка проектов
+                                    {translate("mainPage.articles.whatWeDo.items.1")}{"\n"}
+                                    {translate("mainPage.articles.whatWeDo.items.2")}{"\n"}
+                                    {translate("mainPage.articles.whatWeDo.items.3")}{"\n"}
+                                    {translate("mainPage.articles.whatWeDo.items.4")}{"\n"}
+                                    {translate("mainPage.articles.whatWeDo.items.5")}
                                 </CodeStyleAnimation>
                             </div>
                         </div>
@@ -81,7 +86,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                                     caretTimeout={100}
                                     delay={delay}
                                 >
-                                    Более 3 лет
+                                    {translate("mainPage.articles.howLong.title")}
                                 </CodeStyleAnimation>
                                 <span className="section__subtitle_reduced">
                                      <CodeStyleAnimation
@@ -90,7 +95,7 @@ export class MainPage extends React.Component<undefined, undefined> {
                                          caretTimeout={1500}
                                          delay={delay}
                                      >
-                                        профессионального сотрудничества с финансовыми компаниями:
+                                         {translate("mainPage.articles.howLong.subTitle")}
                                      </CodeStyleAnimation>
                                 </span>
                             </h4>
@@ -103,12 +108,18 @@ export class MainPage extends React.Component<undefined, undefined> {
                                 <ul className="clients-list">
                                     <li className="clients-list__item">
                                         <a href="#" className="clients-list__link">NIKO Holding</a>
-                                        <span className="clients-list__text">#автодилер&nbsp;#логистика&nbsp;
-                                            #финансы</span>
+                                        <span className="clients-list__text">
+                                            {translate("hashTags.autodealer")}&nbsp;
+                                            {translate("hashTags.logistics")}&nbsp;
+                                            {translate("hashTags.finances")}
+                                        </span>
                                     </li>
                                     <li className="clients-list__item">
                                         <a href="#" className="clients-list__link">Infinance</a>
-                                        <span className="clients-list__text">#кредитование&nbsp;#финансы</span>
+                                        <span className="clients-list__text">
+                                            {translate("hashTags.crediting")}&nbsp;
+                                            {translate("hashTags.finances")}
+                                        </span>
                                     </li>
                                 </ul>
                             </CustomAnimation>
