@@ -2,6 +2,8 @@
   Forms styles
  */
 .form {
+  position: relative;
+
   margin-top: 3.375em;
 
   font-size: 1.067em;
@@ -24,6 +26,28 @@
   @include breakpoint($laptop-large) {
 
     margin-top: 2em;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+
+    width: 599px;
+    height: 336px;
+
+    position: absolute;
+
+    top: -60px;
+    left: -86px;
+
+    @include transform(rotate(23deg));
+
+    background: url('images/form-glow.svg');
+
+    opacity: .2;
+
+    -webkit-filter: blur(50px);
+    filter: blur(50px);
   }
 
   > .form-half {

@@ -6,7 +6,7 @@
   $slider-size-laptop-m: 41px;
   $slider-size-laptop-l: 39px;
   $point-size: 6px;
-  $slider-bar-height: 90px;
+  $slider-bar-height: 96px;
 
   width: $slider-size;
   height: $slider-size;
@@ -132,12 +132,14 @@
       width: 1px;
       height: $slider-bar-height;
 
-      top: -56px;
+      top: -60px;
 
       background: linear-gradient(to bottom, rgba(19, 151, 199, 1) 0%, rgba(19, 151, 199, .47) 100%);
 
       @include transition(height .3s ease);
       @include transition-delay(.3s);
+
+      opacity: .4;
     }
 
     &:after {
