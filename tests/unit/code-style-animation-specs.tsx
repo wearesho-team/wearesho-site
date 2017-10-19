@@ -13,7 +13,7 @@ describe("<CodeStyleAnimation/>", () => {
     let timer: SinonFakeTimers;
 
     const text = "awesome text";
-    const textArray = ["this\n", "is\n", "array\n", "of\n", "strings"];
+    const textArray = ["this", "is", "array", "of", "strings"];
     const delay = 100;
     const startFeature = {
         element: document.body,
@@ -72,7 +72,7 @@ describe("<CodeStyleAnimation/>", () => {
             </CodeStyleAnimation>
         );
 
-        expect((wrapper.getDOMNode() as any).wholeText).to.equal(textArray.join("").replace(/[^\n]/g, " "));
+        expect((wrapper.getDOMNode() as any).wholeText).to.equal(textArray.join("\n").replace(/[^\n]/g, " "));
     });
 
     it("Should start typing after body loaded and delay from props", () => {

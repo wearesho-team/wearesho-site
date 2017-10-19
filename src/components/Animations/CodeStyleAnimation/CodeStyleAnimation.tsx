@@ -56,7 +56,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
         if (checkForStringInstance(this.props.children)) {
             this.sourceChild = this.props.children.toString();
         } else if (checkForStringArrayInstance(this.props.children)) {
-            this.sourceChild = (this.props.children as string []).join("");
+            this.sourceChild = (this.props.children as string []).join("\n");
         }
 
         this.state = {

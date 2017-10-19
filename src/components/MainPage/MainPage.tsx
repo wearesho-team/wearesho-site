@@ -74,10 +74,10 @@ export class MainPage extends React.Component<undefined, undefined> {
                                     caretTimeout={1500}
                                     delay={delay}
                                 >
-                                    {translate("mainPage.articles.whatWeDo.items.1")}{"\n"}
-                                    {translate("mainPage.articles.whatWeDo.items.2")}{"\n"}
-                                    {translate("mainPage.articles.whatWeDo.items.3")}{"\n"}
-                                    {translate("mainPage.articles.whatWeDo.items.4")}{"\n"}
+                                    {translate("mainPage.articles.whatWeDo.items.1")}
+                                    {translate("mainPage.articles.whatWeDo.items.2")}
+                                    {translate("mainPage.articles.whatWeDo.items.3")}
+                                    {translate("mainPage.articles.whatWeDo.items.4")}
                                     {translate("mainPage.articles.whatWeDo.items.5")}
                                 </CodeStyleAnimation>
                             </div>
