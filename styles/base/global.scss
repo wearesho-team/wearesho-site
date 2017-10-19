@@ -84,18 +84,8 @@ body,
 #content,
 .translate-container,
 .section {
+
   height: 100%;
-
-  @include breakpoint($mobile) {
-
-    height: auto;
-  }
-
-  @include breakpoint($tablet-laptop) {
-
-    height: auto;
-  }
-
 }
 
 .translate-container {
@@ -222,6 +212,8 @@ body,
 
 .scroll-container {
   @include container;
+
+  overflow-x: hidden;
 
   .section {
 

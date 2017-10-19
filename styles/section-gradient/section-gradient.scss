@@ -2,6 +2,8 @@
 * Section gradients styles
  */
 .section-gradient {
+  overflow: hidden;
+
   position: absolute;
 
   top: 0;
@@ -14,6 +16,11 @@
   pointer-events: none;
 
   z-index: $under-zindex;
+
+  @include breakpoint($mobile) {
+
+    display: none;
+  }
 
   &:before,
   &:after {

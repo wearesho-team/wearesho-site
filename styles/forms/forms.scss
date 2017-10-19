@@ -48,6 +48,21 @@
 
     -webkit-filter: blur(50px);
     filter: blur(50px);
+
+    @include breakpoint($mobile) {
+
+      content: none;
+    }
+
+    @include breakpoint($tablet) {
+
+      content: none;
+    }
+
+    @include breakpoint($laptop-small) {
+
+      content: none;
+    }
   }
 
   > .form-half {

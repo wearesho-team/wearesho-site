@@ -7,15 +7,28 @@
 
   position: absolute;
 
-  top: 0;
+  top: 50%;
   right: -330px;
-  bottom: 0;
 
-  margin: auto;
+  @include transform(translateY(-50%));
+
+  margin: .9em auto 0;
 
   background-image: url('images/map.svg');
 
   pointer-events: none;
+
+  @include breakpoint($laptop-medium) {
+    right: -310px;
+
+    margin: -.75em auto 0;
+  }
+
+  @include breakpoint($laptop-large) {
+    right: -356px;
+
+    margin: 2.1em auto 0;
+  }
 
   &:before,
   &:after {
@@ -60,6 +73,11 @@
     left: 50%;
 
     margin: -150px 0 0 -148px;
+
+    @include breakpoint($mobile) {
+
+      display: none;
+    }
 
     .slider__dot {
       width: 9px;

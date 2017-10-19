@@ -53,6 +53,17 @@ body.loaded {
     padding: 0 7.25em;
   }
 
+  // in order to take account of the scrollbar width
+  @include breakpoint($laptop-small) {
+
+    overflow-y: scroll;
+  }
+
+  @include breakpoint($laptop-medium) {
+
+    overflow-y: scroll;
+  }
+
   @include breakpoint($laptop-large) {
     margin: 0 11em;
     padding: 0;

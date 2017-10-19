@@ -24,21 +24,21 @@
 
   @include transition(left .3s ease);
 
-  @include breakpoint($laptop-medium) {
-    width: $slider-size-laptop-m;
-    height: $slider-size-laptop-m;
-
-    margin-top: (-$slider-size-laptop-m / 2);
-    margin-left: (-$slider-size-laptop-m / 2) + 3.5;
-  }
-
-  @include breakpoint($laptop-large) {
-    width: $slider-size-laptop-l;
-    height: $slider-size-laptop-l;
-
-    margin-top: (-$slider-size-laptop-l / 2);
-    margin-left: (-$slider-size-laptop-l / 2);
-  }
+  //@include breakpoint($laptop-medium) {
+  //  width: $slider-size-laptop-m;
+  //  height: $slider-size-laptop-m;
+  //
+  //  margin-top: (-$slider-size-laptop-m / 2);
+  //  margin-left: (-$slider-size-laptop-m / 2) + 3.5;
+  //}
+  //
+  //@include breakpoint($laptop-large) {
+  //  width: $slider-size-laptop-l;
+  //  height: $slider-size-laptop-l;
+  //
+  //  margin-top: (-$slider-size-laptop-l / 2);
+  //  margin-left: (-$slider-size-laptop-l / 2);
+  //}
 
   &:before,
   &:after {
@@ -60,6 +60,20 @@
     filter: blur(3px);
 
     @include animation(spin 8s linear infinite);
+
+    @include breakpoint($laptop-medium) {
+      top: 6px;
+      right: 6px;
+      bottom: 6px;
+      left: 6px;
+    }
+
+    @include breakpoint($laptop-large) {
+      top: 6px;
+      right: 6px;
+      bottom: 6px;
+      left: 6px;
+    }
   }
 
   &.is-move {

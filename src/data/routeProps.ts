@@ -10,11 +10,6 @@ export const routeProps = [
     },
     {
         exact: false,
-        path: "/process",
-        component: ProcessPage,
-    },
-    {
-        exact: false,
         path: "/contact",
         component: ContactPage,
     }
