@@ -100,6 +100,8 @@ describe("<CodeStyleAnimation/>", () => {
     });
 
     it("Should set new child on receive new props", () => {
+        document.body.className = "loaded";
+        wrapper.unmount().mount();
         wrapper.setProps({
             children: text
         });

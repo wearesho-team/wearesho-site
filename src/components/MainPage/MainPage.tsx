@@ -40,13 +40,17 @@ export class MainPage extends React.Component<undefined, undefined> {
                             <span className="section__title-part">
                                 <span>{translate("mainPage.title.mainOne.base")}&nbsp;</span>
                                 <span className="section__title-part-container">
-                                    <span className="section__title-part-variable">{translate("mainPage.title.mainOne.additions.1")}</span>
+                                    <span className="section__title-part-variable">
+                                        {translate("mainPage.title.mainOne.additions.1")}
+                                        </span>
                                 </span>
                             </span>
                             <span className="section__title-part">
                                 <span>{translate("mainPage.title.mainTwo.base")}&nbsp;</span>
                                     <span className="section__title-part-container">
-                                    <span className="section__title-part-variable">{translate("mainPage.title.mainTwo.additions.1")}</span>
+                                    <span className="section__title-part-variable">
+                                        {translate("mainPage.title.mainTwo.additions.1")}
+                                        </span>
                                 </span>
                             </span>
                         </h2>

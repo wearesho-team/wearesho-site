@@ -75,7 +75,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
     }
 
     public componentWillReceiveProps(nextProps: CodeStyleAnimationProps) {
-        if (this.state.children === nextProps.children) {
+        if (this.state.children.toString() === nextProps.children) {
             return;
         }
 
@@ -98,19 +98,20 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             return;
         }
 
-        this.clearTimeout(this.timer);
-        this.timer = setTimeout(() => {
-            this.setState((prevState) => ({
-                children: [
-                    this.sourceChild.slice(0, prevState.counter),
-                    this.caret,
-                    (prevState.children[0] + prevState.children[2]).slice(prevState.counter, this.sourceChild.length)
-                ],
-                counter: prevState.counter + 1
-            }));
+        this.setState((prevState) => ({
+            children: [
+                this.sourceChild.slice(0, prevState.counter),
+                this.caret,
+                (prevState.children[0] + prevState.children[2]).slice(prevState.counter, this.sourceChild.length)
+            ],
+            counter: prevState.counter + 1
+        }));
 
-            this.type();
-        }, Math.random() * (this.props.speed.max - this.props.speed.min) + this.props.speed.min);
+        this.clearTimeout(this.timer);
+        this.timer = setTimeout(
+            this.type.bind(this),
+            Math.random() * (this.props.speed.max - this.props.speed.min) + this.props.speed.min
+        );
     }
 
     protected get caret(): JSX.Element {
