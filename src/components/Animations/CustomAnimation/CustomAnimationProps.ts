@@ -5,6 +5,11 @@ export interface CustomAnimationProps {
     children: JSX.Element;
     duration?: number;
     delay?: number;
+    startFeature: {
+        element: HTMLElement,
+        attribute: string,
+        value: string
+    };
 }
 
 export const CustomAnimationPropTypes = {
@@ -12,6 +17,11 @@ export const CustomAnimationPropTypes = {
     children: PropTypes.element.isRequired,
     duration: PropTypes.number,
     delay: PropTypes.number,
+    startFeature: PropTypes.shape({
+        element: PropTypes.object.isRequired,
+        attribute: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired
+    }).isRequired
 };
 
 export const CustomAnimationDefaultProps = {

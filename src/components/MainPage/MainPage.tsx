@@ -7,9 +7,14 @@ import {CodeStyleAnimationSpeed} from "../Animations/CodeStyleAnimation/CodeStyl
 import {CustomAnimation} from "../Animations/CustomAnimation";
 
 // tslint:disable:no-magic-numbers
-const delay = (window as any).hideTimeout * 2.5;
+const delay = ((window as any).hideTimeout || 2000) * 2.5;
 
 export class MainPage extends React.Component<undefined, undefined> {
+    public startFeature = {
+        element: document.body,
+        attribute: "class",
+        value: "loaded"
+    };
 
     // Add `if` when props or state will be present
     public shouldComponentUpdate(): boolean {
@@ -20,7 +25,12 @@ export class MainPage extends React.Component<undefined, undefined> {
         return (
             <section className="section section-main">
                 <div className="align-container">
-                    <CustomAnimation duration={2000} delay={delay} actionClassName="slide-to-left">
+                    <CustomAnimation
+                        startFeature={this.startFeature}
+                        actionClassName="slide-to-left"
+                        duration={2000}
+                        delay={delay}
+                    >
                         <h2 className="section__title">
                             <span className="section__title-part">
                                 <span>Здесь ваши&nbsp;</span>
@@ -40,18 +50,20 @@ export class MainPage extends React.Component<undefined, undefined> {
                         <div className="section__half">
                             <h4 className="section__subtitle section__subtitle_marker">
                                 <CodeStyleAnimation
-                                    delay={delay}
                                     speed={CodeStyleAnimationSpeed.fast}
+                                    startFeature={this.startFeature}
                                     caretTimeout={100}
+                                    delay={delay}
                                 >
                                     Реализуем высокотехнологичные проекты
                                 </CodeStyleAnimation>
                             </h4>
                             <div className="services-list">
                                 <CodeStyleAnimation
-                                    delay={delay}
                                     speed={CodeStyleAnimationSpeed.fast}
+                                    startFeature={this.startFeature}
                                     caretTimeout={1500}
+                                    delay={delay}
                                 >
                                     разработка сайтов{"\n"}
                                     брендинг и дизайн{"\n"}
@@ -64,26 +76,29 @@ export class MainPage extends React.Component<undefined, undefined> {
                         <div className="section__half">
                             <h4 className="section__subtitle section__subtitle_marker">
                                 <CodeStyleAnimation
-                                    delay={delay}
                                     speed={CodeStyleAnimationSpeed.medium}
+                                    startFeature={this.startFeature}
                                     caretTimeout={100}
+                                    delay={delay}
                                 >
                                     Более 3 лет
                                 </CodeStyleAnimation>
                                 <span className="section__subtitle_reduced">
                                      <CodeStyleAnimation
-                                         delay={delay}
                                          speed={CodeStyleAnimationSpeed.fast}
+                                         startFeature={this.startFeature}
                                          caretTimeout={1500}
+                                         delay={delay}
                                      >
                                         профессионального сотрудничества с финансовыми компаниями:
                                      </CodeStyleAnimation>
                                 </span>
                             </h4>
                             <CustomAnimation
+                                startFeature={this.startFeature}
+                                actionClassName="slide-to-left"
                                 duration={1500}
                                 delay={delay}
-                                actionClassName="slide-to-left"
                             >
                                 <ul className="clients-list">
                                     <li className="clients-list__item">

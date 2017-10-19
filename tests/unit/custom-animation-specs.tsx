@@ -15,6 +15,11 @@ describe("<CustomAnimation/>", () => {
     const child = <div className="child"/>;
     const delay = 100;
     const duration = 200;
+    const startFeature = {
+        element: document.body,
+        attribute: "class",
+        value: "loaded"
+    };
 
     function simulateMutation(props) {
         wrapper.unmount();
@@ -39,7 +44,7 @@ describe("<CustomAnimation/>", () => {
 
     beforeEach(() => {
         wrapper = mount(
-            <CustomAnimation actionClassName={actionClassName}>
+            <CustomAnimation actionClassName={actionClassName} startFeature={startFeature}>
                 {child}
             </CustomAnimation>
         );

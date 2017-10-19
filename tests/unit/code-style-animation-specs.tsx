@@ -15,6 +15,11 @@ describe("<CodeStyleAnimation/>", () => {
     const text = "awesome text";
     const textArray = ["this\n", "is\n", "array\n", "of\n", "strings"];
     const delay = 100;
+    const startFeature = {
+        element: document.body,
+        attribute: "class",
+        value: "loaded"
+    };
 
     function simulateMutation(props) {
         wrapper.unmount();
@@ -39,7 +44,7 @@ describe("<CodeStyleAnimation/>", () => {
 
     beforeEach(() => {
         wrapper = mount(
-            <CodeStyleAnimation>
+            <CodeStyleAnimation startFeature={startFeature}>
                 {text}
             </CodeStyleAnimation>
         );

@@ -24,14 +24,14 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
 
     protected observer = new MutationObserver((mutations) => {
         const {target} = mutations[0];
-        if (target !== document.body || target.attributes.getNamedItem("class").value !== "loaded") {
+
+        const {element, attribute, value} = this.props.startFeature;
+        if (target !== element || target.attributes.getNamedItem(attribute).value !== value) {
             return;
         }
 
         this.clearTimeout(this.timer);
-        this.timer = setTimeout(() => {
-            this.type();
-        }, this.props.delay);
+        this.timer = setTimeout(this.type.bind(this), this.props.delay);
     });
 
     public constructor(props) {
@@ -66,7 +66,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             }
         };
 
-        this.observer.observe(document.body, {attributeFilter: ["class"], attributes: true});
+        this.observer.observe(document.body, {attributeFilter: [this.props.startFeature.attribute], attributes: true});
     }
 
     public componentWillUnmount() {

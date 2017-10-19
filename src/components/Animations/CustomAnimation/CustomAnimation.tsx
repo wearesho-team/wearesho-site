@@ -17,7 +17,9 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
     protected clearTimeout = smartClearTimeout.bind(this);
     protected observer = new MutationObserver((mutations) => {
         const {target} = mutations[0];
-        if (target !== document.body || target.attributes.getNamedItem("class").value !== "loaded") {
+
+        const {element, attribute, value} = this.props.startFeature;
+        if (target !== element || target.attributes.getNamedItem(attribute).value !== value) {
             return;
         }
 
@@ -35,7 +37,7 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
             return;
         }
 
-        this.observer.observe(document.body, {attributeFilter: ["class"], attributes: true});
+        this.observer.observe(document.body, {attributeFilter: [this.props.startFeature.attribute], attributes: true});
         this.state = {
             children: React.cloneElement(this.props.children, {style: {opacity: 0}})
         };

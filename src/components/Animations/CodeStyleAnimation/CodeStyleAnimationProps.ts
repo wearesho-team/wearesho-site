@@ -7,6 +7,11 @@ export interface CodeStyleAnimationProps {
     children: string | String | string [];
     speed?: CodeStyleAnimationSpeedInterface;
     caretTimeout?: number;
+    startFeature: {
+        element: HTMLElement,
+        attribute: string,
+        value: string
+    };
 }
 
 export const CodeStyleAnimationPropTypes = {
@@ -19,7 +24,12 @@ export const CodeStyleAnimationPropTypes = {
         max: PropTypes.number.isRequired,
         min: PropTypes.number.isRequired
     }),
-    caretTimeout: PropTypes.number
+    caretTimeout: PropTypes.number,
+    startFeature: PropTypes.shape({
+        element: PropTypes.object.isRequired,
+        attribute: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired
+    }).isRequired
 };
 
 export const CodeStyleAnimationDefaultProps = {
