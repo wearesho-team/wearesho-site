@@ -79,6 +79,16 @@
       display: none;
     }
 
+    @include breakpoint($tablet) {
+
+      display: none;
+    }
+
+    @include breakpoint($laptop-small) {
+
+      display: none;
+    }
+
     .slider__dot {
       width: 9px;
       height: 9px;
