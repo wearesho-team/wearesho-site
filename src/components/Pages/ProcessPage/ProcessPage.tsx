@@ -1,8 +1,9 @@
 import * as React from "react";
 
-import {SubmitButton} from "../Buttons";
+import {SubmitButton} from "../../Buttons";
+import {BasePage} from "../BasePage";
 
-export class ProcessPage extends React.Component<any,any>{
+export class ProcessPage extends BasePage {
 
     public render() {
         return(

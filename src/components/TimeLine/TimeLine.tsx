@@ -58,11 +58,11 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
             <div className="prj-chronology">
                 <Slider {...sliderProps}/>
                 <div className="prj-chronology__div-outer prj-chronology__div-outer_left">
-                    <span>2013</span>
+                    <span>{this.props.range.min - 1}</span>
                 </div>
                 <this.years yearsList={yearsList}/>
                 <div className="prj-chronology__div-outer prj-chronology__div-outer_right">
-                    <span>2020</span>
+                    <span>{this.props.range.max + 1}</span>
                 </div>
             </div>
         );

@@ -1,20 +1,19 @@
 import * as React from "react";
 import {Router} from "react-router-dom";
 
-import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
-import {getLinksWithProps} from "../../helpers/getLinksWithProps";
 import {getRoutesWithProps} from "../../helpers/getRoutesWithProps";
+import {getLinksWithProps} from "../../helpers/getLinksWithProps";
 
 import {routeProps} from "../../data/routeProps";
 
-import {Header, SideBar} from "./Partials";
-import {SoundSwitch} from "./SoundSwitch";
 import {TransitionSwitch} from "../TransitionSwitch";
-import {SwitchControl} from "../SwitchControl";
-
-import {ScrollControl} from "../ScrollControl";
 import {SmartBreakpoint} from "../SmartBreakpoint";
-import {LayoutContext, LayoutContextTypes} from "./LayoutContext";
+import {SwitchControl} from "../SwitchControl";
+import {ScrollControl} from "../ScrollControl";
+import {Header, SideBar, SoundSwitch} from "./Partials";
+
+import {LayoutContext, LayoutContextTypes} from "./LayoutContext"
+import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 import {LayoutState} from "./LayoutState";
 
 export class Layout extends React.Component<LayoutProps, LayoutState> {
@@ -49,7 +48,6 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
                         {getLinksWithProps()}
                     </SideBar>
                     <SoundSwitch/>
-                    <div className="section-gradient section-partnership"/>
                     <SmartBreakpoint match="min-width: 1440px">
                         <SwitchControl>
                             <TransitionSwitch className="translate-container" classNames="translateY">

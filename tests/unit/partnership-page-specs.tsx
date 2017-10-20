@@ -2,17 +2,17 @@ import * as React from "react";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
-import {ContactPage, ContactPageState} from "../../src/components/Pages/ContactPage";
+import {PartnershipPage, PartnershipPageState} from "../../src/components/Pages/PartnershipPage";
 import {SubmitButton} from "../../src/components/Buttons";
 
-describe("<ContactPage/>", () => {
+describe("<PartnershipPage/>", () => {
 
-    let wrapper: ReactWrapper<any, ContactPageState>;
+    let wrapper: ReactWrapper<any, PartnershipPageState>;
 
     let modal: Element;
 
     beforeEach(() => {
-        wrapper = mount(<ContactPage/>);
+        wrapper = mount(<PartnershipPage/>);
         modal = document.body.querySelector(".ReactModalPortal");
     });
 

@@ -1,3 +1,3 @@
-export interface ContactPageState {
+export interface PartnershipPageState {
     isModalOpen: boolean,
 }

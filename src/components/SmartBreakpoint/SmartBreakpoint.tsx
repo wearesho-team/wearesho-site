@@ -1,9 +1,13 @@
 import * as React from "react";
 import {SmartBreakpointProps, SmartBreakpointPropTypes} from "./SmartBreakpointProps";
 import {SmartBreakpointState} from "./SmartBreakpointState";
+import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 
 export class SmartBreakpoint extends React.Component<SmartBreakpointProps, SmartBreakpointState> {
     public static propTypes = SmartBreakpointPropTypes;
+    public static contextTypes = RouterContextTypes;
+
+    public context: RouterContext;
 
     constructor(props) {
         super(props);
@@ -34,5 +38,4 @@ export class SmartBreakpoint extends React.Component<SmartBreakpointProps, Smart
             matches: window.matchMedia(`(${this.props.match})`).matches
         });
     }
-
 }

@@ -15,17 +15,42 @@
 
   z-index: $under-zindex;
 
-  &:before,
-  &:after {
-    content: '';
-    display: block;
+  > div {
 
-    position: absolute;
+    &:before,
+    &:after {
+      content: '';
+      display: block;
 
-    border-radius: 50%;
+      position: absolute;
+
+      border-radius: 50%;
+    }
+
+    @include transition(opacity 1s ease);
   }
 
-  &.section-main {
+  > .section-base {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    &.partnership-page,
+    &.main-page,
+    &.process-page {
+
+      opacity: 1;
+    }
+
+    &.hidden {
+      opacity: 0;
+    }
+  }
+
+  > .main-page {
 
     &:before,
     &:after {
@@ -56,13 +81,13 @@
 
       @include transform(rotate(-11deg));
 
-      background: radial-gradient(ellipse at center,  #302334 0%, rgba(87, 14, 79, 0) 70%, rgba(3, 28, 60, 0) 100%);
+      background: radial-gradient(ellipse at center, #302334 0%, rgba(87, 14, 79, 0) 70%, rgba(3, 28, 60, 0) 100%);
 
       opacity: .73;
     }
   }
 
-  &.section-process {
+  > .process-page {
 
     &:before {
       width: 708px;
@@ -71,13 +96,13 @@
       top: (-448px + 300px);
       right: 180px;
 
-      background: radial-gradient(ellipse at center,  #302334 0%, rgba(87, 14, 79, 0) 70%, rgba(3, 28, 60, 0) 100%);
+      background: radial-gradient(ellipse at center, #302334 0%, rgba(87, 14, 79, 0) 70%, rgba(3, 28, 60, 0) 100%);
 
       opacity: .73;
     }
   }
 
-  &.section-partnership {
+  > .partnership-page {
     background: none;
 
     &:before {
@@ -88,7 +113,7 @@
       left: 60px;
 
       @include transform(rotate(27deg));
-      
+
       background: linear-gradient(to right, rgba(45, 172, 152, 0) 0%, rgba(45, 172, 152, 0) 25%, rgba(45, 172, 152, 1) 26%, #182736 100%);
 
       opacity: .2;

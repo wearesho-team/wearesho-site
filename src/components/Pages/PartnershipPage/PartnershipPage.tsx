@@ -7,18 +7,21 @@ import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../../helpers/Br
 import {formatNumber} from "../../../helpers/formatNumber";
 
 import {CloseButton, SubmitButton} from "../../Buttons";
-import {ContactPageState} from "./ContactPageState";
+import {PartnershipPageState} from "./PartnershipPageState";
 import {ContactForm} from "./ContactForm";
 import {SocialLinks} from "../../Layout/Partials/SocialLinks";
+import {BasePage} from "../BasePage";
+import {MapIcon} from "../../Icons/MapIcon";
 
-export class ContactPage extends React.Component<undefined, ContactPageState> {
+export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
 
-    public state: ContactPageState = {
+    public state: PartnershipPageState = {
         isModalOpen: false,
     };
 
-    public shouldComponentUpdate(nextProps: undefined, nextState: ContactPageState): boolean {
-        return this.state.isModalOpen !== nextState.isModalOpen;
+    public shouldComponentUpdate(nextProps: undefined, nextState: PartnershipPageState, nextContext: any): boolean {
+        return super.shouldComponentUpdate(nextProps, nextState, nextContext)
+            || this.state.isModalOpen !== nextState.isModalOpen;
     }
 
     public render(): JSX.Element {
@@ -146,6 +149,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                         </ReactModal>
                     </OnMobileTablet>
                     <div className="map-container">
+                        <MapIcon/>
                         <div className="slider">
                             <div className="slider__body">
                                 <div className="slider__dot"/>

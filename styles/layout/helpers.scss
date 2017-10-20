@@ -59,11 +59,6 @@
   float: right;
 }
 
-// Display
-.hidden {
-  display: none !important;
-}
-
 .tablet-hidden {
   @include breakpoint($tablet) {
 

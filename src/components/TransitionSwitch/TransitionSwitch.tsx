@@ -24,7 +24,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     public static readonly upDirectionClassName = "up";
     public static readonly downDirectionClassName = "down";
     public static readonly standByClassName = "";
-    public static readonly animationDuration = 500;
+    public static readonly animationDuration = 501;
 
     public context: RouterContext & SwitchControlContext;
     public timer: any;
@@ -71,7 +71,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
             ...this.props,
             ...{
                 key: this.routeProps.key,
-                timeout: TransitionSwitch.animationDuration
+                timeout: TransitionSwitch.animationDuration,
             }
         };
 

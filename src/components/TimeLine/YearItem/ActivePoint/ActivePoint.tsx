@@ -7,6 +7,7 @@ import {ActivePointProps, ActivePointPropTypes} from "./ActivePointProps";
 export class ActivePoint extends React.Component<ActivePointProps, undefined> {
     public static propTypes = ActivePointPropTypes;
 
+    public static readonly innerGlowClassName = "prj-chronology__div-glow";
     public static readonly defaultClassName = "prj-chronology__div";
     public static readonly filledClassName = "is-filled";
     public static readonly activeClassName = "is-active";
@@ -35,7 +36,7 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
 
         return (
             <span className={className} onClick={this.handleClick} ref={this.setElement}>
-                <span className="prj-chronology__div-glow"/>
+                <span className={ActivePoint.innerGlowClassName}/>
             </span>
         );
     }

@@ -2,7 +2,7 @@ import * as React from "react";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
-import {ContactForm} from "../../src/components/ContactPage/ContactForm";
+import {ContactForm} from "../../src/components/Pages/PartnershipPage/ContactForm";
 import {instantiateContactFormModel} from "../../src/models/ContactFormModel";
 
 describe("<Form/>", () => {

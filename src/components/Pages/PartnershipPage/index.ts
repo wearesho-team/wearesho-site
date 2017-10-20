@@ -1,3 +1,3 @@
-export * from "./ContactPage";
-export * from "./ContactPageState";
+export * from "./PartnershipPage";
+export * from "./PartnershipPageState";
 export * from "./ContactForm";
