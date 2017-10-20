@@ -4,6 +4,11 @@
 .section {
   position: relative;
 
+  @include breakpoint($mobile) {
+
+    overflow: hidden;
+  }
+
   @include breakpoint($mobile-p) {
 
     padding-top: 6.5em;
@@ -19,11 +24,13 @@
     padding-top: 9.75em;
   }
 
-  @include breakpoint($tablet-l) {
-    overflow-x: hidden;
+  @include breakpoint($tablet) {
+
+    overflow: hidden;
   }
 
   @include breakpoint($laptop-small) {
+
     overflow-x: hidden;
   }
 
@@ -106,7 +113,6 @@
   }
 
   &.section-partnership {
-    position: relative;
 
     .section__half {
 

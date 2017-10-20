@@ -156,7 +156,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                             </div>
                             <div className="slider__description">
                             <span className="slider__location">
-                                UA / Kharkiv
+                                Ukraine / Kharkiv
                             </span>
                                 <span className="slider__coordinates">
                                 49.9808100&deg; 36.2527200&deg;

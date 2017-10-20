@@ -1,6 +1,5 @@
-import {MainPage} from "../components/Pages/MainPage";
-import {PartnershipPage} from "../components/Pages/PartnershipPage";
-import {ProcessPage} from "../components/Pages/ProcessPage";
+import {MainPage} from "../components/MainPage";
+import {ContactPage} from "../components/ContactPage";
 
 export const routeProps = [
     {
@@ -10,12 +9,7 @@ export const routeProps = [
     },
     {
         exact: false,
-        path: "/process",
-        component: ProcessPage,
-    },
-    {
-        exact: false,
-        path: "/partnership",
-        component: PartnershipPage,
+        path: "/contact",
+        component: ContactPage,
     }
 ];

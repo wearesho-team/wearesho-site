@@ -88,17 +88,27 @@
   }
 
   &__link {
-    margin-top: .15em;
+
 
     white-space: nowrap;
 
     font-size: 1.2em;
     font-weight: $font-style-regular;
     color: $color-secondary;
+
+    &:not(:first-child) {
+
+      margin-top: .15em;
+    }
   }
 
   &__text {
     line-height: 26px;
+
+    @include breakpoint($mobile-p) {
+
+      margin-bottom: 2em;
+    }
 
     @include breakpoint($mobile-l) {
       display: inline-block;

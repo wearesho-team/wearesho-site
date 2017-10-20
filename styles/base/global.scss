@@ -60,13 +60,6 @@ body {
     }
   }
 
-  &.ReactModal__Body--open {
-
-    #content-overlay {
-      pointer-events: none;
-    }
-  }
-
   h1, h2, h3, h4, h5, h6, p {
 
     margin: 0;
@@ -84,18 +77,8 @@ body,
 #content,
 .translate-container,
 .section {
+
   height: 100%;
-
-  @include breakpoint($mobile) {
-
-    height: auto;
-  }
-
-  @include breakpoint($tablet-laptop) {
-
-    height: auto;
-  }
-
 }
 
 .translate-container {
@@ -225,6 +208,8 @@ body,
 
 .scroll-container {
   @include container;
+
+  overflow-x: hidden;
 
   .section {
 
