@@ -4,7 +4,8 @@
 Feature("Main Page");
 
 Scenario("Main Page opening", async (I) => {
+    const timeout = 30;
 
     I.amOnPage("/");
-    I.waitForElement(".section-main", 10);
+    I.waitForElement(".section-main", timeout);
 });

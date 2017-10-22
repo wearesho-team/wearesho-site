@@ -21,6 +21,14 @@
     padding-top: 9.75em;
   }
 
+  @include breakpoint($tablet-l) {
+    overflow-x: hidden;
+  }
+
+  @include breakpoint($laptop-small) {
+    overflow-x: hidden;
+  }
+
   &.section-main {
 
     .section__half {
@@ -31,9 +39,14 @@
         padding: 9em 0 0 0;
       }
 
+      @include breakpoint($tablet-l) {
+
+        padding: 4.3em 0 0 1.875em;
+      }
+
       @include breakpoint($laptop-large) {
 
-        padding: 3.5em 0 0 1.875em;
+        padding: 6em 0 0 1.875em;
       }
     }
 
@@ -48,6 +61,12 @@
   }
 
   &.section-partnership {
+
+    // Temp
+    //@include breakpoint($laptop-not-large) {
+    //
+    //  padding-bottom: 9.75em;
+    //}
 
     .section__half {
       padding-top: 3.5em;
@@ -148,37 +167,6 @@
         }
       }
 
-      &-variable {
-
-        &:first-child {
-
-          animation: change-title-part-1 12s ease infinite;
-        }
-
-        &:nth-child(2) {
-
-          animation: change-title-part-2 12s ease infinite;
-        }
-
-        &:nth-child(3) {
-
-          animation: change-title-part-3 12s ease infinite;
-        }
-      }
-
-      &:last-child {
-
-        .section__title-part-variable {
-          animation-delay: 1s;
-
-          &:nth-child(2),
-          &:nth-child(3) {
-            // Overlap bug due to animation delay when page appears in DOM
-            @include transform(translateY(-70px));
-          }
-        }
-      }
-
       &-container {
         width: 400px;
         height: 70px;
@@ -224,12 +212,14 @@
         &:before {
           top: 0;
 
+          // temp
           background: linear-gradient(to bottom, #fff 0%, rgba(255, 255, 255, 0) 100%);
         }
 
         &:after {
           bottom: 0;
 
+          // temp
           background: linear-gradient(to top, #fff 0%, rgba(255, 255, 255, 0) 100%);
         }
       }
@@ -300,6 +290,17 @@
 
     &_marker {
       position: relative;
+      white-space: pre;
+
+      @include breakpoint($mobile) {
+        white-space: pre-line;
+        min-height: 52px;
+      }
+
+      @include breakpoint($tablet-l) {
+        white-space: pre-line;
+        min-height: 52px;
+      }
 
       &:before {
         content: '+';
@@ -316,11 +317,11 @@
         font-family: $font-secondary;
 
         @include breakpoint($mobile) {
-
           content: none;
         }
 
         @include breakpoint($laptop-large) {
+          left: -31px;
 
           font-size: 20px;
         }
@@ -330,12 +331,19 @@
     &_reduced {
       display: block;
 
+      white-space: pre-line;
+
       font-size: .833em;
       font-weight: $font-style-light;
+
+      min-height: 52px;
     }
   }
 
   .services-list {
+    white-space: pre;
+
+    line-height: 2.1em;
 
     &__item {
 
@@ -368,13 +376,22 @@
       font-size: 1.2em;
       font-weight: $font-style-regular;
       color: $color-secondary;
+
+      @include breakpoint($tablet-l) {
+        margin: .3em 0;
+      }
     }
 
     &__text {
       font-size: .933em;
       color: #c3c3c3;
 
-      @include breakpoint($mobile-p) {
+      @include breakpoint($mobile) {
+
+        display: block;
+      }
+
+      @include breakpoint($tablet-l) {
 
         display: block;
       }

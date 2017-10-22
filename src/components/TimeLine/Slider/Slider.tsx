@@ -3,16 +3,22 @@ import * as React from "react";
 import {SliderProps, SliderPropTypes} from "./SliderProps";
 
 import {SliderTitle, SliderDescription} from "./Partials";
+import {toFixed} from "../../../helpers/toFixed";
 
 export const Slider: React.SFC<SliderProps> = (props): JSX.Element => {
+    if (!props.offset) {
+        // tslint:disable:no-null-keyword
+        return null;
+    }
+
     const sliderStyle = {
-        left: `${props.offset}px`
+        left: `${props.offset}%`
     };
 
-    const getFormattedDate = () => {
+    const getFormattedDate = (): string => {
         const {date} = props.project;
 
-        return `${date.day}.${String("0" + date.month).slice(-2)}.${date.year}`;
+        return `${date.day}.${toFixed(2, date.month)}.${date.year}`;
     };
 
     return (

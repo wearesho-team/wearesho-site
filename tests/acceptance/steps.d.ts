@@ -15,7 +15,7 @@ declare namespace CodeceptJS {
     click: (click) => any; 
     doubleClick: (doubleClick) => any; 
     rightClick: (rightClick) => any; 
-    fillField: (fillField) => any; 
+    fillField: (fillField, text) => any;
     appendField: (appendField) => any; 
     selectOption: (selectOption) => any; 
     attachFile: (attachFile) => any; 
@@ -68,7 +68,7 @@ declare namespace CodeceptJS {
     cancelPopup: () => any; 
     seeInPopup: (text) => any; 
     pressKey: (key) => any; 
-    resizeWindow: (resizeWindow) => any; 
+    resizeWindow: (width: number, height: number) => any;
     dragAndDrop: (srcElement, destElement) => any; 
     closeOtherTabs: (closeOtherTabs) => any; 
     wait: (sec) => any; 
@@ -78,7 +78,7 @@ declare namespace CodeceptJS {
     waitUrlEquals: (waitUrlEquals) => any; 
     waitForText: (waitForText) => any; 
     waitForValue: (waitForValue) => any; 
-    waitForVisible: (waitForVisible) => any; 
+    waitForVisible: (waitForVisible, sec?) => any;
     waitNumberOfVisibleElements: (waitNumberOfVisibleElements) => any; 
     waitForInvisible: (waitForInvisible) => any; 
     waitToHide: (locator, sec?) => any;

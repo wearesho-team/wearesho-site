@@ -54,6 +54,11 @@
 
     &_second {
 
+      @include breakpoint($tablet-l) {
+
+        padding-left: 3.5em;
+      }
+
       @include breakpoint($laptop-small) {
 
         padding-left: 3.5em;
@@ -201,6 +206,10 @@
     font-weight: $font-style-regular;
     color: $color-primary;
 
+    &:required {
+
+    }
+
     @include transition(color .3s ease);
 
     &:focus {
@@ -266,12 +275,14 @@
   &__error-text {
     position: absolute;
 
-    bottom: -24px;
+    top: 44px;
     left: 0;
 
     font-size: .813em;
     font-weight: $font-style-regular;
     color: #FF7453;
+
+    text-align: left;
   }
 
   .btn_primary {

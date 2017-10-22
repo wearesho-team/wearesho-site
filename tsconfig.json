@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "jsx": "react",
+    "target": "es2016",
     "sourceMap": true,
     "removeComments": true,
     "moduleResolution": "node",
+    "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "jsx": "react",
     "allowJs": true
   },
   "exclude": [

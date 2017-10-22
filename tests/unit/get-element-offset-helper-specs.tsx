@@ -12,8 +12,10 @@ describe("compareMonthWithScale()", () => {
     beforeEach(() => {
         wrapper = mount(
             <div className="body">
-                <div className="parent">
-                    <div className="child"/>
+                <div className="grandParent">
+                    <div className="parent">
+                        <div className="child"/>
+                    </div>
                 </div>
             </div>
         )
@@ -22,10 +24,17 @@ describe("compareMonthWithScale()", () => {
     it("should return parent element offset includes child offset", () => {
 
         const child = wrapper.getDOMNode().getElementsByClassName("child")[0] as any;
+        const grandParent = wrapper.getDOMNode().getElementsByClassName("grandParent")[0] as any;
 
         Object.defineProperty(child, "offsetLeft", {
             get: () => customOffset
         });
+
+        grandParent.getBoundingClientRect = () => {
+            return {
+                width: 100
+            }
+        };
 
         expect(getElementOffset(child)).to.equal(customOffset);
     });

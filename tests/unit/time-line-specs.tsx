@@ -6,8 +6,8 @@ import {useFakeTimers, SinonFakeTimers} from "sinon";
 import {TimeLine, TimeLineState, TimeLineProps} from "../../src/components/TimeLine";
 import {YearItem} from "../../src/components/TimeLine/YearItem";
 import {projects} from "../../src/data/Projects";
-import {Slider} from "../../src/components/TimeLine/Slider";
-
+import {ActivePoint} from "../../src/components/TimeLine/YearItem/ActivePoint/ActivePoint";
+// tslint:disable:no-magic-numbers
 describe("<TimeLine/>", () => {
     let wrapper: ReactWrapper<TimeLineProps, TimeLineState>;
     let timer: SinonFakeTimers;
@@ -29,14 +29,14 @@ describe("<TimeLine/>", () => {
     });
 
     afterEach(() => {
-        wrapper.unmount();
-        timer.restore();
         props = {
             range: {
                 max: projects[projects.length - 1].date.year,
                 min: projects[0].date.year
             }
         };
+        timer.restore();
+        wrapper.unmount();
     });
 
     it("should set latest project on mount", () => {
@@ -49,17 +49,31 @@ describe("<TimeLine/>", () => {
     });
 
     it("should render <Slider/> only if `state.sliderPosition` not equals zero", () => {
-        expect(wrapper.find(Slider)).to.not.exist;
-
         wrapper.setState({
             sliderPosition: 1
         });
 
-        expect(wrapper.find(Slider)).to.exist;
+        expect(
+            Array.from(wrapper.getDOMNode().children).find(({className}) => !className.search("chronology-slider"))
+        ).to.exist;
     });
 
     it("should set `move` class name to `<Slider/>` when active project changed", () => {
-        (wrapper.getNode() as any)
+        timer.restore();
+
+        Object.defineProperty(wrapper.getDOMNode().parentNode, "parentNode", {
+            get: () => {
+                return {
+                    getBoundingClientRect: () => {
+                        return {
+                            width: 100
+                        }
+                    }
+                }
+            }
+        });
+
+        (wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
         expect(wrapper.state().sliderClassName).to.contain(TimeLine.sliderMoveClassName);
@@ -75,23 +89,57 @@ describe("<TimeLine/>", () => {
 
         wrapper = mount(<TimeLine {...props}/>);
 
-        expect((wrapper.getNode() as any)
+        expect((wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), 0, 2021)).to.not.exist;
 
         expect(wrapper.state().sliderClassName).to.not.contain(TimeLine.sliderMoveClassName);
     });
 
     it("should remove `move` class name from `<Slider/>` after animation delay when active project changed", () => {
-        (wrapper.getNode() as any)
+        wrapper = mount(<TimeLine {...props}/>);
+
+        Object.defineProperty(wrapper.getDOMNode().parentNode, "parentNode", {
+            get: () => {
+                return {
+                    getBoundingClientRect: () => {
+                        return {
+                            width: 100
+                        }
+                    }
+                }
+            }
+        });
+
+        (wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
 
         timer.tick(animationDuration / 2);
-
         expect(wrapper.state().sliderClassName).to.contain(TimeLine.sliderMoveClassName);
-
         timer.tick(animationDuration / 2);
-
         expect(wrapper.state().sliderClassName).to.not.contain(TimeLine.sliderMoveClassName);
     });
 
+    it("Should set `swap` class name when slider near with right edge of screen", () => {
+        Object.defineProperty(wrapper.getDOMNode().parentNode, "parentNode", {
+            get: () => {
+                return {
+                    getBoundingClientRect: () => {
+                        return {
+                            width: 100
+                        }
+                    }
+                }
+            }
+        });
+
+        Object.defineProperty(wrapper.getDOMNode(), "offsetLeft", {
+            get: () => 5000
+        });
+
+        (wrapper.instance() as any)
+            .handleChangeProject(wrapper.getDOMNode(), halfOfMonth, projects[projects.length - 1].date.year);
+
+        timer.tick(animationDuration);
+        expect(wrapper.state().sliderClassName).to.contain("swap");
+    })
 });

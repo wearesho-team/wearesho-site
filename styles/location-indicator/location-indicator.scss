@@ -2,70 +2,58 @@
   Location indicator styles
  */
 .location-indicator {
-  $bar-width: 320px;
+  $bar-width: 100px;
   $bar-width-laptop: 276px;
   $bar-height-mob: 130px;
   $bar-height-tabletp: 130px;
   $bar-height: 15px;
   $marker-size: 32px;
 
-  width: $bar-width;
+  width: calc(100% / 3 + 100px - 32px);
 
   display: inline-block;
 
   position: relative;
 
-  top: 19.5em;
+  top: -10px;
 
   z-index: 1;
 
   @include breakpoint($mobile) {
     width: $bar-height;
-    height: $bar-height-mob;
+    height: $bar-height-mob * 2;
 
-    top: auto;
+    top: -$bar-height-mob * 2;
     left: (100% / $cols-number-mob * 2);
-    margin-bottom: (-$bar-height-mob - 4px);
   }
 
   @include breakpoint($tablet) {
     width: $bar-height;
+    height:  $bar-width * 3;
 
-    top: auto;
+    top: -$bar-width * 3;
+
+    margin-left: -1px;
   }
 
   @include breakpoint($tablet-p) {
-    height: $bar-height-tabletp;
-
     left: (100% / $cols-number-tabletp);
-    margin-bottom: (-$bar-height-tabletp - 4px);
-
   }
 
   @include breakpoint($tablet-l) {
-    height: $bar-height-mob;
-
     left: (100% / $cols-number-tabletl * 2);
-    margin-bottom: (-$bar-height-mob - 4px);
   }
 
   @include breakpoint($laptop-small) {
     width: $bar-height;
-    height: $bar-height-mob;
+    height:  $bar-width * 3;
 
-    top: auto;
+    top: -$bar-width * 3;
     left: (100% / $cols-number-tabletl * 2);
-    margin-bottom: (-$bar-height-mob - 4px);
-  }
-
-  @include breakpoint($laptop-large) {
-    width: $bar-width-laptop;
-
-    top: 18.9em;
   }
 
   &__bar {
-    width: ($bar-width - 20px);
+    width: $marker-size / 2;
     height: 1px;
 
     position: relative;
@@ -74,45 +62,32 @@
 
     @include breakpoint($mobile) {
       width: 1px;
-      height: $bar-height-mob;
+      height: 100%;
+
+      background-color: transparent;
     }
 
     @include breakpoint($tablet) {
       width: 1px;
-      height: $bar-height-mob;
-    }
-
-    @include breakpoint($tablet-p) {
-
-      height: $bar-height-tabletp;
-    }
-
-    @include breakpoint($tablet-l) {
-
-      height: $bar-height-mob;
+      height: 100%;
     }
 
     @include breakpoint($laptop-small) {
       width: 1px;
-      height: $bar-height-mob;
-    }
-
-    @include breakpoint($laptop-large) {
-
-      width: ($bar-width-laptop - 20px);
+      height: 100%;
     }
 
     &:before {
       content: '';
       display: block;
 
-      width: 200px;
+      width: $bar-width * 3;
       height: $bar-height;
 
       position: absolute;
 
       top: 50%;
-      right: 0;
+      right: $marker-size / 2;
 
       margin-top: (-$bar-height / 2);
 
@@ -124,7 +99,7 @@
 
       @include breakpoint($mobile) {
         width: $bar-height;
-        height: $bar-height-mob;
+        height: 100%;
 
         top: auto;
         left: 50%;
@@ -137,6 +112,7 @@
 
       @include breakpoint($tablet) {
         width: $bar-height;
+        height: 100%;
 
         top: auto;
         left: 50%;
@@ -145,21 +121,11 @@
         margin-left: (-$bar-height / 2);
 
         box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
-      }
-
-      @include breakpoint($tablet-p) {
-
-        height: $bar-height-tabletp;
-      }
-
-      @include breakpoint($tablet-l) {
-
-        height: $bar-height-mob;
       }
 
       @include breakpoint($laptop-small) {
         width: $bar-height;
-        height: $bar-height-mob;
+        height: 100%;
 
         top: auto;
         left: 50%;
@@ -168,11 +134,6 @@
         margin-left: (-$bar-height / 2);
 
         box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
-      }
-
-      @include breakpoint($laptop-large) {
-
-        width: 158px;
       }
     }
   }
@@ -184,7 +145,7 @@
     position: absolute;
 
     top: 50%;
-    right: 0;
+    left: -$marker-size / 2;
 
     margin-top: -($marker-size / 2);
 
@@ -198,6 +159,8 @@
 
     cursor: pointer;
 
+    pointer-events: all;
+
     @include breakpoint($mobile) {
       top: 100%;
 
@@ -216,25 +179,41 @@
       box-shadow: 3px 8px 9px 0 rgba(0, 0, 0, .2);
     }
 
-    &:after {
-      content: '+';
-      display: block;
+    &:after,
+    &:before {
+      content: '';
 
-      line-height: ($marker-size - 2px);
+      width: 2px;
+      height: 10px;
 
-      font-size: 2em;
-      font-family: $font-secondary;
-      font-weight: $font-style-regular;
-      color: $color-secondary;
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      margin: auto;
+
+      background-color: $color-secondary;
 
       @include transition(transform .3s ease);
+    }
+
+    &:after {
+      @include transform(rotateZ(90deg));
     }
 
     &:hover {
 
       &:after {
 
-        @include transform(rotate(90deg));
+        @include transform(rotateZ(180deg));
+      }
+
+      &:before {
+
+        @include transform(rotateZ(90deg));
       }
 
       ~ .location-indicator__info {
@@ -272,7 +251,7 @@
     position: absolute;
 
     top: -36px;
-    left: 305px;
+    left: 26px;
 
     background-color: #fff;
 
@@ -286,23 +265,23 @@
     }
 
     @include breakpoint($mobile-p) {
-      top: 130px;
-      left: -156px;
+      top: 260px;
+      left: -90px;
     }
 
     @include breakpoint($mobile-l) {
-      top: 94px;
-      left: -221px;
+      top: 235px;
+      left: -240px;
     }
 
     @include breakpoint($tablet) {
-      top: 94px;
-      left: -221px;
+      top: 276px;
+      left: 26px;
     }
 
     @include breakpoint($laptop-small) {
-      top: 94px;
-      left: -221px;
+      top: 276px;
+      left: 26px;
 
       white-space: nowrap;
     }

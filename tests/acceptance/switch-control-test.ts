@@ -4,12 +4,13 @@
 Feature("Switch control");
 
 Scenario("Arrows control", async (I) => {
+    const timeout = 30;
     I.amOnPage("/");
-    I.waitForElement(".section-main", 30);
-
+    I.waitForElement("body.loaded", timeout);
+    I.wait(2);
     I.pressKey("ArrowDown");
-    I.waitForElement(".section-partnership", 2);
+    I.waitForElement(".section-partnership", timeout);
 
     I.pressKey("ArrowUp");
-    I.waitForElement(".section-main", 2);
+    I.waitForElement(".section-main", timeout);
 });

@@ -10,80 +10,107 @@ import {MainPage} from "../../src/components/MainPage";
 import {ContactPage} from "../../src/components/ContactPage";
 import {SideBar, Header} from "../../src/components/Layout/Partials";
 import {SoundSwitch} from "../../src/components/Layout/SoundSwitch";
-import {Link} from "react-router-dom";
+import {getLinksWithProps} from "../../src/helpers/getLinksWithProps";
+import {LayoutContext} from "../../src/components/Layout/LayoutContext";
+import {Languages} from "../../src/data/Languages";
+import {translate} from "../../src/helpers/translate";
+
+const time = 500;
 
 describe("<Layout>", () => {
     let wrapper: ReactWrapper<LayoutProps, any>;
 
     let history: History;
 
+    const commonHandler = async () => undefined;
+
     beforeEach(() => {
         wrapper = mount(
             <Layout
-                preLoader={new PreLoader()}
+                preLoader={new PreLoader(time)}
                 history={history = createMemoryHistory()}
             />
         );
     });
 
     afterEach(() => {
+        localStorage.getItem = (arg: string) => arg;
         wrapper.unmount();
     });
 
-    it("should show preloader on unmount", () => {
+    it("should show preloader on unmount", async () => {
         let isShowTriggered = false;
         wrapper.setProps({
             preLoader: {
-                hide: async () => undefined,
+                hide: commonHandler,
                 show: async () => {
                     isShowTriggered = true;
                 }
             }
         });
-        wrapper.unmount().mount();
+        await (wrapper.mount().unmount() as any);
         expect(isShowTriggered).to.be.true;
     });
 
-    it("should hide preloader on mount", () => {
+    it("should hide preloader on mount", async () => {
         let isHideTriggered = false;
         wrapper.setProps({
             preLoader: {
                 hide: async () => {
                     isHideTriggered = true;
                 },
-                show: async () => undefined,
+                show: commonHandler
             }
         });
-        wrapper.unmount().mount();
+        await (wrapper.unmount().mount() as any);
         expect(isHideTriggered).to.be.true;
     });
 
     it("should render <MainPage/> on `/`", () => {
 
-        expect(wrapper).to.containMatchingElement(<MainPage/>);
+        expect(wrapper.contains(<MainPage/>)).to.be.true;
     });
 
     it("should render <ContactPage/> on `/contact`", () => {
 
         history.push("/contact");
-        expect(wrapper).to.containMatchingElement(<ContactPage/>);
+        expect(wrapper.contains(<ContactPage/>)).to.be.true;
     });
 
     it("should contain <SideBar/>,<Header/> and <SoundSwitch/> on each page", () => {
-
         const expectElementsExist = () => {
-            expect(wrapper).to.containMatchingElement(
+            expect(wrapper.contains(
                 <SideBar>
-                    <Link className="main-nav__link" to="/">+</Link>
-                    <Link className="main-nav__link" to="/contact">+</Link>
+                    {getLinksWithProps()}
                 </SideBar>
-            );
-            expect(wrapper).to.containMatchingElement(<Header/>);
-            expect(wrapper).to.containMatchingElement(<SoundSwitch/>);
+            )).to.be.true;
+
+            expect(wrapper.contains(<Header/>)).to.be.true;
+            expect(wrapper.contains(<SoundSwitch/>)).to.be.true;
         };
 
         expectElementsExist();
         history.push("/contact");
         expectElementsExist();
+    });
+
+    it("Should set next language on `change language`", () => {
+        ((wrapper.instance() as any).getChildContext() as LayoutContext).setLanguage(Languages.en);
+        expect(wrapper.instance().state.language).to.equal(Languages.en);
+        expect(translate.getLocale()).to.equal(Languages.en);
+
+        ((wrapper.instance() as any).getChildContext() as LayoutContext).setLanguage(Languages.ru);
+        expect(wrapper.instance().state.language).to.equal(Languages.ru);
+        expect(translate.getLocale()).to.equal(Languages.ru);
+    });
+
+    it("Should set language from localStorage on mount", () => {
+        localStorage.getItem = () => Languages.en;
+        wrapper.unmount().mount();
+        expect(wrapper.instance().state.language).to.equal(Languages.en);
+
+        localStorage.getItem = () => Languages.ru;
+        wrapper.unmount().mount();
+        expect(wrapper.instance().state.language).to.equal(Languages.ru);
     });
 });

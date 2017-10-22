@@ -12,14 +12,9 @@
   margin-top: 8em;
   padding: 3em 0;
 
-  @include breakpoint($mobile) {
+  @include breakpoint($tablet-l) {
 
-    display: none;
-  }
-
-  @include breakpoint($tablet-p) {
-
-    display: none;
+    margin-top: 7em;
   }
 
   @include breakpoint($laptop-large) {
@@ -249,25 +244,6 @@
 
           background-color: $color-secondary;
         }
-      }
-    }
-
-    &.is-active {
-
-      &:before {
-        width: 0;
-        height: 0;
-
-        opacity: 0;
-
-        transition-delay: .3s;
-      }
-
-      &:after {
-
-        height: 12px;
-
-        transition-delay: .3s;
       }
     }
   }

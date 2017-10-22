@@ -553,3 +553,38 @@ $indent-tablet: -66px;
     opacity: 1;
   }
 }
+
+// Caret blink
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-to-left {
+  0% {
+    opacity: 0;
+    //@include transform3d(translate3d(-100%,0,0));
+  }
+  100% {
+    opacity: 1;
+    //@include transform(translate3d(0,0,0));
+  }
+}
+
+@keyframes slide-to-left-slow-opacity {
+  0% {
+    opacity: 0;
+    @include transform3d(translate3d(-10%,0,0));
+  }
+  100% {
+    opacity: 1;
+    @include transform(translate3d(0,0,0));
+  }
+}

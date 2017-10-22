@@ -25,17 +25,20 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
         return nextProps.isActive !== this.props.isActive;
     }
 
-    public render() {
+    public render(): JSX.Element {
         const className = concat(
             ActivePoint.defaultClassName,
             `${ActivePoint.defaultClassName}_${this.props.sideClassName}`,
             this.props.isActive ? ActivePoint.activeClassName : ActivePoint.filledClassName
         );
 
-        return <span className={className} onClick={!this.props.isActive && this.handleClick} ref={this.setElement}/>
+        return <span className={className} onClick={this.handleClick} ref={this.setElement}/>
     }
 
-    protected handleClick = ({currentTarget}) => this.props.onProjectChange(currentTarget, this.props.index);
+    protected handleClick = ({currentTarget}) => {
+        !this.props.isActive
+        && this.props.onProjectChange(currentTarget, this.props.index);
+    };
 
     protected setElement = (element: HTMLElement) => this.element = element;
 }

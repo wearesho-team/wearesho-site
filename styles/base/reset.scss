@@ -22,6 +22,18 @@ body {
   border: 0;
 }
 
+:invalid {
+  box-shadow: none;
+}
+
+:-moz-submit-invalid {
+  box-shadow: none;
+}
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
 // Too long placeholder
 .form__control[placeholder]:not([type="password"]) {
   text-overflow: ellipsis;

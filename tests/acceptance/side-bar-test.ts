@@ -4,16 +4,18 @@
 Feature("Side bar");
 
 Scenario("Menu navigation", async (I) => {
+    const timeout = 30;
     I.amOnPage("/");
-    I.waitForElement(".section-main", 30);
+    I.waitForElement("body.loaded", timeout);
+    I.wait(2);
 
-    I.waitForElement(`.main-nav__link[href="/contact"]`, 30);
+    I.waitForElement(`.main-nav__link[href="/contact"]`, timeout);
     I.wait(1);
     I.click(`.main-nav__link[href="/contact"]`);
-    I.waitForElement(".section-partnership", 2);
+    I.waitForElement(".section-partnership", timeout);
 
-    I.waitForElement(`.main-nav__link[href="/"]`, 30);
+    I.waitForElement(`.main-nav__link[href="/"]`, timeout);
     I.wait(1);
     I.click(`.main-nav__link[href="/"]`);
-    I.waitForElement(".section-main", 2);
+    I.waitForElement(".section-main", timeout);
 });

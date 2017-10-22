@@ -8,10 +8,7 @@ body.loaded {
 
     @include animation(preloader-disappearing 3s ease 2s);
 
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+    @include animation-fill-mode(forwards);
   }
 
   .section.section-preloader {
@@ -114,6 +111,8 @@ body.loaded {
   &:before {
     left: calc((2 / 6) * 100% - 5px);
 
+    margin-left: -0.5px;
+
     @include breakpoint($tablet-p) {
 
       left: calc((3 / 6) * 100% - 5px);
@@ -132,6 +131,7 @@ body.loaded {
 
   &:after {
     right: calc((3 / 6) * 100% - 8px);
+    margin-right: 1px;
 
     @include breakpoint($mobile) {
 
@@ -222,13 +222,17 @@ body.loaded {
       margin-top: .7em;
 
       font-size: .936em;
-      font-weight: $font-style-regular;
+      font-weight: $font-style-medium;
     }
   }
 
   .section__subtitle {
     font-size: 1.063em;
     font-weight: $font-style-light;
+
+    &:first-child {
+      white-space: nowrap;
+    }
 
     & + .section__subtitle {
 
