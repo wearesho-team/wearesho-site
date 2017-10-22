@@ -1,0 +1,13 @@
+.caret {
+  display: inline-block;
+
+  width: 1px;
+  height: 1em;
+
+  background-color: black;
+
+  animation: blink 1s;
+  animation-iteration-count: infinite;
+
+  margin-bottom: -.2em;
+}

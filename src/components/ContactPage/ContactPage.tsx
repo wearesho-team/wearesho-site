@@ -35,9 +35,10 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
             },
             overlayClassName: {
                 base: "modal-overlay",
-                afterOpen: "",
-                beforeClose: "",
+                afterOpen: "modal-opened",
+                beforeClose: "modal-close",
             },
+            closeTimeoutMS: 500
         };
 
         return (
@@ -82,8 +83,8 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                 </p>
                                 <p className="contact-info__text">
                                     <span className="text_medium">{translate("contactPage.location.title")}</span>
-                                    {translate(Config.location.country)}&nbsp;<span className="separator">/</span>&nbsp;
-                                    {translate(Config.location.city)}
+                                    {translate(Config.location.country)}&nbsp;<span className="separator">/</span>
+                                    &nbsp;{translate(Config.location.city)}
                                 </p>
                             </OnDesktop>
                             <OnTablet>
@@ -97,9 +98,7 @@ export class ContactPage extends React.Component<undefined, ContactPageState> {
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                         {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                     </a>
-                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">
-                                        {Config.mail}
-                                    </a>
+                                    <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
                                 <SubmitButton
                                     type="button"

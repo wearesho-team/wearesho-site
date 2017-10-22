@@ -82,7 +82,7 @@ translate.registerTranslations("ru", {
         autodealer: "#автодилер",
         logistics: "#логистика",
         finances: "#финансы",
-        krediting: "#кредитование"
+        crediting: "#кредитование"
     },
     validation: {
         incorrect: {
