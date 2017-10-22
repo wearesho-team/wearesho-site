@@ -53,11 +53,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             return;
         }
 
-        if (checkForStringInstance(this.props.children)) {
-            this.sourceChild = this.props.children.toString();
-        } else if (checkForStringArrayInstance(this.props.children)) {
-            this.sourceChild = (this.props.children as string []).join("\n");
-        }
+        this.sourceChild = this.getFormattedChild(this.props.children);
 
         this.state = {
             ...this.state,
@@ -79,7 +75,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             return;
         }
 
-        this.setState({children: nextProps.children});
+        this.setState({children: this.getFormattedChild(nextProps.children)});
     }
 
     public render(): any {
@@ -116,5 +112,13 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
 
     protected get caret(): JSX.Element {
         return <i key="caret" className="caret"/>;
+    }
+
+    protected getFormattedChild(children: CodeStyleAnimationProps["children"]): string {
+        if (checkForStringInstance(children)) {
+            return children.toString();
+        } else if (checkForStringArrayInstance(children)) {
+            return (children as string []).join("\n");
+        }
     }
 }

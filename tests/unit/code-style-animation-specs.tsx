@@ -112,6 +112,6 @@ describe("<CodeStyleAnimation/>", () => {
             children: textArray
         });
 
-        expect((wrapper.getDOMNode() as any).wholeText).to.equal(textArray.join(""));
+        expect((wrapper.getDOMNode() as any).wholeText).to.equal(textArray.join("\n"));
     });
 });
