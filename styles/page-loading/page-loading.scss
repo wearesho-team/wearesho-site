@@ -1,0 +1,92 @@
+/**
+  Page loading styles
+ */
+.header,
+.sidebar,
+.sound-switch,
+.section__title,
+.prj-chronology,
+.section__half {
+  opacity: 0;
+
+  @include transition(opacity 1s ease);
+  @include transition-delay(4.25s);
+}
+
+.section__title {
+  @include transition(opacity .5s ease, filter 1.5s ease);
+  @include transition-delay(5s);
+}
+
+.prj-chronology {
+  @include transform(scale(0));
+
+  @include transition(transform 1s ease, opacity 1s ease);
+  @include transition-delay(6s);
+}
+
+.section__half {
+  @include transform(translateX(-3000px));
+
+  @include transition(transform 1.5s ease, opacity 1.5s ease-out);
+  @include transition-delay(6.5s);
+
+  .section__subtitle_marker {
+
+    &:before {
+      opacity: 0;
+
+      @include transition(opacity .75s ease);
+      @include transition-delay(8s);
+    }
+  }
+}
+
+.map-container {
+
+  > div {
+    opacity: 0;
+
+    @include transition(opacity 10s ease);
+    @include transition-delay(8s);
+  }
+}
+
+body.loaded {
+
+  .header,
+  .sidebar,
+  .sound-switch,
+  .section__title,
+  .prj-chronology {
+
+    opacity: 1;
+  }
+
+  .prj-chronology {
+
+    @include transform(scale(1));
+  }
+
+  .section__half {
+    @include transform(translateX(0));
+
+    opacity: 1;
+
+    .section__subtitle_marker {
+
+      &:before {
+
+        opacity: 1;
+      }
+    }
+  }
+
+  .map-container {
+
+    > div {
+
+      opacity: 1;
+    }
+  }
+}
