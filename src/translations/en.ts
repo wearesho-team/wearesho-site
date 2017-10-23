@@ -37,7 +37,7 @@ translate.registerTranslations("en", {
             },
             howLong: {
                 title: "More than 3 years",
-                subTitle: "professional cooperation with financial companies:",
+                subTitle: "cooperation with financial companies:",
             }
         }
     },

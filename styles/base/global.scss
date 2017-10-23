@@ -18,6 +18,11 @@ body {
     overflow-y: visible;
   }
 
+  @include breakpoint($laptop-not-large-no-height) {
+
+    overflow-y: visible;
+  }
+
   @include breakpoint($laptop-large) {
 
     overflow-x: visible;

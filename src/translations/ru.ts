@@ -37,7 +37,7 @@ translate.registerTranslations("ru", {
             },
             howLong: {
                 title: "Более 3 лет",
-                subTitle: "профессионального сотрудничества с финансовыми компаниями:",
+                subTitle: "сотрудничества с финансовыми компаниями:",
                 items: [
                     "NIKO Holding",
                     "INFINANCE"
