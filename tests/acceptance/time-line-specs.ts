@@ -20,7 +20,7 @@ Scenario("Project selection", async (I) => {
         return element.offsetLeft + (element.parentNode as HTMLElement).offsetLeft;
     });
 
-    I.seeCssPropertiesOnElements(".chronology-slider", {left: `${offset}px`});
+    I.seeCssPropertiesOnElements(".slider", {left: `${offset}px`});
 
     return true;
 });

@@ -9,9 +9,9 @@ Scenario("Menu navigation", async (I) => {
     I.waitForElement("body.loaded", timeout);
     I.wait(2);
 
-    I.waitForElement(`.main-nav__link[href="/contact"]`, timeout);
+    I.waitForElement(`.main-nav__link[href="/partnership"]`, timeout);
     I.wait(1);
-    I.click(`.main-nav__link[href="/contact"]`);
+    I.click(`.main-nav__link[href="/partnership"]`);
     I.waitForElement(".section-partnership", timeout);
 
     I.waitForElement(`.main-nav__link[href="/"]`, timeout);

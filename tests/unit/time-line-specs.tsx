@@ -54,7 +54,7 @@ describe("<TimeLine/>", () => {
         });
 
         expect(
-            Array.from(wrapper.getDOMNode().children).find(({className}) => !className.search("chronology-slider"))
+            Array.from(wrapper.getDOMNode().children).find(({className}) => !className.search("slider"))
         ).to.exist;
     });
 

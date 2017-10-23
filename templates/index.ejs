@@ -23,9 +23,13 @@
 <div id="content-overlay"></div>
 <div class="grid">
     <div class="grid__col"></div>
-    <div class="grid__col grid__col_decor touch-only"></div>
+    <div class="grid__col grid__col_decor touch-only">
+        <div class="grow-element"></div>
+    </div>
     <div class="grid__col"></div>
-    <div class="grid__col grid__col_decor"></div>
+    <div class="grid__col grid__col_decor">
+        <div class="grow-element"></div>
+    </div>
     <div class="grid__col"></div>
     <div class="grid__col"></div>
 </div>
@@ -33,9 +37,7 @@
     var hideTimeout = 3000;
     (function () {
         var percents = 0;
-        var indicators = document.getElementsByClassName("booting-indicator");
-        var grid = document.getElementsByClassName("grid__col");
-        var label = document.getElementsByClassName("section__subtitle_percent-number")[0];
+        var indicators = document.getElementsByClassName("grow-element");
         var timer;
 
         // triggering form PreLoaded component
@@ -44,50 +46,19 @@
             clearTimeout(timer);
             increase = undefined;
 
-            // need some delay for styles
             setTimeout(function () {
-                for (var gridItem of grid) {
-                    gridItem.classList.add("loaded");
-
-                    const innerItems = gridItem.getElementsByTagName("div");
-                    for (var item of innerItems) {
-                        item.removeAttribute("style");
-                    }
+                for (var indicator of indicators) {
+                    indicator.removeAttribute("style");
                 }
-            }, 100);
-
-            // at the last stage it is necessary to finish increasing percents
-            var counter = 0;
-            (function ending() {
-                setTimeout(function () {
-                    // searching current visible indicator
-                    for (var indicator of indicators) {
-                        var height = parseInt(indicator.getBoundingClientRect().height);
-                        if (!height) {
-                            continue;
-                        }
-                        // calculate percentage height of indicator
-                        label.innerHTML = Math.floor(height / window.innerHeight * 100);
-                        counter++;
-                    }
-                    (counter < (hideTimeout / 50)) && ending();
-                }, 50)
-            })();
+            }, hideTimeout);
         }
 
         function increase() {
             timer = setTimeout(function () {
                 percents++;
-                label.innerHTML = percents;
-                // set height to all indicators
-                for (var item of grid) {
-                    const growItems = item.getElementsByClassName("grow-item");
-                    for (var growItem of growItems) {
-                        growItem.style.height = (100 - percents) + "%";
-                    }
-                }
                 for (var indicator of indicators) {
-                    indicator.style.height = percents + "%";
+                    indicator.style.top = 50 - (percents / 2) + "%";
+                    indicator.style.bottom = 50 - (percents / 2) + "%";
                 }
 
                 increase && (percents < 85) && increase();

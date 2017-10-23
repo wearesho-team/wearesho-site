@@ -1,6 +1,7 @@
 /**
   Grid styles
  */
+
 body.loaded {
 
   .grid {
@@ -23,12 +24,14 @@ body.loaded {
       &_decor {
         border-color: rgba(244, 244, 244, .04);
 
-        &:after {
+        > .grow-element {
           pointer-events: none;
           opacity: 0;
 
-          @include transition(opacity 3s ease);
-          @include transition-delay(2s);
+          top: 0;
+          bottom: 0;
+
+          @include transition(opacity 3s ease 2s, top 1s linear 1.25s, bottom 1s linear 1.25s);
         }
       }
 
@@ -197,9 +200,7 @@ body.loaded {
         border-color: rgba(244, 244, 244, .04);
       }
 
-      &:after {
-        content: '';
-
+      > .grow-element {
         position: absolute;
 
         width: 1px;
@@ -208,8 +209,7 @@ body.loaded {
 
         background: linear-gradient(to top, rgba(58, 153, 186, 0) 0%, rgba(58, 153, 186, .5) 50%, rgba(58, 153, 186, 0) 100%);
 
-        @include animation(grid-growth 1s linear 1.25s);
-        @include animation-fill-mode(forwards);
+        @include transition(opacity 3s ease 2s, top 1s linear, bottom 1s linear);
 
         @include breakpoint($mobile) {
 
@@ -235,7 +235,7 @@ body.loaded {
           border-left-color: transparent;
         }
 
-        &:after {
+        > .grow-element {
 
           display: none;
 
@@ -245,14 +245,12 @@ body.loaded {
           }
 
           @include breakpoint($tablet-l) {
-            content: '';
 
             right: 0;
             left: auto;
           }
 
           @include breakpoint($laptop-small) {
-            content: '';
             display: block;
 
             right: 0;

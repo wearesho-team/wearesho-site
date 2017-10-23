@@ -44,8 +44,8 @@ translate.registerTranslations("en", {
     contactPage: {
         title: "Partnership",
         form: {
+            titleExtended: "Contact us or fill out the contact information on the form. Our specialists will answer all your questions.",
             title: "Contact us",
-            subTitle: "or enter your contact information in the form below. Our specialists will answer all questions.",
             placeholders: {
                 name: "Your name",
                 phone: "Phone",

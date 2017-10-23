@@ -7,18 +7,14 @@ import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../../helpers/Br
 import {formatNumber} from "../../../helpers/formatNumber";
 import {translate} from "../../../helpers/translate";
 
-import {CloseButton, SubmitButton} from "../../Buttons";
-import {PartnershipPageState} from "./PartnershipPageState";
-import {ContactForm} from "./ContactForm";
 import {SocialLinks} from "../../Layout/Partials/SocialLinks";
-import {BasePage} from "../BasePage";
+import {PartnershipPageState} from "./PartnershipPageState";
+import {CloseButton, SubmitButton} from "../../Buttons";
 import {MapIcon} from "../../Icons/MapIcon";
-import {LayoutContextTypes, LayoutContext} from "../../Layout/LayoutContext";
+import {ContactForm} from "./ContactForm";
+import {BasePage} from "../BasePage";
 
 export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
-    public static readonly contextTypes = LayoutContextTypes;
-    public context: LayoutContext;
-
     public state: PartnershipPageState = {
         isModalOpen: false,
     };
@@ -49,15 +45,8 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                     <h2 className="section__title">{translate("contactPage.title")}</h2>
                     <div className="section__half half_first">
                         <OnDesktop>
-                            <h4 className="section__subtitle">
-                                {translate("contactPage.form.title")}
-                                <span className="section__subtitle_reduced">
-                                   {translate("contactPage.form.subTitle")}
-                                </span>
-                            </h4>
                             <p className="section__text">
-                                Свяжитесь с нами или укажите контактные данные в форме.
-                                Наши специалисты ответят на все ваши вопросы.
+                                {translate("contactPage.form.titleExtended")}
                             </p>
                             <p className="section__text request-sent">
                                 <span className="section__text_increased">Мефодий,</span>
@@ -95,7 +84,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                             </OnDesktop>
                             <OnTablet>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_medium">{translate("contactPage.location.title")}</span>
+                                    <span className="text_medium">{translate("contactPage.support.title")}</span>
                                     {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
@@ -118,8 +107,8 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                             </OnTablet>
                             <OnMobile>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_medium">{translate("contactPage.location.title")}</span>
-                                    {translate("contactPage.location.subTitle")}
+                                    <span className="text_medium">{translate("contactPage.support.title")}</span>
+                                    {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
                                 <p className="contact-info__text">
@@ -168,11 +157,12 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                             </div>
                             <div className="slider__description">
                             <span className="slider__location">
-                                Ukraine / Kharkiv
+                                {translate(Config.location.country)} / {translate(Config.location.city)}
                             </span>
                                 <span className="slider__coordinates">
-                                49.9808100&deg; 36.2527200&deg;
-                            </span>
+                                    {Config.location.coordinates.lat}&deg;
+                                    {Config.location.coordinates.lng}&deg;
+                                </span>
                             </div>
                         </div>
                     </div>

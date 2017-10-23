@@ -9,6 +9,25 @@ body.loaded {
     @include animation(disappearance 3s ease 2s);
 
     @include animation-fill-mode(forwards);
+
+    .section.section-preloader {
+
+      &:before {
+        @include animation(appearance .5s ease);
+        @include animation-fill-mode(forwards);
+      }
+
+      .section__subtitle {
+        @include animation(appearance .5s ease, movement-right .5s ease);
+        @include animation-fill-mode(forwards);
+      }
+
+      .logo {
+
+        @include animation(appearance .5s ease, movement-left .5s ease);
+        @include animation-fill-mode(forwards);
+      }
+    }
   }
 }
 
@@ -80,9 +99,6 @@ body.loaded {
     margin: (-$glow-height / 2) 0 0 (-$glow-width / 2 + 2px);
 
     background: url('images/preloader-glow.svg');
-
-    @include animation(appearance .5s ease 2s);
-    @include animation-fill-mode(forwards);
 
     opacity: 0;
 
@@ -177,9 +193,6 @@ body.loaded {
     font-weight: $font-style-light;
     color: #fff;
 
-    @include animation(appearance .5s ease 2s, movement-right .5s ease 2s);
-    @include animation-fill-mode(forwards);
-
     & + .section__subtitle {
 
       @include breakpoint($mobile) {
@@ -215,10 +228,6 @@ body.loaded {
     padding-left: 1.75em;
 
     font-size: inherit;
-
-    @include animation(appearance .5s ease 2s, movement-left .5s ease 2s);
-    @include animation-fill-mode(forwards);
-
     @include breakpoint($mobile) {
 
       padding-left: 1.25em;

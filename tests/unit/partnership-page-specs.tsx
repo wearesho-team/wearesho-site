@@ -14,6 +14,7 @@ describe("<PartnershipPage/>", () => {
     const animationDuration = 500;
 
     beforeEach(() => {
+        document.body.innerHTML = "";
         wrapper = mount(<PartnershipPage/>);
         modal = document.body.querySelector(".ReactModalPortal");
         timer = useFakeTimers();
@@ -29,7 +30,6 @@ describe("<PartnershipPage/>", () => {
         button.last().simulate("click");
 
         expect(modal.querySelector(".form")).to.exist;
-        document.body.innerHTML = "";
     });
 
     it("should close modal when click close button", () => {
