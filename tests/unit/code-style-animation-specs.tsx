@@ -113,5 +113,12 @@ describe("<CodeStyleAnimation/>", () => {
         });
 
         expect((wrapper.getDOMNode() as any).wholeText).to.equal(textArray.join("\n"));
+
+        // bad situation
+        wrapper.setProps({
+            children: <div/> as any
+        });
+
+        expect(wrapper.getDOMNode().outerHTML).to.equal("<div></div>");
     });
 });

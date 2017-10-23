@@ -47,13 +47,13 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             this.state = {
                 ...this.state,
                 ...{
-                    children: this.props.children,
+                    children: this.getFormattedChild(this.props.children) as string
                 }
             };
             return;
         }
 
-        this.sourceChild = this.getFormattedChild(this.props.children);
+        this.sourceChild = this.getFormattedChild(this.props.children) as string;
 
         this.state = {
             ...this.state,
@@ -114,11 +114,13 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
         return <i key="caret" className="caret"/>;
     }
 
-    protected getFormattedChild(children: CodeStyleAnimationProps["children"]): string {
+    protected getFormattedChild(children: CodeStyleAnimationProps["children"]): CodeStyleAnimationProps["children"] {
         if (checkForStringInstance(children)) {
             return children.toString();
         } else if (checkForStringArrayInstance(children)) {
             return (children as string []).join("\n");
         }
+
+        return children;
     }
 }
