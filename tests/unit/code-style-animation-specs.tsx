@@ -115,10 +115,11 @@ describe("<CodeStyleAnimation/>", () => {
         expect((wrapper.getDOMNode() as any).wholeText).to.equal(textArray.join("\n"));
 
         // bad situation
-        wrapper.setProps({
-            children: <div/> as any
-        });
-
-        expect(wrapper.getDOMNode().outerHTML).to.equal("<div></div>");
+        expect(() =>
+            wrapper.setProps({
+                children: <div/> as any
+            })
+        )
+            .to.throw("Incorrect type of children. Only string or string [] are available");
     });
 });

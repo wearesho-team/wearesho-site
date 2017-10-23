@@ -47,13 +47,13 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             this.state = {
                 ...this.state,
                 ...{
-                    children: this.getFormattedChild(this.props.children) as string
+                    children: this.getFormattedChild(this.props.children)
                 }
             };
             return;
         }
 
-        this.sourceChild = this.getFormattedChild(this.props.children) as string;
+        this.sourceChild = this.getFormattedChild(this.props.children);
 
         this.state = {
             ...this.state,
@@ -114,13 +114,13 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
         return <i key="caret" className="caret"/>;
     }
 
-    protected getFormattedChild(children: CodeStyleAnimationProps["children"]): CodeStyleAnimationProps["children"] {
+    protected getFormattedChild(children: CodeStyleAnimationProps["children"]): string {
         if (checkForStringInstance(children)) {
             return children.toString();
         } else if (checkForStringArrayInstance(children)) {
             return (children as string []).join("\n");
         }
 
-        return children;
+        throw new Error("Incorrect type of children. Only string or string [] are available");
     }
 }

@@ -30,7 +30,7 @@ if (isApache) {
 }
 
 const config = {
-        entry: ['babel-polyfill', "./src/index.tsx"],
+        entry: ["babel-regenerator-runtime", "./src/index.tsx"],
 
         devServer: {
             publicPath: "/",
@@ -123,7 +123,16 @@ const config = {
                         {
                             loader: "babel-loader",
                             query: {
-                                presets: ['es2015', 'react', 'stage-2'],
+                                presets: [
+                                    'react',
+                                    ['env', {
+                                        "targets": {
+                                            "browsers": ["last 3 versions"],
+                                            "node": "current"
+                                        },
+                                    }],
+                                ],
+                                "plugins": ["transform-object-rest-spread"]
                             },
                         },
                         "awesome-typescript-loader",
@@ -137,7 +146,16 @@ const config = {
                     loader:
                         "babel-loader",
                     query: {
-                        presets: ['es2015', 'react', 'stage-0', 'stage-1']
+                        presets: [
+                            'react',
+                            ['env', {
+                                "targets": {
+                                    "browsers": ["last 3 versions"],
+                                    "node": "current"
+                                },
+                            }]
+                        ],
+                        "plugins": ["transform-object-rest-spread"]
                     },
                 },
                 {
