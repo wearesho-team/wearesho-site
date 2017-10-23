@@ -207,6 +207,9 @@ body.loaded {
 
         left: 0;
 
+        top: 0;
+        bottom: 0;
+
         background: linear-gradient(to top, rgba(58, 153, 186, 0) 0%, rgba(58, 153, 186, .5) 50%, rgba(58, 153, 186, 0) 100%);
 
         @include transition(opacity 3s ease 2s, top 1s linear, bottom 1s linear);
