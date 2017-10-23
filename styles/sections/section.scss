@@ -114,6 +114,24 @@
 
   &.section-partnership {
 
+    > .align-container {
+
+      @include breakpoint($tablet-p) {
+
+        padding-bottom: 38em;
+      }
+
+      @include breakpoint($tablet-l) {
+
+        padding-bottom: 13em;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        padding-bottom: 13em;
+      }
+    }
+
     .section__half {
 
       &.half_first {
@@ -140,6 +158,8 @@
 
       &.half_second {
         @include span(6 of 12 inside no-gutters last);
+
+        @include clearfix;
 
         @include breakpoint($mobile-tablet) {
 

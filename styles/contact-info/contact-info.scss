@@ -9,15 +9,9 @@
     @include span(12 of 12 inside no-gutters);
   }
 
-  @include breakpoint($tablet) {
-
-    margin-bottom: 4.8em;
-  }
-
   @include breakpoint($laptop-small) {
-    @include span(12 of 12 inside no-gutters);
 
-    margin-bottom: 3em;
+    @include span(12 of 12 inside no-gutters);
   }
 
   .align-container {
@@ -33,16 +27,23 @@
 
     @include breakpoint($tablet) {
       @include span(6 of 12 inside no-gutters);
+
       float: right;
 
-      margin-bottom: 3.9em;
+      margin-bottom: 4.5em;
+    }
+
+    @include breakpoint($tablet-l) {
+      @include span(12 of 12 inside no-gutters);
+
+      float: none;
     }
 
     @include breakpoint($laptop-small) {
-      @include span(6 of 12 inside no-gutters);
+      @include span(12 of 12 inside no-gutters);
       float: right;
 
-      margin-bottom: 3.9em;
+      margin-bottom: 4.5em;
     }
 
     > .contact-info__link {
@@ -88,8 +89,6 @@
   }
 
   &__link {
-
-
     white-space: nowrap;
 
     font-size: 1.2em;
@@ -158,13 +157,27 @@
       @include breakpoint($tablet) {
         @include span(6 of 12 inside no-gutters);
 
-        margin: 0 0 2.5em;
+        margin: 0 0 3.25em;
+      }
+
+      @include breakpoint($tablet-p) {
+
+        float: right;
+      }
+
+      @include breakpoint($tablet-l) {
+
+        @include span(6 of 12 inside no-gutters);
+
+        float: none;
       }
 
       @include breakpoint($laptop-small) {
         @include span(6 of 12 inside no-gutters);
 
-        margin: 0 0 2.5em;
+        float: none;
+
+        margin: 0 0 3.25em;
       }
 
       @include breakpoint($laptop-large) {
@@ -230,16 +243,12 @@
 
       @include breakpoint($tablet) {
 
-        @include span(6 of 12 inside no-gutters);
-
-        float: right;
+        display: none;
       }
 
       @include breakpoint($laptop-small) {
 
-        @include span(6 of 12 inside no-gutters);
-
-        float: right;
+        display: none;
       }
     }
   }

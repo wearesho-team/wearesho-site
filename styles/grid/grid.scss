@@ -8,14 +8,44 @@ body.loaded {
 
     z-index: auto;
 
+    @include breakpoint($laptop-small) {
+      @include animation(add-scroll .01s ease 3.99s);
+      @include animation-fill-mode(forwards);
+    }
+
+    @include breakpoint($laptop-medium) {
+      @include animation(add-scroll .01s ease 3.99s);
+      @include animation-fill-mode(forwards);
+    }
+
     &__col {
 
       &_decor {
         border-color: rgba(244, 244, 244, .04);
 
-        &:before,
         &:after {
+          pointer-events: none;
+          opacity: 0;
 
+          @include transition(opacity 3s ease);
+          @include transition-delay(2s);
+        }
+      }
+
+      &.touch-only + .grid__col {
+
+        @include breakpoint($tablet-l) {
+          border-color: rgba(244, 244, 244, .04);
+
+          @include transition(opacity 3s ease);
+          @include transition-delay(2s);
+        }
+
+        @include breakpoint($laptop-small) {
+          border-color: rgba(244, 244, 244, .04);
+
+          @include transition(opacity 3s ease);
+          @include transition-delay(2s);
         }
       }
     }
@@ -54,17 +84,6 @@ body.loaded {
   @include breakpoint($laptop) {
 
     padding: 0 7.25em;
-  }
-
-  // in order to take account of the scrollbar width
-  @include breakpoint($laptop-small) {
-
-    overflow-y: scroll;
-  }
-
-  @include breakpoint($laptop-medium) {
-
-    overflow-y: scroll;
   }
 
   @include breakpoint($laptop-large) {
@@ -168,6 +187,16 @@ body.loaded {
 
       border-color: transparent;
 
+      @include breakpoint($tablet) {
+
+        border-color: rgba(244, 244, 244, .04);
+      }
+
+      @include breakpoint($laptop-small) {
+
+        border-color: rgba(244, 244, 244, .04);
+      }
+
       &:after {
         content: '';
 
@@ -181,14 +210,67 @@ body.loaded {
 
         @include animation(grid-growth 1s linear 1.25s);
         @include animation-fill-mode(forwards);
+
+        @include breakpoint($mobile) {
+
+          content: none;
+        }
+
+        @include breakpoint($tablet-l) {
+
+          content: none;
+        }
+
+        @include breakpoint($laptop-small) {
+
+          content: none;
+        }
       }
 
       &.touch-only {
-        display: none;
+        border-left: 1px solid rgba(244, 244, 244, .04);
 
-        @include breakpoint($mobile-tablet) {
+        @include breakpoint($tablet-p) {
 
-          display: block;
+          border-left-color: transparent;
+        }
+
+        &:after {
+
+          display: none;
+
+          @include breakpoint($mobile-tablet) {
+
+            display: block;
+          }
+
+          @include breakpoint($tablet-l) {
+            content: '';
+
+            right: 0;
+            left: auto;
+          }
+
+          @include breakpoint($laptop-small) {
+            content: '';
+            display: block;
+
+            right: 0;
+            left: auto;
+          }
+        }
+
+        & + .grid__col {
+
+          @include breakpoint($tablet-l) {
+
+            border-color: transparent;
+          }
+
+          @include breakpoint($laptop-small) {
+
+            border-color: transparent;
+          }
         }
       }
     }

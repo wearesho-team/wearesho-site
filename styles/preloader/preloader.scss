@@ -6,7 +6,7 @@ body.loaded {
   #preloader {
     pointer-events: none;
 
-    @include animation(preloader-disappearing 3s ease 2s);
+    @include animation(disappearance 3s ease 2s);
 
     @include animation-fill-mode(forwards);
   }
@@ -60,6 +60,8 @@ body.loaded {
   @include container;
   @include clearfix;
 
+  overflow: visible;
+
   position: relative;
 
   padding-top: 0;
@@ -75,7 +77,7 @@ body.loaded {
     top: 50%;
     left: 50%;
 
-    margin: (-$glow-height / 2) 0 0 (-$glow-width / 2);
+    margin: (-$glow-height / 2) 0 0 (-$glow-width / 2 + 2px);
 
     background: url('images/preloader-glow.svg');
 
@@ -85,29 +87,50 @@ body.loaded {
     opacity: 0;
 
     z-index: $under-zindex;
+
+    @include breakpoint($mobile) {
+
+      left: (100% / 3);
+    }
+
+    @include breakpoint($tablet-l) {
+
+      margin: (-$glow-height / 2) 0 0 (-$glow-width / 2);
+    }
+
+    @include breakpoint($laptop-small) {
+
+      margin: (-$glow-height / 2) 0 0 (-$glow-width / 2);
+    }
   }
 
   > .greeting {
     @include span(4 of 12 inside no-gutters);
 
-    @include transition(transform 1s ease, opacity 1s ease);
-
     float: none;
 
     margin: 0 auto;
 
-    @include breakpoint($tablet) {
+    @include clearfix;
 
+    @include transition(transform 1s ease, opacity 1s ease);
+
+    @include breakpoint($tablet-p) {
+
+      @include span(12 of 12 inside no-gutters);
+    }
+
+    @include breakpoint($tablet-l) {
       @include span(6 of 12 inside no-gutters);
 
-      @include transform(translateX(-50%));
+      margin-left: 25%;
     }
 
     @include breakpoint($laptop-small) {
 
       @include span(6 of 12 inside no-gutters);
 
-      @include transform(translateX(-50%));
+      margin-left: 25%;
     }
 
     > .section__subtitle {
@@ -140,9 +163,8 @@ body.loaded {
     }
 
     @include breakpoint($tablet-p) {
-      float: right;
 
-      padding-left: 1.5em;
+      padding-left: 8em;
     }
   }
 

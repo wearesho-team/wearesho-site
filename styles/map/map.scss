@@ -16,6 +16,33 @@
 
   pointer-events: none;
 
+  @include breakpoint($tablet) {
+
+    @include transform(translateY(0));
+  }
+
+  @include breakpoint($tablet-p) {
+    top: 34%;
+    right: 0;
+    left: 42px;
+
+    @include transform(translateY(0));
+
+    margin: 0 auto;
+  }
+
+  @include breakpoint($tablet-l) {
+    top: 13%;
+    right: -136px;
+  }
+
+  @include breakpoint($laptop-small) {
+    top: 13%;
+    right: -136px;
+
+    @include transform(translateY(0));
+  }
+
   @include breakpoint($laptop-medium) {
     right: -310px;
 

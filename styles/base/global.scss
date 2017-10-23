@@ -12,23 +12,14 @@ body {
     overflow-y: visible;
   }
 
+  // Double vertical scroll bug fix
   @include breakpoint($tablet-laptop) {
 
     overflow-y: visible;
   }
 
-  @include breakpoint($laptop-medium) {
+  @include breakpoint($laptop-large) {
 
-    overflow-y: visible;
-  }
-
-  @include breakpoint($laptop-small) {
-
-    overflow-y: visible;
-  }
-
-  @include breakpoint($laptop-small) {
-    // Double vertical scroll bug fix
     overflow-x: visible;
   }
 }

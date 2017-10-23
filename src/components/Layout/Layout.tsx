@@ -48,6 +48,7 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
                         {getLinksWithProps()}
                     </SideBar>
                     <SoundSwitch/>
+                    <div className="section-gradient section-main"/>
                     <SmartBreakpoint match="min-width: 1440px">
                         <SwitchControl>
                             <TransitionSwitch className="translate-container" classNames="translateY">
