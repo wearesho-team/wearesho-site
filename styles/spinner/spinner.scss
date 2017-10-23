@@ -27,7 +27,7 @@
 
       @include breakpoint($tablet) {
 
-        margin-right: .6em;
+        margin-right: .4em;
       }
     }
   }
@@ -70,7 +70,7 @@
   > .form__control {
     width: 106px;
 
-    margin-left: .6em;
+    margin-left: .4em;
     padding: 0;
 
     opacity: .5;

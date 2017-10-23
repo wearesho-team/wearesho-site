@@ -1,46 +1,58 @@
 import {Model} from "react-context-form";
-import {IsDefined, IsEmail, Matches, MaxLength, MinLength} from "class-validator";
+import {IsDefined, IsEmail, Matches} from "class-validator";
 
-import {namePattern, NameRange, phonePattern, TimeDefaults} from "./common/Rules";
+import {namePattern, phonePattern, TimeDefaults, timePattern} from "./common/Rules";
+import {translate} from "../helpers/translate";
 
 export class ContactFormModel extends Model {
     @Matches(phonePattern, {
-        message: "Некорректный телефон",
+        message: () => translate("validation.incorrect.phone"),
         groups: ["phone"]
     })
     @IsDefined({
-        message: "Обязательно для заполнения",
+        message: () => translate("validation.empty"),
         groups: ["phone"]
     })
     public phone: string;
 
     @IsEmail({}, {
-        message: "Некорректный E-Mail",
+        message: () => translate("validation.incorrect.mail"),
         groups: ["mail"]
     })
     @IsDefined({
-        message: "Обязательно для заполнения",
+        message: () => translate("validation.empty"),
         groups: ["mail"]
     })
     public mail: string;
 
     @Matches(namePattern, {
-        message: `Только латиница или кириллица длинной от ${NameRange.min} до ${NameRange.max} символов`,
+        message: () => translate("validation.incorrect.name"),
         groups: ["name"]
     })
     @IsDefined({
-        message: "Обязательно для заполнения",
+        message: () => translate("validation.empty"),
         groups: ["name"]
     })
     public name: string;
 
+    @Matches(timePattern, {
+        message: () => translate("validation.incorrect.time"),
+        groups: ["from"]
+    })
     @IsDefined({
-        message: "Обязательно для заполнения",
+        message: () => translate("validation.empty"),
         groups: ["from"]
     })
     public from: string = TimeDefaults.from;
 
-    @IsDefined()
+    @Matches(timePattern, {
+        message: () => translate("validation.incorrect.time"),
+        groups: ["to"]
+    })
+    @IsDefined({
+        message: () => translate("validation.empty"),
+        groups: ["to"]
+    })
     public to: string = TimeDefaults.to;
 
     public attributes() {

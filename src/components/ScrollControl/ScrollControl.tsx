@@ -7,16 +7,20 @@ import {smartClearTimeout, ElementWithTimer} from "../../helpers/smartClearTimeo
 
 import {routeProps} from "../../data/routeProps";
 import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
+import {LayoutContext, LayoutContextTypes} from "../Layout/LayoutContext";
 
 export class ScrollControl extends React.Component<undefined, undefined> implements ElementWithTimer {
-    public static readonly contextTypes = RouterContextTypes;
+    public static readonly contextTypes = {
+        ...RouterContextTypes,
+        ...LayoutContextTypes
+    };
     public static readonly scrollAnimationDelay = 500;
     public static readonly scrollListenDelay = 50;
 
     // 0 - exactly
     public readonly viewZoneRange = 0.15;
 
-    public context: RouterContext;
+    public context: RouterContext & LayoutContext;
     public timer: any;
 
     protected childrenDom: HTMLCollection;
@@ -33,11 +37,11 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
         this.unlisten();
     }
 
-    public shouldComponentUpdate(nextProps: any): boolean {
+    public shouldComponentUpdate(nextProps: any, nextState: any, nextContext: RouterContext & LayoutContext): boolean {
         return compareArrays(
             React.Children.toArray(nextProps.children),
             React.Children.toArray(this.props.children)
-        )
+        ) || this.context.language !== nextContext.language
     }
 
     public render(): JSX.Element {

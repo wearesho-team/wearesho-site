@@ -235,3 +235,21 @@ body,
     }
   }
 }
+
+.slide-to-side-wrap {
+  overflow: hidden;
+}
+
+// animation classes
+.slide-to-left {
+  will-change: transform3d;
+  @include backface-visibility(hidden);
+
+  @include animation(slide-to-left 2s ease forwards);
+
+  &.slow-opacity {
+    @include animation(slide-to-left-slow-opacity 1.5s ease-in-out forwards);
+  }
+}
+
+
