@@ -1,6 +1,17 @@
 /**
 * Map styles
  */
+.ReactModal__Body--open {
+
+  .map-container {
+
+    > .slider {
+
+      opacity: 0;
+    }
+  }
+}
+
 .map-container {
   width: 657px;
   height: 646px;
@@ -107,6 +118,8 @@
     left: 50%;
 
     margin: -150px 0 0 -148px;
+
+    @include transition(opacity .3s ease);
 
     @include breakpoint($mobile) {
 
