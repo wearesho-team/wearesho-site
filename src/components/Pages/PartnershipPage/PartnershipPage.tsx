@@ -49,15 +49,8 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                     <h2 className="section__title">{translate("contactPage.title")}</h2>
                     <div className="section__half half_first">
                         <OnDesktop>
-                            <h4 className="section__subtitle">
-                                {translate("contactPage.form.title")}
-                                <span className="section__subtitle_reduced">
-                                   {translate("contactPage.form.subTitle")}
-                                </span>
-                            </h4>
                             <p className="section__text">
-                                Свяжитесь с нами или укажите контактные данные в форме.
-                                Наши специалисты ответят на все ваши вопросы.
+                                {translate("contactPage.form.text")}
                             </p>
                             <p className="section__text request-sent">
                                 <span className="section__text_increased">Мефодий,</span>

@@ -37,15 +37,15 @@ translate.registerTranslations("en", {
             },
             howLong: {
                 title: "More than 3 years",
-                subTitle: "professional cooperation with financial companies:",
+                subTitle: "cooperation with financial companies:",
             }
         }
     },
     contactPage: {
         title: "Partnership",
         form: {
-            title: "Contact us",
-            subTitle: "or enter your contact information in the form below. Our specialists will answer all questions.",
+            text: "Contact us or enter your contact information in the form below. " +
+            "Our specialists will answer all questions.",
             placeholders: {
                 name: "Your name",
                 phone: "Phone",

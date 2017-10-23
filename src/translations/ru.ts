@@ -37,7 +37,7 @@ translate.registerTranslations("ru", {
             },
             howLong: {
                 title: "Более 3 лет",
-                subTitle: "профессионального сотрудничества с финансовыми компаниями:",
+                subTitle: "сотрудничества с финансовыми компаниями:",
                 items: [
                     "NIKO Holding",
                     "INFINANCE"
@@ -48,8 +48,8 @@ translate.registerTranslations("ru", {
     contactPage: {
         title: "Партнерство",
         form: {
-            title: "Свяжитесь с нами",
-            subTitle: "или укажите контактные данные в форме ниже. Наши специалисты ответят на все вопросы.",
+            text: "Свяжитесь с нами или укажите контактные данные в форме ниже. " +
+            "Наши специалисты ответят на все вопросы.",
             placeholders: {
                 name: "Ваше имя",
                 phone: "Телефон",
