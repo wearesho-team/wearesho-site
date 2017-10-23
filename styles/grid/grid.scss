@@ -236,17 +236,14 @@ body.loaded {
         }
 
         &:after {
-
           display: none;
 
           @include breakpoint($mobile-tablet) {
-
+            content: '';
             display: block;
           }
 
           @include breakpoint($tablet-l) {
-            content: '';
-
             right: 0;
             left: auto;
           }
