@@ -1,4 +1,4 @@
-import "babel-polyfill";
+import "regenerator-runtime/runtime"
 
 import * as Enzyme from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";

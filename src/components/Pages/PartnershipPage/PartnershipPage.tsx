@@ -111,8 +111,8 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                             </OnTablet>
                             <OnMobile>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_medium">{translate("contactPage.location.title")}</span>
-                                    {translate("contactPage.location.subTitle")}
+                                    <span className="text_medium">{translate("contactPage.support.title")}</span>
+                                    {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
                                 <p className="contact-info__text">
@@ -122,7 +122,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 <h4 className="section__subtitle">{translate("contactPage.contacts.title")}</h4>
                                 <div className="align-container">
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
-                                        {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
+                                        {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}&nbsp;
                                     </a>
                                     <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
