@@ -17,7 +17,7 @@ describe("<TransitionSwitch/>", () => {
 
     let history: History;
     let timer: SinonFakeTimers;
-    const animationDuration = 500;
+    const animationDuration = 501;
     const additionalDuration = 100;
 
     const wrapperProps = {
