@@ -6,17 +6,17 @@ body.loaded {
   .grid {
     pointer-events: none;
 
-    z-index: auto;
+    z-index: $under-zindex;
 
-    @include breakpoint($laptop-small) {
-      @include animation(add-scroll .01s ease 3.99s);
-      @include animation-fill-mode(forwards);
-    }
-
-    @include breakpoint($laptop-medium) {
-      @include animation(add-scroll .01s ease 3.99s);
-      @include animation-fill-mode(forwards);
-    }
+    //@include breakpoint($laptop-small) {
+    //  @include animation(add-scroll .01s ease 3.99s);
+    //  @include animation-fill-mode(forwards);
+    //}
+    //
+    //@include breakpoint($laptop-medium) {
+    //  @include animation(add-scroll .01s ease 3.99s);
+    //  @include animation-fill-mode(forwards);
+    //}
 
     &__col {
 
