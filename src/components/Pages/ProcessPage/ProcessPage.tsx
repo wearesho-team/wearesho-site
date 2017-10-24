@@ -3,11 +3,14 @@ import * as React from "react";
 import {SubmitButton} from "../../Buttons";
 import {BasePage} from "../BasePage";
 
+import {ProcessStructure} from "../../Icons/ProcessStructure";
+
 export class ProcessPage extends BasePage {
 
     public render() {
         return(
             <section className="section section-process">
+                <ProcessStructure/>
                 <div className="align-container">
                     <h2 className="section__title">Процесс</h2>
                     <div className="section__half half_first">

@@ -70,6 +70,22 @@
 
   &.section-process {
 
+    > .process-structure {
+      width: 100%;
+      height: auto;
+
+      position: absolute;
+
+      top: 98px;
+      left: 0;
+
+      .blurred {
+
+        filter: url("#blur");
+        opacity: .64;
+      }
+    }
+
     .half_first {
       @include span(4 of 12 inside no-gutters);
 
