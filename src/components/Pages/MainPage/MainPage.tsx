@@ -2,30 +2,23 @@ import * as React from "react";
 
 import {translate} from "../../../helpers/translate";
 
-import {LayoutContext, LayoutContextTypes} from "../../Layout/LayoutContext";
-import {BasePage} from "../BasePage";
-import {CustomAnimation} from "../../Animations/CustomAnimation/CustomAnimation";
-import {CodeStyleAnimation} from "../../Animations/CodeStyleAnimation/CodeStyleAnimation";
 import {CodeStyleAnimationSpeed} from "../../Animations/CodeStyleAnimation/CodeStyleAnimationSpeed";
+import {CodeStyleAnimation} from "../../Animations/CodeStyleAnimation/CodeStyleAnimation";
+import {CustomAnimation} from "../../Animations/CustomAnimation/CustomAnimation";
 import {SmartBreakpoint} from "../../SmartBreakpoint/SmartBreakpoint";
 import {TimeLine} from "../../TimeLine/TimeLine";
+import {BasePage} from "../BasePage";
 
 // tslint:disable:no-magic-numbers
-const delay = ((window as any).hideTimeout || 2000) * 2.5;
+const delay = ((window as any).hideTimeout || 2000) * 4.5;
 
 export class MainPage extends BasePage {
-    public static readonly contextTypes = LayoutContextTypes;
-    public context: LayoutContext;
 
     public startFeature = {
         element: document.body,
         attribute: "class",
         value: "loaded"
     };
-
-    public shouldComponentUpdate(nextProps, nextState, nextContext: LayoutContext): boolean {
-        return this.context.language !== nextContext.language;
-    }
 
     public render(): JSX.Element {
         return (

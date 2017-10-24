@@ -2,7 +2,7 @@
 /// <reference path="./steps.d.ts" />
 Feature("Form");
 
-const contactLink = ".main-nav__link[href='/contact']";
+const contactLink = ".main-nav__link[href='/partnership']";
 const submitButton = "button.btn_primary[type='submit']";
 
 const errorClass = ".form__group_has-error";

@@ -103,7 +103,7 @@
 
       @include breakpoint($tablet-p) {
 
-        padding-bottom: 38em;
+        padding-bottom: 40em;
       }
 
       @include breakpoint($tablet-l) {
@@ -319,15 +319,14 @@
 
   .marker {
     position: relative;
-    white-space: pre;
 
     @include breakpoint($mobile) {
-      white-space: pre-line;
+
       min-height: 52px;
     }
 
     @include breakpoint($tablet-l) {
-      white-space: pre-line;
+
       min-height: 52px;
     }
     &:before {

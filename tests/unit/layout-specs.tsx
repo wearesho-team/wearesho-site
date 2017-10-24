@@ -73,7 +73,7 @@ describe("<Layout>", () => {
 
     it("should render <PartnershipPage/> on `/partnership`", () => {
 
-        history.push("/contact");
+        history.push("/partnership");
         expect(wrapper.contains(<PartnershipPage/>)).to.be.true;
     });
 
@@ -90,7 +90,7 @@ describe("<Layout>", () => {
         };
 
         expectElementsExist();
-        history.push("/contact");
+        history.push("/partnership");
         expectElementsExist();
     });
 

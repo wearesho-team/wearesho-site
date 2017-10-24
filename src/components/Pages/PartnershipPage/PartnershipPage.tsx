@@ -7,18 +7,14 @@ import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../../helpers/Br
 import {formatNumber} from "../../../helpers/formatNumber";
 import {translate} from "../../../helpers/translate";
 
-import {CloseButton, SubmitButton} from "../../Buttons";
-import {PartnershipPageState} from "./PartnershipPageState";
-import {ContactForm} from "./ContactForm";
 import {SocialLinks} from "../../Layout/Partials/SocialLinks";
-import {BasePage} from "../BasePage";
+import {PartnershipPageState} from "./PartnershipPageState";
+import {CloseButton, SubmitButton} from "../../Buttons";
 import {MapIcon} from "../../Icons/MapIcon";
-import {LayoutContextTypes, LayoutContext} from "../../Layout/LayoutContext";
+import {ContactForm} from "./ContactForm";
+import {BasePage} from "../BasePage";
 
 export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
-    public static readonly contextTypes = LayoutContextTypes;
-    public context: LayoutContext;
-
     public state: PartnershipPageState = {
         isModalOpen: false,
     };
@@ -50,7 +46,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                     <div className="section__half half_first">
                         <OnDesktop>
                             <p className="section__text">
-                                {translate("contactPage.form.text")}
+                                {translate("contactPage.form.titleExtended")}
                             </p>
                             <p className="section__text request-sent">
                                 <span className="section__text_increased">Мефодий,</span>
@@ -88,7 +84,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                             </OnDesktop>
                             <OnTablet>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_medium">{translate("contactPage.location.title")}</span>
+                                    <span className="text_medium">{translate("contactPage.support.title")}</span>
                                     {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
@@ -111,8 +107,8 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                             </OnTablet>
                             <OnMobile>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_medium">{translate("contactPage.location.title")}</span>
-                                    {translate("contactPage.location.subTitle")}
+                                    <span className="text_medium">{translate("contactPage.support.title")}</span>
+                                    {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
                                 <p className="contact-info__text">
@@ -122,7 +118,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 <h4 className="section__subtitle">{translate("contactPage.contacts.title")}</h4>
                                 <div className="align-container">
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
-                                        {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
+                                        {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}&nbsp;
                                     </a>
                                     <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
@@ -161,11 +157,12 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                             </div>
                             <div className="slider__description">
                             <span className="slider__location">
-                                Ukraine / Kharkiv
+                                {translate(Config.location.country)} / {translate(Config.location.city)}
                             </span>
                                 <span className="slider__coordinates">
-                                49.9808100&deg; 36.2527200&deg;
-                            </span>
+                                    {Config.location.coordinates.lat}&deg;&nbsp;
+                                    {Config.location.coordinates.lng}&deg;
+                                </span>
                             </div>
                         </div>
                     </div>

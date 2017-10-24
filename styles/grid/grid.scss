@@ -1,5 +1,5 @@
 /**
-  Grid styles
+* Grid styles
  */
 body.loaded {
 
@@ -23,12 +23,14 @@ body.loaded {
       &_decor {
         border-color: rgba(244, 244, 244, .04);
 
-        &:after {
+        > .grow-element {
           pointer-events: none;
           opacity: 0;
 
-          @include transition(opacity 3s ease);
-          @include transition-delay(2s);
+          top: 0;
+          bottom: 0;
+
+          @include transition(opacity 3s ease 2s, top 1s ease, bottom 1s ease);
         }
       }
 
@@ -187,6 +189,8 @@ body.loaded {
 
       border-color: transparent;
 
+      @include transition(border-color 1.5s ease 2s);
+
       @include breakpoint($tablet) {
 
         border-color: rgba(244, 244, 244, .04);
@@ -197,33 +201,33 @@ body.loaded {
         border-color: rgba(244, 244, 244, .04);
       }
 
-      &:after {
-        content: '';
-
+      > .grow-element {
         position: absolute;
 
         width: 1px;
 
         left: 0;
 
+        top: 0;
+        bottom: 0;
+
         background: linear-gradient(to top, rgba(58, 153, 186, 0) 0%, rgba(58, 153, 186, .5) 50%, rgba(58, 153, 186, 0) 100%);
 
-        @include animation(grid-growth 1s linear 1.25s);
-        @include animation-fill-mode(forwards);
+        @include transition(opacity 3s ease 2s, top 1s ease, bottom 1s ease);
 
         @include breakpoint($mobile) {
 
-          content: none;
+          display: none;
         }
 
         @include breakpoint($tablet-l) {
 
-          content: none;
+          display: none;
         }
 
         @include breakpoint($laptop-small) {
 
-          content: none;
+          display: none;
         }
       }
 
@@ -235,11 +239,10 @@ body.loaded {
           border-left-color: transparent;
         }
 
-        &:after {
+        > .grow-element {
           display: none;
 
           @include breakpoint($mobile-tablet) {
-            content: '';
             display: block;
           }
 
@@ -249,7 +252,6 @@ body.loaded {
           }
 
           @include breakpoint($laptop-small) {
-            content: '';
             display: block;
 
             right: 0;

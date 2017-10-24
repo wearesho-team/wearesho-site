@@ -14,10 +14,9 @@ import {ContactFormModel, instantiateContactFormModel} from "../../../../models/
 import {NameRange, PhoneRange, TimeDefaults} from "../../../../models/common";
 
 import {OnMobile} from "../../../../helpers/Breakpoints";
-
-import {SubmitButton} from "../../../Buttons/SubmitButton";
 import {translate} from "../../../../helpers/translate";
 
+import {SubmitButton} from "../../../Buttons/SubmitButton";
 import {TimeInput} from "./TimeInput";
 
 export class ContactForm extends React.Component<undefined, undefined> {
