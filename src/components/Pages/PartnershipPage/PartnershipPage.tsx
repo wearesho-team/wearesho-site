@@ -160,7 +160,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 {translate(Config.location.country)} / {translate(Config.location.city)}
                             </span>
                                 <span className="slider__coordinates">
-                                    {Config.location.coordinates.lat}&deg;
+                                    {Config.location.coordinates.lat}&deg;&nbsp;
                                     {Config.location.coordinates.lng}&deg;
                                 </span>
                             </div>

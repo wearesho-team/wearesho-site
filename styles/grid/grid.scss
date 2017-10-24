@@ -1,7 +1,6 @@
 /**
-  Grid styles
+* Grid styles
  */
-
 body.loaded {
 
   .grid {
@@ -31,7 +30,7 @@ body.loaded {
           top: 0;
           bottom: 0;
 
-          @include transition(opacity 3s ease 2s, top 1s linear 1.25s, bottom 1s linear 1.25s);
+          @include transition(opacity 3s ease 2s, top 1s ease, bottom 1s ease);
         }
       }
 
@@ -190,6 +189,8 @@ body.loaded {
 
       border-color: transparent;
 
+      @include transition(border-color 1.5s ease 2s);
+
       @include breakpoint($tablet) {
 
         border-color: rgba(244, 244, 244, .04);
@@ -212,21 +213,21 @@ body.loaded {
 
         background: linear-gradient(to top, rgba(58, 153, 186, 0) 0%, rgba(58, 153, 186, .5) 50%, rgba(58, 153, 186, 0) 100%);
 
-        @include transition(opacity 3s ease 2s, top 1s linear, bottom 1s linear);
+        @include transition(opacity 3s ease 2s, top 1s ease, bottom 1s ease);
 
         @include breakpoint($mobile) {
 
-          content: none;
+          display: none;
         }
 
         @include breakpoint($tablet-l) {
 
-          content: none;
+          display: none;
         }
 
         @include breakpoint($laptop-small) {
 
-          content: none;
+          display: none;
         }
       }
 

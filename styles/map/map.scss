@@ -35,7 +35,7 @@
   @include breakpoint($tablet-p) {
     top: 34%;
     right: 0;
-    left: 42px;
+    left: 24px;
 
     @include transform(translateY(0));
 
@@ -122,16 +122,6 @@
     @include transition(opacity .3s ease);
 
     @include breakpoint($mobile) {
-
-      display: none;
-    }
-
-    @include breakpoint($tablet) {
-
-      display: none;
-    }
-
-    @include breakpoint($laptop-small) {
 
       display: none;
     }

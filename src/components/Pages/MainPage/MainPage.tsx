@@ -10,7 +10,7 @@ import {TimeLine} from "../../TimeLine/TimeLine";
 import {BasePage} from "../BasePage";
 
 // tslint:disable:no-magic-numbers
-const delay = ((window as any).hideTimeout || 2000) * 2.5;
+const delay = ((window as any).hideTimeout || 2000) * 4.5;
 
 export class MainPage extends BasePage {
 
