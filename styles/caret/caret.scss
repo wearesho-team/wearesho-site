@@ -4,10 +4,9 @@
   width: 1px;
   height: 1em;
 
-  background-color: black;
+  background-color: white;
 
-  animation: blink 1s;
-  animation-iteration-count: infinite;
+  @include animation(blink 1s infinite);
 
   margin-bottom: -.2em;
 }

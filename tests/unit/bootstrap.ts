@@ -1,3 +1,4 @@
+// tslint:disable:no-submodule-imports
 import "regenerator-runtime/runtime"
 
 import * as Enzyme from "enzyme";

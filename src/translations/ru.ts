@@ -1,6 +1,6 @@
 import {NameRange} from "../models/common/Rules";
 import {translate} from "../helpers/translate";
-
+// tslint:disable:max-line-length
 translate.registerTranslations("ru", {
     header: {
         newProject: "Новый проект"

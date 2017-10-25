@@ -113,8 +113,6 @@ body,
     will-change: transform;
 
     @include backface-visibility(hidden);
-
-    @include transform-style(preserve-3d);
   }
 
   &.up {
@@ -127,7 +125,7 @@ body,
         &-active {
           @include transition(transform .5s ease .001s);
 
-          @include transform(translate3d(0, 0, 0));
+          @include transform(none);
         }
       }
 
@@ -153,7 +151,7 @@ body,
         &-active {
           @include transition(transform .5s ease .001s);
 
-          @include transform(translate3d(0, 0, 0));
+          @include transform(none);
         }
       }
 
@@ -163,7 +161,7 @@ body,
         &-active {
           @include transition(transform .5s ease .001s);
 
-          @include transform(translate3d(0, 0, 0));
+          @include transform(none);
         }
       }
     }
@@ -238,20 +236,9 @@ body,
   }
 }
 
-.slide-to-side-wrap {
-  overflow: hidden;
-}
-
 // animation classes
-.slide-to-left {
-  will-change: transform3d;
-  @include backface-visibility(hidden);
-
-  @include animation(slide-to-left 2s ease forwards);
-
-  &.slow-opacity {
-    @include animation(slide-to-left-slow-opacity 1.5s ease-in-out forwards);
-  }
+.showing {
+  @include animation(showing 2s ease forwards);
 }
 
 

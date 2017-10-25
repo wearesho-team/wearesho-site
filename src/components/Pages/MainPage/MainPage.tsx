@@ -10,7 +10,8 @@ import {TimeLine} from "../../TimeLine/TimeLine";
 import {BasePage} from "../BasePage";
 
 // tslint:disable:no-magic-numbers
-const delay = ((window as any).hideTimeout || 2000) * 4.5;
+const showingDelay = ((window as any).hideTimeout || 2000) * 4;
+const typingDelay = showingDelay + 500;
 
 export class MainPage extends BasePage {
 
@@ -26,9 +27,9 @@ export class MainPage extends BasePage {
                 <div className="align-container">
                     <CustomAnimation
                         startFeature={this.startFeature}
-                        actionClassName="slide-to-left"
+                        actionClassName="showing"
                         duration={2000}
-                        delay={delay}
+                        delay={showingDelay}
                     >
                         <h2 className="section__title">
                             <span className="section__title-part">
@@ -36,7 +37,7 @@ export class MainPage extends BasePage {
                                 <span className="section__title-part-container">
                                     <span className="section__title-part-variable">
                                         {translate("mainPage.title.mainOne.additions.1")}
-                                        </span>
+                                    </span>
                                 </span>
                             </span>
                             <span className="section__title-part">
@@ -44,7 +45,7 @@ export class MainPage extends BasePage {
                                     <span className="section__title-part-container">
                                     <span className="section__title-part-variable">
                                         {translate("mainPage.title.mainTwo.additions.1")}
-                                        </span>
+                                    </span>
                                 </span>
                             </span>
                         </h2>
@@ -55,8 +56,8 @@ export class MainPage extends BasePage {
                                 <CodeStyleAnimation
                                     speed={CodeStyleAnimationSpeed.fast}
                                     startFeature={this.startFeature}
-                                    caretTimeout={100}
-                                    delay={delay}
+                                    caretTimeout={500}
+                                    delay={typingDelay}
                                 >
                                     {translate("mainPage.articles.whatWeDo.title")}
                                 </CodeStyleAnimation>
@@ -65,8 +66,8 @@ export class MainPage extends BasePage {
                                 <CodeStyleAnimation
                                     speed={CodeStyleAnimationSpeed.fast}
                                     startFeature={this.startFeature}
-                                    caretTimeout={1500}
-                                    delay={delay}
+                                    caretTimeout={500}
+                                    delay={typingDelay + 500}
                                 >
                                     {translate("mainPage.articles.whatWeDo.items.1")}
                                     {translate("mainPage.articles.whatWeDo.items.2")}
@@ -81,17 +82,17 @@ export class MainPage extends BasePage {
                                 <CodeStyleAnimation
                                     speed={CodeStyleAnimationSpeed.medium}
                                     startFeature={this.startFeature}
-                                    caretTimeout={100}
-                                    delay={delay}
+                                    caretTimeout={500}
+                                    delay={typingDelay}
                                 >
                                     {translate("mainPage.articles.howLong.title")}
                                 </CodeStyleAnimation>
                                 <span className="section__subtitle_reduced">
                                      <CodeStyleAnimation
-                                         speed={CodeStyleAnimationSpeed.fast}
+                                         speed={CodeStyleAnimationSpeed.medium}
                                          startFeature={this.startFeature}
-                                         caretTimeout={1500}
-                                         delay={delay}
+                                         caretTimeout={500}
+                                         delay={typingDelay + 500}
                                      >
                                          {translate("mainPage.articles.howLong.subTitle")}
                                      </CodeStyleAnimation>
@@ -99,9 +100,9 @@ export class MainPage extends BasePage {
                             </h4>
                             <CustomAnimation
                                 startFeature={this.startFeature}
-                                actionClassName="slide-to-left"
-                                duration={1500}
-                                delay={delay}
+                                actionClassName="showing"
+                                duration={2000}
+                                delay={showingDelay + 2000}
                             >
                                 <ul className="clients-list">
                                     <li className="clients-list__item">

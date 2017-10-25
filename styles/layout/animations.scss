@@ -603,14 +603,12 @@ $indent-tablet: -66px;
   }
 }
 
-@keyframes slide-to-left {
+@keyframes showing {
   0% {
     opacity: 0;
-    //@include transform3d(translate3d(-100%,0,0));
   }
   100% {
     opacity: 1;
-    //@include transform(translate3d(0,0,0));
   }
 }
 

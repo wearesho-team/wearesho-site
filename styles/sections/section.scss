@@ -320,7 +320,7 @@
   .marker {
     position: relative;
 
-    white-space: pre-line;
+    white-space: pre;
 
     &:before {
       content: '+';
@@ -350,6 +350,8 @@
 
     > .section__subtitle_reduced {
       min-height: 52px;
+
+      white-space: pre-line;
     }
   }
 
