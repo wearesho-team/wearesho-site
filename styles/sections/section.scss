@@ -320,15 +320,8 @@
   .marker {
     position: relative;
 
-    @include breakpoint($mobile) {
+    white-space: pre-line;
 
-      min-height: 52px;
-    }
-
-    @include breakpoint($tablet-l) {
-
-      min-height: 52px;
-    }
     &:before {
       content: '+';
       display: block;
@@ -353,6 +346,10 @@
 
         font-size: 20px;
       }
+    }
+
+    > .section__subtitle_reduced {
+      min-height: 52px;
     }
   }
 
