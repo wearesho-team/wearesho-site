@@ -1,7 +1,6 @@
 /**
   Global styles
  */
-
 html,
 body {
   overflow-x: hidden;
@@ -9,23 +8,12 @@ body {
 
   @include breakpoint($mobile) {
 
-    overflow-y: visible;
+    overflow-y: auto;
   }
 
-  // Double vertical scroll bug fix
   @include breakpoint($tablet-laptop) {
 
-    overflow-y: visible;
-  }
-
-  @include breakpoint($laptop-not-large-no-height) {
-
-    overflow-y: visible;
-  }
-
-  @include breakpoint($laptop-large) {
-
-    overflow-x: visible;
+    overflow-y: auto;
   }
 }
 
@@ -73,8 +61,17 @@ body,
 #content,
 .translate-container,
 .section {
-
   height: 100%;
+
+  @include breakpoint($mobile) {
+
+    height: auto;
+  }
+
+  @include breakpoint($tablet-laptop) {
+
+    height: auto;
+  }
 }
 
 .translate-container {
