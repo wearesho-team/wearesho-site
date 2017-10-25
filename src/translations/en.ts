@@ -58,9 +58,6 @@ translate.registerTranslations("en", {
                 to: "to"
             }
         },
-        contacts: {
-            title: "Contacts",
-        },
         support: {
             title: "Technical support",
             subTitle: "partners of the Studio"

@@ -62,9 +62,6 @@ translate.registerTranslations("ru", {
                 to: "до"
             }
         },
-        contacts: {
-            title: "Контакты",
-        },
         support: {
             title: "Техническая поддержка",
             subTitle: "партнеров Cтудии"

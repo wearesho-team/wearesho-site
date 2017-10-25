@@ -283,8 +283,9 @@
           }
 
           &:after {
-
             background-color: #fff;
+
+            box-shadow: 0 0 1px 0 #fff;
           }
         }
 
@@ -316,13 +317,13 @@
     border-radius: 50%;
     border: 1px solid rgba(83, 86, 119, .1);
 
-    background-color: rgba(206, 206, 206, .08);
+    background-color: rgba(255, 198, 10, .1);
+
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
 
     opacity: 0;
-
-    //-webkit-filter: blur(2px);
-    //filter: blur(2px);
-
+    
     @include transition(opacity .3s ease);
   }
 }

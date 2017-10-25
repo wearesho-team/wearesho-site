@@ -64,7 +64,6 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                     <div className="section__half half_second">
                         <div className="contact-info">
                             <OnDesktop>
-                                <h4 className="section__subtitle">{translate("contactPage.contacts.title")}</h4>
                                 <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                     {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                 </a>
@@ -89,7 +88,6 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
                                 <div className="align-container">
-                                    <h4 className="section__subtitle">{translate("contactPage.contacts.title")}</h4>
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                         {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                     </a>
@@ -115,7 +113,6 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                     <span className="text_medium">{translate("contactPage.location.title")}</span>
                                     {translate(Config.location.country)} / {translate(Config.location.city)}
                                 </p>
-                                <h4 className="section__subtitle">{translate("contactPage.contacts.title")}</h4>
                                 <div className="align-container">
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                         {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}&nbsp;
