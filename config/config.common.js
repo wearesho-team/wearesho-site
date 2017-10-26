@@ -1,4 +1,7 @@
+import {apiKeys} from "../apiKeys";
+
 module.exports = {
+    baseUrl: "https://wearesho.backend.com",
     links: {
         behance: "#",
         github: "https://github.com/wearesho-team",
@@ -13,7 +16,6 @@ module.exports = {
         country: "Ukraine",
     },
     mail: "office@wearesho.com",
-    mapApiKey: "AIzaSyDAq3RWOHVldSRJRvX90QG9IOkNMApLPwM",
     phone: 380660249402,
-    reCaptchaApiKey: "6Leq6S8UAAAAAD7G73kEGY7Y4_TiD2HtQ-y_simp",
+    ...apiKeys
 };

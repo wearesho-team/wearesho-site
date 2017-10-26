@@ -1,12 +1,23 @@
+import axios from "axios";
 import {Languages} from "../data/Languages";
 
 export function setInitialLanguage(): void {
-    if (localStorage.getItem("app.language")) {
+    const existLanguage = localStorage.getItem("app.language");
+
+    if (existLanguage) {
+        axios.defaults.headers["accept-language"] = Languages.hasOwnProperty(existLanguage)
+            ? existLanguage
+            : Languages.ru;
         return;
     }
 
     let browserLanguage = navigator.language || (navigator as any).userLanguage;
     browserLanguage = browserLanguage && browserLanguage.match(/(ru|en)/g, "");
 
-    localStorage.setItem("app.language", (browserLanguage && browserLanguage[0]) || Languages.ru);
+    const siteLanguage = browserLanguage instanceof Array
+        ? browserLanguage[0]
+        : Languages.ru;
+
+    localStorage.setItem("app.language", siteLanguage);
+    axios.defaults.headers["accept-language"] = siteLanguage;
 }

@@ -1,4 +1,5 @@
 import * as React from "react";
+import axios from "axios";
 import {
     AutoValidate,
     Form,
@@ -7,17 +8,19 @@ import {
     Input,
     Label,
     TransformTypes,
-    FormContext
+    FormContext,
+    ModelError
 } from "react-context-form";
 
 import {ContactFormModel, instantiateContactFormModel} from "../../../models/ContactFormModel";
 import {NameRange, PhoneRange, TimeDefaults} from "../../../models/common";
 
 import {OnMobile} from "../../../helpers/Breakpoints";
+import {translate} from "../../../helpers/translate";
 
 import {SubmitButton} from "../../Buttons/SubmitButton";
 import {TimeInput} from "./TimeInput";
-import {translate} from "../../../helpers/translate";
+import {SubmitErrorInterface} from "../../../data/SubmitError";
 
 export class ContactForm extends React.Component<undefined, undefined> {
 
@@ -98,6 +101,32 @@ export class ContactForm extends React.Component<undefined, undefined> {
     }
 
     private handleSubmit = async (model: ContactFormModel, context: FormContext) => {
-       // ...
+        let data = {};
+        model.attributes()
+            .forEach((field) => data = {...data, ...{[field]: model[field]}});
+
+        try {
+            await axios.post("/callback", data);
+            // show success message
+        }
+        catch (e) {
+            const error: SubmitErrorInterface = e;
+
+            switch (error.code) {
+                case 500:
+                    // show error message
+                    break;
+                case 400:
+                    error.data.forEach(({code, ...error}) => context.addError(error as ModelError));
+                    const element: HTMLElement = context.getDOMElement(
+                        error.data
+                            .reduce((carry: ModelError, error: ModelError) => carry || error).attribute
+                    );
+                    element && element.focus();
+                    break;
+                default:
+                    throw error;
+            }
+        }
     };
 }
