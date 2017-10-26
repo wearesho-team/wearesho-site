@@ -70,7 +70,7 @@ export class ContactForm extends React.Component<undefined, undefined> {
                     </div>
                 </div>
                 <div className="form-half form-half_second">
-                    <p className="text_medium">{translate("contactPage.form.time.title")}</p>
+                    <p className="text_regular">{translate("contactPage.form.time.title")}</p>
                     <p>{translate("contactPage.form.time.subTitle")}</p>
                     <div className="form__group spinner__group">
                         <FormGroup name="from" className="spinner">

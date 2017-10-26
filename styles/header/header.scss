@@ -76,10 +76,10 @@
 
     position: absolute;
 
-    right: -8px;
+    right: -13px;
     bottom: 0;
 
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #ffda44 100%);
+    background-image: linear-gradient(to right, rgba(235, 75, 124, 0) 0%, rgba(235, 75, 124, 0.5) 100%);
 
     transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
     
@@ -148,6 +148,8 @@
 }
 
 .header__lang-toggle {
+  padding-right: 0;
+
   text-transform: uppercase;
 
   @include breakpoint($mobile) {

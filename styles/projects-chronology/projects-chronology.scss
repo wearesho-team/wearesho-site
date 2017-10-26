@@ -253,10 +253,10 @@
 
           border-radius: 50%;
 
-          border: 1px solid rgba(206, 206, 206, .3);
+          border: 1px solid rgb(206, 206, 206);
 
-          -webkit-filter: blur(2px);
-          filter: blur(2px);
+          -webkit-filter: blur(1px);
+          filter: blur(1px);
 
           @include animation(pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite);
 
@@ -269,7 +269,7 @@
 
           border-radius: 50%;
 
-          background-color: rgb(19, 151, 199);
+          background-color: #fff;
 
           @include transition(background-color .3s ease);
         }
@@ -287,14 +287,23 @@
 
             box-shadow: 0 0 1px 0 #fff;
           }
+
+          > .prj-chronology__div-glow {
+
+            opacity: .75;
+          }
         }
 
         &.is-active {
           @include transform(scale(1.5));
 
           > .prj-chronology__div-glow {
+            //background: radial-gradient(ellipse at center, rgba(255, 198, 10, .78) 0%, rgba(255, 198, 10, 0) 60%, rgba(255, 198, 10, 0) 100%);
+            background: #fff;
+            border: 1px solid #fff;
 
-            opacity: 1;
+            -webkit-filter: blur(3px);
+            filter: blur(3px);
           }
         }
       }
@@ -302,7 +311,7 @@
   }
 
   &__div-glow {
-    $glow-size: 17px;
+    $glow-size: 10px;
 
     width: $glow-size;
     height: $glow-size;
@@ -317,13 +326,15 @@
     border-radius: 50%;
     border: 1px solid rgba(83, 86, 119, .1);
 
-    background-color: rgba(255, 198, 10, .1);
+    background-color: rgba(255, 255, 255, .6);
 
     -webkit-filter: blur(2px);
     filter: blur(2px);
 
     opacity: 0;
-    
+
     @include transition(opacity .3s ease);
+
+    z-index: $under-zindex;
   }
 }

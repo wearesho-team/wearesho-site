@@ -15,6 +15,11 @@ body {
 
     overflow-y: auto;
   }
+
+  @include breakpoint($laptop-not-large-no-height) {
+
+    overflow-y: auto;
+  }
 }
 
 body {
@@ -69,6 +74,11 @@ body,
   }
 
   @include breakpoint($tablet-laptop) {
+
+    height: auto;
+  }
+
+  @include breakpoint($laptop-not-large-no-height) {
 
     height: auto;
   }

@@ -48,7 +48,7 @@ translate.registerTranslations("ru", {
     contactPage: {
         title: "Партнерство",
         form: {
-            titleExtended: "Свяжитесь с нами или укажите контактные данные в форме. Наши специалисты ответят на все ваши вопросы.",
+            titleExtended: "Свяжитесь с нами или укажите контактные данные в форме. Наши специалисты ответят на все вопросы.",
             title: "Свяжитесь с нами",
             placeholders: {
                 name: "Ваше имя",
@@ -57,7 +57,7 @@ translate.registerTranslations("ru", {
             },
             time: {
                 title: "Мы ценим ваше время",
-                subTitle: "Укажите удобное вам время для обсуждения проекта:",
+                subTitle: "Укажите удобное время для обсуждения проекта:",
                 from: "с",
                 to: "до"
             }
@@ -88,7 +88,7 @@ translate.registerTranslations("ru", {
             name: `Латиница/кириллица от ${NameRange.min} до ${NameRange.max} символов`,
             time: "Некорректное время"
         },
-        empty: "Обязательно для заполнения"
+        empty: "Заполните поле"
     },
     Kharkiv: "Харьков",
     Ukraine: "Украина",

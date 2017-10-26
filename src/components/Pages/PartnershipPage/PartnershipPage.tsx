@@ -69,21 +69,21 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 </a>
                                 <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_medium">{translate("contactPage.support.title")}</span>
+                                    <span className="text_regular">{translate("contactPage.support.title")}</span>
                                     {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24
                                         <span className="separator">/</span>7
                                     </span>
                                 </p>
                                 <p className="contact-info__text">
-                                    <span className="text_medium">{translate("contactPage.location.title")}</span>
+                                    <span className="text_regular">{translate("contactPage.location.title")}</span>
                                     {translate(Config.location.country)}&nbsp;<span className="separator">/</span>
                                     &nbsp;{translate(Config.location.city)}
                                 </p>
                             </OnDesktop>
                             <OnTablet>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_medium">{translate("contactPage.support.title")}</span>
+                                    <span className="text_regular">{translate("contactPage.support.title")}</span>
                                     {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
@@ -99,18 +99,18 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                     label={translate("buttons.cooperate")}
                                 />
                                 <p className="contact-info__text">
-                                    <span className="text_medium">{translate("contactPage.location.title")}</span>
+                                    <span className="text_regular">{translate("contactPage.location.title")}</span>
                                     {translate(Config.location.country)} / {translate(Config.location.city)}
                                 </p>
                             </OnTablet>
                             <OnMobile>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_medium">{translate("contactPage.support.title")}</span>
+                                    <span className="text_regular">{translate("contactPage.support.title")}</span>
                                     {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
                                 <p className="contact-info__text">
-                                    <span className="text_medium">{translate("contactPage.location.title")}</span>
+                                    <span className="text_regular">{translate("contactPage.location.title")}</span>
                                     {translate(Config.location.country)} / {translate(Config.location.city)}
                                 </p>
                                 <div className="align-container">
@@ -154,7 +154,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                             </div>
                             <div className="slider__description">
                             <span className="slider__location">
-                                {translate(Config.location.country)} / {translate(Config.location.city)}
+                                {Config.location.country} / {Config.location.city}
                             </span>
                                 <span className="slider__coordinates">
                                     {Config.location.coordinates.lat}&deg;&nbsp;

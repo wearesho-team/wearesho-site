@@ -24,13 +24,13 @@
   }
 
   .icon {
+    opacity: .2;
+
+    @include transition(opacity .3s ease);
 
     &:hover {
 
-      .icon_fill {
-
-        fill: #fff;
-      }
+      opacity: 1;
     }
 
     &_soc-git {

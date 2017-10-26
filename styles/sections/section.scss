@@ -161,7 +161,7 @@
         }
       }
 
-      .text_medium {
+      .text_regular {
         font-size: 1em;
         color: #C5D5E0;
       }
@@ -337,6 +337,8 @@
       font-size: 22px;
       font-weight: $font-style-regular;
       font-family: $font-secondary;
+
+      color: #797979;
 
       @include breakpoint($mobile) {
 
