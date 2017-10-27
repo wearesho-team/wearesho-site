@@ -18,7 +18,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
     public static readonly scrollListenDelay = 50;
 
     // 0 - exactly
-    public readonly viewZoneRange = 0.15;
+    public readonly viewZoneRange = 0.4;
 
     public context: RouterContext & LayoutContext;
     public timer: any;

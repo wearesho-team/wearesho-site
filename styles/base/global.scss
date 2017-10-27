@@ -217,6 +217,11 @@ body,
     overflow: hidden;
   }
 
+  @include breakpoint($tablet-laptop) {
+
+    overflow: hidden;
+  }
+
   .section {
 
     > .align-container {

@@ -324,9 +324,14 @@
 
     margin-bottom: .222em;
 
-    @include breakpoint($mobile) {
+    @include breakpoint($mobile-p) {
 
-      white-space: normal;
+      white-space: pre-line;
+    }
+
+    @include breakpoint($tablet) {
+
+      white-space: pre-line;
     }
 
     &:before {
