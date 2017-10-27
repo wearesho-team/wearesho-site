@@ -15,12 +15,13 @@ import {
 import {ContactFormModel, instantiateContactFormModel} from "../../../models/ContactFormModel";
 import {NameRange, PhoneRange, TimeDefaults} from "../../../models/common";
 
+import {SubmitError, SubmitValidationError} from "../../../data/ErrorsTypes";
+
 import {OnMobile} from "../../../helpers/Breakpoints";
 import {translate} from "../../../helpers/translate";
 
 import {SubmitButton} from "../../Buttons/SubmitButton";
 import {TimeInput} from "./TimeInput";
-import {SubmitErrorInterface} from "../../../data/SubmitError";
 
 export class ContactForm extends React.Component<undefined, undefined> {
 
@@ -110,7 +111,7 @@ export class ContactForm extends React.Component<undefined, undefined> {
             // show success message
         }
         catch (e) {
-            const error: SubmitErrorInterface = e;
+            const error: SubmitError & SubmitValidationError = e;
 
             switch (error.code) {
                 case 500:
@@ -118,10 +119,10 @@ export class ContactForm extends React.Component<undefined, undefined> {
                     break;
                 case 400:
                     error.data.forEach(({code, ...error}) => context.addError(error as ModelError));
-                    const element: HTMLElement = context.getDOMElement(
-                        error.data
-                            .reduce((carry: ModelError, error: ModelError) => carry || error).attribute
-                    );
+                    const modelElement: ModelError = error.data
+                        .reduce((carry: ModelError, error: ModelError) => carry || error);
+
+                    const element: HTMLElement = modelElement && context.getDOMElement(modelElement.attribute);
                     element && element.focus();
                     break;
                 default:

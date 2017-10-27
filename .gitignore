@@ -10,4 +10,4 @@ tests/output/
 src/**/*.js
 src/**/*.js.map
 .DS_Store
-/apiKeys.js
+/config.env.js

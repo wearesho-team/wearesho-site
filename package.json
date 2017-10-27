@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "Website for SHO Studio",
   "scripts": {
-    "test": "cross-env TS_NODE_PROJECT=tsconfig.test.json ./node_modules/.bin/nyc mocha -r jsdom-global/register -r ts-node/register -r source-map-support/register tests/unit/bootstrap.ts tests/unit/**-specs.tsx tests/unit/**-specs.ts",
+    "test": "npm run init-env & cross-env TS_NODE_PROJECT=tsconfig.test.json ./node_modules/.bin/nyc mocha -r jsdom-global/register -r ts-node/register -r source-map-support/register tests/unit/bootstrap.ts tests/unit/**-specs.tsx tests/unit/**-specs.ts",
     "e2e": "tsc --project tsconfig.codecept.json && codeceptjs run --steps",
     "build": "cross-env NODE_ENV=production ./node_modules/.bin/webpack",
     "dev": "webpack-dev-server",
     "preview": "webpack",
-    "api-keys": "node -e \"require('fs').writeFileSync('apiKeys.js', require('fs').readFileSync('apiKeysTemplate.js'));\"",
+    "init-env": "node -e \"require('fs').writeFileSync('config.env.js', require('fs').readFileSync('config.env.template.js'));\"",
     "selenium": "selenium-standalone install && selenium-standalone start",
     "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "./node_modules/.bin/tslint --project . --exclude ./node_modules/**/* --exclude ./web/**/*"

@@ -1,4 +1,4 @@
-import {apiKeys} from "../apiKeys";
+import {EnvConfig} from "../config.env";
 
 module.exports = {
     baseUrl: "https://wearesho.backend.com",
@@ -17,5 +17,5 @@ module.exports = {
     },
     mail: "office@wearesho.com",
     phone: 380660249402,
-    ...apiKeys
+    ...EnvConfig
 };

@@ -1,6 +1,8 @@
 import axios from "axios";
-import {Config} from "./data/Config/Config";
+
 import {submitErrorHandler} from "./helpers/submitErrorHandler";
+
+import {Config} from "./data/Config/Config";
 
 axios.defaults.baseURL = Config.baseUrl;
 axios.interceptors.response.use(
