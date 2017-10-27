@@ -101,7 +101,7 @@ export class ContactForm extends React.Component<undefined, undefined> {
         );
     }
 
-    private handleSubmit = async (model: ContactFormModel, context: FormContext) => {
+    protected handleSubmit = async (model: ContactFormModel, context: FormContext) => {
         let data = {};
         model.attributes()
             .forEach((field) => data = {...data, ...{[field]: model[field]}});
@@ -110,23 +110,17 @@ export class ContactForm extends React.Component<undefined, undefined> {
             await axios.post("/callback", data);
             // show success message
         }
-        catch (e) {
-            const error: SubmitError & SubmitValidationError = e;
+        catch (error) {
+            if (error instanceof SubmitError) {
+                // show error message
+            }
+            else if (error instanceof SubmitValidationError) {
+                error.data.forEach(({code, ...error}) => context.addError(error as ModelError));
+                const modelElement: ModelError = error.data
+                    .reduce((carry: ModelError, error: ModelError) => carry || error);
 
-            switch (error.code) {
-                case 500:
-                    // show error message
-                    break;
-                case 400:
-                    error.data.forEach(({code, ...error}) => context.addError(error as ModelError));
-                    const modelElement: ModelError = error.data
-                        .reduce((carry: ModelError, error: ModelError) => carry || error);
-
-                    const element: HTMLElement = modelElement && context.getDOMElement(modelElement.attribute);
-                    element && element.focus();
-                    break;
-                default:
-                    throw error;
+                const element: HTMLElement = modelElement && context.getDOMElement(modelElement.attribute);
+                element && element.focus();
             }
         }
     };

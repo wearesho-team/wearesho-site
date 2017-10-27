@@ -1,4 +1,5 @@
 export const EnvConfig = {
     mapApiKey: "",
-    reCaptchaApiKey: ""
+    reCaptchaApiKey: "",
+    baseUrl: "",
 };

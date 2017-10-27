@@ -1,10 +1,10 @@
 import * as React from "react";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
+import {Form, FormContext, Model} from "react-context-form";
 
 import {ContactForm} from "../../src/components/ContactPage/ContactForm";
-import {instantiateContactFormModel} from "../../src/models/ContactFormModel";
-import {compareArrays} from "../../src/helpers/compareArrays";
+import {ContactFormModel} from "../../src/models/ContactFormModel";
 
 describe("<Form/>", () => {
     let wrapper: ReactWrapper<any, any>;
@@ -29,30 +29,65 @@ describe("<Form/>", () => {
         expect(isDefaultPrevented).to.be.true;
     });
 
-    it("Should be error on submit when fields filled wrong", async () => {
-        const model = instantiateContactFormModel();
-        // temporary coverage improve
+    it("Should add errors on submit when fields filled wrong", async () => {
+        const form = wrapper.children().instance() as Form<Model>;
+        const model = form.state.model as ContactFormModel;
+
+        model.name = undefined;
+        model.mail = undefined;
+        model.phone = undefined;
+        model.from = undefined;
+        model.to = undefined;
         model.groups();
-        model.to = model.from = undefined;
 
-        expect(
-            compareArrays(
-                (await model.validate()).map(({attribute}) => attribute),
-                model.attributes()
-            )
-        ).to.be.true;
+        await form.handleSubmit();
 
-        model.from = "1";
-        model.to = "1";
-        model.name = "1";
-        model.phone = "1";
-        model.mail = "1";
+        expect(model.hasErrors()).to.be.true;
 
-        expect(
-            compareArrays(
-                (await model.validate()).map(({attribute}) => attribute),
-                model.attributes()
-            )
-        ).to.be.true;
+        model.name = "_";
+        model.mail = "_";
+        model.phone = "0";
+        model.from = "25:00";
+        model.to = "12:60";
+
+        await form.handleSubmit();
+
+        expect(model.hasErrors()).to.be.true;
+    });
+
+    it("Should add errors from server on submit when fields filled wrong (if front validation incorrect)", async () => {
+        const model = {
+            attributes: () => ["phone", "mail", "name", "from", "to"],
+            name: "_",
+            mail: "_",
+            phone: "0",
+            from: "25:00",
+            to: "15:60"
+        } as ContactFormModel;
+
+        let addErrorTriggered = false;
+        let focusTriggered = false;
+
+        const input = document.createElement("input");
+        input.focus = () => focusTriggered = true;
+
+        const context = {
+            addError: () => {
+                addErrorTriggered = true;
+            },
+            values: undefined,
+            getError: undefined,
+            onChange: undefined,
+            onMount: undefined,
+            onUnmount: undefined,
+            validate: undefined,
+            getDOMElement: () => input,
+            isLoading: false,
+        } as FormContext;
+
+        await (wrapper.instance() as any).handleSubmit(model, context);
+
+        expect(focusTriggered).to.be.true;
+        expect(addErrorTriggered).to.be.true;
     })
 });

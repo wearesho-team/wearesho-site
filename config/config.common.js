@@ -1,7 +1,6 @@
 import {EnvConfig} from "../config.env";
 
 module.exports = {
-    baseUrl: "https://wearesho.backend.com",
     links: {
         behance: "#",
         github: "https://github.com/wearesho-team",

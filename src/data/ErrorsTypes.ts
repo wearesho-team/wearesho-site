@@ -1,16 +1,17 @@
 import {ModelError} from "react-context-form";
 
-export class SubmitError {
-    public constructor(code: number){
-        this.code = code;
-    }
+const debugMode = process.env.NODE_ENV === "local";
 
-    public code: number;
+export class SubmitError {
+    public constructor(sourceError: any){
+        debugMode && console.error(sourceError);
+    }
 }
 
 export class SubmitValidationError {
     public constructor(data: ModelError []){
         this.data = data;
+        debugMode && console.error(this.data);
     }
 
     public data: ModelError [];
