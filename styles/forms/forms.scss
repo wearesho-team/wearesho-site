@@ -109,7 +109,7 @@
     position: relative;
 
     &:hover,
-    &:focus {
+    &.in-focus {
 
       > .form__control {
         opacity: 1;
@@ -134,14 +134,21 @@
       }
     }
 
-    &_has-error {
+    &.has-error {
+
+      &:hover,
+      &.in-focus {
+
+        > .form__control {
+
+          box-shadow: 0px 6px 6px -3px rgba(196, 58, 100, .3);
+        }
+      }
 
       > .form__control {
         border-bottom-color: #EB4B89;
 
         color: rgba(235, 75, 124, .5);
-
-        box-shadow: 0px 3px 5px -3px rgba(196, 58, 100, .3) !important;
 
         &::-webkit-input-placeholder {
 

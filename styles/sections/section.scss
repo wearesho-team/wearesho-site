@@ -324,6 +324,11 @@
 
     margin-bottom: .222em;
 
+    @include breakpoint($mobile) {
+
+      white-space: normal;
+    }
+
     &:before {
       content: '+';
       display: block;

@@ -29,7 +29,12 @@ export class ContactForm extends React.Component<undefined, undefined> {
                 onSubmit={this.handleSubmit as any}
             >
                 <div className="form-half">
-                    <FormGroup className="form__group" errorClassName="form__group_has-error" name="name">
+                    <FormGroup
+                        className="form__group"
+                        focusClassName="in-focus"
+                        errorClassName="has-error"
+                        name="name"
+                    >
                         <AutoValidate groupName="name" onLength={NameRange.min}>
                             <Input
                                 className="form__control"
@@ -43,7 +48,12 @@ export class ContactForm extends React.Component<undefined, undefined> {
                         <Hint className="form__error-text"/>
                     </FormGroup>
                     <div className="form__group_inline">
-                        <FormGroup name="phone" className="form__group" errorClassName="form__group_has-error">
+                        <FormGroup
+                            name="phone"
+                            className="form__group"
+                            focusClassName="in-focus"
+                            errorClassName="has-error"
+                        >
                             <AutoValidate groupName="phone" onLength={PhoneRange.min}>
                                 <Input
                                     className="form__control"
@@ -55,7 +65,12 @@ export class ContactForm extends React.Component<undefined, undefined> {
                             <span className="form__control_underline"/>
                             <Hint className="form__error-text"/>
                         </FormGroup>
-                        <FormGroup className="form__group" errorClassName="form__group_has-error" name="mail">
+                        <FormGroup
+                            className="form__group"
+                            focusClassName="in-focus"
+                            errorClassName="has-error"
+                            name="mail"
+                        >
                             <AutoValidate groupName="mail">
                                 <Input
                                     className="form__control"

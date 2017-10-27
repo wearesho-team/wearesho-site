@@ -27,6 +27,11 @@
 
   pointer-events: none;
 
+  @include breakpoint($mobile) {
+    right: 0;
+    left: 0;
+  }
+
   @include breakpoint($tablet) {
 
     @include transform(translateY(0));
