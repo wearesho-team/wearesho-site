@@ -333,6 +333,8 @@
 
     opacity: 0;
 
+    cursor: pointer;
+
     @include transition(opacity .3s ease);
 
     z-index: $under-zindex;

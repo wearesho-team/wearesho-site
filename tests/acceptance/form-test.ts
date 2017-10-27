@@ -5,8 +5,8 @@ Feature("Form");
 const contactLink = ".main-nav__link[href='/partnership']";
 const submitButton = "button.btn_primary[type='submit']";
 
-const errorClass = ".form__group_has-error";
-const focusClass = ".has-focus";
+const errorClass = ".has-error";
+const focusClass = ".in-focus";
 
 const CorrectValues = {
     phone: "+38(050) 6453250",

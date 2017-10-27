@@ -1,6 +1,13 @@
 /**
 * Section gradients styles
  */
+.loaded {
+
+  .section-gradient {
+
+    opacity: 1;
+  }
+}
 .section-gradient {
   overflow: hidden;
 
@@ -15,7 +22,11 @@
 
   pointer-events: none;
 
+  opacity: 0;
+
   z-index: $under-zindex;
+
+  @include transition(opacity 3s ease 4s);
 
   @include breakpoint($mobile) {
 
@@ -49,7 +60,7 @@
 
       @include transform(rotate(3deg));
 
-        background: radial-gradient(ellipse at center, #208BC2 0%, rgba(34, 102, 143, .2) 50%, #24405A 100%);
+      background: radial-gradient(ellipse at center, #208BC2 0%, rgba(34, 102, 143, .2) 50%, #24405A 100%);
 
       opacity: .35;
     }
