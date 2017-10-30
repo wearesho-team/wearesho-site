@@ -23,7 +23,6 @@ body.loaded {
       }
 
       .logo {
-
         @include animation(appearance .5s ease, movement-left .5s ease);
         @include animation-fill-mode(forwards);
       }
@@ -180,12 +179,17 @@ body.loaded {
 
     @include breakpoint($tablet-p) {
 
-      padding-left: 8em;
+      padding-left: 4.5em;
+    }
+
+    @include breakpoint($tablet-l) {
+
+      padding-left: 0;
     }
   }
 
   .section__subtitle {
-    padding-right: 1.75em;
+    padding-right: 1.6em;
 
     text-align: right;
 
@@ -225,7 +229,7 @@ body.loaded {
 
   .logo {
     margin-top: .25em;
-    padding-left: 1.75em;
+    padding-left: 1.6em;
 
     font-size: inherit;
     @include breakpoint($mobile) {
@@ -248,6 +252,12 @@ body.loaded {
 
       font-size: .936em;
       font-weight: $font-style-regular;
+
+      @include breakpoint($tablet) {
+        display: block;
+
+        font-size: .933em;
+      }
     }
   }
 }

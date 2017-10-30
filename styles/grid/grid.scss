@@ -71,9 +71,14 @@ body.loaded {
     padding: 0 5.375em;
   }
 
-  @include breakpoint($laptop) {
+  @include breakpoint($laptop-small) {
 
     padding: 0 7.25em;
+  }
+
+  @include breakpoint($laptop-medium) {
+
+    padding: 0 13%;
   }
 
   @include breakpoint($laptop-large) {

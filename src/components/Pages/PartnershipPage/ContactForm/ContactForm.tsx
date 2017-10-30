@@ -44,7 +44,6 @@ export class ContactForm extends React.Component<undefined, undefined> {
                                 required
                             />
                         </AutoValidate>
-                        <span className="form__control_underline"/>
                         <Hint className="form__error-text"/>
                     </FormGroup>
                     <div className="form__group_inline">
@@ -62,7 +61,6 @@ export class ContactForm extends React.Component<undefined, undefined> {
                                     required
                                 />
                             </AutoValidate>
-                            <span className="form__control_underline"/>
                             <Hint className="form__error-text"/>
                         </FormGroup>
                         <FormGroup
@@ -79,7 +77,6 @@ export class ContactForm extends React.Component<undefined, undefined> {
                                     required
                                 />
                             </AutoValidate>
-                            <span className="form__control_underline"/>
                             <Hint className="form__error-text"/>
                         </FormGroup>
                     </div>
