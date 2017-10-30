@@ -5,6 +5,8 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
 
+  -webkit-overflow-scrolling: touch;
+
   background-color: #1A1735;
 
   font: 16px $font-primary;
@@ -252,6 +254,11 @@ body,
     @include breakpoint($laptop-small) {
 
       padding: 6.8em 7.25em 0;
+    }
+
+    @include breakpoint($laptop-medium) {
+
+      padding: 6.8em 13%;
     }
   }
 }
