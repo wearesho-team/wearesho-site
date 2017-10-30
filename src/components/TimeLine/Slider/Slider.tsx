@@ -18,7 +18,7 @@ export const Slider: React.SFC<SliderProps> = (props): JSX.Element => {
     const getFormattedDate = (): string => {
         const {date} = props.project;
 
-        return `${date.day}.${toFixed(2, date.month)}.${date.year}`;
+        return `${date.day}. ${toFixed(2, date.month)}. ${date.year}`;
     };
 
     return (

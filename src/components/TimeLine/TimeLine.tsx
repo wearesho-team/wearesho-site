@@ -1,17 +1,16 @@
 import * as React from "react";
 
-import {concat} from "../../helpers/concat";
+import {smartClearTimeout, ElementWithTimer} from "../../helpers/smartClearTimeout";
 import {compareMonthWithScale} from "../../helpers/compareMonthWithScale";
 import {getElementOffset} from "../../helpers/getElementOffset";
-import {smartClearTimeout, ElementWithTimer} from "../../helpers/smartClearTimeout";
+import {concat} from "../../helpers/concat";
 
 import {projects} from "../../data/Projects/projects";
 
 import {TimeLineProps, TimeLinePropTypes} from "./TimeLineProps";
 import {TimeLineState} from "./TimeLineState";
-
-import {YearItem} from "./YearItem";
 import {Slider} from "./Slider/Slider";
+import {YearItem} from "./YearItem";
 
 export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
     implements ElementWithTimer {
@@ -37,6 +36,14 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
     public componentWillUnmount() {
         this.clearTimeout(this.timer);
     }
+    //
+    // public componentDidMount() {
+    //     setTimeout(() => {
+    //         this.setState({
+    //             activeProject: projects[0],
+    //         })
+    //     }, 2000);
+    // }
 
     public shouldComponentUpdate(nextProps: TimeLineProps, nextSate: TimeLineState): boolean {
         return nextSate.sliderPosition !== this.state.sliderPosition

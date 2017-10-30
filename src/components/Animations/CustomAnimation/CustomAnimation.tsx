@@ -80,6 +80,7 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
         this.setState({
             children: this.props.children
         });
+
         this.observer.disconnect();
     };
 }

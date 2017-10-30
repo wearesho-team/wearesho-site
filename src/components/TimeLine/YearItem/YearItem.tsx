@@ -1,15 +1,14 @@
 import * as React from "react";
 
-import {concat} from "../../../helpers/concat";
 import {compareMonthWithScale} from "../../../helpers/compareMonthWithScale";
+import {concat} from "../../../helpers/concat";
 
 import {projects, ProjectInterface} from "../../../data/Projects";
 
 import {YearItemProps, YearItemPropTypes} from "./YearItemProps";
-import {SideTypes} from "./SideTypes";
-
-import {EmptyPoint} from "./EmptyPoint";
 import {ActivePoint} from "./ActivePoint";
+import {EmptyPoint} from "./EmptyPoint";
+import {SideTypes} from "./SideTypes";
 import {TimeLine} from "../TimeLine";
 
 export class YearItem extends React.Component<YearItemProps, undefined> {

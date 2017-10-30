@@ -73,7 +73,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
             });
 
         routeProps[currentPathIndex]
-        && this.context.router.history.push(routeProps[currentPathIndex].path, {scroll: true});
+        && this.context.router.history.push(routeProps[currentPathIndex].path + "?react_perf", {scroll: true});
     };
 
     protected handleScroll = () => {

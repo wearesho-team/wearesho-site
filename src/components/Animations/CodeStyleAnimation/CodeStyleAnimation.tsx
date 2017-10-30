@@ -10,6 +10,7 @@ import {
     CodeStyleAnimationPropTypes
 } from "./CodeStyleAnimationProps";
 import {CodeStyleAnimationState} from "./CodeStyleAnimationState";
+import {LayoutContext, LayoutContextTypes} from "../../Layout/LayoutContext";
 
 export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps, CodeStyleAnimationState>
     implements ElementWithTimer {
@@ -67,6 +68,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
 
     public componentWillUnmount() {
         this.clearTimeout(this.timer);
+        this.type = undefined;
         this.observer.disconnect();
     }
 
@@ -82,19 +84,13 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
         return this.state.children;
     }
 
-    protected type() {
+    protected type = () => {
         if (this.state.counter > this.sourceChild.length) {
-            this.clearTimeout(this.timer);
-            this.timer = setTimeout(() => {
-                this.setState((prevState) => ({
-                    children: prevState.children[0] + prevState.children[2]
-                }));
-                this.observer.disconnect();
-            }, this.props.caretTimeout);
+            this.clearCaret();
             return;
         }
 
-        this.setState((prevState) => ({
+       this.setState((prevState) => ({
             children: [
                 this.sourceChild.slice(0, prevState.counter),
                 this.caret,
@@ -105,10 +101,10 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
 
         this.clearTimeout(this.timer);
         this.timer = setTimeout(
-            this.type.bind(this),
+            () => this.type && requestAnimationFrame(this.type),
             Math.random() * (this.props.speed.max - this.props.speed.min) + this.props.speed.min
         );
-    }
+    };
 
     protected get caret(): JSX.Element {
         return <i key="caret" className="caret"/>;
@@ -122,5 +118,15 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
         }
 
         throw new Error("Incorrect type of children. Only string or string [] are available");
+    }
+
+    protected clearCaret() {
+        this.clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+            this.setState((prevState) => ({
+                children: prevState.children[0] + prevState.children[2]
+            }));
+        }, this.props.caretTimeout);
+        this.observer.disconnect();
     }
 }

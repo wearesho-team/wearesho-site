@@ -19,8 +19,17 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
             return;
         }
 
-        this.props.onProjectChange(this.element, this.props.index);
+        // need some delay when container does not have width
+        setTimeout(() => {
+            this.props.onProjectChange(this.element, this.props.index);
+        }, 100);
     }
+
+    // public componentWillReceiveProps(nextProps: ActivePointProps) {
+    //     if (nextProps.isActive && !this.props.isActive) {
+    //         this.props.onProjectChange(this.element, this.props.index);
+    //     }
+    // }
 
     public shouldComponentUpdate(nextProps: ActivePointProps): boolean {
         return nextProps.isActive !== this.props.isActive;
