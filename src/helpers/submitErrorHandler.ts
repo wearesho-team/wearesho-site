@@ -1,22 +1,16 @@
-import {SubmitError, SubmitValidationError} from "../data/Errors";
+import {ValidationError} from "../data/ValidationError";
 
-const debugMode = process.env.NODE_ENV === "local";
-
+// tslint:disable:no-magic-numbers
 export const submitErrorHandler = (error: any): void => {
-    let data;
-    if (error.response && error.response.data) {
-        data = error.response.data;
-    } else {
-        throw new SubmitError(error, debugMode);
+    if (
+        !error.response
+        || !error.response.status
+        || !(error.response.data instanceof Array)
+    ) {
+        throw error;
     }
 
-    if (data.hasOwnProperty("TelegramError")) {
-        throw new SubmitError(error, debugMode);
-    }
-
-    if (data.hasOwnProperty("ValidationError")) {
-        throw new SubmitValidationError(data.ValidationError, debugMode);
-    }
-
-    throw new SubmitError(error, debugMode);
+    throw error.response.status === 400
+        ? new ValidationError(error.response.data)
+        : error;
 };

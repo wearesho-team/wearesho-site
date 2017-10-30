@@ -1,19 +1,10 @@
 import {expect} from "chai";
 import {submitErrorHandler} from "../../src/helpers/submitErrorHandler";
-import {SubmitError} from "../../src/data/Errors/SubmitError";
-import {SubmitValidationError} from "../../src/data/Errors/SubmitValidationError";
+import {ValidationError} from "../../src/data/ValidationError";
 
 describe("submitErrorHandler()", () => {
 
-    it("Should throw `SubmitError` if `response.data` does not exist", () => {
-        try {
-            submitErrorHandler({});
-        } catch (error) {
-            expect(error instanceof SubmitError).to.be.true;
-        }
-    });
-
-    it("Should throw `SubmitError` when server throw unexpected error", () => {
+    it("Should throw source error when it unexpected", () => {
         try {
             submitErrorHandler({
                 response: {
@@ -23,35 +14,33 @@ describe("submitErrorHandler()", () => {
                 }
             });
         } catch (error) {
-            expect(error instanceof SubmitError).to.be.true;
+            expect(error.response.data).haveOwnProperty("SomeVeryUnexpectedError");
         }
     });
 
-    it("Should throw `SubmitError` if property `TelegramError` is exist", () => {
+    it("Should throw source error if status code not equals 400", () => {
         try {
             submitErrorHandler({
                 response: {
-                    data: {
-                        TelegramError: {}
-                    }
+                    data: {},
+                    status: 500
                 }
             });
         } catch (error) {
-            expect(error instanceof SubmitError).to.be.true;
+            expect(!(error instanceof ValidationError)).to.be.true;
         }
     });
 
-    it("Should throw `SubmitValidationError` if property `ValidationError` is exist", () => {
+    it("Should throw `ValidationError` if status code equals 400 and data contains array", () => {
         try {
             submitErrorHandler({
                 response: {
-                    data: {
-                        ValidationError: {}
-                    }
+                    data: [],
+                    status: 400
                 }
             });
         } catch (error) {
-            expect(error instanceof SubmitValidationError).to.be.true;
+            expect(error instanceof ValidationError).to.be.true;
         }
     });
 });
