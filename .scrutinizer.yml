@@ -7,6 +7,7 @@ filter:
 build:
   project_setup:
     after:
+      - "echo \"export const EnvConfig = {baseURL: 'https://wearesho.backend.com'};\" > config.env.js"
       - APACHE=1 npm run build
 
   tests:
