@@ -16,5 +16,5 @@ module.exports = {
     },
     mail: "office@wearesho.com",
     phone: 380660249402,
-    ...EnvConfig
+    ...EnvConfig,
 };

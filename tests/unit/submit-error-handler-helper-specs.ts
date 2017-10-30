@@ -1,14 +1,14 @@
 import {expect} from "chai";
 import {submitErrorHandler} from "../../src/helpers/submitErrorHandler";
-import {SubmitError, SubmitValidationError} from "../../src/data/ErrorsTypes";
+import {SubmitError} from "../../src/data/Errors/SubmitError";
+import {SubmitValidationError} from "../../src/data/Errors/SubmitValidationError";
 
 describe("submitErrorHandler()", () => {
 
     it("Should throw `SubmitError` if `response.data` does not exist", () => {
         try {
             submitErrorHandler({});
-        }
-        catch (error) {
+        } catch (error) {
             expect(error instanceof SubmitError).to.be.true;
         }
     });
@@ -22,8 +22,7 @@ describe("submitErrorHandler()", () => {
                     }
                 }
             });
-        }
-        catch (error) {
+        } catch (error) {
             expect(error instanceof SubmitError).to.be.true;
         }
     });
@@ -37,8 +36,7 @@ describe("submitErrorHandler()", () => {
                     }
                 }
             });
-        }
-        catch (error) {
+        } catch (error) {
             expect(error instanceof SubmitError).to.be.true;
         }
     });
@@ -52,8 +50,7 @@ describe("submitErrorHandler()", () => {
                     }
                 }
             });
-        }
-        catch (error) {
+        } catch (error) {
             expect(error instanceof SubmitValidationError).to.be.true;
         }
     });

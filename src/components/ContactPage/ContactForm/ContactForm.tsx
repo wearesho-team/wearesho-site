@@ -15,7 +15,7 @@ import {
 import {ContactFormModel, instantiateContactFormModel} from "../../../models/ContactFormModel";
 import {NameRange, PhoneRange, TimeDefaults} from "../../../models/common";
 
-import {SubmitError, SubmitValidationError} from "../../../data/ErrorsTypes";
+import {SubmitError, SubmitValidationError} from "../../../data/Errors";
 
 import {OnMobile} from "../../../helpers/Breakpoints";
 import {translate} from "../../../helpers/translate";
@@ -109,12 +109,10 @@ export class ContactForm extends React.Component<undefined, undefined> {
         try {
             await axios.post("/callback", data);
             // show success message
-        }
-        catch (error) {
+        } catch (error) {
             if (error instanceof SubmitError) {
                 // show error message
-            }
-            else if (error instanceof SubmitValidationError) {
+            } else if (error instanceof SubmitValidationError) {
                 error.data.forEach(({code, ...error}) => context.addError(error as ModelError));
                 const modelElement: ModelError = error.data
                     .reduce((carry: ModelError, error: ModelError) => carry || error);
