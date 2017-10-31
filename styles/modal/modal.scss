@@ -4,12 +4,10 @@
 .header,
 .section__title,
 .section__half,
-.prj-chronology{
+.prj-chronology,
+.slider {
 
-  @include breakpoint($mobile) {
-
-    @include transition(opacity .2s ease);
-  }
+  @include transition(opacity .5s ease-out);
 }
 
 .ReactModal__Body--open {
@@ -61,6 +59,10 @@
 
   touch-action: none;
 
+  opacity: 0;
+
+  @include transition(opacity .5s ease);
+
   @include breakpoint($tablet) {
 
     background-color: transparent;
@@ -70,10 +72,6 @@
 
     background-color: transparent;
   }
-
-  opacity: 0;
-
-  @include transition(opacity .5s ease);
 
   &.modal-opened {
 
@@ -87,7 +85,8 @@
 }
 
 .modal {
-  overflow-y: scroll;
+  max-width: 852px;
+  max-height: 784px;
 
   position: absolute;
 
@@ -95,26 +94,32 @@
 
   z-index: map-get($zindex, modal);
 
+  background: linear-gradient(33deg, rgba(51, 14, 31, .5) 0%, rgba(3, 28, 60, .5) 100%);
+  box-shadow: 0 0 42px 0 rgba(49, 130, 173, .6);
+
   @include breakpoint($mobile) {
     width: 100%;
     height: 100%;
+
+    overflow-y: scroll;
 
     touch-action: auto;
   }
 
   @include breakpoint($tablet) {
     top: 0;
-    right: 86px;
+    right: 0;
     bottom: 0;
-    left: 86px;
+    left: 0;
 
     margin: auto;
 
-    max-height: 784px;
-
-    //box-shadow: 0 6px 27px 0 rgba(0, 0, 0, .21);
-
     touch-action: none;
+  }
+
+  @include breakpoint($tablet-p) {
+
+    max-width: 596px;
   }
 
   @include breakpoint($tablet-l) {
@@ -124,15 +129,13 @@
 
   @include breakpoint($laptop-small) {
     top: 0;
-    right: 86px;
+    right: 0;
     bottom: 0;
-    left: 86px;
+    left: 0;
 
     margin: auto;
 
-    max-height: 784px;
-
-    box-shadow: 0 6px 27px 0 rgba(0, 0, 0, .21);
+    max-height: 528px;
   }
 
   &__header {

@@ -141,6 +141,14 @@
       }
     }
 
+    > .text_regular {
+
+      @include breakpoint($laptop) {
+
+        white-space: nowrap;
+      }
+    }
+
     &_indented {
       margin: 4.7em 0 3.35em;
 
@@ -178,6 +186,11 @@
         float: none;
 
         margin: 0 0 3.25em;
+      }
+
+      @include breakpoint($laptop-medium) {
+
+        margin: 6.3em 0 3.35em;
       }
 
       @include breakpoint($laptop-large) {

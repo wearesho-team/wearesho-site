@@ -11,14 +11,15 @@
 .section-gradient {
   overflow: hidden;
 
-  position: absolute;
+  position: fixed;
 
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
 
-  background: linear-gradient(33deg, #330E1F 0%, #031C3C 100%);
+  //background: linear-gradient(33deg, #330E1F 0%, #031C3C 100%);
+  background: linear-gradient(31deg, #330E1F -20%, #031C3C 100%);
 
   pointer-events: none;
 

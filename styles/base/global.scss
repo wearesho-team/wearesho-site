@@ -12,6 +12,11 @@ body {
   font: 16px $font-primary;
   color: $color-primary;
 
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
   &:not(.ReactModal__Body--open) {
 
     @include breakpoint($mobile) {
@@ -28,6 +33,11 @@ body {
 
       overflow-y: auto;
     }
+  }
+
+  h1, h2, h3, h4, h5, h6, p, span, a {
+
+    -webkit-font-smoothing: antialiased;
   }
 
   #content-overlay {

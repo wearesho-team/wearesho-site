@@ -50,6 +50,8 @@
   @include breakpoint($tablet-l) {
     top: 13%;
     right: -136px;
+
+    margin: .9em auto 0;
   }
 
   @include breakpoint($laptop-small) {
@@ -62,7 +64,7 @@
   @include breakpoint($laptop-medium) {
     right: -310px;
 
-    margin: -.75em auto 0;
+    margin: -3.5em auto 0;
   }
 
   @include breakpoint($laptop-large) {

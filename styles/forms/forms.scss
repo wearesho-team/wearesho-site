@@ -83,14 +83,6 @@
       vertical-align: top;
     }
 
-    &:first-child {
-
-      @include breakpoint($laptop-small) {
-
-        padding-right: 3.5em;
-      }
-    }
-
     &_second {
 
       @include breakpoint($tablet-l) {
@@ -100,7 +92,7 @@
 
       @include breakpoint($laptop-small) {
 
-        padding-left: 3.5em;
+        padding-left: 2.5em;
       }
     }
   }

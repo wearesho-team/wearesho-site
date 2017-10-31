@@ -17,9 +17,18 @@
   z-index: map-get($zindex, header);
 
   @include breakpoint($mobile) {
-    padding: 1.875em 1.875em .75em;
 
     font-weight: $font-style-regular;
+  }
+
+  @include breakpoint($mobile-p) {
+
+    padding: 1.875em 1.875em .75em;
+  }
+
+  @include breakpoint($mobile-l) {
+
+    padding: 1.875em 1.625em .75em;
   }
 
   @include breakpoint($tablet) {
@@ -58,6 +67,11 @@
     }
 
     @include breakpoint($tablet) {
+
+      display: none;
+    }
+
+    @include breakpoint($laptop-small) {
 
       display: none;
     }
@@ -116,6 +130,11 @@
 
     font-size: 16px;
   }
+
+  @include breakpoint($laptop-small) {
+
+    font-size: 16px;
+  }
 }
 
 .header__new-project {
@@ -129,6 +148,11 @@
   }
 
   @include breakpoint($tablet) {
+
+    display: none;
+  }
+
+  @include breakpoint($laptop-small) {
 
     display: none;
   }
@@ -158,6 +182,11 @@
   }
 
   @include breakpoint($tablet) {
+
+    line-height: 27px;
+  }
+
+  @include breakpoint($laptop-small) {
 
     line-height: 27px;
   }
