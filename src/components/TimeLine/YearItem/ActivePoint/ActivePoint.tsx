@@ -22,6 +22,12 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
         this.props.onProjectChange(this.element, this.props.index);
     }
 
+    public componentWillReceiveProps(nextProps: ActivePointProps) {
+        if (nextProps.isActive && !this.props.isActive) {
+            this.props.onProjectChange(this.element, this.props.index);
+        }
+    }
+
     public shouldComponentUpdate(nextProps: ActivePointProps): boolean {
         return nextProps.isActive !== this.props.isActive;
     }

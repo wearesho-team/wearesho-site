@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import {concat} from "../../../helpers/concat";
 import {ElementWithTimer, smartClearTimeout} from "../../../helpers/smartClearTimeout";
+import {concat} from "../../../helpers/concat";
 
 import {CustomAnimationDefaultProps, CustomAnimationProps, CustomAnimationPropTypes} from "./CustomAnimationProps";
 import {CustomAnimationState} from "./CustomAnimationState";
@@ -30,7 +30,10 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
     public constructor(props) {
         super(props);
 
-        if (document.body.className.includes("loaded")) {
+        let targetAttribute = this.props.startFeature.element.getAttribute(this.props.startFeature.attribute);
+        !targetAttribute && (targetAttribute = "");
+
+        if (targetAttribute.includes(this.props.startFeature.value)) {
             this.state = {
                 children: this.props.children
             };
@@ -80,6 +83,7 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
         this.setState({
             children: this.props.children
         });
+
         this.observer.disconnect();
     };
 }

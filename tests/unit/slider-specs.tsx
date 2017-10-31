@@ -34,7 +34,7 @@ describe("<Slider/>", () => {
     it("should format date to `d.m.Y`", () => {
         const {date} = props.project;
 
-        const format = `${date.day}.${String("0" + date.month).slice(-2)}.${date.year}`;
+        const format = `${date.day}. ${String("0" + date.month).slice(-2)}. ${date.year}`;
 
         expect(DOMNode.getElementsByClassName("slider__date")[0].innerHTML)
             .to.equal(format);

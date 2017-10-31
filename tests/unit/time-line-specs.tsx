@@ -6,12 +6,14 @@ import {useFakeTimers, SinonFakeTimers} from "sinon";
 import {TimeLine, TimeLineState, TimeLineProps} from "../../src/components/TimeLine";
 import {YearItem} from "../../src/components/TimeLine/YearItem";
 import {projects} from "../../src/data/Projects";
-import {ActivePoint} from "../../src/components/TimeLine/YearItem/ActivePoint/ActivePoint";
+
 // tslint:disable:no-magic-numbers
 describe("<TimeLine/>", () => {
     let wrapper: ReactWrapper<TimeLineProps, TimeLineState>;
     let timer: SinonFakeTimers;
     const animationDuration = 300;
+
+    const delay = ((window as any).hideTimeout || 2000) * 9;
 
     const halfOfMonth = Math.round(projects[projects.length - 1].date.month / 2);
 
@@ -39,9 +41,18 @@ describe("<TimeLine/>", () => {
         wrapper.unmount();
     });
 
-    it("should set latest project on mount", () => {
+    it("should set first project on mount after delay", () => {
+        document.body.className = "";
+        wrapper.unmount();
+        wrapper.mount();
+        timer.tick(delay / 2);
         expect(wrapper.state().activeProject.date.year).to.equal(projects[projects.length - 1].date.year);
         expect(wrapper.state().activeProject.date.month).to.equal(projects[projects.length - 1].date.month);
+
+        timer.tick(delay / 2);
+        expect(wrapper.state().activeProject.date.year).to.equal(projects[0].date.year);
+        expect(wrapper.state().activeProject.date.month).to.equal(projects[0].date.month);
+        document.body.className = "loaded";
     });
 
     it("should render number of <YearItem/>'s corresponding to `range` prop", () => {

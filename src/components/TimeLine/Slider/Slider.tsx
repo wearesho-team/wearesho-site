@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import {SliderProps, SliderPropTypes} from "./SliderProps";
-
-import {SliderTitle, SliderDescription} from "./Partials";
 import {toFixed} from "../../../helpers/toFixed";
+
+import {SliderProps, SliderPropTypes} from "./SliderProps";
+import {SliderTitle, SliderDescription} from "./Partials";
 
 export const Slider: React.SFC<SliderProps> = (props): JSX.Element => {
     if (!props.offset) {
@@ -18,7 +18,7 @@ export const Slider: React.SFC<SliderProps> = (props): JSX.Element => {
     const getFormattedDate = (): string => {
         const {date} = props.project;
 
-        return `${date.day}.${toFixed(2, date.month)}.${date.year}`;
+        return `${date.day}. ${toFixed(2, date.month)}. ${date.year}`;
     };
 
     return (
