@@ -11,7 +11,7 @@ export enum RouteIndexType {
     down = -1,
 }
 
-export class SwitchControl extends React.Component<any, undefined> {
+export class SwitchControl extends React.Component<undefined, undefined> {
     public static readonly childContextTypes = SwitchControlContextTypes;
     public static readonly contextTypes = {
         ...RouterContextTypes,
@@ -39,7 +39,7 @@ export class SwitchControl extends React.Component<any, undefined> {
     }
 
     public render(): JSX.Element {
-        return this.props.children;
+        return this.props.children as JSX.Element;
     }
 
     protected handleScrollDisabledChange = (state: boolean) => this.isScrollDisabled = state;
