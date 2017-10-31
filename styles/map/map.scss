@@ -78,35 +78,32 @@
 
     position: absolute;
 
-    opacity: .6;
-
     z-index: $under-zindex;
+
+    opacity: .5;
   }
 
   &:before {
-    width: 587px;
-    height: 308px;
+    width: 759px;
+    height: 551px;
 
-    top: 35px;
-    left: -25px;
+    top: -98px;
+    left: -156px;
 
     background: url('images/map-glow1.png') no-repeat;
-
-    -webkit-filter: blur(50px);
-    filter: blur(50px);
+    background-size: cover;
   }
 
-  &:after {
-    width: 706px;
-    height: 233px;
 
-    top: 100px;
-    right: 50px;
+  &:after {
+    width: 751px;
+    height: 329px;
+
+    top: 38px;
+    right: -7px;
 
     background: url('images/map-glow2.png') no-repeat;
-
-    -webkit-filter: blur(26px);
-    filter: blur(26px);
+    background-size: cover;
   }
 
   > svg {

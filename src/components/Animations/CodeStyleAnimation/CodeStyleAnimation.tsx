@@ -10,7 +10,6 @@ import {
     CodeStyleAnimationPropTypes
 } from "./CodeStyleAnimationProps";
 import {CodeStyleAnimationState} from "./CodeStyleAnimationState";
-import {LayoutContext, LayoutContextTypes} from "../../Layout/LayoutContext";
 
 export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps, CodeStyleAnimationState>
     implements ElementWithTimer {
@@ -43,8 +42,10 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             children: "",
         };
 
-        // if on mount document loaded - show child completely
-        if (document.body.className.includes("loaded")) {
+        let targetAttribute = this.props.startFeature.element.getAttribute(this.props.startFeature.attribute);
+        !targetAttribute && (targetAttribute = "");
+
+        if (targetAttribute.includes(this.props.startFeature.value)) {
             this.state = {
                 ...this.state,
                 ...{
@@ -55,7 +56,6 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
         }
 
         this.sourceChild = this.getFormattedChild(this.props.children);
-
         this.state = {
             ...this.state,
             ...{
@@ -84,13 +84,13 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
         return this.state.children;
     }
 
-    protected type = () => {
+    protected type() {
         if (this.state.counter > this.sourceChild.length) {
             this.clearCaret();
             return;
         }
 
-       this.setState((prevState) => ({
+        this.setState((prevState) => ({
             children: [
                 this.sourceChild.slice(0, prevState.counter),
                 this.caret,
@@ -101,7 +101,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
 
         this.clearTimeout(this.timer);
         this.timer = setTimeout(
-            () => this.type && requestAnimationFrame(this.type),
+            this.type.bind(this),
             Math.random() * (this.props.speed.max - this.props.speed.min) + this.props.speed.min
         );
     };

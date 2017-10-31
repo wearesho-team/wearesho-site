@@ -45,12 +45,6 @@
 
   &.section-main {
 
-    &:before,
-    &:after {
-      -webkit-filter: blur(50px);
-      filter: blur(50px);
-    }
-
     &:before {
       width: 990px;
       height: 478px;
@@ -60,9 +54,10 @@
 
       @include transform(rotate(3deg));
 
-      background: radial-gradient(ellipse at center, #208BC2 0%, rgba(34, 102, 143, .2) 50%, #24405A 100%);
+      background: url('images/section-radial-glow.png') no-repeat;
+      background-size: cover;
 
-      opacity: .35;
+      opacity: .5;
     }
 
     &:after {

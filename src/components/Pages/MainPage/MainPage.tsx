@@ -63,7 +63,7 @@ export class MainPage extends BasePage {
                                     speed={CodeStyleAnimationSpeed.fast}
                                     startFeature={this.startFeature}
                                     caretTimeout={500}
-                                    delay={typingDelay + 600}
+                                    delay={typingDelay + 1200}
                                 >
                                     {translate("mainPage.articles.whatWeDo.items.1")}
                                     {translate("mainPage.articles.whatWeDo.items.2")}
