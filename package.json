@@ -8,7 +8,6 @@
     "build": "cross-env NODE_ENV=production ./node_modules/.bin/webpack",
     "dev": "webpack-dev-server",
     "preview": "webpack",
-    "init-env": "node -e \"require('fs').writeFileSync('config.env.js', require('fs').readFileSync('config.env.template.js'));\"",
     "selenium": "selenium-standalone install && selenium-standalone start",
     "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "./node_modules/.bin/tslint --project . --exclude ./node_modules/**/* --exclude ./web/**/*"
@@ -53,7 +52,7 @@
     "sinon": "^3.2.0",
     "ts-node": "^3.3.0",
     "tslint": "5.7.0",
-    "tslint-react": "^3.2.0",
+    "tslint-react": "3.2.0",
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
@@ -94,6 +93,7 @@
     "react-dom": "^16.0.0",
     "react-input-mask": "^1.0.7",
     "react-modal": "2.2.4",
+    "react-router": "^4.2.0",
     "react-router-dom": "^4.1.2",
     "react-scroll": "^1.5.4",
     "react-transition-group": "^2.2.0",

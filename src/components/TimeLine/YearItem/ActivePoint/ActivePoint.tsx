@@ -7,6 +7,7 @@ import {ActivePointProps, ActivePointPropTypes} from "./ActivePointProps";
 export class ActivePoint extends React.Component<ActivePointProps, undefined> {
     public static propTypes = ActivePointPropTypes;
 
+    public static readonly innerGlowClassName = "prj-chronology__div-glow";
     public static readonly defaultClassName = "prj-chronology__div";
     public static readonly filledClassName = "is-filled";
     public static readonly activeClassName = "is-active";
@@ -21,6 +22,12 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
         this.props.onProjectChange(this.element, this.props.index);
     }
 
+    public componentWillReceiveProps(nextProps: ActivePointProps) {
+        if (nextProps.isActive && !this.props.isActive) {
+            this.props.onProjectChange(this.element, this.props.index);
+        }
+    }
+
     public shouldComponentUpdate(nextProps: ActivePointProps): boolean {
         return nextProps.isActive !== this.props.isActive;
     }
@@ -29,10 +36,15 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
         const className = concat(
             ActivePoint.defaultClassName,
             `${ActivePoint.defaultClassName}_${this.props.sideClassName}`,
-            this.props.isActive ? ActivePoint.activeClassName : ActivePoint.filledClassName
+            ActivePoint.filledClassName,
+            this.props.isActive ? ActivePoint.activeClassName : ""
         );
 
-        return <span className={className} onClick={this.handleClick} ref={this.setElement}/>
+        return (
+            <span className={className} onClick={this.handleClick} ref={this.setElement}>
+                <span className={ActivePoint.innerGlowClassName}/>
+            </span>
+        );
     }
 
     protected handleClick = ({currentTarget}) => {

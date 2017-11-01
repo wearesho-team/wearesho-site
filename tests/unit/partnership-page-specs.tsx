@@ -3,18 +3,19 @@ import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 import {useFakeTimers, SinonFakeTimers} from "sinon";
 
-import {ContactPage, ContactPageState} from "../../src/components/ContactPage";
+import {PartnershipPage, PartnershipPageState} from "../../src/components/Pages/PartnershipPage";
 import {SubmitButton} from "../../src/components/Buttons";
 
-describe("<ContactPage/>", () => {
-    let wrapper: ReactWrapper<any, ContactPageState>;
+describe("<PartnershipPage/>", () => {
+    let wrapper: ReactWrapper<any, PartnershipPageState>;
     let timer: SinonFakeTimers;
     let modal: Element;
 
     const animationDuration = 500;
 
     beforeEach(() => {
-        wrapper = mount(<ContactPage/>);
+        document.body.innerHTML = "";
+        wrapper = mount(<PartnershipPage/>);
         modal = document.body.querySelector(".ReactModalPortal");
         timer = useFakeTimers();
     });
@@ -29,24 +30,11 @@ describe("<ContactPage/>", () => {
         button.last().simulate("click");
 
         expect(modal.querySelector(".form")).to.exist;
-        document.body.innerHTML = "";
     });
 
     it("should close modal when click close button", () => {
         const buttonOpen = wrapper.find(SubmitButton);
         buttonOpen.last().simulate("click");
-
-        let defaultPrevented = false;
-
-        const event = {
-            preventDefault: () => {
-                defaultPrevented = true;
-            },
-            returnValue: true,
-        };
-        expect(window.onwheel(event as any)).to.be.false;
-        expect(defaultPrevented).to.be.true;
-        expect(event.returnValue).to.be.false;
 
         expect(modal.querySelector(".form")).to.exist;
 

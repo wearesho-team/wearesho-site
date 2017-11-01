@@ -19,7 +19,12 @@ describe("<Header/>", () => {
             history: {
                 push: commonHandler,
                 createHref: commonHandler,
-                replace: commonHandler
+                replace: commonHandler,
+                listen: commonHandler,
+                location: "test"
+            },
+            route: {
+                location: "test"
             }
         }
     };

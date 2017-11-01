@@ -9,7 +9,13 @@
   bottom: 45px;
   left: 45px;
 
+  opacity: .2;
+
   cursor: pointer;
+
+  z-index: 1;
+
+  @include transition(opacity .3s ease);
 
   @include breakpoint($mobile) {
 
@@ -21,13 +27,19 @@
     display: none;
   }
 
+  &:hover,
+  &.is-active {
+
+    opacity: 1;
+  }
+
   &__bar {
     width: $bar-width;
     height: 29px;
 
     display: inline-block;
 
-    background-color: #484848;
+    background-color: #fff;
 
     animation: bar-two-height 2.5s steps(25, end) 0s infinite;
 

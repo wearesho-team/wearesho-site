@@ -4,7 +4,7 @@ import axios from "axios";
 import {ReactWrapper, mount} from "enzyme";
 import {Form, FormContext, Model} from "react-context-form";
 
-import {ContactForm} from "../../src/components/ContactPage/ContactForm";
+import {ContactForm} from "../../src/components/Pages/PartnershipPage/ContactForm/ContactForm";
 import {ContactFormModel} from "../../src/models/ContactFormModel";
 import {ValidationError} from "../../src/data/ValidationError";
 

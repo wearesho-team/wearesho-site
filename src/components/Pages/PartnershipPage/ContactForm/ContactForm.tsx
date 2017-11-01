@@ -12,15 +12,15 @@ import {
     ModelError
 } from "react-context-form";
 
-import {ContactFormModel, instantiateContactFormModel} from "../../../models/ContactFormModel";
-import {NameRange, PhoneRange, TimeDefaults} from "../../../models/common";
+import {ContactFormModel, instantiateContactFormModel} from "../../../../models/ContactFormModel";
+import {NameRange, PhoneRange, TimeDefaults} from "../../../../models/common";
 
-import {ValidationError} from "../../../data/ValidationError";
+import {ValidationError} from "../../../../data/ValidationError";
 
-import {OnMobile} from "../../../helpers/Breakpoints";
-import {translate} from "../../../helpers/translate";
+import {OnMobile} from "../../../../helpers/Breakpoints";
+import {translate} from "../../../../helpers/translate";
 
-import {SubmitButton} from "../../Buttons/SubmitButton";
+import {SubmitButton} from "../../../Buttons/SubmitButton";
 import {TimeInput} from "./TimeInput";
 
 export class ContactForm extends React.Component<undefined, undefined> {
@@ -33,7 +33,12 @@ export class ContactForm extends React.Component<undefined, undefined> {
                 onSubmit={this.handleSubmit as any}
             >
                 <div className="form-half">
-                    <FormGroup className="form__group" errorClassName="form__group_has-error" name="name">
+                    <FormGroup
+                        className="form__group"
+                        focusClassName="in-focus"
+                        errorClassName="has-error"
+                        name="name"
+                    >
                         <AutoValidate groupName="name" onLength={NameRange.min}>
                             <Input
                                 className="form__control"
@@ -43,11 +48,15 @@ export class ContactForm extends React.Component<undefined, undefined> {
                                 required
                             />
                         </AutoValidate>
-                        <span className="form__control_underline"/>
                         <Hint className="form__error-text"/>
                     </FormGroup>
                     <div className="form__group_inline">
-                        <FormGroup name="phone" className="form__group" errorClassName="form__group_has-error">
+                        <FormGroup
+                            name="phone"
+                            className="form__group"
+                            focusClassName="in-focus"
+                            errorClassName="has-error"
+                        >
                             <AutoValidate groupName="phone" onLength={PhoneRange.min}>
                                 <Input
                                     className="form__control"
@@ -56,10 +65,14 @@ export class ContactForm extends React.Component<undefined, undefined> {
                                     required
                                 />
                             </AutoValidate>
-                            <span className="form__control_underline"/>
                             <Hint className="form__error-text"/>
                         </FormGroup>
-                        <FormGroup className="form__group" errorClassName="form__group_has-error" name="mail">
+                        <FormGroup
+                            className="form__group"
+                            focusClassName="in-focus"
+                            errorClassName="has-error"
+                            name="mail"
+                        >
                             <AutoValidate groupName="mail">
                                 <Input
                                     className="form__control"
@@ -68,13 +81,12 @@ export class ContactForm extends React.Component<undefined, undefined> {
                                     required
                                 />
                             </AutoValidate>
-                            <span className="form__control_underline"/>
                             <Hint className="form__error-text"/>
                         </FormGroup>
                     </div>
                 </div>
                 <div className="form-half form-half_second">
-                    <p className="text_medium">{translate("contactPage.form.time.title")}</p>
+                    <p className="text_regular">{translate("contactPage.form.time.title")}</p>
                     <p>{translate("contactPage.form.time.subTitle")}</p>
                     <div className="form__group spinner__group">
                         <FormGroup name="from" className="spinner">

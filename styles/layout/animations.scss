@@ -271,13 +271,9 @@ $fourteen: $height;
     width: 10px;
     height: 10px;
   }
-  50% {
+  100% {
     width: 100%;
     height: 100%;
-  }
-  100% {
-    width: 10px;
-    height: 10px;
   }
 }
 
@@ -512,45 +508,85 @@ $indent-tablet: -66px;
   }
 }
 
-// Grid growth to top
-@keyframes to-top {
-  0% {
-    height: 100%;
-  }
-  100% {
-    height: 0;
-  }
-}
-
-// Grid growth to bottom
-@keyframes to-bottom {
-  0% {
-    height: 0;
-  }
-  100% {
-    height: 100%;
-  }
-}
-
-// Preloader disappearing
-@keyframes preloader-disappearing {
+// Appearance
+@keyframes appearance {
   from {
-    opacity: 1;
+    opacity: 0;
   }
   to {
-    opacity: 0;
-    z-index: -1;
+    opacity: 1;
+  }
+}
+
+// Disappearance
+@keyframes disappearance {
+  from {
+    opacity: 1
+  }
+  to {
     pointer-events: none;
+
+    opacity: 0;
+
+    z-index: $under-zindex;
   }
 }
 
-// Map showing
-@keyframes show-map {
+// Grid growth
+@keyframes grid-growth {
   from {
-    opacity: 0;
+    top: 50%;
+    bottom: 50%;
   }
   to {
-    opacity: 1;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+// Movement of preloader elms
+@keyframes movement-left {
+  from {
+    @include transform(translateX(-8px));
+  }
+  to {
+    @include transform(translateX(0));
+  }
+}
+
+@keyframes movement-right {
+  from {
+    @include transform(translateX(8px));
+  }
+  to {
+    @include transform(translateX(0));
+  }
+}
+
+// Projects chronology orbit animation
+@keyframes spin {
+  100% {
+    @include transform(rotate(360deg));
+  }
+}
+
+// Chronology slider motion animation
+@keyframes motion-blur {
+  0% {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+  } 100% {
+    -webkit-filter: blur(100px);
+    filter: blur(100px);
+  }
+}
+
+// Add scroll
+@keyframes add-scroll {
+  0% {
+    overflow-y: auto;
+  } 100% {
+    overflow-y: scroll;
   }
 }
 
@@ -567,14 +603,12 @@ $indent-tablet: -66px;
   }
 }
 
-@keyframes slide-to-left {
+@keyframes showing {
   0% {
     opacity: 0;
-    //@include transform3d(translate3d(-100%,0,0));
   }
   100% {
     opacity: 1;
-    //@include transform(translate3d(0,0,0));
   }
 }
 

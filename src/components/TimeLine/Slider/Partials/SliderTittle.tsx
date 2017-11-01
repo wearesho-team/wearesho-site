@@ -28,7 +28,7 @@ export const SliderTitle: React.SFC<SliderTitleProps> = ({title}): JSX.Element =
     content.pop();
 
     return (
-        <div className="chronology-slider__projects">
+        <div className="slider__projects">
             {content}
         </div>
     );

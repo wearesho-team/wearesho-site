@@ -1,12 +1,12 @@
 /**
-  Chronology slider styles
+* Slider styles
  */
-.chronology-slider {
-  $slider-size: 51px;
+.slider {
+  $slider-size: 78px;
   $slider-size-laptop-m: 41px;
   $slider-size-laptop-l: 39px;
   $point-size: 6px;
-  $slider-bar-height: 66px;
+  $slider-bar-height: 96px;
 
   width: $slider-size;
   height: $slider-size;
@@ -18,29 +18,62 @@
   margin-top: (-$slider-size / 2);
   margin-left: -($slider-size / 2 - $point-size / 2);
 
+  border-radius: 50%;
+
   z-index: 1;
 
   @include transition(left .3s ease);
 
-  @include breakpoint($laptop-medium) {
-    width: $slider-size-laptop-m;
-    height: $slider-size-laptop-m;
+  &:before,
+  &:after {
+    content: '';
+    display: block;
 
-    margin-top: (-$slider-size-laptop-m / 2);
-    margin-left: (-$slider-size-laptop-m / 2) + 3.5;
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
+  
+  &:before {
+    background: url('images/slider-orbit.svg') no-repeat;
 
-  @include breakpoint($laptop-large) {
-    width: $slider-size-laptop-l;
-    height: $slider-size-laptop-l;
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
 
-    margin-top: (-$slider-size-laptop-l / 2);
-    margin-left: (-$slider-size-laptop-l / 2);
+    opacity: .85;
+
+    @include animation(spin 8s linear infinite);
+
+    @include transition(opacity .3s ease);
+
+    @include breakpoint($laptop-medium) {
+      top: 6px;
+      right: 6px;
+      bottom: 6px;
+      left: 6px;
+    }
+
+    @include breakpoint($laptop-large) {
+      top: 6px;
+      right: 6px;
+      bottom: 6px;
+      left: 6px;
+    }
   }
 
   &.is-move {
+    animation: motion-blur .1s;
+    animation-delay: .3s;
 
-    > .chronology-slider__body {
+    &:before {
+
+      opacity: 0;
+    }
+
+    > .slider__body {
 
       &:before {
 
@@ -48,30 +81,35 @@
 
         transition-delay: 0s;
       }
+
+      &:after {
+
+        opacity: 0;
+      }
     }
 
-    > .chronology-slider__description {
+    > .slider__description {
 
-      > .chronology-slider__projects,
-      > .chronology-slider__services,
-      > .chronology-slider__date {
+      > .slider__projects,
+      > .slider__services,
+      > .slider__date {
 
         @include transform(translateX(20px));
 
         opacity: 0;
       }
 
-      > .chronology-slider__projects {
+      > .slider__projects {
 
         transition-delay: .05s;
       }
 
-      > .chronology-slider__services {
+      > .slider__services {
 
         transition-delay: .1s;
       }
 
-      > .chronology-slider__date {
+      > .slider__date {
 
         transition-delay: .15s;
       }
@@ -84,28 +122,43 @@
 
     border-radius: 50%;
 
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .16);
-
-    &:before {
+    &:before,
+    &:after {
       content: '';
       display: block;
 
-      width: 1px;
-      height: $slider-bar-height;
-
       position: absolute;
 
-      top: -$slider-bar-height;
       right: 0;
       left: 0;
 
       margin: auto;
+    }
 
-      background-color: $color-secondary;
+    &:before {
+      width: 2px;
+      height: $slider-bar-height;
 
-      @include transition(height .3s ease);
+      top: -60px;
 
-      transition-delay: .3s;
+      background: linear-gradient(to bottom, rgba(19, 151, 199, 1) 0%, rgba(19, 151, 199, .47) 100%);
+
+      @include transition(height .3s ease .3s);
+
+      opacity: .4;
+    }
+
+    &:after {
+      width: 24px;
+      height: 92px;
+
+      top: -32px;
+
+      background: url('images/slider-glow.svg') no-repeat;
+
+      @include transition(opacity .3s ease);
+
+      z-index: $under-zindex;
     }
   }
 
@@ -115,7 +168,7 @@
 
     position: absolute;
 
-    top: (-$slider-bar-height - 4px);
+    top: -64px;
     left: ($slider-size / 2 + 16px);
 
     > span {
@@ -125,7 +178,7 @@
   }
 
   &.swap {
-    .chronology-slider__description {
+    .slider__description {
       left: auto;
       right: ($slider-size / 2 + 16px);
 
@@ -148,7 +201,6 @@
 
   &__projects {
     font-size: .813em;
-    text-transform: uppercase;
     color: $color-secondary;
   }
 
@@ -157,10 +209,11 @@
 
     font-size: .75em;
     font-weight: $font-style-light;
+    color: #A3B0B7;
   }
 
   &__date {
     font-size: .688em;
-    color: #c3c3c3;
+    color: rgba(148, 177, 188, .31);
   }
 }

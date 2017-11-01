@@ -24,7 +24,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     public static readonly upDirectionClassName = "up";
     public static readonly downDirectionClassName = "down";
     public static readonly standByClassName = "";
-    public static readonly animationDuration = 500;
+    public static readonly animationDuration = 501;
 
     public context: RouterContext & SwitchControlContext;
     public timer: any;
@@ -48,11 +48,13 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
         this.context.setScrollDisabled(true);
 
         this.clearTimeout(this.timer);
-        this.timer = setTimeout(() => {
-            this.context.setScrollDisabled(false);
-            this.setState({directionClassName: TransitionSwitch.standByClassName});
-        }, TransitionSwitch.animationDuration + this.additionalTimeout);
-
+        this.timer = setTimeout(
+            () => {
+                this.context.setScrollDisabled(false);
+                this.setState({directionClassName: TransitionSwitch.standByClassName});
+            },
+            TransitionSwitch.animationDuration + this.additionalTimeout
+        );
     }
 
     protected get routeProps(): any {
@@ -71,7 +73,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
             ...this.props,
             ...{
                 key: this.routeProps.key,
-                timeout: TransitionSwitch.animationDuration
+                timeout: TransitionSwitch.animationDuration,
             }
         };
 

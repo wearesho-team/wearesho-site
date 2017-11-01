@@ -27,6 +27,7 @@ $tablet-l: (min-width 1024px) (max-width 1024px);
 // Laptop
 $laptop: (min-width 1025px) (max-width 1440px);
 $laptop-not-large: (min-width 1025px) (max-width 1439px) (max-height 899px);
+$laptop-not-large-no-height: (min-width 1025px) (max-width 1439px);
 $laptop-small: (min-width 1025px) (max-width 1279px);
 $laptop-medium: (min-width 1280px) (max-width 1439px);
 $laptop-large: (min-width 1440px) (max-width 1440px) (min-height 900px);
@@ -48,8 +49,8 @@ $font-style-bold: 700;
 $font-style-black: 900;
 
 // Colors
-$color-primary: #696969;
-$color-secondary: #ffc60a;
+$color-primary: #8E9CA5;
+$color-secondary: #339FD0;
 //$color-marked: ;
 //$color-marked-darken: ;
 

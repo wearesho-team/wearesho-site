@@ -18,7 +18,7 @@ export class Header extends React.Component<undefined, undefined> {
                     <span className="logo__text">Art &amp; Data Studio</span>
                 </Link>
                 <div className="header__right">
-                    <Link to="/contact" className="header__new-project">{translate("header.newProject")}</Link>
+                    <Link to="/partnership" className="header__new-project">{translate("header.newProject")}</Link>
                     <button type="button" className="header__lang-toggle" onClick={this.changeLanguage}>
                         {this.languageLabel}
                     </button>

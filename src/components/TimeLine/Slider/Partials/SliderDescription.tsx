@@ -17,7 +17,7 @@ export const SliderDescription: React.SFC<SliderDescriptionProps> = ({items}): J
     content.pop();
 
     return (
-        <span className="chronology-slider__services">
+        <span className="slider__services">
             {content}
         </span>
     );

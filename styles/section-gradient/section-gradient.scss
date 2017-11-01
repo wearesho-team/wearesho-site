@@ -1,0 +1,128 @@
+/**
+* Section gradients styles
+ */
+.loaded {
+
+  .section-gradient {
+
+    opacity: 1;
+  }
+}
+.section-gradient {
+  overflow: hidden;
+
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  //background: linear-gradient(33deg, #330E1F 0%, #031C3C 100%);
+  background: linear-gradient(31deg, #330E1F -20%, #031C3C 100%);
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  z-index: $under-zindex;
+
+  @include transition(opacity 3s ease 4s);
+
+  @include breakpoint($mobile) {
+
+    display: none;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+
+    position: absolute;
+
+    border-radius: 50%;
+  }
+
+  &.section-main {
+
+    &:before {
+      width: 990px;
+      height: 478px;
+
+      top: -300px;
+      right: -50px;
+
+      @include transform(rotate(3deg));
+
+      background: url('images/section-radial-glow.png') no-repeat;
+      background-size: cover;
+
+      opacity: .5;
+    }
+
+    &:after {
+      width: 708px;
+      height: 448px;
+
+      bottom: -300px;
+      right: 180px;
+
+      @include transform(rotate(-11deg));
+
+      background: radial-gradient(ellipse at center,  #302334 0%, rgba(87, 14, 79, 0) 70%, rgba(3, 28, 60, 0) 100%);
+
+      opacity: .73;
+    }
+  }
+
+  &.section-process {
+
+    &:before {
+      width: 708px;
+      height: 448px;
+
+      top: (-448px + 300px);
+      right: 180px;
+
+      background: radial-gradient(ellipse at center,  #302334 0%, rgba(87, 14, 79, 0) 70%, rgba(3, 28, 60, 0) 100%);
+
+      opacity: .73;
+    }
+  }
+
+  &.section-partnership {
+    background: none;
+
+    &:before {
+      width: 1039px;
+      height: 273px;
+
+      top: -130px;
+      left: 60px;
+
+      @include transform(rotate(27deg));
+      
+      background: linear-gradient(to right, rgba(45, 172, 152, 0) 0%, rgba(45, 172, 152, 0) 25%, rgba(45, 172, 152, 1) 26%, #182736 100%);
+
+      opacity: .2;
+
+      -webkit-filter: blur(50px);
+      filter: blur(50px);
+    }
+
+    &:after {
+      width: 691px;
+      height: 478px;
+
+      @include transform(rotate(275deg));
+
+      top: -160px;
+      left: -160px;
+
+      background: linear-gradient(10deg, rgba(87, 14, 79, 0) 0%, #330E1F 100%);
+
+      opacity: .2;
+    }
+  }
+}

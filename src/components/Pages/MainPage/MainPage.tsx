@@ -1,20 +1,19 @@
 import * as React from "react";
 
-import {translate} from "../../helpers/translate";
+import {translate} from "../../../helpers/translate";
 
-import {TimeLine} from "../TimeLine";
-import {SmartBreakpoint} from "../SmartBreakpoint/SmartBreakpoint";
-import {CodeStyleAnimation} from "../Animations/CodeStyleAnimation";
-import {CodeStyleAnimationSpeed} from "../Animations/CodeStyleAnimation/CodeStyleAnimationSpeed";
-import {CustomAnimation} from "../Animations/CustomAnimation";
-import {LayoutContext, LayoutContextTypes} from "../Layout/LayoutContext";
+import {CodeStyleAnimationSpeed} from "../../Animations/CodeStyleAnimation/CodeStyleAnimationSpeed";
+import {CodeStyleAnimation} from "../../Animations/CodeStyleAnimation/CodeStyleAnimation";
+import {CustomAnimation} from "../../Animations/CustomAnimation/CustomAnimation";
+import {SmartBreakpoint} from "../../SmartBreakpoint/SmartBreakpoint";
+import {TimeLine} from "../../TimeLine/TimeLine";
+import {BasePage} from "../BasePage";
 
 // tslint:disable:no-magic-numbers
-const delay = ((window as any).hideTimeout || 2000) * 2.5;
+const showingDelay = ((window as any).hideTimeout || 2000) * 4;
+const typingDelay = showingDelay + 500;
 
-export class MainPage extends React.Component<undefined, undefined> {
-    public static readonly contextTypes = LayoutContextTypes;
-    public context: LayoutContext;
+export class MainPage extends BasePage {
 
     public startFeature = {
         element: document.body,
@@ -22,47 +21,39 @@ export class MainPage extends React.Component<undefined, undefined> {
         value: "loaded"
     };
 
-    public shouldComponentUpdate(nextProps, nextState, nextContext: LayoutContext): boolean {
-        return this.context.language !== nextContext.language;
-    }
-
     public render(): JSX.Element {
         return (
             <section className="section section-main">
                 <div className="align-container">
                     <CustomAnimation
                         startFeature={this.startFeature}
-                        actionClassName="slide-to-left"
+                        actionClassName="showing"
                         duration={2000}
-                        delay={delay}
+                        delay={showingDelay}
                     >
                         <h2 className="section__title">
                             <span className="section__title-part">
                                 <span>{translate("mainPage.title.mainOne.base")}&nbsp;</span>
-                                <span className="section__title-part-container">
-                                    <span className="section__title-part-variable">
-                                        {translate("mainPage.title.mainOne.additions.1")}
-                                        </span>
+                                <span className="section__title-part-variable">
+                                    {translate("mainPage.title.mainOne.additions.1")}
                                 </span>
                             </span>
                             <span className="section__title-part">
                                 <span>{translate("mainPage.title.mainTwo.base")}&nbsp;</span>
-                                    <span className="section__title-part-container">
-                                    <span className="section__title-part-variable">
-                                        {translate("mainPage.title.mainTwo.additions.1")}
-                                        </span>
+                                <span className="section__title-part-variable">
+                                    {translate("mainPage.title.mainTwo.additions.1")}
                                 </span>
                             </span>
                         </h2>
                     </CustomAnimation>
                     <div className="container">
                         <div className="section__half">
-                            <h4 className="section__subtitle section__subtitle_marker">
+                            <h4 className="section__subtitle section__subtitle marker">
                                 <CodeStyleAnimation
                                     speed={CodeStyleAnimationSpeed.fast}
                                     startFeature={this.startFeature}
-                                    caretTimeout={100}
-                                    delay={delay}
+                                    caretTimeout={500}
+                                    delay={typingDelay}
                                 >
                                     {translate("mainPage.articles.whatWeDo.title")}
                                 </CodeStyleAnimation>
@@ -71,8 +62,8 @@ export class MainPage extends React.Component<undefined, undefined> {
                                 <CodeStyleAnimation
                                     speed={CodeStyleAnimationSpeed.fast}
                                     startFeature={this.startFeature}
-                                    caretTimeout={1500}
-                                    delay={delay}
+                                    caretTimeout={500}
+                                    delay={typingDelay + 1200}
                                 >
                                     {translate("mainPage.articles.whatWeDo.items.1")}
                                     {translate("mainPage.articles.whatWeDo.items.2")}
@@ -83,21 +74,21 @@ export class MainPage extends React.Component<undefined, undefined> {
                             </div>
                         </div>
                         <div className="section__half">
-                            <h4 className="section__subtitle section__subtitle_marker">
+                            <h4 className="section__subtitle section__subtitle marker">
                                 <CodeStyleAnimation
                                     speed={CodeStyleAnimationSpeed.medium}
                                     startFeature={this.startFeature}
-                                    caretTimeout={100}
-                                    delay={delay}
+                                    caretTimeout={500}
+                                    delay={typingDelay}
                                 >
                                     {translate("mainPage.articles.howLong.title")}
                                 </CodeStyleAnimation>
                                 <span className="section__subtitle_reduced">
                                      <CodeStyleAnimation
-                                         speed={CodeStyleAnimationSpeed.fast}
+                                         speed={CodeStyleAnimationSpeed.medium}
                                          startFeature={this.startFeature}
-                                         caretTimeout={1500}
-                                         delay={delay}
+                                         caretTimeout={500}
+                                         delay={typingDelay + 500}
                                      >
                                          {translate("mainPage.articles.howLong.subTitle")}
                                      </CodeStyleAnimation>
@@ -105,9 +96,9 @@ export class MainPage extends React.Component<undefined, undefined> {
                             </h4>
                             <CustomAnimation
                                 startFeature={this.startFeature}
-                                actionClassName="slide-to-left"
-                                duration={1500}
-                                delay={delay}
+                                actionClassName="showing"
+                                duration={2000}
+                                delay={showingDelay + 2000}
                             >
                                 <ul className="clients-list">
                                     <li className="clients-list__item">
@@ -133,7 +124,6 @@ export class MainPage extends React.Component<undefined, undefined> {
                         <TimeLine range={{min: 2014, max: 2019}}/>
                     </SmartBreakpoint>
                 </div>
-
             </section>
         );
     }

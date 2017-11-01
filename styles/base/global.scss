@@ -1,41 +1,44 @@
 /**
-  Global styles
+* Global styles
  */
-
-html,
 body {
   overflow-x: hidden;
   overflow-y: hidden;
 
-  @include breakpoint($mobile) {
+  -webkit-overflow-scrolling: touch;
 
-    overflow-y: visible;
-  }
+  background-color: #1A1735;
 
-  @include breakpoint($tablet-laptop) {
-
-    overflow-y: visible;
-  }
-
-  @include breakpoint($laptop-medium) {
-
-    overflow-y: visible;
-  }
-
-  @include breakpoint($laptop-small) {
-
-    overflow-y: visible;
-  }
-
-  @include breakpoint($laptop-small) {
-    // Double vertical scroll bug fix
-    overflow-x: visible;
-  }
-}
-
-body {
   font: 16px $font-primary;
   color: $color-primary;
+
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  &:not(.ReactModal__Body--open) {
+
+    @include breakpoint($mobile) {
+
+      overflow-y: auto;
+    }
+
+    @include breakpoint($tablet-laptop) {
+
+      overflow-y: auto;
+    }
+
+    @include breakpoint($laptop-not-large-no-height) {
+
+      overflow-y: auto;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6, p, span, a {
+
+    -webkit-font-smoothing: antialiased;
+  }
 
   #content-overlay {
     position: fixed;
@@ -55,21 +58,6 @@ body {
     #content-overlay {
       position: static;
       opacity: 1;
-    }
-  }
-
-  &.ReactModal__Body--open {
-    //overflow: hidden;
-    //
-    //position: fixed;
-    //
-    //top: 0;
-    //right: 0;
-    //bottom: 0;
-    //left: 0;
-
-    #content-overlay {
-      pointer-events: none;
     }
   }
 
@@ -102,13 +90,45 @@ body,
     height: auto;
   }
 
+  @include breakpoint($laptop-not-large-no-height) {
+
+    height: auto;
+  }
 }
 
 .translate-container {
+  position: relative;
 
   @include breakpoint($laptop-large) {
 
     padding: 0 11em;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+
+    width: 198px;
+    height: 100%;
+
+    position: absolute;
+
+    top: 0;
+
+    pointer-events: none;
+  }
+
+  &:before {
+    left: 0;
+
+    background: linear-gradient(to right, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  &:after {
+    right: 0;
+
+    background: linear-gradient(to left, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, 0) 100%);
   }
 
   > .section {
@@ -118,6 +138,7 @@ body,
   }
 
   &.up {
+
     > .section {
 
       &.translateY-enter {
@@ -126,7 +147,7 @@ body,
         &-active {
           @include transition(transform .5s ease .001s);
 
-          @include transform(translate3d(0, 0, 0));
+          @include transform(none);
         }
       }
 
@@ -143,23 +164,26 @@ body,
   }
 
   &.down {
+
     > .section {
+
       &.translateY-enter {
         @include transform(translate3d(0, -100%, 0));
 
         &-active {
           @include transition(transform .5s ease .001s);
 
-          @include transform(translate3d(0, 0, 0));
+          @include transform(none);
         }
       }
 
       &.translateY-exit {
         @include transform(translate3d(0, -100%, 0));
+
         &-active {
           @include transition(transform .5s ease .001s);
 
-          @include transform(translate3d(0, 0, 0));
+          @include transform(none);
         }
       }
     }
@@ -168,6 +192,10 @@ body,
   .section {
 
     > .align-container {
+      @include container;
+
+      max-width: 1380px;
+
       @include clearfix;
 
       position: relative;
@@ -193,6 +221,18 @@ body,
 
 .scroll-container {
   @include container;
+
+  overflow-x: hidden;
+
+  @include breakpoint($mobile) {
+
+    overflow: hidden;
+  }
+
+  @include breakpoint($tablet-laptop) {
+
+    overflow: hidden;
+  }
 
   .section {
 
@@ -226,23 +266,16 @@ body,
       padding: 6.8em 7.25em 0;
     }
 
-  }
-}
+    @include breakpoint($laptop-medium) {
 
-.slide-to-side-wrap {
-  overflow: hidden;
+      padding: 6.8em 13%;
+    }
+  }
 }
 
 // animation classes
-.slide-to-left {
-  will-change: transform3d;
-  @include backface-visibility(hidden);
-
-  @include animation(slide-to-left 2s ease forwards);
-
-  &.slow-opacity {
-    @include animation(slide-to-left-slow-opacity 1.5s ease-in-out forwards);
-  }
+.showing {
+  @include animation(showing 2s ease forwards);
 }
 
 
