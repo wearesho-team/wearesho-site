@@ -10,13 +10,14 @@ WORKDIR /usr/src/site
 
 COPY package.json .
 COPY package-lock.json .
-COPY templates/nginx.conf /etc/nginx/nginx.conf
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
-RUN npm i
+RUN npm i --production
 
 COPY . .
 RUN npm run build
+
+COPY templates/nginx.conf /etc/nginx/nginx.conf
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 EXPOSE 80
 CMD service nginx start
