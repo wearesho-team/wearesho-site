@@ -15,6 +15,10 @@ RUN npm i --production
 
 COPY . .
 RUN npm run build
+RUN rm -r ./styles && \
+    rm -r ./src && \
+    rm -r ./config && \
+    rm -r ./node_modules
 
 COPY templates/nginx.conf /etc/nginx/nginx.conf
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
