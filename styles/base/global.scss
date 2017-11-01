@@ -215,6 +215,11 @@ body,
 
         @include transform(translateY(0));
       }
+
+      @include breakpoint($laptop-xl) {
+
+        max-width: 1220px;
+      }
     }
   }
 }

@@ -135,6 +135,16 @@
 
     font-size: 16px;
   }
+
+  @include breakpoint($laptop-medium) {
+
+    font-size: 13px;
+  }
+
+  @include breakpoint($laptop-large) {
+
+    font-size: 13px;
+  }
 }
 
 .header__new-project {

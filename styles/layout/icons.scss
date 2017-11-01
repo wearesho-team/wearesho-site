@@ -1,5 +1,5 @@
 /**
-  Icons connection
+* Icons connection
  */
 .icon {
   display: inline-block;
@@ -18,6 +18,11 @@
     }
 
     @include breakpoint($tablet) {
+      width: 55px;
+      height: 27px;
+    }
+
+    @include breakpoint($laptop) {
       width: 55px;
       height: 27px;
     }

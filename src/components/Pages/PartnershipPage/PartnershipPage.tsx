@@ -150,6 +150,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                         <MapIcon/>
                         <div className="slider">
                             <div className="slider__body">
+                                <div className="slider__bar"/>
                                 <div className="slider__dot"/>
                             </div>
                             <div className="slider__description">

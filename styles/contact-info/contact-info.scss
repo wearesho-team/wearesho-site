@@ -203,6 +203,11 @@
       line-height: 47px;
 
       font-size: 2em;
+
+      @include breakpoint($mobile) {
+
+        line-height: 41px;
+      }
     }
   }
 
@@ -216,7 +221,7 @@
 
     @include breakpoint($mobile) {
 
-      font-size: 1.063em;
+      font-size: 1.267em;
     }
 
     @include breakpoint($mobile-p) {

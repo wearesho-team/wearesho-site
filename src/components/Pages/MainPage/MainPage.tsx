@@ -35,7 +35,7 @@ export class MainPage extends BasePage {
                             <span className="section__title-part">
                                 <span>{translate("mainPage.title.mainOne.base")}&nbsp;</span>
                                 <span className="section__title-part-variable">
-                                    {translate("mainPage.title.mainOne.additions.1")}
+                                    {translate("mainPage.title.mainOne.additions.1")}&nbsp;
                                 </span>
                             </span>
                             <span className="section__title-part">

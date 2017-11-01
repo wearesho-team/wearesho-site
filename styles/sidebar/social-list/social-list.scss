@@ -1,5 +1,5 @@
 /**
-  Social-list
+* Social-list
  */
 .social-list {
   width: 20px;
@@ -36,16 +36,31 @@
     &_soc-git {
       width: 20px;
       height: 22px;
+
+      @include breakpoint($mobile) {
+        width: 22px;
+        height: 24px;
+      }
     }
 
     &_soc-be {
       width: 20px;
       height: 12px;
+
+      @include breakpoint($mobile) {
+        width: 26px;
+        height: 16px;
+      }
     }
 
     &_soc-li {
       width: 16px;
       height: 16px;
+
+      @include breakpoint($mobile) {
+        width: 18px;
+        height: 18px;
+      }
     }
 
     .icon_fill {

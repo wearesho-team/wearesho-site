@@ -27,6 +27,8 @@
 
   pointer-events: none;
 
+  z-index: $under-zindex;
+
   @include breakpoint($mobile) {
     right: 0;
     left: 0;
@@ -73,39 +75,9 @@
     margin: 2.1em auto 0;
   }
 
-  &:before,
-  &:after {
-    content: '';
-    display: block;
+  @include breakpoint($square) {
 
-    position: absolute;
-
-    z-index: $under-zindex;
-
-    opacity: .5;
-  }
-
-  &:before {
-    width: 759px;
-    height: 551px;
-
-    top: -98px;
-    left: -156px;
-
-    background: url('images/map-glow1.png') no-repeat;
-    background-size: cover;
-  }
-
-
-  &:after {
-    width: 751px;
-    height: 329px;
-
-    top: 38px;
-    right: -7px;
-
-    background: url('images/map-glow2.png') no-repeat;
-    background-size: cover;
+    margin: -2.5em auto 0;
   }
 
   > svg {
