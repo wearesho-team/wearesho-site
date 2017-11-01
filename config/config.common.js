@@ -1,5 +1,5 @@
 module.exports = {
-    baseUrl: "https://backend.wearesho.com",
+    baseUrl: `${window.location.origin}/api`,
     links: {
         behance: "#",
         github: "https://github.com/wearesho-team",
