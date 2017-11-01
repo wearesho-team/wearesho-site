@@ -6,3 +6,4 @@ build
 condecept.conf.js
 tslint.json
 backend
+tests
