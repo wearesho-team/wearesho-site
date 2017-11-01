@@ -45,7 +45,6 @@ export class ContactForm extends React.Component<undefined, undefined> {
                                 transform={TransformTypes.capitalize}
                                 maxLength={NameRange.max}
                                 placeholder={translate("contactPage.form.placeholders.name")}
-                                required
                             />
                         </AutoValidate>
                         <Hint className="form__error-text"/>
@@ -62,7 +61,6 @@ export class ContactForm extends React.Component<undefined, undefined> {
                                     className="form__control"
                                     placeholder={translate("contactPage.form.placeholders.phone")}
                                     type="number"
-                                    required
                                 />
                             </AutoValidate>
                             <Hint className="form__error-text"/>
@@ -78,7 +76,6 @@ export class ContactForm extends React.Component<undefined, undefined> {
                                     className="form__control"
                                     placeholder={translate("contactPage.form.placeholders.mail")}
                                     type="email"
-                                    required
                                 />
                             </AutoValidate>
                             <Hint className="form__error-text"/>
