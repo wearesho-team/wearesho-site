@@ -1,4 +1,5 @@
 import * as React from "react";
+import axios from "axios";
 import {
     AutoValidate,
     Form,
@@ -7,17 +8,20 @@ import {
     Input,
     Label,
     TransformTypes,
-    FormContext
+    FormContext,
+    ModelError
 } from "react-context-form";
 
 import {ContactFormModel, instantiateContactFormModel} from "../../../models/ContactFormModel";
 import {NameRange, PhoneRange, TimeDefaults} from "../../../models/common";
 
+import {ValidationError} from "../../../data/ValidationError";
+
 import {OnMobile} from "../../../helpers/Breakpoints";
+import {translate} from "../../../helpers/translate";
 
 import {SubmitButton} from "../../Buttons/SubmitButton";
 import {TimeInput} from "./TimeInput";
-import {translate} from "../../../helpers/translate";
 
 export class ContactForm extends React.Component<undefined, undefined> {
 
@@ -97,7 +101,25 @@ export class ContactForm extends React.Component<undefined, undefined> {
         );
     }
 
-    private handleSubmit = async (model: ContactFormModel, context: FormContext) => {
-       // ...
+    protected handleSubmit = async (model: ContactFormModel, context: FormContext) => {
+        let data = {};
+        model.attributes()
+            .forEach((field) => data = {...data, ...{[field]: model[field]}});
+
+        try {
+            await axios.post("/callback", data);
+            // show success message
+        } catch (error) {
+            if (error instanceof ValidationError) {
+                error.data.forEach(({code, ...error}) => context.addError(error as ModelError));
+                const modelElement: ModelError = error.data
+                    .reduce((carry: ModelError, error: ModelError) => carry || error);
+
+                const element: HTMLElement = modelElement && context.getDOMElement(modelElement.attribute);
+                element && element.focus();
+                return;
+            }
+            // show error message
+        }
     };
 }
