@@ -93,7 +93,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
             .scrollTo((this.childrenDom.item(currentPathIndex) as HTMLElement).offsetTop, {
                 duration: ScrollControl.scrollAnimationDelay,
                 delay: 0,
-                smooth: true
+                smooth: "easeInOutCubic",
             });
     }
 }
