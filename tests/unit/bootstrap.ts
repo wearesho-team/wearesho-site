@@ -10,9 +10,7 @@ import "./helpers/matchMedia";
 import "./helpers/MutationObserver";
 import "./helpers/localStorage";
 
-Enzyme.configure({ adapter: new Adapter() });
-
-process.env.NODE_ENV = process.env.NODE_ENV || "test";
+Enzyme.configure({adapter: new Adapter()});
 
 const placeholder = () => undefined;
 

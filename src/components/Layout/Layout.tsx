@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Router} from "react-router-dom";
+import axios from "axios";
 
 import {getRoutesWithProps} from "../../helpers/getRoutesWithProps";
 import {getLinksWithProps} from "../../helpers/getLinksWithProps";
@@ -31,6 +32,7 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
                 : Languages.en,
             isScrollDisabled: true
         };
+
         translate.setLocale(this.state.language);
     }
 
@@ -82,5 +84,6 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
         localStorage.setItem("app.language", nextLanguage);
         translate.setLocale(nextLanguage);
         this.setState({language: nextLanguage});
+        axios.defaults.headers["accept-language"] = nextLanguage;
     }
 }

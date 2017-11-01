@@ -51,17 +51,17 @@ Scenario("Empty fields", async (I) => {
 
     // name
     I.click(submitButton);
-    I.waitForElement(`${Wrappers.name}${focusClass}`, timeout);
+    I.waitForElement(`${Wrappers.name}${errorClass}`, timeout);
     I.fillField(Fields.name, CorrectValues.name);
 
     // phone
     I.click(submitButton);
-    I.waitForElement(`${Wrappers.phone}${focusClass}`, timeout);
+    I.waitForElement(`${Wrappers.phone}${errorClass}`, timeout);
     I.fillField(Fields.phone, CorrectValues.phone);
 
     // email
     I.click(submitButton);
-    I.waitForElement(`${Wrappers.email}${focusClass}`, timeout);
+    I.waitForElement(`${Wrappers.email}${errorClass}`, timeout);
     I.fillField(Fields.email, CorrectValues.email);
 });
 

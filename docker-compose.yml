@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:80"
+    image: wearesho/wearesho-site
+    restart: always
+  backend:
+    build: 
+      context: ./backend
+      args:
+        - chat_id=125391265
+        - bot_api_key=352076747:AAGG07Ebu7jRnM0XgfLBpavXE83ZZvzZkr8
+    expose:
+      - "3000"
+    image: wearesho/wearesho-site-backend
+    restart: always

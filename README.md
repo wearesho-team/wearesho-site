@@ -5,6 +5,19 @@
 
 [Visit us](https://wearesho.com)
 
+## Docker
+### Building docker container
+```bash
+docker build -t wearesho/wearesho-site . --rm
+```
+Replace BOT_API_KEY and CHAT_ID with your own values.
+*Tests will be run after build*
+### Running docker image
+After build:
+```bash
+docker run -p 49161:80 -d wearesho/wearesho-site
+```
+then front-end will be available at *http://localhost:49110*, you can change port (49161) to any value.
 ## Running tests
 To run all tests just use `npm test`
 ### E2E Tests ([CodeceptJS](https://codeceptjs.io))
