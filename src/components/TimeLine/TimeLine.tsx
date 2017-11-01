@@ -33,7 +33,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
         super(props);
 
         this.state = {
-            activeProject: document.body.className.includes("loaded") ? projects[0] : projects[projects.length - 1],
+            activeProject: !document.body.className.includes("loaded") ? projects[0] : projects[projects.length - 1],
             sliderPosition: 0,
             sliderClassName: TimeLine.sliderDefaultClassName,
         }
@@ -50,7 +50,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
         if (!document.body.className.includes("loaded")) {
             setTimeout(() => {
                 this.setState({
-                    activeProject: projects[0],
+                    activeProject: projects[projects.length - 1],
                 })
             }, ((window as any).hideTimeout || 2000) * 9);
         }

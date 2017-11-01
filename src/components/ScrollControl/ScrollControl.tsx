@@ -27,6 +27,24 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
     protected clearTimeout = smartClearTimeout.bind(this);
     protected unlisten: () => void;
 
+    // set scroll position according to location on body loaded
+    protected observer = new MutationObserver((mutations) => {
+        const {target} = mutations[0];
+
+        if (target !== document.body || target.attributes.getNamedItem("class").value !== "loaded") {
+            return;
+        }
+
+        this.context.router.history.location.state = undefined;
+        this.listenPathChange(this.context.router.history.location);
+    });
+
+    public constructor(props) {
+        super(props);
+
+        this.observer.observe(document.body, {attributeFilter: ["class"], attributes: true});
+    }
+
     public componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
         this.unlisten = this.context.router.history.listen(this.listenPathChange);
