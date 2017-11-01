@@ -6,6 +6,6 @@ import {Config} from "./data/Config/Config";
 
 axios.defaults.baseURL = Config.baseUrl;
 axios.interceptors.response.use(
-    (response) => response,
+    undefined,
     submitErrorHandler
 );

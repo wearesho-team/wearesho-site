@@ -1,10 +1,12 @@
 import * as React from "react";
 import {expect} from "chai";
+import axios from "axios";
 import {ReactWrapper, mount} from "enzyme";
 import {Form, FormContext, Model} from "react-context-form";
 
 import {ContactForm} from "../../src/components/ContactPage/ContactForm";
 import {ContactFormModel} from "../../src/models/ContactFormModel";
+import {ValidationError} from "../../src/data/ValidationError";
 
 describe("<Form/>", () => {
     let wrapper: ReactWrapper<any, any>;
@@ -56,14 +58,36 @@ describe("<Form/>", () => {
     });
 
     it("Should add errors from server on submit when fields filled wrong (if front validation incorrect)", async () => {
+        axios.defaults.baseURL = "/";
+
+        axios.interceptors.response.use(
+            undefined,
+            () => {
+                throw new ValidationError([
+                    {
+                        attribute: "phone",
+                        details: "details"
+                    },
+                    {
+                        attribute: "mail",
+                        details: "details"
+                    },
+                    {
+                        attribute: "name",
+                        details: "details"
+                    }
+                ])
+            }
+        );
+
         // tslint:disable:no-object-literal-type-assertion
         const model = {
             attributes: () => ["phone", "mail", "name", "from", "to"],
-            name: "_",
-            mail: "_",
-            phone: "0",
-            from: "25:00",
-            to: "15:60"
+            name: "",
+            mail: "",
+            phone: "",
+            from: "",
+            to: ""
         } as ContactFormModel;
 
         let addErrorTriggered = false;
@@ -87,8 +111,8 @@ describe("<Form/>", () => {
         };
 
         // connect o backend
-        // await (wrapper.instance() as any).handleSubmit(model, context);
-        // expect(focusTriggered).to.be.true;
-        // expect(addErrorTriggered).to.be.true;
+        await (wrapper.instance() as any).handleSubmit(model, context);
+        expect(focusTriggered).to.be.true;
+        expect(addErrorTriggered).to.be.true;
     })
 });
