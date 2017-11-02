@@ -34,6 +34,11 @@
     left: 0;
   }
 
+  @include breakpoint($mobile-l) {
+
+    margin: 11.5em auto 0;
+  }
+
   @include breakpoint($tablet) {
 
     @include transform(translateY(0));

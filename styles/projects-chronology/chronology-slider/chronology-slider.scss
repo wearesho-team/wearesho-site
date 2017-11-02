@@ -201,8 +201,6 @@
   &__projects {
     font-size: .813em;
     color: $color-secondary;
-
-    //@include transition-delay(.05s);
   }
 
   &__services {
@@ -211,14 +209,10 @@
     font-size: .75em;
     font-weight: $font-style-light;
     color: #A3B0B7;
-
-    //@include transition-delay(.1s);
   }
 
   &__date {
     font-size: .688em;
     color: rgba(148, 177, 188, .31);
-
-    //@include transition-delay(.15s);
   }
 }

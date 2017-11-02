@@ -29,9 +29,4 @@
   z-index: $under-zindex;
 
   @include transition(opacity 3s ease 4s);
-
-  @include breakpoint($mobile) {
-
-    display: none;
-  }
 }

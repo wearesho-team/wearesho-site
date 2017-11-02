@@ -33,6 +33,39 @@ export class ContactForm extends React.Component<undefined, undefined> {
                 onSubmit={this.handleSubmit as any}
             >
                 <div className="form-half">
+                    <div className="form__group_inline">
+                        <FormGroup
+                            className="form__group"
+                            focusClassName="in-focus"
+                            errorClassName="has-error"
+                            name="name"
+                        >
+                            <AutoValidate groupName="name" onLength={NameRange.min}>
+                                <Input
+                                    className="form__control"
+                                    transform={TransformTypes.capitalize}
+                                    maxLength={NameRange.max}
+                                    placeholder={translate("contactPage.form.placeholders.name")}
+                                />
+                            </AutoValidate>
+                            <Hint className="form__error-text"/>
+                        </FormGroup>
+                        <FormGroup
+                            name="phone"
+                            className="form__group"
+                            focusClassName="in-focus"
+                            errorClassName="has-error"
+                        >
+                            <AutoValidate groupName="phone" onLength={PhoneRange.min}>
+                                <Input
+                                    className="form__control"
+                                    placeholder={translate("contactPage.form.placeholders.phone")}
+                                    type="number"
+                                />
+                            </AutoValidate>
+                            <Hint className="form__error-text"/>
+                        </FormGroup>
+                    </div>
                     <FormGroup
                         className="form__group"
                         focusClassName="in-focus"
@@ -49,38 +82,6 @@ export class ContactForm extends React.Component<undefined, undefined> {
                         </AutoValidate>
                         <Hint className="form__error-text"/>
                     </FormGroup>
-                    <div className="form__group_inline">
-                        <FormGroup
-                            name="phone"
-                            className="form__group"
-                            focusClassName="in-focus"
-                            errorClassName="has-error"
-                        >
-                            <AutoValidate groupName="phone" onLength={PhoneRange.min}>
-                                <Input
-                                    className="form__control"
-                                    placeholder={translate("contactPage.form.placeholders.phone")}
-                                    type="number"
-                                />
-                            </AutoValidate>
-                            <Hint className="form__error-text"/>
-                        </FormGroup>
-                        <FormGroup
-                            className="form__group"
-                            focusClassName="in-focus"
-                            errorClassName="has-error"
-                            name="mail"
-                        >
-                            <AutoValidate groupName="mail">
-                                <Input
-                                    className="form__control"
-                                    placeholder={translate("contactPage.form.placeholders.mail")}
-                                    type="email"
-                                />
-                            </AutoValidate>
-                            <Hint className="form__error-text"/>
-                        </FormGroup>
-                    </div>
                 </div>
                 <div className="form-half form-half_second">
                     <p className="text_regular">{translate("contactPage.form.time.title")}</p>
