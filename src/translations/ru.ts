@@ -53,7 +53,7 @@ translate.registerTranslations("ru", {
             placeholders: {
                 name: "Ваше имя",
                 phone: "Телефон",
-                mail: "Эл.почта"
+                comment: "Комментарий"
             },
             time: {
                 title: "Мы ценим ваше время",

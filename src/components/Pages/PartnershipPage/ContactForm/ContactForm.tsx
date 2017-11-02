@@ -77,7 +77,7 @@ export class ContactForm extends React.Component<undefined, undefined> {
                                 className="form__control"
                                 transform={TransformTypes.capitalize}
                                 maxLength={NameRange.max}
-                                placeholder={translate("contactPage.form.placeholders.name")}
+                                placeholder={translate("contactPage.form.placeholders.comment")}
                             />
                         </AutoValidate>
                         <Hint className="form__error-text"/>
