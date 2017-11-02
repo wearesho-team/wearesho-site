@@ -127,8 +127,7 @@ const config = {
                                     'react',
                                     ['env', {
                                         "targets": {
-                                            "browsers": ["last 3 versions"],
-                                            "node": "current"
+                                            "browsers": ["last 3 versions", "safari >= 10", "ie >= 11"],
                                         },
                                     }],
                                 ],
@@ -150,8 +149,7 @@ const config = {
                             'react',
                             ['env', {
                                 "targets": {
-                                    "browsers": ["last 3 versions"],
-                                    "node": "current"
+                                    "browsers": ["last 3 versions", "safari >= 10", "ie >= 11"],
                                 },
                             }]
                         ],
