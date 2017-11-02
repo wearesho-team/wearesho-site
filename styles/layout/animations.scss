@@ -284,70 +284,70 @@ $indent-tablet: -66px;
 
 @keyframes change-title-part-1 {
   0% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
   13.33% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
   23.33% {
-    @include transform(translateY($indent));
+    transform: translateY($indent);
     opacity: 1;
   }
   23.34% {
     opacity: 0;
   }
   25% {
-    @include transform(translateY(-$indent));
+    transform: translateY(-$indent);
     opacity: 0;
   }
   90% {
-    @include transform(translateY(-$indent));
+    transform: translateY(-$indent);
     opacity: 1;
   }
   100% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
 }
 
 @keyframes change-title-part-2 {
   0% {
-    @include transform(translateY(-$indent));
+    transform: translateY(-$indent);
   }
   13.33% {
-    @include transform(translateY(-$indent));
+    transform: translateY(-$indent);
   }
   23.33% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
   46.66% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
   56.66% {
-    @include transform(translateY($indent));
+    transform: translateY($indent);
   }
   100% {
-    @include transform(translateY($indent));
+    transform: translateY($indent);
   }
 }
 
 @keyframes change-title-part-3 {
   0% {
-    @include transform(translateY(-$indent));
+    transform: translateY(-$indent);
   }
   46.66% {
-    @include transform(translateY(-$indent));
+    transform: translateY(-$indent);
   }
   56.66% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
   79.99% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
   90% {
-    @include transform(translateY($indent));
+    transform: translateY($indent);
   }
   100% {
-    @include transform(translateY($indent));
+    transform: translateY($indent);
   }
 }
 
@@ -355,70 +355,70 @@ $indent-tablet: -66px;
 
   @keyframes change-title-part-1 {
     0% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     13.33% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     23.33% {
-      @include transform(translateY($indent-mob));
+      transform: translateY($indent-mob);
       opacity: 1;
     }
     23.34% {
       opacity: 0;
     }
     25% {
-      @include transform(translateY(-$indent-mob));
+      transform: translateY(-$indent-mob);
       opacity: 0;
     }
     90% {
-      @include transform(translateY(-$indent-mob));
+      transform: translateY(-$indent-mob);
       opacity: 1;
     }
     100% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
   }
 
   @keyframes change-title-part-2 {
     0% {
-      @include transform(translateY(-$indent-mob));
+      transform: translateY(-$indent-mob);
     }
     13.33% {
-      @include transform(translateY(-$indent-mob));
+      transform: translateY(-$indent-mob);
     }
     23.33% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     46.66% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     56.66% {
-      @include transform(translateY($indent-mob));
+      transform: translateY($indent-mob);
     }
     100% {
-      @include transform(translateY($indent-mob));
+      transform: translateY($indent-mob);
     }
   }
 
   @keyframes change-title-part-3 {
     0% {
-      @include transform(translateY(-$indent-mob));
+      transform: translateY(-$indent-mob);
     }
     46.66% {
-      @include transform(translateY(-$indent-mob));
+      transform: translateY(-$indent-mob);
     }
     56.66% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     79.99% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     90% {
-      @include transform(translateY($indent-mob));
+      transform: translateY($indent-mob);
     }
     100% {
-      @include transform(translateY($indent-mob));
+      transform: translateY($indent-mob);
     }
   }
 }
@@ -427,70 +427,70 @@ $indent-tablet: -66px;
 
   @keyframes change-title-part-1 {
     0% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     13.33% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     23.33% {
-      @include transform(translateY($indent-tablet));
+      transform: translateY($indent-tablet);
       opacity: 1;
     }
     23.34% {
       opacity: 0;
     }
     25% {
-      @include transform(translateY(-$indent-tablet));
+      transform: translateY(-$indent-tablet);
       opacity: 0;
     }
     90% {
-      @include transform(translateY(-$indent-tablet));
+      transform: translateY(-$indent-tablet);
       opacity: 1;
     }
     100% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
   }
 
   @keyframes change-title-part-2 {
     0% {
-      @include transform(translateY(-$indent-tablet));
+      transform: translateY(-$indent-tablet);
     }
     13.33% {
-      @include transform(translateY(-$indent-tablet));
+      transform: translateY(-$indent-tablet);
     }
     23.33% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     46.66% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     56.66% {
-      @include transform(translateY($indent-tablet));
+      transform: translateY($indent-tablet);
     }
     100% {
-      @include transform(translateY($indent-tablet));
+      transform: translateY($indent-tablet);
     }
   }
 
   @keyframes change-title-part-3 {
     0% {
-      @include transform(translateY(-$indent-tablet));
+      transform: translateY(-$indent-tablet);
     }
     46.66% {
-      @include transform(translateY(-$indent-tablet));
+      transform: translateY(-$indent-tablet);
     }
     56.66% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     79.99% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     90% {
-      @include transform(translateY($indent-tablet));
+      transform: translateY($indent-tablet);
     }
     100% {
-      @include transform(translateY($indent-tablet));
+      transform: translateY($indent-tablet);
     }
   }
 }
@@ -547,36 +547,34 @@ $indent-tablet: -66px;
 // Movement of preloader elms
 @keyframes movement-left {
   from {
-    @include transform(translateX(-8px));
+    transform: translateX(-8px);
   }
   to {
-    @include transform(translateX(0));
+    transform: translateX(0);
   }
 }
 
 @keyframes movement-right {
   from {
-    @include transform(translateX(8px));
+    transform: translateX(8px);
   }
   to {
-    @include transform(translateX(0));
+    transform: translateX(0);
   }
 }
 
 // Projects chronology orbit animation
 @keyframes spin {
   100% {
-    @include transform(rotate(360deg));
+    transform: rotate(360deg);
   }
 }
 
 // Chronology slider motion animation
 @keyframes motion-blur {
   0% {
-    -webkit-filter: blur(0);
     filter: blur(0);
   } 100% {
-    -webkit-filter: blur(100px);
     filter: blur(100px);
   }
 }
@@ -615,10 +613,10 @@ $indent-tablet: -66px;
 @keyframes slide-to-left-slow-opacity {
   0% {
     opacity: 0;
-    @include transform3d(translate3d(-10%,0,0));
+    transform: translate3d(-10%,0,0);
   }
   100% {
     opacity: 1;
-    @include transform(translate3d(0,0,0));
+    transform: translate3d(0,0,0);
   }
 }

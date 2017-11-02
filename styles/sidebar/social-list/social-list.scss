@@ -26,7 +26,7 @@
   .icon {
     opacity: .2;
 
-    @include transition(opacity .3s ease);
+    transition: opacity .3s ease;
 
     &:hover {
 
@@ -65,7 +65,7 @@
 
     .icon_fill {
 
-      @include transition(fill .3s ease);
+      transition: fill .3s ease;
     }
   }
 }

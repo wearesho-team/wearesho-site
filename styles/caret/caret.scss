@@ -6,7 +6,7 @@
 
   background-color: white;
 
-  @include animation(blink 1s infinite);
+  animation: blink 1s infinite;
 
   margin-bottom: -.2em;
 }

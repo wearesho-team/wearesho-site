@@ -50,7 +50,7 @@ body {
 
     opacity: 0;
 
-    @include transition(opacity 1s ease 4s);
+    transition: opacity 1s ease 4s;
   }
 
   &.loaded {
@@ -134,7 +134,7 @@ body,
   > .section {
     will-change: transform;
 
-    @include backface-visibility(hidden);
+    backface-visibility: hidden;
   }
 
   &.up {
@@ -142,22 +142,22 @@ body,
     > .section {
 
       &.translateY-enter {
-        @include transform(translate3d(0, 100%, 0));
+        transform: translate3d(0, 100%, 0);
 
         &-active {
-          @include transition(transform .5s ease .001s);
+          transition: transform .5s ease .001s;
 
-          @include transform(none);
+          transform: none;
         }
       }
 
       &.translateY-exit {
-        @include transform(translate3d(0, -100%, 0));
+        transform: translate3d(0, -100%, 0);
 
         &-active {
-          @include transition(transform .5s ease .001s);
+          transition: transform .5s ease .001s;
 
-          @include transform(translate3d(0, -200%, 0));
+          transform: translate3d(0, -200%, 0);
         }
       }
     }
@@ -168,22 +168,22 @@ body,
     > .section {
 
       &.translateY-enter {
-        @include transform(translate3d(0, -100%, 0));
+        transform: translate3d(0, -100%, 0);
 
         &-active {
-          @include transition(transform .5s ease .001s);
+          transition: transform .5s ease .001s;
 
-          @include transform(none);
+          transform: none;
         }
       }
 
       &.translateY-exit {
-        @include transform(translate3d(0, -100%, 0));
+        transform: translate3d(0, -100%, 0);
 
         &-active {
-          @include transition(transform .5s ease .001s);
+          transition: transform .5s ease .001s;
 
-          @include transform(none);
+          transform: none;
         }
       }
     }
@@ -202,18 +202,18 @@ body,
 
       top: 50%;
 
-      @include transform(translateY(-50%));
+      transform: translateY(-50%);
 
       @include breakpoint($mobile) {
         top: auto;
 
-        @include transform(translateY(0));
+        transform: translateY(0);
       }
 
       @include breakpoint($tablet-laptop) {
         top: auto;
 
-        @include transform(translateY(0));
+        transform: translateY(0);
       }
 
       @include breakpoint($laptop-xl) {
@@ -280,7 +280,7 @@ body,
 
 // animation classes
 .showing {
-  @include animation(showing 2s ease forwards);
+  animation: showing 2s ease forwards;
 }
 
 

@@ -22,7 +22,7 @@
 
   z-index: 1;
 
-  @include transition(left .3s ease);
+  transition: left .3s ease;
 
   &:before,
   &:after {
@@ -45,9 +45,9 @@
 
     opacity: .85;
 
-    @include animation(spin 8s linear infinite);
+    animation: spin 8s linear infinite;
 
-    @include transition(opacity .3s ease);
+    transition: opacity .3s ease;
 
     @include breakpoint($laptop-medium) {
       top: 6px;
@@ -95,7 +95,7 @@
       > .slider__services,
       > .slider__date {
 
-        @include transform(translateX(-20px));
+        transform: translateX(-20px);
 
         opacity: 0;
       }
@@ -129,7 +129,7 @@
 
       background: url('images/slider-glow.svg') no-repeat;
 
-      @include transition(opacity .3s ease);
+      transition: opacity .3s ease;
 
       z-index: $under-zindex;
     }
@@ -155,7 +155,7 @@
 
         background: linear-gradient(to bottom, rgba(19, 151, 199, 1) 0%, rgba(19, 151, 199, .47) 100%);
 
-        @include transition(top .2s ease .05s);
+        transition: top .2s ease .05s;
       }
     }
   }
@@ -189,7 +189,7 @@
   &__services,
   &__date {
 
-    @include transition(all .3s ease .05s);
+    transition: all .3s ease .05s;
   }
 
   &__projects,
@@ -202,7 +202,6 @@
     font-size: .813em;
     color: $color-secondary;
 
-    //@include transition-delay(.05s);
   }
 
   &__services {
@@ -211,14 +210,10 @@
     font-size: .75em;
     font-weight: $font-style-light;
     color: #A3B0B7;
-
-    //@include transition-delay(.1s);
   }
 
   &__date {
     font-size: .688em;
     color: rgba(148, 177, 188, .31);
-
-    //@include transition-delay(.15s);
   }
 }

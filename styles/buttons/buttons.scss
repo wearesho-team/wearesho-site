@@ -12,7 +12,7 @@
 
     opacity: .6;
 
-    @include transition(opacity .3s ease);
+    transition: opacity .3s ease;
 
     &:after {
       content: '';
@@ -58,7 +58,7 @@
     font-size: 1.25em;
     color: $color-secondary;
 
-    @include transition(color .3s ease);
+    transition: color .3s ease;
 
     &:hover,
     &:active {
@@ -76,7 +76,7 @@
         box-shadow: 0 0 15px 0 rgba(51, 159, 208, .18), inset 0 0 15px rgba(51, 159, 208, .18);
       }
 
-      @include transition(box-shadow .4s ease);
+      transition: box-shadow .4s ease;
 
       > .btn-corners {
 
@@ -118,12 +118,11 @@
         border-color: $color-secondary;
         border-style: solid;
 
-        @include transition(
+        transition:
           width .2s ease,
           height .2s ease,
           border-color .2s ease,
-          color .2s ease
-        );
+          color .2s ease;
       }
 
       &:before {
@@ -200,12 +199,12 @@
 
     &:before {
 
-      @include transform(rotate(45deg));
+      transform: rotate(45deg);
     }
 
     &:after {
 
-      @include transform(rotate(-45deg));
+      transform: rotate(-45deg);
     }
   }
 }

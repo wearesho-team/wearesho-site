@@ -394,6 +394,11 @@
 
     line-height: 2.1em;
 
+    @include breakpoint($mobile) {
+
+      line-height: initial;
+    }
+
     &__item {
       margin: .7em 0;
 

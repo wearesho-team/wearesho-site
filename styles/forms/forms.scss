@@ -216,10 +216,10 @@
 
     opacity: .6;
 
-    @include transition(opacity .3s ease, box-shadow .3s ease);
+    transition: opacity .3s ease, box-shadow .3s ease;
 
     // Chrome input twitching bug fix
-    @include backface-visibility(hidden);
+    backface-visibility: hidden;
 
     &::-webkit-input-placeholder {
 
@@ -312,44 +312,44 @@
 // Extinction effect
 [placeholder]::-webkit-input-placeholder {
 
-  @include transition(all .25s ease);
+  transition: all .25s ease;
 }
 
 [placeholder]::-moz-placeholder {
 
-  @include transition(all .25s ease);
+  transition: all .25s ease;
 }
 
 [placeholder]:-moz-placeholder {
 
-  @include transition(all .25s ease);
+  transition: all .25s ease;
 }
 
 [placeholder]:-ms-input-placeholder {
 
-  @include transition(all .25s ease);
+  transition: all .25s ease;
 }
 
 [placeholder]:focus::-webkit-input-placeholder {
-  @include transform(translateX(10px));
+  transform: translateX(10px);
 
   opacity: 0;
 }
 
 [placeholder]:focus::-moz-placeholder {
-  @include transform(translateX(10px));
+  transform: translateX(10px);
 
   opacity: 0;
 }
 
 [placeholder]:focus:-moz-placeholder {
-  @include transform(translateX(10px));
+  transform: translateX(10px);
 
   opacity: 0;
 }
 
 [placeholder]:focus:-ms-input-placeholder {
-  @include transform(translateX(10px));
+  transform: translateX(10px);
 
   opacity: 0;
 }

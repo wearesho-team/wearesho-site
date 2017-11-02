@@ -81,7 +81,7 @@
     font-size: 1.875em;
     font-weight: $font-style-light;
 
-    @include transition(opacity .3s ease);
+    transition: opacity .3s ease;
 
     @include breakpoint($mobile) {
       width: 88px;

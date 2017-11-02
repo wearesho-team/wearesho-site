@@ -8,6 +8,7 @@ import {CustomAnimation} from "../../Animations/CustomAnimation/CustomAnimation"
 import {SmartBreakpoint} from "../../SmartBreakpoint/SmartBreakpoint";
 import {TimeLine} from "../../TimeLine/TimeLine";
 import {BasePage} from "../BasePage";
+import {OnMobile, OnTabletDesktop} from "../../../helpers/Breakpoints";
 
 // tslint:disable:no-magic-numbers
 const showingDelay = ((window as any).hideTimeout || 2000) * 4;
@@ -48,42 +49,77 @@ export class MainPage extends BasePage {
                     </CustomAnimation>
                     <div className="container">
                         <div className="section__half">
-                            <h4 className="section__subtitle section__subtitle marker">
-                                <CodeStyleAnimation
-                                    speed={CodeStyleAnimationSpeed.fast}
-                                    startFeature={this.startFeature}
-                                    caretTimeout={500}
-                                    delay={typingDelay}
-                                >
+                            <OnTabletDesktop>
+                                <h4 className="section__subtitle section__subtitle marker">
+                                    <CodeStyleAnimation
+                                        speed={CodeStyleAnimationSpeed.fast}
+                                        startFeature={this.startFeature}
+                                        caretTimeout={500}
+                                        delay={typingDelay}
+                                    >
+                                        {translate("mainPage.articles.whatWeDo.title")}
+                                    </CodeStyleAnimation>
+                                </h4>
+                            </OnTabletDesktop>
+                            <OnMobile>
+                                <h4 className="section__subtitle section__subtitle marker">
                                     {translate("mainPage.articles.whatWeDo.title")}
-                                </CodeStyleAnimation>
-                            </h4>
-                            <div className="services-list">
-                                <CodeStyleAnimation
-                                    speed={CodeStyleAnimationSpeed.fast}
-                                    startFeature={this.startFeature}
-                                    caretTimeout={500}
-                                    delay={typingDelay + 1200}
-                                >
-                                    {translate("mainPage.articles.whatWeDo.items.1")}
-                                    {translate("mainPage.articles.whatWeDo.items.2")}
-                                    {translate("mainPage.articles.whatWeDo.items.3")}
-                                    {translate("mainPage.articles.whatWeDo.items.4")}
-                                    {translate("mainPage.articles.whatWeDo.items.5")}
-                                </CodeStyleAnimation>
-                            </div>
+                                </h4>
+                            </OnMobile>
+                            <OnTabletDesktop>
+                                <div className="services-list">
+                                    <CodeStyleAnimation
+                                        speed={CodeStyleAnimationSpeed.fast}
+                                        startFeature={this.startFeature}
+                                        caretTimeout={500}
+                                        delay={typingDelay + 1200}
+                                    >
+                                        {translate("mainPage.articles.whatWeDo.items.1")}
+                                        {translate("mainPage.articles.whatWeDo.items.2")}
+                                        {translate("mainPage.articles.whatWeDo.items.3")}
+                                        {translate("mainPage.articles.whatWeDo.items.4")}
+                                        {translate("mainPage.articles.whatWeDo.items.5")}
+                                    </CodeStyleAnimation>
+                                </div>
+                            </OnTabletDesktop>
+                            <OnMobile>
+                                <ul className="services-list">
+                                    <li className="services-list__item">
+                                        {translate("mainPage.articles.whatWeDo.items.1")}
+                                    </li>
+                                    <li className="services-list__item">
+                                        {translate("mainPage.articles.whatWeDo.items.2")}
+                                    </li>
+                                    <li className="services-list__item">
+                                        {translate("mainPage.articles.whatWeDo.items.3")}
+                                    </li>
+                                    <li className="services-list__item">
+                                        {translate("mainPage.articles.whatWeDo.items.4")}
+                                    </li>
+                                    <li className="services-list__item">
+                                        {translate("mainPage.articles.whatWeDo.items.5")}
+                                    </li>
+                                </ul>
+                            </OnMobile>
                         </div>
                         <div className="section__half">
                             <h4 className="section__subtitle section__subtitle marker">
-                                <CodeStyleAnimation
-                                    speed={CodeStyleAnimationSpeed.medium}
-                                    startFeature={this.startFeature}
-                                    caretTimeout={500}
-                                    delay={typingDelay}
-                                >
+                                <OnTabletDesktop>
+                                    <CodeStyleAnimation
+                                        speed={CodeStyleAnimationSpeed.medium}
+                                        startFeature={this.startFeature}
+                                        caretTimeout={500}
+                                        delay={typingDelay}
+                                    >
+                                        {translate("mainPage.articles.howLong.title")}
+                                    </CodeStyleAnimation>
+                                </OnTabletDesktop>
+                                <OnMobile>
                                     {translate("mainPage.articles.howLong.title")}
-                                </CodeStyleAnimation>
-                                <span className="section__subtitle_reduced">
+                                </OnMobile>
+
+                                <OnTabletDesktop>
+                                        <span className="section__subtitle_reduced">
                                      <CodeStyleAnimation
                                          speed={CodeStyleAnimationSpeed.medium}
                                          startFeature={this.startFeature}
@@ -92,7 +128,13 @@ export class MainPage extends BasePage {
                                      >
                                          {translate("mainPage.articles.howLong.subTitle")}
                                      </CodeStyleAnimation>
-                                </span>
+                                        </span>
+                                </OnTabletDesktop>
+                                <OnMobile>
+                                    <span className="section__subtitle_reduced">
+                                        {translate("mainPage.articles.howLong.subTitle")}
+                                    </span>
+                                </OnMobile>
                             </h4>
                             <CustomAnimation
                                 startFeature={this.startFeature}

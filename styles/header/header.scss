@@ -85,7 +85,7 @@
   &:after {
     content: '';
     
-    width: 0%;
+    width: 0;
     height: 9px;
 
     position: absolute;
@@ -103,7 +103,7 @@
   &:hover {
 
     &:before {
-      @include transform(translateX(-14px));
+      transform: translateX(-14px);
 
       opacity: 1;
     }
@@ -171,13 +171,13 @@
     content: '+\00a0';
     display: inline-block;
 
-    @include transform(translateX(-6px));
+    transform: translateX(-6px);
 
     opacity: .5;
 
     font-family: $font-secondary;
 
-    @include transition(transform .3s ease, opacity .3s ease);
+    transition: transform .3s ease, opacity .3s ease;
   }
 }
 

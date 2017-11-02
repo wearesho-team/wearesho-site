@@ -36,10 +36,10 @@
   }
 
   &-body {
-    @include transition(transform .3s ease);
+    transition: transform .3s ease;
 
     &:hover {
-      @include transform(translateX(24px));
+      transform: translateX(24px);
 
       > .stage__detail {
 
@@ -54,7 +54,7 @@
     font-size: 2.938em;
     color: #C5D5E0;
 
-    @include transition(text-shadow .3s ease);
+    transition: text-shadow .3s ease;
 
     &.glow {
 
@@ -80,7 +80,7 @@
     font-weight: $font-style-regular;
     color: $color-secondary;
 
-    @include transition(opacity .3s ease);
+    transition: opacity .3s ease;
   }
 
   &__description {
@@ -96,7 +96,7 @@
 
     opacity: 0;
 
-    @include transition(opacity .3s ease);
+    transition: opacity .3s ease;
   }
 }
 

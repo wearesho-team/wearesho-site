@@ -29,7 +29,7 @@
 
     cursor: pointer;
 
-    @include transition(background-color .3s ease, -webkit-filter .3s ease, filter .3s ease);
+    transition: background-color .3s ease, -webkit-filter .3s ease, filter .3s ease;
 
     &:before,
     &:after {
@@ -53,7 +53,7 @@
 
       border: 1px solid #8DE5FF;
 
-      @include animation(pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite);
+      animation: pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite;
     }
 
     &:after {
@@ -63,7 +63,7 @@
       width: $glow-size;
       height: $glow-size;
 
-      @include transform(translate(-50%, -50%));
+      transform: translate(-50%, -50%);
 
       background-color: #8DE5FF;
 
@@ -78,7 +78,7 @@
 
         opacity: .9;
 
-        @include transition(opacity .3s ease);
+        transition: opacity .3s ease;
 
         &:hover {
 
@@ -108,7 +108,7 @@
     &:hover {
 
       .main-nav__link {
-        @include transform(scale(1.3));
+        transform: scale(1.3);
 
         color: #797979;
       }
@@ -129,6 +129,6 @@
     font-family: $font-secondary;
     color: #444D59;
 
-    @include transition(opacity .3s ease, transform .4s ease, color .3s ease);
+    transition: opacity .3s ease, transform .4s ease, color .3s ease;
   }
 }

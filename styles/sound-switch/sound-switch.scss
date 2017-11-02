@@ -15,7 +15,7 @@
 
   z-index: 1;
 
-  @include transition(opacity .3s ease);
+  transition: opacity .3s ease;
 
   @include breakpoint($mobile) {
 

@@ -52,11 +52,14 @@ const config = {
         devtool: debug ? "source-map" : false,
 
         resolve: {
-            extensions: [".ts", ".tsx", ".js", ".json", ".jsx",],
+            extensions: [".ts", ".tsx", ".js", ".json", ".jsx", ".css",],
             modules: [
                 path.resolve('node_modules'),
                 path.resolve('src'),
             ],
+            alias: {
+                normalize: path.join(__dirname, '/node_modules/normalize.css'),
+            }
         },
 
         module: {
@@ -64,12 +67,7 @@ const config = {
                 {
                     test: /\.(css|scss)$/,
                     loader: ExtractTextPlugin.extract({
-                            fallback: {
-                                loader: 'style-loader',
-                                options: {
-                                    sourceMap: debug,
-                                }
-                            },
+                            fallback: "style-loader",
                             use: [
                                 {
                                     loader: 'css-loader',
@@ -82,7 +80,7 @@ const config = {
                                     options: {
                                         plugins: function (loader) {
                                             const plugins = [
-                                                require('autoprefixer')(),
+                                                require('autoprefixer')({remove: false}),
                                             ];
                                             if (!debug) {
                                                 plugins.push(require('cssnano')());
@@ -136,8 +134,7 @@ const config = {
                         },
                         "awesome-typescript-loader",
                     ],
-                }
-                ,
+                },
                 {
                     test: /\.jsx?$/,
                     exclude:
@@ -171,6 +168,7 @@ const config = {
             }),
             new webpack.NamedModulesPlugin(),
             new CleanWebpackPlugin([path.resolve('./web')]),
+            new webpack.IgnorePlugin(/caniuse-lite\/data\/regions/),
             new HtmlWebpackPlugin({
                 title: "Wearesho",
                 template: path.resolve('./templates/index.ejs'),
@@ -256,6 +254,15 @@ if (debug) {
                 },
                 optipng: {
                     optimizationLevel: 4,
+                },
+                svgo: {
+                    removeEmptyAttrs: true,
+                    moveElemsAttrsToGroup: true,
+                    collapseGroups: true,
+                    convertStyleToAttrs: true,
+                    cleanupIDs: true,
+                    minifyStyles: true,
+                    cleanupAttrs: true,
                 },
                 pngquant: {
                     quality: '75-90',

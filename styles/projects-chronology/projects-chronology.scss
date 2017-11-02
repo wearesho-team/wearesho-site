@@ -213,11 +213,11 @@
 
         position: absolute;
 
-        @include transition(width .3s ease,
+        transition: width .3s ease,
                 height .3s ease,
                 opacity .3s ease,
                 background-color .3s ease,
-                border-radius .3s ease);
+                border-radius .3s ease;
       }
 
       &:after {
@@ -263,9 +263,9 @@
           -webkit-filter: blur(1px);
           filter: blur(1px);
 
-          @include animation(pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite);
+          animation: pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite;
 
-          @include transition(border-color .3s ease);
+          transition: border-color .3s ease;
         }
 
         &:after {
@@ -276,7 +276,7 @@
 
           background-color: #fff;
 
-          @include transition(background-color .3s ease);
+          transition: background-color .3s ease;
         }
 
         &:hover,
@@ -300,7 +300,7 @@
         }
 
         &.is-active {
-          @include transform(scale(1.5));
+          transform: scale(1.5);
 
           > .prj-chronology__div-glow {
             //background: radial-gradient(ellipse at center, rgba(255, 198, 10, .78) 0%, rgba(255, 198, 10, 0) 60%, rgba(255, 198, 10, 0) 100%);
@@ -340,7 +340,7 @@
 
     cursor: pointer;
 
-    @include transition(opacity .3s ease);
+    transition: opacity .3s ease;
 
     z-index: $under-zindex;
   }

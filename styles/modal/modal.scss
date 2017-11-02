@@ -7,7 +7,7 @@
 .prj-chronology,
 .slider {
 
-  @include transition(opacity .5s ease-out);
+  transition: opacity .5s ease-out;
 }
 
 .ReactModal__Body--open {
@@ -61,7 +61,7 @@
 
   opacity: 0;
 
-  @include transition(opacity .5s ease);
+  transition: opacity .5s ease;
 
   @include breakpoint($tablet) {
 

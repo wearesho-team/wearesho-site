@@ -21,7 +21,7 @@
   top: 50%;
   right: -330px;
 
-  @include transform(translateY(-50%));
+  transform: translateY(-50%);
 
   margin: 1.7em auto 0;
 
@@ -36,7 +36,7 @@
 
   @include breakpoint($tablet) {
 
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
 
   @include breakpoint($tablet-p) {
@@ -44,7 +44,7 @@
     right: 0;
     left: 24px;
 
-    @include transform(translateY(0));
+    transform: translateY(0);
 
     margin: 0 auto;
   }
@@ -60,7 +60,7 @@
     top: 13%;
     right: -136px;
 
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
 
   @include breakpoint($laptop-medium) {
@@ -95,7 +95,7 @@
 
     margin: -150px 0 0 -148px;
 
-    @include transition(opacity .3s ease);
+    transition: opacity .3s ease;
 
     @include breakpoint($mobile) {
 
@@ -144,10 +144,9 @@
 
         border: 1px solid rgb(206, 206, 206);
 
-        -webkit-filter: blur(1px);
         filter: blur(1px);
 
-        @include animation(pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite);
+        animation: pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite;
       }
 
       &:after {
@@ -166,12 +165,11 @@
 
         background: #fff;
 
-        -webkit-filter: blur(3px);
         filter: blur(3px);
 
         opacity: .75;
 
-        @include transition(opacity .3s ease);
+        transition: opacity .3s ease;
 
         z-index: $under-zindex;
       }
