@@ -53,14 +53,23 @@ translate.registerTranslations("ru", {
             placeholders: {
                 name: "Ваше имя",
                 phone: "Телефон",
-                mail: "Эл.почта"
+                mail: "Эл.почта",
+                comment: "Коментарий"
             },
             time: {
                 title: "Мы ценим ваше время",
                 subTitle: "Укажите удобное время для обсуждения проекта:",
                 from: "с",
                 to: "до"
-            }
+            },
+            submit: {
+                success: {
+                    thanks: "спасибо за проявленный интерес к Студии.",
+                    callBack: "Мы обязательно перезвоним Вам в указанное время:",
+                    withRespect: "С уважением, команда Студии"
+                },
+                fail: {}
+            },
         },
         support: {
             title: "Техническая поддержка",
@@ -88,8 +97,9 @@ translate.registerTranslations("ru", {
             name: `Латиница/кириллица от ${NameRange.min} до ${NameRange.max} символов`,
             time: "Некорректное время"
         },
-        empty: "Заполните поле"
+        empty: "Заполните поле",
     },
     Kharkiv: "Харьков",
     Ukraine: "Украина",
+    SHO: "ШО",
 });

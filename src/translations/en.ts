@@ -49,14 +49,23 @@ translate.registerTranslations("en", {
             placeholders: {
                 name: "Your name",
                 phone: "Phone",
-                mail: "Email"
+                mail: "Email",
+                comment: "A comment"
             },
             time: {
                 title: "We appreciate your time",
                 subTitle: "Specify the time you need to discuss the project:",
                 from: "from",
                 to: "to"
-            }
+            },
+            submit: {
+                success: {
+                    thanks: "thank you for showing interest in the Studio.",
+                    callBack: "We will call you back at the specified time:",
+                    withRespect: "Sincerely, the team of Studio"
+                },
+                fail: {}
+            },
         },
         support: {
             title: "Technical support",
@@ -88,4 +97,5 @@ translate.registerTranslations("en", {
     },
     Kharkiv: "Kharkiv",
     Ukraine: "Ukraine",
+    SHO: "SHO",
 });

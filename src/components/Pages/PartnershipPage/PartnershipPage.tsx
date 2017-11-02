@@ -45,19 +45,6 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                     <h2 className="section__title">{translate("contactPage.title")}</h2>
                     <div className="section__half half_first">
                         <OnDesktop>
-                            <p className="section__text">
-                                {translate("contactPage.form.titleExtended")}
-                            </p>
-                            <p className="section__text request-sent">
-                                <span className="section__text_increased">Мефодий,</span>
-                                <span>спасибо за проявленный интерес к Студии.</span>
-                                <span>Мы обязательно перезвоним Вам в указанное время:</span>
-                                <span className="section__text_indented">с
-                                    <span className="section__text_increased">&nbsp;9:00&nbsp;</span>до
-                                    <span className="section__text_increased">&nbsp;18:00&nbsp;</span>
-                                </span>
-                                <span>С уважением, команда Студии &laquo;ШО?!&raquo;</span>
-                            </p>
                             <ContactForm/>
                         </OnDesktop>
                     </div>
