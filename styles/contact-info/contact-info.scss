@@ -109,10 +109,12 @@
       margin-bottom: 2em;
     }
 
-    @include breakpoint($mobile-l) {
-      display: inline-block;
+    &:first-child {
 
-      vertical-align: top;
+      @include breakpoint($mobile-l) {
+
+        @include span(8 of 12 inside no-gutters);
+      }
     }
 
     & + & {

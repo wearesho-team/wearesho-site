@@ -7,15 +7,11 @@
 .prj-chronology,
 .slider {
 
-  transition: opacity .5s ease-out;
+  transition: opacity 1s ease-out;
 }
 
 .ReactModal__Body--open {
-
-  #content-overlay {
-
-    pointer-events: none;
-  }
+  touch-action: none;
 
   .header,
   .sidebar {
@@ -57,11 +53,9 @@
 
   z-index: (map-get($zindex, modal) - 1);
 
-  touch-action: none;
-
   opacity: 0;
 
-  transition: opacity .5s ease;
+  transition: opacity 1s ease;
 
   @include breakpoint($tablet) {
 
@@ -102,8 +96,6 @@
     height: 100%;
 
     overflow-y: scroll;
-
-    touch-action: auto;
   }
 
   @include breakpoint($tablet) {
@@ -113,8 +105,6 @@
     left: 0;
 
     margin: auto;
-
-    touch-action: none;
   }
 
   @include breakpoint($tablet-p) {

@@ -250,14 +250,33 @@
 
             display: inline-block;
           }
+
+          &:first-child {
+
+            @include breakpoint($mobile-p) {
+
+              display: block;
+            }
+          }
+        }
+
+        &-variable {
+
+          @include breakpoint($mobile-p) {
+
+            display: inline;
+          }
         }
       }
 
-      > span {
+      &:last-child {
 
-        @include breakpoint($mobile) {
+        > .section__title-part-variable {
 
-          display: block;
+          @include breakpoint($mobile-p) {
+
+            display: block;
+          }
         }
       }
 

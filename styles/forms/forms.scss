@@ -258,6 +258,11 @@
   .btn_primary {
     margin-top: 3.3em;
 
+    @include breakpoint($mobile) {
+
+      font-size: 1.267em;
+    }
+
     @include breakpoint($tablet-l) {
 
       margin-top: 0;
