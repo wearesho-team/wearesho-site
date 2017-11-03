@@ -241,11 +241,6 @@ body,
 
   .section {
 
-    > .align-container {
-
-      @include clearfix;
-    }
-
     @include breakpoint($mobile-p) {
 
       padding: 6.4em 1.875em 0;
@@ -274,6 +269,11 @@ body,
     @include breakpoint($laptop-medium) {
 
       padding: 6.8em 13%;
+    }
+
+    > .align-container {
+
+      @include clearfix;
     }
   }
 }

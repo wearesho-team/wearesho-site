@@ -52,7 +52,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> {
             .forEach((field) => data = {...data, ...{[field]: model[field]}});
 
         try {
-            const d = await axios.post("/callback", data);
+            await axios.post("/callback", data);
 
             this.setState({
                 status: SubmitStatus.success,
@@ -74,7 +74,10 @@ export class ContactForm extends React.Component<undefined, ContactFormState> {
             }
 
             this.setState({
-                status: SubmitStatus.fail
+                status: SubmitStatus.fail,
+                data: {
+                    name: data.name
+                }
             });
         }
     };
@@ -83,10 +86,10 @@ export class ContactForm extends React.Component<undefined, ContactFormState> {
         const {name, from, to} = this.state.data;
 
         return (
-            <p className="section__text request-sent">
+            <p className="section__text request request-sent">
                 <span className="section__text_increased">{name}</span>
-                <span>{translate("contactPage.form.submit.success.thanks")}</span>
-                <span>{translate("contactPage.form.submit.success.callBack")}</span>
+                <span className="inline">{translate("contactPage.form.submit.success.thanks")}</span>
+                <span className="inline">{translate("contactPage.form.submit.success.callBack")}</span>
                 <span className="section__text_indented">
                     {translate("contactPage.form.time.from")}
                     <span className="section__text_increased">&nbsp;{from}&nbsp;</span>
@@ -94,16 +97,20 @@ export class ContactForm extends React.Component<undefined, ContactFormState> {
                     <span className="section__text_increased">&nbsp;{to}&nbsp;</span>
                 </span>
                 <span>
-                    {translate("contactPage.form.submit.success.withRespect")} &laquo;{translate("SHO")}?!&raquo;
+                    {translate("contactPage.form.submit.withRespect")} &laquo;{translate("SHO")}?!&raquo;
                 </span>
             </p>
         );
     }
 
     protected get ErrorMessage(): JSX.Element {
+        const {name} = this.state.data;
+
         return (
-            <p className="section__text request-error">
-                OSHIBKA
+            <p className="section__text request request-error">
+                <span className="section__text_increased">{name}</span>
+                <span>{translate("contactPage.form.submit.fail.text")}</span>
+                {translate("contactPage.form.submit.withRespect")} &laquo;{translate("SHO")}?!&raquo;
             </p>
         );
     }

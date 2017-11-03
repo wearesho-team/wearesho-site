@@ -4,28 +4,30 @@
 .form {
   position: relative;
 
-  margin-top: 3.375em;
-
   font-size: 1.067em;
 
-  @include breakpoint($mobile) {
+  .section__text {
+    margin-bottom: 3.375em;
 
-    margin-top: 0;
-  }
+    @include breakpoint($mobile) {
 
-  @include breakpoint($tablet) {
+      margin-bottom: 0;
+    }
 
-    margin-top: 0;
-  }
+    @include breakpoint($tablet) {
 
-  @include breakpoint($laptop-small) {
+      margin-bottom: 0;
+    }
 
-    margin-top: 0;
-  }
+    @include breakpoint($laptop-small) {
 
-  @include breakpoint($laptop-large) {
+      margin-bottom: 0;
+    }
 
-    margin-top: 2em;
+    @include breakpoint($laptop-large) {
+
+      margin-bottom: 2em;
+    }
   }
 
   > .form-half {
@@ -360,7 +362,7 @@
 }
 
 
-.request-sent {
+.request {
   line-height: 1.733em;
 
   > span {
@@ -374,6 +376,14 @@
     @include breakpoint($laptop-small) {
 
       display: inline;
+    }
+
+    &.inline {
+
+      @include breakpoint($laptop-medium) {
+
+        display: inline;
+      }
     }
 
     &:first-child,
@@ -449,6 +459,7 @@
   .section__text_increased {
     font-size: 1.2em;
     font-weight: $font-style-medium;
+    color: #C5D5E0;
   }
 
   .section__text_indented {

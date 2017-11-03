@@ -97,7 +97,6 @@ const config = {
                                             path.resolve(__dirname + './styles'),
                                             path.resolve(__dirname, "./node_modules/compass-mixins/lib"),
                                         ],
-                                        sourceMap: debug,
                                     },
                                 },
                             ],

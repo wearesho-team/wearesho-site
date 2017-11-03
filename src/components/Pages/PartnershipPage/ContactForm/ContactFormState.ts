@@ -4,7 +4,7 @@ export interface ContactFormState {
     status: SubmitStatus,
     data?: {
         name: string,
-        from: string,
-        to: string
+        from?: string,
+        to?: string
     }
 }

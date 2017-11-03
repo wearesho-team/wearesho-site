@@ -222,11 +222,14 @@
   .btn {
 
     @include breakpoint($mobile) {
+      display: none;
 
       font-size: 1.267em;
     }
 
     @include breakpoint($mobile-p) {
+
+
       @include span(8 of 12 inside no-gutters);
 
       float: none;
@@ -283,6 +286,11 @@
     margin: 3.5em 0 2.5em;
 
     text-align: left;
+
+    @include breakpoint($mobile-p) {
+
+      margin: 4.5em 0 2.5em;
+    }
 
     &__item {
       width: $item-width;
