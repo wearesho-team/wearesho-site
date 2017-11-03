@@ -62,16 +62,16 @@ export class MainPage extends BasePage {
                                 </h4>
                             </OnTabletDesktop>
                             <OnMobile>
-                                <h4 className="section__subtitle section__subtitle marker">
-                                    <CodeStyleAnimation
-                                        speed={CodeStyleAnimationSpeed.fast}
-                                        startFeature={this.startFeature}
-                                        caretTimeout={500}
-                                        delay={typingDelay}
-                                    >
+                                <CustomAnimation
+                                    startFeature={this.startFeature}
+                                    actionClassName="showing"
+                                    duration={2000}
+                                    delay={showingDelay}
+                                >
+                                    <h4 className="section__subtitle section__subtitle marker">
                                         {translate("mainPage.articles.whatWeDo.title")}
-                                    </CodeStyleAnimation>
-                                </h4>
+                                    </h4>
+                                </CustomAnimation>
                             </OnMobile>
                             <OnTabletDesktop>
                                 <div className="services-list">
@@ -92,10 +92,10 @@ export class MainPage extends BasePage {
                             <OnMobile>
                                 <div className="services-list">
                                     <CodeStyleAnimation
-                                        speed={CodeStyleAnimationSpeed.fast}
+                                        speed={CodeStyleAnimationSpeed.medium}
                                         startFeature={this.startFeature}
                                         caretTimeout={500}
-                                        delay={typingDelay + 1200}
+                                        delay={typingDelay}
                                     >
                                         {translate("mainPage.articles.whatWeDo.items.1")}
                                         {translate("mainPage.articles.whatWeDo.items.2")}
@@ -119,14 +119,16 @@ export class MainPage extends BasePage {
                                     </CodeStyleAnimation>
                                 </OnTabletDesktop>
                                 <OnMobile>
-                                    <CodeStyleAnimation
-                                        speed={CodeStyleAnimationSpeed.medium}
+                                    <CustomAnimation
                                         startFeature={this.startFeature}
-                                        caretTimeout={500}
-                                        delay={typingDelay + 3200}
+                                        actionClassName="showing"
+                                        duration={2000}
+                                        delay={showingDelay}
                                     >
+                                        <span>
                                         {translate("mainPage.articles.howLong.title")}
-                                    </CodeStyleAnimation>
+                                        </span>
+                                    </CustomAnimation>
                                 </OnMobile>
                                 <OnTabletDesktop>
                                     <span className="section__subtitle_reduced">
@@ -142,14 +144,16 @@ export class MainPage extends BasePage {
                                 </OnTabletDesktop>
                                 <OnMobile>
                                     <span className="section__subtitle_reduced">
-                                        <CodeStyleAnimation
-                                            speed={CodeStyleAnimationSpeed.medium}
+                                        <CustomAnimation
                                             startFeature={this.startFeature}
-                                            caretTimeout={500}
-                                            delay={typingDelay + 3700}
+                                            actionClassName="showing"
+                                            duration={2000}
+                                            delay={showingDelay}
                                         >
-                                            {translate("mainPage.articles.howLong.subTitle")}
-                                        </CodeStyleAnimation>
+                                            <span>
+                                                {translate("mainPage.articles.howLong.subTitle")}
+                                            </span>
+                                        </CustomAnimation>
                                     </span>
                                 </OnMobile>
                             </h4>
@@ -184,7 +188,7 @@ export class MainPage extends BasePage {
                                     startFeature={this.startFeature}
                                     actionClassName="showing"
                                     duration={2000}
-                                    delay={showingDelay + 5200}
+                                    delay={showingDelay}
                                 >
                                     <ul className="clients-list">
                                         <li className="clients-list__item">

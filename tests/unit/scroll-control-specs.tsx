@@ -7,6 +7,8 @@ import {useFakeTimers, SinonFakeTimers} from "sinon";
 
 import {ScrollControl} from "../../src/components/ScrollControl";
 import {routeProps} from "../../src/data/routeProps";
+import {RouterContext} from "../../src/data/RouterContext";
+import {LayoutContext} from "../../src/components/Layout/LayoutContext";
 // tslint:disable:no-magic-numbers
 describe("<ScrollControl/>", () => {
     let wrapper: ReactWrapper<undefined, undefined>;
@@ -91,5 +93,59 @@ describe("<ScrollControl/>", () => {
         timer.tick(ScrollControl.scrollListenDelay);
 
         expect(history.location.pathname).to.equal(routeProps[0].path);
+    });
+
+    it("Should set page offset on mount according to url", () => {
+
+        // node.componentDidMount();
+
+
+        Object.defineProperty(document.body, "attributes", {
+            configurable: true,
+            get: () => {
+                return {
+                    getNamedItem: () => {
+                        return {
+                            value: "loaded"
+                        }
+                    }
+                }
+            }
+        });
+
+        (MutationObserver as any).mutations[0].target = document.body;
+
+        let pathChanged = false;
+
+        // class ScrollControlMock extends ScrollControl {
+        //
+        //     constructor() {
+        //         super();
+        //         super.context = {
+        //             router: {
+        //                 history: {
+        //                     location: {
+        //                         state: "someState"
+        //                     },
+        //                     push: () => undefined,
+        //                     listen: () => undefined
+        //                 },
+        //                 route: {
+        //                     location: ""
+        //                 }
+        //             } as any
+        //         };
+        //
+        //         super.listenPathChange = () => {
+        //             pathChanged = true
+        //         };
+        //
+        //         super();
+        //     }
+        //
+        // }
+
+        node = new ScrollControlMock();
+
     });
 });
