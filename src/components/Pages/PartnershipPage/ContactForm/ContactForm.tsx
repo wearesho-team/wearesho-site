@@ -52,7 +52,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> {
             .forEach((field) => data = {...data, ...{[field]: model[field]}});
 
         try {
-            const d = await axios.post("/callback", data);
+            await axios.post("/callback", data);
 
             this.setState({
                 status: SubmitStatus.success,

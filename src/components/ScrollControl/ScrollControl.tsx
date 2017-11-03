@@ -39,15 +39,10 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
         this.listenPathChange(this.context.router.history.location);
     });
 
-    public constructor(props) {
-        super(props);
-
-        this.observer.observe(document.body, {attributeFilter: ["class"], attributes: true});
-    }
-
     public componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
         this.unlisten = this.context.router.history.listen(this.listenPathChange);
+        this.observer.observe(document.body, {attributeFilter: ["class"], attributes: true});
     }
 
     public componentWillUnmount() {
@@ -114,5 +109,5 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
                 delay: 0,
                 smooth: "easeInOutCubic",
             });
-    }
+    };
 }
