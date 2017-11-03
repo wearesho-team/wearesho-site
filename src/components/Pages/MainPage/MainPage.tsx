@@ -63,7 +63,14 @@ export class MainPage extends BasePage {
                             </OnTabletDesktop>
                             <OnMobile>
                                 <h4 className="section__subtitle section__subtitle marker">
-                                    {translate("mainPage.articles.whatWeDo.title")}
+                                    <CodeStyleAnimation
+                                        speed={CodeStyleAnimationSpeed.fast}
+                                        startFeature={this.startFeature}
+                                        caretTimeout={500}
+                                        delay={typingDelay}
+                                    >
+                                        {translate("mainPage.articles.whatWeDo.title")}
+                                    </CodeStyleAnimation>
                                 </h4>
                             </OnMobile>
                             <OnTabletDesktop>
@@ -83,23 +90,20 @@ export class MainPage extends BasePage {
                                 </div>
                             </OnTabletDesktop>
                             <OnMobile>
-                                <ul className="services-list">
-                                    <li className="services-list__item">
+                                <div className="services-list">
+                                    <CodeStyleAnimation
+                                        speed={CodeStyleAnimationSpeed.fast}
+                                        startFeature={this.startFeature}
+                                        caretTimeout={500}
+                                        delay={typingDelay + 1200}
+                                    >
                                         {translate("mainPage.articles.whatWeDo.items.1")}
-                                    </li>
-                                    <li className="services-list__item">
                                         {translate("mainPage.articles.whatWeDo.items.2")}
-                                    </li>
-                                    <li className="services-list__item">
                                         {translate("mainPage.articles.whatWeDo.items.3")}
-                                    </li>
-                                    <li className="services-list__item">
                                         {translate("mainPage.articles.whatWeDo.items.4")}
-                                    </li>
-                                    <li className="services-list__item">
                                         {translate("mainPage.articles.whatWeDo.items.5")}
-                                    </li>
-                                </ul>
+                                    </CodeStyleAnimation>
+                                </div>
                             </OnMobile>
                         </div>
                         <div className="section__half">
@@ -115,51 +119,92 @@ export class MainPage extends BasePage {
                                     </CodeStyleAnimation>
                                 </OnTabletDesktop>
                                 <OnMobile>
-                                    {translate("mainPage.articles.howLong.title")}
+                                    <CodeStyleAnimation
+                                        speed={CodeStyleAnimationSpeed.medium}
+                                        startFeature={this.startFeature}
+                                        caretTimeout={500}
+                                        delay={typingDelay + 3200}
+                                    >
+                                        {translate("mainPage.articles.howLong.title")}
+                                    </CodeStyleAnimation>
                                 </OnMobile>
-
                                 <OnTabletDesktop>
-                                        <span className="section__subtitle_reduced">
-                                     <CodeStyleAnimation
-                                         speed={CodeStyleAnimationSpeed.medium}
-                                         startFeature={this.startFeature}
-                                         caretTimeout={500}
-                                         delay={typingDelay + 500}
-                                     >
-                                         {translate("mainPage.articles.howLong.subTitle")}
-                                     </CodeStyleAnimation>
-                                        </span>
+                                    <span className="section__subtitle_reduced">
+                                        <CodeStyleAnimation
+                                            speed={CodeStyleAnimationSpeed.medium}
+                                            startFeature={this.startFeature}
+                                            caretTimeout={500}
+                                            delay={typingDelay + 500}
+                                        >
+                                            {translate("mainPage.articles.howLong.subTitle")}
+                                        </CodeStyleAnimation>
+                                    </span>
                                 </OnTabletDesktop>
                                 <OnMobile>
                                     <span className="section__subtitle_reduced">
-                                        {translate("mainPage.articles.howLong.subTitle")}
+                                        <CodeStyleAnimation
+                                            speed={CodeStyleAnimationSpeed.medium}
+                                            startFeature={this.startFeature}
+                                            caretTimeout={500}
+                                            delay={typingDelay + 3700}
+                                        >
+                                            {translate("mainPage.articles.howLong.subTitle")}
+                                        </CodeStyleAnimation>
                                     </span>
                                 </OnMobile>
                             </h4>
-                            <CustomAnimation
-                                startFeature={this.startFeature}
-                                actionClassName="showing"
-                                duration={2000}
-                                delay={showingDelay + 2000}
-                            >
-                                <ul className="clients-list">
-                                    <li className="clients-list__item">
-                                        <a href="#" className="clients-list__link">NIKO Holding</a>
-                                        <span className="clients-list__text">
+                            <OnTabletDesktop>
+                                <CustomAnimation
+                                    startFeature={this.startFeature}
+                                    actionClassName="showing"
+                                    duration={2000}
+                                    delay={showingDelay + 2000}
+                                >
+                                    <ul className="clients-list">
+                                        <li className="clients-list__item">
+                                            <a href="#" className="clients-list__link">NIKO Holding</a>
+                                            <span className="clients-list__text">
                                             {translate("hashTags.autodealer")}&nbsp;
-                                            {translate("hashTags.logistics")}&nbsp;
-                                            {translate("hashTags.finances")}
+                                                {translate("hashTags.logistics")}&nbsp;
+                                                {translate("hashTags.finances")}
                                         </span>
-                                    </li>
-                                    <li className="clients-list__item">
-                                        <a href="#" className="clients-list__link">Infinance</a>
-                                        <span className="clients-list__text">
+                                        </li>
+                                        <li className="clients-list__item">
+                                            <a href="#" className="clients-list__link">Infinance</a>
+                                            <span className="clients-list__text">
                                             {translate("hashTags.crediting")}&nbsp;
-                                            {translate("hashTags.finances")}
+                                                {translate("hashTags.finances")}
                                         </span>
-                                    </li>
-                                </ul>
-                            </CustomAnimation>
+                                        </li>
+                                    </ul>
+                                </CustomAnimation>
+                            </OnTabletDesktop>
+                            <OnMobile>
+                                <CustomAnimation
+                                    startFeature={this.startFeature}
+                                    actionClassName="showing"
+                                    duration={2000}
+                                    delay={showingDelay + 5200}
+                                >
+                                    <ul className="clients-list">
+                                        <li className="clients-list__item">
+                                            <a href="#" className="clients-list__link">NIKO Holding</a>
+                                            <span className="clients-list__text">
+                                            {translate("hashTags.autodealer")}&nbsp;
+                                                {translate("hashTags.logistics")}&nbsp;
+                                                {translate("hashTags.finances")}
+                                        </span>
+                                        </li>
+                                        <li className="clients-list__item">
+                                            <a href="#" className="clients-list__link">Infinance</a>
+                                            <span className="clients-list__text">
+                                            {translate("hashTags.crediting")}&nbsp;
+                                                {translate("hashTags.finances")}
+                                        </span>
+                                        </li>
+                                    </ul>
+                                </CustomAnimation>
+                            </OnMobile>
                         </div>
                     </div>
                     <SmartBreakpoint match="min-width: 1024px">
