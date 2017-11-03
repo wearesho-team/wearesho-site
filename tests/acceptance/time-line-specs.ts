@@ -10,8 +10,8 @@ Scenario("Project selection", async (I) => {
     I.wait(2);
     I.waitForElement(".prj-chronology", timeout);
 
+    I.wait(7);
     I.waitForElement(".container .is-filled", timeout);
-    I.wait(1);
     I.click(".container .is-filled");
 
     const offset = await I.executeScript(() => {
