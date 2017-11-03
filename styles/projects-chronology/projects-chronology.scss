@@ -260,11 +260,11 @@
 
           border: 1px solid rgb(206, 206, 206);
 
-          -webkit-filter: blur(1px);
           filter: blur(1px);
 
-          animation: pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite;
+          opacity: 0;
 
+          animation: pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite;
           transition: border-color .3s ease;
         }
 

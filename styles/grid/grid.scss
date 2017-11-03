@@ -107,8 +107,9 @@ body.loaded {
     backface-visibility: hidden;
 
     @include breakpoint($mobile) {
-
       @include span(4 of 12 inside no-gutters);
+
+      border-color: rgba(244, 244, 244, .05);
     }
 
     @include breakpoint($tablet-p) {
