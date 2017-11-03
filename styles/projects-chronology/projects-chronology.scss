@@ -263,6 +263,8 @@
           -webkit-filter: blur(1px);
           filter: blur(1px);
 
+          opacity: 0;
+
           @include animation(pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite);
 
           @include transition(border-color .3s ease);

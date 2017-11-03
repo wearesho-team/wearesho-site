@@ -49,7 +49,7 @@ translate.registerTranslations("en", {
             placeholders: {
                 name: "Your name",
                 phone: "Phone",
-                mail: "Email"
+                comment: "Comment"
             },
             time: {
                 title: "We appreciate your time",
