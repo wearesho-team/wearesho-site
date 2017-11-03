@@ -52,6 +52,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
 
     public componentWillUnmount() {
         window.removeEventListener("scroll", this.handleScroll);
+        this.observer.disconnect();
         this.unlisten();
     }
 

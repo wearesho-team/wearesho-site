@@ -7,9 +7,11 @@ import {Form, FormContext, Model} from "react-context-form";
 import {ContactForm} from "../../src/components/Pages/PartnershipPage/ContactForm/ContactForm";
 import {ContactFormModel} from "../../src/models/ContactFormModel";
 import {ValidationError} from "../../src/data/ValidationError";
+import {ContactFormState} from "../../src/components/Pages/PartnershipPage/ContactForm/ContactFormState";
+import {SubmitStatus} from "../../src/components/Pages/PartnershipPage/ContactForm/SubmitStatus";
 
 describe("<Form/>", () => {
-    let wrapper: ReactWrapper<any, any>;
+    let wrapper: ReactWrapper<any, ContactFormState>;
 
     beforeEach(() => {
         wrapper = mount(<ContactForm/>);
@@ -36,7 +38,6 @@ describe("<Form/>", () => {
         const model = form.state.model as ContactFormModel;
 
         model.name = undefined;
-        model.mail = undefined;
         model.phone = undefined;
         model.from = undefined;
         model.to = undefined;
@@ -47,7 +48,6 @@ describe("<Form/>", () => {
         expect(model.hasErrors()).to.be.true;
 
         model.name = "_";
-        model.mail = "_";
         model.phone = "0";
         model.from = "25:00";
         model.to = "12:60";
@@ -60,7 +60,7 @@ describe("<Form/>", () => {
     it("Should add errors from server on submit when fields filled wrong (if front validation incorrect)", async () => {
         axios.defaults.baseURL = "/";
 
-        axios.interceptors.response.use(
+        let interceptor = axios.interceptors.response.use(
             undefined,
             () => {
                 throw new ValidationError([
@@ -69,7 +69,7 @@ describe("<Form/>", () => {
                         details: "details"
                     },
                     {
-                        attribute: "mail",
+                        attribute: "from",
                         details: "details"
                     },
                     {
@@ -82,9 +82,8 @@ describe("<Form/>", () => {
 
         // tslint:disable:no-object-literal-type-assertion
         const model = {
-            attributes: () => ["phone", "mail", "name", "from", "to"],
+            attributes: () => ["phone", "name", "from", "to"],
             name: "",
-            mail: "",
             phone: "",
             from: "",
             to: ""
@@ -110,9 +109,60 @@ describe("<Form/>", () => {
             isLoading: false,
         };
 
-        // connect o backend
         await (wrapper.instance() as any).handleSubmit(model, context);
         expect(focusTriggered).to.be.true;
         expect(addErrorTriggered).to.be.true;
-    })
+
+        expect(wrapper.instance().state.status).to.equal(SubmitStatus.standBy);
+
+        axios.interceptors.request.eject(interceptor);
+    });
+
+    it("Should show success message on success submit", async () => {
+        axios.defaults.baseURL = "/";
+
+        let interceptor = axios.interceptors.response.use(
+            undefined,
+            () => undefined
+        );
+
+        // tslint:disable:no-object-literal-type-assertion
+        const model = {
+            attributes: () => ["phone", "name", "from", "to"],
+            name: "",
+            phone: "",
+            from: "",
+            to: ""
+        } as ContactFormModel;
+
+        await (wrapper.instance() as any).handleSubmit(model, undefined);
+        expect(wrapper.instance().state.status).to.equal(SubmitStatus.success);
+
+        axios.interceptors.request.eject(interceptor);
+    });
+
+    it("Should show error message on fail submit", async () => {
+        axios.defaults.baseURL = "/";
+
+        let interceptor = axios.interceptors.response.use(
+            (data) => {
+                throw new Error("test error");
+            },
+            undefined
+        );
+
+        // tslint:disable:no-object-literal-type-assertion
+        const model = {
+            attributes: () => ["phone", "name", "from", "to"],
+            name: "",
+            phone: "",
+            from: "",
+            to: ""
+        } as ContactFormModel;
+
+        await (wrapper.instance() as any).handleSubmit(model, undefined);
+        expect(wrapper.instance().state.status).to.equal(SubmitStatus.fail);
+
+        axios.interceptors.request.eject(interceptor);
+    });
 });

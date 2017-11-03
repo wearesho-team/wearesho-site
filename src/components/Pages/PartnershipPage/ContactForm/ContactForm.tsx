@@ -43,8 +43,6 @@ export class ContactForm extends React.Component<undefined, ContactFormState> {
                 return this.SuccessMessage;
             case SubmitStatus.fail:
                 return this.ErrorMessage;
-            default:
-                return this.Form;
         }
     }
 
@@ -54,7 +52,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> {
             .forEach((field) => data = {...data, ...{[field]: model[field]}});
 
         try {
-            await axios.post("/callback", data);
+            const d = await axios.post("/callback", data);
 
             this.setState({
                 status: SubmitStatus.success,
@@ -81,7 +79,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> {
         }
     };
 
-    protected get ErrorMessage(): JSX.Element {
+    protected get SuccessMessage(): JSX.Element {
         const {name, from, to} = this.state.data;
 
         return (
@@ -102,11 +100,11 @@ export class ContactForm extends React.Component<undefined, ContactFormState> {
         );
     }
 
-    protected get SuccessMessage(): JSX.Element {
+    protected get ErrorMessage(): JSX.Element {
         return (
-            <div>
+            <p className="section__text request-error">
                 OSHIBKA
-            </div>
+            </p>
         );
     }
 

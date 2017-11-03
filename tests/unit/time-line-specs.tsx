@@ -46,12 +46,13 @@ describe("<TimeLine/>", () => {
         wrapper.unmount();
         wrapper.mount();
         timer.tick(delay / 2);
-        expect(wrapper.state().activeProject.date.year).to.equal(projects[projects.length - 1].date.year);
-        expect(wrapper.state().activeProject.date.month).to.equal(projects[projects.length - 1].date.month);
-
-        timer.tick(delay / 2);
         expect(wrapper.state().activeProject.date.year).to.equal(projects[0].date.year);
         expect(wrapper.state().activeProject.date.month).to.equal(projects[0].date.month);
+
+        timer.tick(delay / 2);
+
+        expect(wrapper.state().activeProject.date.year).to.equal(projects[projects.length - 1].date.year);
+        expect(wrapper.state().activeProject.date.month).to.equal(projects[projects.length - 1].date.month);
         document.body.className = "loaded";
     });
 

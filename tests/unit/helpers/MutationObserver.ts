@@ -10,6 +10,7 @@ if (typeof MutationObserver === "undefined") {
 
         public constructor(func) {
             func(MutationObserverMock.mutations);
+
             this.takeRecords();
         }
 
