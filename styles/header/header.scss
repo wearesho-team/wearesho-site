@@ -121,7 +121,8 @@
     z-index: $under-zindex;
   }
 
-  &:hover {
+  &:hover,
+  &.is-active {
 
     &:before {
       transform: translateX(-14px);
@@ -131,7 +132,7 @@
 
     &:after {
 
-      width: calc(100% + 14px);
+      animation: painting .6s ease;
     }
   }
 }

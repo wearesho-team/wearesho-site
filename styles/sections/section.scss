@@ -50,16 +50,6 @@
         padding: 4.3em 0 0 1.875em;
       }
 
-      //@include breakpoint($laptop-small) {
-      //
-      //  min-height: inherit;
-      //}
-      //
-      //@include breakpoint($laptop-medium) {
-      //
-      //  min-height: inherit;
-      //}
-
       @include breakpoint($laptop-large) {
 
         padding: 4em 0 0 1.875em;

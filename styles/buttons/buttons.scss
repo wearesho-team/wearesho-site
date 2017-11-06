@@ -61,7 +61,8 @@
     transition: color .3s ease;
 
     &:hover,
-    &:active {
+    &.is-active,
+    &.is-loading {
       box-shadow: 0 0 15px 0 rgba(51, 159, 208, .3), inset 0 0 15px rgba(51, 159, 208, .3);
 
       color: #7BC6F5;
@@ -78,7 +79,7 @@
 
       transition: box-shadow .4s ease;
 
-      > .btn-corners {
+      .btn-corners {
 
         &:before,
         &:after {
@@ -104,7 +105,22 @@
       }
     }
 
-    > .btn-corners {
+    &.is-loading {
+      animation: loading 2s ease infinite;
+
+      color: rgba(51, 159, 208, .8);
+
+      .btn-corners {
+
+        &:before,
+        &:after {
+
+          border: none;
+        }
+      }
+    }
+
+    .btn-corners {
 
       &:before,
       &:after {
