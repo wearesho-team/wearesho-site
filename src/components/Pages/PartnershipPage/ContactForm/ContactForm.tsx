@@ -92,6 +92,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                 }
             });
         } catch (error) {
+
             if (error instanceof ValidationError) {
                 error.data.forEach(({code, ...error}) => context.addError(error as ModelError));
                 const modelElement: ModelError = error.data
@@ -153,7 +154,9 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
             <p className="section__text request request-error">
                 <span className="section__text_increased">{name}</span>
                 <span>{translate("contactPage.form.submit.fail.text")}</span>
-                {translate("contactPage.form.submit.withRespect")} &laquo;{translate("SHO")}?!&raquo;
+                <span>
+                    {translate("contactPage.form.submit.withRespect")} &laquo;{translate("SHO")}?!&raquo;
+                </span>
             </p>
         );
     }

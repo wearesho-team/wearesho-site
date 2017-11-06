@@ -54,6 +54,10 @@
       border: 1px solid #8DE5FF;
 
       animation: pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite;
+
+      opacity: 0;
+
+      transition: opacity .05s ease .05s;
     }
 
     &:after {
@@ -97,6 +101,11 @@
       &:after {
         content: '';
         display: block;
+      }
+
+      &:before {
+
+        opacity: 1;
       }
 
       > .main-nav__link {
