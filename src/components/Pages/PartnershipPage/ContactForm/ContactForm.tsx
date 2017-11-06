@@ -1,4 +1,5 @@
 // tslint:disable:max-file-line-count
+import {TransitionGroup, CSSTransition} from "react-transition-group";
 import * as React from "react";
 import axios from "axios";
 import {
@@ -18,6 +19,7 @@ import {NameRange, PhoneRange, TimeDefaults} from "../../../../models/common";
 
 import {ValidationError} from "../../../../data/ValidationError";
 
+import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
 import {OnDesktop, OnMobile} from "../../../../helpers/Breakpoints";
 import {translate} from "../../../../helpers/translate";
 
@@ -26,7 +28,14 @@ import {ContactFormState} from "./ContactFormState";
 import {SubmitStatus} from "./SubmitStatus";
 import {TimeInput} from "./TimeInput";
 
-export class ContactForm extends React.Component<undefined, ContactFormState> {
+export class ContactForm extends React.Component<undefined, ContactFormState> implements ElementWithTimer {
+    public static readonly standByDelay = 5000;
+    public static readonly standByDuration = 500;
+
+    public timer: any;
+
+    protected clearTimeout = smartClearTimeout.bind(this);
+
     public constructor(props) {
         super(props);
 
@@ -36,6 +45,26 @@ export class ContactForm extends React.Component<undefined, ContactFormState> {
     }
 
     public render(): JSX.Element {
+        const transitionProps = {
+            classNames: "status",
+            key: this.state.status,
+            timeout: ContactForm.standByDuration,
+        };
+
+        return (
+            <TransitionGroup className="form-container">
+                <CSSTransition {...transitionProps}>
+                    {this.layout}
+                </CSSTransition>
+            </TransitionGroup>
+        );
+    }
+
+    public componentWillUnmount() {
+        this.clearTimeout(this.timer);
+    }
+
+    protected get layout(): JSX.Element {
         switch (this.state.status) {
             case SubmitStatus.standBy:
                 return this.Form;
@@ -86,6 +115,13 @@ export class ContactForm extends React.Component<undefined, ContactFormState> {
     protected get SuccessMessage(): JSX.Element {
         const {name, from, to} = this.state.data;
 
+        this.clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+            this.setState({
+                status: SubmitStatus.standBy
+            });
+        }, ContactForm.standByDelay);
+
         return (
             <p className="section__text request request-sent">
                 <span className="section__text_increased">{name}</span>
@@ -106,6 +142,13 @@ export class ContactForm extends React.Component<undefined, ContactFormState> {
 
     protected get ErrorMessage(): JSX.Element {
         const {name} = this.state.data;
+
+        this.clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+            this.setState({
+                status: SubmitStatus.standBy
+            });
+        }, ContactForm.standByDelay);
 
         return (
             <p className="section__text request request-error">
