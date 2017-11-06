@@ -1,2 +1,3 @@
-export * from "./CodeStyleAnimation";
-export * from "./CustomAnimation";
+export * from "./Interactive/TransformAnimation";
+export * from "./Static/CodeStyleAnimation";
+export * from "./Static/CustomAnimation";

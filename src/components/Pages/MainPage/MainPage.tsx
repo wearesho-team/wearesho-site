@@ -2,9 +2,9 @@ import * as React from "react";
 
 import {translate} from "../../../helpers/translate";
 
-import {CodeStyleAnimationSpeed} from "../../Animations/CodeStyleAnimation/CodeStyleAnimationSpeed";
-import {CodeStyleAnimation} from "../../Animations/CodeStyleAnimation/CodeStyleAnimation";
-import {CustomAnimation} from "../../Animations/CustomAnimation/CustomAnimation";
+import {CodeStyleAnimationSpeed} from "../../Animations/Static/CodeStyleAnimation/CodeStyleAnimationSpeed";
+import {CodeStyleAnimation} from "../../Animations/Static/CodeStyleAnimation/CodeStyleAnimation";
+import {CustomAnimation} from "../../Animations/Static/CustomAnimation/CustomAnimation";
 import {SmartBreakpoint} from "../../SmartBreakpoint/SmartBreakpoint";
 import {TimeLine} from "../../TimeLine/TimeLine";
 import {BasePage} from "../BasePage";

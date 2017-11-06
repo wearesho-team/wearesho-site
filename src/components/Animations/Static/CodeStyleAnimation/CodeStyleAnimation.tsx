@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import {checkForStringArrayInstance} from "../../../helpers/checkForStringArrayInstance";
-import {ElementWithTimer, smartClearTimeout} from "../../../helpers/smartClearTimeout";
-import {checkForStringInstance} from "../../../helpers/checkForStringInstance";
+import {checkForStringArrayInstance} from "../../../../helpers/checkForStringArrayInstance";
+import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
+import {checkForStringInstance} from "../../../../helpers/checkForStringInstance";
 
 import {
     CodeStyleAnimationDefaultProps,

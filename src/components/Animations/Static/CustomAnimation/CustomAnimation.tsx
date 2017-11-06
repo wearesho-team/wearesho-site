@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import {ElementWithTimer, smartClearTimeout} from "../../../helpers/smartClearTimeout";
-import {concat} from "../../../helpers/concat";
+import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
+import {concat} from "../../../../helpers/concat";
 
 import {CustomAnimationDefaultProps, CustomAnimationProps, CustomAnimationPropTypes} from "./CustomAnimationProps";
 import {CustomAnimationState} from "./CustomAnimationState";

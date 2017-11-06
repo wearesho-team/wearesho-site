@@ -222,14 +222,11 @@
   .btn {
 
     @include breakpoint($mobile) {
-      display: none;
 
       font-size: 1.267em;
     }
 
     @include breakpoint($mobile-p) {
-
-
       @include span(8 of 12 inside no-gutters);
 
       float: none;
@@ -302,6 +299,88 @@
       @include breakpoint($mobile) {
 
         margin-right: calc(100% / 3 - 20px);
+      }
+    }
+  }
+}
+
+.btn_transform {
+
+  @include breakpoint($mobile) {
+    overflow: hidden;
+
+    height: 48px;
+  }
+
+  &.initial {
+    transition: width .5s ease .5s, height .5s ease !important;
+
+    @include breakpoint($mobile-p) {
+      @include span(8 of 12 inside no-gutters);
+
+      float: none;
+    }
+
+    @include breakpoint($mobile-l) {
+
+      @include span(4 of 12 inside no-gutters last);
+    }
+
+    @include breakpoint($iphone4-l) {
+      @include span(8 of 12 inside no-gutters);
+
+      float: none;
+    }
+  }
+
+  &.transformed {
+    transition: width .5s ease, height .5s ease .5s !important;
+
+    font-size: initial !important;
+
+    @include breakpoint($mobile-p) {
+      height: 600px;
+
+      width: 100%;
+    }
+  }
+
+  > .inner-layout {
+    position: absolute;
+
+    top: .6em;
+    bottom: .6em;
+    left: 1em;
+    right: 1em;
+
+    opacity: 1;
+
+    transition: opacity .5s ease;
+
+    &.transform {
+      &-enter {
+        opacity: 0;
+
+        transition: none;
+      }
+
+      &-exit {
+
+        opacity: 0;
+      }
+    }
+  }
+
+  &:hover,
+  &:active {
+    box-shadow: none;
+
+    > .btn-corners {
+      &:before,
+      &:after {
+        width: 10px;
+
+        height: 10px;
       }
     }
   }

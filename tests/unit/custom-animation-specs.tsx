@@ -3,9 +3,9 @@ import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 import {useFakeTimers, SinonFakeTimers} from "sinon";
 
-import {CustomAnimationProps} from "../../src/components/Animations/CustomAnimation/CustomAnimationProps";
-import {CustomAnimationState} from "../../src/components/Animations/CustomAnimation/CustomAnimationState";
-import {CustomAnimation} from "../../src/components/Animations/CustomAnimation/CustomAnimation";
+import {CustomAnimationProps} from "../../src/components/Animations/Static/CustomAnimation/CustomAnimationProps";
+import {CustomAnimationState} from "../../src/components/Animations/Static/CustomAnimation/CustomAnimationState";
+import {CustomAnimation} from "../../src/components/Animations/Static/CustomAnimation/CustomAnimation";
 
 describe("<CustomAnimation/>", () => {
     let wrapper: ReactWrapper<CustomAnimationProps, CustomAnimationState>;
