@@ -97,25 +97,25 @@ describe("<ScrollControl/>", () => {
 
     it("Should set page offset on mount according to url", () => {
 
-        // node.componentDidMount();
+        // // node.componentDidMount();
+        //
+        //
+        // Object.defineProperty(document.body, "attributes", {
+        //     configurable: true,
+        //     get: () => {
+        //         return {
+        //             getNamedItem: () => {
+        //                 return {
+        //                     value: "loaded"
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
+        //
+        // (MutationObserver as any).mutations[0].target = document.body;
 
-
-        Object.defineProperty(document.body, "attributes", {
-            configurable: true,
-            get: () => {
-                return {
-                    getNamedItem: () => {
-                        return {
-                            value: "loaded"
-                        }
-                    }
-                }
-            }
-        });
-
-        (MutationObserver as any).mutations[0].target = document.body;
-
-        let pathChanged = false;
+        // let pathChanged = false;
 
         // class ScrollControlMock extends ScrollControl {
         //
@@ -145,7 +145,7 @@ describe("<ScrollControl/>", () => {
         //
         // }
 
-        node = new ScrollControlMock();
+        // node = new ScrollControlMock();
 
     });
 });

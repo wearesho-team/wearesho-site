@@ -2,8 +2,6 @@
 * Forms styles
  */
 .form {
-  position: relative;
-
   font-size: 1.067em;
 
   .section__text {
@@ -361,7 +359,6 @@
   opacity: 0;
 }
 
-
 .request {
   line-height: 1.733em;
 
@@ -399,7 +396,6 @@
         display: block;
       }
     }
-
 
     &:first-child {
 
@@ -473,5 +469,30 @@
 
       margin-top: 1em;
     }
+  }
+}
+
+.form-container {
+  position: relative;
+
+  min-height: 485px;
+  > form,
+  > p {
+    position: absolute;
+
+    top: 0;
+
+    opacity: 1;
+
+    transition: opacity .5s ease;
+  }
+
+  > .status-exit {
+    opacity: 0;
+  }
+
+  > .status-enter {
+    opacity: 0;
+    transition: none;
   }
 }
