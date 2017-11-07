@@ -6,26 +6,25 @@ body.loaded {
   #preloader {
     pointer-events: none;
 
-    @include animation(disappearance 3s ease 2s);
+    animation: disappearance 3s ease 2s;
 
-    @include animation-fill-mode(forwards);
+    animation-fill-mode: forwards;
 
     .section.section-preloader {
 
       &:before {
-        @include animation(appearance .5s ease);
-        @include animation-fill-mode(forwards);
+        animation: appearance .5s ease;
+        animation-fill-mode: forwards;
       }
 
       .section__subtitle {
-        @include animation(appearance .5s ease, movement-right .5s ease);
-        @include animation-fill-mode(forwards);
+        animation: appearance .5s ease, movement-right .5s ease;
+        animation-fill-mode: forwards;
       }
 
       .logo {
-
-        @include animation(appearance .5s ease, movement-left .5s ease);
-        @include animation-fill-mode(forwards);
+        animation: appearance .5s ease, movement-left .5s ease;
+        animation-fill-mode: forwards;
       }
     }
   }
@@ -38,9 +37,9 @@ body.loaded {
   right: 0;
   left: 0;
 
-  @include transform(translateY(-50%));
+  transform: translateY(-50%);
 
-  @include transition(all .3s ease);
+  transition: all .3s ease;
 
   color: #717171;
 
@@ -129,7 +128,7 @@ body.loaded {
 
     @include clearfix;
 
-    @include transition(transform 1s ease, opacity 1s ease);
+    transition: transform 1s ease, opacity 1s ease;
 
     @include breakpoint($tablet-p) {
 
@@ -180,18 +179,28 @@ body.loaded {
 
     @include breakpoint($tablet-p) {
 
-      padding-left: 8em;
+      padding-left: 4.5em;
+    }
+
+    @include breakpoint($tablet-l) {
+
+      padding-left: 0;
     }
   }
 
   .section__subtitle {
-    padding-right: 1.75em;
+    padding-right: 1.6em;
 
     text-align: right;
 
     font-size: 1.063em;
     font-weight: $font-style-light;
     color: #fff;
+
+    @include breakpoint($laptop) {
+
+      font-size: 1em;
+    }
 
     & + .section__subtitle {
 
@@ -225,7 +234,7 @@ body.loaded {
 
   .logo {
     margin-top: .25em;
-    padding-left: 1.75em;
+    padding-left: 1.6em;
 
     font-size: inherit;
     @include breakpoint($mobile) {
@@ -248,6 +257,12 @@ body.loaded {
 
       font-size: .936em;
       font-weight: $font-style-regular;
+
+      @include breakpoint($tablet) {
+        display: block;
+
+        font-size: .933em;
+      }
     }
   }
 }

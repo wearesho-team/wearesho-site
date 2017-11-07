@@ -18,7 +18,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
     public static readonly scrollListenDelay = 50;
 
     // 0 - exactly
-    public readonly viewZoneRange = 0.15;
+    public readonly viewZoneRange = 0.4;
 
     public context: RouterContext & LayoutContext;
     public timer: any;
@@ -27,13 +27,27 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
     protected clearTimeout = smartClearTimeout.bind(this);
     protected unlisten: () => void;
 
+    // set scroll position according to location on body loaded
+    protected observer = new MutationObserver((mutations) => {
+        const {target} = mutations[0];
+
+        if (target !== document.body || target.attributes.getNamedItem("class").value !== "loaded") {
+            return;
+        }
+
+        this.context.router.history.location.state = undefined;
+        this.listenPathChange(this.context.router.history.location);
+    });
+
     public componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
         this.unlisten = this.context.router.history.listen(this.listenPathChange);
+        this.observer.observe(document.body, {attributeFilter: ["class"], attributes: true});
     }
 
     public componentWillUnmount() {
         window.removeEventListener("scroll", this.handleScroll);
+        this.observer.disconnect();
         this.unlisten();
     }
 
@@ -93,7 +107,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
             .scrollTo((this.childrenDom.item(currentPathIndex) as HTMLElement).offsetTop, {
                 duration: ScrollControl.scrollAnimationDelay,
                 delay: 0,
-                smooth: true
+                smooth: "easeInOutCubic",
             });
-    }
+    };
 }

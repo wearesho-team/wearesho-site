@@ -21,15 +21,27 @@
   top: 50%;
   right: -330px;
 
-  @include transform(translateY(-50%));
+  transform: translateY(-50%);
 
-  margin: .9em auto 0;
+  margin: 1.7em auto 0;
 
   pointer-events: none;
 
+  z-index: $under-zindex;
+
+  @include breakpoint($mobile) {
+    right: 0;
+    left: 0;
+  }
+
+  @include breakpoint($mobile-l) {
+
+    margin: 11.5em auto 0;
+  }
+
   @include breakpoint($tablet) {
 
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
 
   @include breakpoint($tablet-p) {
@@ -37,7 +49,7 @@
     right: 0;
     left: 24px;
 
-    @include transform(translateY(0));
+    transform: translateY(0);
 
     margin: 0 auto;
   }
@@ -45,19 +57,21 @@
   @include breakpoint($tablet-l) {
     top: 13%;
     right: -136px;
+
+    margin: .9em auto 0;
   }
 
   @include breakpoint($laptop-small) {
     top: 13%;
     right: -136px;
 
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
 
   @include breakpoint($laptop-medium) {
-    right: -310px;
+    right: -288px;
 
-    margin: -.75em auto 0;
+    margin: -3.5em auto 0;
   }
 
   @include breakpoint($laptop-large) {
@@ -66,42 +80,9 @@
     margin: 2.1em auto 0;
   }
 
-  &:before,
-  &:after {
-    content: '';
-    display: block;
+  @include breakpoint($square) {
 
-    position: absolute;
-
-    opacity: .7;
-
-    z-index: $under-zindex;
-  }
-
-  &:before {
-    width: 587px;
-    height: 308px;
-
-    top: 35px;
-    left: -25px;
-
-    background: url('images/map-glow1.svg') no-repeat;
-
-    -webkit-filter: blur(50px);
-    filter: blur(50px);
-  }
-
-  &:after {
-    width: 720px;
-    height: 246px;
-
-    top: 73px;
-    right: 10px;
-
-    background: url('images/map-glow2.svg') no-repeat;
-
-    -webkit-filter: blur(26px);
-    filter: blur(26px);
+    margin: -2.5em auto 0;
   }
 
   > svg {
@@ -119,7 +100,7 @@
 
     margin: -150px 0 0 -148px;
 
-    @include transition(opacity .3s ease);
+    transition: opacity .3s ease;
 
     @include breakpoint($mobile) {
 
@@ -143,6 +124,8 @@
 
       background-color: #fff;
 
+      box-shadow: 0 0 1px 0 #fff;
+
       &:before,
       &:after {
         content: '';
@@ -159,25 +142,23 @@
 
         top: 50%;
         left: 50%;
-
         margin-top: -200%;
         margin-left: -200%;
 
-        border: 1px solid #fff;
+        border-radius: 50%;
 
-        @include animation(pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite);
+        border: 1px solid rgb(206, 206, 206);
 
-        -webkit-filter: blur(2px);
-        filter: blur(2px);
+        filter: blur(1px);
+
+        animation: pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite;
       }
 
       &:after {
-        $glow-size: 17px;
+        $glow-size: 15px;
 
         width: $glow-size;
         height: $glow-size;
-
-        @include transform(scale(1.5));
 
         top: 50%;
         left: 50%;
@@ -185,11 +166,17 @@
         margin: (-$glow-size / 2) 0 0 (-$glow-size / 2);
 
         border-radius: 50%;
-        border: 1px solid rgba(83, 86, 119, .1);
+        border: 1px solid #fff;
 
-        background-color: rgba(206, 206, 206, 0.08);
+        background: #fff;
 
-        @include transition(opacity .3s ease);
+        filter: blur(3px);
+
+        opacity: .75;
+
+        transition: opacity .3s ease;
+
+        z-index: $under-zindex;
       }
     }
 

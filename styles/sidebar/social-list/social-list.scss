@@ -1,5 +1,5 @@
 /**
-  Social-list
+* Social-list
  */
 .social-list {
   width: 20px;
@@ -24,33 +24,48 @@
   }
 
   .icon {
+    opacity: .2;
+
+    transition: opacity .3s ease;
 
     &:hover {
 
-      .icon_fill {
-
-        fill: #fff;
-      }
+      opacity: 1;
     }
 
     &_soc-git {
       width: 20px;
       height: 22px;
+
+      @include breakpoint($mobile) {
+        width: 22px;
+        height: 24px;
+      }
     }
 
     &_soc-be {
       width: 20px;
       height: 12px;
+
+      @include breakpoint($mobile) {
+        width: 26px;
+        height: 16px;
+      }
     }
 
     &_soc-li {
       width: 16px;
       height: 16px;
+
+      @include breakpoint($mobile) {
+        width: 18px;
+        height: 18px;
+      }
     }
 
     .icon_fill {
 
-      @include transition(fill .3s ease);
+      transition: fill .3s ease;
     }
   }
 }

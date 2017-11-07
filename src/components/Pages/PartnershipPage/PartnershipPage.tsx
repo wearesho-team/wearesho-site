@@ -7,6 +7,7 @@ import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../../helpers/Br
 import {formatNumber} from "../../../helpers/formatNumber";
 import {translate} from "../../../helpers/translate";
 
+import {TransformAnimation} from "../../Animations/Interactive/TransformAnimation";
 import {SocialLinks} from "../../Layout/Partials/SocialLinks";
 import {PartnershipPageState} from "./PartnershipPageState";
 import {CloseButton, SubmitButton} from "../../Buttons";
@@ -45,51 +46,36 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                     <h2 className="section__title">{translate("contactPage.title")}</h2>
                     <div className="section__half half_first">
                         <OnDesktop>
-                            <p className="section__text">
-                                {translate("contactPage.form.titleExtended")}
-                            </p>
-                            <p className="section__text request-sent">
-                                <span className="section__text_increased">Мефодий,</span>
-                                <span>спасибо за проявленный интерес к Студии.</span>
-                                <span>Мы обязательно перезвоним Вам в указанное время:</span>
-                                <span className="section__text_indented">с
-                                    <span className="section__text_increased">&nbsp;9:00&nbsp;</span>до
-                                    <span className="section__text_increased">&nbsp;18:00&nbsp;</span>
-                                </span>
-                                <span>С уважением, команда Студии &laquo;ШО?!&raquo;</span>
-                            </p>
                             <ContactForm/>
                         </OnDesktop>
                     </div>
                     <div className="section__half half_second">
                         <div className="contact-info">
                             <OnDesktop>
-                                <h4 className="section__subtitle">{translate("contactPage.contacts.title")}</h4>
                                 <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                     {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                 </a>
                                 <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_medium">{translate("contactPage.support.title")}</span>
+                                    <span className="text_regular">{translate("contactPage.support.title")}</span>
                                     {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24
                                         <span className="separator">/</span>7
                                     </span>
                                 </p>
                                 <p className="contact-info__text">
-                                    <span className="text_medium">{translate("contactPage.location.title")}</span>
+                                    <span className="text_regular">{translate("contactPage.location.title")}</span>
                                     {translate(Config.location.country)}&nbsp;<span className="separator">/</span>
                                     &nbsp;{translate(Config.location.city)}
                                 </p>
                             </OnDesktop>
                             <OnTablet>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_medium">{translate("contactPage.support.title")}</span>
+                                    <span className="text_regular">{translate("contactPage.support.title")}</span>
                                     {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
                                 <div className="align-container">
-                                    <h4 className="section__subtitle">{translate("contactPage.contacts.title")}</h4>
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                         {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
                                     </a>
@@ -101,31 +87,36 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                     label={translate("buttons.cooperate")}
                                 />
                                 <p className="contact-info__text">
-                                    <span className="text_medium">{translate("contactPage.location.title")}</span>
+                                    <span className="text_regular">{translate("contactPage.location.title")}</span>
                                     {translate(Config.location.country)} / {translate(Config.location.city)}
                                 </p>
                             </OnTablet>
                             <OnMobile>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_medium">{translate("contactPage.support.title")}</span>
+                                    <span className="text_regular">{translate("contactPage.support.title")}</span>
                                     {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24/7</span>
                                 </p>
                                 <p className="contact-info__text">
-                                    <span className="text_medium">{translate("contactPage.location.title")}</span>
+                                    <span className="text_regular">{translate("contactPage.location.title")}</span>
                                     {translate(Config.location.country)} / {translate(Config.location.city)}
                                 </p>
-                                <h4 className="section__subtitle">{translate("contactPage.contacts.title")}</h4>
                                 <div className="align-container">
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
                                         {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}&nbsp;
                                     </a>
                                     <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
-                                <SubmitButton
-                                    type="button"
-                                    onClick={this.handleOpenModal}
-                                    label={translate("buttons.cooperate")}
+                                <TransformAnimation
+                                    initialComponent={translate("buttons.cooperate")}
+                                    transformedComponent={<ContactForm/>}
+                                    staticComponent={[
+                                        <span className="btn-corners btn-corners_top" key="top"/>,
+                                        <span className="btn-corners btn-corners_bottom" key="bottom"/>
+                                    ]}
+                                    className="btn btn_primary btn_transform"
+                                    event="onClick"
+                                    duration={1000}
                                 />
                                 <SocialLinks/>
                             </OnMobile>
@@ -153,11 +144,12 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                         <MapIcon/>
                         <div className="slider">
                             <div className="slider__body">
+                                <div className="slider__bar"/>
                                 <div className="slider__dot"/>
                             </div>
                             <div className="slider__description">
                             <span className="slider__location">
-                                {translate(Config.location.country)} / {translate(Config.location.city)}
+                                {Config.location.country} / {Config.location.city}
                             </span>
                                 <span className="slider__coordinates">
                                     {Config.location.coordinates.lat}&deg;&nbsp;
@@ -173,18 +165,9 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
 
     protected handleCloseModal = () => {
         this.setState({isModalOpen: false});
-        window.onwheel = window.onmousewheel = document.onmousewheel = document.onkeydown = undefined;
     };
 
     protected handleOpenModal = () => {
         this.setState({isModalOpen: true});
-        document.onkeydown = (event: any) => event.target.nodeName.toLowerCase() === "input";
-        window.onwheel = window.onmousewheel = document.onmousewheel = this.preventEvent;
     };
-
-    protected preventEvent = (event: any) => {
-        event.preventDefault();
-        event.returnValue = false;
-        return false;
-    }
 }

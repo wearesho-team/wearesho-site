@@ -1,4 +1,7 @@
+// tslint:disable:max-file-line-count
+import {TransitionGroup, CSSTransition} from "react-transition-group";
 import * as React from "react";
+import axios from "axios";
 import {
     AutoValidate,
     Form,
@@ -7,70 +10,220 @@ import {
     Input,
     Label,
     TransformTypes,
-    FormContext
+    FormContext,
+    ModelError
 } from "react-context-form";
 
 import {ContactFormModel, instantiateContactFormModel} from "../../../../models/ContactFormModel";
 import {NameRange, PhoneRange, TimeDefaults} from "../../../../models/common";
 
-import {OnMobile} from "../../../../helpers/Breakpoints";
+import {ValidationError} from "../../../../data/ValidationError";
+
+import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
+import {OnDesktop, OnMobile} from "../../../../helpers/Breakpoints";
 import {translate} from "../../../../helpers/translate";
 
 import {SubmitButton} from "../../../Buttons/SubmitButton";
+import {ContactFormState} from "./ContactFormState";
+import {SubmitStatus} from "./SubmitStatus";
 import {TimeInput} from "./TimeInput";
 
-export class ContactForm extends React.Component<undefined, undefined> {
+export class ContactForm extends React.Component<undefined, ContactFormState> implements ElementWithTimer {
+    public static readonly standByDelay = 5000;
+    public static readonly standByDuration = 500;
+
+    public timer: any;
+
+    protected clearTimeout = smartClearTimeout.bind(this);
+
+    public constructor(props) {
+        super(props);
+
+        this.state = {
+            status: SubmitStatus.standBy
+        }
+    }
 
     public render(): JSX.Element {
+        const transitionProps = {
+            classNames: "status",
+            key: this.state.status,
+            timeout: ContactForm.standByDuration,
+        };
+
+        return (
+            <TransitionGroup className="form-container">
+                <CSSTransition {...transitionProps}>
+                    {this.layout}
+                </CSSTransition>
+            </TransitionGroup>
+        );
+    }
+
+    public componentWillUnmount() {
+        this.clearTimeout(this.timer);
+    }
+
+    protected get layout(): JSX.Element {
+        switch (this.state.status) {
+            case SubmitStatus.standBy:
+                return this.Form;
+            case SubmitStatus.success:
+                return this.SuccessMessage;
+            case SubmitStatus.fail:
+                return this.ErrorMessage;
+        }
+    }
+
+    protected handleSubmit = async (model: ContactFormModel, context: FormContext) => {
+        let data: any = {} as any;
+        model.attributes()
+            .forEach((field) => data = {...data, ...{[field]: model[field]}});
+
+        try {
+            await axios.post("/callback", data);
+
+            this.setState({
+                status: SubmitStatus.success,
+                data: {
+                    name: data.name,
+                    from: data.from,
+                    to: data.to
+                }
+            });
+        } catch (error) {
+
+            if (error instanceof ValidationError) {
+                error.data.forEach(({code, ...error}) => context.addError(error as ModelError));
+                const modelElement: ModelError = error.data
+                    .reduce((carry: ModelError, error: ModelError) => carry || error);
+
+                const element: HTMLElement = modelElement && context.getDOMElement(modelElement.attribute);
+                element && element.focus();
+                return;
+            }
+
+            this.setState({
+                status: SubmitStatus.fail,
+                data: {
+                    name: data.name
+                }
+            });
+        }
+    };
+
+    protected get SuccessMessage(): JSX.Element {
+        const {name, from, to} = this.state.data;
+
+        this.clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+            this.setState({
+                status: SubmitStatus.standBy
+            });
+        }, ContactForm.standByDelay);
+
+        return (
+            <p className="section__text request request-sent">
+                <span className="section__text_increased">{name}</span>
+                <span className="inline">{translate("contactPage.form.submit.success.thanks")}</span>
+                <span className="inline">{translate("contactPage.form.submit.success.callBack")}</span>
+                <span className="section__text_indented">
+                    {translate("contactPage.form.time.from")}
+                    <span className="section__text_increased">&nbsp;{from}&nbsp;</span>
+                    {translate("contactPage.form.time.to")}
+                    <span className="section__text_increased">&nbsp;{to}&nbsp;</span>
+                </span>
+                <span>
+                    {translate("contactPage.form.submit.withRespect")} &laquo;{translate("SHO")}?!&raquo;
+                </span>
+            </p>
+        );
+    }
+
+    protected get ErrorMessage(): JSX.Element {
+        const {name} = this.state.data;
+
+        this.clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+            this.setState({
+                status: SubmitStatus.standBy
+            });
+        }, ContactForm.standByDelay);
+
+        return (
+            <p className="section__text request request-error">
+                <span className="section__text_increased">{name}</span>
+                <span>{translate("contactPage.form.submit.fail.text")}</span>
+                <span>
+                    {translate("contactPage.form.submit.withRespect")} &laquo;{translate("SHO")}?!&raquo;
+                </span>
+            </p>
+        );
+    }
+
+    protected get Form(): JSX.Element {
         return (
             <Form
                 className="form"
                 instantiate={instantiateContactFormModel}
                 onSubmit={this.handleSubmit as any}
             >
+                <OnDesktop>
+                    <p className="section__text">
+                        {translate("contactPage.form.titleExtended")}
+                    </p>
+                </OnDesktop>
                 <div className="form-half">
-                    <FormGroup className="form__group" errorClassName="form__group_has-error" name="name">
-                        <AutoValidate groupName="name" onLength={NameRange.min}>
-                            <Input
-                                className="form__control"
-                                transform={TransformTypes.capitalize}
-                                maxLength={NameRange.max}
-                                placeholder={translate("contactPage.form.placeholders.name")}
-                                required
-                            />
-                        </AutoValidate>
-                        <span className="form__control_underline"/>
-                        <Hint className="form__error-text"/>
-                    </FormGroup>
                     <div className="form__group_inline">
-                        <FormGroup name="phone" className="form__group" errorClassName="form__group_has-error">
+                        <FormGroup
+                            className="form__group"
+                            focusClassName="in-focus"
+                            errorClassName="has-error"
+                            name="name"
+                        >
+                            <AutoValidate groupName="name" onLength={NameRange.min}>
+                                <Input
+                                    className="form__control"
+                                    transform={TransformTypes.capitalize}
+                                    maxLength={NameRange.max}
+                                    placeholder={translate("contactPage.form.placeholders.name")}
+                                />
+                            </AutoValidate>
+                            <Hint className="form__error-text"/>
+                        </FormGroup>
+                        <FormGroup
+                            name="phone"
+                            className="form__group"
+                            focusClassName="in-focus"
+                            errorClassName="has-error"
+                        >
                             <AutoValidate groupName="phone" onLength={PhoneRange.min}>
                                 <Input
                                     className="form__control"
                                     placeholder={translate("contactPage.form.placeholders.phone")}
                                     type="number"
-                                    required
                                 />
                             </AutoValidate>
-                            <span className="form__control_underline"/>
-                            <Hint className="form__error-text"/>
-                        </FormGroup>
-                        <FormGroup className="form__group" errorClassName="form__group_has-error" name="mail">
-                            <AutoValidate groupName="mail">
-                                <Input
-                                    className="form__control"
-                                    placeholder={translate("contactPage.form.placeholders.mail")}
-                                    type="email"
-                                    required
-                                />
-                            </AutoValidate>
-                            <span className="form__control_underline"/>
                             <Hint className="form__error-text"/>
                         </FormGroup>
                     </div>
+                    <FormGroup
+                        className="form__group"
+                        focusClassName="in-focus"
+                        errorClassName="has-error"
+                        name="comment"
+                    >
+                        <AutoValidate groupName="comment">
+                            <Input
+                                className="form__control"
+                                placeholder={translate("contactPage.form.placeholders.comment")}
+                            />
+                        </AutoValidate>
+                        <Hint className="form__error-text"/>
+                    </FormGroup>
                 </div>
                 <div className="form-half form-half_second">
-                    <p className="text_medium">{translate("contactPage.form.time.title")}</p>
+                    <p className="text_regular">{translate("contactPage.form.time.title")}</p>
                     <p>{translate("contactPage.form.time.subTitle")}</p>
                     <div className="form__group spinner__group">
                         <FormGroup name="from" className="spinner">
@@ -96,8 +249,4 @@ export class ContactForm extends React.Component<undefined, undefined> {
             </Form>
         );
     }
-
-    private handleSubmit = async (model: ContactFormModel, context: FormContext) => {
-       // ...
-    };
 }

@@ -1,6 +1,6 @@
 // tslint:disable-next-line
 /// <reference path="./steps.d.ts" />
-
+// tslint:disable:no-magic-numbers
 Feature("Scroll control");
 
 Scenario("Scrolling", async (I) => {

@@ -109,10 +109,12 @@
       margin-bottom: 2em;
     }
 
-    @include breakpoint($mobile-l) {
-      display: inline-block;
+    &:first-child {
 
-      vertical-align: top;
+      @include breakpoint($mobile-l) {
+
+        @include span(8 of 12 inside no-gutters);
+      }
     }
 
     & + & {
@@ -141,8 +143,16 @@
       }
     }
 
+    > .text_regular {
+
+      @include breakpoint($laptop) {
+
+        white-space: nowrap;
+      }
+    }
+
     &_indented {
-      margin: 6em 0 3.25em;
+      margin: 4.7em 0 3.35em;
 
       @include breakpoint($mobile-p) {
 
@@ -180,6 +190,11 @@
         margin: 0 0 3.25em;
       }
 
+      @include breakpoint($laptop-medium) {
+
+        margin: 6.3em 0 3.35em;
+      }
+
       @include breakpoint($laptop-large) {
 
         margin: 3.4em 0 1.6em;
@@ -190,6 +205,11 @@
       line-height: 47px;
 
       font-size: 2em;
+
+      @include breakpoint($mobile) {
+
+        line-height: 41px;
+      }
     }
   }
 
@@ -203,7 +223,7 @@
 
     @include breakpoint($mobile) {
 
-      font-size: 1.063em;
+      font-size: 1.267em;
     }
 
     @include breakpoint($mobile-p) {
@@ -214,9 +234,14 @@
       margin-top: 3.75em;
     }
 
+    @include breakpoint($iphone5-p) {
+
+      font-size: 1.133em;
+    }
+
     @include breakpoint($mobile-l) {
 
-      @include span(4 of 12 inside no-gutters last);
+      display: none;
     }
 
     @include breakpoint($iphone4-l) {
@@ -264,6 +289,11 @@
 
     text-align: left;
 
+    @include breakpoint($mobile-p) {
+
+      margin: 4.5em 0 2.5em;
+    }
+
     &__item {
       width: $item-width;
 
@@ -276,5 +306,97 @@
         margin-right: calc(100% / 3 - 20px);
       }
     }
+  }
+}
+
+.btn_transform {
+
+  @include breakpoint($mobile) {
+    overflow: hidden;
+
+    height: 48px;
+  }
+
+  &.initial {
+    transition: width .5s ease .5s, height .5s ease !important;
+
+    @include breakpoint($mobile-p) {
+      @include span(8 of 12 inside no-gutters);
+
+      float: none;
+    }
+
+    @include breakpoint($mobile-l) {
+
+      @include span(4 of 12 inside no-gutters last);
+    }
+
+    @include breakpoint($iphone4-l) {
+      @include span(8 of 12 inside no-gutters);
+
+      float: none;
+    }
+  }
+
+  &.transformed {
+    transition: width .5s ease, height .5s ease .5s !important;
+
+    font-size: initial !important;
+
+    @include breakpoint($mobile-p) {
+      height: 530px;
+
+      width: 100%;
+    }
+  }
+
+  > .inner-layout {
+    position: absolute;
+
+    top: 15px;
+    bottom: 15px;
+    left: 1em;
+    right: 1em;
+
+    opacity: 1;
+
+    transition: opacity .5s ease;
+
+    line-height: 100%;
+
+    &.transform {
+      &-enter {
+        opacity: 0;
+
+        transition: none;
+      }
+
+      &-exit {
+
+        opacity: 0;
+      }
+    }
+  }
+
+  &:hover,
+  &:active {
+    box-shadow: none;
+
+    > .btn-corners {
+      &:before,
+      &:after {
+        width: 10px;
+
+        height: 10px;
+      }
+    }
+  }
+
+  .form__group_inline + .form__group {
+    margin: 1.875em 0 40px;
+  }
+
+  .btn {
+    margin-top: 40px;
   }
 }

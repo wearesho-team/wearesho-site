@@ -20,7 +20,7 @@
         </div>
     </section>
 </div>
-<div id="content-overlay"></div>
+<div id="content-overlay" style="opacity: 0"></div>
 <div class="grid">
     <div class="grid__col"></div>
     <div class="grid__col grid__col_decor touch-only">
@@ -35,10 +35,12 @@
 </div>
 <script type="text/javascript">
     var hideTimeout = 1000;
+
     (function () {
         var percents = 0;
         var indicators = document.getElementsByClassName("grow-element");
         var timer;
+        var content = document.getElementById("content-overlay");
 
         // triggering form PreLoaded component
         window.onBundleLoaded = function () {
@@ -46,9 +48,10 @@
             clearTimeout(timer);
             increase = undefined;
 
+            content.removeAttribute("style");
             setTimeout(function () {
-                for (var indicator of indicators) {
-                    indicator.removeAttribute("style");
+                for (var i = 0; i < indicators.length; i++) {
+                    indicators.item(i).removeAttribute("style");
                 }
             }, hideTimeout);
         }
@@ -56,9 +59,9 @@
         function increase() {
             timer = setTimeout(function () {
                 percents++;
-                for (var indicator of indicators) {
-                    indicator.style.top = 50 - (percents / 2) + "%";
-                    indicator.style.bottom = 50 - (percents / 2) + "%";
+                for (var i = 0; i < indicators.length; i++) {
+                    indicators.item(i).style.top = 50 - (percents / 2) + "%";
+                    indicators.item(i).style.bottom = 50 - (percents / 2) + "%";
                 }
 
                 increase && (percents < 85) && increase();

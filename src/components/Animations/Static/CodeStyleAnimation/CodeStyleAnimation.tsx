@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import {checkForStringArrayInstance} from "../../../helpers/checkForStringArrayInstance";
-import {ElementWithTimer, smartClearTimeout} from "../../../helpers/smartClearTimeout";
-import {checkForStringInstance} from "../../../helpers/checkForStringInstance";
+import {checkForStringArrayInstance} from "../../../../helpers/checkForStringArrayInstance";
+import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
+import {checkForStringInstance} from "../../../../helpers/checkForStringInstance";
 
 import {
     CodeStyleAnimationDefaultProps,
@@ -42,8 +42,10 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             children: "",
         };
 
-        // if on mount document loaded - show child completely
-        if (document.body.className.includes("loaded")) {
+        let targetAttribute = this.props.startFeature.element.getAttribute(this.props.startFeature.attribute);
+        !targetAttribute && (targetAttribute = "");
+
+        if (targetAttribute.includes(this.props.startFeature.value)) {
             this.state = {
                 ...this.state,
                 ...{
@@ -54,7 +56,6 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
         }
 
         this.sourceChild = this.getFormattedChild(this.props.children);
-
         this.state = {
             ...this.state,
             ...{
@@ -67,6 +68,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
 
     public componentWillUnmount() {
         this.clearTimeout(this.timer);
+        this.type = undefined;
         this.observer.disconnect();
     }
 
@@ -84,13 +86,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
 
     protected type() {
         if (this.state.counter > this.sourceChild.length) {
-            this.clearTimeout(this.timer);
-            this.timer = setTimeout(() => {
-                this.setState((prevState) => ({
-                    children: prevState.children[0] + prevState.children[2]
-                }));
-                this.observer.disconnect();
-            }, this.props.caretTimeout);
+            this.clearCaret();
             return;
         }
 
@@ -108,7 +104,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             this.type.bind(this),
             Math.random() * (this.props.speed.max - this.props.speed.min) + this.props.speed.min
         );
-    }
+    };
 
     protected get caret(): JSX.Element {
         return <i key="caret" className="caret"/>;
@@ -122,5 +118,15 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
         }
 
         throw new Error("Incorrect type of children. Only string or string [] are available");
+    }
+
+    protected clearCaret() {
+        this.clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+            this.setState((prevState) => ({
+                children: prevState.children[0] + prevState.children[2]
+            }));
+        }, this.props.caretTimeout);
+        this.observer.disconnect();
     }
 }

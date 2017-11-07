@@ -9,9 +9,13 @@
   bottom: 45px;
   left: 45px;
 
+  opacity: .2;
+
   cursor: pointer;
 
   z-index: 1;
+
+  transition: opacity .3s ease;
 
   @include breakpoint($mobile) {
 
@@ -26,10 +30,7 @@
   &:hover,
   &.is-active {
 
-    > .sound-switch__bar {
-
-      background-color: #F2F2F2;
-    }
+    opacity: 1;
   }
 
   &__bar {
@@ -38,11 +39,9 @@
 
     display: inline-block;
 
-    background-color: #484848;
+    background-color: #fff;
 
     animation: bar-two-height 2.5s steps(25, end) 0s infinite;
-
-    @include transition(background-color .3s ease);
 
     &:not(:last-child) {
 

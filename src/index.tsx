@@ -1,5 +1,5 @@
 import "../styles/main.scss";
-import "bootstrap";
+import "./bootstrap";
 
 import "./translations/en";
 import "./translations/ru";

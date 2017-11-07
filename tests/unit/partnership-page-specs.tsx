@@ -36,18 +36,6 @@ describe("<PartnershipPage/>", () => {
         const buttonOpen = wrapper.find(SubmitButton);
         buttonOpen.last().simulate("click");
 
-        let defaultPrevented = false;
-
-        const event = {
-            preventDefault: () => {
-                defaultPrevented = true;
-            },
-            returnValue: true,
-        };
-        expect(window.onwheel(event as any)).to.be.false;
-        expect(defaultPrevented).to.be.true;
-        expect(event.returnValue).to.be.false;
-
         expect(modal.querySelector(".form")).to.exist;
 
         const buttonClose = modal.querySelector(".modal .btn_close") as HTMLButtonElement;

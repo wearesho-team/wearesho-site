@@ -1,5 +1,5 @@
 /**
-  Header styles
+* Header styles
  */
 .header {
   position: fixed;
@@ -17,9 +17,18 @@
   z-index: map-get($zindex, header);
 
   @include breakpoint($mobile) {
-    padding: 1.875em 1.875em .75em;
 
     font-weight: $font-style-regular;
+  }
+
+  @include breakpoint($mobile-p) {
+
+    padding: 1.875em 1.875em;
+  }
+
+  @include breakpoint($mobile-l) {
+
+    padding: 1.875em 1.625em .75em;
   }
 
   @include breakpoint($tablet) {
@@ -31,6 +40,27 @@
   @include breakpoint($laptop-not-large) {
 
     padding: 2.75em 2.75em .75em;
+  }
+
+  &:before {
+    position: absolute;
+
+    top: -20px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: linear-gradient(33deg, rgba(51, 14, 31, 1) -140%, rgba(3, 28, 60, 1) 100%);
+
+    -webkit-filter: blur(8px);
+    filter: blur(8px);
+
+    z-index: $under-zindex;
+
+    @include breakpoint($mobile-p) {
+      content: '';
+      display: block;
+    }
   }
 }
 
@@ -61,6 +91,11 @@
 
       display: none;
     }
+
+    @include breakpoint($laptop-small) {
+
+      display: none;
+    }
   }
 }
 
@@ -71,32 +106,33 @@
   &:after {
     content: '';
     
-    width: 0%;
+    width: 0;
     height: 9px;
 
     position: absolute;
 
-    right: -8px;
+    right: -13px;
     bottom: 0;
 
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #ffda44 100%);
+    background-image: linear-gradient(to right, rgba(235, 75, 124, 0) 0%, rgba(235, 75, 124, 0.5) 100%);
 
     transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
     
     z-index: $under-zindex;
   }
 
-  &:hover {
+  &:hover,
+  &.is-active {
 
     &:before {
-      @include transform(translateX(-14px));
+      transform: translateX(-14px);
 
       opacity: 1;
     }
 
     &:after {
 
-      width: calc(100% + 14px);
+      animation: painting .6s ease;
     }
   }
 }
@@ -116,6 +152,21 @@
 
     font-size: 16px;
   }
+
+  @include breakpoint($laptop-small) {
+
+    font-size: 16px;
+  }
+
+  @include breakpoint($laptop-medium) {
+
+    font-size: 13px;
+  }
+
+  @include breakpoint($laptop-large) {
+
+    font-size: 13px;
+  }
 }
 
 .header__new-project {
@@ -133,21 +184,28 @@
     display: none;
   }
 
+  @include breakpoint($laptop-small) {
+
+    display: none;
+  }
+
   &:before {
     content: '+\00a0';
     display: inline-block;
 
-    @include transform(translateX(-6px));
+    transform: translateX(-6px);
 
     opacity: .5;
 
     font-family: $font-secondary;
 
-    @include transition(transform .3s ease, opacity .3s ease);
+    transition: transform .3s ease, opacity .3s ease;
   }
 }
 
 .header__lang-toggle {
+  padding-right: 0;
+
   text-transform: uppercase;
 
   @include breakpoint($mobile) {
@@ -156,6 +214,11 @@
   }
 
   @include breakpoint($tablet) {
+
+    line-height: 27px;
+  }
+
+  @include breakpoint($laptop-small) {
 
     line-height: 27px;
   }

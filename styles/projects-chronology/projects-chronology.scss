@@ -1,5 +1,5 @@
 /**
-  Projects chronology styles
+* Projects chronology styles
  */
 .prj-chronology {
   $division-width: 11%;
@@ -19,7 +19,12 @@
 
   @include breakpoint($laptop-large) {
 
-    margin-top: 5.5em;
+    margin-top: 6.5em;
+  }
+
+  @include breakpoint($square) {
+
+    margin-top: 9.5em;
   }
 
   &__item {
@@ -208,11 +213,11 @@
 
         position: absolute;
 
-        @include transition(width .3s ease,
+        transition: width .3s ease,
                 height .3s ease,
                 opacity .3s ease,
                 background-color .3s ease,
-                border-radius .3s ease);
+                border-radius .3s ease;
       }
 
       &:after {
@@ -253,14 +258,14 @@
 
           border-radius: 50%;
 
-          border: 1px solid rgba(206, 206, 206, .3);
+          border: 1px solid rgb(206, 206, 206);
 
-          -webkit-filter: blur(2px);
-          filter: blur(2px);
+          filter: blur(1px);
 
-          @include animation(pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite);
+          opacity: 0;
 
-          @include transition(border-color .3s ease);
+          animation: pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite;
+          transition: border-color .3s ease;
         }
 
         &:after {
@@ -269,9 +274,9 @@
 
           border-radius: 50%;
 
-          background-color: rgb(19, 151, 199);
+          background-color: #fff;
 
-          @include transition(background-color .3s ease);
+          transition: background-color .3s ease;
         }
 
         &:hover,
@@ -283,17 +288,27 @@
           }
 
           &:after {
-
             background-color: #fff;
+
+            box-shadow: 0 0 1px 0 #fff;
+          }
+
+          > .prj-chronology__div-glow {
+
+            opacity: .75;
           }
         }
 
         &.is-active {
-          @include transform(scale(1.5));
+          transform: scale(1.5);
 
           > .prj-chronology__div-glow {
+            //background: radial-gradient(ellipse at center, rgba(255, 198, 10, .78) 0%, rgba(255, 198, 10, 0) 60%, rgba(255, 198, 10, 0) 100%);
+            background: #fff;
+            border: 1px solid #fff;
 
-            opacity: 1;
+            -webkit-filter: blur(3px);
+            filter: blur(3px);
           }
         }
       }
@@ -301,7 +316,7 @@
   }
 
   &__div-glow {
-    $glow-size: 17px;
+    $glow-size: 10px;
 
     width: $glow-size;
     height: $glow-size;
@@ -316,13 +331,17 @@
     border-radius: 50%;
     border: 1px solid rgba(83, 86, 119, .1);
 
-    background-color: rgba(206, 206, 206, .08);
+    background-color: rgba(255, 255, 255, .6);
+
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
 
     opacity: 0;
 
-    //-webkit-filter: blur(2px);
-    //filter: blur(2px);
+    cursor: pointer;
 
-    @include transition(opacity .3s ease);
+    transition: opacity .3s ease;
+
+    z-index: $under-zindex;
   }
 }

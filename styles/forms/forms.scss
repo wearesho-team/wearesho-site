@@ -1,67 +1,30 @@
 /**
-  Forms styles
+* Forms styles
  */
 .form {
-  position: relative;
-
-  margin-top: 3.375em;
-
   font-size: 1.067em;
 
-  @include breakpoint($mobile) {
-
-    margin-top: 0;
-  }
-
-  @include breakpoint($tablet) {
-
-    margin-top: 0;
-  }
-
-  @include breakpoint($laptop-small) {
-
-    margin-top: 0;
-  }
-
-  @include breakpoint($laptop-large) {
-
-    margin-top: 2em;
-  }
-
-  &:before {
-    content: '';
-    display: block;
-
-    width: 599px;
-    height: 336px;
-
-    position: absolute;
-
-    top: -60px;
-    left: -86px;
-
-    @include transform(rotate(23deg));
-
-    background: url('images/form-glow.svg');
-
-    opacity: .1;
-
-    -webkit-filter: blur(50px);
-    filter: blur(50px);
+  .section__text {
+    margin-bottom: 3.375em;
 
     @include breakpoint($mobile) {
 
-      content: none;
+      margin-bottom: 0;
     }
 
     @include breakpoint($tablet) {
 
-      content: none;
+      margin-bottom: 0;
     }
 
     @include breakpoint($laptop-small) {
 
-      content: none;
+      margin-bottom: 0;
+    }
+
+    @include breakpoint($laptop-large) {
+
+      margin-bottom: 2em;
     }
   }
 
@@ -83,12 +46,9 @@
       vertical-align: top;
     }
 
-    &:first-child {
+    > p {
 
-      @include breakpoint($laptop-small) {
-
-        padding-right: 3.5em;
-      }
+      color: $color-primary;
     }
 
     &_second {
@@ -100,7 +60,7 @@
 
       @include breakpoint($laptop-small) {
 
-        padding-left: 3.5em;
+        padding-left: 2.5em;
       }
     }
   }
@@ -109,11 +69,12 @@
     position: relative;
 
     &:hover,
-    &:focus {
+    &.in-focus {
 
       > .form__control {
-
         opacity: 1;
+
+        box-shadow: 0px 6px 6px -3px rgba(106, 215, 255, 0.18);
       }
     }
 
@@ -133,14 +94,21 @@
       }
     }
 
-    &_has-error {
+    &.has-error {
+
+      &:hover,
+      &.in-focus {
+
+        > .form__control {
+
+          box-shadow: 0px 6px 6px -3px rgba(196, 58, 100, .3);
+        }
+      }
 
       > .form__control {
         border-bottom-color: #EB4B89;
 
         color: rgba(235, 75, 124, .5);
-
-        box-shadow: 0px 3px 5px -3px rgba(196, 58, 100, .3);
 
         &::-webkit-input-placeholder {
 
@@ -164,7 +132,7 @@
       }
     }
 
-    & + &_inline {
+    &_inline + & {
       margin: 1.875em 0 3.75em;
 
       @include breakpoint($tablet-l) {
@@ -244,6 +212,7 @@
 
     padding: .5em 0;
 
+    border-radius: 0;
     border: 1px solid transparent;
     border-bottom-color: $color-secondary;
 
@@ -252,9 +221,10 @@
 
     opacity: .6;
 
-    box-shadow: 0px 3px 5px -3px rgba(106, 215, 255, .3);
+    transition: opacity .3s ease, box-shadow .3s ease;
 
-    @include transition(opacity .3s ease, box-shadow .3s ease);
+    // Chrome input twitching bug fix
+    backface-visibility: hidden;
 
     &::-webkit-input-placeholder {
 
@@ -292,6 +262,11 @@
 
   .btn_primary {
     margin-top: 3.3em;
+
+    @include breakpoint($mobile) {
+
+      font-size: 1.267em;
+    }
 
     @include breakpoint($tablet-l) {
 
@@ -347,53 +322,49 @@
 // Extinction effect
 [placeholder]::-webkit-input-placeholder {
 
-  @include transition(all .25s ease);
+  transition: all .25s ease;
 }
 
 [placeholder]::-moz-placeholder {
 
-  @include transition(all .25s ease);
+  transition: all .25s ease;
 }
 
 [placeholder]:-moz-placeholder {
 
-  @include transition(all .25s ease);
+  transition: all .25s ease;
 }
 
 [placeholder]:-ms-input-placeholder {
 
-  @include transition(all .25s ease);
+  transition: all .25s ease;
 }
 
 [placeholder]:focus::-webkit-input-placeholder {
-  @include transform(translateX(10px));
+  transform: translateX(10px);
 
   opacity: 0;
 }
 
 [placeholder]:focus::-moz-placeholder {
-  @include transform(translateX(10px));
+  transform: translateX(10px);
 
   opacity: 0;
 }
 
 [placeholder]:focus:-moz-placeholder {
-  @include transform(translateX(10px));
+  transform: translateX(10px);
 
   opacity: 0;
 }
 
 [placeholder]:focus:-ms-input-placeholder {
-  @include transform(translateX(10px));
+  transform: translateX(10px);
 
   opacity: 0;
 }
 
-
-.request-sent {
-  // Temp
-  display: none;
-
+.request {
   line-height: 1.733em;
 
   > span {
@@ -409,6 +380,14 @@
       display: inline;
     }
 
+    &.inline {
+
+      @include breakpoint($laptop-medium) {
+
+        display: inline;
+      }
+    }
+
     &:first-child,
     &:last-child {
 
@@ -422,7 +401,6 @@
         display: block;
       }
     }
-
 
     &:first-child {
 
@@ -482,6 +460,7 @@
   .section__text_increased {
     font-size: 1.2em;
     font-weight: $font-style-medium;
+    color: #C5D5E0;
   }
 
   .section__text_indented {
@@ -495,5 +474,32 @@
 
       margin-top: 1em;
     }
+  }
+}
+
+.form-container {
+  min-height: 485px;
+
+  position: relative;
+
+  > form,
+  > p {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    opacity: 1;
+
+    transition: opacity .5s ease;
+  }
+
+  > .status-exit {
+    opacity: 0;
+  }
+
+  > .status-enter {
+    opacity: 0;
+    transition: none;
   }
 }

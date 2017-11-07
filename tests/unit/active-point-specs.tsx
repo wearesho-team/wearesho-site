@@ -105,6 +105,8 @@ describe("<ActivePoint/>", () => {
 
         wrapper.setProps(props);
 
+        onProjectChangeHasCalled = false;
+
         wrapper.mount();
 
         wrapper.simulate("click");
