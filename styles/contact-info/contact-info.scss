@@ -344,7 +344,7 @@
     font-size: initial !important;
 
     @include breakpoint($mobile-p) {
-      height: 600px;
+      height: 530px;
 
       width: 100%;
     }
@@ -353,14 +353,16 @@
   > .inner-layout {
     position: absolute;
 
-    top: .6em;
-    bottom: .6em;
+    top: 15px;
+    bottom: 15px;
     left: 1em;
     right: 1em;
 
     opacity: 1;
 
     transition: opacity .5s ease;
+
+    line-height: 100%;
 
     &.transform {
       &-enter {
@@ -388,5 +390,13 @@
         height: 10px;
       }
     }
+  }
+
+  .form__group_inline + .form__group {
+    margin: 1.875em 0 40px;
+  }
+
+  .btn {
+    margin-top: 40px;
   }
 }

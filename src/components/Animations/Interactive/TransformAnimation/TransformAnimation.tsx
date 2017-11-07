@@ -5,9 +5,11 @@ import {animateScroll} from "react-scroll";
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 import {concat} from "../../../../helpers/concat";
+import {getElementCoords} from "../../../../helpers/getElementCoords";
 
 export class TransformAnimation extends React.Component<any, any> {
-    public static readonly additionalOffset = 96;
+    // offset according to header height + blur
+    public static readonly additionalOffset = 105;
 
     constructor(props) {
         super(props);
@@ -26,7 +28,7 @@ export class TransformAnimation extends React.Component<any, any> {
 
         const rootProps = {
             className: "inner-layout",
-            [this.props.event]: this.handleEvent,
+            [this.props.event]: this.handleEvent
         };
 
         return (
@@ -59,15 +61,12 @@ export class TransformAnimation extends React.Component<any, any> {
             return;
         }
 
-        this.setState(({transformed}) => (
-            {
-                transformed: true
-            }
-        ));
+        this.setState({transformed: true});
 
         const container: HTMLElement = ReactDOM.findDOMNode(this);
+
         container &&
-        animateScroll.scrollTo(container.offsetTop + window.pageYOffset - TransformAnimation.additionalOffset, {
+        animateScroll.scrollTo(getElementCoords(container).top - TransformAnimation.additionalOffset, {
             duration: this.props.duration,
             delay: 0,
             smooth: true,
