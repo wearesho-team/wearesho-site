@@ -1,13 +1,17 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-
 import {animateScroll} from "react-scroll";
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 
-import {concat} from "../../../../helpers/concat";
 import {getElementCoords} from "../../../../helpers/getElementCoords";
+import {concat} from "../../../../helpers/concat";
 
-export class TransformAnimation extends React.Component<any, any> {
+import {TransformAnimationState} from "./TransformAnimationState";
+import {TransformAnimationProps, TransformAnimationPropTypes} from "./TransformAnimationProps";
+
+export class TransformAnimation extends React.Component<TransformAnimationProps, TransformAnimationState> {
+    public static readonly propTypes = TransformAnimationPropTypes;
+
     // offset according to header height + blur
     public static readonly additionalOffset = 105;
 
@@ -50,7 +54,7 @@ export class TransformAnimation extends React.Component<any, any> {
         )
     }
 
-    protected get innerLayout(): JSX.Element {
+    protected get innerLayout(): JSX.Element | JSX.Element [] {
         return this.state.transformed
             ? this.props.transformedComponent
             : this.props.initialComponent;

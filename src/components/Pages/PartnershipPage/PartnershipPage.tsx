@@ -108,13 +108,15 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                     <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
                                 <TransformAnimation
-                                    initialComponent={translate("buttons.cooperate")}
+                                    initialComponent={
+                                        <span className="cooperate-text">{translate("buttons.cooperate")}</span>
+                                    }
                                     transformedComponent={<ContactForm/>}
                                     staticComponent={[
                                         <span className="btn-corners btn-corners_top" key="top"/>,
                                         <span className="btn-corners btn-corners_bottom" key="bottom"/>
                                     ]}
-                                    className="btn btn_primary btn_transform"
+                                    className="btn btn_transform"
                                     event="onClick"
                                     duration={1000}
                                 />
