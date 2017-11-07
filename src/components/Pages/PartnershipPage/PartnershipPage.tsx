@@ -14,7 +14,8 @@ import {CloseButton, SubmitButton} from "../../Buttons";
 import {MapIcon} from "../../Icons/MapIcon";
 import {ContactForm} from "./ContactForm";
 import {BasePage} from "../BasePage";
-
+import {getCorners, getLabel} from "../../Buttons/SubmitButton";
+// tslint:disable:no-magic-numbers
 export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
     public state: PartnershipPageState = {
         isModalOpen: false,
@@ -108,14 +109,9 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                     <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
                                 <TransformAnimation
-                                    initialComponent={
-                                        <span className="cooperate-text">{translate("buttons.cooperate")}</span>
-                                    }
+                                    initialComponent={getLabel()}
                                     transformedComponent={<ContactForm/>}
-                                    staticComponent={[
-                                        <span className="btn-corners btn-corners_top" key="top"/>,
-                                        <span className="btn-corners btn-corners_bottom" key="bottom"/>
-                                    ]}
+                                    staticComponent={getCorners()}
                                     className="btn btn_transform"
                                     event="onClick"
                                     duration={1000}

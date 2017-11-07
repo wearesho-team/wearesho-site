@@ -2,6 +2,7 @@ import * as React from "react";
 import {expect} from "chai";
 import axios from "axios";
 import {ReactWrapper, mount} from "enzyme";
+import {useFakeTimers, SinonFakeTimers} from "sinon";
 import {Form, FormContext, Model} from "react-context-form";
 
 import {ContactForm} from "../../src/components/Pages/PartnershipPage/ContactForm/ContactForm";
@@ -12,29 +13,20 @@ import {SubmitStatus} from "../../src/components/Pages/PartnershipPage/ContactFo
 
 describe("<Form/>", () => {
     let wrapper: ReactWrapper<any, ContactFormState>;
+    let timer: SinonFakeTimers;
 
     beforeEach(() => {
         wrapper = mount(<ContactForm/>);
+        timer = useFakeTimers();
     });
 
     afterEach(() => {
+        timer.restore();
         wrapper.unmount();
     });
 
-    it("should prevent default on submit", () => {
-        let isDefaultPrevented = false;
-
-        wrapper.simulate("submit", {
-            preventDefault: () => {
-                isDefaultPrevented = true;
-            }
-        });
-
-        expect(isDefaultPrevented).to.be.true;
-    });
-
     it("Should add errors on submit when fields filled wrong", async () => {
-        const form = wrapper.children().instance() as Form<Model>;
+        const form = wrapper.find(Form).instance() as Form<Model>;
         const model = form.state.model as ContactFormModel;
 
         model.name = undefined;
@@ -164,5 +156,35 @@ describe("<Form/>", () => {
         expect(wrapper.instance().state.status).to.equal(SubmitStatus.fail);
 
         axios.interceptors.request.eject(interceptor);
+    });
+
+    it("Should set `standBy` state after timeout on success/fail submit", async () => {
+        wrapper.setState({
+            status: SubmitStatus.fail,
+            data: {
+                name: ""
+            }
+        });
+
+        timer.tick(ContactForm.standByDelay / 2);
+        expect(wrapper.state().status).to.equal(SubmitStatus.fail);
+
+        timer.tick(ContactForm.standByDelay / 2);
+        expect(wrapper.state().status).to.equal(SubmitStatus.standBy);
+
+        wrapper.setState({
+            status: SubmitStatus.success,
+            data: {
+                name: "",
+                from: "",
+                to: ""
+            }
+        });
+
+        timer.tick(ContactForm.standByDelay / 2);
+        expect(wrapper.state().status).to.equal(SubmitStatus.success);
+
+        timer.tick(ContactForm.standByDelay / 2);
+        expect(wrapper.state().status).to.equal(SubmitStatus.standBy);
     });
 });

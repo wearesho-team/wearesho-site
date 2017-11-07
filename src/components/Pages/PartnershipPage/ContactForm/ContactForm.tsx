@@ -41,7 +41,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
 
         this.state = {
             status: SubmitStatus.standBy
-        }
+        };
     }
 
     public render(): JSX.Element {

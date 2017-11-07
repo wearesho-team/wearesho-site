@@ -3,18 +3,26 @@ import {SlowSubmitButton, SlowSubmitButtonProps} from "react-context-form";
 
 import {translate} from "../../helpers/translate";
 
-function getCorners(): JSX.Element[] {
+export function getCorners(): JSX.Element[] {
     return [
         <span className="btn-corners btn-corners_top" key="top"/>,
         <span className="btn-corners btn-corners_bottom" key="bottom"/>
     ];
 }
 
-function loadingComponent() {
+export function loadingComponent() {
     return (
         <span>
             {translate("buttons.sending")}
             {getCorners()}
+        </span>
+    )
+}
+
+export function getLabel() {
+    return (
+        <span className="cooperate-text">
+            {translate("buttons.cooperate")}
         </span>
     )
 }

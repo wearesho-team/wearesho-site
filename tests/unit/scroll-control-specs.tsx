@@ -96,56 +96,22 @@ describe("<ScrollControl/>", () => {
     });
 
     it("Should set page offset on mount according to url", () => {
+        document.body.className = "loaded";
 
-        // // node.componentDidMount();
-        //
-        //
-        // Object.defineProperty(document.body, "attributes", {
-        //     configurable: true,
-        //     get: () => {
-        //         return {
-        //             getNamedItem: () => {
-        //                 return {
-        //                     value: "loaded"
-        //                 }
-        //             }
-        //         }
-        //     }
-        // });
-        //
-        // (MutationObserver as any).mutations[0].target = document.body;
+        let scrollChanged = false;
+        const listen = (node as any).listenPathChange.bind(node);
 
-        // let pathChanged = false;
+        (node as any).listenPathChange = (props) => {
+            scrollChanged = true;
+            listen(props);
+        };
 
-        // class ScrollControlMock extends ScrollControl {
-        //
-        //     constructor() {
-        //         super();
-        //         super.context = {
-        //             router: {
-        //                 history: {
-        //                     location: {
-        //                         state: "someState"
-        //                     },
-        //                     push: () => undefined,
-        //                     listen: () => undefined
-        //                 },
-        //                 route: {
-        //                     location: ""
-        //                 }
-        //             } as any
-        //         };
-        //
-        //         super.listenPathChange = () => {
-        //             pathChanged = true
-        //         };
-        //
-        //         super();
-        //     }
-        //
-        // }
+        node.getMutations([{
+            target: document.body
+        }]);
 
-        // node = new ScrollControlMock();
+        expect(scrollChanged).to.be.true;
 
+        document.body.className = "";
     });
 });

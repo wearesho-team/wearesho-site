@@ -26,9 +26,16 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
     protected childrenDom: HTMLCollection;
     protected clearTimeout = smartClearTimeout.bind(this);
     protected unlisten: () => void;
+    protected observer: MutationObserver;
+
+    public constructor(props) {
+        super(props);
+
+        this.observer = new MutationObserver(this.getMutations);
+    }
 
     // set scroll position according to location on body loaded
-    protected observer = new MutationObserver((mutations) => {
+    public getMutations = (mutations) => {
         const {target} = mutations[0];
 
         if (target !== document.body || target.attributes.getNamedItem("class").value !== "loaded") {
@@ -37,7 +44,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
 
         this.context.router.history.location.state = undefined;
         this.listenPathChange(this.context.router.history.location);
-    });
+    };
 
     public componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
