@@ -115,7 +115,10 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                         <stop  offset="0.1091" stopColor="#432840" stopOpacity="0"/>
                         <stop  offset="1" stopColor="#7060AF"/>
                     </linearGradient>
-                    <path id="blur_light" fillOpacity="0.645" fill="url(#blur_light_1_)" d="M-1126.4-546.3c113.5,0,219,36.1,219,43s-37.1-38.1-150.6-38.1c-11.8,0-26.7,23.8-47.5,30.6c-35.2,11.5-80.5,8.5-105.3,7.5c-99.1-4-121.1-25.6-121.1-30.5C-1331.9-540.7-1239.9-546.3-1126.4-546.3z"/>
+                    <filter id="blur" x="-140%" y="-100%" height="200%" width="200%">
+                        <feGaussianBlur result="blur" stdDeviation="26" />
+                    </filter>
+                    <path id="blur_light" fillOpacity="0.645" fill="url(#blur_light_1_)" filter="url(#blur)" d="M-1126.4-546.3c113.5,0,219,36.1,219,43s-37.1-38.1-150.6-38.1c-11.8,0-26.7,23.8-47.5,30.6c-35.2,11.5-80.5,8.5-105.3,7.5c-99.1-4-121.1-25.6-121.1-30.5C-1331.9-540.7-1239.9-546.3-1126.4-546.3z"/>
                     <g id="Ellipse_4" transform="translate(841.545 543.784)">
                         <circle fill="#FFFFFF" cx="-1983.2" cy="-1086.6" r="6.7"/>
                         <circle fill="none" stroke="#FFC60A" cx="-1983.2" cy="-1086.6" r="6.2"/>

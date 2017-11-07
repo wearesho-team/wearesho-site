@@ -93,39 +93,41 @@
   &.section-partnership {
 
     .section__half {
-      padding-top: 2.75em;
+      padding-top: 42px;
 
       @include breakpoint($mobile) {
 
-        padding-top: 2em;
+        padding-top: 30px;
       }
 
       @include breakpoint($laptop-large) {
 
-        padding-top: 2.5em;
+        padding-top: 38px;
       }
     }
   }
 
   &.section-process {
+    // Strange hover bug fix
+    .section__half {
 
-    > .process-structure {
-      width: 100%;
-      height: auto;
+      &.half_first {
+        padding-top: 0;
 
-      position: absolute;
+        > .section__subtitle {
 
-      top: 50%;
-      left: 0;
+          padding-top: 42px;
 
-      margin-top: -15.75%;
+          @include breakpoint($mobile) {
 
-      z-index: $under-zindex;
+            padding-top: 30px;
+          }
 
-      .blurred {
+          @include breakpoint($laptop-large) {
 
-        filter: url("#blur");
-        opacity: .64;
+            padding-top: 38px;
+          }
+        }
       }
     }
 
