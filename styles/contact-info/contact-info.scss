@@ -234,9 +234,14 @@
       margin-top: 3.75em;
     }
 
+    @include breakpoint($iphone5-p) {
+
+      font-size: 1.133em;
+    }
+
     @include breakpoint($mobile-l) {
 
-      @include span(4 of 12 inside no-gutters last);
+      display: none;
     }
 
     @include breakpoint($iphone4-l) {
