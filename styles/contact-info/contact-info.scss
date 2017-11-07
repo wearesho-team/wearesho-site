@@ -322,6 +322,8 @@
 
   height: 48px;
 
+  will-change: width, height;
+
   @include breakpoint($mobile-l) {
     display: none;
 

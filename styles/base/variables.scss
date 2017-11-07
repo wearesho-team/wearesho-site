@@ -42,6 +42,8 @@ $mobile-tablet: $mobile, $tablet;
 // Tablet & laptop
 $tablet-laptop: $tablet, $laptop-not-large;
 
+$any-desktop: (min-width 1025px);
+
 // Fonts
 $font-primary: 'Roboto Mono', monospace;
 $font-secondary: 'Roboto', sans-serif;

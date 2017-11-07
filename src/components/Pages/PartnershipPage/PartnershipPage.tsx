@@ -8,13 +8,14 @@ import {formatNumber} from "../../../helpers/formatNumber";
 import {translate} from "../../../helpers/translate";
 
 import {TransformAnimation} from "../../Animations/Interactive/TransformAnimation";
+import {getCorners, getLabel} from "../../Buttons/SubmitButton";
 import {SocialLinks} from "../../Layout/Partials/SocialLinks";
 import {PartnershipPageState} from "./PartnershipPageState";
 import {CloseButton, SubmitButton} from "../../Buttons";
 import {MapIcon} from "../../Icons/MapIcon";
 import {ContactForm} from "./ContactForm";
 import {BasePage} from "../BasePage";
-import {getCorners, getLabel} from "../../Buttons/SubmitButton";
+
 // tslint:disable:no-magic-numbers
 export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
     public state: PartnershipPageState = {

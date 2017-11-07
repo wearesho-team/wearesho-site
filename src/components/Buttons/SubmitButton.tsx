@@ -2,6 +2,7 @@ import * as React from "react";
 import {SlowSubmitButton, SlowSubmitButtonProps} from "react-context-form";
 
 import {translate} from "../../helpers/translate";
+import {TouchHover} from "../../helpers/TouchHover";
 
 export function getCorners(): JSX.Element[] {
     return [
@@ -32,6 +33,7 @@ export const SubmitButton: React.SFC<any> = (props): JSX.Element => {
         ...props,
         className: "btn btn_primary",
         loadingComponent: loadingComponent(),
+        ...TouchHover
     };
     return (
         <SlowSubmitButton {...childProps as any}>

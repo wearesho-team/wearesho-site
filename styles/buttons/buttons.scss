@@ -60,8 +60,6 @@
 
     transition: color .3s ease;
 
-    &:hover,
-    &.is-active,
     &.is-loading {
       box-shadow: 0 0 15px 0 rgba(51, 159, 208, .3), inset 0 0 15px rgba(51, 159, 208, .3);
 
@@ -105,6 +103,96 @@
       }
     }
 
+    @include breakpoint($mobile-tablet) {
+      &.is-active {
+        box-shadow: 0 0 15px 0 rgba(51, 159, 208, .3), inset 0 0 15px rgba(51, 159, 208, .3);
+
+        color: #7BC6F5;
+
+        @include breakpoint($mobile-tablet) {
+
+          box-shadow: 0 0 15px 0 rgba(51, 159, 208, .18), inset 0 0 15px rgba(51, 159, 208, .18);
+        }
+
+        @include breakpoint($laptop-small) {
+
+          box-shadow: 0 0 15px 0 rgba(51, 159, 208, .18), inset 0 0 15px rgba(51, 159, 208, .18);
+        }
+
+        transition: box-shadow .4s ease;
+
+        .btn-corners {
+
+          &:before,
+          &:after {
+            width: 100%;
+            height: 100%;
+
+            border-color: #7BC6F5;
+
+            color: #7BC6F5;
+
+            @include breakpoint($mobile-tablet) {
+              border-color: rgba(123, 198, 245, .6);
+
+              color: rgba(123, 198, 245, .6);
+            }
+
+            @include breakpoint($laptop-small) {
+              border-color: rgba(123, 198, 245, .6);
+
+              color: rgba(123, 198, 245, .6);
+            }
+          }
+        }
+      }
+    }
+
+    @include breakpoint($any-desktop) {
+      &:hover {
+        box-shadow: 0 0 15px 0 rgba(51, 159, 208, .3), inset 0 0 15px rgba(51, 159, 208, .3);
+
+        color: #7BC6F5;
+
+        @include breakpoint($mobile-tablet) {
+
+          box-shadow: 0 0 15px 0 rgba(51, 159, 208, .18), inset 0 0 15px rgba(51, 159, 208, .18);
+        }
+
+        @include breakpoint($laptop-small) {
+
+          box-shadow: 0 0 15px 0 rgba(51, 159, 208, .18), inset 0 0 15px rgba(51, 159, 208, .18);
+        }
+
+        transition: box-shadow .4s ease;
+
+        .btn-corners {
+
+          &:before,
+          &:after {
+            width: 100%;
+            height: 100%;
+
+            border-color: #7BC6F5;
+
+            color: #7BC6F5;
+
+            @include breakpoint($mobile-tablet) {
+              border-color: rgba(123, 198, 245, .6);
+
+              color: rgba(123, 198, 245, .6);
+            }
+
+            @include breakpoint($laptop-small) {
+              border-color: rgba(123, 198, 245, .6);
+
+              color: rgba(123, 198, 245, .6);
+            }
+          }
+        }
+      }
+    }
+
     &.is-loading {
       animation: loading 2s ease infinite;
 
@@ -134,11 +222,10 @@
         border-color: $color-secondary;
         border-style: solid;
 
-        transition:
-          width .2s ease,
-          height .2s ease,
-          border-color .2s ease,
-          color .2s ease;
+        transition: width .2s ease,
+        height .2s ease,
+        border-color .2s ease,
+        color .2s ease;
       }
 
       &:before {
