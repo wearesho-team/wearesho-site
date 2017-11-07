@@ -46,6 +46,11 @@
       vertical-align: top;
     }
 
+    > p {
+
+      color: $color-primary;
+    }
+
     &_second {
 
       @include breakpoint($tablet-l) {
@@ -473,14 +478,16 @@
 }
 
 .form-container {
+  min-height: 485px;
+
   position: relative;
 
-  min-height: 485px;
   > form,
   > p {
     position: absolute;
 
     top: 0;
+    bottom: 0;
 
     opacity: 1;
 
