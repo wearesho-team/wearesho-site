@@ -20,4 +20,5 @@ export function setInitialLanguage(): void {
     }
 
     axios.defaults.headers["accept-language"] = initialLanguage;
+    document.documentElement.lang = initialLanguage;
 }

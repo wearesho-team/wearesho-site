@@ -67,7 +67,8 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 </p>
                                 <p className="contact-info__text">
                                     <span className="text_regular">{translate("contactPage.location.title")}</span>
-                                    {translate(Config.location.country)}&nbsp;<span className="separator">/</span>
+                                    {translate(Config.location.country)}&nbsp;
+                                    <span className="separator">/</span>
                                     &nbsp;{translate(Config.location.city)}
                                 </p>
                             </OnDesktop>
@@ -110,12 +111,12 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                     <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
                                 <TransformAnimation
-                                    initialComponent={getLabel()}
                                     transformedComponent={<ContactForm/>}
                                     staticComponent={getCorners()}
+                                    initialComponent={getLabel()}
                                     className="btn btn_transform"
-                                    event="onClick"
                                     duration={1000}
+                                    event="onClick"
                                 />
                                 <SocialLinks/>
                             </OnMobile>
@@ -147,11 +148,11 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 <div className="slider__dot"/>
                             </div>
                             <div className="slider__description">
-                            <span className="slider__location">
-                                {Config.location.country} / {Config.location.city}
-                            </span>
+                                    <span className="slider__location">
+                                        {Config.location.country} / {Config.location.city}
+                                    </span>
                                 <span className="slider__coordinates">
-                                    {Config.location.coordinates.lat}&deg;&nbsp;
+                                        {Config.location.coordinates.lat}&deg;&nbsp;
                                     {Config.location.coordinates.lng}&deg;
                                 </span>
                             </div>

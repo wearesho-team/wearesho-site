@@ -35,7 +35,7 @@ export class ContactFormModel extends Model {
         message: () => translate("validation.empty"),
         groups: ["from"]
     })
-    public from: string = TimeDefaults.from;
+    public from: string;
 
     @Matches(timePattern, {
         message: () => translate("validation.incorrect.time"),
@@ -45,7 +45,7 @@ export class ContactFormModel extends Model {
         message: () => translate("validation.empty"),
         groups: ["to"]
     })
-    public to: string = TimeDefaults.to;
+    public to: string;
 
     public attributes() {
         return ["phone", "comment", "name", "from", "to"];

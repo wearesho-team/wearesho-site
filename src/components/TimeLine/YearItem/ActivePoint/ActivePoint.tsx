@@ -3,6 +3,7 @@ import * as React from "react";
 import {concat} from "../../../../helpers/concat";
 
 import {ActivePointProps, ActivePointPropTypes} from "./ActivePointProps";
+import {TimeLine} from "../../TimeLine";
 
 export class ActivePoint extends React.Component<ActivePointProps, undefined> {
     public static propTypes = ActivePointPropTypes;
@@ -48,8 +49,12 @@ export class ActivePoint extends React.Component<ActivePointProps, undefined> {
     }
 
     protected handleClick = ({currentTarget}) => {
-        !this.props.isActive
-        && this.props.onProjectChange(currentTarget, this.props.index);
+        if (this.props.isActive) {
+            return;
+        }
+
+        TimeLine.demonstrationMode = false;
+        this.props.onProjectChange(currentTarget, this.props.index);
     };
 
     protected setElement = (element: HTMLElement) => this.element = element;

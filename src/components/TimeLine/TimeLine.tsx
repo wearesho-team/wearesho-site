@@ -18,10 +18,13 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
 
     public static readonly propTypes = TimeLinePropTypes;
     public static readonly animationDuration = 300;
+    public static readonly demonstrationDelay = 2000;
     public static readonly pointsCount = 6;
 
     public static readonly sliderDefaultClassName = "slider";
     public static readonly sliderMoveClassName = "is-move";
+
+    public static demonstrationMode = true;
 
     public readonly widthRange = 85;
 
@@ -33,27 +36,25 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
         super(props);
 
         this.state = {
-            activeProject: !document.body.className.includes("loaded") ? projects[0] : projects[projects.length - 1],
+            activeProject: projects[0],
             sliderPosition: 0,
             sliderClassName: TimeLine.sliderDefaultClassName,
         }
     }
 
     public componentWillUnmount() {
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
     }
 
     public componentDidMount() {
-        // tslint:disable:no-magic-numbers
-
-        // initial animation
-        if (!document.body.className.includes("loaded")) {
-            setTimeout(() => {
-                this.setState({
-                    activeProject: projects[projects.length - 1],
-                })
-            }, ((window as any).hideTimeout || 2000) * 9);
+        if (!TimeLine.demonstrationMode) {
+            return;
         }
+
+        // tslint:disable:no-magic-numbers
+        document.body.className.includes("loaded")
+            ? this.startDemonstration(1)
+            : setTimeout(this.startDemonstration.bind(this, 1), ((window as any).hideTimeout || 2000) * 6)
     }
 
     public shouldComponentUpdate(nextProps: TimeLineProps, nextSate: TimeLineState): boolean {
@@ -87,6 +88,21 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
         );
     }
 
+    protected startDemonstration = (currentIndex: number) => {
+        if (!TimeLine.demonstrationMode) {
+            this.clearTimeout();
+            return;
+        }
+
+        this.timer = setTimeout(() => {
+            this.setState({activeProject: projects[currentIndex]});
+
+            this.startDemonstration(
+                currentIndex + 1 > projects.length - 1 ? 0 : currentIndex + 1
+            );
+        }, TimeLine.demonstrationDelay);
+    };
+
     protected handleChangeProject = (element: HTMLElement, position: number, yearActive: number) => {
         const activeProject = projects.find(({date: {year, month}}) =>
             year === yearActive && compareMonthWithScale(month, position, TimeLine.pointsCount));
@@ -106,7 +122,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
             ),
         });
 
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
         this.timer = setTimeout(() => {
             this.setState({
                 sliderClassName: concat(TimeLine.sliderDefaultClassName, offset > this.widthRange ? "swap" : ""),

@@ -2,22 +2,21 @@ import * as React from "react";
 import {Router} from "react-router-dom";
 import axios from "axios";
 
+import {routeProps} from "../../data/routeProps";
+import {Languages} from "../../data/Languages";
+
 import {getRoutesWithProps} from "../../helpers/getRoutesWithProps";
 import {getLinksWithProps} from "../../helpers/getLinksWithProps";
+import {translate} from "../../helpers/translate";
 
-import {routeProps} from "../../data/routeProps";
-
+import {LayoutContext, LayoutContextTypes} from "./LayoutContext"
+import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
+import {Header, SideBar, SoundSwitch} from "./Partials";
 import {TransitionSwitch} from "../TransitionSwitch";
 import {SmartBreakpoint} from "../SmartBreakpoint";
 import {SwitchControl} from "../SwitchControl";
 import {ScrollControl} from "../ScrollControl";
-import {Header, SideBar, SoundSwitch} from "./Partials";
-
-import {LayoutContext, LayoutContextTypes} from "./LayoutContext"
-import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
 import {LayoutState} from "./LayoutState";
-import {Languages} from "../../data/Languages";
-import {translate} from "../../helpers/translate";
 
 export class Layout extends React.Component<LayoutProps, LayoutState> {
     public static readonly propTypes = LayoutPropTypes;
@@ -81,9 +80,15 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
     }
 
     protected setLanguage = (nextLanguage: Languages) => {
+        // change html lang attribute
+        document.documentElement.lang = nextLanguage;
+        // write to storage
         localStorage.setItem("app.language", nextLanguage);
-        translate.setLocale(nextLanguage);
-        this.setState({language: nextLanguage});
+        // set up request
         axios.defaults.headers["accept-language"] = nextLanguage;
+        // translate text
+        translate.setLocale(nextLanguage);
+        // pass to context
+        this.setState({language: nextLanguage});
     }
 }

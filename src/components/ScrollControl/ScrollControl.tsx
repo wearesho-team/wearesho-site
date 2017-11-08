@@ -98,7 +98,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
     };
 
     protected handleScroll = () => {
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
 
         this.timer = setTimeout(this.updateLocation, ScrollControl.scrollListenDelay);
     };

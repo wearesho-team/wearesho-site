@@ -27,8 +27,11 @@ import {SubmitButton} from "../../../Buttons/SubmitButton";
 import {ContactFormState} from "./ContactFormState";
 import {SubmitStatus} from "./SubmitStatus";
 import {TimeInput} from "./TimeInput";
+import {CommentMaxLength} from "../../../../models/common/Rules";
+import {concat} from "../../../../helpers/concat";
 
 export class ContactForm extends React.Component<undefined, ContactFormState> implements ElementWithTimer {
+    public static formStorageKey = "formData";
     public static readonly standByDelay = 5000;
     public static readonly standByDuration = 500;
 
@@ -45,33 +48,42 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
     }
 
     public render(): JSX.Element {
+
+        return (
+            <TransitionGroup className="form-container">
+                {this.Form}
+                {this.message}
+            </TransitionGroup>
+        );
+    }
+
+    public componentWillUnmount() {
+        this.clearTimeout();
+    }
+
+    protected get message(): JSX.Element {
         const transitionProps = {
             classNames: "status",
             key: this.state.status,
             timeout: ContactForm.standByDuration,
         };
 
-        return (
-            <TransitionGroup className="form-container">
-                <CSSTransition {...transitionProps}>
-                    {this.layout}
-                </CSSTransition>
-            </TransitionGroup>
-        );
-    }
-
-    public componentWillUnmount() {
-        this.clearTimeout(this.timer);
-    }
-
-    protected get layout(): JSX.Element {
         switch (this.state.status) {
-            case SubmitStatus.standBy:
-                return this.Form;
             case SubmitStatus.success:
-                return this.SuccessMessage;
+                return (
+                    <CSSTransition {...transitionProps}>
+                        {this.SuccessMessage}
+                    </CSSTransition>
+                );
             case SubmitStatus.fail:
-                return this.ErrorMessage;
+                return (
+                    <CSSTransition {...transitionProps}>
+                        {this.ErrorMessage}
+                    </CSSTransition>
+                );
+            case SubmitStatus.standBy:
+                // tslint:disable:no-null-keyword
+                return null;
         }
     }
 
@@ -92,7 +104,6 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                 }
             });
         } catch (error) {
-
             if (error instanceof ValidationError) {
                 error.data.forEach(({code, ...error}) => context.addError(error as ModelError));
                 const modelElement: ModelError = error.data
@@ -115,7 +126,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
     protected get SuccessMessage(): JSX.Element {
         const {name, from, to} = this.state.data;
 
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
         this.timer = setTimeout(() => {
             this.setState({
                 status: SubmitStatus.standBy
@@ -143,7 +154,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
     protected get ErrorMessage(): JSX.Element {
         const {name} = this.state.data;
 
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
         this.timer = setTimeout(() => {
             this.setState({
                 status: SubmitStatus.standBy
@@ -164,9 +175,10 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
     protected get Form(): JSX.Element {
         return (
             <Form
-                className="form"
+                className={concat("form", this.state.status)}
                 instantiate={instantiateContactFormModel}
                 onSubmit={this.handleSubmit as any}
+                storageKey={ContactForm.formStorageKey}
             >
                 <OnDesktop>
                     <p className="section__text">
@@ -217,6 +229,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                             <Input
                                 className="form__control"
                                 placeholder={translate("contactPage.form.placeholders.comment")}
+                                maxLength={CommentMaxLength}
                             />
                         </AutoValidate>
                         <Hint className="form__error-text"/>

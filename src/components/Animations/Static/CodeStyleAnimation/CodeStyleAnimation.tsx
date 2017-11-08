@@ -30,7 +30,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             return;
         }
 
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
         this.timer = setTimeout(this.type.bind(this), this.props.delay);
     });
 
@@ -67,7 +67,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
     }
 
     public componentWillUnmount() {
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
         this.type = undefined;
         this.observer.disconnect();
     }
@@ -99,7 +99,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             counter: prevState.counter + 1
         }));
 
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
         this.timer = setTimeout(
             this.type.bind(this),
             Math.random() * (this.props.speed.max - this.props.speed.min) + this.props.speed.min
@@ -121,7 +121,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
     }
 
     protected clearCaret() {
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
         this.timer = setTimeout(() => {
             this.setState((prevState) => ({
                 children: prevState.children[0] + prevState.children[2]

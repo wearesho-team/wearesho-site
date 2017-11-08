@@ -23,7 +23,7 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
             return;
         }
 
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
         this.timer = setTimeout(this.setNewChild.bind(this), this.props.delay);
     });
 
@@ -47,7 +47,7 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
     }
 
     public componentWillUnmount() {
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
         this.observer.disconnect();
     }
 
@@ -75,7 +75,7 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
             children: React.cloneElement(this.props.children, childProps)
         });
 
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
         this.timer = setTimeout(this.setOldChild.bind(this), this.props.duration);
     };
 

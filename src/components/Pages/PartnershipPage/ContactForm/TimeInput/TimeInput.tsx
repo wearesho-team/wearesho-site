@@ -20,9 +20,7 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
     protected maskElement: typeof ReactInputMask;
 
     public get inputValue(): string {
-        return this.maskElement
-            ? this.maskElement.value
-            : undefined;
+        return this.context.value || this.props.defaultTime;
     }
 
     public render(): any {
@@ -33,7 +31,7 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
             ...{
                 onChange: this.handleChangeControl,
                 ref: this.setElement,
-                value: this.inputValue || defaultTime
+                value: this.inputValue
             }
         };
 
