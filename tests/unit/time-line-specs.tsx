@@ -42,17 +42,20 @@ describe("<TimeLine/>", () => {
     });
 
     it("should set first project on mount after delay", () => {
+        TimeLine.demonstrationMode = true;
         document.body.className = "";
         wrapper.unmount();
         wrapper.mount();
-        timer.tick(delay / 2);
+        timer.tick(TimeLine.startDelay / 2);
         expect(wrapper.state().activeProject.date.year).to.equal(projects[0].date.year);
         expect(wrapper.state().activeProject.date.month).to.equal(projects[0].date.month);
 
-        timer.tick(delay / 2);
+        timer.tick(TimeLine.startDelay / 2);
 
-        expect(wrapper.state().activeProject.date.year).to.equal(projects[projects.length - 1].date.year);
-        expect(wrapper.state().activeProject.date.month).to.equal(projects[projects.length - 1].date.month);
+        expect(wrapper.state().activeProject.date.year).to.equal(projects[1].date.year);
+        expect(wrapper.state().activeProject.date.month).to.equal(projects[1].date.month);
+        TimeLine.demonstrationMode = false;
+
         document.body.className = "loaded";
     });
 

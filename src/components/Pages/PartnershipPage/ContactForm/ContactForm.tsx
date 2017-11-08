@@ -15,20 +15,19 @@ import {
 } from "react-context-form";
 
 import {ContactFormModel, instantiateContactFormModel} from "../../../../models/ContactFormModel";
-import {NameRange, PhoneRange, TimeDefaults} from "../../../../models/common";
+import {NameRange, PhoneRange, CommentMaxLength} from "../../../../models/common";
 
 import {ValidationError} from "../../../../data/ValidationError";
 
 import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
 import {OnDesktop, OnMobile} from "../../../../helpers/Breakpoints";
 import {translate} from "../../../../helpers/translate";
+import {concat} from "../../../../helpers/concat";
 
 import {SubmitButton} from "../../../Buttons/SubmitButton";
 import {ContactFormState} from "./ContactFormState";
 import {SubmitStatus} from "./SubmitStatus";
 import {TimeInput} from "./TimeInput";
-import {CommentMaxLength} from "../../../../models/common/Rules";
-import {concat} from "../../../../helpers/concat";
 
 export class ContactForm extends React.Component<undefined, ContactFormState> implements ElementWithTimer {
     public static formStorageKey = "formData";
@@ -243,7 +242,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                             <Label className="spinner__label">
                                 {translate("contactPage.form.time.from")}
                             </Label>
-                            <TimeInput className="form__control" defaultTime={TimeDefaults.from}/>
+                            <TimeInput className="form__control"/>
                         </FormGroup>
                         <OnMobile>
                             <span className="separator">
@@ -254,7 +253,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                             <Label className="spinner__label">
                                 {translate("contactPage.form.time.to")}
                             </Label>
-                            <TimeInput className="form__control" defaultTime={TimeDefaults.to}/>
+                            <TimeInput className="form__control"/>
                         </FormGroup>
                     </div>
                 </div>

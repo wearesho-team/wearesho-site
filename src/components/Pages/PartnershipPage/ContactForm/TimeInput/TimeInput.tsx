@@ -3,8 +3,9 @@ import * as React from "react";
 const ReactInputMask = require("react-input-mask/lib");
 import {BaseInput, BaseInputDefaultProps} from "react-context-form";
 
-import {TimeInputDefaultProps, TimeInputProps, TimeInputPropTypes} from "./TimeInputProps";
 import {toFixed} from "../../../../../helpers/toFixed";
+
+import {TimeInputDefaultProps, TimeInputProps, TimeInputPropTypes} from "./TimeInputProps";
 
 export class TimeInput extends BaseInput<HTMLInputElement> {
     public static readonly propTypes = TimeInputPropTypes;
@@ -20,18 +21,18 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
     protected maskElement: typeof ReactInputMask;
 
     public get inputValue(): string {
-        return this.context.value || this.props.defaultTime;
+        return this.maskElement
+            ? this.maskElement.value
+            : undefined;
     }
 
     public render(): any {
-        const {defaultTime, ...childProps} = this.childProps as TimeInputProps;
-
         const inputProps = {
-            ...childProps,
+            ...this.childProps,
             ...{
                 onChange: this.handleChangeControl,
                 ref: this.setElement,
-                value: this.inputValue
+                value: this.context.value
             }
         };
 
@@ -68,7 +69,13 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
 
         this.maskElement && this.maskElement.setInputValue(`${hours}:${minutes}`);
 
-        await this.handleChange(event);
+        const newEvent = {
+            currentTarget: {
+                value: `${hours}:${minutes}`
+            }
+        } as React.ChangeEvent<HTMLInputElement>;
+
+        await this.handleChange(newEvent);
     };
 
     protected handleIncrement = async () => {

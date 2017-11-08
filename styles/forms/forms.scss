@@ -370,6 +370,11 @@
   > span {
     display: block;
 
+    @include breakpoint($mobile-p) {
+
+      color: #8E9CA5;
+    }
+
     @include breakpoint($tablet) {
 
       display: inline;
@@ -378,6 +383,14 @@
     @include breakpoint($laptop-small) {
 
       display: inline;
+    }
+
+    &:first-child {
+
+      @include breakpoint($mobile-p) {
+
+        font-weight: $font-style-regular;
+      }
     }
 
     &.inline {
@@ -478,28 +491,35 @@
 }
 
 .form-container {
-  min-height: 485px;
-
   position: relative;
+
+  @include breakpoint($mobile-p) {
+
+    height: 100%;
+  }
 
   > form,
   > p {
-    position: absolute;
-
-    top: 0;
-    bottom: 0;
-
     opacity: 1;
 
     transition: opacity .5s ease;
   }
 
+  > P {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+  }
+
   > .status-exit {
+
     opacity: 0;
   }
 
   > .status-enter {
     opacity: 0;
+
     transition: none;
   }
 }

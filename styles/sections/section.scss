@@ -29,6 +29,21 @@
 
            min-height: 630px;
          }
+
+         @include breakpoint($tablet-p) {
+
+           min-height: 526px;
+         }
+
+         @include breakpoint($tablet-l) {
+
+           min-height: 274px;
+         }
+
+         @include breakpoint($laptop-small) {
+
+           min-height: 274px;
+         }
        }
      }
 
