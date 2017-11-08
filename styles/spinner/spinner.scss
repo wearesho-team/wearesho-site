@@ -1,6 +1,40 @@
 /**
-  Spinner styles
+* Spinner styles
  */
+html[lang="en"] {
+
+  .spinner {
+
+    &:first-child {
+
+      > .spinner__label {
+
+        @include breakpoint($laptop-small) {
+
+          display: none;
+        }
+
+        @include breakpoint($laptop-medium) {
+
+          display: none;
+        }
+      }
+
+      > .form__control {
+
+        @include breakpoint($laptop-small) {
+
+          margin-left: 0;
+        }
+
+        @include breakpoint($laptop-medium) {
+
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
 .spinner {
   width: 50%;
 
