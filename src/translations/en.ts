@@ -63,7 +63,10 @@ translate.registerTranslations("en", {
                     callBack: "We will call you back at the specified time:",
                     withRespect: "Sincerely, the team of Studio"
                 },
-                fail: {}
+                fail: {
+                    text: "unfortunately, the information has not been sent. Please contact us by phone or write to the mail."
+                },
+                withRespect: "Sincerely, The Studio team"
             },
         },
         support: {
