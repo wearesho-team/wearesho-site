@@ -1,6 +1,40 @@
 /**
-  Spinner styles
+* Spinner styles
  */
+html[lang="en"] {
+
+  .spinner {
+
+    &:first-child {
+
+      > .spinner__label {
+
+        @include breakpoint($laptop-small) {
+
+          display: none;
+        }
+
+        @include breakpoint($laptop-medium) {
+
+          display: none;
+        }
+      }
+
+      > .form__control {
+
+        @include breakpoint($laptop-small) {
+
+          margin-left: 0;
+        }
+
+        @include breakpoint($laptop-medium) {
+
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
 .spinner {
   width: 50%;
 
@@ -56,8 +90,14 @@
     }
   }
 
-  &__label {
+  &__label,
+  > .form__control {
 
+    color: #C5D5E0;
+  }
+
+  &__label {
+    font-size: 1em;
     font-weight: $font-style-regular;
   }
 
@@ -67,9 +107,15 @@
     margin-left: .4em;
     padding: 0;
 
+    opacity: .5;
+
+    border: 0;
+    box-shadow: none;
+
     font-size: 1.875em;
     font-weight: $font-style-light;
-    color: rgba(105, 105, 105, .8);
+
+    transition: opacity .3s ease;
 
     @include breakpoint($mobile) {
       width: 88px;
@@ -87,9 +133,10 @@
       border-bottom: 1px solid $color-primary;
     }
 
+    &:hover,
     &:focus {
 
-      color: rgba(105, 105, 105, 1);
+      opacity: 1;
     }
   }
 

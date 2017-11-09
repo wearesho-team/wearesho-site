@@ -2,23 +2,21 @@ import * as React from "react";
 import {Router} from "react-router-dom";
 import axios from "axios";
 
-import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
-import {getLinksWithProps} from "../../helpers/getLinksWithProps";
-import {getRoutesWithProps} from "../../helpers/getRoutesWithProps";
-
 import {routeProps} from "../../data/routeProps";
-
-import {Header, SideBar} from "./Partials";
-import {SoundSwitch} from "./SoundSwitch";
-import {TransitionSwitch} from "../TransitionSwitch";
-import {SwitchControl} from "../SwitchControl";
-
-import {ScrollControl} from "../ScrollControl";
-import {SmartBreakpoint} from "../SmartBreakpoint";
-import {LayoutContext, LayoutContextTypes} from "./LayoutContext";
-import {LayoutState} from "./LayoutState";
 import {Languages} from "../../data/Languages";
+
+import {getRoutesWithProps} from "../../helpers/getRoutesWithProps";
+import {getLinksWithProps} from "../../helpers/getLinksWithProps";
 import {translate} from "../../helpers/translate";
+
+import {LayoutContext, LayoutContextTypes} from "./LayoutContext"
+import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
+import {Header, SideBar, SoundSwitch} from "./Partials";
+import {TransitionSwitch} from "../TransitionSwitch";
+import {SmartBreakpoint} from "../SmartBreakpoint";
+import {SwitchControl} from "../SwitchControl";
+import {ScrollControl} from "../ScrollControl";
+import {LayoutState} from "./LayoutState";
 
 export class Layout extends React.Component<LayoutProps, LayoutState> {
     public static readonly propTypes = LayoutPropTypes;
@@ -63,6 +61,7 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
                         {getLinksWithProps()}
                     </SideBar>
                     <SoundSwitch/>
+                    <div className="section-gradient section-main"/>
                     <SmartBreakpoint match="min-width: 1440px">
                         <SwitchControl>
                             <TransitionSwitch className="translate-container" classNames="translateY">
@@ -81,9 +80,15 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
     }
 
     protected setLanguage = (nextLanguage: Languages) => {
+        // change html lang attribute
+        document.documentElement.lang = nextLanguage;
+        // write to storage
         localStorage.setItem("app.language", nextLanguage);
-        translate.setLocale(nextLanguage);
-        this.setState({language: nextLanguage});
+        // set up request
         axios.defaults.headers["accept-language"] = nextLanguage;
+        // translate text
+        translate.setLocale(nextLanguage);
+        // pass to context
+        this.setState({language: nextLanguage});
     }
 }

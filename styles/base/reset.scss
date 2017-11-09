@@ -47,7 +47,7 @@ body {
   text-overflow: ellipsis;
 }
 
-.form__control:not([type="password"]):-ms-.form__control-placeholder {
+.form__control:not([type="password"]):-ms-input-placeholder {
   text-overflow: ellipsis;
 }
 

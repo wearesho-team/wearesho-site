@@ -6,10 +6,10 @@ import {createMemoryHistory, History} from "history";
 
 import {Layout, LayoutProps} from "../../src/components/Layout";
 import {PreLoader} from "../../src/components/PreLoader";
-import {MainPage} from "../../src/components/MainPage";
-import {ContactPage} from "../../src/components/ContactPage";
+import {MainPage} from "../../src/components/Pages/MainPage";
+import {PartnershipPage} from "../../src/components/Pages/PartnershipPage";
 import {SideBar, Header} from "../../src/components/Layout/Partials";
-import {SoundSwitch} from "../../src/components/Layout/SoundSwitch";
+import {SoundSwitch} from "../../src/components/Layout/Partials/SoundSwitch";
 import {getLinksWithProps} from "../../src/helpers/getLinksWithProps";
 import {LayoutContext} from "../../src/components/Layout/LayoutContext";
 import {Languages} from "../../src/data/Languages";
@@ -71,10 +71,10 @@ describe("<Layout>", () => {
         expect(wrapper.contains(<MainPage/>)).to.be.true;
     });
 
-    it("should render <ContactPage/> on `/contact`", () => {
+    it("should render <PartnershipPage/> on `/partnership`", () => {
 
-        history.push("/contact");
-        expect(wrapper.contains(<ContactPage/>)).to.be.true;
+        history.push("/partnership");
+        expect(wrapper.contains(<PartnershipPage/>)).to.be.true;
     });
 
     it("should contain <SideBar/>,<Header/> and <SoundSwitch/> on each page", () => {
@@ -90,7 +90,7 @@ describe("<Layout>", () => {
         };
 
         expectElementsExist();
-        history.push("/contact");
+        history.push("/partnership");
         expectElementsExist();
     });
 

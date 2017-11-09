@@ -9,64 +9,38 @@
 <div id="preloader">
     <section class="section section-preloader">
         <div class="greeting">
-            <a href="#" class="logo">
-                <i class="icon icon_logo"></i>
-                <span class="logo__text">Art &amp; Data Studio</span>
-            </a>
             <h4 class="section__subtitle">
                 <span class="text_medium">Приветствуем</span>
                 <span>Команда готова реализовать ваши планы</span>
             </h4>
-        </div>
-        <div class="booting-info">
-            <h4 class="section__subtitle">
-                <span class="section__subtitle_percent-number">0</span>
-                <span class="section__subtitle_measur-units">%</span>
-            </h4>
-            <h4 class="section__subtitle">
-                <span class="text_medium">Загрузка проектов</span>
-                <span>Подождите, осталось немного</span>
-            </h4>
+            <a href="#" class="logo">
+                <i class="icon icon_logo"></i>
+                <span class="logo__text">Art &amp; Data Studio</span>
+            </a>
         </div>
     </section>
 </div>
-<div id="content-overlay"></div>
+<div id="content-overlay" style="opacity: 0"></div>
 <div class="grid">
-    <div class="grid__col">
-        <div class="grow-item grow-item-left"></div>
-        <div class="grow-item grow-item-right"></div>
+    <div class="grid__col"></div>
+    <div class="grid__col grid__col_decor touch-only">
+        <div class="grow-element"></div>
     </div>
-    <div class="grid__col">
-        <div class="grow-item grow-item-left"></div>
-        <div class="booting-indicator touch-only"></div>
-        <div class="grow-item grow-item-right"></div>
+    <div class="grid__col"></div>
+    <div class="grid__col grid__col_decor">
+        <div class="grow-element"></div>
     </div>
-    <div class="grid__col">
-        <div class="grow-item grow-item-left touch-only"></div>
-        <div class="booting-indicator"></div>
-        <div class="grow-item grow-item-right touch-only"></div>
-    </div>
-    <div class="grid__col">
-        <div class="grow-item grow-item-left"></div>
-        <div class="grow-item grow-item-right"></div>
-    </div>
-    <div class="grid__col">
-        <div class="grow-item grow-item-left"></div>
-        <div class="grow-item grow-item-right"></div>
-    </div>
-    <div class="grid__col">
-        <div class="grow-item grow-item-left"></div>
-        <div class="grow-item grow-item-right"></div>
-    </div>
+    <div class="grid__col"></div>
+    <div class="grid__col"></div>
 </div>
 <script type="text/javascript">
-    var hideTimeout = 2000;
+    var hideTimeout = 1000;
+
     (function () {
         var percents = 0;
-        var indicators = document.getElementsByClassName("booting-indicator");
-        var grid = document.getElementsByClassName("grid__col");
-        var label = document.getElementsByClassName("section__subtitle_percent-number")[0];
+        var indicators = document.getElementsByClassName("grow-element");
         var timer;
+        var content = document.getElementById("content-overlay");
 
         // triggering form PreLoaded component
         window.onBundleLoaded = function () {
@@ -74,50 +48,20 @@
             clearTimeout(timer);
             increase = undefined;
 
-            // need some delay for styles
+            content.removeAttribute("style");
             setTimeout(function () {
-                for (var gridItem of grid) {
-                    gridItem.classList.add("loaded");
-
-                    const innerItems = gridItem.getElementsByTagName("div");
-                    for (var item of innerItems) {
-                        item.removeAttribute("style");
-                    }
+                for (var i = 0; i < indicators.length; i++) {
+                    indicators.item(i).removeAttribute("style");
                 }
-            }, 100);
-
-            // at the last stage it is necessary to finish increasing percents
-            var counter = 0;
-            (function ending() {
-                setTimeout(function () {
-                    // searching current visible indicator
-                    for (var indicator of indicators) {
-                        var height = parseInt(indicator.getBoundingClientRect().height);
-                        if (!height) {
-                            continue;
-                        }
-                        // calculate percentage height of indicator
-                        label.innerHTML = Math.floor(height / window.innerHeight * 100);
-                        counter++;
-                    }
-                    (counter < (hideTimeout / 50)) && ending();
-                }, 50)
-            })();
+            }, hideTimeout);
         }
 
         function increase() {
             timer = setTimeout(function () {
                 percents++;
-                label.innerHTML = percents;
-                // set height to all indicators
-                for (var item of grid) {
-                    const growItems = item.getElementsByClassName("grow-item");
-                    for (var growItem of growItems) {
-                        growItem.style.height = (100 - percents) + "%";
-                    }
-                }
-                for (var indicator of indicators) {
-                    indicator.style.height = percents + "%";
+                for (var i = 0; i < indicators.length; i++) {
+                    indicators.item(i).style.top = 50 - (percents / 2) + "%";
+                    indicators.item(i).style.bottom = 50 - (percents / 2) + "%";
                 }
 
                 increase && (percents < 85) && increase();

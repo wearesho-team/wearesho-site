@@ -271,13 +271,9 @@ $fourteen: $height;
     width: 10px;
     height: 10px;
   }
-  50% {
+  100% {
     width: 100%;
     height: 100%;
-  }
-  100% {
-    width: 10px;
-    height: 10px;
   }
 }
 
@@ -288,70 +284,70 @@ $indent-tablet: -66px;
 
 @keyframes change-title-part-1 {
   0% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
   13.33% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
   23.33% {
-    @include transform(translateY($indent));
+    transform: translateY($indent);
     opacity: 1;
   }
   23.34% {
     opacity: 0;
   }
   25% {
-    @include transform(translateY(-$indent));
+    transform: translateY(-$indent);
     opacity: 0;
   }
   90% {
-    @include transform(translateY(-$indent));
+    transform: translateY(-$indent);
     opacity: 1;
   }
   100% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
 }
 
 @keyframes change-title-part-2 {
   0% {
-    @include transform(translateY(-$indent));
+    transform: translateY(-$indent);
   }
   13.33% {
-    @include transform(translateY(-$indent));
+    transform: translateY(-$indent);
   }
   23.33% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
   46.66% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
   56.66% {
-    @include transform(translateY($indent));
+    transform: translateY($indent);
   }
   100% {
-    @include transform(translateY($indent));
+    transform: translateY($indent);
   }
 }
 
 @keyframes change-title-part-3 {
   0% {
-    @include transform(translateY(-$indent));
+    transform: translateY(-$indent);
   }
   46.66% {
-    @include transform(translateY(-$indent));
+    transform: translateY(-$indent);
   }
   56.66% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
   79.99% {
-    @include transform(translateY(0));
+    transform: translateY(0);
   }
   90% {
-    @include transform(translateY($indent));
+    transform: translateY($indent);
   }
   100% {
-    @include transform(translateY($indent));
+    transform: translateY($indent);
   }
 }
 
@@ -359,70 +355,70 @@ $indent-tablet: -66px;
 
   @keyframes change-title-part-1 {
     0% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     13.33% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     23.33% {
-      @include transform(translateY($indent-mob));
+      transform: translateY($indent-mob);
       opacity: 1;
     }
     23.34% {
       opacity: 0;
     }
     25% {
-      @include transform(translateY(-$indent-mob));
+      transform: translateY(-$indent-mob);
       opacity: 0;
     }
     90% {
-      @include transform(translateY(-$indent-mob));
+      transform: translateY(-$indent-mob);
       opacity: 1;
     }
     100% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
   }
 
   @keyframes change-title-part-2 {
     0% {
-      @include transform(translateY(-$indent-mob));
+      transform: translateY(-$indent-mob);
     }
     13.33% {
-      @include transform(translateY(-$indent-mob));
+      transform: translateY(-$indent-mob);
     }
     23.33% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     46.66% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     56.66% {
-      @include transform(translateY($indent-mob));
+      transform: translateY($indent-mob);
     }
     100% {
-      @include transform(translateY($indent-mob));
+      transform: translateY($indent-mob);
     }
   }
 
   @keyframes change-title-part-3 {
     0% {
-      @include transform(translateY(-$indent-mob));
+      transform: translateY(-$indent-mob);
     }
     46.66% {
-      @include transform(translateY(-$indent-mob));
+      transform: translateY(-$indent-mob);
     }
     56.66% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     79.99% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     90% {
-      @include transform(translateY($indent-mob));
+      transform: translateY($indent-mob);
     }
     100% {
-      @include transform(translateY($indent-mob));
+      transform: translateY($indent-mob);
     }
   }
 }
@@ -431,126 +427,169 @@ $indent-tablet: -66px;
 
   @keyframes change-title-part-1 {
     0% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     13.33% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     23.33% {
-      @include transform(translateY($indent-tablet));
+      transform: translateY($indent-tablet);
       opacity: 1;
     }
     23.34% {
       opacity: 0;
     }
     25% {
-      @include transform(translateY(-$indent-tablet));
+      transform: translateY(-$indent-tablet);
       opacity: 0;
     }
     90% {
-      @include transform(translateY(-$indent-tablet));
+      transform: translateY(-$indent-tablet);
       opacity: 1;
     }
     100% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
   }
 
   @keyframes change-title-part-2 {
     0% {
-      @include transform(translateY(-$indent-tablet));
+      transform: translateY(-$indent-tablet);
     }
     13.33% {
-      @include transform(translateY(-$indent-tablet));
+      transform: translateY(-$indent-tablet);
     }
     23.33% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     46.66% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     56.66% {
-      @include transform(translateY($indent-tablet));
+      transform: translateY($indent-tablet);
     }
     100% {
-      @include transform(translateY($indent-tablet));
+      transform: translateY($indent-tablet);
     }
   }
 
   @keyframes change-title-part-3 {
     0% {
-      @include transform(translateY(-$indent-tablet));
+      transform: translateY(-$indent-tablet);
     }
     46.66% {
-      @include transform(translateY(-$indent-tablet));
+      transform: translateY(-$indent-tablet);
     }
     56.66% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     79.99% {
-      @include transform(translateY(0));
+      transform: translateY(0);
     }
     90% {
-      @include transform(translateY($indent-tablet));
+      transform: translateY($indent-tablet);
     }
     100% {
-      @include transform(translateY($indent-tablet));
+      transform: translateY($indent-tablet);
     }
   }
 }
 
-// Projects chronology filled division animation
+// Projects chronology filled division and main nav animation
 @keyframes pulse-ring {
   0% {
     transform: scale(.25);
+    opacity: 0;
   }
   10% {
     opacity: 1;
   }
+  99% {
+    transform: scale(1);
+    opacity: 0;
+  }
   100% {
     opacity: 0;
   }
 }
 
-// Grid growth to top
-@keyframes to-top {
-  0% {
-    height: 100%;
-  }
-  100% {
-    height: 0;
-  }
-}
-
-// Grid growth to bottom
-@keyframes to-bottom {
-  0% {
-    height: 0;
-  }
-  100% {
-    height: 100%;
-  }
-}
-
-// Preloader disappearing
-@keyframes preloader-disappearing {
+// Appearance
+@keyframes appearance {
   from {
-    opacity: 1;
+    opacity: 0;
   }
   to {
-    opacity: 0;
-    z-index: -1;
+    opacity: 1;
+  }
+}
+
+// Disappearance
+@keyframes disappearance {
+  from {
+    opacity: 1
+  }
+  to {
     pointer-events: none;
+
+    opacity: 0;
+
+    z-index: $under-zindex;
   }
 }
 
-// Map showing
-@keyframes show-map {
+// Grid growth
+@keyframes grid-growth {
   from {
-    opacity: 0;
+    top: 50%;
+    bottom: 50%;
   }
   to {
-    opacity: 1;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+// Movement of preloader elms
+@keyframes movement-left {
+  from {
+    transform: translateX(-8px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes movement-right {
+  from {
+    transform: translateX(8px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+// Projects chronology orbit animation
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Chronology slider motion animation
+@keyframes motion-blur {
+  0% {
+    filter: blur(0);
+  } 100% {
+    filter: blur(100px);
+  }
+}
+
+// Add scroll
+@keyframes add-scroll {
+  0% {
+    overflow-y: auto;
+  } 100% {
+    overflow-y: scroll;
   }
 }
 
@@ -567,24 +606,48 @@ $indent-tablet: -66px;
   }
 }
 
-@keyframes slide-to-left {
+@keyframes showing {
   0% {
     opacity: 0;
-    //@include transform3d(translate3d(-100%,0,0));
   }
   100% {
     opacity: 1;
-    //@include transform(translate3d(0,0,0));
   }
 }
 
 @keyframes slide-to-left-slow-opacity {
   0% {
     opacity: 0;
-    @include transform3d(translate3d(-10%,0,0));
+    transform: translate3d(-10%,0,0);
   }
   100% {
     opacity: 1;
-    @include transform(translate3d(0,0,0));
+    transform: translate3d(0,0,0);
+  }
+}
+
+// Form sending btn animation
+@keyframes loading {
+  0% {
+    box-shadow: 0 0 15px 0 rgba(51, 159, 208, .18), inset 0 0 15px rgba(51, 159, 208, .18);
+  }
+  50% {
+    box-shadow: 0 0 15px 0 rgba(51, 159, 208, .3), inset 0 0 15px rgba(51, 159, 208, .3);
+  }
+  100% {
+    box-shadow: 0 0 15px 0 rgba(51, 159, 208, .18), inset 0 0 15px rgba(51, 159, 208, .18);
+  }
+}
+
+// Header links animation
+@keyframes painting {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: calc(100% + 14px);
+  }
+  100% {
+    width: 0;
   }
 }

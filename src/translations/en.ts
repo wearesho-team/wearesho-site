@@ -1,6 +1,6 @@
 import {NameRange} from "../models/common/Rules";
 import {translate} from "../helpers/translate";
-
+// tslint:disable:max-line-length
 translate.registerTranslations("en", {
     header: {
         newProject: "New project"
@@ -37,29 +37,37 @@ translate.registerTranslations("en", {
             },
             howLong: {
                 title: "More than 3 years",
-                subTitle: "professional cooperation with financial companies:",
+                subTitle: "cooperation with financial companies:",
             }
         }
     },
     contactPage: {
         title: "Partnership",
         form: {
+            titleExtended: "Contact us or fill out the information on the form. Our specialists will answer all your questions.",
             title: "Contact us",
-            subTitle: "or enter your contact information in the form below. Our specialists will answer all questions.",
             placeholders: {
                 name: "Your name",
                 phone: "Phone",
-                mail: "Email"
+                comment: "Comment"
             },
             time: {
                 title: "We appreciate your time",
                 subTitle: "Specify the time you need to discuss the project:",
                 from: "from",
                 to: "to"
-            }
-        },
-        contacts: {
-            title: "Contacts",
+            },
+            submit: {
+                success: {
+                    thanks: "thank you for showing interest in the Studio.",
+                    callBack: "We will call you back at the specified time:",
+                    withRespect: "Sincerely, the team of Studio"
+                },
+                fail: {
+                    text: "unfortunately, the information has not been sent. Please contact us by phone or write to the mail."
+                },
+                withRespect: "Sincerely, The Studio team"
+            },
         },
         support: {
             title: "Technical support",
@@ -91,4 +99,5 @@ translate.registerTranslations("en", {
     },
     Kharkiv: "Kharkiv",
     Ukraine: "Ukraine",
+    SHO: "SHO",
 });

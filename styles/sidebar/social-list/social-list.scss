@@ -1,5 +1,5 @@
 /**
-  Social-list
+* Social-list
  */
 .social-list {
   width: 20px;
@@ -13,6 +13,37 @@
 
   &__item {
 
+
+    opacity: .2;
+
+    transition: opacity .3s ease;
+
+    &:hover {
+
+      opacity: 1;
+    }
+
+    @include breakpoint($mobile-tablet) {
+
+      &:hover {
+
+        opacity: .2;
+      }
+
+      &.is-active {
+
+        opacity: 1;
+      }
+    }
+
+    &:not(:first-child) {
+      pointer-events: none;
+
+      cursor: auto;
+
+      opacity: .08;
+    }
+
     &:not(:last-child) {
       margin-bottom: 1em;
 
@@ -25,32 +56,43 @@
 
   .icon {
 
-    &:hover {
-
-      .icon_fill {
-
-        fill: $color-secondary;
-      }
-    }
-
     &_soc-git {
       width: 20px;
       height: 22px;
+
+      @include breakpoint($mobile) {
+        width: 22px;
+        height: 24px;
+      }
     }
 
     &_soc-be {
+      cursor: auto;
+
       width: 20px;
       height: 12px;
+
+      @include breakpoint($mobile) {
+        width: 26px;
+        height: 16px;
+      }
     }
 
     &_soc-li {
+      cursor: auto;
+
       width: 16px;
       height: 16px;
+
+      @include breakpoint($mobile) {
+        width: 18px;
+        height: 18px;
+      }
     }
 
     .icon_fill {
 
-      @include transition(fill .3s ease);
+      transition: fill .3s ease;
     }
   }
 }

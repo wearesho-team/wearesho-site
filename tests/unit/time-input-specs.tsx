@@ -2,7 +2,7 @@ import * as React from "react";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
-import {TimeInputProps, TimeInput} from "../../src/components/ContactPage/ContactForm/TimeInput";
+import {TimeInputProps, TimeInput} from "../../src/components/Pages/PartnershipPage/ContactForm/TimeInput";
 
 describe("<TimeInput/>", () => {
     let wrapper: ReactWrapper<TimeInputProps, undefined>;
@@ -27,10 +27,11 @@ describe("<TimeInput/>", () => {
         const context = {
             onChange, onAttributeChange, onFocus, onMount, onBlur,
             id: "id_test",
-            name: "name_test"
+            name: "name_test",
+            value: defaultTime.join(":")
         };
 
-        wrapper = mount(<TimeInput defaultTime={defaultTime.join(":")}/>, {context});
+        wrapper = mount(<TimeInput/>, {context});
 
         node = wrapper.instance() as any;
     });

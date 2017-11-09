@@ -7,6 +7,8 @@ import {useFakeTimers, SinonFakeTimers} from "sinon";
 
 import {ScrollControl} from "../../src/components/ScrollControl";
 import {routeProps} from "../../src/data/routeProps";
+import {RouterContext} from "../../src/data/RouterContext";
+import {LayoutContext} from "../../src/components/Layout/LayoutContext";
 // tslint:disable:no-magic-numbers
 describe("<ScrollControl/>", () => {
     let wrapper: ReactWrapper<undefined, undefined>;
@@ -91,5 +93,25 @@ describe("<ScrollControl/>", () => {
         timer.tick(ScrollControl.scrollListenDelay);
 
         expect(history.location.pathname).to.equal(routeProps[0].path);
+    });
+
+    it("Should set page offset on mount according to url", () => {
+        document.body.className = "loaded";
+
+        let scrollChanged = false;
+        const listen = (node as any).listenPathChange.bind(node);
+
+        (node as any).listenPathChange = (props) => {
+            scrollChanged = true;
+            listen(props);
+        };
+
+        node.getMutations([{
+            target: document.body
+        }]);
+
+        expect(scrollChanged).to.be.true;
+
+        document.body.className = "";
     });
 });

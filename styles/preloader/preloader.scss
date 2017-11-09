@@ -6,37 +6,26 @@ body.loaded {
   #preloader {
     pointer-events: none;
 
-    @include animation(preloader-disappearing 3s ease 2s);
+    animation: disappearance 3s ease 2s;
 
-    @include animation-fill-mode(forwards);
-  }
+    animation-fill-mode: forwards;
 
-  .section.section-preloader {
+    .section.section-preloader {
 
-    > .booting-info,
-    > .greeting {
-
-      @include transform(translateX(100%));
-
-      @include breakpoint($tablet) {
-
-        @include transform(translateX(50%));
+      &:before {
+        animation: appearance .5s ease;
+        animation-fill-mode: forwards;
       }
 
-      @include breakpoint($laptop-small) {
-
-        @include transform(translateX(50%));
+      .section__subtitle {
+        animation: appearance .5s ease, movement-right .5s ease;
+        animation-fill-mode: forwards;
       }
-    }
 
-    > .booting-info {
-
-      opacity: 0;
-    }
-
-    > .greeting {
-
-      opacity: 1;
+      .logo {
+        animation: appearance .5s ease, movement-left .5s ease;
+        animation-fill-mode: forwards;
+      }
     }
   }
 }
@@ -48,9 +37,9 @@ body.loaded {
   right: 0;
   left: 0;
 
-  @include transform(translateY(-50%));
+  transform: translateY(-50%);
 
-  @include transition(all .3s ease);
+  transition: all .3s ease;
 
   color: #717171;
 
@@ -83,91 +72,81 @@ body.loaded {
 }
 
 .section.section-preloader {
+  $glow-width: 26px;
+  $glow-height: 180px;
+
   @include container;
+  @include clearfix;
+
+  overflow: visible;
 
   position: relative;
 
-  left: 0;
+  padding-top: 0;
 
-  padding: 0;
+  &:before {
+    content: '';
 
-  &:before,
-  &:after {
-    content: '+';
-    display: block;
+    width: $glow-width;
+    height: 180px;
 
     position: absolute;
 
-    top: 7px;
+    top: 50%;
+    left: 50%;
 
-    line-height: .45;
+    margin: (-$glow-height / 2) 0 0 (-$glow-width / 2 + 2px);
 
-    font-size: 22px;
-    font-weight: $font-style-regular;
-    font-family: $font-secondary;
-    color: rgba(121, 121, 121, .7);
-  }
+    background: url('images/preloader-glow.svg');
 
-  &:before {
-    left: calc((2 / 6) * 100% - 5px);
+    opacity: 0;
 
-    margin-left: -0.5px;
+    z-index: $under-zindex;
 
-    @include breakpoint($tablet-p) {
+    @include breakpoint($mobile) {
 
-      left: calc((3 / 6) * 100% - 5px);
+      left: (100% / 3);
     }
 
     @include breakpoint($tablet-l) {
 
-      left: calc((1.5 / 6) * 100% - 5px);
+      margin: (-$glow-height / 2) 0 0 (-$glow-width / 2);
     }
 
     @include breakpoint($laptop-small) {
 
-      left: calc((1.5 / 6) * 100% - 5px);
+      margin: (-$glow-height / 2) 0 0 (-$glow-width / 2);
     }
   }
 
-  &:after {
-    right: calc((3 / 6) * 100% - 8px);
-    margin-right: 1px;
+  > .greeting {
+    @include span(4 of 12 inside no-gutters);
 
-    @include breakpoint($mobile) {
+    float: none;
 
-      display: none;
-    }
+    margin: 0 auto;
+
+    @include clearfix;
+
+    transition: transform 1s ease, opacity 1s ease;
 
     @include breakpoint($tablet-p) {
 
-      display: none;
+      @include span(12 of 12 inside no-gutters);
     }
-  }
 
-  > .booting-info,
-  > .greeting {
-
-    @include span(4 of 12 inside no-gutters);
-
-    @include transition(transform 1s ease, opacity 1s ease);
-
-    @include breakpoint($tablet) {
+    @include breakpoint($tablet-l) {
       @include span(6 of 12 inside no-gutters);
 
-      @include transform(translateX(-50%));
+      margin-left: 25%;
     }
 
     @include breakpoint($laptop-small) {
+
       @include span(6 of 12 inside no-gutters);
 
-      @include transform(translateX(-50%));
+      margin-left: 25%;
     }
-  }
-
-  > .greeting {
-    pointer-events: none;
-
-    opacity: 0;
 
     > .section__subtitle {
 
@@ -182,7 +161,7 @@ body.loaded {
   .logo {
     @include span(6 of 12 inside no-gutters);
 
-    padding-left: 1.75em;
+    opacity: 0;
 
     @include breakpoint($mobile) {
 
@@ -199,39 +178,28 @@ body.loaded {
     }
 
     @include breakpoint($tablet-p) {
-      float: right;
 
-      padding-left: 1.5em;
-    }
-  }
-
-  .logo {
-    font-size: inherit;
-
-    > .icon_logo {
-      width: 82px;
-      height: 40px;
-
-      @include breakpoint($mobile) {
-        width: 70px;
-        height: 34px;
-      }
+      padding-left: 4.5em;
     }
 
-    > .logo__text {
-      margin-top: .7em;
+    @include breakpoint($tablet-l) {
 
-      font-size: .936em;
-      font-weight: $font-style-medium;
+      padding-left: 0;
     }
   }
 
   .section__subtitle {
+    padding-right: 1.6em;
+
+    text-align: right;
+
     font-size: 1.063em;
     font-weight: $font-style-light;
+    color: #fff;
 
-    &:first-child {
-      white-space: nowrap;
+    @include breakpoint($laptop) {
+
+      font-size: 1em;
     }
 
     & + .section__subtitle {
@@ -260,26 +228,40 @@ body.loaded {
       margin-top: .5em;
 
       font-size: .824em;
+      color: rgba(255, 255, 255, .7);
+    }
+  }
+
+  .logo {
+    margin-top: .25em;
+    padding-left: 1.6em;
+
+    font-size: inherit;
+    @include breakpoint($mobile) {
+
+      padding-left: 1.25em;
     }
 
-    &_percent-number,
-    &_measur-units {
-      line-height: .95;
-
-      font-size: 3.125em;
+    > .icon_logo {
+      width: 82px;
+      height: 40px;
 
       @include breakpoint($mobile) {
-
-        font-size: 2.059em;
+        width: 70px;
+        height: 34px;
       }
     }
 
-    &_measur-units {
-      color: #d5d5d5;
+    > .logo__text {
+      margin-top: .7em;
 
-      @include breakpoint($mobile) {
+      font-size: .936em;
+      font-weight: $font-style-regular;
 
-        font-size: 1.824em;
+      @include breakpoint($tablet) {
+        display: block;
+
+        font-size: .933em;
       }
     }
   }

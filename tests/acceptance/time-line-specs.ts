@@ -10,8 +10,8 @@ Scenario("Project selection", async (I) => {
     I.wait(2);
     I.waitForElement(".prj-chronology", timeout);
 
+    I.wait(8);
     I.waitForElement(".container .is-filled", timeout);
-    I.wait(1);
     I.click(".container .is-filled");
 
     const offset = await I.executeScript(() => {
@@ -20,7 +20,7 @@ Scenario("Project selection", async (I) => {
         return element.offsetLeft + (element.parentNode as HTMLElement).offsetLeft;
     });
 
-    I.seeCssPropertiesOnElements(".chronology-slider", {left: `${offset}px`});
+    I.seeCssPropertiesOnElements(".slider", {left: `${offset}px`});
 
     return true;
 });

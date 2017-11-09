@@ -6,7 +6,7 @@ import {useFakeTimers, SinonFakeTimers} from "sinon";
 import {TimeLine, TimeLineState, TimeLineProps} from "../../src/components/TimeLine";
 import {YearItem} from "../../src/components/TimeLine/YearItem";
 import {projects} from "../../src/data/Projects";
-import {ActivePoint} from "../../src/components/TimeLine/YearItem/ActivePoint/ActivePoint";
+
 // tslint:disable:no-magic-numbers
 describe("<TimeLine/>", () => {
     let wrapper: ReactWrapper<TimeLineProps, TimeLineState>;
@@ -39,9 +39,60 @@ describe("<TimeLine/>", () => {
         wrapper.unmount();
     });
 
-    it("should set latest project on mount", () => {
-        expect(wrapper.state().activeProject.date.year).to.equal(projects[projects.length - 1].date.year);
-        expect(wrapper.state().activeProject.date.month).to.equal(projects[projects.length - 1].date.month);
+    it("should start demonstration on mount after delay if class `loaded` does not exist on body", () => {
+        TimeLine.demonstrationMode = true;
+        document.body.className = "";
+        wrapper.unmount();
+        wrapper.mount();
+        timer.tick(TimeLine.startDelay / 2);
+        expect(wrapper.state().activeProject.date.year).to.equal(projects[0].date.year);
+        expect(wrapper.state().activeProject.date.month).to.equal(projects[0].date.month);
+
+        timer.tick(TimeLine.startDelay / 2);
+
+        expect(wrapper.state().activeProject.date.year).to.equal(projects[1].date.year);
+        expect(wrapper.state().activeProject.date.month).to.equal(projects[1].date.month);
+        TimeLine.demonstrationMode = false;
+
+        document.body.className = "loaded";
+    });
+
+    it("should start demonstration on mount immediately if class `loaded` exist on body", () => {
+        TimeLine.demonstrationMode = true;
+        document.body.className = "loaded";
+        wrapper.unmount();
+        wrapper.mount();
+        expect(wrapper.state().activeProject.date.year).to.equal(projects[0].date.year);
+        expect(wrapper.state().activeProject.date.month).to.equal(projects[0].date.month);
+
+        timer.tick(TimeLine.demonstrationDelay);
+
+        expect(wrapper.state().activeProject.date.year).to.equal(projects[1].date.year);
+        expect(wrapper.state().activeProject.date.month).to.equal(projects[1].date.month);
+        TimeLine.demonstrationMode = false;
+
+        document.body.className = "";
+    });
+
+    it("should stop demonstration if demonstration mode turn off", () => {
+        TimeLine.demonstrationMode = true;
+        document.body.className = "loaded";
+        wrapper.unmount();
+        wrapper.mount();
+        expect(wrapper.state().activeProject.date.year).to.equal(projects[0].date.year);
+        expect(wrapper.state().activeProject.date.month).to.equal(projects[0].date.month);
+
+        timer.tick(TimeLine.demonstrationDelay);
+
+        expect(wrapper.state().activeProject.date.year).to.equal(projects[1].date.year);
+        expect(wrapper.state().activeProject.date.month).to.equal(projects[1].date.month);
+        TimeLine.demonstrationMode = false;
+
+        timer.tick(TimeLine.demonstrationDelay);
+
+        expect(wrapper.state().activeProject.date.year).to.equal(projects[1].date.year);
+        expect(wrapper.state().activeProject.date.month).to.equal(projects[1].date.month);
+        document.body.className = "";
     });
 
     it("should render number of <YearItem/>'s corresponding to `range` prop", () => {
@@ -54,7 +105,7 @@ describe("<TimeLine/>", () => {
         });
 
         expect(
-            Array.from(wrapper.getDOMNode().children).find(({className}) => !className.search("chronology-slider"))
+            Array.from(wrapper.getDOMNode().children).find(({className}) => !className.search("slider"))
         ).to.exist;
     });
 

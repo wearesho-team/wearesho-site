@@ -1,6 +1,6 @@
 import {NameRange} from "../models/common/Rules";
 import {translate} from "../helpers/translate";
-
+// tslint:disable:max-line-length
 translate.registerTranslations("ru", {
     header: {
         newProject: "Новый проект"
@@ -37,7 +37,7 @@ translate.registerTranslations("ru", {
             },
             howLong: {
                 title: "Более 3 лет",
-                subTitle: "профессионального сотрудничества с финансовыми компаниями:",
+                subTitle: "сотрудничества с финансовыми компаниями:",
                 items: [
                     "NIKO Holding",
                     "INFINANCE"
@@ -48,22 +48,31 @@ translate.registerTranslations("ru", {
     contactPage: {
         title: "Партнерство",
         form: {
+            titleExtended: "Свяжитесь с нами или укажите данные в форме. Наши специалисты ответят на все вопросы.",
             title: "Свяжитесь с нами",
-            subTitle: "или укажите контактные данные в форме ниже. Наши специалисты ответят на все вопросы.",
             placeholders: {
                 name: "Ваше имя",
                 phone: "Телефон",
-                mail: "Эл.почта"
+                mail: "Эл.почта",
+                comment: "Комментарий"
             },
             time: {
                 title: "Мы ценим ваше время",
-                subTitle: "Укажите удобное вам время для обсуждения проекта:",
+                subTitle: "Укажите удобное время для обсуждения проекта:",
                 from: "с",
                 to: "до"
-            }
-        },
-        contacts: {
-            title: "Контакты",
+            },
+            submit: {
+                success: {
+                    thanks: "спасибо за проявленный интерес к Студии.",
+                    callBack: "Мы обязательно перезвоним Вам в указанное время:",
+
+                },
+                fail: {
+                    text: "к сожалению инфоромация не отправлена. Пожалуйста, свяжитесь с нами по телефону или напишите на почту.",
+                },
+                withRespect: "С уважением, команда Студии"
+            },
         },
         support: {
             title: "Техническая поддержка",
@@ -91,8 +100,9 @@ translate.registerTranslations("ru", {
             name: `Латиница/кириллица от ${NameRange.min} до ${NameRange.max} символов`,
             time: "Некорректное время"
         },
-        empty: "Обязательно для заполнения"
+        empty: "Заполните поле",
     },
     Kharkiv: "Харьков",
     Ukraine: "Украина",
+    SHO: "ШО",
 });

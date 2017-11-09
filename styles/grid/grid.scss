@@ -1,19 +1,42 @@
 /**
-  Grid styles
+* Grid styles
  */
 body.loaded {
 
   .grid {
-    z-index: ($under-zindex - 1);
+    pointer-events: none;
 
-    > .grid__col {
+    &__col {
 
-      &:after,
-      > .booting-indicator {
+      &_decor {
+        border-color: rgba(244, 244, 244, .04);
 
-        @include animation(preloader-disappearing 3s ease 2s);
+        > .grow-element {
+          pointer-events: none;
+          opacity: 0;
 
-        @include animation-fill-mode(forwards);
+          top: 0;
+          bottom: 0;
+
+          transition: opacity 3s ease 2s, top 1s ease, bottom 1s ease;
+        }
+      }
+
+      &.touch-only + .grid__col {
+
+        @include breakpoint($tablet-l) {
+          border-color: rgba(244, 244, 244, .04);
+
+          transition: opacity 3s ease;
+          transition-delay: 2s;
+        }
+
+        @include breakpoint($laptop-small) {
+          border-color: rgba(244, 244, 244, .04);
+
+          transition: opacity 3s ease;
+          transition-delay: 2s;
+        }
       }
     }
   }
@@ -31,6 +54,8 @@ body.loaded {
 
   z-index: (map-get($zindex, preloader) - 1);
 
+  animation: appearance 1.25s ease;
+
   @include breakpoint($mobile-p) {
 
     padding: 0 1.875em;
@@ -46,9 +71,14 @@ body.loaded {
     padding: 0 5.375em;
   }
 
-  @include breakpoint($laptop) {
+  @include breakpoint($laptop-small) {
 
     padding: 0 7.25em;
+  }
+
+  @include breakpoint($laptop-medium) {
+
+    padding: 0 13%;
   }
 
   @include breakpoint($laptop-large) {
@@ -56,7 +86,13 @@ body.loaded {
     padding: 0;
   }
 
-  > .grid__col {
+  @include breakpoint($laptop-xl) {
+    max-width: 1220px;
+
+    margin: 0 auto;
+  }
+
+  &__col {
     @include span(2 of 12 inside no-gutters);
     height: 100%;
 
@@ -64,11 +100,16 @@ body.loaded {
 
     border-width: 0 0 0 1px;
     border-style: solid;
-    border-color: #F8F4EE;
+    border-color: rgba(244, 244, 244, .04);
+
+    opacity: .8;
+
+    backface-visibility: hidden;
 
     @include breakpoint($mobile) {
-
       @include span(4 of 12 inside no-gutters);
+
+      border-color: rgba(244, 244, 244, .05);
     }
 
     @include breakpoint($tablet-p) {
@@ -135,26 +176,6 @@ body.loaded {
       }
     }
 
-    > .grow-item {
-      display: block;
-
-      width: 1px;
-      height: 100%;
-
-      position: absolute;
-
-      top: 0;
-
-      background-color: #fff;
-
-      @include transition(height .5s ease);
-    }
-
-    > .grow-item-left {
-
-      left: -1px;
-    }
-
     &:last-child {
       border-width: 0 1px;
 
@@ -164,56 +185,80 @@ body.loaded {
       }
     }
 
-    .booting-indicator {
-      width: 1px;
-      height: 0;
+    &_decor {
+      $glow-width: 26px;
+      $glow-height: 180px;
 
-      position: absolute;
+      > .grow-element {
+        position: absolute;
 
-      top: 0;
-      left: -1px;
+        width: 1px;
 
-      background-color: rgba(195, 195, 195, .8);
+        left: 0;
 
-      @include transition(height .5s ease);
+        top: 0;
+        bottom: 0;
 
-      z-index: 1;
+        background: linear-gradient(to top, rgba(58, 153, 186, 0) 0%, rgba(58, 153, 186, .5) 50%, rgba(58, 153, 186, 0) 100%);
 
-      @include breakpoint($mobile-tablet) {
+        transition: opacity 3s ease 2s, top 1s ease, bottom 1s ease;
 
-        display: none;
-      }
+        @include breakpoint($mobile) {
 
-      @include breakpoint($laptop-small) {
+          display: none;
+        }
 
-        display: none;
-      }
+        @include breakpoint($tablet-l) {
 
-      &.touch-only {
-        display: none;
-
-        @include breakpoint($mobile-tablet) {
-
-          display: block;
+          display: none;
         }
 
         @include breakpoint($laptop-small) {
 
-          display: block;
+          display: none;
         }
       }
-    }
 
-    &.loaded {
-      > .grow-item {
-        height: 0;
+      &.touch-only {
+        border-left: 1px solid rgba(244, 244, 244, .04);
 
-        @include transition-duration(1500ms);
-      }
-      > .booting-indicator {
-        height: 100%;
+        @include breakpoint($tablet-p) {
 
-        @include transition-duration(1500ms);
+          border-left-color: transparent;
+        }
+
+        > .grow-element {
+          display: none;
+
+          @include breakpoint($mobile-tablet) {
+            display: block;
+          }
+
+          @include breakpoint($tablet-l) {
+            right: 0;
+            left: auto;
+          }
+
+          @include breakpoint($laptop-small) {
+            display: block;
+
+            right: 0;
+            left: auto;
+          }
+        }
+
+        & + .grid__col {
+
+          @include breakpoint($tablet-l) {
+
+            border-color: transparent;
+          }
+
+          @include breakpoint($laptop-small) {
+
+            border-color: transparent;
+          }
+        }
       }
     }
   }
