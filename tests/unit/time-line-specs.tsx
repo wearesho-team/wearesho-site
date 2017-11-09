@@ -13,8 +13,6 @@ describe("<TimeLine/>", () => {
     let timer: SinonFakeTimers;
     const animationDuration = 300;
 
-    const delay = ((window as any).hideTimeout || 2000) * 9;
-
     const halfOfMonth = Math.round(projects[projects.length - 1].date.month / 2);
 
     let props = {
@@ -67,7 +65,7 @@ describe("<TimeLine/>", () => {
         expect(wrapper.state().activeProject.date.year).to.equal(projects[0].date.year);
         expect(wrapper.state().activeProject.date.month).to.equal(projects[0].date.month);
 
-        timer.tick(delay);
+        timer.tick(TimeLine.demonstrationDelay);
 
         expect(wrapper.state().activeProject.date.year).to.equal(projects[1].date.year);
         expect(wrapper.state().activeProject.date.month).to.equal(projects[1].date.month);
@@ -84,13 +82,13 @@ describe("<TimeLine/>", () => {
         expect(wrapper.state().activeProject.date.year).to.equal(projects[0].date.year);
         expect(wrapper.state().activeProject.date.month).to.equal(projects[0].date.month);
 
-        timer.tick(delay);
+        timer.tick(TimeLine.demonstrationDelay);
 
         expect(wrapper.state().activeProject.date.year).to.equal(projects[1].date.year);
         expect(wrapper.state().activeProject.date.month).to.equal(projects[1].date.month);
         TimeLine.demonstrationMode = false;
 
-        timer.tick(delay);
+        timer.tick(TimeLine.demonstrationDelay);
 
         expect(wrapper.state().activeProject.date.year).to.equal(projects[1].date.year);
         expect(wrapper.state().activeProject.date.month).to.equal(projects[1].date.month);
