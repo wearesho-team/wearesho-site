@@ -12,9 +12,37 @@
   text-align: center;
 
   &__item {
-    pointer-events: none;
 
-    cursor: auto;
+
+    opacity: .2;
+
+    transition: opacity .3s ease;
+
+    &:hover {
+
+      opacity: 1;
+    }
+
+    @include breakpoint($mobile-tablet) {
+
+      &:hover {
+
+        opacity: .2;
+      }
+
+      &.is-active {
+
+        opacity: 1;
+      }
+    }
+
+    &:not(:first-child) {
+      pointer-events: none;
+
+      cursor: auto;
+
+      opacity: .08;
+    }
 
     &:not(:last-child) {
       margin-bottom: 1em;
@@ -24,23 +52,9 @@
         margin-bottom: .75em;
       }
     }
-
-    &:first-child {
-      pointer-events: auto;
-
-      cursor: pointer;
-    }
   }
 
   .icon {
-    opacity: .2;
-
-    transition: opacity .3s ease;
-
-    &:hover {
-
-      opacity: 1;
-    }
 
     &_soc-git {
       width: 20px;
@@ -53,10 +67,6 @@
     }
 
     &_soc-be {
-      opacity: .08;
-
-      pointer-events: none;
-
       cursor: auto;
 
       width: 20px;
@@ -69,10 +79,6 @@
     }
 
     &_soc-li {
-      opacity: .08;
-
-      pointer-events: none;
-
       cursor: auto;
 
       width: 16px;
