@@ -17,25 +17,25 @@ export const Timing = {
                     caretTimeout: 500
                 },
                 howLong: {
-                    delay: typingDelay,
+                    delay: typingDelay + 500,
                     duration: undefined,
                     caretTimeout: 500
                 }
             },
             items: {
                 servicesList: {
-                    delay: typingDelay + 1200,
+                    delay: typingDelay + 750,
                     duration: undefined,
                     caretTimeout: 500
                 },
                 subTittle: {
-                    delay: typingDelay + 500,
+                    delay: typingDelay + 1000,
                     duration: undefined,
                     caretTimeout: 500
                 },
                 clientsList: {
-                    delay: showingDelay + 2000,
-                    duration: 2000,
+                    delay: typingDelay + 1300,
+                    duration: 3500,
                     caretTimeout: undefined
                 }
             }
