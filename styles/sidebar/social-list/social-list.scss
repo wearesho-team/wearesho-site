@@ -12,6 +12,9 @@
   text-align: center;
 
   &__item {
+    pointer-events: none;
+
+    cursor: auto;
 
     &:not(:last-child) {
       margin-bottom: 1em;
@@ -20,6 +23,12 @@
 
         margin-bottom: .75em;
       }
+    }
+
+    &:first-child {
+      pointer-events: auto;
+
+      cursor: pointer;
     }
   }
 
@@ -44,7 +53,11 @@
     }
 
     &_soc-be {
-      display: none;
+      opacity: .08;
+
+      pointer-events: none;
+
+      cursor: auto;
 
       width: 20px;
       height: 12px;
@@ -56,7 +69,11 @@
     }
 
     &_soc-li {
-      display: none;
+      opacity: .08;
+
+      pointer-events: none;
+
+      cursor: auto;
 
       width: 16px;
       height: 16px;
