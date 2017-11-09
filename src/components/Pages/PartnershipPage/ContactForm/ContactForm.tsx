@@ -60,6 +60,19 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
         this.clearTimeout();
     }
 
+    public componentWillUpdate(nextProps: undefined, nextState: ContactFormState) {
+        if (nextState.status === SubmitStatus.standBy) {
+            return;
+        }
+
+        this.clearTimeout();
+        this.timer = setTimeout(() => {
+            this.setState({
+                status: SubmitStatus.standBy
+            });
+        }, ContactForm.standByDelay);
+    }
+
     protected get message(): JSX.Element {
         const transitionProps = {
             classNames: "status",
@@ -125,13 +138,6 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
     protected get SuccessMessage(): JSX.Element {
         const {name, from, to} = this.state.data;
 
-        this.clearTimeout();
-        this.timer = setTimeout(() => {
-            this.setState({
-                status: SubmitStatus.standBy
-            });
-        }, ContactForm.standByDelay);
-
         return (
             <p className="section__text request request-sent">
                 <span className="section__text_increased">{name}</span>
@@ -152,13 +158,6 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
 
     protected get ErrorMessage(): JSX.Element {
         const {name} = this.state.data;
-
-        this.clearTimeout();
-        this.timer = setTimeout(() => {
-            this.setState({
-                status: SubmitStatus.standBy
-            });
-        }, ContactForm.standByDelay);
 
         return (
             <p className="section__text request request-error">
