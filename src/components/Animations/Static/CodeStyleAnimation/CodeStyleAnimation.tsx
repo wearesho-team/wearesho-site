@@ -1,4 +1,5 @@
 import * as React from "react";
+import {raf} from "../../../../helpers/imports/raf"
 
 import {checkForStringArrayInstance} from "../../../../helpers/checkForStringArrayInstance";
 import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
@@ -68,6 +69,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
 
     public componentWillUnmount() {
         this.clearTimeout();
+        raf.cancel(this.type.bind(this));
         this.type = undefined;
         this.observer.disconnect();
     }
@@ -85,6 +87,12 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
     }
 
     protected type() {
+        this.clearTimeout();
+
+        if (!this.type) {
+            return;
+        }
+
         if (this.state.counter > this.sourceChild.length) {
             this.clearCaret();
             return;
@@ -99,9 +107,8 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             counter: prevState.counter + 1
         }));
 
-        this.clearTimeout();
         this.timer = setTimeout(
-            this.type.bind(this),
+            raf(this.type.bind(this)),
             Math.random() * (this.props.speed.max - this.props.speed.min) + this.props.speed.min
         );
     };
@@ -128,5 +135,6 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             }));
         }, this.props.caretTimeout);
         this.observer.disconnect();
+        raf.cancel(this.type.bind(this));
     }
 }

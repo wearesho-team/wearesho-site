@@ -1,6 +1,5 @@
 import * as React from "react";
-// tslint:disable-next-line
-const ReactInputMask = require("react-input-mask/lib");
+import {ReactInputMask} from "../../../../../helpers/imports/reactInputMask"
 import {BaseInput, BaseInputDefaultProps} from "react-context-form";
 
 import {toFixed} from "../../../../../helpers/toFixed";
@@ -69,6 +68,7 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
 
         this.maskElement && this.maskElement.setInputValue(`${hours}:${minutes}`);
 
+        // tslint:disable:no-object-literal-type-assertion
         const newEvent = {
             currentTarget: {
                 value: `${hours}:${minutes}`

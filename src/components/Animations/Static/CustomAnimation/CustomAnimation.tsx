@@ -64,6 +64,8 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
     }
 
     protected setNewChild() {
+        this.clearTimeout();
+
         const childProps = {
             className: concat(
                 this.props.children.props.className,
@@ -75,7 +77,6 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
             children: React.cloneElement(this.props.children, childProps)
         });
 
-        this.clearTimeout();
         this.timer = setTimeout(this.setOldChild.bind(this), this.props.duration);
     };
 

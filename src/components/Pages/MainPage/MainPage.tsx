@@ -1,4 +1,3 @@
-// tslint:disable:max-file-line-count
 import * as React from "react";
 
 import {StartFeature} from "../../../data/Animations/StartFeature";

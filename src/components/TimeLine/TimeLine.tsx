@@ -19,7 +19,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
     public static readonly propTypes = TimeLinePropTypes;
     public static readonly animationDuration = 300;
     public static readonly demonstrationDelay = 2000;
-    // tslint:disable:no-magic-number;
+    // tslint:disable:no-magic-numbers
     public static readonly startDelay = ((window as any).hideTimeout || 2000) * 9;
     public static readonly pointsCount = 6;
 

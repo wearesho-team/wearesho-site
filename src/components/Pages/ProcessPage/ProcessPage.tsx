@@ -46,7 +46,7 @@ export class ProcessPage extends BasePage {
                             </span>
                             <div className="stage-body">
                                 <h3 className="stage__title">Разработка</h3>
-                                <p className="stage__description">front & back end / тестирование</p>
+                                <p className="stage__description">front &amp; back end / тестирование</p>
                                 <span className="stage__detail">&gt;&gt;</span>
                             </div>
                         </div>
