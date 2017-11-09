@@ -27,10 +27,11 @@ describe("<TimeInput/>", () => {
         const context = {
             onChange, onAttributeChange, onFocus, onMount, onBlur,
             id: "id_test",
-            name: "name_test"
+            name: "name_test",
+            value: defaultTime.join(":")
         };
 
-        wrapper = mount(<TimeInput defaultTime={defaultTime.join(":")}/>, {context});
+        wrapper = mount(<TimeInput/>, {context});
 
         node = wrapper.instance() as any;
     });

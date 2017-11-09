@@ -81,7 +81,7 @@ describe("<CodeStyleAnimation/>", () => {
             delay
         });
 
-        timer.tick(CodeStyleAnimationSpeed.fast.max * text.length + delay);
+        timer.tick(CodeStyleAnimationSpeed.fast.max * text.length * delay);
         expect((wrapper.getDOMNode() as any).wholeText).to.equal(text);
     });
 
@@ -95,7 +95,7 @@ describe("<CodeStyleAnimation/>", () => {
         timer.tick(delay);
         expect(wrapper.instance().state.children[1].props.className).to.equal("caret");
 
-        timer.tick(CodeStyleAnimationSpeed.fast.max * text.length);
+        timer.tick(CodeStyleAnimationSpeed.fast.max * text.length * delay);
         expect(wrapper.instance().state.children).to.equal(text);
     });
 
@@ -121,5 +121,18 @@ describe("<CodeStyleAnimation/>", () => {
             })
         )
             .to.throw("Incorrect type of children. Only string or string [] are available");
+    });
+
+    it("Should end typing on unmount", () => {
+        simulateMutation({
+            speed: CodeStyleAnimationSpeed.fast,
+            delay
+        });
+
+        timer.tick(delay);
+        wrapper.unmount();
+        timer.tick(delay * CodeStyleAnimationSpeed.fast.max);
+
+        expect(wrapper.getDOMNode()).to.not.exist;
     });
 });

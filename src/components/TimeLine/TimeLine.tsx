@@ -19,6 +19,8 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
     public static readonly propTypes = TimeLinePropTypes;
     public static readonly animationDuration = 300;
     public static readonly demonstrationDelay = 2000;
+    // tslint:disable:no-magic-numbers
+    public static readonly startDelay = ((window as any).hideTimeout || 2000) * 9;
     public static readonly pointsCount = 6;
 
     public static readonly sliderDefaultClassName = "slider";
@@ -29,6 +31,7 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
     public readonly widthRange = 85;
 
     public timer: any;
+    public demonstrationTimer: any;
 
     protected clearTimeout = smartClearTimeout.bind(this);
 
@@ -44,6 +47,9 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
 
     public componentWillUnmount() {
         this.clearTimeout();
+        // temp solution
+        clearTimeout(this.demonstrationTimer);
+        this.startDemonstration = undefined;
     }
 
     public componentDidMount() {
@@ -51,10 +57,12 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
             return;
         }
 
-        // tslint:disable:no-magic-numbers
-        document.body.className.includes("loaded")
-            ? this.startDemonstration(1)
-            : setTimeout(this.startDemonstration.bind(this, 1), ((window as any).hideTimeout || 2000) * 6)
+        if (!document.body.className.includes("loaded")) {
+            clearTimeout(this.demonstrationTimer);
+            this.demonstrationTimer = setTimeout(this.startDemonstration.bind(this, 1), TimeLine.startDelay);
+        } else {
+            this.startDemonstration(0);
+        }
     }
 
     public shouldComponentUpdate(nextProps: TimeLineProps, nextSate: TimeLineState): boolean {
@@ -88,19 +96,21 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
         );
     }
 
-    protected startDemonstration = (currentIndex: number) => {
-        if (!TimeLine.demonstrationMode) {
-            this.clearTimeout();
+    protected startDemonstration(currentIndex: number) {
+        // temp solution
+        clearTimeout(this.demonstrationTimer);
+
+        if (!TimeLine.demonstrationMode || !this.startDemonstration) {
             return;
         }
 
-        this.timer = setTimeout(() => {
-            this.setState({activeProject: projects[currentIndex]});
+        this.setState({activeProject: projects[currentIndex]});
 
-            this.startDemonstration(
+        this.demonstrationTimer = setTimeout(
+            this.startDemonstration.bind(
+                this,
                 currentIndex + 1 > projects.length - 1 ? 0 : currentIndex + 1
-            );
-        }, TimeLine.demonstrationDelay);
+            ), TimeLine.demonstrationDelay);
     };
 
     protected handleChangeProject = (element: HTMLElement, position: number, yearActive: number) => {

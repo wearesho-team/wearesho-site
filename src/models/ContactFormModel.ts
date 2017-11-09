@@ -1,8 +1,9 @@
 import {Model} from "react-context-form";
 import {IsDefined, Matches} from "class-validator";
 
-import {namePattern, phonePattern, TimeDefaults, timePattern} from "./common/Rules";
 import {translate} from "../helpers/translate";
+
+import {namePattern, phonePattern, TimeDefaults, timePattern} from "./common/Rules";
 
 export class ContactFormModel extends Model {
     @Matches(phonePattern, {
@@ -35,7 +36,7 @@ export class ContactFormModel extends Model {
         message: () => translate("validation.empty"),
         groups: ["from"]
     })
-    public from: string;
+    public from: string = TimeDefaults.from;
 
     @Matches(timePattern, {
         message: () => translate("validation.incorrect.time"),
@@ -45,7 +46,7 @@ export class ContactFormModel extends Model {
         message: () => translate("validation.empty"),
         groups: ["to"]
     })
-    public to: string;
+    public to: string = TimeDefaults.to;
 
     public attributes() {
         return ["phone", "comment", "name", "from", "to"];
