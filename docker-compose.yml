@@ -10,8 +10,8 @@ services:
     build: 
       context: ./backend
       args:
-        - chat_id=$$(CHAT_ID)
-        - bot_api_key=$$(BOT_API_KEY)
+          - chat_id=${CHAT_ID}
+          - bot_api_key=${BOT_API_KEY}
     expose:
       - "3000"
     image: wearesho/wearesho-site-backend

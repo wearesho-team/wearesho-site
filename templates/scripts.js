@@ -1,3 +1,4 @@
+// tslint:disable
 (function() {
     var d = document;
     var c = d.createElement('script');

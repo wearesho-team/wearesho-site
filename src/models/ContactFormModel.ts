@@ -1,5 +1,5 @@
 import {Model} from "react-context-form";
-import {IsDefined, Matches} from "class-validator";
+import {IsDefined, IsNotEmpty, Matches} from "class-validator";
 
 import {translate} from "../helpers/translate";
 
@@ -7,11 +7,15 @@ import {namePattern, phonePattern, TimeDefaults, timePattern} from "./common/Rul
 
 export class ContactFormModel extends Model {
     @Matches(phonePattern, {
-        message: () => translate("validation.incorrect.phone"),
+        message: translate("validation.incorrect.phone"),
+        groups: ["phone"]
+    })
+    @IsNotEmpty({
+        message: () => translate("validation.empty.phone"),
         groups: ["phone"]
     })
     @IsDefined({
-        message: () => translate("validation.empty"),
+        message: () => translate("validation.empty.phone"),
         groups: ["phone"]
     })
     public phone: string;
@@ -19,31 +23,27 @@ export class ContactFormModel extends Model {
     public comment: string;
 
     @Matches(namePattern, {
-        message: () => translate("validation.incorrect.name"),
+        message: translate("validation.incorrect.name"),
+        groups: ["name"]
+    })
+    @IsNotEmpty({
+        message: () => translate("validation.empty.name"),
         groups: ["name"]
     })
     @IsDefined({
-        message: () => translate("validation.empty"),
+        message: () => translate("validation.empty.name"),
         groups: ["name"]
     })
     public name: string;
 
     @Matches(timePattern, {
-        message: () => translate("validation.incorrect.time"),
-        groups: ["from"]
-    })
-    @IsDefined({
-        message: () => translate("validation.empty"),
+        message: translate("validation.incorrect.time"),
         groups: ["from"]
     })
     public from: string = TimeDefaults.from;
 
     @Matches(timePattern, {
         message: () => translate("validation.incorrect.time"),
-        groups: ["to"]
-    })
-    @IsDefined({
-        message: () => translate("validation.empty"),
         groups: ["to"]
     })
     public to: string = TimeDefaults.to;
