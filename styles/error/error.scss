@@ -23,6 +23,10 @@
 
     position: relative;
 
+    top: 50%;
+
+    transform: translateY(-50%);
+
     margin: 0 auto;
 
     @include clearfix;
@@ -31,20 +35,12 @@
       @include span(12 of 12 inside no-gutters);
 
       float: none;
-
-      top: 50%;
-
-      transform: translateY(-50%);
     }
 
     @include breakpoint($tablet-laptop) {
       @include span(6 of 12 inside no-gutters);
 
       float: none;
-
-      top: 50%;
-
-      transform: translateY(-50%);
     }
 
     @include breakpoint($tablet-p) {
