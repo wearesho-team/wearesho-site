@@ -16,6 +16,13 @@
 
   z-index: map-get($zindex, header);
 
+  // Unselectable
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
   @include breakpoint($mobile) {
 
     font-weight: $font-style-regular;
