@@ -8,7 +8,7 @@
     "build": "cross-env NODE_ENV=production CONFIG=modern ./node_modules/.bin/webpack",
     "build:preview": "webpack",
     "build:docker": "docker-compose build",
-    "start": "ross-env CONFIG=modern webpack-dev-server",
+    "start": "cross-env CONFIG=modern webpack-dev-server",
     "selenium": "selenium-standalone install && selenium-standalone start",
     "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "./node_modules/.bin/tslint --project . --exclude ./node_modules/**/* --exclude ./web/**/*"
