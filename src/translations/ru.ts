@@ -102,7 +102,11 @@ translate.registerTranslations("ru", {
             name: `от ${NameRange.min} до ${NameRange.max} букв`,
             time: "Некорректное время"
         },
-        empty: "Заполните поле",
+        empty: {
+            phone: "Введите телефон",
+            mail: "Введите E-Mail",
+            name: "Введите имя",
+        }
     },
     Kharkiv: "Харьков",
     Ukraine: "Украина",

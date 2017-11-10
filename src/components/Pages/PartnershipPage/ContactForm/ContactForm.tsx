@@ -100,9 +100,11 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
     }
 
     protected handleSubmit = async (model: ContactFormModel, context: FormContext) => {
-        let data: any = {} as any;
+        let data: any = {};
         model.attributes()
             .forEach((field) => data = {...data, ...{[field]: model[field]}});
+
+        data.timeZone = new Date().toString().match(/([A-Z]+[\+-][0-9]+.*)/)[1];
 
         try {
             await axios.post("/callback", data);
