@@ -1,7 +1,7 @@
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 
 import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
-import {concat} from "../../../../helpers/concat";
 
 import {CustomAnimationDefaultProps, CustomAnimationProps, CustomAnimationPropTypes} from "./CustomAnimationProps";
 import {CustomAnimationState} from "./CustomAnimationState";
@@ -30,20 +30,26 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
     public constructor(props) {
         super(props);
 
+        this.state = {
+            children: this.props.children
+        }
+    }
+
+    public componentDidMount() {
         let targetAttribute = this.props.startFeature.element.getAttribute(this.props.startFeature.attribute);
         !targetAttribute && (targetAttribute = "");
 
         if (targetAttribute.includes(this.props.startFeature.value)) {
-            this.state = {
-                children: this.props.children
-            };
             return;
         }
 
         this.observer.observe(document.body, {attributeFilter: [this.props.startFeature.attribute], attributes: true});
-        this.state = {
-            children: React.cloneElement(this.props.children, {style: {opacity: 0}})
-        };
+
+        this.setState({
+            DOMNode: ReactDOM.findDOMNode(this)
+        }, () => {
+            this.state.DOMNode.setAttribute("style", "opacity: 0");
+        });
     }
 
     public componentWillUnmount() {
@@ -51,12 +57,24 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
         this.observer.disconnect();
     }
 
+    public componentDidUpdate(nextProps: CustomAnimationProps, nextState: CustomAnimationState) {
+        if (this.state.DOMNode === nextState.DOMNode) {
+            return;
+        }
+
+        this.setState({
+            DOMNode: ReactDOM.findDOMNode(this)
+        });
+    }
+
     public componentWillReceiveProps(nextProps: CustomAnimationProps) {
         if (this.state.children === nextProps.children) {
             return;
         }
 
-        this.setState({children: nextProps.children});
+        this.setState({
+            children: nextProps.children
+        });
     }
 
     public render(): JSX.Element {
@@ -66,24 +84,14 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
     protected setNewChild() {
         this.clearTimeout();
 
-        const childProps = {
-            className: concat(
-                this.props.children.props.className,
-                this.props.actionClassName
-            )
-        };
-
-        this.setState({
-            children: React.cloneElement(this.props.children, childProps)
-        });
+        this.state.DOMNode.classList.add(this.props.actionClassName);
+        this.state.DOMNode.removeAttribute("style");
 
         this.timer = setTimeout(this.setOldChild.bind(this), this.props.duration);
     };
 
     protected setOldChild() {
-        this.setState({
-            children: this.props.children
-        });
+        this.state.DOMNode.classList.remove(this.props.actionClassName);
 
         this.observer.disconnect();
     };
