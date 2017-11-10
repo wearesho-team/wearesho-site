@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import {BasePage} from "../BasePage";
 import {translate} from "../../../helpers/translate";
+
 import {ZeroIcon} from "../../Icons/ZeroIcon";
+import {BasePage} from "../BasePage";
 
 export class ErrorPage extends BasePage {
-
     public render() {
         return(
             <section className="section section-error">
@@ -27,7 +27,7 @@ export class ErrorPage extends BasePage {
                     </p>
                     <p className="go-home">
                         <span>{translate("errorPage.text3")}</span>
-                        <a href="https://wearesho.com/">{translate("errorPage.text4")}</a>
+                        <a href="/">{translate("errorPage.text4")}</a>
                     </p>
                 </div>
             </section>

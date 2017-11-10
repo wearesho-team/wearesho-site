@@ -11,6 +11,7 @@ import {translate} from "../../helpers/translate";
 
 import {LayoutContext, LayoutContextTypes} from "./LayoutContext"
 import {LayoutProps, LayoutPropTypes} from "./LayoutProps";
+import {ErrorBounder} from "../ErrorBounder/ErrorBounder";
 import {Header, SideBar, SoundSwitch} from "./Partials";
 import {TransitionSwitch} from "../TransitionSwitch";
 import {SmartBreakpoint} from "../SmartBreakpoint";
@@ -62,18 +63,20 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
                     </SideBar>
                     <SoundSwitch/>
                     <div className="section-gradient section-main"/>
-                    <SmartBreakpoint match="min-width: 1440px">
-                        <SwitchControl>
-                            <TransitionSwitch className="translate-container" classNames="translateY">
-                                {getRoutesWithProps()}
-                            </TransitionSwitch>
-                        </SwitchControl>
-                    </SmartBreakpoint>
-                    <SmartBreakpoint match="max-width: 1439px">
-                        <ScrollControl>
-                            {routeProps.map((prop) => <prop.component key={prop.path}/>)}
-                        </ScrollControl>
-                    </SmartBreakpoint>
+                    <ErrorBounder>
+                        <SmartBreakpoint match="min-width: 1440px">
+                            <SwitchControl>
+                                <TransitionSwitch className="translate-container" classNames="translateY">
+                                    {getRoutesWithProps()}
+                                </TransitionSwitch>
+                            </SwitchControl>
+                        </SmartBreakpoint>
+                        <SmartBreakpoint match="max-width: 1439px">
+                            <ScrollControl>
+                                {routeProps.map((prop) => <prop.component key={prop.path}/>)}
+                            </ScrollControl>
+                        </SmartBreakpoint>
+                    </ErrorBounder>
                 </div>
             </Router>
         );
