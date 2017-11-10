@@ -1,3 +1,4 @@
 export interface CustomAnimationState {
-    children: JSX.Element;
+    children: JSX.Element,
+    DOMNode?: HTMLElement
 }
