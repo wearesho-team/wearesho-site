@@ -97,7 +97,7 @@ translate.registerTranslations("en", {
     },
     validation: {
         incorrect: {
-            phone: "Incorrect telephone",
+            phone: "Incorrect phone",
             mail: "Incorrect E-Mail",
             name: `from ${NameRange.min} to ${NameRange.max} letters`,
             time: "Incorrect time"
