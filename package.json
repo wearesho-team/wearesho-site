@@ -9,6 +9,7 @@
     "build:preview": "webpack",
     "build:docker": "docker-compose build",
     "start": "webpack-dev-server",
+    "start:production": "docker-compose up",
     "selenium": "selenium-standalone install && selenium-standalone start",
     "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "./node_modules/.bin/tslint --project . --exclude ./node_modules/**/* --exclude ./web/**/*"
