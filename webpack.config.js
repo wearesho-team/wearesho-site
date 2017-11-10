@@ -178,6 +178,7 @@ const config = {
             new HtmlWebpackPlugin({
                 title: "Wearesho",
                 template: path.resolve('./templates/index.ejs'),
+                inline: fs.readFileSync("./templates/scripts.js", "utf8"),
                 minify: {
                     minifyCSS: !debug,
                     minifyJS: !debug,
