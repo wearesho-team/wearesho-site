@@ -537,6 +537,19 @@ $indent-tablet: -66px;
   }
 }
 
+// Flashing
+@keyframes flashing {
+  0% {
+    fill-opacity: 1;
+  }
+  50% {
+    fill-opacity: .5;
+  }
+  100% {
+    fill-opacity: 1;
+  }
+}
+
 // Grid growth
 @keyframes grid-growth {
   from {
