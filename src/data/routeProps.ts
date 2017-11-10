@@ -8,8 +8,8 @@ export const routeProps = [
         component: MainPage,
     },
     {
-        exact: false,
+        exact: true,
         path: "/partnership",
         component: PartnershipPage,
-    }
+    },
 ];

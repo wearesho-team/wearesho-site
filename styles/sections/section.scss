@@ -214,17 +214,14 @@
           float: none;
         }
       }
+      
+      .text_regular {
+        font-size: 1em;
+        color: #C5D5E0;
 
-      p {
+        @include breakpoint($mobile) {
 
-        > .text_regular {
-          font-size: 1em;
-          color: #C5D5E0;
-
-          @include breakpoint($mobile) {
-
-            font-size: 1.2em;
-          }
+          font-size: 1.2em;
         }
       }
     }

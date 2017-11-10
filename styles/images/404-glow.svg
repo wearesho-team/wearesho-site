@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4990.009 -684.661 32.61 146.914">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.593;
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        filter: url(#Path_1871);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.941" y1="0.909" x2="1" y2="0.135" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4c2a81" stop-opacity="0"/>
+      <stop offset="0.214" stop-color="#8a33b5" stop-opacity="0.784"/>
+      <stop offset="0.473" stop-color="#9839ba"/>
+      <stop offset="1" stop-color="#561da3" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="Path_1871" x="4990.009" y="-684.661" width="32.61" height="146.914" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#ff7bd6"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g class="cls-2" transform="matrix(1, 0, 0, 1, 0, 0)">
+    <path id="Path_1871-2" data-name="Path 1871" class="cls-1" d="M853.769,1485.2l3.394,100.006-3.394,22.909,3.394-16.852s-6.883.464-7.906,0c-1.808-.822.5,14.005,0-6.057C849.256,1550.263,853.769,1485.2,853.769,1485.2Z" transform="translate(5859.17 932.46) rotate(180)"/>
+  </g>
+</svg>
