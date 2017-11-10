@@ -97,10 +97,14 @@
         }
       }
 
-      > span {
-        display: block;
+      > span,
+      > a {
 
         line-height: 1.438em;
+      }
+
+      > span {
+        display: block;
 
         @include breakpoint($mobile-l) {
 
@@ -119,7 +123,7 @@
   }
 
   .error__text {
-    padding-right: 1.25em;
+    padding-right: 1.5em;
 
     text-align: right;
 
@@ -134,7 +138,7 @@
   }
 
   .go-home {
-    padding-left: 1.25em;
+    padding-left: 1.5em;
 
     text-align: left;
 
