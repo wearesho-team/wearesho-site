@@ -2,7 +2,6 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
-import {concat} from "../../../../helpers/concat";
 
 import {CustomAnimationDefaultProps, CustomAnimationProps, CustomAnimationPropTypes} from "./CustomAnimationProps";
 import {CustomAnimationState} from "./CustomAnimationState";
@@ -15,7 +14,6 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
 
     public timer: any;
 
-    protected DOMNode: Element;
     protected clearTimeout = smartClearTimeout.bind(this);
     protected observer = new MutationObserver((mutations) => {
         const {target} = mutations[0];
@@ -47,8 +45,11 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
 
         this.observer.observe(document.body, {attributeFilter: [this.props.startFeature.attribute], attributes: true});
 
-        this.DOMNode = ReactDOM.findDOMNode(this);
-        this.DOMNode.setAttribute("style", "opacity: 0");
+        this.setState({
+            DOMNode: ReactDOM.findDOMNode(this)
+        }, () => {
+            this.state.DOMNode.setAttribute("style", "opacity: 0");
+        });
     }
 
     public componentWillUnmount() {
@@ -56,12 +57,24 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
         this.observer.disconnect();
     }
 
+    public componentDidUpdate(nextProps: CustomAnimationProps, nextState: CustomAnimationState) {
+        if (this.state.DOMNode === nextState.DOMNode) {
+            return;
+        }
+
+        this.setState({
+            DOMNode: ReactDOM.findDOMNode(this)
+        });
+    }
+
     public componentWillReceiveProps(nextProps: CustomAnimationProps) {
         if (this.state.children === nextProps.children) {
             return;
         }
 
-        this.setState({children: nextProps.children});
+        this.setState({
+            children: nextProps.children
+        });
     }
 
     public render(): JSX.Element {
@@ -71,14 +84,14 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
     protected setNewChild() {
         this.clearTimeout();
 
-        this.DOMNode.classList.add(this.props.actionClassName);
-        this.DOMNode.removeAttribute("style");
+        this.state.DOMNode.classList.add(this.props.actionClassName);
+        this.state.DOMNode.removeAttribute("style");
 
         this.timer = setTimeout(this.setOldChild.bind(this), this.props.duration);
     };
 
     protected setOldChild() {
-        this.DOMNode.classList.remove(this.props.actionClassName);
+        this.state.DOMNode.classList.remove(this.props.actionClassName);
 
         this.observer.disconnect();
     };
