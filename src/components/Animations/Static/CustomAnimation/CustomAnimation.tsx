@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 
 import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
 import {concat} from "../../../../helpers/concat";
@@ -14,6 +15,7 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
 
     public timer: any;
 
+    protected DOMNode: Element;
     protected clearTimeout = smartClearTimeout.bind(this);
     protected observer = new MutationObserver((mutations) => {
         const {target} = mutations[0];
@@ -30,20 +32,23 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
     public constructor(props) {
         super(props);
 
+        this.state = {
+            children: this.props.children
+        }
+    }
+
+    public componentDidMount() {
         let targetAttribute = this.props.startFeature.element.getAttribute(this.props.startFeature.attribute);
         !targetAttribute && (targetAttribute = "");
 
         if (targetAttribute.includes(this.props.startFeature.value)) {
-            this.state = {
-                children: this.props.children
-            };
             return;
         }
 
         this.observer.observe(document.body, {attributeFilter: [this.props.startFeature.attribute], attributes: true});
-        this.state = {
-            children: React.cloneElement(this.props.children, {style: {opacity: 0}})
-        };
+
+        this.DOMNode = ReactDOM.findDOMNode(this);
+        this.DOMNode.setAttribute("style", "opacity: 0");
     }
 
     public componentWillUnmount() {
@@ -66,24 +71,14 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
     protected setNewChild() {
         this.clearTimeout();
 
-        const childProps = {
-            className: concat(
-                this.props.children.props.className,
-                this.props.actionClassName
-            )
-        };
-
-        this.setState({
-            children: React.cloneElement(this.props.children, childProps)
-        });
+        this.DOMNode.classList.add(this.props.actionClassName);
+        this.DOMNode.removeAttribute("style");
 
         this.timer = setTimeout(this.setOldChild.bind(this), this.props.duration);
     };
 
     protected setOldChild() {
-        this.setState({
-            children: this.props.children
-        });
+        this.DOMNode.classList.remove(this.props.actionClassName);
 
         this.observer.disconnect();
     };
