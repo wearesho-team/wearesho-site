@@ -1,4 +1,4 @@
-type Raf = {
+interface Raf {
     (callback: () => any): any;
 
     cancel: (handle: () => any) => void;

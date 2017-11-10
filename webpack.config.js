@@ -17,7 +17,8 @@ const
     FaviconsWebpackPlugin = require('favicons-webpack-plugin'),
     CriticalPlugin = require('webpack-plugin-critical').CriticalPlugin,
     CleanWebpackPlugin = require('clean-webpack-plugin'),
-    CopyWebpackPlugin = require('copy-webpack-plugin');
+    CopyWebpackPlugin = require('copy-webpack-plugin'),
+    ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 const debug = process.env.NODE_ENV !== 'production';
 const env = debug ? 'local' : 'production';
@@ -29,9 +30,15 @@ if (isApache) {
     console.log("Build for Apache2");
 }
 
-const config = {
-        entry: ["babel-regenerator-runtime", "./src/index.tsx"],
+const entry = !debug
+    ? {
+        modern: ["babel-regenerator-runtime", "./src/index.tsx"],
+        legacy: ["babel-polyfill", "./src/index.tsx"],
+    }
+    : ["babel-regenerator-runtime", "./src/index.tsx"];
 
+const config = {
+        entry,
         devServer: {
             publicPath: "/",
             contentBase: './web',
@@ -97,7 +104,6 @@ const config = {
                                             path.resolve(__dirname + './styles'),
                                             path.resolve(__dirname, "./node_modules/compass-mixins/lib"),
                                         ],
-                                        //sourceMap: debug,
                                     },
                                 },
                             ],
@@ -125,7 +131,7 @@ const config = {
                                     'react',
                                     ['env', {
                                         "targets": {
-                                            "browsers": ["last 3 versions", "safari >= 10", "ie >= 11"],
+                                            "browsers": ["last 2 versions", "safari >= 10", "ie >= 11"],
                                         },
                                     }],
                                 ],
@@ -146,7 +152,7 @@ const config = {
                             'react',
                             ['env', {
                                 "targets": {
-                                    "browsers": ["last 3 versions", "safari >= 10", "ie >= 11"],
+                                    "browsers": ["last 2 versions", "safari >= 10", "ie >= 11"],
                                 },
                             }]
                         ],
@@ -178,6 +184,13 @@ const config = {
                     removeComments: !debug,
                     trimCustomFragments: !debug,
                     collapseWhitespace: !debug,
+                }
+            }),
+            new ScriptExtHtmlWebpackPlugin({
+                module: "modern",
+                custom: {
+                    test: "legacy",
+                    attribute: "nomodule"
                 }
             }),
             new webpack.optimize.ModuleConcatenationPlugin(),
