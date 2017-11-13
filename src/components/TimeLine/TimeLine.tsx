@@ -47,7 +47,6 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
 
     public componentWillUnmount() {
         this.clearTimeout();
-        // temp solution
         clearTimeout(this.demonstrationTimer);
         this.startDemonstration = undefined;
     }
@@ -97,7 +96,6 @@ export class TimeLine extends React.Component<TimeLineProps, TimeLineState>
     }
 
     protected startDemonstration(currentIndex: number) {
-        // temp solution
         clearTimeout(this.demonstrationTimer);
 
         if (!TimeLine.demonstrationMode || !this.startDemonstration) {

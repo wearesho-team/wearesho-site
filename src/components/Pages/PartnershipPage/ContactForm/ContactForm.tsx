@@ -1,6 +1,7 @@
 // tslint:disable:max-file-line-count
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import axios from "axios";
 import {
     AutoValidate,
@@ -21,6 +22,8 @@ import {ValidationError} from "../../../../data/ValidationError";
 
 import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
 import {OnDesktop, OnMobile} from "../../../../helpers/Breakpoints";
+import {smoothScrollTo} from "../../../../helpers/smoothScrollTo";
+import {getTimeZone} from "../../../../helpers/getTimeZone";
 import {translate} from "../../../../helpers/translate";
 import {concat} from "../../../../helpers/concat";
 
@@ -29,6 +32,7 @@ import {ContactFormState} from "./ContactFormState";
 import {SubmitStatus} from "./SubmitStatus";
 import {TimeInput} from "./TimeInput";
 
+// tslint:disable:no-magic-numbers
 export class ContactForm extends React.Component<undefined, ContactFormState> implements ElementWithTimer {
     public static formStorageKey = "formData";
     public static readonly standByDelay = 5000;
@@ -104,7 +108,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
         model.attributes()
             .forEach((field) => data = {...data, ...{[field]: model[field]}});
 
-        data.timeZone = new Date().toString().match(/([A-Z]+[\+-][0-9]+.*)/)[1];
+        data.timeZone = getTimeZone();
 
         try {
             await axios.post("/callback", data);
@@ -125,16 +129,17 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
 
                 const element: HTMLElement = modelElement && context.getDOMElement(modelElement.attribute);
                 element && element.focus();
-                return;
+            } else {
+                this.setState({
+                    status: SubmitStatus.fail,
+                    data: {
+                        name: data.name
+                    }
+                });
             }
-
-            this.setState({
-                status: SubmitStatus.fail,
-                data: {
-                    name: data.name
-                }
-            });
         }
+
+        smoothScrollTo(ReactDOM.findDOMNode(this), -105, "top", 1000, 0);
     };
 
     protected get SuccessMessage(): JSX.Element {
@@ -209,7 +214,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                             focusClassName="in-focus"
                             errorClassName="has-error"
                         >
-                            <AutoValidate groupName="phone" onLength={PhoneRange.min}>
+                            <AutoValidate groupName="phone">
                                 <Input
                                     className="form__control"
                                     placeholder={translate("contactPage.form.placeholders.phone")}

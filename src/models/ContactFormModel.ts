@@ -7,7 +7,7 @@ import {namePattern, phonePattern, TimeDefaults, timePattern} from "./common/Rul
 
 export class ContactFormModel extends Model {
     @Matches(phonePattern, {
-        message: translate("validation.incorrect.phone"),
+        message: () => translate("validation.incorrect.phone"),
         groups: ["phone"]
     })
     @IsNotEmpty({
@@ -23,7 +23,7 @@ export class ContactFormModel extends Model {
     public comment: string;
 
     @Matches(namePattern, {
-        message: translate("validation.incorrect.name"),
+        message: () => translate("validation.incorrect.name"),
         groups: ["name"]
     })
     @IsNotEmpty({
@@ -37,7 +37,7 @@ export class ContactFormModel extends Model {
     public name: string;
 
     @Matches(timePattern, {
-        message: translate("validation.incorrect.time"),
+        message: () => translate("validation.incorrect.time"),
         groups: ["from"]
     })
     public from: string = TimeDefaults.from;
