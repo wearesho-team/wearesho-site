@@ -1,4 +1,5 @@
 // tslint:disable
+// IOS 9 issue
 (function() {
     var d = document;
     var c = d.createElement('script');
@@ -20,8 +21,8 @@
     }
 }());
 
+// preloader
 var hideTimeout = 1000;
-
 (function () {
     var percents = 0;
     var indicators = document.getElementsByClassName("grow-element");
@@ -40,7 +41,7 @@ var hideTimeout = 1000;
                 indicators.item(i).removeAttribute("style");
             }
         }, hideTimeout);
-    }
+    };
 
     function increase() {
         timer = setTimeout(function () {
@@ -55,4 +56,40 @@ var hideTimeout = 1000;
     }
 
     increase();
-})();
+}());
+
+//initial language
+var language = (function () {
+    var storedLanguage = window.localStorage.getItem("app.language");
+
+    var initialLanguage;
+    if (!storedLanguage) {
+        var browserLanguage = navigator.language || navigator.userLanguage;
+        browserLanguage = browserLanguage && browserLanguage.match(/(ru|en)/g, "");
+
+        initialLanguage = browserLanguage instanceof Array
+            ? browserLanguage[0]
+            : "ru";
+
+        window.localStorage.setItem("app.language", initialLanguage);
+    } else {
+        initialLanguage = /(^en$)|(^ru$)/.test(storedLanguage) ? storedLanguage : "ru";
+    }
+
+    document.documentElement.lang = initialLanguage;
+
+    return initialLanguage;
+}());
+
+// preloader translation
+(function () {
+    if (language === "ru") {
+        return;
+    }
+
+    var greetingHTML = document.body.querySelector(".section__subtitle > span:first-child");
+    var readyHTML = document.body.querySelector(".section__subtitle > span:last-child");
+
+    greetingHTML.innerHTML = "Welcome";
+    readyHTML.innerHTML = "our team is ready to implement your idea's";
+}());
