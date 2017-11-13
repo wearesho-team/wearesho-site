@@ -52,7 +52,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                         <circle fill="none" cx="-1968.9" cy="-1072.3" r="21"/>
                         <circle fill="none" stroke="#95989A" strokeWidth="2" cx="-1968.9" cy="-1072.3" r="20"/>
                     </g>
-                    <g id="circle_3" transform="translate(1158 476)" fillOpacity="0.969">
+                    <g id="circle_3" transform="translate(1158 476)" fillOpacity="0.969" filter="url(#blur_light)">
                         <circle fill="none" cx="-1983.4" cy="-1086.8" r="6.5"/>
                         <circle fill="none" stroke="#95989A" cx="-1983.4" cy="-1086.8" r="6"/>
                     </g>
@@ -106,7 +106,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                 </g>
             </g>
             <g id="_12" transform="translate(-35 -72)">
-                <g transform="matrix(1, 0, 0, 1, -1953, -886)" filter="url(#blur_bitlight)">
+                <g className="stage-glow from-first" transform="matrix(1, 0, 0, 1, -1953, -886)" filter="url(#blur_bitlight)">
                     <linearGradient id="blur_12-2_1_" gradientUnits="userSpaceOnUse" x1="5.6125" y1="843.3407" x2="4.7935" y2="844.1247" gradientTransform="matrix(185.689 0 0 -160 -135.7615 135351.9219)">
                         <stop  offset="0" stopColor="#4C2A81" stopOpacity="0"/>
                         <stop  offset="0.473" stopColor="#9839BA"/>
@@ -125,12 +125,12 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                     <stop  offset="1" stopColor="#333380" stopOpacity="0"/>
                 </linearGradient>
                 <path id="Path_1847" fill="url(#Path_1847_1_)" d="M-1209.8-638.7l36.2,52.5l51.3,62.8l25.8,15.8l65.1,37.9l-61-24.8l-21-8.3l-61.5-84.2L-1209.8-638.7z"/>
-                <g id="circle_lights">
+                <path fillOpacity="0.645" fill="url(#blur_semilight_1_)" filter="url(#blur_strong)" d="M-1126.4-546.3c113.5,0,219,36.1,219,43s-37.1-38.1-150.6-38.1c-11.8,0-26.7,23.8-47.5,30.6c-35.2,11.5-80.5,8.5-105.3,7.5c-99.1-4-121.1-25.6-121.1-30.5C-1331.9-540.7-1239.9-546.3-1126.4-546.3z"/>
+                <g id="circle_lights" className="orbit from-first">
                     <linearGradient id="blur_semilight_1_" gradientUnits="userSpaceOnUse" x1="-1941.792" y1="-28.1717" x2="-1941.5599" y2="-28.1717" gradientTransform="matrix(424.465 0 0 -44.0981 823041.375 -1766.6121)">
                         <stop  offset="0.1091" stopColor="#432840" stopOpacity="0"/>
                         <stop  offset="1" stopColor="#7060AF"/>
                     </linearGradient>
-                    <path id="blur_semimedium" fillOpacity="0.645" fill="url(#blur_semilight_1_)" filter="url(#blur_strong)" d="M-1126.4-546.3c113.5,0,219,36.1,219,43s-37.1-38.1-150.6-38.1c-11.8,0-26.7,23.8-47.5,30.6c-35.2,11.5-80.5,8.5-105.3,7.5c-99.1-4-121.1-25.6-121.1-30.5C-1331.9-540.7-1239.9-546.3-1126.4-546.3z"/>
                     <g id="Ellipse_4" transform="translate(841.545 543.784)" filter="url(#blur_light)">
                         <circle fill="#FFFFFF" cx="-1983.2" cy="-1086.6" r="6.7"/>
                         <circle fill="none" stroke="#FFC60A" cx="-1983.2" cy="-1086.6" r="6.2"/>
@@ -149,7 +149,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                 </g>
             </g>
             <g id="_23" transform="translate(604.451 1429.018) rotate(-95)">
-                <g transform="matrix(-0.09, 1, -1, -0.09, 2603.88, -2374.54)" filter="url(#blur_bitlight)">
+                <g className="stage-glow from-second" transform="matrix(-0.09, 1, -1, -0.09, 2603.88, -2374.54)" filter="url(#blur_bitlight)">
                     <linearGradient id="blur_23-2_1_" gradientUnits="userSpaceOnUse" x1="2.7772" y1="840.3981" x2="3.9102" y2="841.5551" gradientTransform="matrix(135.8074 -0.3559 -0.3383 -142.8505 950.8899 120505.4219)">
                         <stop  offset="0" stopColor="#4C2A81" stopOpacity="0"/>
                         <stop  offset="0.473" stopColor="#9839BA"/>
@@ -170,7 +170,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                     <stop  offset="1" stopColor="#333380" stopOpacity="0"/>
                 </linearGradient>
                 <path id="Path_1924" fill="url(#Path_1924_1_)" d="M2224.2-1207.4l-7.4-8.2l-24.7-13.1l-32.2-8.6l-57.2-108.8l-34.8-39.5l45.4,47.1l40.4,78.1l60.9,39.2L2224.2-1207.4z"/>
-                <g id="circle_lights-2" transform="translate(-90.744 331.03) rotate(-17)">
+                <g id="circle_lights-2" className="orbit from-second" transform="translate(-90.744 331.03) rotate(-17)">
                     <g id="Ellipse_4-2" transform="translate(841.545 543.784)" filter="url(#blur_semimedium)">
                         <ellipse transform="matrix(0.9272 -0.3746 0.3746 0.9272 663.7855 557.4667)" fill="#FFFFFF" cx="1765.9" cy="-1428.7" rx="6.7" ry="6.7"/>
                         <ellipse transform="matrix(0.9272 -0.3746 0.3746 0.9272 663.7855 557.4667)" fill="none" stroke="#FFC60A" cx="1765.9" cy="-1428.7" rx="6.2" ry="6.2"/>
@@ -189,7 +189,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                 </g>
             </g>
             <g id="_35" transform="translate(362.26 181.632) rotate(-11)">
-                <g transform="matrix(0.98, 0.19, -0.19, 0.98, -2089.63, -1567.14)" filter="url(#blur_bitlight)">
+                <g className="stage-glow from-third" transform="matrix(0.98, 0.19, -0.19, 0.98, -2089.63, -1567.14)" filter="url(#blur_bitlight)">
                     <linearGradient id="blur_35-2_1_" gradientUnits="userSpaceOnUse" x1="7.4806" y1="848.7006" x2="6.5986" y2="849.6706" gradientTransform="matrix(231.919 4.450282e-02 0.1124 -91.8318 -438.1535 78428.1797)">
                         <stop  offset="0" stopColor="#4C2A81" stopOpacity="0"/>
                         <stop  offset="0.427" stopColor="#9839BA"/>
@@ -209,7 +209,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                     <stop  offset="1" stopColor="#333380" stopOpacity="0"/>
                 </linearGradient>
                 <path id="Path_1926" fill="url(#Path_1926_1_)" d="M-995.9-976.7l15.2,42.7l92.9,69.3l86.9,45l-78.3-28.1l-106.2-88.1L-995.9-976.7z"/>
-                <g id="circle_lights-3" transform="matrix(0.819, -0.574, 0.574, 0.819, -224.87, 570.255)">
+                <g id="circle_lights-3" className="orbit from-third_bottom" transform="matrix(0.819, -0.574, 0.574, 0.819, -224.87, 570.255)">
                     <g id="Ellipse_4-3" transform="translate(841.545 543.784)" filter="url(#blur_semimedium)">
                         <ellipse transform="matrix(0.6943 -0.7196 0.7196 0.6943 1392.0889 -1090.8132)" fill="#FFFFFF" cx="-588.1" cy="-2184.2" rx="6.7" ry="6.7"/>
                         <ellipse transform="matrix(0.6943 -0.7196 0.7196 0.6943 1392.0889 -1090.8132)" fill="none" stroke="#FFC60A" cx="-588.1" cy="-2184.2" rx="6.2" ry="6.2"/>
@@ -228,7 +228,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                 </g>
             </g>
             <g id="_34" transform="matrix(-0.259, 0.966, -0.966, -0.259, 2048.955, -368.55)">
-                <g transform="matrix(-0.26, -0.97, 0.97, -0.26, 475.48, 4051.96)" filter="url(#blur_bitlight)">
+                <g className="stage-glow from-third" transform="matrix(-0.26, -0.97, 0.97, -0.26, 475.48, 4051.96)" filter="url(#blur_bitlight)">
                     <linearGradient id="blur_34-2_1_" gradientUnits="userSpaceOnUse" x1="8.0244" y1="841.9541" x2="6.8834" y2="840.7501" gradientTransform="matrix(223.6369 -1.032162e-02 -1.558448e-02 -148.141 -351.5094 124834.6016)">
                         <stop  offset="0" stopColor="#4C2A81" stopOpacity="0"/>
                         <stop  offset="0.121" stopColor="#7927CB" stopOpacity="0.141"/>
@@ -249,7 +249,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                     <stop  offset="1" stopColor="#333380" stopOpacity="0"/>
                 </linearGradient>
                 <path id="Path_1928" fill="url(#Path_1928_1_)" d="M432.6,2830.2l-120-88.8l-53.1-56.9l-32.1-35.3l44.2,46.7l45.1,41.4l92.1,74L432.6,2830.2z"/>
-                <g id="circle_lights-4" transform="matrix(-0.94, 0.342, -0.342, -0.94, 1825.836, 749.661)">
+                <g id="circle_lights-4" className="orbit from-third_top" transform="matrix(-0.94, 0.342, -0.342, -0.94, 1825.836, 749.661)">
                     <g id="Ellipse_4-4" transform="translate(841.545 543.784)" filter="url(#blur_semimedium)">
                         <ellipse transform="matrix(0.9962 -8.687722e-02 8.687722e-02 0.9962 168.1168 103.0767)" fill="#FFFFFF" cx="1268.3" cy="-1879.9" rx="6.7" ry="6.7"/>
                         <ellipse transform="matrix(0.9962 -8.687722e-02 8.687722e-02 0.9962 168.1168 103.0767)" fill="none" stroke="#FFC60A" cx="1268.3" cy="-1879.9" rx="6.2" ry="6.2"/>
@@ -268,7 +268,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                 </g>
             </g>
             <g id="_4" transform="translate(0 -1)">
-                <g transform="matrix(1, 0, 0, 1, -1988, -957)" filter="url(#blur_bitlight)">
+                <g className="stage-glow from-last" transform="matrix(1, 0, 0, 1, -1988, -957)" filter="url(#blur_bitlight)">
                     <linearGradient id="blur_4-2_1_" gradientUnits="userSpaceOnUse" x1="11.3516" y1="867.8977" x2="10.4026" y2="867.8677" gradientTransform="matrix(382.6949 0 0 -29.02 -2534.1797 25295.7949)">
                         <stop  offset="0" stopColor="#230F41" stopOpacity="0"/>
                         <stop  offset="0.715" stopColor="#9839BA"/>
@@ -287,7 +287,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                     <stop  offset="1" stopColor="#333380" stopOpacity="0"/>
                 </linearGradient>
                 <path id="Path_1930" fill="url(#Path_1930_1_)" d="M-441.5-865.3l-44.7,16.1l-80.7,14.2l80.7-9.3l148.5-6.6l-27-10.4L-441.5-865.3z"/>
-                <g id="circle_lights-5" transform="matrix(-0.07, -0.998, 0.998, -0.07, 1124.712, 1124.572)">
+                <g id="circle_lights-5" className="orbit from-last_top" transform="matrix(-0.07, -0.998, 0.998, -0.07, 1124.712, 1124.572)">
                     <g id="Ellipse_4-5" transform="translate(841.545 543.784)" filter="url(#blur_semimedium)">
                         <ellipse transform="matrix(0.9975 -6.996838e-02 6.996838e-02 0.9975 136.0349 81.8247)" fill="#FFFFFF" cx="1236" cy="-1900.9" rx="6.7" ry="6.7"/>
                         <ellipse transform="matrix(0.9975 -6.996838e-02 6.996838e-02 0.9975 136.0349 81.8247)" fill="none" stroke="#FFC60A" cx="1236" cy="-1900.9" rx="6.2" ry="6.2"/>
@@ -306,7 +306,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                 </g>
             </g>
             <g id="_5" transform="translate(59 370)">
-                <g transform="matrix(1, 0, 0, 1, -2047, -1328)" filter="url(#blur_bitlight)">
+                <g className="stage-glow from-last" transform="matrix(1, 0, 0, 1, -2047, -1328)" filter="url(#blur_bitlight)">
                     <linearGradient id="blur_5-2_1_" gradientUnits="userSpaceOnUse" x1="9.5384" y1="936.9017" x2="8.5794" y2="936.6998" gradientTransform="matrix(283.5682 0 0 -8.6659 -926.5378 8611.4971)">
                         <stop  offset="0" stopColor="#230F41" stopOpacity="0"/>
                         <stop  offset="0.554" stopColor="#9839BA"/>
@@ -325,7 +325,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                     <stop  offset="1" stopColor="#333380" stopOpacity="0"/>
                 </linearGradient>
                 <path id="Path_1930-2" fill="url(#Path_1930-2_1_)" d="M-441.5-834l-49.3-2.1l-89.6-2l119.8,7.4l64.7,7.8v-13.2L-441.5-834z"/>
-                <g id="circle_lights-6" transform="matrix(-0.07, -0.998, 0.998, -0.07, 1065.712, 1142.572)">
+                <g id="circle_lights-6" className="orbit from-last_bottom" transform="matrix(-0.07, -0.998, 0.998, -0.07, 1065.712, 1142.572)">
                     <ellipse id="Ellipse_4-6" transform="matrix(0.9975 -6.996838e-02 6.996838e-02 0.9975 100.0496 142.039)" fill="#FFFFFF" cx="2077.6" cy="-1357.2" rx="6.7" ry="6.7" filter="url(#blur_semimedium)"/>
                     <ellipse id="Ellipse_24-6" transform="matrix(0.9975 -6.996838e-02 6.996838e-02 0.9975 100.0425 141.9541)" fill="#FFFFFF" cx="2076.4" cy="-1357.1" rx="4.7" ry="4.7"/>
                     <g id="Ellipse_25-6" transform="translate(818 521)" fillOpacity="0.577" filter="url(#blur_light)">
