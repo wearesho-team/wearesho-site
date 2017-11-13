@@ -23,7 +23,7 @@ describe("<ActivePoint/>", () => {
         onProjectChange
     };
 
-    beforeEach(async () => {
+    beforeEach(() => {
         wrapper = mount(<ActivePoint {...props}/>);
 
         node = wrapper.instance() as any;
