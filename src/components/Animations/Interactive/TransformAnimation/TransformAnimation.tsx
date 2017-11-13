@@ -1,9 +1,6 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
-import {animateScroll} from "react-scroll";
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 
-import {getElementCoords} from "../../../../helpers/getElementCoords";
 import {concat} from "../../../../helpers/concat";
 
 import {TransformAnimationState} from "./TransformAnimationState";
@@ -11,9 +8,6 @@ import {TransformAnimationProps, TransformAnimationPropTypes} from "./TransformA
 
 export class TransformAnimation extends React.Component<TransformAnimationProps, TransformAnimationState> {
     public static readonly propTypes = TransformAnimationPropTypes;
-
-    // offset according to header height + blur
-    public static readonly additionalOffset = 105;
 
     constructor(props) {
         super(props);
@@ -67,13 +61,8 @@ export class TransformAnimation extends React.Component<TransformAnimationProps,
 
         this.setState({transformed: true});
 
-        const container: HTMLElement = ReactDOM.findDOMNode(this);
-
-        container &&
-        animateScroll.scrollTo(getElementCoords(container).top - TransformAnimation.additionalOffset, {
-            duration: this.props.duration,
-            delay: 0,
-            smooth: true,
-        });
+        if ((typeof this.props.onEvent).toString().toLowerCase() === "function") {
+            this.props.onEvent();
+        }
     }
 }

@@ -69,6 +69,13 @@
 
         padding: 8em 0 0 1.875em;
       }
+
+      &:nth-child(2) {
+        > .marker {
+
+          min-height: 78px;
+        }
+      }
     }
 
     .section__title {
@@ -380,23 +387,13 @@
   .marker {
     position: relative;
 
-    white-space: pre;
+    white-space: pre-line;
 
     margin-bottom: .222em;
 
     @include breakpoint($mobile) {
 
       margin-bottom: 1em;
-    }
-
-    @include breakpoint($mobile-p) {
-
-      white-space: pre-line;
-    }
-
-    @include breakpoint($tablet) {
-
-      white-space: pre-line;
     }
 
     &:before {

@@ -4,6 +4,7 @@ import ReactModal from "react-modal";
 import {Config} from "../../../data/Config";
 
 import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../../helpers/Breakpoints";
+import {smoothScrollTo} from "../../../helpers/smoothScrollTo";
 import {formatNumber} from "../../../helpers/formatNumber";
 import {translate} from "../../../helpers/translate";
 
@@ -40,6 +41,25 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                 beforeClose: "modal-close",
             },
             closeTimeoutMS: 500
+        };
+
+        const transformAnimationProps = {
+            transformedComponent: <ContactForm/>,
+            staticComponent: getCorners(),
+            initialComponent: getLabel(),
+            className: "btn btn_transform",
+            onEvent() {
+                const {className, duration} = this as any;
+                smoothScrollTo(
+                    document.getElementsByClassName(className)[0] as HTMLElement,
+                    -105,
+                    "top",
+                    duration,
+                    0
+                );
+            },
+            duration: 1000,
+            event: "onClick"
         };
 
         return (
@@ -110,14 +130,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                     </a>
                                     <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
-                                <TransformAnimation
-                                    transformedComponent={<ContactForm/>}
-                                    staticComponent={getCorners()}
-                                    initialComponent={getLabel()}
-                                    className="btn btn_transform"
-                                    duration={1000}
-                                    event="onClick"
-                                />
+                                <TransformAnimation {...transformAnimationProps}/>
                                 <SocialLinks/>
                             </OnMobile>
                         </div>
@@ -152,7 +165,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                         {Config.location.country} / {Config.location.city}
                                     </span>
                                 <span className="slider__coordinates">
-                                        {Config.location.coordinates.lat}&deg;&nbsp;
+                                    {Config.location.coordinates.lat}&deg;&nbsp;
                                     {Config.location.coordinates.lng}&deg;
                                 </span>
                             </div>

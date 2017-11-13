@@ -59,4 +59,19 @@ describe("<TransformAnimation/>", () => {
         expect(wrapper.state().transformed).to.be.true;
         expect(isUpdated).to.be.false;
     });
+
+    it("Should call `onEvent` if it function", () => {
+        let onEventTriggered = false;
+        wrapper.setProps({
+            ...props,
+            ...{
+                onEvent: () => onEventTriggered = true
+            }
+        });
+
+        const root = wrapper.find(".inner-layout");
+
+        root.simulate("click");
+        expect(onEventTriggered).to.be.true;
+    })
 });

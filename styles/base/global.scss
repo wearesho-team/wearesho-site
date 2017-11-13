@@ -257,6 +257,7 @@ body,
     }
 
     @include breakpoint($laptop) {
+      overflow: hidden;
 
       padding: 6.4em 7.25em;
     }

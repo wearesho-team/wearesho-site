@@ -4,8 +4,9 @@ export interface TransformAnimationProps {
     initialComponent: JSX.Element | JSX.Element [],
     transformedComponent: JSX.Element | JSX.Element [],
     staticComponent?: JSX.Element | JSX.Element [],
-    className?: string
-    event: string
+    className?: string,
+    event: string,
+    onEvent?: () => any,
     duration: number
 }
 
@@ -24,5 +25,6 @@ export const TransformAnimationPropTypes = {
     ]),
     className: PropTypes.string,
     event: PropTypes.string.isRequired,
+    onEvent: PropTypes.func,
     duration: PropTypes.number.isRequired
 };

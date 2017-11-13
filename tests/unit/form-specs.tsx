@@ -47,6 +47,16 @@ describe("<Form/>", () => {
         await form.handleSubmit();
 
         expect(model.hasErrors()).to.be.true;
+
+
+        model.name = "";
+        model.phone = "";
+        model.from = "25:00";
+        model.to = "12:60";
+
+        await form.handleSubmit();
+
+        expect(model.hasErrors()).to.be.true;
     });
 
     it("Should add errors from server on submit when fields filled wrong (if front validation incorrect)", async () => {
