@@ -253,7 +253,7 @@ body,
 
     @include breakpoint($tablet) {
 
-      padding: 6.8em 5.375em 0;
+      padding: 7.75em 5.375em 0;
     }
 
     @include breakpoint($laptop) {
@@ -264,12 +264,12 @@ body,
 
     @include breakpoint($laptop-small) {
 
-      padding: 6.8em 7.25em 0;
+      padding: 7.75em 7.25em 0;
     }
 
     @include breakpoint($laptop-medium) {
 
-      padding: 6.8em 13%;
+      padding: 7.75em 13%;
     }
 
     > .align-container {
