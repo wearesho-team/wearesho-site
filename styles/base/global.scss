@@ -104,6 +104,11 @@ body,
     padding: 0 11em;
   }
 
+  @include breakpoint($laptop-xl) {
+
+    padding: 0 12%;
+  }
+
   &:before,
   &:after {
     content: '';
@@ -214,11 +219,6 @@ body,
         top: auto;
 
         transform: translateY(0);
-      }
-
-      @include breakpoint($laptop-xl) {
-
-        max-width: 1220px;
       }
     }
   }

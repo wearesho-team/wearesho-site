@@ -5,7 +5,7 @@ import {translate} from "../../../../helpers/translate";
 export const ClientsList: React.SFC<undefined> = () => (
     <ul className="clients-list">
         <li className="clients-list__item">
-            <a href="#" className="clients-list__link">NIKO Holding</a>
+            <a href="http://niko.ua/" className="clients-list__link">NIKO Holding</a>
             <span className="clients-list__text">
                 {translate("hashTags.autodealer")}&nbsp;
                 {translate("hashTags.logistics")}&nbsp;
@@ -13,7 +13,7 @@ export const ClientsList: React.SFC<undefined> = () => (
             </span>
         </li>
         <li className="clients-list__item">
-            <a href="#" className="clients-list__link">Infinance</a>
+            <a href="https://infinance.com.ua/" className="clients-list__link">Infinance</a>
             <span className="clients-list__text">
                 {translate("hashTags.crediting")}&nbsp;
                 {translate("hashTags.finances")}
