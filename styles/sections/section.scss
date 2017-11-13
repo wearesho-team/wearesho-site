@@ -261,6 +261,8 @@
     font-weight: $font-style-light;
     color: #BECED9;
 
+	// Safari bug fix
+    opacity: .999;
     @include breakpoint($mobile) {
 
       font-size: 2.375em;
