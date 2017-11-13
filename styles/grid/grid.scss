@@ -87,9 +87,9 @@ body.loaded {
   }
 
   @include breakpoint($laptop-xl) {
-    max-width: 1220px;
+    //max-width: 1220px;
 
-    margin: 0 auto;
+    margin: 0 12%;
   }
 
   &__col {
