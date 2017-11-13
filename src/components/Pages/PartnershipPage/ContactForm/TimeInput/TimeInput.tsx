@@ -31,7 +31,8 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
             ...{
                 onChange: this.handleChangeControl,
                 ref: this.setElement,
-                value: this.context.value
+                value: this.context.value,
+                type: "tel",
             }
         };
 

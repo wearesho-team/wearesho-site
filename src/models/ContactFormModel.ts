@@ -6,10 +6,6 @@ import {translate} from "../helpers/translate";
 import {namePattern, phonePattern, TimeDefaults, timePattern} from "./common/Rules";
 
 export class ContactFormModel extends Model {
-    @Matches(phonePattern, {
-        message: () => translate("validation.incorrect.phone"),
-        groups: ["phone"]
-    })
     @IsNotEmpty({
         message: () => translate("validation.empty.phone"),
         groups: ["phone"]

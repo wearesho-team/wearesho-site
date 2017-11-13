@@ -218,7 +218,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                                 <Input
                                     className="form__control"
                                     placeholder={translate("contactPage.form.placeholders.phone")}
-                                    type="number"
+                                    type="tel"
                                 />
                             </AutoValidate>
                             <Hint className="form__error-text"/>
