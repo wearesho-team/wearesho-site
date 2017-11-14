@@ -207,6 +207,10 @@
     }
 
     .section__half {
+      @include breakpoint($tablet-p) {
+
+        padding-top: 3.75em;
+      }
 
       &.half_first {
         @include span(4 of 12 inside no-gutters);
