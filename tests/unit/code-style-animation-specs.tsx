@@ -64,7 +64,7 @@ describe("<CodeStyleAnimation/>", () => {
         expect((wrapper.getDOMNode() as any).wholeText).to.equal(text);
     });
 
-    it("Should render string with spaces instead symbols if children is string array", () => {
+    it("Should render shadow hidden child instead symbols if children is string array", () => {
         wrapper.unmount();
         wrapper = mount(
             <CodeStyleAnimation startFeature={startFeature}>
@@ -72,7 +72,7 @@ describe("<CodeStyleAnimation/>", () => {
             </CodeStyleAnimation>
         );
 
-        expect((wrapper.getDOMNode() as any).wholeText).to.equal(textArray.join("\n").replace(/[^\n]/g, " "));
+        expect((wrapper.getDOMNode() as any).innerHTML).to.equal(textArray.join("\n"));
     });
 
     it("Should start typing after body loaded and delay from props", () => {
@@ -91,9 +91,6 @@ describe("<CodeStyleAnimation/>", () => {
             delay: 0,
             caretTimeout: delay
         });
-
-        timer.tick(delay);
-        expect(wrapper.instance().state.children[1].props.className).to.equal("caret");
 
         timer.tick(CodeStyleAnimationSpeed.fast.max * text.length * delay);
         expect(wrapper.instance().state.children).to.equal(text);

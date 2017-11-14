@@ -197,4 +197,31 @@ describe("<Form/>", () => {
         timer.tick(ContactForm.standByDelay / 2);
         expect(wrapper.state().status).to.equal(SubmitStatus.standBy);
     });
+
+    it("should clear from on success submit after delay / 2", async () => {
+        axios.defaults.baseURL = "/";
+
+        let interceptor = axios.interceptors.response.use(
+            undefined,
+            () => undefined
+        );
+
+        // tslint:disable:no-object-literal-type-assertion
+        const model = {
+            attributes: () => ["phone", "name", "from", "to"],
+            name: "",
+            phone: "",
+            from: "",
+            to: ""
+        } as ContactFormModel;
+
+        await (wrapper.instance() as any).handleSubmit(model, undefined);
+
+        timer.tick(ContactForm.standByDelay / 2);
+
+        expect(model.name).to.not.exist;
+        expect(model.phone).to.not.exist;
+
+        axios.interceptors.request.eject(interceptor);
+    });
 });
