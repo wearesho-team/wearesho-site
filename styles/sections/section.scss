@@ -354,7 +354,7 @@
 
         > .section__title-part-variable {
 
-          @include breakpoint($mobile-p) {
+          @include breakpoint($mobile) {
 
             display: block;
           }
