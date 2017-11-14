@@ -108,6 +108,12 @@ translate.registerTranslations("en", {
             name: "Enter name",
         }
     },
+    slider: {
+        support: "Technical support",
+        PR: "PR",
+        dev: "dev",
+        desgn: "desgn"
+    },
     Kharkiv: "Kharkiv",
     Ukraine: "Ukraine",
     SHO: "SHO",

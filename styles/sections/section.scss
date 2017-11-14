@@ -70,32 +70,31 @@
         padding: 8em 0 0 1.875em;
       }
 
-      &:first-child {
+    //   &:first-child {
 
-        > .marker {
+    //     > .marker {
 
-          min-height: 26px;
-        }
-      }
+    //       min-height: 26px;
+    //     }
+    //   }
 
-      &:nth-child(2) {
+    //   &:nth-child(2) {
 
-        > .marker {
-          min-height: 78px;
+    //     > .marker {
+    //       min-height: 78px;
 
-          @include breakpoint($tablet-p) {
+    //       @include breakpoint($tablet-p) {
 
-            //min-height: ;
-          }
-        }
-      }
-    }
+    //         //min-height: ;
+    //       }
+    //     }
+    //   }
+     }
 
     .section__title {
 
       @include breakpoint($mobile-p) {
         margin: 1.2em 0 .75em;
-
 
         line-height: 1.4em;
       }
@@ -449,14 +448,16 @@
     }
 
     > .section__subtitle_reduced {
-      //height: 52px;
-
+      position: relative;
+      
       white-space: pre-line;
     }
   }
 
   .services-list {
-    white-space: pre;
+    position: relative;
+
+    white-space: pre-line;
 
     line-height: 2.1em;
 
