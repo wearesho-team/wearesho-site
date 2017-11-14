@@ -258,6 +258,22 @@
 
           font-size: 1.2em;
         }
+
+        @include breakpoint($tablet-p) {
+          margin-bottom: .25em;
+
+          font-size: 1.176em;
+        }
+
+        @include breakpoint($tablet-l) {
+
+          font-size: 1.2em;
+        }
+
+        @include breakpoint($laptop-small) {
+
+          font-size: 1.2em;
+        }
       }
     }
   }

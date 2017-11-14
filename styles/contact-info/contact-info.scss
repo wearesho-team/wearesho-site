@@ -95,6 +95,21 @@
     font-weight: $font-style-regular;
     color: $color-secondary;
 
+    @include breakpoint($tablet-p) {
+
+      font-size: 1.3327em;
+    }
+
+    @include breakpoint($tablet-l) {
+
+      font-size: 1.266em;
+    }
+
+    @include breakpoint($laptop-small) {
+
+      font-size: 1.266em;
+    }
+
     &:not(:first-child) {
 
       margin-top: .15em;
@@ -171,8 +186,9 @@
       }
 
       @include breakpoint($tablet-p) {
-
         float: right;
+
+        font-size: 1.133em;
       }
 
       @include breakpoint($tablet-l) {
@@ -256,6 +272,11 @@
       @include span(6 of 12 inside no-gutters);
 
       width: auto;
+    }
+
+    @include breakpoint($tablet-p) {
+
+      font-size: 1.3327em;
     }
 
     @include breakpoint($laptop-small) {
