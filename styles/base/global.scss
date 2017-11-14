@@ -35,8 +35,8 @@ body {
     }
   }
 
-  h1, h2, h3, h4, h5, h6, p, span, a {
-
+  h1, h2, h3, h4, h5, h6, p, span, a, li {
+    -webkit-font-smoothing: subpixel-antialiased;
     -webkit-font-smoothing: antialiased;
   }
 
