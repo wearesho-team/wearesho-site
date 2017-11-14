@@ -91,8 +91,6 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
     };
 
     protected setOldChild() {
-        this.state.DOMNode.classList.remove(this.props.actionClassName);
-
         this.observer.disconnect();
     };
 }

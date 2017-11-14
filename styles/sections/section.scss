@@ -92,6 +92,15 @@
     }
 
     .section__title {
+      opacity: 0;
+
+      transition: opacity 2s ease;
+
+      &.showing {
+        opacity: 1;
+
+        animation: none;
+      }
 
       @include breakpoint($mobile-p) {
         margin: 1.2em 0 .75em;
@@ -261,8 +270,6 @@
     font-weight: $font-style-light;
     color: #BECED9;
 
-	// Safari bug fix
-    opacity: .999;
     @include breakpoint($mobile) {
 
       font-size: 2.375em;
@@ -548,4 +555,11 @@
       }
     }
   }
+}
+
+// animation classes
+
+.showing {
+
+  animation: showing 3.5s ease forwards;
 }
