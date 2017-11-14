@@ -92,16 +92,6 @@
     }
 
     .section__title {
-      opacity: 0;
-
-      transition: opacity 2s ease;
-
-      &.showing {
-        opacity: 1;
-
-        animation: none;
-      }
-
       @include breakpoint($mobile-p) {
         margin: 1.2em 0 .75em;
 
