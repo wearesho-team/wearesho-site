@@ -18,11 +18,11 @@
 
     .stage-glow {
 
-      opacity: 1;
+      animation: appearance-disappearance 1.75s ease-out;
     }
 
     .orbit {
-      opacity: 1;
+      animation: appearance-disappearance 1s ease .25s;
 
       &.from-first {
 
@@ -31,14 +31,14 @@
 
       &.from-second {
 
-        transform: translate(-91px, 331px) rotate(-17deg);
+        transform: translate(-109px, 303px) rotate(-17deg);
       }
 
       &.from-third {
 
         &_top {
 
-          transform: matrix(-0.94, 0.342, -0.342, -0.94, 1825, 749);
+          transform: matrix(-0.94, 0.342, -0.342, -0.94, 1807, 723);
         }
 
         &_bottom {
@@ -51,33 +51,30 @@
 
         &_top {
 
-          transform: matrix(-0.07, -0.998, 0.998, -0.07, 1124, 1124);
+          transform: matrix(-0.07, -0.998, 0.998, -0.07, 1370, 1114);
         }
 
         &_bottom {
 
-          transform: matrix(-0.07, -0.998, 0.998, -0.07, 1337, 1177);
+          transform: matrix(-0.07, -0.998, 0.998, -0.07, 1310, 1177);
         }
       }
     }
   }
 
   .stage-glow {
-    opacity: 0;
 
-    transition: opacity 1s ease;
+    opacity: 0;
   }
 
   .orbit {
-    //opacity: 0;
+    opacity: 0;
 
-    transition-delay: .2s;
-
-    transition: opacity 1s ease, transform 1s ease;
+    transition: transform 1s ease .25s;
 
     &.from-second {
 
-      transform: translate(-160px, 230px) rotate(-17deg);
+      transform: translate(-150px, 240px) rotate(-17deg);
     }
 
     &.from-third {

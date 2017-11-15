@@ -513,6 +513,19 @@ $indent-tablet: -66px;
   }
 }
 
+// Appearance / disappearance
+@keyframes appearance-disappearance {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 // Appearance
 @keyframes appearance {
   from {
