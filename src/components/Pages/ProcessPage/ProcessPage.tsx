@@ -49,24 +49,34 @@ export class ProcessPage extends BasePage {
                             </span>
                             <div className="stage-body">
                                 <h3 className="stage__title">Разработка</h3>
-                                <p className="stage__description">front & back end / тестирование</p>
+                                <p className="stage__description">front &amp; back end</p>
                                 <span className="stage__detail">&gt;&gt;</span>
                             </div>
                         </div>
                         <div className="stages-group">
                             <div className="stage">
                                 <span className="stage__number marker">
-                                    04
+                                    05
                                 </span>
                                 <div className="stage-body">
                                     <h3 className="stage__title">Продвижение</h3>
-                                    <p className="stage__description">PR всех видов</p>
+                                    <p className="stage__description">online / offline</p>
                                     <span className="stage__detail">&gt;&gt;</span>
                                 </div>
                             </div>
                             <div className="stage">
                                 <span className="stage__number marker">
-                                    05
+                                    04
+                                </span>
+                                <div className="stage-body">
+                                    <h3 className="stage__title">Развертывание</h3>
+                                    <p className="stage__description">приложений на серверах</p>
+                                    <span className="stage__detail">&gt;&gt;</span>
+                                </div>
+                            </div>
+                            <div className="stage">
+                                <span className="stage__number marker">
+                                    06
                                 </span>
                                 <div className="stage-body">
                                     <h3 className="stage__title">Тех. поддержка</h3>

@@ -17,8 +17,12 @@
   &:hover {
 
     .stage-glow {
+      animation: appearance-disappearance 2s ease-out;
 
-      animation: appearance-disappearance 1.75s ease-out;
+      &_under {
+
+        animation: appearance-disappearance 1.25s ease-out .25s;
+      }
     }
 
     .orbit {
@@ -70,7 +74,7 @@
   .orbit {
     opacity: 0;
 
-    transition: transform 1s ease .25s;
+    transition: transform 1.25s ease .25s;
 
     &.from-second {
 
