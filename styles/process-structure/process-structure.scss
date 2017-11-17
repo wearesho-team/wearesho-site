@@ -14,6 +14,14 @@
 
   z-index: $under-zindex;
 
+  @include breakpoint($laptop-large) {
+    width: 100vw;
+
+    left: -11em;
+
+    margin-top: -23%;
+  }
+
   &:hover {
 
     .stage-glow {
@@ -30,24 +38,24 @@
 
       &.from-first {
 
-        transform: translate(100px, 69px);
+        transform: translate(106px, 73px);
       }
 
       &.from-second {
 
-        transform: translate(-109px, 303px) rotate(-17deg);
+        transform: translate(-95px, 324px) rotate(-17deg);
       }
 
       &.from-third {
 
         &_top {
 
-          transform: matrix(-0.94, 0.342, -0.342, -0.94, 1807, 723);
+          transform: matrix(-0.94, 0.342, -0.342, -0.94, 1780, 701);
         }
 
         &_bottom {
 
-          transform: matrix(0.819, -0.574, 0.574, 0.819, -129, 642);
+          transform: matrix(0.819, -0.574, 0.574, 0.819, -91, 658);
         }
       }
 
@@ -76,6 +84,11 @@
 
     transition: transform 1.25s ease .25s;
 
+    &.from-first {
+
+      transform: translate(-54px, -75px);
+    }
+
     &.from-second {
 
       transform: translate(-150px, 240px) rotate(-17deg);
@@ -85,12 +98,12 @@
 
       &_top {
 
-        transform: matrix(-0.94, 0.342, -0.342, -0.94, 1911.84, 816.661);
+        transform: matrix(-0.94, 0.342, -0.342, -0.94, 1937, 836);
       }
 
       &_bottom {
 
-        transform: matrix(0.819, -0.574, 0.574, 0.819, -224, 570);
+        transform: matrix(0.819, -0.574, 0.574, 0.819, -253, 550);
       }
     }
 
@@ -98,12 +111,12 @@
 
       &_top {
 
-        transform: matrix(-0.07, -0.998, 0.998, -0.07, 997, 1132);
+        transform: matrix(-0.07, -0.998, 0.998, -0.07, 970, 1138);
       }
 
       &_bottom {
 
-        transform: matrix(-0.07, -0.998, 0.998, -0.07, 1065, 1142);
+        transform: matrix(-0.07, -0.998, 0.998, -0.07, 907, 1139);
       }
     }
   }

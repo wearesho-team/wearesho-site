@@ -24,7 +24,7 @@ export class ProcessPage extends BasePage {
                     </div>
                     <div className="section__half half_second">
                         <div className="stage">
-                            <span className="stage__number marker">
+                            <span className="stage__number marker glow">
                                 01
                             </span>
                             <div className="stage-body">

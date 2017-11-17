@@ -23,7 +23,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                         <feGaussianBlur stdDeviation="12" />
                     </filter>
                     <filter id="blur_strong" x="-140%" y="-100%" height="300%" width="380%">
-                        <feGaussianBlur stdDeviation="26" />
+                        <feGaussianBlur stdDeviation="20" />
                     </filter>
                     <linearGradient gradientUnits="userSpaceOnUse" x1="651.347" y1="731.642" x2="650.527" y2="732.426" gradientTransform="matrix(185.6 0 0 -160 -119971.5 117556.1)">
                         <stop offset="0" stopColor="#4C2A81" stopOpacity="0"/>
@@ -34,36 +34,36 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                         <stop  offset="0" stopColor="#432840" stopOpacity="0"/>
                         <stop  offset="1" stopColor="#609DAF"/>
                     </linearGradient>
-                    <path id="light_5" fillOpacity="0.402" fill="url(#light_5_1_)" filter="url(#blur_strong)" d="M-553.4-503.3c113.5,0,219,36.1,219,43s-37.1-38.1-150.6-38.1c-11.8,0-26.7,23.8-47.5,30.6c-35.2,11.5-80.5,8.5-105.3,7.5c-99.1-4-121.1-25.6-121.1-30.5C-758.9-497.7-666.9-503.3-553.4-503.3z"/>
+                    <path id="light_5" fillOpacity="0.22" fill="url(#light_5_1_)" filter="url(#blur_strong)" d="M-553.4-503.3c113.5,0,219,36.1,219,43s-37.1-38.1-150.6-38.1c-11.8,0-26.7,23.8-47.5,30.6c-35.2,11.5-80.5,8.5-105.3,7.5c-99.1-4-121.1-25.6-121.1-30.5C-758.9-497.7-666.9-503.3-553.4-503.3z"/>
                     <linearGradient id="light_4_1_" gradientUnits="userSpaceOnUse" x1="-1979.9099" y1="-92.8882" x2="-1979.7146" y2="-92.8882" gradientTransform="matrix(347.482 0 0 -36.0981 687333.6875 -4163.3828)">
                         <stop  offset="0" stopColor="#432840" stopOpacity="0"/>
                         <stop  offset="1" stopColor="#AF60A0"/>
                     </linearGradient>
-                    <path id="light_4" fillOpacity="0.306" fill="url(#light_4_1_)" filter="url(#blur_strong)" d="M-579.6-828.3c92.9,0,179.3,29.6,179.3,35.2s-30.4-31.2-123.3-31.2c-9.7,0-21.9,19.5-38.9,25c-28.8,9.4-65.9,7-86.2,6.2c-81.1-3.3-99.1-20.9-99.1-25C-747.9-823.8-672.6-828.3-579.6-828.3z"/>
+                    <path id="light_4" fillOpacity="0.25" fill="url(#light_4_1_)" filter="url(#blur_strong)" d="M-579.6-828.3c92.9,0,179.3,29.6,179.3,35.2s-30.4-31.2-123.3-31.2c-9.7,0-21.9,19.5-38.9,25c-28.8,9.4-65.9,7-86.2,6.2c-81.1-3.3-99.1-20.9-99.1-25C-747.9-823.8-672.6-828.3-579.6-828.3z"/>
                     <g id="circle_1" transform="translate(710 343)" fillOpacity="0.577" filter="url(#blur_light)">
                         <circle fill="none" cx="-1969.9" cy="-1073.3" r="20"/>
-                        <circle fill="none" stroke="#95989A" cx="-1969.9" cy="-1073.3" r="19.5"/>
+                        <circle fill="none" stroke="#95989A" strokeOpacity="0.577" cx="-1969.9" cy="-1073.3" r="19.5"/>
                     </g>
                     <g id="circle_4" transform="translate(1396 245)" fillOpacity="0.577" filter="url(#blur_light)">
                         <circle fill="none" cx="-1969.9" cy="-1073.3" r="20"/>
-                        <circle fill="none" stroke="#95989A" cx="-1969.9" cy="-1073.3" r="19.5"/>
+                        <circle fill="none" stroke="#95989A" strokeOpacity="0.577" cx="-1969.9" cy="-1073.3" r="19.5"/>
                     </g>
                     <g id="clrcle_3_2" transform="translate(1139 465)" fillOpacity="0.108" filter="url(#blur_bitlight)">
                         <circle fill="none" cx="-1968.9" cy="-1072.3" r="21"/>
-                        <circle fill="none" stroke="#95989A" strokeWidth="2" cx="-1968.9" cy="-1072.3" r="20"/>
+                        <circle fill="none" stroke="#95989A" strokeWidth="2" strokeOpacity="0.15" cx="-1968.9" cy="-1072.3" r="20"/>
                     </g>
                     <g id="circle_3" transform="translate(1158 476)" fillOpacity="0.969" filter="url(#blur_light)">
                         <circle fill="none" cx="-1983.4" cy="-1086.8" r="6.5"/>
-                        <circle fill="none" stroke="#95989A" cx="-1983.4" cy="-1086.8" r="6"/>
+                        <circle fill="none" stroke="#95989A" strokeOpacity="0.577" cx="-1983.4" cy="-1086.8" r="6"/>
                     </g>
                     <linearGradient id="light_3_1_" gradientUnits="userSpaceOnUse" x1="-1981.5455" y1="-103.429" x2="-1981.3746" y2="-103.367" gradientTransform="matrix(269.2364 0 0 -64.9189 532643.4375 -7346.1602)">
                         <stop  offset="0" stopColor="#432840" stopOpacity="0"/>
                         <stop  offset="1" stopColor="#6ECCD0"/>
                     </linearGradient>
-                    <path id="light_3" fillOpacity="0.19" fill="url(#light_3_1_)" filter="url(#blur_strong)" d="M-767.7-646.5c45.5,49.6,59.7,17.8,59.7,24.7s82.4-24.7-31.1-24.7c-11.8,0-7.8,31.3-28.6,38.1c-35.2,11.5-99.4,1-124.2,0c-99.1-4-37.6-24.9-37.6-29.9C-929.4-645.1-813.2-696-767.7-646.5z"/>
+                    <path id="light_3" fillOpacity="0.1" fill="url(#light_3_1_)" filter="url(#blur_strong)" d="M-767.7-646.5c45.5,49.6,59.7,17.8,59.7,24.7s82.4-24.7-31.1-24.7c-11.8,0-7.8,31.3-28.6,38.1c-35.2,11.5-99.4,1-124.2,0c-99.1-4-37.6-24.9-37.6-29.9C-929.4-645.1-813.2-696-767.7-646.5z"/>
                     <g id="circle_5" transform="translate(1390 616)" fillOpacity="0.577" filter="url(#blur_light)">
                         <circle fill="none" cx="-1978.9" cy="-1082.3" r="11"/>
-                        <circle fill="none" stroke="#95989A" cx="-1978.9" cy="-1082.3" r="10.5"/>
+                        <circle fill="none" stroke="#95989A" strokeOpacity="0.577" cx="-1978.9" cy="-1082.3" r="10.5"/>
                     </g>
                     <linearGradient id="light_2_1_" gradientUnits="userSpaceOnUse" x1="-1989.4039" y1="-101.3225" x2="-1988.9963" y2="-100.9497" gradientTransform="matrix(131.7906 0 0 -55.2935 261154.6406 -6074.0425)">
                         <stop  offset="0" stopColor="#432840" stopOpacity="0"/>
@@ -78,7 +78,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                     <stop  offset="0.765" stopColor="#FFBFE2" stopOpacity="0.969"/>
                     <stop  offset="1" stopColor="#FFFFFF" stopOpacity="0"/>
                 </linearGradient>
-                <path id="path_light" fillOpacity="3.500000e-02" fill="url(#Path_light_1_)" d="M-1987.4-922.5l270.7,73.2l418.1,93.6l40.6,30.3l50.8,84.1l51,63.4l87.6,46.9l28.9,36.9l83.9,0.8l43.8-50.1l74-46.9l39.5-74.4l118.8-94.6l111.8-59.1l82.9-14.9l44.2-15.9l77.9,4L-67-877.1v39.4h-209.9l-208.3,9.3l-82.9,13.8l-57.6,27.8l-49.8,31.8l-96.6,70.1l-26.6,27.5l-11,26.4l-6.3,34.9l38.4,64.3l104.7,50.4l56.3,16.4l38.7,11.3l195.2,6.3l315.8-6.3l-5.2,85.3L-334.3-436l-65.4-8.7l-178.1-8.3l-83.8-13.9l-121-66l0,0l-37.3-65.5h-6.2l-12,13.9l-80.4,51.6l-37.4,39.4l-83.9-0.8l-26.1-30.7l-81.6-33.3l-61-83.2l-35.8-53.2l-13.7-30.9v5.1l-40.6-35.5l-399-90.6l-289.7,27.9v-103.8H-1987.4z"/>
+                <path id="path_light" fillOpacity="0.03" fill="#CCACFF" filter="url(#blur_semilight)" d="M-1987.4-922.5l270.7,73.2l418.1,93.6l40.6,30.3l50.8,84.1l51,63.4l87.6,46.9l28.9,36.9l83.9,0.8l43.8-50.1l74-46.9l39.5-74.4l118.8-94.6l111.8-59.1l82.9-14.9l44.2-15.9l77.9,4L-67-877.1v39.4h-209.9l-208.3,9.3l-82.9,13.8l-57.6,27.8l-49.8,31.8l-96.6,70.1l-26.6,27.5l-11,26.4l-6.3,34.9l38.4,64.3l104.7,50.4l56.3,16.4l38.7,11.3l195.2,6.3l315.8-6.3l-5.2,85.3L-334.3-436l-65.4-8.7l-178.1-8.3l-83.8-13.9l-121-66l0,0l-37.3-65.5h-6.2l-12,13.9l-80.4,51.6l-37.4,39.4l-83.9-0.8l-26.1-30.7l-81.6-33.3l-61-83.2l-35.8-53.2l-13.7-30.9v5.1l-40.6-35.5l-399-90.6l-289.7,27.9v-103.8H-1987.4z"/>
                 <linearGradient id="path_1_" gradientUnits="userSpaceOnUse" x1="-3067.6953" y1="-506.3046" x2="-3066.6982" y2="-506.3246" gradientTransform="matrix(-671.4482 155.1087 -47.9065 -207.3821 -2084115.125 370089.8438)">
                     <stop  offset="0" stopColor="#FFFFFF" stopOpacity="0"/>
                     <stop  offset="0.22" stopColor="#5C9DA8" stopOpacity="0.969"/>
@@ -86,8 +86,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                     <stop  offset="0.501" stopColor="#FFBFE2" stopOpacity="0.969"/>
                     <stop  offset="1" stopColor="#FFFFFF" stopOpacity="0"/>
                 </linearGradient>
-                <path id="path_2_" fillOpacity="5.300000e-02" fill="url(#path_1_)" filter="url(#blur_semilight)" d="M-70.7-775.9l-15.9,10.3l-49.6,35.4l-23.7,37.4l-83.4,59.9l-81.3,44.2l-63,21l-32.8,14.4l-60.9,12.4l-227.1,66.1l-3.7-16l163.1-37.7l161-41.2l63.1-20.5l42.1-21.7l35.7-21.9l68.5-45.9l18.1-16l6.1-12.7l1.6-15.4l-35.9-19.3l-86.1-1.8l-45.3,3.4l-31.1,2.3l-152.2,32.5l-244.8,59.2l-4-35.7l210.1-19.5l51.7-8.2l139.2-28.6l66.4-9.4l100.2,5.2l0,0l35.2,20l4.8-1.1l8-7.8l57.4-27.2L-70.7-775.9L-70.7-775.9l-1.7,3.6L-70.7-775.9z"/>
-                <g id="base_path" filter="url(#blur_semilight)">
+                <g id="base_path">
                     <linearGradient id="base_1_" gradientUnits="userSpaceOnUse" x1="-1973.4674" y1="-118.0219" x2="-1972.4701" y2="-118.0018" gradientTransform="matrix(1920.0339 0 0 -572.7452 3787134.5 -68262.3438)">
                         <stop  offset="0" stopColor="#FFFFFF" stopOpacity="0"/>
                         <stop  offset="0.32" stopColor="#5C9DA8" stopOpacity="0.969"/>
@@ -95,13 +94,19 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                         <stop  offset="0.765" stopColor="#FFBFE2" stopOpacity="0.969"/>
                         <stop  offset="1" stopColor="#FFFFFF" stopOpacity="0"/>
                     </linearGradient>
-                    <path id="base" fillOpacity="0.171" fill="url(#base_1_)" d="M-1988-958l136.1,64.3l134.1,27.4l418.1,93.6l41.7,31.1l49.7,83.4l51,63.4l87.6,46.9l28.9,36.9l83.9,0.8l43.8-50.1l74-46.9l39.5-74.4l118.8-94.6l111.8-59.1l82.9-14.9l44.2-15.9l77.9,4L-68-894.1v39.4h-209.9l-208.3,9.3l-82.9,13.8l-57.6,27.8l-49.8,31.8l-96.6,70.1l-26.6,27.5l-11,26.4l-6.3,34.9l38.4,64.3l104.7,50.4l56.3,16.4l38.7,11.3l195.2,6.3l315.8-6.3l-5.2,85.3l-262.2-67.6l-65.4-8.7l-178.1-8.3l-83.8-13.9l-121-66l0,0l-37.9-67.6l-3.5-0.1l-2.2,2.2l-12,13.9l-80.4,51.6l-37.4,39.4l-83.9-0.8l-26.1-30.7l-81.6-33.3l-61-83.2l-35.8-53.2l-12.6-25.9l-42.8-34.4l-397.9-91.6l-285.7-45.8L-1988-958z"/>
-                    <path id="Path_1859" fillOpacity="2.600000e-02" fill="#F9F9F9" d="M-1227.5-690.4l1,1.7l133.7,80.8l65.5,44l152.5-85.3l56.6-16.3l3.1-1.4l5.8-0.8v4.2l9.5-18.1l-60.5,21.1l-167,94.6l-62.6-43.8L-1227.5-690.4z"/>
-                    <g transform="matrix(1, 0, 0, 1, -1988, -958)">
-                        <path id="Path_1860-2" fillOpacity="5.500000e-02" fill="#F9F9F9" d="M750.2,250.2l0.8,1.3l151.4,89.4l58.1,26.9l149.4-91.2l82-80.8l43.7-27l25.6-6.3l158.8-40.1L1268.9,156l-22,6.4l-49.3,23.4l0,0l-97.3,93l-139.8,86.8l-58.1-27.5L750.2,250.2z"/>
+                    <path id="base" fillOpacity="0.171" fill="url(#base_1_)" d="M-1990-958l136.1,64.3l134.1,27.4l418.1,93.6l41.7,31.1l49.7,83.4l51,63.4l87.6,46.9l28.9,36.9l83.9,0.8l43.8-50.1l74-46.9l39.5-74.4l118.8-94.6l111.8-59.1l82.9-14.9l44.2-15.9l77.9,4L-70-894.1v39.4h-209.9l-208.3,9.3l-82.9,13.8l-57.6,27.8l-49.8,31.8l-96.6,70.1l-26.6,27.5l-11,26.4l-6.3,34.9l38.4,64.3l104.7,50.4l56.3,16.4l38.7,11.3l195.2,6.3l315.8-6.3l-5.2,85.3l-262.2-67.6l-65.4-8.7l-178.1-8.3l-83.8-13.9l-121-66l0,0l-37.9-67.6l-3.5-0.1l-2.2,2.2l-12,13.9l-80.4,51.6l-37.4,39.4l-83.9-0.8l-26.1-30.7l-81.6-33.3l-61-83.2l-35.8-53.2l-12.6-25.9l-42.8-34.4l-397.9-91.6l-285.7-45.8L-1990-958z"/>
+                    <path id="Path_1859" fillOpacity="2.600000e-02" fill="#F9F9F9"  d="M-1229.5-690.4l1,1.7l133.7,80.8l65.5,44l152.5-85.3l56.6-16.3l3.1-1.4l5.8-0.8v4.2l9.5-18.1l-60.5,21.1l-167,94.6l-62.6-43.8L-1229.5-690.4z"/>
+                    <g transform="matrix(1, 0, 0, 1, -1990, -958)">
+                        <path id="Path_1860-2" fillOpacity="5.500000e-02" fill="#F9F9F9" filter="url(#blur_semilight)" d="M750.2,250.2l0.8,1.3l151.4,89.4l58.1,26.9l149.4-91.2l82-80.8l43.7-27l25.6-6.3l158.8-40.1L1268.9,156l-22,6.4l-49.3,23.4l0,0l-97.3,93l-139.8,86.8l-58.1-27.5L750.2,250.2z"/>
                     </g>
-                    <g transform="matrix(1, 0, 0, 1, -1988, -958)">
-                        <path id="Path_1861-2" fillOpacity="9.800000e-02" fill="#FBFBFB" d="M1069.4,438.4l64.9,30.4l85.4,9.4l35.3-3.1l70.1-1.1l-18.2-10l-90.5,11l-80.6-8.1l-68.6-32.1l-31.4,26.9L1069.4,438.4z"/>
+                    <g transform="matrix(1, 0, 0, 1, -1990, -958)">
+                        <path id="Path_1861-2" fillOpacity="9.800000e-02" fill="#FBFBFB" filter="url(#blur_semilight)" d="M1069.4,438.4l64.9,30.4l85.4,9.4l35.3-3.1l70.1-1.1l-18.2-10l-90.5,11l-80.6-8.1l-68.6-32.1l-31.4,26.9L1069.4,438.4z"/>
+                    </g>
+                    <g transform="matrix(1, 0, 0, 1, -1990, -958)">
+                        <path id="_34_up-2" fillOpacity="0.07" fill="#FBFBFB" filter="url(#blur_semilight)" d="M1312.3,186.8l42,18.4l10.9,9.8l11.9,9l-95.3-20.3l89,24.8l20.9,17.7l19.8,31.5l0,0l-15.9-30.4l-17.9-26.6l-23.3-17L1312.3,186.8z"/>
+                    </g>
+                    <g transform="matrix(1, 0, 0, 1, -1990, -958)">
+                        <path id="_34_down-2" fillOpacity="0.07" fill="#FBFBFB" filter="url(#blur_semilight)" d="M1417.2,351.4l-9.6,43l-27.6,53.9l-38.6,9.8l-22.4,3.2l24.8,7.1l15.2-9.5l16.1-4.6l6.8-1.6l20.2,17.6l-19-20.1l25.8-54.9L1417.2,351.4z"/>
                     </g>
                 </g>
             </g>
@@ -125,7 +130,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                     <stop  offset="1" stopColor="#333380" stopOpacity="0"/>
                 </linearGradient>
                 <path id="Path_1847" className="stage-glow from-first" fill="url(#Path_1847_1_)" d="M-1209.8-638.7l36.2,52.5l51.3,62.8l25.8,15.8l65.1,37.9l-61-24.8l-21-8.3l-61.5-84.2L-1209.8-638.7z"/>
-                <path id="blur_light" fillOpacity="0.645" fill="url(#blur_light_1_)" filter="url(#blur_strong)" d="M-1126.4-546.3c113.5,0,219,36.1,219,43s-37.1-38.1-150.6-38.1c-11.8,0-26.7,23.8-47.5,30.6c-35.2,11.5-80.5,8.5-105.3,7.5c-99.1-4-121.1-25.6-121.1-30.5C-1331.9-540.7-1239.9-546.3-1126.4-546.3z"/>
+                <path id="blur_light" fillOpacity="0.45" fill="url(#blur_light_1_)" filter="url(#blur_strong)" d="M-1126.4-546.3c113.5,0,219,36.1,219,43s-37.1-38.1-150.6-38.1c-11.8,0-26.7,23.8-47.5,30.6c-35.2,11.5-80.5,8.5-105.3,7.5c-99.1-4-121.1-25.6-121.1-30.5C-1331.9-540.7-1239.9-546.3-1126.4-546.3z"/>
                 <g id="circle_lights" className="orbit from-first">
                     <linearGradient id="blur_light_1_" gradientUnits="userSpaceOnUse" x1="-3007.8865" y1="-539.8366" x2="-3007.6543" y2="-539.8366" gradientTransform="matrix(424.465 0 0 44.0981 1275561.125 23281.5195)">
                         <stop  offset="0.1091" stopColor="#432840" stopOpacity="0"/>

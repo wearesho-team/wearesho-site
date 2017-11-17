@@ -1,7 +1,7 @@
 /**
 * Stages styles
  */
-$indent-large: 20em;
+$indent-large: 20.65em;
 $indent-medium: 9.5em;
 
 .stage,
@@ -54,14 +54,22 @@ $indent-medium: 9.5em;
   &__number {
     line-height: 1em;
 
-    font-size: 2.938em;
+    font-size: 3em;
     color: #C5D5E0;
 
-    transition: text-shadow .3s ease;
+    transition: color .3s ease, text-shadow .3s ease;
 
     &.glow {
+      text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);
+      color: #fff;
 
-      text-shadow: 2px 1px 8px rgba(255, 255, 255, .49);
+      &.marker {
+
+        &:before {
+
+          text-shadow: none;
+        }
+      }
     }
 
     &.marker {
