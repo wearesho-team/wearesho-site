@@ -39,15 +39,15 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
     protected clearTimeout = smartClearTimeout.bind(this);
 
     public componentWillUnmount() {
-        this.clearTimeout(this.timer);
+        this.clearTimeout();
     }
 
     public componentWillReceiveProps() {
+        this.clearTimeout();
         this.setDirection(this.routeProps.key);
 
         this.context.setScrollDisabled(true);
 
-        this.clearTimeout(this.timer);
         this.timer = setTimeout(
             () => {
                 this.context.setScrollDisabled(false);

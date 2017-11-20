@@ -25,13 +25,13 @@
 
   margin: 1.7em auto 0;
 
-  pointer-events: none;
-
   z-index: $under-zindex;
-
+  
   @include breakpoint($mobile) {
     right: 0;
     left: 0;
+
+    pointer-events: none;
   }
 
   @include breakpoint($mobile-l) {
@@ -92,112 +92,5 @@
     right: 0;
     bottom: 0;
     left: 0;
-  }
-
-  .slider {
-    top: 50%;
-    left: 50%;
-
-    margin: -150px 0 0 -148px;
-
-    transition: opacity .3s ease;
-
-    @include breakpoint($mobile) {
-
-      display: none;
-    }
-
-    .slider__dot {
-      width: 9px;
-      height: 9px;
-
-      position: absolute;
-
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-
-      margin: auto;
-
-      border-radius: 50%;
-
-      background-color: #fff;
-
-      box-shadow: 0 0 1px 0 #fff;
-
-      &:before,
-      &:after {
-        content: '';
-        display: block;
-
-        position: absolute;
-
-        border-radius: 50%;
-      }
-
-      &:before {
-        width: 400%;
-        height: 400%;
-
-        top: 50%;
-        left: 50%;
-        margin-top: -200%;
-        margin-left: -200%;
-
-        border-radius: 50%;
-
-        border: 1px solid rgb(206, 206, 206);
-
-        filter: blur(1px);
-
-        animation: pulse-ring 2s cubic-bezier(.215, .61, .355, 1) infinite;
-      }
-
-      &:after {
-        $glow-size: 15px;
-
-        width: $glow-size;
-        height: $glow-size;
-
-        top: 50%;
-        left: 50%;
-
-        margin: (-$glow-size / 2) 0 0 (-$glow-size / 2);
-
-        border-radius: 50%;
-        border: 1px solid #fff;
-
-        background: #fff;
-
-        filter: blur(3px);
-
-        opacity: .75;
-
-        transition: opacity .3s ease;
-
-        z-index: $under-zindex;
-      }
-    }
-
-    &__description {
-      right: 55px;
-      left: auto;
-
-      text-align: right;
-    }
-
-    &__location {
-      font-size: 1.125em;
-      color: #1397C7;
-    }
-
-    &__coordinates {
-      margin-top: .5em;
-
-      white-space: nowrap;
-
-      font-size: .875em;
-    }
   }
 }

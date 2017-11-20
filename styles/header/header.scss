@@ -16,6 +16,13 @@
 
   z-index: map-get($zindex, header);
 
+  // Unselectable
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
   @include breakpoint($mobile) {
 
     font-weight: $font-style-regular;
@@ -105,7 +112,7 @@
 
   &:after {
     content: '';
-    
+
     width: 0;
     height: 9px;
 
@@ -117,22 +124,39 @@
     background-image: linear-gradient(to right, rgba(235, 75, 124, 0) 0%, rgba(235, 75, 124, 0.5) 100%);
 
     transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
-    
+
     z-index: $under-zindex;
   }
 
-  &:hover,
-  &.is-active {
+  @include breakpoint($mobile-tablet) {
+    &.is-active {
 
-    &:before {
-      transform: translateX(-14px);
+      &:before {
+        transform: translateX(-14px);
 
-      opacity: 1;
+        opacity: 1;
+      }
+
+      &:after {
+
+        animation: painting .6s ease  forwards;
+      }
     }
+  }
 
-    &:after {
+  @include breakpoint($any-desktop) {
+    &:hover {
 
-      animation: painting .6s ease;
+      &:before {
+        transform: translateX(-14px);
+
+        opacity: 1;
+      }
+
+      &:after {
+
+        animation: painting .6s ease;
+      }
     }
   }
 }

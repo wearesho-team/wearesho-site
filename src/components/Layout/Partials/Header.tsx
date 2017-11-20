@@ -1,9 +1,12 @@
 import * as React from "react";
+import {Link} from "react-router-dom";
+
+import {Languages} from "../../../data/Languages";
+
+import {TouchHover} from "../../../helpers/TouchHover";
+import {translate} from "../../../helpers/translate";
 
 import {LayoutContext, LayoutContextTypes} from "../LayoutContext";
-import {Languages} from "../../../data/Languages";
-import {translate} from "../../../helpers/translate";
-import {Link} from "react-router-dom";
 
 export class Header extends React.Component<undefined, undefined> {
     public static readonly contextTypes = LayoutContextTypes;
@@ -19,7 +22,7 @@ export class Header extends React.Component<undefined, undefined> {
                 </Link>
                 <div className="header__right">
                     <Link to="/partnership" className="header__new-project">{translate("header.newProject")}</Link>
-                    <button type="button" className="header__lang-toggle" onClick={this.changeLanguage}>
+                    <button type="button" className="header__lang-toggle" onClick={this.changeLanguage} {...TouchHover}>
                         {this.languageLabel}
                     </button>
                 </div>

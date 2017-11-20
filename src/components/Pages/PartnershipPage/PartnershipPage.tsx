@@ -4,10 +4,12 @@ import ReactModal from "react-modal";
 import {Config} from "../../../data/Config";
 
 import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../../helpers/Breakpoints";
+import {smoothScrollTo} from "../../../helpers/smoothScrollTo";
 import {formatNumber} from "../../../helpers/formatNumber";
 import {translate} from "../../../helpers/translate";
 
 import {TransformAnimation} from "../../Animations/Interactive/TransformAnimation";
+import {getCorners, getLabel} from "../../Buttons/SubmitButton";
 import {SocialLinks} from "../../Layout/Partials/SocialLinks";
 import {PartnershipPageState} from "./PartnershipPageState";
 import {CloseButton, SubmitButton} from "../../Buttons";
@@ -15,6 +17,7 @@ import {MapIcon} from "../../Icons/MapIcon";
 import {ContactForm} from "./ContactForm";
 import {BasePage} from "../BasePage";
 
+// tslint:disable:no-magic-numbers
 export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
     public state: PartnershipPageState = {
         isModalOpen: false,
@@ -38,6 +41,25 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                 beforeClose: "modal-close",
             },
             closeTimeoutMS: 500
+        };
+
+        const transformAnimationProps = {
+            transformedComponent: <ContactForm/>,
+            staticComponent: getCorners(),
+            initialComponent: getLabel(),
+            className: "btn btn_transform",
+            onEvent() {
+                const {className, duration} = this as any;
+                smoothScrollTo(
+                    document.getElementsByClassName(className)[0] as HTMLElement,
+                    -105,
+                    "top",
+                    duration,
+                    0
+                );
+            },
+            duration: 1000,
+            event: "onClick"
         };
 
         return (
@@ -65,7 +87,8 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 </p>
                                 <p className="contact-info__text">
                                     <span className="text_regular">{translate("contactPage.location.title")}</span>
-                                    {translate(Config.location.country)}&nbsp;<span className="separator">/</span>
+                                    {translate(Config.location.country)}&nbsp;
+                                    <span className="separator">/</span>
                                     &nbsp;{translate(Config.location.city)}
                                 </p>
                             </OnDesktop>
@@ -107,17 +130,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                     </a>
                                     <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
-                                <TransformAnimation
-                                    initialComponent={translate("buttons.cooperate")}
-                                    transformedComponent={<ContactForm/>}
-                                    staticComponent={[
-                                        <span className="btn-corners btn-corners_top" key="top"/>,
-                                        <span className="btn-corners btn-corners_bottom" key="bottom"/>
-                                    ]}
-                                    className="btn btn_primary btn_transform"
-                                    event="onClick"
-                                    duration={1000}
-                                />
+                                <TransformAnimation {...transformAnimationProps}/>
                                 <SocialLinks/>
                             </OnMobile>
                         </div>
@@ -148,9 +161,9 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 <div className="slider__dot"/>
                             </div>
                             <div className="slider__description">
-                            <span className="slider__location">
-                                {Config.location.country} / {Config.location.city}
-                            </span>
+                                    <span className="slider__location">
+                                        {Config.location.country} / {Config.location.city}
+                                    </span>
                                 <span className="slider__coordinates">
                                     {Config.location.coordinates.lat}&deg;&nbsp;
                                     {Config.location.coordinates.lng}&deg;

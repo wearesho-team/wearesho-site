@@ -44,4 +44,12 @@ describe("<PartnershipPage/>", () => {
 
         expect(modal.querySelector(".modal")).to.not.exist;
     });
+
+    it("should open form when click cooperate button (mobile)", () => {
+        const buttonOpen = wrapper.find(".inner-layout");
+        buttonOpen.first().simulate("click");
+
+        timer.tick(animationDuration * 2);
+        expect(wrapper.getDOMNode().querySelector(".form")).to.exist;
+    });
 });

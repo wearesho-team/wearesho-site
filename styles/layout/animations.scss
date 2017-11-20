@@ -550,6 +550,89 @@ $indent-tablet: -66px;
   }
 }
 
+// Flashing
+@keyframes flashing {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Grid growth
+@keyframes grid-growth {
+  from {
+    top: 50%;
+    bottom: 50%;
+  }
+  to {
+    top: 0;
+    bottom: 0;
+  }
+}
+
+// Movement of preloader elms
+@keyframes movement-left {
+  from {
+    transform: translateX(-8px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes movement-right {
+  from {
+    transform: translateX(8px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+// Projects chronology orbit animation
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Chronology slider motion animation
+@keyframes motion-blur {
+  0% {
+    filter: blur(0);
+  } 100% {
+    filter: blur(100px);
+  }
+}
+
+// Add scroll
+@keyframes add-scroll {
+  0% {
+    overflow-y: auto;
+  } 100% {
+    overflow-y: scroll;
+  }
+}
+
+// Disappearance
+@keyframes disappearance {
+  from {
+    opacity: 1
+  }
+  to {
+    pointer-events: none;
+
+    opacity: 0;
+
+    z-index: $under-zindex;
+  }
+}
+
 // Grid growth
 @keyframes grid-growth {
   from {
@@ -631,11 +714,11 @@ $indent-tablet: -66px;
 @keyframes slide-to-left-slow-opacity {
   0% {
     opacity: 0;
-    transform: translate3d(-10%,0,0);
+    @include transform3d(translate3d(-10%,0,0));
   }
   100% {
     opacity: 1;
-    transform: translate3d(0,0,0);
+    @include transform(translate3d(0,0,0));
   }
 }
 

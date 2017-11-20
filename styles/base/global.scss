@@ -104,6 +104,11 @@ body,
     padding: 0 11em;
   }
 
+  @include breakpoint($laptop-xl) {
+
+    padding: 0 12%;
+  }
+
   &:before,
   &:after {
     content: '';
@@ -215,11 +220,6 @@ body,
 
         transform: translateY(0);
       }
-
-      @include breakpoint($laptop-xl) {
-
-        max-width: 1220px;
-      }
     }
   }
 }
@@ -253,22 +253,23 @@ body,
 
     @include breakpoint($tablet) {
 
-      padding: 6.8em 5.375em 0;
+      padding: 7.75em 5.375em 0;
     }
 
     @include breakpoint($laptop) {
+      overflow: hidden;
 
       padding: 6.4em 7.25em;
     }
 
     @include breakpoint($laptop-small) {
 
-      padding: 6.8em 7.25em 0;
+      padding: 7.75em 7.25em 0;
     }
 
     @include breakpoint($laptop-medium) {
 
-      padding: 6.8em 13%;
+      padding: 7.75em 13%;
     }
 
     > .align-container {
@@ -280,7 +281,7 @@ body,
 
 // animation classes
 .showing {
-  animation: showing 2s ease forwards;
+  animation: showing 3.5s ease forwards;
 }
 
 

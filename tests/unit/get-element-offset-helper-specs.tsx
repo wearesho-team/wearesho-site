@@ -4,7 +4,7 @@ import {getElementOffset} from "../../src/helpers/getElementOffset";
 import {expect} from "chai";
 import {mount, ReactWrapper} from "enzyme";
 
-describe("compareMonthWithScale()", () => {
+describe("getElementOffset()", () => {
     let wrapper: ReactWrapper<any, undefined>;
 
     const customOffset = 500;

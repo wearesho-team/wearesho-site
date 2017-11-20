@@ -2,7 +2,21 @@
 * Forms styles
  */
 .form {
+  opacity: 0;
+
+  pointer-events: none;
+
   font-size: 1.067em;
+
+  transition: opacity .5s ease, pointer-events .5s ease;
+
+  &.standBy {
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transition-delay: .3s;
+  }
 
   .section__text {
     margin-bottom: 3.375em;
@@ -367,8 +381,15 @@
 .request {
   line-height: 1.733em;
 
+
+
   > span {
     display: block;
+
+    @include breakpoint($mobile-p) {
+
+      color: #8E9CA5;
+    }
 
     @include breakpoint($tablet) {
 
@@ -378,6 +399,14 @@
     @include breakpoint($laptop-small) {
 
       display: inline;
+    }
+
+    &:first-child {
+
+      @include breakpoint($mobile-p) {
+
+        font-weight: $font-style-regular;
+      }
     }
 
     &.inline {
@@ -478,28 +507,39 @@
 }
 
 .form-container {
-  min-height: 485px;
-
   position: relative;
 
-  > form,
+  @include breakpoint($mobile-p) {
+
+    height: 100%;
+  }
+
   > p {
-    position: absolute;
-
-    top: 0;
-    bottom: 0;
-
     opacity: 1;
 
     transition: opacity .5s ease;
   }
 
+  > P {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+  }
+
   > .status-exit {
+
     opacity: 0;
   }
 
   > .status-enter {
     opacity: 0;
+
     transition: none;
   }
+}
+
+// Chrome autofill changed
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 50px #fff inset !important;
 }

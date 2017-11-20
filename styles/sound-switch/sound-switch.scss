@@ -2,6 +2,8 @@
   Sound switch styles
  */
 .sound-switch {
+  display: none;
+
   $bar-width: 2px;
 
   position: fixed;

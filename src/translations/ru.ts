@@ -11,16 +11,12 @@ translate.registerTranslations("ru", {
                 base: "Здесь ваши",
                 additions: {
                     1: "смелые",
-                    2: "смелые2",
-                    3: "смелые3"
                 }
             },
             mainTwo: {
                 base: "идеи превращаются",
                 additions: {
                     1: "в IT-продукт",
-                    2: "в IT-продукт2",
-                    3: "в IT-продукт3"
                 }
             }
         },
@@ -82,6 +78,12 @@ translate.registerTranslations("ru", {
             title: "Локация",
         }
     },
+    errorPage: {
+        text1: "Данная страница",
+        text2: "не найдена",
+        text3: "вы можете перейти",
+        text4: "на главную",
+    },
     buttons: {
         send: "Отправить",
         sending: "Отправка",
@@ -97,10 +99,14 @@ translate.registerTranslations("ru", {
         incorrect: {
             phone: "Некорректный телефон",
             mail: "Некорректный E-Mail",
-            name: `Латиница/кириллица от ${NameRange.min} до ${NameRange.max} символов`,
+            name: `от ${NameRange.min} до ${NameRange.max} букв`,
             time: "Некорректное время"
         },
-        empty: "Заполните поле",
+        empty: {
+            phone: "Введите телефон",
+            mail: "Введите E-Mail",
+            name: "Введите имя",
+        }
     },
     Kharkiv: "Харьков",
     Ukraine: "Украина",
