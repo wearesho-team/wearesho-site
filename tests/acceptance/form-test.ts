@@ -62,13 +62,4 @@ Scenario("Wrong fields", async (I) => {
     // name
     I.fillField(Fields.name, WrongValues.name);
     I.seeInField(Fields.name, WrongValues.name.trim());
-
-    // phone
-    // short
-    I.fillField(Fields.phone, WrongValues.phone);
-    I.click(submitButton);
-    I.waitForElement(`${Wrappers.phone}${errorClass}`, timeout);
-    // long
-    I.fillField(Fields.phone, `${CorrectValues.phone}${WrongValues.phone}`);
-    I.waitForElement(`${Wrappers.phone}${errorClass}`, timeout);
 });

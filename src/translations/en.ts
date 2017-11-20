@@ -71,7 +71,6 @@ translate.registerTranslations("en", {
             },
         },
         support: {
-            title: "Technical support",
             subTitle: "of the Studio's partners"
         },
         location: {
@@ -107,6 +106,12 @@ translate.registerTranslations("en", {
             mail: "Enter E-Mail",
             name: "Enter name",
         }
+    },
+    slider: {
+        support: "Technical support",
+        PR: "PR",
+        dev: "dev",
+        desgn: "desgn"
     },
     Kharkiv: "Kharkiv",
     Ukraine: "Ukraine",

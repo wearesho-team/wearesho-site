@@ -79,7 +79,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 </a>
                                 <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_regular">{translate("contactPage.support.title")}</span>
+                                    <span className="text_regular">{translate("technicalSupport")}</span>
                                     {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24
                                         <span className="separator">/</span>7

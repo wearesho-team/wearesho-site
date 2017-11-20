@@ -39,7 +39,8 @@ translate.registerTranslations("ru", {
                     "INFINANCE"
                 ]
             }
-        }
+        },
+
     },
     contactPage: {
         title: "Партнерство",
@@ -71,7 +72,6 @@ translate.registerTranslations("ru", {
             },
         },
         support: {
-            title: "Техническая поддержка",
             subTitle: "партнеров Cтудии"
         },
         location: {
@@ -107,6 +107,12 @@ translate.registerTranslations("ru", {
             mail: "Введите E-Mail",
             name: "Введите имя",
         }
+    },
+    slider: {
+        support: "Техническая поддержка",
+        PR: "PR",
+        dev: "dev",
+        desgn: "desgn"
     },
     Kharkiv: "Харьков",
     Ukraine: "Украина",
