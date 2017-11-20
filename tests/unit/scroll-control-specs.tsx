@@ -82,7 +82,7 @@ describe("<ScrollControl/>", () => {
         (node as any).handleScroll();
         timer.tick(ScrollControl.scrollListenDelay);
 
-        expect(history.location.pathname).to.equal(routeProps[routeProps.length - 1].path);
+        expect(history.location.pathname).to.equal(routeProps[1].path);
     });
 
     it("Should return on scroll if element dose not exist", () => {
