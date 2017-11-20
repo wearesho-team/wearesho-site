@@ -1,6 +1,8 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
+import {translate} from "../../../../helpers/translate";
+
 export interface SliderDescriptionProps {
     items: string []
 }
@@ -12,7 +14,7 @@ export const SliderDescriptionPropTypes = {
 export const SliderDescription: React.SFC<SliderDescriptionProps> = ({items}): JSX.Element => {
     const content: string[] = [];
 
-    items.forEach((name) => content.push(name, " / "));
+    items.forEach((name) => content.push(translate(`slider.${name}`), " / "));
 
     content.pop();
 
