@@ -17,7 +17,7 @@ import {
 } from "react-context-form";
 
 import {ContactFormModel, instantiateContactFormModel} from "../../../../models/ContactFormModel";
-import {NameRange, PhoneRange, CommentMaxLength} from "../../../../models/common";
+import {NameRange, PhoneRange, CommentMaxLength, TimeDefaults} from "../../../../models/common";
 
 import { ValidationError } from "../../../../data/ValidationError";
 
