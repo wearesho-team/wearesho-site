@@ -92,7 +92,6 @@
      }
 
     .section__title {
-
       @include breakpoint($mobile-p) {
         margin: 1.2em 0 .75em;
 
@@ -197,6 +196,10 @@
     }
 
     .section__half {
+      @include breakpoint($tablet-p) {
+
+        padding-top: 3.75em;
+      }
 
       &.half_first {
         @include span(4 of 12 inside no-gutters);
@@ -245,6 +248,22 @@
         color: #C5D5E0;
 
         @include breakpoint($mobile) {
+
+          font-size: 1.2em;
+        }
+
+        @include breakpoint($tablet-p) {
+          margin-bottom: .25em;
+
+          font-size: 1.176em;
+        }
+
+        @include breakpoint($tablet-l) {
+
+          font-size: 1.2em;
+        }
+
+        @include breakpoint($laptop-small) {
 
           font-size: 1.2em;
         }
@@ -324,7 +343,7 @@
 
         > .section__title-part-variable {
 
-          @include breakpoint($mobile-p) {
+          @include breakpoint($mobile) {
 
             display: block;
           }
@@ -547,4 +566,11 @@
       }
     }
   }
+}
+
+// animation classes
+
+.showing {
+
+  animation: showing 3.5s ease forwards;
 }

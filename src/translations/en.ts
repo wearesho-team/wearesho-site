@@ -71,7 +71,6 @@ translate.registerTranslations("en", {
             },
         },
         support: {
-            title: "Technical support",
             subTitle: "of the Studio's partners"
         },
         location: {

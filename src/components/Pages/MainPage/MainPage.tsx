@@ -20,26 +20,20 @@ export class MainPage extends BasePage {
         return (
             <section className="section section-main">
                 <div className="align-container">
-                    <CustomAnimation
-                        {...Timing.desktop.mainPage.tittle}
-                        startFeature={StartFeature}
-                        actionClassName="showing"
-                    >
-                        <h2 className="section__title">
-                            <span className="section__title-part">
-                                <span>{translate("mainPage.title.mainOne.base")}&nbsp;</span>
-                                <span className="section__title-part-variable">
-                                    {translate("mainPage.title.mainOne.additions.1")}&nbsp;
-                                </span>
+                    <h2 className="section__title">
+                        <span className="section__title-part">
+                            <span>{translate("mainPage.title.mainOne.base")}&nbsp;</span>
+                            <span className="section__title-part-variable">
+                                {translate("mainPage.title.mainOne.additions.1")}&nbsp;
                             </span>
-                            <span className="section__title-part">
-                                <span>{translate("mainPage.title.mainTwo.base")}&nbsp;</span>
-                                <span className="section__title-part-variable">
-                                    {translate("mainPage.title.mainTwo.additions.1")}
-                                </span>
+                        </span>
+                        <span className="section__title-part">
+                            <span>{translate("mainPage.title.mainTwo.base")}&nbsp;</span>
+                            <span className="section__title-part-variable">
+                                {translate("mainPage.title.mainTwo.additions.1")}
                             </span>
-                        </h2>
-                    </CustomAnimation>
+                        </span>
+                    </h2>
                     <div className="container">
                         <div className="section__half">
                             <OnTabletDesktop>
