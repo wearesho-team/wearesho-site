@@ -2,11 +2,32 @@
 * Stages styles
  */
 $indent-large: 20.65em;
-$indent-medium: 9.5em;
+$indent-medium: 10.25em;
+
+.section__half {
+
+  > .stage {
+
+    &:nth-child(2) {
+
+      margin-top: $indent-large;
+    }
+
+    &:nth-child(3) {
+
+      margin-top: $indent-medium;
+    }
+  }
+}
 
 .stage,
 .stages-group {
   @include span(3 of 12 inside no-gutters);
+
+  @include breakpoint($tablet-p) {
+
+    @include span(6 of 12 inside no-gutters);
+  }
   
   > .stage {
     @include span(12 of 12 inside no-gutters);
@@ -26,16 +47,6 @@ $indent-medium: 9.5em;
 
       opacity: 1;
     }
-  }
-
-  &:nth-child(2) {
-
-    margin-top: $indent-large;
-  }
-
-  &:nth-child(3) {
-
-    margin-top: $indent-medium;
   }
 
   &-body {
@@ -115,8 +126,13 @@ $indent-medium: 9.5em;
 
   .stage {
 
-    &:first-child,
-    &:last-child {
+    &:first-child {
+      position: absolute;
+
+      margin-top: $indent-medium;
+    }
+
+    &:not(:first-child) {
       text-align: right;
 
       padding-right: 1em;
@@ -141,12 +157,12 @@ $indent-medium: 9.5em;
 
     &:nth-child(2) {
 
-      margin-top: $indent-medium;
+      //margin-top: $indent-medium;
     }
 
     &:last-child {
 
-      margin-top: ($indent-large - $indent-medium);
+      margin-top: $indent-large;
     }
   }
 }

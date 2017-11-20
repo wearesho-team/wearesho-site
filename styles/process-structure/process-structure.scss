@@ -2,24 +2,39 @@
 * Process structure styles
  */
 .process-structure {
+  $process-structure-height: 590px;
+
   width: 100%;
+  max-width: 1920px;
   height: auto;
+  max-height: $process-structure-height;
 
   position: absolute;
 
   top: 50%;
+  right: 0;
   left: 0;
 
-  margin-top: -15.75%;
+  margin: 0 auto;
+
+  transform: translateY(-50%);
 
   z-index: $under-zindex;
+
+  @include breakpoint($tablet-l) {
+    top: auto;
+    bottom: 0;
+  }
+
+  @include breakpoint($laptop-small) {
+    top: auto;
+    bottom: 0;
+  }
 
   @include breakpoint($laptop-large) {
     width: 100vw;
 
     left: -11em;
-
-    margin-top: -23%;
   }
 
   &:hover {

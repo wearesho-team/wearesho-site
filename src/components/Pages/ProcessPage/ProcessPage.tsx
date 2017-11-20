@@ -56,21 +56,21 @@ export class ProcessPage extends BasePage {
                         <div className="stages-group">
                             <div className="stage">
                                 <span className="stage__number marker">
-                                    05
-                                </span>
-                                <div className="stage-body">
-                                    <h3 className="stage__title">Продвижение</h3>
-                                    <p className="stage__description">online / offline</p>
-                                    <span className="stage__detail">&gt;&gt;</span>
-                                </div>
-                            </div>
-                            <div className="stage">
-                                <span className="stage__number marker">
                                     04
                                 </span>
                                 <div className="stage-body">
                                     <h3 className="stage__title">Развертывание</h3>
                                     <p className="stage__description">приложений на серверах</p>
+                                    <span className="stage__detail">&gt;&gt;</span>
+                                </div>
+                            </div>
+                            <div className="stage">
+                                <span className="stage__number marker">
+                                    05
+                                </span>
+                                <div className="stage-body">
+                                    <h3 className="stage__title">Продвижение</h3>
+                                    <p className="stage__description">online / offline</p>
                                     <span className="stage__detail">&gt;&gt;</span>
                                 </div>
                             </div>

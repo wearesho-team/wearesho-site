@@ -136,6 +136,18 @@
 
       padding-right: 11%;
 
+      @include breakpoint($tablet) {
+        @include span(12 of 12 inside no-gutters);
+
+        float: none;
+      }
+
+      @include breakpoint($laptop-small) {
+        @include span(12 of 12 inside no-gutters);
+
+        float: none;
+      }
+
       > .section__text {
 
         margin: 2.85em 0 7em;
@@ -153,8 +165,19 @@
     }
 
     .half_second {
-
       @include span(8 of 12 inside no-gutters);
+
+      @include breakpoint($tablet) {
+        @include span(12 of 12 inside no-gutters);
+
+        float: none;
+      }
+
+      @include breakpoint($laptop-small) {
+        @include span(12 of 12 inside no-gutters);
+
+        float: none;
+      }
     }
   }
 
