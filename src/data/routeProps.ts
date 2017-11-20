@@ -1,5 +1,6 @@
 import {MainPage} from "../components/Pages/MainPage";
 import {PartnershipPage} from "../components/Pages/PartnershipPage";
+import {ProcessPage} from "../components/Pages/ProcessPage";
 
 export const routeProps = [
     {
@@ -8,8 +9,13 @@ export const routeProps = [
         component: MainPage,
     },
     {
-        exact: true,
+        exact: false,
+        path: "/process",
+        component: ProcessPage,
+    },
+    {
+        exact: false,
         path: "/partnership",
         component: PartnershipPage,
-    },
+    }
 ];

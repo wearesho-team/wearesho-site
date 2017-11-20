@@ -1,9 +1,33 @@
 /**
 * Stages styles
  */
+$indent-large: 20.65em;
+$indent-medium: 10.25em;
+
+.section__half {
+
+  > .stage {
+
+    &:nth-child(2) {
+
+      margin-top: $indent-large;
+    }
+
+    &:nth-child(3) {
+
+      margin-top: $indent-medium;
+    }
+  }
+}
+
 .stage,
 .stages-group {
   @include span(3 of 12 inside no-gutters);
+
+  @include breakpoint($tablet-p) {
+
+    @include span(6 of 12 inside no-gutters);
+  }
   
   > .stage {
     @include span(12 of 12 inside no-gutters);
@@ -25,16 +49,6 @@
     }
   }
 
-  &:nth-child(2) {
-
-    margin-top: 19em;
-  }
-
-  &:nth-child(3) {
-
-    margin-top: 9.5em;
-  }
-
   &-body {
     transition: transform .3s ease;
 
@@ -51,14 +65,22 @@
   &__number {
     line-height: 1em;
 
-    font-size: 2.938em;
+    font-size: 3em;
     color: #C5D5E0;
 
-    transition: text-shadow .3s ease;
+    transition: color .3s ease, text-shadow .3s ease;
 
     &.glow {
+      text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);
+      color: #fff;
 
-      text-shadow: 2px 1px 8px rgba(255, 255, 255, .49);
+      &.marker {
+
+        &:before {
+
+          text-shadow: none;
+        }
+      }
     }
 
     &.marker {
@@ -102,11 +124,45 @@
 
 .stages-group {
 
-  > .stage {
+  .stage {
 
     &:first-child {
+      position: absolute;
+
+      margin-top: $indent-medium;
+    }
+
+    &:not(:first-child) {
+      text-align: right;
+
+      padding-right: 1em;
+      padding-left: 0;
+
+      > .stage__number {
+
+        &.marker {
+
+          &:before {
+            right: -20px;
+            left: auto;
+          }
+        }
+      }
+    }
+
+    &:not(:last-child) {
 
       height: 0;
+    }
+
+    &:nth-child(2) {
+
+      //margin-top: $indent-medium;
+    }
+
+    &:last-child {
+
+      margin-top: $indent-large;
     }
   }
 }

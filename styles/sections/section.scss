@@ -127,26 +127,60 @@
   &.section-partnership {
 
     .section__half {
-      padding-top: 2.75em;
+      padding-top: 42px;
 
       @include breakpoint($mobile) {
 
-        padding-top: 2em;
+        padding-top: 30px;
       }
 
       @include breakpoint($laptop-large) {
 
-        padding-top: 2.5em;
+        padding-top: 38px;
       }
     }
   }
 
   &.section-process {
+    // Strange hover bug fix
+    .section__half {
+
+      &.half_first {
+        padding-top: 0;
+
+        > .section__subtitle {
+
+          padding-top: 42px;
+
+          @include breakpoint($mobile) {
+
+            padding-top: 30px;
+          }
+
+          @include breakpoint($laptop-large) {
+
+            padding-top: 38px;
+          }
+        }
+      }
+    }
 
     .half_first {
       @include span(4 of 12 inside no-gutters);
 
       padding-right: 11%;
+
+      @include breakpoint($tablet) {
+        @include span(12 of 12 inside no-gutters);
+
+        float: none;
+      }
+
+      @include breakpoint($laptop-small) {
+        @include span(12 of 12 inside no-gutters);
+
+        float: none;
+      }
 
       > .section__text {
 
@@ -165,8 +199,19 @@
     }
 
     .half_second {
-
       @include span(8 of 12 inside no-gutters);
+
+      @include breakpoint($tablet) {
+        @include span(12 of 12 inside no-gutters);
+
+        float: none;
+      }
+
+      @include breakpoint($laptop-small) {
+        @include span(12 of 12 inside no-gutters);
+
+        float: none;
+      }
     }
   }
 
@@ -242,7 +287,7 @@
           float: none;
         }
       }
-      
+
       .text_regular {
         font-size: 1em;
         color: #C5D5E0;

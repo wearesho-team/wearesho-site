@@ -3,11 +3,14 @@ import * as React from "react";
 import {SubmitButton} from "../../Buttons";
 import {BasePage} from "../BasePage";
 
+import {ProcessStructure} from "../../Icons/ProcessStructure";
+
 export class ProcessPage extends BasePage {
 
     public render() {
         return(
             <section className="section section-process">
+                <ProcessStructure/>
                 <div className="align-container">
                     <h2 className="section__title">Процесс</h2>
                     <div className="section__half half_first">
@@ -21,7 +24,7 @@ export class ProcessPage extends BasePage {
                     </div>
                     <div className="section__half half_second">
                         <div className="stage">
-                            <span className="stage__number marker">
+                            <span className="stage__number marker glow">
                                 01
                             </span>
                             <div className="stage-body">
@@ -46,7 +49,7 @@ export class ProcessPage extends BasePage {
                             </span>
                             <div className="stage-body">
                                 <h3 className="stage__title">Разработка</h3>
-                                <p className="stage__description">front &amp; back end / тестирование</p>
+                                <p className="stage__description">front &amp; back end</p>
                                 <span className="stage__detail">&gt;&gt;</span>
                             </div>
                         </div>
@@ -56,14 +59,24 @@ export class ProcessPage extends BasePage {
                                     04
                                 </span>
                                 <div className="stage-body">
-                                    <h3 className="stage__title">Продвижение</h3>
-                                    <p className="stage__description">PR всех видов</p>
+                                    <h3 className="stage__title">Развертывание</h3>
+                                    <p className="stage__description">приложений на серверах</p>
                                     <span className="stage__detail">&gt;&gt;</span>
                                 </div>
                             </div>
                             <div className="stage">
                                 <span className="stage__number marker">
                                     05
+                                </span>
+                                <div className="stage-body">
+                                    <h3 className="stage__title">Продвижение</h3>
+                                    <p className="stage__description">online / offline</p>
+                                    <span className="stage__detail">&gt;&gt;</span>
+                                </div>
+                            </div>
+                            <div className="stage">
+                                <span className="stage__number marker">
+                                    06
                                 </span>
                                 <div className="stage-body">
                                     <h3 className="stage__title">Тех. поддержка</h3>
