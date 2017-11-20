@@ -1,20 +1,42 @@
 import * as React from "react";
-import {SmartBreakpointProps, SmartBreakpointPropTypes} from "./SmartBreakpointProps";
-import {SmartBreakpointState} from "./SmartBreakpointState";
+
 import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
 
-export class SmartBreakpoint extends React.Component<SmartBreakpointProps, SmartBreakpointState> {
+import {ElementWithTimer, smartClearTimeout} from "../../helpers/smartClearTimeout";
+
+import {SmartBreakpointProps, SmartBreakpointPropTypes} from "./SmartBreakpointProps";
+import {SmartBreakpointState} from "./SmartBreakpointState";
+
+export class SmartBreakpoint extends React.Component<SmartBreakpointProps, SmartBreakpointState>
+    implements ElementWithTimer {
+
     public static propTypes = SmartBreakpointPropTypes;
     public static contextTypes = RouterContextTypes;
 
     public context: RouterContext;
 
+    public timer: any;
+    public clearTimeout = smartClearTimeout.bind(this);
+
     constructor(props) {
         super(props);
 
-        this.state = {
-            matches: window.matchMedia(`(${this.props.match})`).matches
-        };
+        if (!this.props.delay) {
+            this.state = {
+                matches: window.matchMedia(`(${this.props.match})`).matches
+            };
+        } else {
+            this.state = {
+                matches: false
+            };
+
+            this.clearTimeout();
+            this.timer = setTimeout(() => {
+                this.setState({
+                    matches: window.matchMedia(`(${this.props.match})`).matches
+                })
+            }, this.props.delay);
+        }
     }
 
     public componentDidMount() {

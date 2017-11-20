@@ -12,11 +12,12 @@ import {
     Label,
     TransformTypes,
     FormContext,
-    ModelError
+    ModelError,
+    NumericInput
 } from "react-context-form";
 
-import { ContactFormModel, instantiateContactFormModel } from "../../../../models/ContactFormModel";
-import { NameRange, PhoneRange, CommentMaxLength, TimeDefaults } from "../../../../models/common";
+import {ContactFormModel, instantiateContactFormModel} from "../../../../models/ContactFormModel";
+import {NameRange, PhoneRange, CommentMaxLength, TimeDefaults} from "../../../../models/common";
 
 import { ValidationError } from "../../../../data/ValidationError";
 
@@ -227,10 +228,9 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                             errorClassName="has-error"
                         >
                             <AutoValidate groupName="phone">
-                                <Input
+                                <NumericInput
                                     className="form__control"
                                     placeholder={translate("contactPage.form.placeholders.phone")}
-                                    type="tel"
                                 />
                             </AutoValidate>
                             <Hint className="form__error-text" />
