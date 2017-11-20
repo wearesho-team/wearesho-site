@@ -1,16 +1,16 @@
 import * as React from "react";
-import {raf} from "../../../../helpers/imports/raf"
+import { raf } from "../../../../helpers/imports/raf"
 
-import {checkForStringArrayInstance} from "../../../../helpers/checkForStringArrayInstance";
-import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
-import {checkForStringInstance} from "../../../../helpers/checkForStringInstance";
+import { checkForStringArrayInstance } from "../../../../helpers/checkForStringArrayInstance";
+import { ElementWithTimer, smartClearTimeout } from "../../../../helpers/smartClearTimeout";
+import { checkForStringInstance } from "../../../../helpers/checkForStringInstance";
 
 import {
     CodeStyleAnimationDefaultProps,
     CodeStyleAnimationProps,
     CodeStyleAnimationPropTypes
 } from "./CodeStyleAnimationProps";
-import {CodeStyleAnimationState} from "./CodeStyleAnimationState";
+import { CodeStyleAnimationState } from "./CodeStyleAnimationState";
 
 export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps, CodeStyleAnimationState>
     implements ElementWithTimer {
@@ -24,9 +24,9 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
     protected sourceChild: string;
 
     protected observer = new MutationObserver((mutations) => {
-        const {target} = mutations[0];
+        const { target } = mutations[0];
 
-        const {element, attribute, value} = this.props.startFeature;
+        const { element, attribute, value } = this.props.startFeature;
         if (target !== element || target.attributes.getNamedItem(attribute).value !== value) {
             return;
         }
@@ -39,37 +39,30 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
         super(props);
 
         this.state = {
-            counter: 0,
+            counter: 1,
             children: "",
         };
 
         let targetAttribute = this.props.startFeature.element.getAttribute(this.props.startFeature.attribute);
         !targetAttribute && (targetAttribute = "");
 
+        this.sourceChild = this.getFormattedChild(this.props.children);
         if (targetAttribute.includes(this.props.startFeature.value)) {
             this.state = {
                 ...this.state,
                 ...{
-                    children: this.getFormattedChild(this.props.children)
+                    children: this.sourceChild
                 }
             };
             return;
         }
 
-        this.sourceChild = this.getFormattedChild(this.props.children);
-        this.state = {
-            ...this.state,
-            ...{
-                children: ["", undefined, this.sourceChild.replace(/[^\n]/g, " ")]
-            }
-        };
-
-        this.observer.observe(document.body, {attributeFilter: [this.props.startFeature.attribute], attributes: true});
+        this.observer.observe(document.body, { attributeFilter: [this.props.startFeature.attribute], attributes: true });
     }
 
     public componentWillUnmount() {
         this.clearTimeout();
-        raf.cancel(this.type.bind(this));
+        raf.cancel(this.type);
         this.type = undefined;
         this.observer.disconnect();
     }
@@ -79,11 +72,15 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             return;
         }
 
-        this.setState({children: this.getFormattedChild(nextProps.children)});
+        this.sourceChild = this.getFormattedChild(nextProps.children);
+        this.setState({children: this.sourceChild});
     }
 
     public render(): any {
-        return this.state.children;
+        return [
+            this.shadowChild,
+            this.state.children
+        ]
     }
 
     protected type() {
@@ -98,14 +95,10 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             return;
         }
 
-        this.setState((prevState) => ({
-            children: [
-                this.sourceChild.slice(0, prevState.counter),
-                this.caret,
-                (prevState.children[0] + prevState.children[2]).slice(prevState.counter, this.sourceChild.length)
-            ],
-            counter: prevState.counter + 1
-        }));
+        this.setState({
+            children: this.visibleChild([this.sourceChild.slice(0, this.state.counter), this.caret]),
+            counter: this.state.counter + 1
+        });
 
         this.timer = setTimeout(
             raf(this.type.bind(this)),
@@ -114,14 +107,14 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
     };
 
     protected get caret(): JSX.Element {
-        return <i key="caret" className="caret"/>;
+        return <i key="caret" className="caret" />;
     }
 
     protected getFormattedChild(children: CodeStyleAnimationProps["children"]): string {
         if (checkForStringInstance(children)) {
             return children.toString();
         } else if (checkForStringArrayInstance(children)) {
-            return (children as string []).join("\n");
+            return (children as string[]).join("\n");
         }
 
         throw new Error("Incorrect type of children. Only string or string [] are available");
@@ -130,11 +123,35 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
     protected clearCaret() {
         this.clearTimeout();
         this.timer = setTimeout(() => {
-            this.setState((prevState) => ({
-                children: prevState.children[0] + prevState.children[2]
-            }));
+            this.setState({
+                children: this.sourceChild
+            });
         }, this.props.caretTimeout);
         this.observer.disconnect();
-        raf.cancel(this.type.bind(this));
+        raf.cancel(this.type);
+    }
+
+    protected get shadowChild(): JSX.Element {
+        return this.state.children !== this.sourceChild
+            ? React.createElement("div", {
+                style: {
+                    opacity: 0
+                },
+                key: "shadowChild",
+                children: this.getFormattedChild(this.props.children)
+            })
+            : null;
+    }
+
+    protected visibleChild(children: any): JSX.Element {
+        return React.createElement("div", {
+            style: {
+                position: "absolute",
+                top: 0,
+                left: 0
+            },
+            key: "visibleChild",
+            children
+        })
     }
 }

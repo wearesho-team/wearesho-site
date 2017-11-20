@@ -1,5 +1,5 @@
 // tslint:disable:max-file-line-count
-import {TransitionGroup, CSSTransition} from "react-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import axios from "axios";
@@ -15,22 +15,22 @@ import {
     ModelError
 } from "react-context-form";
 
-import {ContactFormModel, instantiateContactFormModel} from "../../../../models/ContactFormModel";
-import {NameRange, PhoneRange, CommentMaxLength} from "../../../../models/common";
+import { ContactFormModel, instantiateContactFormModel } from "../../../../models/ContactFormModel";
+import { NameRange, PhoneRange, CommentMaxLength, TimeDefaults } from "../../../../models/common";
 
-import {ValidationError} from "../../../../data/ValidationError";
+import { ValidationError } from "../../../../data/ValidationError";
 
-import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
-import {OnDesktop, OnMobile} from "../../../../helpers/Breakpoints";
-import {smoothScrollTo} from "../../../../helpers/smoothScrollTo";
-import {getTimeZone} from "../../../../helpers/getTimeZone";
-import {translate} from "../../../../helpers/translate";
-import {concat} from "../../../../helpers/concat";
+import { ElementWithTimer, smartClearTimeout } from "../../../../helpers/smartClearTimeout";
+import { OnDesktop, OnMobile } from "../../../../helpers/Breakpoints";
+import { smoothScrollTo } from "../../../../helpers/smoothScrollTo";
+import { getTimeZone } from "../../../../helpers/getTimeZone";
+import { translate } from "../../../../helpers/translate";
+import { concat } from "../../../../helpers/concat";
 
-import {SubmitButton} from "../../../Buttons/SubmitButton";
-import {ContactFormState} from "./ContactFormState";
-import {SubmitStatus} from "./SubmitStatus";
-import {TimeInput} from "./TimeInput";
+import { SubmitButton } from "../../../Buttons/SubmitButton";
+import { ContactFormState } from "./ContactFormState";
+import { SubmitStatus } from "./SubmitStatus";
+import { TimeInput } from "./TimeInput";
 
 // tslint:disable:no-magic-numbers
 export class ContactForm extends React.Component<undefined, ContactFormState> implements ElementWithTimer {
@@ -106,7 +106,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
     protected handleSubmit = async (model: ContactFormModel, context: FormContext) => {
         let data: any = {};
         model.attributes()
-            .forEach((field) => data = {...data, ...{[field]: model[field]}});
+            .forEach((field) => data = { ...data, ...{ [field]: model[field] } });
 
         data.timeZone = getTimeZone();
 
@@ -121,9 +121,14 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                     to: data.to
                 }
             });
+
+            this.timer = setTimeout(() => {
+                this.clearFields(model);
+            }, ContactForm.standByDelay / 2);
+
         } catch (error) {
             if (error instanceof ValidationError) {
-                error.data.forEach(({code, ...error}) => context.addError(error as ModelError));
+                error.data.forEach(({ code, ...error }) => context.addError(error as ModelError));
                 const modelElement: ModelError = error.data
                     .reduce((carry: ModelError, error: ModelError) => carry || error);
 
@@ -142,8 +147,15 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
         smoothScrollTo(ReactDOM.findDOMNode(this), -105, "top", 1000, 0);
     };
 
+    protected clearFields(model: ContactFormModel) {
+        model.attributes()
+            .forEach((field) => model[field] = undefined);
+        model.to = TimeDefaults.to;
+        model.from = TimeDefaults.from;
+    }
+
     protected get SuccessMessage(): JSX.Element {
-        const {name, from, to} = this.state.data;
+        const { name, from, to } = this.state.data;
 
         return (
             <p className="section__text request request-sent">
@@ -164,7 +176,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
     }
 
     protected get ErrorMessage(): JSX.Element {
-        const {name} = this.state.data;
+        const { name } = this.state.data;
 
         return (
             <p className="section__text request request-error">
@@ -206,7 +218,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                                     placeholder={translate("contactPage.form.placeholders.name")}
                                 />
                             </AutoValidate>
-                            <Hint className="form__error-text"/>
+                            <Hint className="form__error-text" />
                         </FormGroup>
                         <FormGroup
                             name="phone"
@@ -221,7 +233,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                                     type="tel"
                                 />
                             </AutoValidate>
-                            <Hint className="form__error-text"/>
+                            <Hint className="form__error-text" />
                         </FormGroup>
                     </div>
                     <FormGroup
@@ -237,7 +249,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                                 maxLength={CommentMaxLength}
                             />
                         </AutoValidate>
-                        <Hint className="form__error-text"/>
+                        <Hint className="form__error-text" />
                     </FormGroup>
                 </div>
                 <div className="form-half form-half_second">
@@ -248,22 +260,22 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                             <Label className="spinner__label">
                                 {translate("contactPage.form.time.from")}
                             </Label>
-                            <TimeInput className="form__control"/>
+                            <TimeInput className="form__control" />
                         </FormGroup>
                         <OnMobile>
                             <span className="separator">
-                                 {translate("contactPage.form.time.to")}
+                                {translate("contactPage.form.time.to")}
                             </span>
                         </OnMobile>
                         <FormGroup name="to" className="spinner">
                             <Label className="spinner__label">
                                 {translate("contactPage.form.time.to")}
                             </Label>
-                            <TimeInput className="form__control"/>
+                            <TimeInput className="form__control" />
                         </FormGroup>
                     </div>
                 </div>
-                <SubmitButton label={translate("buttons.send")}/>
+                <SubmitButton label={translate("buttons.send")} />
             </Form>
         );
     }
