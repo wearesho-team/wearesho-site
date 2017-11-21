@@ -1,15 +1,85 @@
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 
+import {getElementCoords} from "../../../helpers/getElementCoords";
+import {toFixed} from "../../../helpers/toFixed";
+import {concat} from "../../../helpers/concat";
+
+import {ProcessStructure} from "../../Icons/ProcessStructure";
 import {SubmitButton} from "../../Buttons";
 import {BasePage} from "../BasePage";
 
-import {ProcessStructure} from "../../Icons/ProcessStructure";
+export class ProcessPage extends BasePage<any, any> {
+    public static readonly baseClassName = "section section-process";
+    protected stageList: Array<{
+        title: string,
+        subTitle: string
+    }>;
 
-export class ProcessPage extends BasePage {
+    protected stagesContainer: HTMLElement;
+
+    protected timers: Array<any>;
+
+
+    public constructor(props) {
+        super(props);
+
+        this.state = {
+            className: ProcessPage.baseClassName,
+            currentIndex: 0
+        };
+
+        this.stageList = [
+            {
+                title: "Проектирование",
+                subTitle: "на основе данных"
+            },
+            {
+                title: "Дизайн",
+                subTitle: "скетчи / прототипы"
+            },
+            {
+                title: "Разработка",
+                subTitle: "front & back end"
+            },
+            {
+                title: "Развертывание",
+                subTitle: "приложений на серверах"
+            },
+            {
+                title: "Продвижение",
+                subTitle: "online / offline"
+            },
+            {
+                title: "Тех. поддержка",
+                subTitle: "dsgn / dev / PR"
+            }
+        ];
+
+        this.timers = Array.from(new Array(4));
+    }
+
+    public shouldComponentUpdate(nextProps: any, nextState: any, nextContext: any) {
+        return super.shouldComponentUpdate(nextProps, nextState, nextContext)
+            || nextState.className !== this.state.className;
+    }
+
+    public componentDidMount() {
+        ReactDOM.findDOMNode(this).addEventListener("mousemove", this.handleMouseOver);
+    }
+
+    public componentWillUnmount() {
+        this.timers.forEach((timer) => {
+            clearTimeout(timer);
+            timer = undefined;
+        });
+
+        ReactDOM.findDOMNode(this).removeEventListener("mousemove", this.handleMouseOver);
+    }
 
     public render() {
-        return(
-            <section className="section section-process">
+        return (
+            <section className={this.state.className}>
                 <ProcessStructure/>
                 <div className="align-container">
                     <h2 className="section__title">Процесс</h2>
@@ -22,72 +92,76 @@ export class ProcessPage extends BasePage {
                         <h5>Полную информацию вы можете увидеть в презентации</h5>
                         <SubmitButton type="button" label="Скачать pdf"/>
                     </div>
-                    <div className="section__half half_second">
-                        <div className="stage">
-                            <span className="stage__number marker glow">
-                                01
-                            </span>
-                            <div className="stage-body">
-                                <h3 className="stage__title">Проектирование</h3>
-                                <p className="stage__description">на основе данных</p>
-                                <span className="stage__detail">&gt;&gt;</span>
-                            </div>
-                        </div>
-                        <div className="stage">
-                            <span className="stage__number marker">
-                                02
-                            </span>
-                            <div className="stage-body">
-                                <h3 className="stage__title">Дизайн</h3>
-                                <p className="stage__description">скетчи / прототипы</p>
-                                <span className="stage__detail">&gt;&gt;</span>
-                            </div>
-                        </div>
-                        <div className="stage">
-                            <span className="stage__number marker">
-                                03
-                            </span>
-                            <div className="stage-body">
-                                <h3 className="stage__title">Разработка</h3>
-                                <p className="stage__description">front &amp; back end</p>
-                                <span className="stage__detail">&gt;&gt;</span>
-                            </div>
-                        </div>
+                    <div className="section__half half_second" ref={this.setContainer}>
+                        {this.getStages(0, 3)}
                         <div className="stages-group">
-                            <div className="stage">
-                                <span className="stage__number marker">
-                                    04
-                                </span>
-                                <div className="stage-body">
-                                    <h3 className="stage__title">Развертывание</h3>
-                                    <p className="stage__description">приложений на серверах</p>
-                                    <span className="stage__detail">&gt;&gt;</span>
-                                </div>
-                            </div>
-                            <div className="stage">
-                                <span className="stage__number marker">
-                                    05
-                                </span>
-                                <div className="stage-body">
-                                    <h3 className="stage__title">Продвижение</h3>
-                                    <p className="stage__description">online / offline</p>
-                                    <span className="stage__detail">&gt;&gt;</span>
-                                </div>
-                            </div>
-                            <div className="stage">
-                                <span className="stage__number marker">
-                                    06
-                                </span>
-                                <div className="stage-body">
-                                    <h3 className="stage__title">Тех. поддержка</h3>
-                                    <p className="stage__description">dsgn / dev / PR</p>
-                                    <span className="stage__detail">&gt;&gt;</span>
-                                </div>
-                            </div>
+                            {this.getStages(3, 3)}
                         </div>
                     </div>
                 </div>
             </section>
         );
     }
+
+    protected setContainer = (r: HTMLElement) => this.stagesContainer = r;
+
+    protected getStages(from = 0, count = this.stageList.length): Array<JSX.Element> {
+        return Array.from(this.stageList)
+            .splice(from, count)
+            .map(({title, subTitle}, i) => {
+                return (
+                    <div className="stage" key={i}>
+                        <span className="stage__number marker">
+                            {toFixed(2, i + from + 1)}
+                        </span>
+                        <div className="stage-body">
+                            <h3 className="stage__title">{title}</h3>
+                            <p className="stage__description">{subTitle}</p>
+                            <span className="stage__detail">&gt;&gt;</span>
+                        </div>
+                    </div>
+                );
+            });
+    }
+
+    protected handleMouseOver = (event: MouseEvent): void => {
+        const left = getElementCoords(this.stagesContainer).left;
+        const width = this.stagesContainer.getBoundingClientRect().width;
+        const cursorOffset = event.clientX - left;
+
+        // is out of range
+        if (cursorOffset < 0 || cursorOffset > width) {
+            if (this.state.currentIndex !== -1) {
+                this.setState({
+                    currentIndex: -1
+                });
+            }
+            return;
+        }
+
+        const index = Math.floor(cursorOffset / (width / 4));
+        if (
+            this.state.currentIndex === index ||
+            this.timers[index] !== undefined
+        ) {
+            return;
+        }
+
+        this.timers[index] = setTimeout(() => {
+            this.setState(({className}) => ({
+                className: className.replace(new RegExp(`([\\s]\*from-${index + 1}[\\s]\*)`), " ").trim()
+            }));
+
+            clearTimeout(this.timers[index]);
+            this.timers[index] = undefined;
+        }, 2000);
+
+        this.setState(({className}) => ({
+            className: concat(
+                className,
+                `from-${index + 1}`
+            ),
+            currentIndex: index
+        }));
+    };
 }
