@@ -2,10 +2,11 @@
 * Process structure styles
  */
 .process-structure {
+  $process-structure-width: 1920px;
   $process-structure-height: 590px;
 
   width: 100%;
-  max-width: 1920px;
+  max-width:$process-structure-width;
   height: auto;
   max-height: $process-structure-height;
 
@@ -21,14 +22,33 @@
 
   z-index: $under-zindex;
 
-  @include breakpoint($tablet-l) {
+  @include breakpoint($tablet-p) {
+
+    opacity: .3;
+  }
+
+  @include breakpoint($tablet) {
+    width: $process-structure-width;
+
     top: auto;
+    left: 50%;
     bottom: 0;
+
+    transform: translateY(4%);
+
+    margin: 3em 0 0 (-$process-structure-width / 2 - 226px);
   }
 
   @include breakpoint($laptop-small) {
+    width: $process-structure-width;
+
     top: auto;
+    left: 50%;
     bottom: 0;
+
+    transform: translateY(4%);
+
+    margin: 3em 0 0 (-$process-structure-width / 2 - 226px);
   }
 
   @include breakpoint($laptop-large) {
@@ -90,8 +110,17 @@
   }
 
   .stage-glow {
-
     opacity: 0;
+
+    @include breakpoint($mobile) {
+
+      opacity: 1;
+    }
+
+    @include breakpoint($tablet-p) {
+
+      opacity: 1;
+    }
   }
 
   .orbit {

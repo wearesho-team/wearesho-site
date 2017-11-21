@@ -62,10 +62,25 @@
 
     text-align: center;
 
-    font-size: 1.25em;
+    font-size: 1.2em;
     color: $color-secondary;
 
     transition: color .3s ease;
+
+    @include breakpoint($mobile) {
+
+      font-size: 1.267em;
+    }
+
+    @include breakpoint($iphone5-p) {
+
+      font-size: 1.133em;
+    }
+
+    @include breakpoint($tablet-p) {
+
+      font-size: 1.3327em;
+    }
 
     &.is-loading {
       box-shadow: 0 0 15px 0 rgba(51, 159, 208, .3), inset 0 0 15px rgba(51, 159, 208, .3);

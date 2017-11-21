@@ -237,22 +237,12 @@
 
   .btn {
 
-    @include breakpoint($mobile) {
-
-      font-size: 1.267em;
-    }
-
     @include breakpoint($mobile-p) {
       @include span(8 of 12 inside no-gutters);
 
       float: none;
 
       margin-top: 3.75em;
-    }
-
-    @include breakpoint($iphone5-p) {
-
-      font-size: 1.133em;
     }
 
     @include breakpoint($mobile-l) {
@@ -272,11 +262,6 @@
       @include span(6 of 12 inside no-gutters);
 
       width: auto;
-    }
-
-    @include breakpoint($tablet-p) {
-
-      font-size: 1.3327em;
     }
 
     @include breakpoint($laptop-small) {

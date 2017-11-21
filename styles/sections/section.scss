@@ -148,8 +148,12 @@
       &.half_first {
         padding-top: 0;
 
-        > .section__subtitle {
+        @include breakpoint($tablet-p) {
 
+          margin-bottom: 3em;
+        }
+
+        .section__subtitle {
           padding-top: 42px;
 
           @include breakpoint($mobile) {
@@ -174,20 +178,86 @@
         @include span(12 of 12 inside no-gutters);
 
         float: none;
+
+        padding-right: 0;
       }
 
       @include breakpoint($laptop-small) {
         @include span(12 of 12 inside no-gutters);
 
         float: none;
+
+        padding-right: 0;
       }
 
-      > .section__text {
+      > .align-container {
 
+        @include breakpoint($tablet-l) {
+          display: inline-block;
+
+          width: 50%;
+
+          vertical-align: top;
+        }
+
+        @include breakpoint($laptop-small) {
+          display: inline-block;
+
+          width: 50%;
+
+          vertical-align: top;
+        }
+
+        &:first-child {
+
+          @include breakpoint($tablet-l) {
+
+            padding-right: 13%;
+          }
+
+          @include breakpoint($laptop-small) {
+
+            padding-right: 13%;
+          }
+        }
+      }
+
+      .section__subtitle {
+
+        > span {
+
+          @include breakpoint($tablet-l) {
+
+            display: block;
+          }
+
+          @include breakpoint($laptop-small) {
+
+            display: block;
+          }
+        }
+      }
+
+      .section__text {
         margin: 2.85em 0 7em;
+
+        @include breakpoint($tablet-p) {
+
+          margin: 1.85em 0 3em;
+        }
+
+        @include breakpoint($tablet-l) {
+
+          margin: 2.85em 0 4.5em;
+        }
+
+        @include breakpoint($laptop-small) {
+
+          margin: 2.85em 0 4.5em;
+        }
       }
 
-      > h5 {
+      h5 {
         margin-bottom: 1.5em;
 
         line-height: 1.6em;
@@ -195,6 +265,23 @@
         font-size: 1em;
         font-weight: $font-style-regular;
         color: #C5D5E0;
+
+        @include breakpoint($tablet) {
+
+          font-size: 1.2em;
+        }
+
+        @include breakpoint($tablet-l) {
+          margin-bottom: 2.6em;
+          padding-top: 42px;
+        }
+
+        @include breakpoint($laptop-small) {
+          margin-bottom: 2.6em;
+          padding-top: 42px;
+
+          font-size: 1.2em;
+        }
       }
     }
 
@@ -211,6 +298,17 @@
         @include span(12 of 12 inside no-gutters);
 
         float: none;
+      }
+
+      > .align-container {
+
+        @include breakpoint($tablet-p) {
+          width: 50%;
+
+          display: inline-block;
+
+          vertical-align: top;
+        }
       }
     }
   }

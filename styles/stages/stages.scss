@@ -6,16 +6,31 @@ $indent-medium: 10.25em;
 
 .section__half {
 
-  > .stage {
+  > .align-container {
 
-    &:nth-child(2) {
+    > .stage {
 
-      margin-top: $indent-large;
-    }
+      &:nth-child(2) {
 
-    &:nth-child(3) {
+        margin-top: $indent-large;
+      }
 
-      margin-top: $indent-medium;
+      &:nth-child(3) {
+        margin-top: $indent-medium;
+
+        @include breakpoint($tablet-p) {
+
+          margin-top: 0;
+        }
+      }
+
+      &:not(:last-child) {
+
+        @include breakpoint($tablet-p) {
+          margin-top: 0;
+          margin-bottom: 4em;
+        }
+      }
     }
   }
 }
@@ -41,11 +56,37 @@ $indent-medium: 10.25em;
 
   cursor: pointer;
 
+  @include breakpoint($tablet-p) {
+
+    width: 100%;
+  }
+
   &:hover {
+
+    .stage__number {
+      text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);
+      color: #fff;
+
+      &.marker {
+
+        &:before {
+
+          text-shadow: none;
+        }
+      }
+    }
 
     .stage__title {
 
       opacity: 1;
+    }
+  }
+
+  &:not(:last-child) {
+
+    @include breakpoint($tablet-p) {
+
+      margin-bottom: 4em;
     }
   }
 
@@ -70,24 +111,12 @@ $indent-medium: 10.25em;
 
     transition: color .3s ease, text-shadow .3s ease;
 
-    &.glow {
-      text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);
-      color: #fff;
-
-      &.marker {
-
-        &:before {
-
-          text-shadow: none;
-        }
-      }
-    }
-
     &.marker {
 
       &:before {
-
         left: -20px;
+
+        text-shadow: none;
       }
     }
   }
@@ -124,12 +153,27 @@ $indent-medium: 10.25em;
 
 .stages-group {
 
+  @include breakpoint($tablet-p) {
+    width: 50%;
+
+    display: inline-block;
+
+    float: none;
+
+    vertical-align: top;
+  }
   .stage {
 
     &:first-child {
       position: absolute;
 
       margin-top: $indent-medium;
+
+      @include breakpoint($tablet-p) {
+        position: relative;
+
+        margin-top: 0;
+      }
     }
 
     &:not(:first-child) {
@@ -138,6 +182,13 @@ $indent-medium: 10.25em;
       padding-right: 1em;
       padding-left: 0;
 
+      @include breakpoint($tablet-p) {
+        padding-right: 0;
+        padding-left: 1em;
+
+        text-align: left;
+      }
+
       > .stage__number {
 
         &.marker {
@@ -145,24 +196,32 @@ $indent-medium: 10.25em;
           &:before {
             right: -20px;
             left: auto;
+
+            @include breakpoint($tablet-p) {
+              right: auto;
+              left: -20px;
+            }
           }
         }
       }
     }
 
     &:not(:last-child) {
-
       height: 0;
-    }
 
-    &:nth-child(2) {
+      @include breakpoint($tablet-p) {
 
-      //margin-top: $indent-medium;
+        height: auto;
+      }
     }
 
     &:last-child {
-
       margin-top: $indent-large;
+
+      @include breakpoint($tablet-p) {
+
+        margin-top: 0;
+      }
     }
   }
 }
