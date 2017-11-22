@@ -1,25 +1,31 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
+import {stages} from "../../../data/ProjectStages/stages";
+
 import {getElementCoords} from "../../../helpers/getElementCoords";
+import {translate} from "../../../helpers/translate";
 import {toFixed} from "../../../helpers/toFixed";
 import {concat} from "../../../helpers/concat";
 
+import {SmartBreakpoint} from "../../SmartBreakpoint/SmartBreakpoint";
 import {ProcessStructure} from "../../Icons/ProcessStructure";
+import {ProcessPageState} from "./ProcessPageState";
 import {SubmitButton} from "../../Buttons";
 import {BasePage} from "../BasePage";
 
-export class ProcessPage extends BasePage<any, any> {
+// tslint:disable:no-magic-numbers
+export class ProcessPage extends BasePage<undefined, ProcessPageState> {
     public static readonly baseClassName = "section section-process";
+    public static readonly animationDuration = 2000;
+    public static readonly activeGridCount = 4;
+
+    protected stagesContainer: HTMLElement;
+    protected timers: any [];
     protected stageList: Array<{
         title: string,
         subTitle: string
     }>;
-
-    protected stagesContainer: HTMLElement;
-
-    protected timers: Array<any>;
-
 
     public constructor(props) {
         super(props);
@@ -29,34 +35,14 @@ export class ProcessPage extends BasePage<any, any> {
             currentIndex: 0
         };
 
-        this.stageList = [
-            {
-                title: "Проектирование",
-                subTitle: "на основе данных"
-            },
-            {
-                title: "Дизайн",
-                subTitle: "скетчи / прототипы"
-            },
-            {
-                title: "Разработка",
-                subTitle: "front & back end"
-            },
-            {
-                title: "Развертывание",
-                subTitle: "приложений на серверах"
-            },
-            {
-                title: "Продвижение",
-                subTitle: "online / offline"
-            },
-            {
-                title: "Тех. поддержка",
-                subTitle: "dsgn / dev / PR"
-            }
-        ];
+        this.stageList = stages.map(({title, subTitle}) => {
+             return {
+                 title: translate(`processPage.stages.title.${title}`),
+                 subTitle: subTitle.map((item) => translate(`processPage.stages.subTitle.${item}`)).join(" / ")
+             }
+        });
 
-        this.timers = Array.from(new Array(4));
+        this.timers = Array.from(new Array(ProcessPage.activeGridCount));
     }
 
     public shouldComponentUpdate(nextProps: any, nextState: any, nextContext: any) {
@@ -92,12 +78,22 @@ export class ProcessPage extends BasePage<any, any> {
                         <h5>Полную информацию вы можете увидеть в презентации</h5>
                         <SubmitButton type="button" label="Скачать pdf"/>
                     </div>
-                    <div className="section__half half_second" ref={this.setContainer}>
-                        {this.getStages(0, 3)}
-                        <div className="stages-group">
-                            {this.getStages(3, 3)}
+                    <SmartBreakpoint match="min-width: 1024px">
+                        <div className="section__half half_second" ref={this.setContainer}>
+                            {this.getStages(0, 3)}
+                            <div className="stages-group">
+                                {this.getStages(3, 3)}
+                            </div>
                         </div>
-                    </div>
+                    </SmartBreakpoint>
+                    <SmartBreakpoint match="max-width: 1023px">
+                        <div className="section__half half_second">
+                            {this.getStages(0, 3)}
+                            <div className="stages-group">
+                                {this.getStages(3, 3)}
+                            </div>
+                        </div>
+                    </SmartBreakpoint>
                 </div>
             </section>
         );
@@ -105,7 +101,7 @@ export class ProcessPage extends BasePage<any, any> {
 
     protected setContainer = (r: HTMLElement) => this.stagesContainer = r;
 
-    protected getStages(from = 0, count = this.stageList.length): Array<JSX.Element> {
+    protected getStages(from = 0, count = this.stageList.length): JSX.Element [] {
         return Array.from(this.stageList)
             .splice(from, count)
             .map(({title, subTitle}, i) => {
@@ -125,6 +121,10 @@ export class ProcessPage extends BasePage<any, any> {
     }
 
     protected handleMouseOver = (event: MouseEvent): void => {
+        if (!this.stagesContainer) {
+            return;
+        }
+
         const left = getElementCoords(this.stagesContainer).left;
         const width = this.stagesContainer.getBoundingClientRect().width;
         const cursorOffset = event.clientX - left;
@@ -139,7 +139,9 @@ export class ProcessPage extends BasePage<any, any> {
             return;
         }
 
-        const index = Math.floor(cursorOffset / (width / 4));
+        // calculate index of hovered grid item
+        const index = Math.floor(cursorOffset / (width / ProcessPage.activeGridCount));
+        // if current grid already active or timer for it active
         if (
             this.state.currentIndex === index ||
             this.timers[index] !== undefined
@@ -147,6 +149,7 @@ export class ProcessPage extends BasePage<any, any> {
             return;
         }
 
+        // push to timers stack new timer
         this.timers[index] = setTimeout(() => {
             this.setState(({className}) => ({
                 className: className.replace(new RegExp(`([\\s]\*from-${index + 1}[\\s]\*)`), " ").trim()
@@ -154,7 +157,7 @@ export class ProcessPage extends BasePage<any, any> {
 
             clearTimeout(this.timers[index]);
             this.timers[index] = undefined;
-        }, 2000);
+        }, ProcessPage.animationDuration);
 
         this.setState(({className}) => ({
             className: concat(

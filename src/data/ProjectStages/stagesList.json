@@ -1,0 +1,26 @@
+[
+  {
+    "title": "planning",
+    "subTitle": ["basedOnData"]
+  },
+  {
+    "title": "design",
+    "subTitle": ["sketches", "prototypes"]
+  },
+  {
+    "title": "develop",
+    "subTitle": ["frontBack"]
+  },
+  {
+    "title": "deploy",
+    "subTitle": ["applicationsOnServers"]
+  },
+  {
+    "title": "promotion",
+    "subTitle": ["online", "offline"]
+  },
+  {
+    "title": "support",
+    "subTitle": ["dsgn", "dev", "PR"]
+  }
+]
