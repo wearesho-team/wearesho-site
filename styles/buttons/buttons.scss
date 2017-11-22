@@ -82,6 +82,11 @@
       font-size: 1.3327em;
     }
 
+    @include breakpoint($laptop-medium) {
+
+      font-size: 1.067em;
+    }
+
     &.is-loading {
       box-shadow: 0 0 15px 0 rgba(51, 159, 208, .3), inset 0 0 15px rgba(51, 159, 208, .3);
 

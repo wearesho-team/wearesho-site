@@ -298,6 +298,11 @@
 
     font-size: .938em;
 
+    @include breakpoint($laptop-medium) {
+
+      font-size: .875em;
+    }
+
     &.text_medium {
 
       @include breakpoint($tablet-p) {

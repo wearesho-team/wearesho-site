@@ -3,7 +3,9 @@
  */
 .process-structure {
   $process-structure-width: 1920px;
+  $process-structure-width-mob: 1200px;
   $process-structure-height: 590px;
+  $process-structure-height-mob: 500px;
 
   width: 100%;
   max-width:$process-structure-width;
@@ -21,6 +23,18 @@
   transform: translateY(-50%);
 
   z-index: $under-zindex;
+
+  @include breakpoint($mobile) {
+    width: $process-structure-width-mob;
+    height: $process-structure-height-mob;
+
+    right: auto;
+    left: (-$process-structure-height-mob + 16px);
+
+    transform: translateY(0) rotate(90deg);
+
+    //opacity: .3;
+  }
 
   @include breakpoint($tablet-p) {
 
@@ -57,14 +71,20 @@
     left: -11em;
   }
 
+  @include breakpoint($laptop-xl) {
+    width: 100vw;
+
+    left: -16%;
+  }
+
   &:hover {
 
     .stage-glow {
-      animation: appearance-disappearance 2s ease-out;
+      animation: appearance-disappearance 2s ease-out forwards;
 
       &_under {
 
-        animation: appearance-disappearance 1.25s ease-out .25s;
+        animation: appearance-disappearance 1.25s ease-out .25s forwards;
       }
     }
 

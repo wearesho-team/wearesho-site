@@ -2,7 +2,10 @@
 * Stages styles
  */
 $indent-large: 20.65em;
+$indent-large-laptop: 15.5em;
 $indent-medium: 10.25em;
+$indent-medium-laptop: 7.5em;
+$indent-mobile: 3.5em;
 
 .section__half {
 
@@ -11,16 +14,35 @@ $indent-medium: 10.25em;
     > .stage {
 
       &:nth-child(2) {
-
         margin-top: $indent-large;
+
+        @include breakpoint($mobile) {
+
+          margin-top: $indent-mobile;
+        }
+
+        @include breakpoint($laptop-medium) {
+
+          margin-top: $indent-large-laptop;
+        }
       }
 
       &:nth-child(3) {
         margin-top: $indent-medium;
 
+        @include breakpoint($mobile) {
+
+          margin-top: $indent-mobile;
+        }
+
         @include breakpoint($tablet-p) {
 
           margin-top: 0;
+        }
+
+        @include breakpoint($laptop-medium) {
+
+          margin-top: $indent-medium-laptop;
         }
       }
 
@@ -38,6 +60,12 @@ $indent-medium: 10.25em;
 .stage,
 .stages-group {
   @include span(3 of 12 inside no-gutters);
+
+  @include breakpoint($mobile) {
+    @include span(12 of 12 inside no-gutters);
+
+    float: none;
+  }
 
   @include breakpoint($tablet-p) {
 
@@ -94,7 +122,7 @@ $indent-medium: 10.25em;
     transition: transform .3s ease;
 
     &:hover {
-      transform: translateX(24px);
+      transform: translateX(15px);
 
       > .stage__detail {
 
@@ -111,12 +139,23 @@ $indent-medium: 10.25em;
 
     transition: color .3s ease, text-shadow .3s ease;
 
+    @include breakpoint($laptop-medium) {
+
+      font-size: 2.533em;
+    }
+
     &.marker {
 
       &:before {
         left: -20px;
 
         text-shadow: none;
+
+        @include breakpoint($laptop-medium) {
+          line-height: 1.2em;
+
+          font-size: 20px;
+        }
       }
     }
   }
@@ -132,12 +171,22 @@ $indent-medium: 10.25em;
     color: $color-secondary;
 
     transition: opacity .3s ease;
+
+    @include breakpoint($laptop-medium) {
+
+      font-size: .933em;
+    }
   }
 
   &__description {
     white-space: nowrap;
 
     font-size: .8em;
+
+    @include breakpoint($laptop-medium) {
+
+      font-size: .733em;
+    }
   }
 
   &__detail {
@@ -169,10 +218,21 @@ $indent-medium: 10.25em;
 
       margin-top: $indent-medium;
 
+      @include breakpoint($mobile) {
+        position: static;
+
+        margin-top: $indent-mobile;
+      }
+
       @include breakpoint($tablet-p) {
-        position: relative;
+        position: static;
 
         margin-top: 0;
+      }
+
+      @include breakpoint($laptop-medium) {
+
+        margin-top: $indent-medium-laptop;
       }
     }
 
@@ -209,6 +269,11 @@ $indent-medium: 10.25em;
     &:not(:last-child) {
       height: 0;
 
+      @include breakpoint($mobile) {
+
+        height: auto;
+      }
+
       @include breakpoint($tablet-p) {
 
         height: auto;
@@ -218,9 +283,19 @@ $indent-medium: 10.25em;
     &:last-child {
       margin-top: $indent-large;
 
+      @include breakpoint($mobile) {
+
+        margin-top: $indent-mobile;
+      }
+
       @include breakpoint($tablet-p) {
 
         margin-top: 0;
+      }
+
+      @include breakpoint($laptop-medium) {
+
+        margin-top: $indent-large-laptop;
       }
     }
   }

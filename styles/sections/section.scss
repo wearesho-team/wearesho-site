@@ -19,6 +19,15 @@
     padding-top: 9.75em;
   }
 
+  &__text {
+    line-height: 1.6em;
+
+    @include breakpoint($laptop-medium) {
+
+      font-size: .938em;
+    }
+  }
+
   &.section-main {
 
      > .align-container {
@@ -69,27 +78,7 @@
 
         padding: 8em 0 0 1.875em;
       }
-
-    //   &:first-child {
-
-    //     > .marker {
-
-    //       min-height: 26px;
-    //     }
-    //   }
-
-    //   &:nth-child(2) {
-
-    //     > .marker {
-    //       min-height: 78px;
-
-    //       @include breakpoint($tablet-p) {
-
-    //         //min-height: ;
-    //       }
-    //     }
-    //   }
-     }
+    }
 
     .section__title {
       @include breakpoint($mobile-p) {
@@ -161,6 +150,11 @@
             padding-top: 30px;
           }
 
+          @include breakpoint($laptop-medium) {
+
+            font-size: 1em;
+          }
+
           @include breakpoint($laptop-large) {
 
             padding-top: 38px;
@@ -173,6 +167,14 @@
       @include span(4 of 12 inside no-gutters);
 
       padding-right: 11%;
+
+      @include breakpoint($mobile) {
+        @include span(12 of 12 inside no-gutters);
+
+        float: none;
+
+        padding-right: 0;
+      }
 
       @include breakpoint($tablet) {
         @include span(12 of 12 inside no-gutters);
@@ -188,6 +190,11 @@
         float: none;
 
         padding-right: 0;
+      }
+
+      @include breakpoint($laptop-medium) {
+
+        padding-right: 7%;
       }
 
       > .align-container {
@@ -255,6 +262,11 @@
 
           margin: 2.85em 0 4.5em;
         }
+
+        @include breakpoint($laptop-medium) {
+
+          margin: 2.85em 0;
+        }
       }
 
       h5 {
@@ -287,6 +299,12 @@
 
     .half_second {
       @include span(8 of 12 inside no-gutters);
+
+      @include breakpoint($mobile) {
+        @include span(12 of 12 inside no-gutters);
+
+        float: none;
+      }
 
       @include breakpoint($tablet) {
         @include span(12 of 12 inside no-gutters);
@@ -505,11 +523,6 @@
     }
   }
 
-  .section__text {
-
-    line-height: 1.6em;
-  }
-
   .container {
 
     @include container;
@@ -566,6 +579,11 @@
       font-size: .833em;
       font-weight: $font-style-light;
       color: $color-primary;
+
+      @include breakpoint($laptop-medium) {
+
+        font-size: .778em;
+      }
     }
   }
 
@@ -626,6 +644,11 @@
     @include breakpoint($tablet-p) {
 
       font-size: 1.2em;
+    }
+
+    @include breakpoint($laptop-medium) {
+
+      font-size: .933em;
     }
 
     &__item {
