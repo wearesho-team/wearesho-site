@@ -13,14 +13,19 @@ import {ProcessStructure} from "../../Icons/ProcessStructure";
 import {ProcessPageState} from "./ProcessPageState";
 import {SubmitButton} from "../../Buttons";
 import {BasePage} from "../BasePage";
+import {CustomAnimation} from "../../Animations/Static/CustomAnimation/CustomAnimation";
+import {StartFeature} from "../../../data/Animations/StartFeature";
+import {Timing} from "../../../data/Animations/Timing";
 
 // tslint:disable:no-magic-numbers
 export class ProcessPage extends BasePage<undefined, ProcessPageState> {
+    public static demonstrationMode = true;
     public static readonly baseClassName = "section section-process";
     public static readonly animationDuration = 2000;
     public static readonly activeGridCount = 4;
 
-    protected stagesContainer: HTMLElement;
+    public stagesContainer: HTMLElement;
+
     protected timers: any [];
     protected stageList: Array<{
         title: string,
@@ -36,10 +41,10 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> {
         };
 
         this.stageList = stages.map(({title, subTitle}) => {
-             return {
-                 title: translate(`processPage.stages.title.${title}`),
-                 subTitle: subTitle.map((item) => translate(`processPage.stages.subTitle.${item}`)).join(" / ")
-             }
+            return {
+                title: translate(`processPage.stages.title.${title}`),
+                subTitle: subTitle.map((item) => translate(`processPage.stages.subTitle.${item}`)).join(" / ")
+            }
         });
 
         this.timers = Array.from(new Array(ProcessPage.activeGridCount));
@@ -51,7 +56,10 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> {
     }
 
     public componentDidMount() {
-        ReactDOM.findDOMNode(this).addEventListener("mousemove", this.handleMouseOver);
+        const Node = ReactDOM.findDOMNode(this);
+
+        Node.addEventListener("mousemove", this.handleHoverControl);
+        Node.addEventListener("touchstart", this.handleHoverControl);
     }
 
     public componentWillUnmount() {
@@ -60,12 +68,12 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> {
             timer = undefined;
         });
 
-        ReactDOM.findDOMNode(this).removeEventListener("mousemove", this.handleMouseOver);
+        ReactDOM.findDOMNode(this).removeEventListener("mousemove", this.handleHoverControl);
     }
 
     public render() {
         return (
-            <section className={this.state.className}>
+            <section className={concat(this.state.className, ProcessPage.demonstrationMode ? "demonstration" : "")}>
                 <ProcessStructure/>
                 <div className="align-container">
                     <h2 className="section__title">Процесс</h2>
@@ -120,14 +128,18 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> {
             });
     }
 
-    protected handleMouseOver = (event: MouseEvent): void => {
+    protected handleHoverControl = (event: MouseEvent | TouchEvent): void => {
         if (!this.stagesContainer) {
             return;
         }
 
+        const clientX = event.hasOwnProperty("touches")
+            ? (event as TouchEvent).touches[0].clientX
+            : (event as MouseEvent).clientX;
+
         const left = getElementCoords(this.stagesContainer).left;
         const width = this.stagesContainer.getBoundingClientRect().width;
-        const cursorOffset = event.clientX - left;
+        const cursorOffset = clientX - left;
 
         // is out of range
         if (cursorOffset < 0 || cursorOffset > width) {
@@ -139,8 +151,11 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> {
             return;
         }
 
+        ProcessPage.demonstrationMode && (ProcessPage.demonstrationMode = false);
+
         // calculate index of hovered grid item
         const index = Math.floor(cursorOffset / (width / ProcessPage.activeGridCount));
+
         // if current grid already active or timer for it active
         if (
             this.state.currentIndex === index ||
