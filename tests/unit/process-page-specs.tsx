@@ -140,9 +140,9 @@ describe("<ProcessPage/>", () => {
             }
         };
 
-        wrapper.getDOMNode().dispatchEvent(new MouseEvent("mousemove", {
-            clientX: 1000
-        }));
+        wrapper.getDOMNode().dispatchEvent(new Event("touchstart", {
+            touches: [{clientX: 1000}]
+        } as any));
 
         expect(ProcessPage.demonstrationMode).to.be.false;
     });

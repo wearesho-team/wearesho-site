@@ -125,7 +125,7 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
 
     protected setContainer = (r: HTMLElement) => this.stagesContainer = r;
 
-    protected getStages(from = 0, count = this.stageList.length): JSX.Element [] {
+    protected getStages(from: number, count: number): JSX.Element [] {
         return Array.from(this.stageList)
             .splice(from, count)
             .map(({title, subTitle}, i) => {
