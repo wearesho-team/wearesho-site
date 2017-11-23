@@ -114,4 +114,37 @@ describe("<ProcessPage/>", () => {
         timer.tick(ProcessPage.animationDuration / 2);
         expect(wrapper.instance().state.className).to.equal(ProcessPage.baseClassName);
     });
+
+    it("Should demonstrate while user is not active", () => {
+        ProcessPage.demonstrationMode = true;
+        wrapper.unmount().mount();
+
+        timer.tick(ProcessPage.demonstrationDelay);
+        expect(wrapper.instance().state.currentIndex).to.equal(0);
+
+        timer.tick(ProcessPage.demonstrationDelay * ProcessPage.activeGridCount);
+        expect(wrapper.instance().state.currentIndex).to.equal(3);
+    });
+
+    it("Should stop demonstrate when user is active", () => {
+        ProcessPage.demonstrationMode = true;
+        wrapper.unmount().mount();
+
+        timer.tick(ProcessPage.demonstrationDelay);
+        expect(wrapper.instance().state.currentIndex).to.equal(0);
+
+        (wrapper.instance() as any).stagesContainer.getBoundingClientRect = () => {
+            return {
+                width: 920,
+                left: 730
+            }
+        };
+
+        wrapper.getDOMNode().dispatchEvent(new MouseEvent("mousemove", {
+            clientX: 1000
+        }));
+
+        expect(ProcessPage.demonstrationMode).to.be.false;
+    });
+
 });

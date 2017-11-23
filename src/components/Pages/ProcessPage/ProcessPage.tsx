@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom";
 
 import {stages} from "../../../data/ProjectStages/stages";
 
+import {ElementWithTimer, smartClearTimeout} from "../../../helpers/smartClearTimeout";
 import {getElementCoords} from "../../../helpers/getElementCoords";
 import {translate} from "../../../helpers/translate";
 import {toFixed} from "../../../helpers/toFixed";
@@ -13,18 +14,21 @@ import {ProcessStructure} from "../../Icons/ProcessStructure";
 import {ProcessPageState} from "./ProcessPageState";
 import {SubmitButton} from "../../Buttons";
 import {BasePage} from "../BasePage";
-import {CustomAnimation} from "../../Animations/Static/CustomAnimation/CustomAnimation";
-import {StartFeature} from "../../../data/Animations/StartFeature";
-import {Timing} from "../../../data/Animations/Timing";
 
 // tslint:disable:no-magic-numbers
-export class ProcessPage extends BasePage<undefined, ProcessPageState> {
-    public static demonstrationMode = true;
+// tslint:disable:max-file-line-count
+export class ProcessPage extends BasePage<undefined, ProcessPageState> implements ElementWithTimer {
     public static readonly baseClassName = "section section-process";
+    public static readonly demonstrationDuration = 4000;
+    public static readonly demonstrationDelay = 400;
     public static readonly animationDuration = 2000;
     public static readonly activeGridCount = 4;
 
+    public static demonstrationMode = true;
+
+    public clearTimeout = smartClearTimeout.bind(this);
     public stagesContainer: HTMLElement;
+    public timer: any;
 
     protected timers: any [];
     protected stageList: Array<{
@@ -60,6 +64,11 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> {
 
         Node.addEventListener("mousemove", this.handleHoverControl);
         Node.addEventListener("touchstart", this.handleHoverControl);
+
+        if (ProcessPage.demonstrationMode) {
+            this.clearTimeout();
+            this.timer = setTimeout(this.demonstrate.bind(this, 0), ProcessPage.demonstrationDelay);
+        }
     }
 
     public componentWillUnmount() {
@@ -68,12 +77,19 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> {
             timer = undefined;
         });
 
-        ReactDOM.findDOMNode(this).removeEventListener("mousemove", this.handleHoverControl);
+        this.clearTimeout();
+        this.timer = undefined;
+        this.demonstrate = undefined;
+
+        const Node = ReactDOM.findDOMNode(this);
+
+        Node.removeEventListener("mousemove", this.handleHoverControl);
+        Node.removeEventListener("touchstart", this.handleHoverControl);
     }
 
     public render() {
         return (
-            <section className={concat(this.state.className, ProcessPage.demonstrationMode ? "demonstration" : "")}>
+            <section className={this.state.className}>
                 <ProcessStructure/>
                 <div className="align-container">
                     <h2 className="section__title">Процесс</h2>
@@ -155,7 +171,10 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> {
 
         // calculate index of hovered grid item
         const index = Math.floor(cursorOffset / (width / ProcessPage.activeGridCount));
+        this.pushNewTimer(index);
+    };
 
+    protected pushNewTimer(index: number): void {
         // if current grid already active or timer for it active
         if (
             this.state.currentIndex === index ||
@@ -164,7 +183,6 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> {
             return;
         }
 
-        // push to timers stack new timer
         this.timers[index] = setTimeout(() => {
             this.setState(({className}) => ({
                 className: className.replace(new RegExp(`([\\s]\*from-${index + 1}[\\s]\*)`), " ").trim()
@@ -181,5 +199,25 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> {
             ),
             currentIndex: index
         }));
-    };
+    }
+
+    protected async demonstrate(index: number) {
+        if (!ProcessPage.demonstrationMode) {
+            return;
+        }
+
+        this.pushNewTimer(index);
+
+        if (index === ProcessPage.activeGridCount - 1) {
+            index = -1;
+            // delay before new cycle
+            await (new Promise((r) => setTimeout(r, ProcessPage.demonstrationDuration)));
+        }
+
+        this.clearTimeout();
+        this.timer = setTimeout(
+            this.demonstrate && this.demonstrate.bind(this, index + 1),
+            ProcessPage.demonstrationDelay
+        );
+    }
 }
