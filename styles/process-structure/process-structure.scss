@@ -1,11 +1,24 @@
 /**
 * Process structure styles
  */
+.transform-container {
+  @include breakpoint($mobile) {
+    height: 0;
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    transform: rotate(90deg);
+
+    z-index: $under-zindex;
+  }
+}
+
 .process-structure {
   $process-structure-width: 1920px;
-  $process-structure-width-mob: 1200px;
   $process-structure-height: 590px;
-  $process-structure-height-mob: 500px;
 
   width: 100%;
   max-width:$process-structure-width;
@@ -22,18 +35,16 @@
 
   transform: translateY(-50%);
 
-  z-index: $under-zindex;
-
   @include breakpoint($mobile) {
-    width: $process-structure-width-mob;
-    height: $process-structure-height-mob;
+    width: $process-structure-width;
 
-    right: auto;
-    left: (-$process-structure-height-mob + 16px);
+    left: -100px;
 
-    transform: translateY(0) rotate(90deg);
+    margin-top: (-$process-structure-height / 2);
 
-    //opacity: .3;
+    transform: translateY(0);
+
+    opacity: .55;
   }
 
   @include breakpoint($tablet-p) {

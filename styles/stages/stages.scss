@@ -13,12 +13,39 @@ $indent-mobile: 3.5em;
 
     > .stage {
 
+      &:first-child {
+
+        @include breakpoint($mobile) {
+          margin-top: 1.65em;
+          margin-left: (100% / 3);
+
+          padding-right: .5em;
+          padding-left: 0;
+
+          text-align: right;
+        }
+
+        > .stage__number {
+
+          &.marker {
+
+            &:before {
+
+              @include breakpoint($mobile) {
+                right: -14px;
+                left: auto;
+              }
+            }
+          }
+        }
+      }
+
       &:nth-child(2) {
         margin-top: $indent-large;
 
         @include breakpoint($mobile) {
 
-          margin-top: $indent-mobile;
+          margin-top: 6.375em;
         }
 
         @include breakpoint($laptop-medium) {
@@ -31,8 +58,8 @@ $indent-mobile: 3.5em;
         margin-top: $indent-medium;
 
         @include breakpoint($mobile) {
-
-          margin-top: $indent-mobile;
+          margin-top: 2.375em;
+          margin-left: (100% / 3);
         }
 
         @include breakpoint($tablet-p) {
@@ -55,6 +82,26 @@ $indent-mobile: 3.5em;
       }
     }
   }
+
+  .stage {
+
+    @include breakpoint($mobile) {
+
+      @include span(8 of 12 inside no-gutters);
+
+      float: none;
+    }
+  }
+
+  .stages-group {
+
+    @include breakpoint($mobile) {
+
+      @include span(12 of 12 inside no-gutters);
+
+      float: none;
+    }
+  }
 }
 
 .stage,
@@ -62,7 +109,6 @@ $indent-mobile: 3.5em;
   @include span(3 of 12 inside no-gutters);
 
   @include breakpoint($mobile) {
-    @include span(12 of 12 inside no-gutters);
 
     float: none;
   }
@@ -76,6 +122,11 @@ $indent-mobile: 3.5em;
     @include span(12 of 12 inside no-gutters);
 
     float: none;
+
+    @include breakpoint($mobile) {
+
+      @include span(8 of 12 inside no-gutters);
+    }
   }
 }
 
@@ -83,6 +134,12 @@ $indent-mobile: 3.5em;
   padding-left: 1em;
 
   cursor: pointer;
+
+  @include breakpoint($mobile) {
+    @include span(8 of 12 inside no-gutters);
+
+    padding-left: .65em;
+  }
 
   @include breakpoint($tablet-p) {
 
@@ -124,6 +181,11 @@ $indent-mobile: 3.5em;
     &:hover {
       transform: translateX(15px);
 
+      @include breakpoint($mobile) {
+
+        transform: translateX(9px);
+      }
+
       > .stage__detail {
 
         opacity: 1;
@@ -150,6 +212,11 @@ $indent-mobile: 3.5em;
         left: -20px;
 
         text-shadow: none;
+
+        @include breakpoint($mobile) {
+
+          left: -15px;
+        }
 
         @include breakpoint($laptop-medium) {
           line-height: 1.2em;
@@ -197,6 +264,11 @@ $indent-mobile: 3.5em;
     opacity: 0;
 
     transition: opacity .3s ease;
+
+    @include breakpoint($mobile) {
+
+      display: none;
+    }
   }
 }
 
@@ -221,7 +293,12 @@ $indent-mobile: 3.5em;
       @include breakpoint($mobile) {
         position: static;
 
-        margin-top: $indent-mobile;
+        margin-top: 4.438em;
+
+        padding-right: .5em;
+        padding-left: 0;
+
+        text-align: right;
       }
 
       @include breakpoint($tablet-p) {
@@ -234,13 +311,52 @@ $indent-mobile: 3.5em;
 
         margin-top: $indent-medium-laptop;
       }
+
+      > .stage__number {
+
+        &.marker {
+
+          &:before {
+
+            @include breakpoint($mobile) {
+              right: -14px;
+              left: auto;
+            }
+          }
+        }
+      }
     }
 
     &:not(:first-child) {
-      text-align: right;
-
       padding-right: 1em;
       padding-left: 0;
+
+      text-align: right;
+
+      @include breakpoint($mobile) {
+        margin-top: 1.625em;
+
+        margin-left: (100% / 3);
+
+        padding-right: .5em;
+        padding-left: 0;
+
+        text-align: right;
+      }
+
+      > .stage__number {
+
+        &.marker {
+
+          &:before {
+
+            @include breakpoint($mobile) {
+              right: -14px;
+              left: auto;
+            }
+          }
+        }
+      }
 
       @include breakpoint($tablet-p) {
         padding-right: 0;
@@ -256,6 +372,11 @@ $indent-mobile: 3.5em;
           &:before {
             right: -20px;
             left: auto;
+
+            @include breakpoint($mobile) {
+
+              right: -14px;
+            }
 
             @include breakpoint($tablet-p) {
               right: auto;
@@ -280,12 +401,19 @@ $indent-mobile: 3.5em;
       }
     }
 
+
+
     &:last-child {
       margin-top: $indent-large;
 
       @include breakpoint($mobile) {
+        margin-top: 0;
+        margin-left: 0 !important;
 
-        margin-top: $indent-mobile;
+        padding-right: 0;
+        padding-left: .65em !important;
+
+        text-align: left !important;
       }
 
       @include breakpoint($tablet-p) {
@@ -296,6 +424,20 @@ $indent-mobile: 3.5em;
       @include breakpoint($laptop-medium) {
 
         margin-top: $indent-large-laptop;
+      }
+
+      > .stage__number {
+
+        &.marker {
+
+          &:before {
+
+            @include breakpoint($mobile) {
+
+              left: -15px !important;
+            }
+          }
+        }
       }
     }
   }

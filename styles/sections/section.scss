@@ -110,6 +110,14 @@
         font-size: .9em;
       }
     }
+
+    .marker {
+
+      @include breakpoint($mobile) {
+
+        content: none;
+      }
+    }
   }
 
   &.section-process,
@@ -247,6 +255,11 @@
 
       .section__text {
         margin: 2.85em 0 7em;
+
+        @include breakpoint($mobile) {
+
+          margin: 1.85em 0 3em;
+        }
 
         @include breakpoint($tablet-p) {
 
@@ -614,11 +627,6 @@
       font-family: $font-secondary;
 
       color: #797979;
-
-      @include breakpoint($mobile) {
-
-        content: none;
-      }
 
       @include breakpoint($laptop-large) {
         left: -31px;
