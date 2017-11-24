@@ -1,7 +1,7 @@
 import * as React from "react";
-import {ReactInputMask} from "../../../../../helpers/imports/reactInputMask"
 import {BaseInput, BaseInputDefaultProps} from "react-context-form";
 
+import {ReactInputMask} from "../../../../../helpers/imports/reactInputMask"
 import {toFixed} from "../../../../../helpers/toFixed";
 
 import {TimeInputDefaultProps, TimeInputProps, TimeInputPropTypes} from "./TimeInputProps";

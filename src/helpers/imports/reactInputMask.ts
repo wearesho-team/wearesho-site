@@ -11,6 +11,7 @@ interface Mask extends React.Component<any, any> {
     value: string;
     setInputValue: (newValue: string) => void;
     input: HTMLInputElement;
+    setCursorPos: (pos: number) => void;
 }
 
 // tslint:disable:no-var-requires
