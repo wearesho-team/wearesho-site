@@ -148,7 +148,8 @@ translate.registerTranslations("ru", {
         support: "Техническая поддержка",
         PR: "PR",
         dev: "dev",
-        dsgn: "dsgn"
+        dsgn: "dsgn",
+        beginning: "начало сотрудничества"
     },
     Kharkiv: "Харьков",
     Ukraine: "Украина",
