@@ -35,7 +35,7 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
             currentIndex: 0
         };
 
-        this.timers = Array.from(new Array(ProcessPage.activeGridCount));
+        this.timers = [];
     }
 
     public shouldComponentUpdate(nextProps: any, nextState: any, nextContext: any) {
@@ -58,9 +58,9 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
     public componentWillUnmount() {
         this.timers.forEach((timer) => {
             clearTimeout(timer);
-            timer = undefined;
         });
 
+        this.timers = [];
         this.clearTimeout();
         this.timer = undefined;
         this.demonstrate = undefined;
