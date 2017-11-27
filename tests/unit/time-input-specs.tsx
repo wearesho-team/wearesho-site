@@ -2,7 +2,7 @@ import * as React from "react";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
-import {TimeInputProps, TimeInput} from "../../src/components/Pages/PartnershipPage/ContactForm/TimeInput";
+import {TimeInputProps, TimeInput} from "../../src/components/Pages/PartnershipPage/ContactForm/Partials/TimeInput";
 
 describe("<TimeInput/>", () => {
     let wrapper: ReactWrapper<TimeInputProps, undefined>;

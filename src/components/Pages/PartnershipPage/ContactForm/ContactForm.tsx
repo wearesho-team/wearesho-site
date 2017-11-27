@@ -1,5 +1,5 @@
 // tslint:disable:max-file-line-count
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import {TransitionGroup, CSSTransition} from "react-transition-group";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import axios from "axios";
@@ -12,27 +12,26 @@ import {
     Label,
     TransformTypes,
     FormContext,
-    ModelError
+    ModelError, AutoFocus
 } from "react-context-form";
 
-import { ContactFormModel, instantiateContactFormModel } from "../../../../models/ContactFormModel";
-import { NameRange, PhoneRange, CommentMaxLength, TimeDefaults } from "../../../../models/common";
+import {ContactFormModel, instantiateContactFormModel} from "../../../../models/ContactFormModel";
+import {NameRange, CommentMaxLength, TimeDefaults} from "../../../../models/common";
 
-import { ValidationError } from "../../../../data/ValidationError";
+import {ValidationError} from "../../../../data/ValidationError";
 
-import { ElementWithTimer, smartClearTimeout } from "../../../../helpers/smartClearTimeout";
-import { OnDesktop, OnMobile } from "../../../../helpers/Breakpoints";
-import { smoothScrollTo } from "../../../../helpers/smoothScrollTo";
-import { getTimeZone } from "../../../../helpers/getTimeZone";
-import { translate } from "../../../../helpers/translate";
-import { concat } from "../../../../helpers/concat";
+import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
+import {OnDesktop, OnMobile} from "../../../../helpers/Breakpoints";
+import {smoothScrollTo} from "../../../../helpers/smoothScrollTo";
+import {getTimeZone} from "../../../../helpers/getTimeZone";
+import {translate} from "../../../../helpers/translate";
+import {concat} from "../../../../helpers/concat";
 
-import { SubmitButton } from "../../../Buttons/SubmitButton";
-import { ContactFormState } from "./ContactFormState";
-import { SubmitStatus } from "./SubmitStatus";
-import { TimeInput } from "./TimeInput";
+import {ErrorMessage, SuccessMessage, PhoneInput, TimeInput} from "./Partials";
+import {SubmitButton} from "../../../Buttons/SubmitButton";
+import {ContactFormState} from "./ContactFormState";
+import {SubmitStatus} from "./SubmitStatus";
 
-// tslint:disable:no-magic-numbers
 export class ContactForm extends React.Component<undefined, ContactFormState> implements ElementWithTimer {
     public static formStorageKey = "formData";
     public static readonly standByDelay = 5000;
@@ -88,13 +87,13 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
             case SubmitStatus.success:
                 return (
                     <CSSTransition {...transitionProps}>
-                        {this.SuccessMessage}
+                        <SuccessMessage {...this.state.data}/>
                     </CSSTransition>
                 );
             case SubmitStatus.fail:
                 return (
                     <CSSTransition {...transitionProps}>
-                        {this.ErrorMessage}
+                        <ErrorMessage {...this.state.data}/>
                     </CSSTransition>
                 );
             case SubmitStatus.standBy:
@@ -106,7 +105,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
     protected handleSubmit = async (model: ContactFormModel, context: FormContext) => {
         let data: any = {};
         model.attributes()
-            .forEach((field) => data = { ...data, ...{ [field]: model[field] } });
+            .forEach((field) => data = {...data, ...{[field]: model[field]}});
 
         data.timeZone = getTimeZone();
 
@@ -128,7 +127,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
 
         } catch (error) {
             if (error instanceof ValidationError) {
-                error.data.forEach(({ code, ...error }) => context.addError(error as ModelError));
+                error.data.forEach(({code, ...error}) => context.addError(error as ModelError));
                 const modelElement: ModelError = error.data
                     .reduce((carry: ModelError, error: ModelError) => carry || error);
 
@@ -154,53 +153,16 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
         model.from = TimeDefaults.from;
     }
 
-    protected get SuccessMessage(): JSX.Element {
-        const { name, from, to } = this.state.data;
-
-        return (
-            <p className="section__text request request-sent">
-                <span className="section__text_increased">{name}</span>
-                <span className="inline">{translate("contactPage.form.submit.success.thanks")}</span>
-                <span className="inline">{translate("contactPage.form.submit.success.callBack")}</span>
-                <span className="section__text_indented">
-                    {translate("contactPage.form.time.from")}
-                    <span className="section__text_increased">&nbsp;{from}&nbsp;</span>
-                    {translate("contactPage.form.time.to")}
-                    <span className="section__text_increased">&nbsp;{to}&nbsp;</span>
-                </span>
-                <span>
-                    {translate("contactPage.form.submit.withRespect")} &laquo;{translate("SHO")}?!&raquo;
-                </span>
-            </p>
-        );
-    }
-
-    protected get ErrorMessage(): JSX.Element {
-        const { name } = this.state.data;
-
-        return (
-            <p className="section__text request request-error">
-                <span className="section__text_increased">{name}</span>
-                <span>{translate("contactPage.form.submit.fail.text")}</span>
-                <span>
-                    {translate("contactPage.form.submit.withRespect")} &laquo;{translate("SHO")}?!&raquo;
-                </span>
-            </p>
-        );
-    }
-
     protected get Form(): JSX.Element {
         return (
             <Form
                 className={concat("form", this.state.status)}
                 instantiate={instantiateContactFormModel}
-                onSubmit={this.handleSubmit as any}
                 storageKey={ContactForm.formStorageKey}
+                onSubmit={this.handleSubmit as any}
             >
                 <OnDesktop>
-                    <p className="section__text">
-                        {translate("contactPage.form.titleExtended")}
-                    </p>
+                    <p className="section__text">{translate("contactPage.form.titleExtended")}</p>
                 </OnDesktop>
                 <div className="form-half">
                     <div className="form__group_inline">
@@ -218,7 +180,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                                     placeholder={translate("contactPage.form.placeholders.name")}
                                 />
                             </AutoValidate>
-                            <Hint className="form__error-text" />
+                            <Hint className="form__error-text"/>
                         </FormGroup>
                         <FormGroup
                             name="phone"
@@ -227,13 +189,13 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                             errorClassName="has-error"
                         >
                             <AutoValidate groupName="phone">
-                                <Input
+                                <PhoneInput
                                     className="form__control"
                                     placeholder={translate("contactPage.form.placeholders.phone")}
-                                    type="tel"
+                                    maskList={["9999", "(999) 999-99-999", "(999) 999-9999-9999"]}
                                 />
                             </AutoValidate>
-                            <Hint className="form__error-text" />
+                            <Hint className="form__error-text"/>
                         </FormGroup>
                     </div>
                     <FormGroup
@@ -249,7 +211,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                                 maxLength={CommentMaxLength}
                             />
                         </AutoValidate>
-                        <Hint className="form__error-text" />
+                        <Hint className="form__error-text"/>
                     </FormGroup>
                 </div>
                 <div className="form-half form-half_second">
@@ -257,25 +219,21 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                     <p>{translate("contactPage.form.time.subTitle")}</p>
                     <div className="form__group spinner__group">
                         <FormGroup name="from" className="spinner">
-                            <Label className="spinner__label">
-                                {translate("contactPage.form.time.from")}
-                            </Label>
-                            <TimeInput className="form__control" />
+                            <Label className="spinner__label">{translate("contactPage.form.time.from")}</Label>
+                            <AutoFocus to="to" groupName="to">
+                                <TimeInput className="form__control"/>
+                            </AutoFocus>
                         </FormGroup>
                         <OnMobile>
-                            <span className="separator">
-                                {translate("contactPage.form.time.to")}
-                            </span>
+                            <span className="separator">{translate("contactPage.form.time.to")}</span>
                         </OnMobile>
                         <FormGroup name="to" className="spinner">
-                            <Label className="spinner__label">
-                                {translate("contactPage.form.time.to")}
-                            </Label>
-                            <TimeInput className="form__control" />
+                            <Label className="spinner__label">{translate("contactPage.form.time.to")}</Label>
+                            <TimeInput className="form__control"/>
                         </FormGroup>
                     </div>
                 </div>
-                <SubmitButton label={translate("buttons.send")} />
+                <SubmitButton label={translate("buttons.send")}/>
             </Form>
         );
     }

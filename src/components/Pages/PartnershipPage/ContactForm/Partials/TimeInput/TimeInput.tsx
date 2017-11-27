@@ -1,8 +1,8 @@
 import * as React from "react";
-import {ReactInputMask} from "../../../../../helpers/imports/reactInputMask"
 import {BaseInput, BaseInputDefaultProps} from "react-context-form";
 
-import {toFixed} from "../../../../../helpers/toFixed";
+import {ReactInputMask} from "../../../../../../helpers/imports/reactInputMask"
+import {toFixed} from "../../../../../../helpers/toFixed";
 
 import {TimeInputDefaultProps, TimeInputProps, TimeInputPropTypes} from "./TimeInputProps";
 
@@ -30,8 +30,8 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
             ...this.childProps,
             ...{
                 onChange: this.handleChangeControl,
-                ref: this.setElement,
                 value: this.context.value,
+                ref: this.setElement,
                 type: "tel",
             }
         };
@@ -68,6 +68,8 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         minutes = minutes > this.minutesFormat ? this.minutesFormat : toFixed(2, minutes);
 
         this.maskElement && this.maskElement.setInputValue(`${hours}:${minutes}`);
+
+        this.caretControl(minutes, this.context.value.split(":")[1]);
 
         // tslint:disable:no-object-literal-type-assertion
         const newEvent = {
@@ -109,5 +111,14 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
                 value: `${hours}:${valuesArray[1]}`
             }
         } as React.ChangeEvent<HTMLInputElement>;
+    }
+
+    protected caretControl(currentMinutes, prevMinutes): void {
+        if (
+            currentMinutes.split("")[1] !== prevMinutes.split("")[1]
+            && this.maskElement.lastCursorPos === 4
+        ) {
+            console.log("Caret at the end");
+        }
     }
 }

@@ -1,6 +1,5 @@
 import {ValidationError} from "../data/ValidationError";
 
-// tslint:disable:no-magic-numbers
 export const submitErrorHandler = (error: any): void => {
     if (
         !error.response
