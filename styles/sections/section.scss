@@ -96,7 +96,7 @@
 
         line-height: 1.6em;
 
-        font-size: .727em;
+        font-size: .833em;
       }
 
       @include breakpoint($mobile-p) {
@@ -113,9 +113,12 @@
 
     .marker {
 
-      @include breakpoint($mobile) {
+      &:before {
 
-        content: none;
+        @include breakpoint($mobile) {
+
+          content: none;
+        }
       }
     }
   }
@@ -291,6 +294,11 @@
         font-weight: $font-style-regular;
         color: #C5D5E0;
 
+        @include breakpoint($mobile) {
+
+          font-size: 1.2em;
+        }
+
         @include breakpoint($tablet) {
 
           font-size: 1.2em;
@@ -317,6 +325,8 @@
         @include span(12 of 12 inside no-gutters);
 
         float: none;
+
+        position: relative;
       }
 
       @include breakpoint($tablet) {
@@ -573,7 +583,7 @@
     @include breakpoint($mobile) {
       line-height: 1.5em;
 
-      font-size: 1.375em;
+      font-size: 1.2em;
     }
 
     @include breakpoint($tablet-p) {

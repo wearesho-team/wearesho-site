@@ -16,13 +16,23 @@ $indent-mobile: 3.5em;
       &:first-child {
 
         @include breakpoint($mobile) {
-          margin-top: 1.65em;
+
           margin-left: (100% / 3);
 
           padding-right: .5em;
           padding-left: 0;
 
           text-align: right;
+        }
+
+        @include breakpoint($mobile-p) {
+
+          margin-top: 1.65em;
+        }
+
+        @include breakpoint($mobile-l) {
+
+          margin-top: 1.85em;
         }
 
         > .stage__number {
@@ -43,9 +53,14 @@ $indent-mobile: 3.5em;
       &:nth-child(2) {
         margin-top: $indent-large;
 
-        @include breakpoint($mobile) {
+        @include breakpoint($mobile-p) {
 
-          margin-top: 6.375em;
+          margin-top: 5.85em;
+        }
+
+        @include breakpoint($mobile-l) {
+
+          margin-top: 5.375em;
         }
 
         @include breakpoint($laptop-medium) {
@@ -58,8 +73,18 @@ $indent-mobile: 3.5em;
         margin-top: $indent-medium;
 
         @include breakpoint($mobile) {
-          margin-top: 2.375em;
+
           margin-left: (100% / 3);
+        }
+
+        @include breakpoint($mobile-p) {
+
+          margin-top: 2.375em;
+        }
+
+        @include breakpoint($mobile-l) {
+
+          margin-top: 1.442em;
         }
 
         @include breakpoint($tablet-p) {
@@ -201,6 +226,11 @@ $indent-mobile: 3.5em;
 
     transition: color .3s ease, text-shadow .3s ease;
 
+    @include breakpoint($mobile) {
+
+      font-size: 2.667em;
+    }
+
     @include breakpoint($laptop-medium) {
 
       font-size: 2.533em;
@@ -238,6 +268,12 @@ $indent-mobile: 3.5em;
     color: $color-secondary;
 
     transition: opacity .3s ease;
+
+    @include breakpoint($mobile) {
+      margin: .35em 0 .1em;
+
+      font-size: 1.067em;
+    }
 
     @include breakpoint($laptop-medium) {
 
@@ -293,12 +329,20 @@ $indent-mobile: 3.5em;
       @include breakpoint($mobile) {
         position: static;
 
-        margin-top: 4.438em;
-
         padding-right: .5em;
         padding-left: 0;
 
         text-align: right;
+      }
+
+      @include breakpoint($mobile-p) {
+
+        margin-top: 4.438em;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        margin-top: 6.5em;
       }
 
       @include breakpoint($tablet-p) {
@@ -334,7 +378,7 @@ $indent-mobile: 3.5em;
       text-align: right;
 
       @include breakpoint($mobile) {
-        margin-top: 1.625em;
+        margin-top: 2em;
 
         margin-left: (100% / 3);
 
@@ -342,6 +386,11 @@ $indent-mobile: 3.5em;
         padding-left: 0;
 
         text-align: right;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        margin-top: 3em;
       }
 
       > .stage__number {
@@ -401,8 +450,6 @@ $indent-mobile: 3.5em;
       }
     }
 
-
-
     &:last-child {
       margin-top: $indent-large;
 
@@ -414,6 +461,11 @@ $indent-mobile: 3.5em;
         padding-left: .65em !important;
 
         text-align: left !important;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        margin-top: 1em;
       }
 
       @include breakpoint($tablet-p) {

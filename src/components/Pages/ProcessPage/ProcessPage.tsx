@@ -4,15 +4,16 @@ import {SubmitButton} from "../../Buttons";
 import {BasePage} from "../BasePage";
 
 import {ProcessStructure} from "../../Icons/ProcessStructure";
+import {OnMobile, OnTabletDesktop} from "../../../helpers/Breakpoints";
 
 export class ProcessPage extends BasePage {
 
     public render() {
         return(
             <section className="section section-process">
-                <div className="transform-container">
+                <OnTabletDesktop>
                     <ProcessStructure/>
-                </div>
+                </OnTabletDesktop>
                 <div className="align-container">
                     <h2 className="section__title">Процесс</h2>
                     <div className="section__half half_first">
@@ -22,8 +23,9 @@ export class ProcessPage extends BasePage {
                                 <span>цикла IT-услуг</span>
                             </h4>
                             <p className="section__text">
-                                Или укажите свои контактные данные в форме ниже. Наши специалисты ответят на форме.
-                                Наши ответят на все ваши идиотские вопросы. Наши ответят на все ваши крайне.
+                                Студия работает с крупными финансовыми компаниями, создавая качественный продукт
+                                для эффективного и прибыльного бизнеса на основе аналитики отрасли. Мы обеспечиваем
+                                постоянную техническую поддержку и оптимизацию продукта
                             </p>
                         </div>
                         <div className="align-container">
@@ -96,6 +98,9 @@ export class ProcessPage extends BasePage {
                                 </div>
                             </div>
                         </div>
+                        <OnMobile>
+                            <div className="process-structure_mob"/>
+                        </OnMobile>
                     </div>
                 </div>
             </section>
