@@ -1,22 +1,17 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import {stages} from "../../../data/ProjectStages/stages";
-
 import {ElementWithTimer, smartClearTimeout} from "../../../helpers/smartClearTimeout";
 import {getElementCoords} from "../../../helpers/getElementCoords";
-import {translate} from "../../../helpers/translate";
-import {toFixed} from "../../../helpers/toFixed";
 import {concat} from "../../../helpers/concat";
 
 import {SmartBreakpoint} from "../../SmartBreakpoint/SmartBreakpoint";
 import {ProcessStructure} from "../../Icons/ProcessStructure";
 import {ProcessPageState} from "./ProcessPageState";
 import {SubmitButton} from "../../Buttons";
+import {Stages} from "./Stages/Stages";
 import {BasePage} from "../BasePage";
 
-// tslint:disable:no-magic-numbers
-// tslint:disable:max-file-line-count
 export class ProcessPage extends BasePage<undefined, ProcessPageState> implements ElementWithTimer {
     public static readonly baseClassName = "section section-process";
     public static readonly demonstrationDuration = 4000;
@@ -31,10 +26,6 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
     public timer: any;
 
     protected timers: any [];
-    protected stageList: Array<{
-        title: string,
-        subTitle: string
-    }>;
 
     public constructor(props) {
         super(props);
@@ -43,13 +34,6 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
             className: ProcessPage.baseClassName,
             currentIndex: 0
         };
-
-        this.stageList = stages.map(({title, subTitle}) => {
-            return {
-                title: translate(`processPage.stages.title.${title}`),
-                subTitle: subTitle.map((item) => translate(`processPage.stages.subTitle.${item}`)).join(" / ")
-            }
-        });
 
         this.timers = Array.from(new Array(ProcessPage.activeGridCount));
     }
@@ -103,46 +87,17 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
                         <SubmitButton type="button" label="Скачать pdf"/>
                     </div>
                     <SmartBreakpoint match="min-width: 1024px">
-                        <div className="section__half half_second" ref={this.setContainer}>
-                            {this.getStages(0, 3)}
-                            <div className="stages-group">
-                                {this.getStages(3, 3)}
-                            </div>
-                        </div>
+                        <Stages className="section__half half_second" ref={this.setContainer}/>
                     </SmartBreakpoint>
                     <SmartBreakpoint match="max-width: 1023px">
-                        <div className="section__half half_second">
-                            {this.getStages(0, 3)}
-                            <div className="stages-group">
-                                {this.getStages(3, 3)}
-                            </div>
-                        </div>
+                        <Stages className="section__half half_second"/>
                     </SmartBreakpoint>
                 </div>
             </section>
         );
     }
 
-    protected setContainer = (r: HTMLElement) => this.stagesContainer = r;
-
-    protected getStages(from: number, count: number): JSX.Element [] {
-        return Array.from(this.stageList)
-            .splice(from, count)
-            .map(({title, subTitle}, i) => {
-                return (
-                    <div className="stage" key={i}>
-                        <span className="stage__number marker">
-                            {toFixed(2, i + from + 1)}
-                        </span>
-                        <div className="stage-body">
-                            <h3 className="stage__title">{title}</h3>
-                            <p className="stage__description">{subTitle}</p>
-                            <span className="stage__detail">&gt;&gt;</span>
-                        </div>
-                    </div>
-                );
-            });
-    }
+    protected setContainer = (element: Stages) => this.stagesContainer = ReactDOM.findDOMNode(element);
 
     protected handleHoverControl = (event: MouseEvent | TouchEvent): void => {
         if (!this.stagesContainer) {
@@ -158,20 +113,17 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
         const cursorOffset = clientX - left;
 
         // is out of range
-        if (cursorOffset < 0 || cursorOffset > width) {
-            if (this.state.currentIndex !== -1) {
-                this.setState({
-                    currentIndex: -1
-                });
-            }
-            return;
+        if (!(cursorOffset < 0 || cursorOffset > width)) {
+            ProcessPage.demonstrationMode && (ProcessPage.demonstrationMode = false);
+
+            // calculate index of hovered grid item
+            const index = Math.floor(cursorOffset / (width / ProcessPage.activeGridCount));
+            this.pushNewTimer(index);
+        } else if (this.state.currentIndex !== -1) {
+            this.setState({
+                currentIndex: -1
+            });
         }
-
-        ProcessPage.demonstrationMode && (ProcessPage.demonstrationMode = false);
-
-        // calculate index of hovered grid item
-        const index = Math.floor(cursorOffset / (width / ProcessPage.activeGridCount));
-        this.pushNewTimer(index);
     };
 
     protected pushNewTimer(index: number): void {
@@ -201,7 +153,7 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
         }));
     }
 
-    protected async demonstrate(index: number) {
+    protected async demonstrate(index: number): Promise<void> {
         if (!ProcessPage.demonstrationMode) {
             return;
         }

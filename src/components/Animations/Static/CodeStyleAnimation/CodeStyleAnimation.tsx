@@ -140,8 +140,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
                 key: "shadowChild",
                 children: this.getFormattedChild(this.props.children)
             })
-            // tslint:disable:no-null-keyword
-            : null;
+            : undefined;
     }
 
     protected visibleChild(children: any): JSX.Element {

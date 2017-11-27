@@ -1,6 +1,6 @@
 import {compareArrays} from "../../src/helpers/compareArrays";
 import {expect} from "chai";
-// tslint:disable:no-magic-numbers
+
 describe("compareArrays()", () => {
 
     const arrayOne = [1, 2, 3, 4];

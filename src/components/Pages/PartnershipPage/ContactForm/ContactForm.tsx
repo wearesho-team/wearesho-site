@@ -32,7 +32,6 @@ import { ContactFormState } from "./ContactFormState";
 import { SubmitStatus } from "./SubmitStatus";
 import { TimeInput } from "./TimeInput";
 
-// tslint:disable:no-magic-numbers
 export class ContactForm extends React.Component<undefined, ContactFormState> implements ElementWithTimer {
     public static formStorageKey = "formData";
     public static readonly standByDelay = 5000;

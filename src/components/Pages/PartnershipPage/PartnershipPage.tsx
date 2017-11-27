@@ -17,7 +17,6 @@ import {MapIcon} from "../../Icons/MapIcon";
 import {ContactForm} from "./ContactForm";
 import {BasePage} from "../BasePage";
 
-// tslint:disable:no-magic-numbers
 export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
     public state: PartnershipPageState = {
         isModalOpen: false,
