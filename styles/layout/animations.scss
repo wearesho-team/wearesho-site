@@ -513,6 +513,90 @@ $indent-tablet: -66px;
   }
 }
 
+@keyframes from-first {
+  0% {
+    transform: translate(-54px, -75px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(106px, 73px);
+    opacity: 0;
+  }
+}
+
+@keyframes from-second {
+  0% {
+    transform: translate(-150px, 240px) rotate(-17deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-95px, 324px) rotate(-17deg);
+    opacity: 0;
+  }
+}
+
+@keyframes from-third-top {
+  0% {
+    transform: matrix(-0.94, 0.342, -0.342, -0.94, 1937, 836);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: matrix(-0.94, 0.342, -0.342, -0.94, 1780, 701);
+    opacity: 0;
+  }
+}
+
+@keyframes from-third-bottom {
+  0% {
+    transform: matrix(0.819, -0.574, 0.574, 0.819, -253, 550);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: matrix(0.819, -0.574, 0.574, 0.819, -91, 658);
+    opacity: 0;
+  }
+}
+
+@keyframes from-last-top {
+  0% {
+    transform: matrix(-0.07, -0.998, 0.998, -0.07, 970, 1138);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: matrix(-0.07, -0.998, 0.998, -0.07, 1370, 1114);
+    opacity: 0;
+  }
+}
+
+@keyframes from-last-bottom {
+  0% {
+    transform: matrix(-0.07, -0.998, 0.998, -0.07, 907, 1139);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: matrix(-0.07, -0.998, 0.998, -0.07, 1310, 1177);
+    opacity: 0;
+  }
+}
+
 // Appearance / disappearance
 @keyframes appearance-disappearance {
   0% {

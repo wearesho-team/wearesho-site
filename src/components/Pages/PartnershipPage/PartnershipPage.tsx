@@ -17,7 +17,6 @@ import {MapIcon} from "../../Icons/MapIcon";
 import {ContactForm} from "./ContactForm";
 import {BasePage} from "../BasePage";
 
-// tslint:disable:no-magic-numbers
 export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
     public state: PartnershipPageState = {
         isModalOpen: false,
@@ -79,7 +78,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 </a>
                                 <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 <p className="contact-info__text contact-info__text_indented">
-                                    <span className="text_regular">{translate("technicalSupport")}</span>
+                                    <span className="text_regular">{translate("contactPage.support.title")}</span>
                                     {translate("contactPage.support.subTitle")}
                                     <span className="contact-info__text_increased">24
                                         <span className="separator">/</span>7

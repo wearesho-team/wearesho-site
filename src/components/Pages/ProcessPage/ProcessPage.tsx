@@ -1,16 +1,78 @@
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 
+import {ElementWithTimer, smartClearTimeout} from "../../../helpers/smartClearTimeout";
+import {OnTabletDesktop} from "../../../helpers/Breakpoints";
+import {getElementCoords} from "../../../helpers/getElementCoords";
+import {concat} from "../../../helpers/concat";
+
+import {SmartBreakpoint} from "../../SmartBreakpoint/SmartBreakpoint";
+import {ProcessStructure} from "../../Icons/ProcessStructure";
+import {ProcessPageState} from "./ProcessPageState";
 import {SubmitButton} from "../../Buttons";
+import {Stages} from "./Stages/Stages";
 import {BasePage} from "../BasePage";
 
-import {ProcessStructure} from "../../Icons/ProcessStructure";
-import {OnMobile, OnTabletDesktop} from "../../../helpers/Breakpoints";
+export class ProcessPage extends BasePage<undefined, ProcessPageState> implements ElementWithTimer {
+    public static readonly baseClassName = "section section-process";
+    public static readonly demonstrationDuration = 4000;
+    public static readonly demonstrationDelay = 400;
+    public static readonly animationDuration = 2000;
+    public static readonly activeGridCount = 4;
 
-export class ProcessPage extends BasePage {
+    public static demonstrationMode = true;
+
+    public clearTimeout = smartClearTimeout.bind(this);
+    public stagesContainer: HTMLElement;
+    public timer: any;
+
+    protected timers: any [];
+
+    public constructor(props) {
+        super(props);
+
+        this.state = {
+            className: ProcessPage.baseClassName,
+            currentIndex: 0
+        };
+
+        this.timers = [];
+    }
+
+    public shouldComponentUpdate(nextProps: any, nextState: any, nextContext: any) {
+        return super.shouldComponentUpdate(nextProps, nextState, nextContext)
+            || nextState.className !== this.state.className;
+    }
+
+    public componentDidMount() {
+        const Node = ReactDOM.findDOMNode(this);
+
+        Node.addEventListener("mousemove", this.handleHoverControl);
+        Node.addEventListener("touchstart", this.handleHoverControl);
+
+        if (ProcessPage.demonstrationMode) {
+            this.clearTimeout();
+            this.timer = setTimeout(this.demonstrate.bind(this, 0), ProcessPage.demonstrationDelay);
+        }
+    }
+
+    public componentWillUnmount() {
+        this.timers.forEach(clearTimeout);
+
+        this.timers = [];
+        this.clearTimeout();
+        this.timer = undefined;
+        this.demonstrate = undefined;
+
+        const Node = ReactDOM.findDOMNode(this);
+
+        Node.removeEventListener("mousemove", this.handleHoverControl);
+        Node.removeEventListener("touchstart", this.handleHoverControl);
+    }
 
     public render() {
-        return(
-            <section className="section section-process">
+        return (
+            <section className={this.state.className}>
                 <OnTabletDesktop>
                     <ProcessStructure/>
                 </OnTabletDesktop>
@@ -33,77 +95,91 @@ export class ProcessPage extends BasePage {
                             <SubmitButton type="button" label="Скачать pdf"/>
                         </div>
                     </div>
-                    <div className="section__half half_second">
-                        <div className="align-container">
-                            <div className="stage">
-                                <span className="stage__number marker">
-                                    01
-                                </span>
-                                <div className="stage-body">
-                                    <h3 className="stage__title">Проектирование</h3>
-                                    <p className="stage__description">на основе данных</p>
-                                    <span className="stage__detail">&gt;&gt;</span>
-                                </div>
-                            </div>
-                            <div className="stage">
-                                <span className="stage__number marker">
-                                    02
-                                </span>
-                                <div className="stage-body">
-                                    <h3 className="stage__title">Дизайн</h3>
-                                    <p className="stage__description">скетчи / прототипы</p>
-                                    <span className="stage__detail">&gt;&gt;</span>
-                                </div>
-                            </div>
-                            <div className="stage">
-                                <span className="stage__number marker">
-                                    03
-                                </span>
-                                <div className="stage-body">
-                                    <h3 className="stage__title">Разработка</h3>
-                                    <p className="stage__description">front &amp; back end</p>
-                                    <span className="stage__detail">&gt;&gt;</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="stages-group">
-                            <div className="stage">
-                                <span className="stage__number marker">
-                                    04
-                                </span>
-                                <div className="stage-body">
-                                    <h3 className="stage__title">Развертывание</h3>
-                                    <p className="stage__description">приложений на серверах</p>
-                                    <span className="stage__detail">&gt;&gt;</span>
-                                </div>
-                            </div>
-                            <div className="stage">
-                                <span className="stage__number marker">
-                                    05
-                                </span>
-                                <div className="stage-body">
-                                    <h3 className="stage__title">Продвижение</h3>
-                                    <p className="stage__description">online / offline</p>
-                                    <span className="stage__detail">&gt;&gt;</span>
-                                </div>
-                            </div>
-                            <div className="stage">
-                                <span className="stage__number marker">
-                                    06
-                                </span>
-                                <div className="stage-body">
-                                    <h3 className="stage__title">Тех. поддержка</h3>
-                                    <p className="stage__description">dsgn / dev / PR</p>
-                                    <span className="stage__detail">&gt;&gt;</span>
-                                </div>
-                            </div>
-                        </div>
-                        <OnMobile>
-                            <div className="process-structure_mob"/>
-                        </OnMobile>
-                    </div>
+                    <SmartBreakpoint match="min-width: 1024px">
+                        <Stages className="section__half half_second" ref={this.setContainer}/>
+                    </SmartBreakpoint>
+                    <SmartBreakpoint match="max-width: 1023px">
+                        <Stages className="section__half half_second"/>
+                    </SmartBreakpoint>
                 </div>
             </section>
+        );
+    }
+
+    protected setContainer = (element: Stages) => this.stagesContainer = ReactDOM.findDOMNode(element);
+
+    protected handleHoverControl = (event: MouseEvent | TouchEvent): void => {
+        if (!this.stagesContainer) {
+            return;
+        }
+
+        const clientX = event.hasOwnProperty("touches")
+            ? (event as TouchEvent).touches[0].clientX
+            : (event as MouseEvent).clientX;
+
+        const left = getElementCoords(this.stagesContainer).left;
+        const width = this.stagesContainer.getBoundingClientRect().width;
+        const cursorOffset = clientX - left;
+
+        // is out of range
+        if (!(cursorOffset < 0 || cursorOffset > width)) {
+            ProcessPage.demonstrationMode && (ProcessPage.demonstrationMode = false);
+
+            // calculate index of hovered grid item
+            const index = Math.floor(cursorOffset / (width / ProcessPage.activeGridCount));
+            this.pushNewTimer(index);
+        } else if (this.state.currentIndex !== -1) {
+            this.setState({
+                currentIndex: -1
+            });
+        }
+    };
+
+    protected pushNewTimer(index: number): void {
+        // if current grid already active or timer for it active
+        if (
+            this.state.currentIndex === index
+            || this.timers[index] !== undefined
+            || isNaN(index)
+        ) {
+            return;
+        }
+
+        this.timers[index] = setTimeout(() => {
+            this.setState(({className}) => ({
+                className: className.replace(new RegExp(`([\\s]\*from-${index + 1}[\\s]\*)`), " ").trim()
+            }));
+
+            clearTimeout(this.timers[index]);
+            this.timers[index] = undefined;
+        }, ProcessPage.animationDuration);
+
+        this.setState(({className}) => ({
+            className: concat(
+                className,
+                `from-${index + 1}`
+            ),
+            currentIndex: index
+        }));
+    }
+
+    protected async demonstrate(index: number): Promise<void> {
+        if (!ProcessPage.demonstrationMode || !this.stagesContainer) {
+            return;
+        }
+
+        this.pushNewTimer(index);
+
+        if (index === ProcessPage.activeGridCount - 1) {
+            index = -1;
+            // delay before new cycle
+            await (new Promise((r) => setTimeout(r, ProcessPage.demonstrationDuration)));
+        }
+
+        this.clearTimeout();
+        this.timer = setTimeout(
+            this.demonstrate && this.demonstrate.bind(this, index + 1),
+            ProcessPage.demonstrationDelay
         );
     }
 }

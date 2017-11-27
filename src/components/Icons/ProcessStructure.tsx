@@ -111,7 +111,7 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                 </g>
             </g>
             <g id="_12" transform="translate(-35 -72)">
-                <g className="stage-glow stage-glow_under  from-first" transform="matrix(1, 0, 0, 1, -1953, -886)" filter="url(#blur_bitlight)">
+                <g className="stage-glow stage-glow_under from-first" transform="matrix(1, 0, 0, 1, -1953, -886)" filter="url(#blur_bitlight)">
                     <linearGradient id="blur_12-2_1_" gradientUnits="userSpaceOnUse" x1="889.8572" y1="-520.9969" x2="889.0381" y2="-521.7809" gradientTransform="matrix(185.689 0 0 160 -164324.2812 83776.9219)">
                         <stop  offset="0" stopColor="#4C2A81" stopOpacity="0"/>
                         <stop  offset="0.473" stopColor="#9839BA"/>

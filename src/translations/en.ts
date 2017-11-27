@@ -71,10 +71,35 @@ translate.registerTranslations("en", {
             },
         },
         support: {
+            title: "Technical support",
             subTitle: "of the Studio's partners"
         },
         location: {
             title: "Location",
+        }
+    },
+    processPage: {
+        stages: {
+            title: {
+                planning: "Проектирование",
+                design: "Дизайн",
+                develop: "Разработка",
+                deploy: "Развертывание",
+                promotion: "Продвижение",
+                support: "Тех. поддержка"
+            },
+            subTitle: {
+                basedOnData: "на основе данных",
+                sketches: "скетчи",
+                prototypes: "прототипы",
+                frontBack: "front & back end",
+                applicationsOnServers: "приложений на серверах",
+                online: "online",
+                offline: "offline",
+                PR: "PR",
+                dev: "dev",
+                dsgn: "dsgn"
+            }
         }
     },
     errorPage: {
@@ -112,7 +137,7 @@ translate.registerTranslations("en", {
         support: "Technical support",
         PR: "PR",
         dev: "dev",
-        desgn: "desgn",
+        dsgn: "dsgn"
     },
     Kharkiv: "Kharkiv",
     Ukraine: "Ukraine",

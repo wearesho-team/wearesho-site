@@ -180,7 +180,7 @@ $indent-mobile: 3.5em;
       &.marker {
 
         &:before {
-
+          color: #C1C1C1;
           text-shadow: none;
         }
       }
@@ -242,6 +242,8 @@ $indent-mobile: 3.5em;
         left: -20px;
 
         text-shadow: none;
+
+        transition: color .3s ease;
 
         @include breakpoint($mobile) {
 
