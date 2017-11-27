@@ -1,5 +1,6 @@
 import {compareArrays} from "../../src/helpers/compareArrays";
 import {expect} from "chai";
+
 describe("compareArrays()", () => {
 
     const arrayOne = [1, 2, 3, 4];
