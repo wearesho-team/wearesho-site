@@ -2,6 +2,9 @@
 * Process structure styles
  */
 
+$process-structure-width: 1920px;
+$process-structure-height: 590px;
+
 // hover effects
 .section-process {
 
@@ -86,11 +89,33 @@
   }
 }
 
-.process-structure {
-  $process-structure-height: 590px;
+.process-structure_mob {
+  @include breakpoint($mobile) {
+    width:  538px;
+    height: 1378px;
 
+    position: absolute;
+
+    top: -24px;
+    left: 50%;
+
+    margin-left: -284px;
+
+    background: url('images/process-structure.png') no-repeat;
+    background-size: contain;
+
+    z-index: $under-zindex;
+  }
+
+  @include breakpoint($mobile-l) {
+
+    margin-left: -300px;
+  }
+}
+
+.process-structure {
   width: 100%;
-  max-width: 1920px;
+  max-width:$process-structure-width;
   height: auto;
   max-height: $process-structure-height;
 
@@ -110,14 +135,33 @@
 
   will-change: transform;
 
-  @include breakpoint($tablet-l) {
+  @include breakpoint($tablet-p) {
+
+    opacity: .3;
+  }
+
+  @include breakpoint($tablet) {
+    width: $process-structure-width;
+
     top: auto;
+    left: 50%;
     bottom: 0;
+
+    transform: translateY(4%);
+
+    margin: 3em 0 0 (-$process-structure-width / 2 - 226px);
   }
 
   @include breakpoint($laptop-small) {
+    width: $process-structure-width;
+
     top: auto;
+    left: 50%;
     bottom: 0;
+
+    transform: translateY(4%);
+
+    margin: 3em 0 0 (-$process-structure-width / 2 - 226px);
   }
 
   @include breakpoint($laptop-large) {
@@ -126,9 +170,25 @@
     left: -11em;
   }
 
+  @include breakpoint($laptop-xl) {
+    width: 100vw;
+
+    left: -16%;
+  }
+
   .stage-glow {
 
-    opacity: 0
+    opacity: 0;
+
+    @include breakpoint($mobile) {
+
+      opacity: 1;
+    }
+
+    @include breakpoint($tablet-p) {
+
+      opacity: 1;
+    }
   }
 
   .orbit {

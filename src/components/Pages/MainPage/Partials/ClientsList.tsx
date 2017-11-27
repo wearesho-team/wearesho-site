@@ -33,5 +33,19 @@ export const ClientsList: React.SFC<undefined> = () => (
                 {translate("hashTags.finances")}
             </span>
         </li>
+        <li className="clients-list__item">
+            <a
+                href="http://www.aim-partners.com/"
+                className="clients-list__link"
+                target="_blank"
+                rel="nofollow noopener"
+            >
+                AIM Group
+            </a>
+            <span className="clients-list__text">
+                {translate("hashTags.consulting")}&nbsp;
+                {translate("hashTags.finances")}
+            </span>
+        </li>
     </ul>
 );

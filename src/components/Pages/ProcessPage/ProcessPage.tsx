@@ -2,6 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import {ElementWithTimer, smartClearTimeout} from "../../../helpers/smartClearTimeout";
+import {OnTabletDesktop} from "../../../helpers/Breakpoints";
 import {getElementCoords} from "../../../helpers/getElementCoords";
 import {concat} from "../../../helpers/concat";
 
@@ -72,17 +73,27 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
     public render() {
         return (
             <section className={this.state.className}>
-                <ProcessStructure/>
+                <OnTabletDesktop>
+                    <ProcessStructure/>
+                </OnTabletDesktop>
                 <div className="align-container">
                     <h2 className="section__title">Процесс</h2>
                     <div className="section__half half_first">
-                        <h4 className="section__subtitle">Всего 5 этапов для полного цикла IT-услуг</h4>
-                        <p className="section__text">
-                            Или укажите свои контактные данные в форме ниже. Наши специалисты ответят на форме.
-                            Наши ответят на все ваши идиотские вопросы. Наши ответят на все ваши крайне.
-                        </p>
-                        <h5>Полную информацию вы можете увидеть в презентации</h5>
-                        <SubmitButton type="button" label="Скачать pdf"/>
+                        <div className="align-container">
+                            <h4 className="section__subtitle">
+                                Всего 6 этапов для полного
+                                <span> цикла IT-услуг</span>
+                            </h4>
+                            <p className="section__text">
+                                Студия работает с крупными финансовыми компаниями, создавая качественный продукт
+                                для эффективного и прибыльного бизнеса на основе аналитики отрасли. Мы обеспечиваем
+                                постоянную техническую поддержку и оптимизацию продукта
+                            </p>
+                        </div>
+                        <div className="align-container">
+                            <h5>Полную информацию вы можете увидеть в презентации</h5>
+                            <SubmitButton type="button" label="Скачать pdf"/>
+                        </div>
                     </div>
                     <SmartBreakpoint match="min-width: 1024px">
                         <Stages className="section__half half_second" ref={this.setContainer}/>
@@ -127,8 +138,9 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
     protected pushNewTimer(index: number): void {
         // if current grid already active or timer for it active
         if (
-            this.state.currentIndex === index ||
-            this.timers[index] !== undefined
+            this.state.currentIndex === index
+            || this.timers[index] !== undefined
+            || isNaN(index)
         ) {
             return;
         }
@@ -152,7 +164,7 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
     }
 
     protected async demonstrate(index: number): Promise<void> {
-        if (!ProcessPage.demonstrationMode) {
+        if (!ProcessPage.demonstrationMode || !this.stagesContainer) {
             return;
         }
 

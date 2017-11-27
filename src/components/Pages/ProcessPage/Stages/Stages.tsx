@@ -4,6 +4,7 @@ import {stages} from "../../../../data/ProjectStages/stages";
 
 import {translate} from "../../../../helpers/translate";
 import {toFixed} from "../../../../helpers/toFixed";
+import {OnMobile} from "../../../../helpers/Breakpoints";
 
 export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
     protected stageList: Array<{
@@ -23,12 +24,16 @@ export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
     }
 
     public render(): JSX.Element {
-
         return (
             <div {...this.props}>
-                {this.getStages(0, 3)}
+                <div className="align-container">
+                    {this.getStages(0, 3)}
+                </div>
                 <div className="stages-group">
                     {this.getStages(3, 3)}
+                    <OnMobile>
+                        <div className="process-structure_mob"/>
+                    </OnMobile>
                 </div>
             </div>
         );
