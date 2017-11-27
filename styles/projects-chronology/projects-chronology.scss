@@ -263,6 +263,8 @@
       &.is-filled {
         cursor: pointer;
 
+        z-index: 2;
+
         &:before {
           width: 400%;
           height: 400%;

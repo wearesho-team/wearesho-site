@@ -177,7 +177,7 @@
     .half_first {
       @include span(4 of 12 inside no-gutters);
 
-      padding-right: 11%;
+      padding-right: 12%;
 
       @include breakpoint($mobile) {
         @include span(12 of 12 inside no-gutters);

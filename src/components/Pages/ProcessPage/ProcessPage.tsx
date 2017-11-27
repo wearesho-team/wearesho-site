@@ -19,8 +19,8 @@ export class ProcessPage extends BasePage {
                     <div className="section__half half_first">
                         <div className="align-container">
                             <h4 className="section__subtitle">
-                                Всего 5 этапов для полного&nbsp;
-                                <span>цикла IT-услуг</span>
+                                Всего 6 этапов для полного
+                                <span> цикла IT-услуг</span>
                             </h4>
                             <p className="section__text">
                                 Студия работает с крупными финансовыми компаниями, создавая качественный продукт

@@ -92,7 +92,8 @@ translate.registerTranslations("en", {
         autodealer: "#autodealer",
         logistics: "#logistics",
         finances: "#finances",
-        crediting: "#crediting"
+        crediting: "#crediting",
+        consulting: "#consulting"
     },
     validation: {
         incorrect: {
@@ -111,7 +112,7 @@ translate.registerTranslations("en", {
         support: "Technical support",
         PR: "PR",
         dev: "dev",
-        desgn: "desgn"
+        desgn: "desgn",
     },
     Kharkiv: "Kharkiv",
     Ukraine: "Ukraine",
