@@ -56,9 +56,7 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
     }
 
     public componentWillUnmount() {
-        this.timers.forEach((timer) => {
-            clearTimeout(timer);
-        });
+        this.timers.forEach(clearTimeout);
 
         this.timers = [];
         this.clearTimeout();
