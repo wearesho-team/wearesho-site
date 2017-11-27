@@ -33,7 +33,6 @@ import {SubmitStatus} from "./SubmitStatus";
 import {TimeInput} from "./TimeInput";
 import {PhoneInput} from "./PhoneInput/PhoneInput";
 
-// tslint:disable:no-magic-numbers
 export class ContactForm extends React.Component<undefined, ContactFormState> implements ElementWithTimer {
     public static formStorageKey = "formData";
     public static readonly standByDelay = 5000;
@@ -227,15 +226,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                             focusClassName="in-focus"
                             errorClassName="has-error"
                         >
-                            {/*<AutoValidate groupName="phone">*/}
-                            {/*<Input*/}
-                            {/*className="form__control"*/}
-                            {/*placeholder={translate("contactPage.form.placeholders.phone")}*/}
-                            {/*type="tel"*/}
-                            {/*/>*/}
-                            {/*</AutoValidate>*/}
                             <AutoValidate groupName="phone">
-
                                 <PhoneInput
                                     className="form__control"
                                     placeholder={translate("contactPage.form.placeholders.phone")}

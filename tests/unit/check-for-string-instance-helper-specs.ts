@@ -1,6 +1,5 @@
 import {expect} from "chai";
 import {checkForStringInstance} from "../../src/helpers/checkForStringInstance";
-// tslint:disable:no-magic-numbers
 describe("checkForStringInstance()", () => {
 
     const stringOne = "test1";

@@ -14,6 +14,5 @@ interface Mask extends React.Component<any, any> {
     setCursorPos: (pos: number) => void;
 }
 
-// tslint:disable:no-var-requires
 // tslint:disable:no-submodule-imports
 export const ReactInputMask: Mask = require("react-input-mask/lib");

@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import {toFixed} from "../../src/helpers/toFixed";
-// tslint:disable:no-magic-numbers
+
 describe("toFixed()", () => {
 
     it("should return `00` when Number(0) if precision equals 2", () => {

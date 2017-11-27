@@ -68,10 +68,6 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
     }
 
     public componentWillReceiveProps(nextProps: CustomAnimationProps) {
-        if (ReactDOM.findDOMNode(this) === nextProps.children) {
-            return;
-        }
-
         this.setState({
             children: nextProps.children
         });
