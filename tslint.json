@@ -11,19 +11,13 @@
       "never"
     ],
     "jsx-key": true,
+    "no-var-requires": false,
     "jsx-no-bind": true,
     "jsx-no-lambda": true,
     "jsx-no-string-ref": true,
     "jsx-self-close": true,
     "jsx-wrap-multiline": true,
-    "no-magic-numbers": [
-      true,
-      -2,
-      -1,
-      0,
-      1,
-      2
-    ],
+    "no-magic-numbers": false,
     "no-reference": true,
     "curly": true,
     "await-promise": true,

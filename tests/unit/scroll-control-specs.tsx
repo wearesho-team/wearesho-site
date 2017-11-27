@@ -9,7 +9,7 @@ import {ScrollControl} from "../../src/components/ScrollControl";
 import {routeProps} from "../../src/data/routeProps";
 import {RouterContext} from "../../src/data/RouterContext";
 import {LayoutContext} from "../../src/components/Layout/LayoutContext";
-// tslint:disable:no-magic-numbers
+
 describe("<ScrollControl/>", () => {
     let wrapper: ReactWrapper<undefined, undefined>;
     let node: ScrollControl;
