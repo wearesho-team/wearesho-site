@@ -57,7 +57,10 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
             return;
         }
 
-        this.observer.observe(document.body, {attributeFilter: [this.props.startFeature.attribute], attributes: true});
+        this.observer.observe(document.body, {
+            attributeFilter: [this.props.startFeature.attribute],
+            attributes: true
+        });
     }
 
     public componentWillUnmount() {
