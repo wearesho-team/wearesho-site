@@ -12,6 +12,7 @@ import {ProcessPageState} from "./ProcessPageState";
 import {SubmitButton} from "../../Buttons";
 import {Stages} from "./Stages/Stages";
 import {BasePage} from "../BasePage";
+import {translate} from "../../../helpers/translate";
 
 export class ProcessPage extends BasePage<undefined, ProcessPageState> implements ElementWithTimer {
     public static readonly baseClassName = "section section-process";
@@ -77,22 +78,20 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
                     <ProcessStructure/>
                 </OnTabletDesktop>
                 <div className="align-container">
-                    <h2 className="section__title">Процесс</h2>
+                    <h2 className="section__title">{translate("processPage.title")}</h2>
                     <div className="section__half half_first">
                         <div className="align-container">
                             <h4 className="section__subtitle">
-                                Всего 6 этапов для полного
-                                <span> цикла IT-услуг</span>
+                                {translate("processPage.subTitlePart1")}
+                                <span>{translate("processPage.subTitlePart2")}</span>
                             </h4>
                             <p className="section__text">
-                                Студия работает с крупными финансовыми компаниями, создавая качественный продукт
-                                для эффективного и прибыльного бизнеса на основе аналитики отрасли. Мы обеспечиваем
-                                постоянную техническую поддержку и оптимизацию продукта
+                                {translate("processPage.text1")}
                             </p>
                         </div>
                         <div className="align-container">
-                            <h5>Полную информацию вы можете увидеть в презентации</h5>
-                            <SubmitButton type="button" label="Скачать pdf"/>
+                            <h5>{translate("processPage.text2")}</h5>
+                            <SubmitButton type="button" label={translate("buttons.download")}/>
                         </div>
                     </div>
                     <SmartBreakpoint match="min-width: 1024px">

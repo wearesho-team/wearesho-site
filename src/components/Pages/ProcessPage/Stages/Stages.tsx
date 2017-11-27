@@ -6,7 +6,13 @@ import {translate} from "../../../../helpers/translate";
 import {toFixed} from "../../../../helpers/toFixed";
 import {OnMobile} from "../../../../helpers/Breakpoints";
 
+import {LayoutContext, LayoutContextTypes} from "../../../Layout/LayoutContext";
+
 export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
+    public static readonly contextTypes = LayoutContextTypes;
+
+    public readonly context: LayoutContext;
+
     protected stageList: Array<{
         title: string,
         subTitle: string
@@ -23,6 +29,17 @@ export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
         });
     }
 
+    public componentWillUpdate(P: any, S: undefined, nextContext: LayoutContext) {
+        if (nextContext.language !== this.context.language) {
+            this.stageList = stages.map(({title, subTitle}) => {
+                return {
+                    title: translate(`processPage.stages.title.${title}`),
+                    subTitle: subTitle.map((item) => translate(`processPage.stages.subTitle.${item}`)).join(" / ")
+                }
+            });
+        }
+    }
+
     public render(): JSX.Element {
         return (
             <div {...this.props}>
@@ -31,10 +48,10 @@ export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
                 </div>
                 <div className="stages-group">
                     {this.getStages(3, 3)}
-                    <OnMobile>
-                        <div className="process-structure_mob"/>
-                    </OnMobile>
                 </div>
+                <OnMobile>
+                    <div className="process-structure_mob"/>
+                </OnMobile>
             </div>
         );
     }
