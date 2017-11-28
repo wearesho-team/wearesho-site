@@ -79,21 +79,29 @@ translate.registerTranslations("en", {
         }
     },
     processPage: {
+        title: "Process",
+        subTitlePart1: "Total 6 steps for a full",
+        subTitlePart2: " cycle of IT services",
+        text1: "The studio works with large financial companies, creating a quality product for effective" +
+        " and a profitable business based on industry analysts. We provide ongoing technical support and" +
+        " product optimization.",
+        text2: "Full information you can see in the presentation",
+        btn: "Download pdf",
         stages: {
             title: {
-                planning: "Проектирование",
-                design: "Дизайн",
-                develop: "Разработка",
-                deploy: "Развертывание",
-                promotion: "Продвижение",
-                support: "Тех. поддержка"
+                planning: "Planning",
+                design: "Design",
+                develop: "Development",
+                deploy: "Deployment",
+                promotion: "Promotion",
+                support: "Support"
             },
             subTitle: {
-                basedOnData: "на основе данных",
-                sketches: "скетчи",
-                prototypes: "прототипы",
+                basedOnData: "based on data",
+                sketches: "sketches",
+                prototypes: "prototypes",
                 frontBack: "front & back end",
-                applicationsOnServers: "приложений на серверах",
+                applicationsOnServers: "applications on servers",
                 online: "online",
                 offline: "offline",
                 PR: "PR",
@@ -111,7 +119,8 @@ translate.registerTranslations("en", {
     buttons: {
         send: "Send",
         sending: "Sending",
-        cooperate: "Cooperate"
+        cooperate: "Cooperate",
+        download: "Download pdf"
     },
     hashTags: {
         autodealer: "#autodealer",
@@ -137,7 +146,8 @@ translate.registerTranslations("en", {
         support: "Technical support",
         PR: "PR",
         dev: "dev",
-        dsgn: "dsgn"
+        dsgn: "dsgn",
+        beginning: "beginning of cooperation"
     },
     Kharkiv: "Kharkiv",
     Ukraine: "Ukraine",
