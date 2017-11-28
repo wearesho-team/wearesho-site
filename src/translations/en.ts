@@ -85,8 +85,8 @@ translate.registerTranslations("en", {
         text1: "The studio works with large financial companies, creating a quality product for effective" +
         " and a profitable business based on industry analysts. We provide ongoing technical support and" +
         " product optimization.",
-        text2: "Full information you can see in the presentation",
-        btn: "Download pdf",
+        text2: "Features of the development process are discussed when the project is approved",
+        // text2: "Full information you can see in the presentation",
         stages: {
             title: {
                 planning: "Planning",

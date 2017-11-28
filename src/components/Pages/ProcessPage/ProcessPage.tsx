@@ -1,18 +1,19 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import {Link} from "react-router-dom"
 
 import {ElementWithTimer, smartClearTimeout} from "../../../helpers/smartClearTimeout";
-import {OnTabletDesktop} from "../../../helpers/Breakpoints";
 import {getElementCoords} from "../../../helpers/getElementCoords";
+import {OnTabletDesktop} from "../../../helpers/Breakpoints";
+import {translate} from "../../../helpers/translate";
 import {concat} from "../../../helpers/concat";
 
 import {SmartBreakpoint} from "../../SmartBreakpoint/SmartBreakpoint";
 import {ProcessStructure} from "../../Icons/ProcessStructure";
+import {getCorners} from "../../Buttons/SubmitButton";
 import {ProcessPageState} from "./ProcessPageState";
-import {SubmitButton} from "../../Buttons";
 import {Stages} from "./Stages/Stages";
 import {BasePage} from "../BasePage";
-import {translate} from "../../../helpers/translate";
 
 export class ProcessPage extends BasePage<undefined, ProcessPageState> implements ElementWithTimer {
     public static readonly baseClassName = "section section-process";
@@ -91,7 +92,10 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
                         </div>
                         <div className="align-container">
                             <h5>{translate("processPage.text2")}</h5>
-                            <SubmitButton type="button" label={translate("buttons.download")}/>
+                            <Link className="btn btn_primary" to="/partnership">
+                                {translate("buttons.cooperate")}
+                                {getCorners()}
+                            </Link>
                         </div>
                     </div>
                     <SmartBreakpoint match="min-width: 1024px">
