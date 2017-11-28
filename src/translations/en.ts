@@ -147,7 +147,7 @@ translate.registerTranslations("en", {
         PR: "PR",
         dev: "dev",
         dsgn: "dsgn",
-        beginning: "beginning of cooperation"
+        beginning: "Beginning of cooperation"
     },
     Kharkiv: "Kharkiv",
     Ukraine: "Ukraine",

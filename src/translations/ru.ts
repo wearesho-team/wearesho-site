@@ -149,7 +149,7 @@ translate.registerTranslations("ru", {
         PR: "PR",
         dev: "dev",
         dsgn: "dsgn",
-        beginning: "начало сотрудничества"
+        beginning: "Начало сотрудничества"
     },
     Kharkiv: "Харьков",
     Ukraine: "Украина",
