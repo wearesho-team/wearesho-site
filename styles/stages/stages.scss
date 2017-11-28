@@ -158,7 +158,7 @@ $indent-mobile: 3.5em;
 .stage {
   padding-left: 1em;
 
-  cursor: pointer;
+  cursor: default;
 
   @include breakpoint($mobile) {
     @include span(8 of 12 inside no-gutters);
