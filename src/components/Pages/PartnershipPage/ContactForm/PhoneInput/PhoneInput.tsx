@@ -20,6 +20,10 @@ export class PhoneInput extends BaseInput<HTMLInputElement> {
     }
 
     public async componentDidUpdate() {
+        if (document.activeElement !== this.maskElement.input) {
+            return;
+        }
+
         this.maskElement.setCursorPos(this.maskElement.input.selectionStart);
         if (this.maskElement.value !== this.context.value) {
             // tslint:disable:no-object-literal-type-assertion
@@ -32,7 +36,7 @@ export class PhoneInput extends BaseInput<HTMLInputElement> {
         }
     }
 
-    public render() {
+    public render(): JSX.Element {
         const {maskList, ...nativeProps} = this.childProps as PhoneInputProps;
 
         const value = this.context.value || "";
@@ -47,7 +51,7 @@ export class PhoneInput extends BaseInput<HTMLInputElement> {
                 maskChar: "",
                 type: "tel",
                 value,
-                mask,
+                mask
             }
         };
 
@@ -56,7 +60,7 @@ export class PhoneInput extends BaseInput<HTMLInputElement> {
         );
     }
 
-    protected setElement = (element: typeof ReactInputMask) => {
+    protected setElement = (element: typeof ReactInputMask): void => {
         if (!(element instanceof ReactInputMask)) {
             this.maskElement = undefined;
             return;
@@ -73,7 +77,19 @@ export class PhoneInput extends BaseInput<HTMLInputElement> {
             .reduce((prev, curr) => prev.replace(/\D/g, "").length > valueLength ? prev : curr)
     }
 
-    protected handlePaste = (event: ClipboardEvent) => {
+    protected handlePaste = async (event: ClipboardEvent): Promise<void> => {
         event.preventDefault();
+
+        const value = event.clipboardData.getData("Text");
+        if (!value) {
+            return;
+        }
+
+        // tslint:disable:no-object-literal-type-assertion
+        await this.handleChange({
+            currentTarget: {
+                value: event.clipboardData.getData("Text")
+            }
+        } as React.ChangeEvent<HTMLInputElement>);
     }
 }
