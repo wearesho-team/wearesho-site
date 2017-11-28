@@ -91,25 +91,20 @@ $process-structure-height: 590px;
 
 .process-structure_mob {
   @include breakpoint($mobile) {
-    width:  538px;
-    height: 1378px;
+    width:  451px;
+    height: 872px;
+
+    background: url('images/process-structure-mobl.png') no-repeat;
+    background-size: contain;
 
     position: absolute;
 
-    top: -24px;
+    top: -18px;
     left: 50%;
 
-    margin-left: -284px;
-
-    background: url('images/process-structure.png') no-repeat;
-    background-size: contain;
+    margin-left: -223px;
 
     z-index: $under-zindex;
-  }
-
-  @include breakpoint($mobile-l) {
-
-    margin-left: -300px;
   }
 }
 

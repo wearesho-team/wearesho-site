@@ -142,6 +142,12 @@
   }
 
   &.section-process {
+
+    > .align-container {
+
+      position: relative;
+    }
+
     // Strange hover bug fix
     .section__half {
 
@@ -206,6 +212,11 @@
       @include breakpoint($laptop-medium) {
 
         padding-right: 7%;
+      }
+
+      @include breakpoint($laptop-large) {
+
+        padding-right: 8%;
       }
 
       > .align-container {
@@ -321,24 +332,57 @@
     .half_second {
       @include span(8 of 12 inside no-gutters);
 
-      @include breakpoint($mobile) {
+      position: absolute;
+
+      top: 50%;
+      right: 0;
+
+      transform: translateY(-50%);
+
+      margin-top: 62px;
+
+      padding-top: 0;
+
+      @include breakpoint($mobile-tablet) {
         @include span(12 of 12 inside no-gutters);
 
         float: none;
 
-        position: relative;
+        position: static;
+
+        top: auto;
+        right: auto;
+
+        transform: translateY(0);
+
+        margin-top: 0;
+        padding-top: 42px;
       }
 
-      @include breakpoint($tablet) {
-        @include span(12 of 12 inside no-gutters);
+      @include breakpoint($mobile) {
 
-        float: none;
+        position: relative;
       }
 
       @include breakpoint($laptop-small) {
         @include span(12 of 12 inside no-gutters);
 
         float: none;
+
+        position: static;
+
+        top: auto;
+        right: auto;
+
+        transform: translateY(0);
+
+        margin-top: 0;
+        padding-top: 42px;
+      }
+
+      @include breakpoint($laptop-medium) {
+
+        margin-top: 45px;
       }
 
       > .align-container {
@@ -409,8 +453,6 @@
 
       &.half_second {
         @include span(6 of 12 inside no-gutters last);
-
-        @include clearfix;
 
         @include breakpoint($mobile-tablet) {
 
@@ -554,6 +596,8 @@
   .section__half {
     @include span(6 of 12 inside no-gutters);
 
+    @include clearfix;
+
     font-size: .938em;
     font-weight: $font-style-light;
 
@@ -690,14 +734,6 @@
         @include breakpoint($mobile) {
 
           margin-bottom: 1em;
-        }
-      }
-
-      &:last-child {
-
-        > .clients-list__link {
-
-          text-transform: uppercase;
         }
       }
     }

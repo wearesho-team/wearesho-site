@@ -91,5 +91,5 @@ var language = (function () {
     var readyHTML = document.body.querySelector(".section__subtitle > span:last-child");
 
     greetingHTML.innerHTML = "Welcome";
-    readyHTML.innerHTML = "our team is ready to implement your idea's";
+    readyHTML.innerHTML = "our team is ready to implement your ideas";
 }());

@@ -22,7 +22,7 @@ export const ClientsList: React.SFC<undefined> = () => (
         <li className="clients-list__item">
             <a
                 href="https://infinance.com.ua/"
-                className="clients-list__link"
+                className="clients-list__link text_upper"
                 target="_blank"
                 rel="nofollow noopener"
             >

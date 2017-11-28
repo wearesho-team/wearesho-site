@@ -380,7 +380,7 @@ $indent-mobile: 3.5em;
       text-align: right;
 
       @include breakpoint($mobile) {
-        margin-top: 2em;
+        margin-top: 2.25em;
 
         margin-left: (100% / 3);
 
