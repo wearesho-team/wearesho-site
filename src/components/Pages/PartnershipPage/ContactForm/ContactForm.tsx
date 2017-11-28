@@ -30,8 +30,8 @@ import {concat} from "../../../../helpers/concat";
 import {SubmitButton} from "../../../Buttons/SubmitButton";
 import {ContactFormState} from "./ContactFormState";
 import {SubmitStatus} from "./SubmitStatus";
+import {PhoneInput} from "./PhoneInput";
 import {TimeInput} from "./TimeInput";
-import {PhoneInput} from "./PhoneInput/PhoneInput";
 
 export class ContactForm extends React.Component<undefined, ContactFormState> implements ElementWithTimer {
     public static formStorageKey = "formData";

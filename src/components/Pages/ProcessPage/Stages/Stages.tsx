@@ -2,9 +2,9 @@ import * as React from "react";
 
 import {stages} from "../../../../data/ProjectStages/stages";
 
+import {OnMobile} from "../../../../helpers/Breakpoints";
 import {translate} from "../../../../helpers/translate";
 import {toFixed} from "../../../../helpers/toFixed";
-import {OnMobile} from "../../../../helpers/Breakpoints";
 
 import {LayoutContext, LayoutContextTypes} from "../../../Layout/LayoutContext";
 
