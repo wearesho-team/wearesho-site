@@ -19,7 +19,8 @@ describe("<PhoneInput/>", () => {
     const defaultValue = "380604513512";
     const maskList = ["9999", "(999) 999-99-999", "(999) 999-9999-9999"];
 
-    const onChange = commonHandler;
+    let onChangeTriggered = false;
+    const onChange = () => onChangeTriggered = true;
     const onAttributeChange = commonHandler;
     const onFocus = commonHandler;
     const onMount = commonHandler;
@@ -40,6 +41,7 @@ describe("<PhoneInput/>", () => {
 
     afterEach(() => {
         wrapper.unmount();
+        onChangeTriggered = false;
     });
 
     it("Should set mask according to value length", () => {
@@ -51,6 +53,8 @@ describe("<PhoneInput/>", () => {
 
         simulateChange("00000000000000");
         expect((wrapper.getDOMNode() as any).value).to.equal("(000) 000-0000-0000");
+
+        expect(onChangeTriggered).to.be.true;
     });
 
     it("Should prevent default on paste", () => {
@@ -62,4 +66,23 @@ describe("<PhoneInput/>", () => {
         expect(defaultPrevented).to.be.true;
     });
 
+    it("Should ignore paste event if data does not parsed from clipboard", () => {
+        wrapper.simulate("paste", {
+            clipboardData: {
+                getData: () => undefined
+            }
+        });
+
+        expect(onChangeTriggered).to.be.false;
+    });
+
+    it("Should trigger onChange on paste event if data exist in clipboard", () => {
+        wrapper.simulate("paste", {
+            clipboardData: {
+                getData: () => "Some awesome data"
+            }
+        });
+
+        expect(onChangeTriggered).to.be.true;
+    });
 });
