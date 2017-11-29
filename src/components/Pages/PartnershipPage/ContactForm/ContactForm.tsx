@@ -12,7 +12,8 @@ import {
     Label,
     TransformTypes,
     FormContext,
-    ModelError, AutoFocus,
+    ModelError,
+    AutoFocus
 } from "react-context-form";
 
 import {ContactFormModel, instantiateContactFormModel} from "../../../../models/ContactFormModel";

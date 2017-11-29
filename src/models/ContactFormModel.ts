@@ -1,5 +1,5 @@
-import {Model, ModelError} from "react-context-form";
-import {IsDefined, IsNotEmpty, Matches, validate, ValidationError, ValidationOptions} from "class-validator";
+import {Model} from "react-context-form";
+import {IsDefined, IsNotEmpty, Matches} from "class-validator";
 
 import {translate} from "../helpers/translate";
 
