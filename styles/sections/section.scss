@@ -20,7 +20,7 @@
   }
 
   &__text {
-    line-height: 1.6em;
+    line-height: 26px;
 
     @include breakpoint($laptop-medium) {
 
@@ -342,6 +342,8 @@
       margin-top: 62px;
 
       padding-top: 0;
+
+      backface-visibility: hidden;
 
       @include breakpoint($mobile-tablet) {
         @include span(12 of 12 inside no-gutters);
