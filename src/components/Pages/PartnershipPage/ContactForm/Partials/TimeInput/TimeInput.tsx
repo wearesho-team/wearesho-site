@@ -17,7 +17,9 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
     public readonly minutesFormat = 59;
 
     public props: TimeInputProps;
+
     protected maskElement: typeof ReactInputMask;
+    protected currentCursorPosition: number;
 
     public get inputValue(): string {
         return this.maskElement
@@ -30,7 +32,9 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
             ...this.childProps,
             ...{
                 onChange: this.handleChangeControl,
+                onInput: this.handleInput,
                 value: this.context.value,
+                onBlur: () => undefined,
                 ref: this.setElement,
                 type: "tel",
             }
@@ -58,6 +62,10 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         }
     };
 
+    protected handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.currentCursorPosition = event.target.selectionStart
+    };
+
     protected handleChangeControl = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
         const value = event.currentTarget.value.replace(/-/g, "0").split(":");
 
@@ -67,11 +75,11 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         hours = hours > this.hoursFormat ? this.hoursFormat : toFixed(2, hours);
         minutes = minutes > this.minutesFormat ? this.minutesFormat : toFixed(2, minutes);
 
-        this.maskElement && this.maskElement.setInputValue(`${hours}:${minutes}`);
+        if (this.currentCursorPosition === value.length) {
+            await this.context.onBlur();
+        }
 
-        this.caretControl(minutes, this.context.value.split(":")[1]);
-
-        // tslint:disable:no-object-literal-type-assertion
+        //tslint:disable:no-object-literal-type-assertion
         const newEvent = {
             currentTarget: {
                 value: `${hours}:${minutes}`
@@ -111,14 +119,5 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
                 value: `${hours}:${valuesArray[1]}`
             }
         } as React.ChangeEvent<HTMLInputElement>;
-    }
-
-    protected caretControl(currentMinutes, prevMinutes): void {
-        if (
-            currentMinutes.split("")[1] !== prevMinutes.split("")[1]
-            && this.maskElement.lastCursorPos === 4
-        ) {
-            console.log("Caret at the end");
-        }
     }
 }

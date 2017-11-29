@@ -220,7 +220,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                     <div className="form__group spinner__group">
                         <FormGroup name="from" className="spinner">
                             <Label className="spinner__label">{translate("contactPage.form.time.from")}</Label>
-                            <AutoFocus to="to" groupName="to">
+                            <AutoFocus to="to" groupName="from">
                                 <TimeInput className="form__control"/>
                             </AutoFocus>
                         </FormGroup>
