@@ -1,11 +1,116 @@
 /**
 * Process structure styles
  */
-.process-structure {
-  $process-structure-height: 590px;
 
+$process-structure-width: 1920px;
+$process-structure-height: 590px;
+
+// hover effects
+.section-process {
+
+  &.from-1 {
+    .stage-glow.from-first {
+      animation: appearance-disappearance 2s ease-out;
+
+      &_under {
+
+        animation: appearance-disappearance 1.25s ease-out .25s;
+      }
+    }
+
+    .orbit.from-first {
+
+      animation: from-first 1s ease .25s;
+    }
+  }
+
+  &.from-2 {
+    .stage-glow.from-second {
+      animation: appearance-disappearance 2s ease-out;
+
+      &_under {
+
+        animation: appearance-disappearance 1.25s ease-out .25s;
+      }
+    }
+
+    .orbit.from-second {
+
+      animation: from-second 1s ease .25s;
+    }
+
+  }
+
+  &.from-3 {
+    .stage-glow.from-third {
+      animation: appearance-disappearance 2s ease-out;
+
+      &_under {
+
+        animation: appearance-disappearance 1.25s ease-out .25s;
+      }
+    }
+
+    .orbit.from-third {
+      &_top {
+
+        animation: from-third-top 1s ease .25s;
+      }
+
+      &_bottom {
+
+        animation: from-third-bottom 1s ease .25s;
+      }
+
+    }
+  }
+
+  &.from-4 {
+    .stage-glow.from-last {
+      animation: appearance-disappearance 2s ease-out;
+
+      &_under {
+
+        animation: appearance-disappearance 1.25s ease-out .25s;
+      }
+    }
+
+    .orbit.from-last {
+      &_top {
+
+        animation: from-last-top 1s ease .25s;
+      }
+
+      &_bottom {
+
+        animation: from-last-bottom 1s ease .25s;
+      }
+    }
+  }
+}
+
+.process-structure_mob {
+  @include breakpoint($mobile) {
+    width:  451px;
+    height: 872px;
+
+    background: url('images/process-structure-mobl.png') no-repeat;
+    background-size: contain;
+
+    position: absolute;
+
+    top: -18px;
+    left: 50%;
+
+    margin-left: -223px;
+
+    z-index: $under-zindex;
+  }
+}
+
+.process-structure {
   width: 100%;
-  max-width: 1920px;
+  max-width:$process-structure-width;
   height: auto;
   max-height: $process-structure-height;
 
@@ -21,14 +126,37 @@
 
   z-index: $under-zindex;
 
-  @include breakpoint($tablet-l) {
+  backface-visibility: hidden;
+
+  will-change: transform;
+
+  @include breakpoint($tablet-p) {
+
+    opacity: .3;
+  }
+
+  @include breakpoint($tablet) {
+    width: $process-structure-width;
+
     top: auto;
+    left: 50%;
     bottom: 0;
+
+    transform: translateY(4%);
+
+    margin: 3em 0 0 (-$process-structure-width / 2 - 226px);
   }
 
   @include breakpoint($laptop-small) {
+    width: $process-structure-width;
+
     top: auto;
+    left: 50%;
     bottom: 0;
+
+    transform: translateY(4%);
+
+    margin: 3em 0 0 (-$process-structure-width / 2 - 226px);
   }
 
   @include breakpoint($laptop-large) {
@@ -37,67 +165,33 @@
     left: -11em;
   }
 
-  &:hover {
+  @include breakpoint($laptop-xl) {
+    width: 100vw;
 
-    .stage-glow {
-      animation: appearance-disappearance 2s ease-out;
-
-      &_under {
-
-        animation: appearance-disappearance 1.25s ease-out .25s;
-      }
-    }
-
-    .orbit {
-      animation: appearance-disappearance 1s ease .25s;
-
-      &.from-first {
-
-        transform: translate(106px, 73px);
-      }
-
-      &.from-second {
-
-        transform: translate(-95px, 324px) rotate(-17deg);
-      }
-
-      &.from-third {
-
-        &_top {
-
-          transform: matrix(-0.94, 0.342, -0.342, -0.94, 1780, 701);
-        }
-
-        &_bottom {
-
-          transform: matrix(0.819, -0.574, 0.574, 0.819, -91, 658);
-        }
-      }
-
-      &.from-last {
-
-        &_top {
-
-          transform: matrix(-0.07, -0.998, 0.998, -0.07, 1370, 1114);
-        }
-
-        &_bottom {
-
-          transform: matrix(-0.07, -0.998, 0.998, -0.07, 1310, 1177);
-        }
-      }
-    }
+    left: -16%;
   }
 
   .stage-glow {
 
     opacity: 0;
+
+    @include breakpoint($mobile) {
+
+      opacity: 1;
+    }
+
+    @include breakpoint($tablet-p) {
+
+      opacity: 1;
+    }
   }
 
   .orbit {
     opacity: 0;
 
-    transition: transform 1.25s ease .25s;
+    backface-visibility: hidden;
+
+    will-change: transform;
 
     &.from-first {
 

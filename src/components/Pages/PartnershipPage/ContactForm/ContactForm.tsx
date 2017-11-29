@@ -1,7 +1,7 @@
 // tslint:disable:max-file-line-count
 import {TransitionGroup, CSSTransition} from "react-transition-group";
-import * as React from "react";
 import * as ReactDOM from "react-dom";
+import * as React from "react";
 import axios from "axios";
 import {
     AutoValidate,
@@ -12,7 +12,7 @@ import {
     Label,
     TransformTypes,
     FormContext,
-    ModelError, AutoFocus
+    ModelError, AutoFocus,
 } from "react-context-form";
 
 import {ContactFormModel, instantiateContactFormModel} from "../../../../models/ContactFormModel";
@@ -237,4 +237,5 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
             </Form>
         );
     }
+
 }

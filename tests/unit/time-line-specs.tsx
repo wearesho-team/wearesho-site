@@ -7,7 +7,6 @@ import {TimeLine, TimeLineState, TimeLineProps} from "../../src/components/TimeL
 import {YearItem} from "../../src/components/TimeLine/YearItem";
 import {projects} from "../../src/data/Projects";
 
-
 describe("<TimeLine/>", () => {
     let wrapper: ReactWrapper<TimeLineProps, TimeLineState>;
     let timer: SinonFakeTimers;

@@ -32,9 +32,8 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
             ...this.childProps,
             ...{
                 onChange: this.handleChangeControl,
-                onInput: this.handleInput,
                 value: this.context.value,
-                onBlur: () => undefined,
+                onInput: this.handleInput,
                 ref: this.setElement,
                 type: "tel",
             }
@@ -75,11 +74,7 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         hours = hours > this.hoursFormat ? this.hoursFormat : toFixed(2, hours);
         minutes = minutes > this.minutesFormat ? this.minutesFormat : toFixed(2, minutes);
 
-        if (this.currentCursorPosition === value.length) {
-            await this.context.onBlur();
-        }
-
-        //tslint:disable:no-object-literal-type-assertion
+        // tslint:disable:no-object-literal-type-assertion
         const newEvent = {
             currentTarget: {
                 value: `${hours}:${minutes}`
@@ -87,6 +82,13 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         } as React.ChangeEvent<HTMLInputElement>;
 
         await this.handleChange(newEvent);
+
+        if (this.currentCursorPosition >= value.join(":").length) {
+            // IOS Auto focus bug fix
+            setTimeout(() => {
+                (document.activeElement as any).blur();
+            }, 100);
+        }
     };
 
     protected handleIncrement = async () => {

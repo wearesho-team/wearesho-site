@@ -15,8 +15,24 @@
     ],
     "date": {
       "year": 2017,
-      "month": 10,
+      "month": 8,
       "day": 27
+    }
+  },
+  {
+    "title": [
+      {
+        "name": "AIM Group",
+        "url": "http://www.aim-partners.com/"
+      }
+    ],
+    "description": [
+      "beginning"
+    ],
+    "date": {
+      "year": 2017,
+      "month": 6,
+      "day": 21
     }
   },
   {
@@ -31,7 +47,7 @@
       }
     ],
     "description": [
-      "desgn",
+      "dsgn",
       "dev",
       "PR"
     ],
@@ -53,7 +69,7 @@
       }
     ],
     "description": [
-      "desgn",
+      "dsgn",
       "dev",
       "PR"
     ],
@@ -75,7 +91,7 @@
       }
     ],
     "description": [
-      "desgn",
+      "dsgn",
       "dev",
       "PR"
     ],

@@ -13,7 +13,6 @@ export interface ContactFormState {
     data?: ContactFormData
 }
 
-
 export const ContactFormDataPropTypes = {
     name: PropTypes.string.isRequired,
     from: PropTypes.string,

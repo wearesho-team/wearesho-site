@@ -72,10 +72,43 @@ translate.registerTranslations("ru", {
             },
         },
         support: {
+            title: "Техническая поддержка",
             subTitle: "партнеров Cтудии"
         },
         location: {
             title: "Локация",
+        }
+    },
+    processPage: {
+        title: "Процесс",
+        subTitlePart1: "Всего 6 этапов для полного",
+        subTitlePart2: " цикла IT-услуг",
+        text1: "Студия работает с крупными финансовыми компаниями, создавая качественный продукт для эффективного" +
+        " и прибыльного бизнеса на основе аналитики отрасли. Мы обеспечиваем постоянную техническую поддержку и" +
+        " оптимизацию продукта.",
+        text2: "Особенности процесса разработки обсуждаются при согласовании проекта",
+        // text2: "Полную информацию вы можете увидеть в презентации",
+        stages: {
+            title: {
+                planning: "Проектирование",
+                design: "Дизайн",
+                develop: "Разработка",
+                deploy: "Развертывание",
+                promotion: "Продвижение",
+                support: "Тех. поддержка"
+            },
+            subTitle: {
+                basedOnData: "на основе данных",
+                sketches: "скетчи",
+                prototypes: "прототипы",
+                frontBack: "front & back end",
+                applicationsOnServers: "приложений на серверах",
+                online: "online",
+                offline: "offline",
+                PR: "PR",
+                dev: "dev",
+                dsgn: "dsgn"
+            }
         }
     },
     errorPage: {
@@ -87,13 +120,16 @@ translate.registerTranslations("ru", {
     buttons: {
         send: "Отправить",
         sending: "Отправка",
-        cooperate: "Сотрудничать"
+        cooperate: "Сотрудничать",
+        download: "Скачать pdf"
     },
     hashTags: {
         autodealer: "#автодилер",
         logistics: "#логистика",
         finances: "#финансы",
-        crediting: "#кредитование"
+        crediting: "#кредитование",
+        consulting: "#консалтинг"
+
     },
     validation: {
         incorrect: {
@@ -112,7 +148,8 @@ translate.registerTranslations("ru", {
         support: "Техническая поддержка",
         PR: "PR",
         dev: "dev",
-        desgn: "desgn"
+        dsgn: "dsgn",
+        beginning: "Начало сотрудничества"
     },
     Kharkiv: "Харьков",
     Ukraine: "Украина",

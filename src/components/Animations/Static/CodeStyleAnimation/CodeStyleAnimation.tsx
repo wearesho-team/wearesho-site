@@ -1,16 +1,16 @@
 import * as React from "react";
-import { raf } from "../../../../helpers/imports/raf"
+import {raf} from "../../../../helpers/imports/raf"
 
-import { checkForStringArrayInstance } from "../../../../helpers/checkForStringArrayInstance";
-import { ElementWithTimer, smartClearTimeout } from "../../../../helpers/smartClearTimeout";
-import { checkForStringInstance } from "../../../../helpers/checkForStringInstance";
+import {checkForStringArrayInstance} from "../../../../helpers/checkForStringArrayInstance";
+import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
+import {checkForStringInstance} from "../../../../helpers/checkForStringInstance";
 
 import {
     CodeStyleAnimationDefaultProps,
     CodeStyleAnimationProps,
     CodeStyleAnimationPropTypes
 } from "./CodeStyleAnimationProps";
-import { CodeStyleAnimationState } from "./CodeStyleAnimationState";
+import {CodeStyleAnimationState} from "./CodeStyleAnimationState";
 
 export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps, CodeStyleAnimationState>
     implements ElementWithTimer {
@@ -24,9 +24,9 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
     protected sourceChild: string;
 
     protected observer = new MutationObserver((mutations) => {
-        const { target } = mutations[0];
+        const {target} = mutations[0];
 
-        const { element, attribute, value } = this.props.startFeature;
+        const {element, attribute, value} = this.props.startFeature;
         if (target !== element || target.attributes.getNamedItem(attribute).value !== value) {
             return;
         }
@@ -110,7 +110,7 @@ export class CodeStyleAnimation extends React.Component<CodeStyleAnimationProps,
     };
 
     protected get caret(): JSX.Element {
-        return <i key="caret" className="caret" />;
+        return <i key="caret" className="caret"/>;
     }
 
     protected getFormattedChild(children: CodeStyleAnimationProps["children"]): string {

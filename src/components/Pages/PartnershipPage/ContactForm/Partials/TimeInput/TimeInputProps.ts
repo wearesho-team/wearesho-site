@@ -16,5 +16,5 @@ export const TimeInputPropTypes = {
 export const TimeInputDefaultProps = {
     mask: "99:99",
     maskChar: "-",
-    alwaysShowMask: true
+    alwaysShowMask: true,
 };

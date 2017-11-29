@@ -1,6 +1,15 @@
 /**
 * Icons connection
  */
+html[lang="en"] {
+
+  .icon_logo {
+    width: 67px;
+
+    background-image: url('images/icon_sho-en.svg');
+  }
+}
+
 .icon {
   display: inline-block;
 

@@ -22,7 +22,7 @@ export const ClientsList: React.SFC<undefined> = () => (
         <li className="clients-list__item">
             <a
                 href="https://infinance.com.ua/"
-                className="clients-list__link"
+                className="clients-list__link text_upper"
                 target="_blank"
                 rel="nofollow noopener"
             >
@@ -30,6 +30,20 @@ export const ClientsList: React.SFC<undefined> = () => (
             </a>
             <span className="clients-list__text">
                 {translate("hashTags.crediting")}&nbsp;
+                {translate("hashTags.finances")}
+            </span>
+        </li>
+        <li className="clients-list__item">
+            <a
+                href="http://www.aim-partners.com/"
+                className="clients-list__link"
+                target="_blank"
+                rel="nofollow noopener"
+            >
+                AIM Group
+            </a>
+            <span className="clients-list__text">
+                {translate("hashTags.consulting")}&nbsp;
                 {translate("hashTags.finances")}
             </span>
         </li>

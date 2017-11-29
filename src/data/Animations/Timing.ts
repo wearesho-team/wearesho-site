@@ -1,4 +1,3 @@
-
 const showingDelay = ((window as any).hideTimeout || 2000) * 4;
 const typingDelay = showingDelay + 500;
 

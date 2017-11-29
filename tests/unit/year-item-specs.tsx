@@ -19,8 +19,8 @@ describe("<YearItem/>", () => {
     const futureYear = (new Date()).getFullYear() + (new Date()).getFullYear();
 
     const date: DateInterface = {
-        year: projects[projects.length - 1].date.year,
-        month: projects[projects.length - 1].date.month,
+        year: projects[0].date.year,
+        month: projects[0].date.month,
         day: 1,
     };
 
