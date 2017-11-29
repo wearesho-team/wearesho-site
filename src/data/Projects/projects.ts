@@ -1,9 +1,10 @@
 import {ProjectInterface} from "./ProjectInterface";
+import {toFixed} from "../../helpers/toFixed";
 
 export const projects: ProjectInterface [] = require("./projectsList.json")
     .sort((prev, next) => {
-        const prevStringFormat = Number(`${prev.date.year}${prev.date.month}${prev.date.day}`);
-        const nextStringFormat = Number(`${next.date.year}${next.date.month}${next.date.day}`);
+        const prevFormat = Number(`${prev.date.year}${toFixed(2, prev.date.month)}${toFixed(2, prev.date.day)}`);
+        const nextFormat = Number(`${next.date.year}${toFixed(2, next.date.month)}${toFixed(2, next.date.day)}`);
 
-        return prevStringFormat - nextStringFormat;
+        return prevFormat - nextFormat;
     });

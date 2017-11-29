@@ -16,7 +16,6 @@ describe("<SwitchControl/>", () => {
     let history: History;
     let timer: SinonFakeTimers;
     const animationDuration = 501;
-    const additionalDuration = 100;
 
     let component: any;
 
@@ -56,16 +55,6 @@ describe("<SwitchControl/>", () => {
         wrapper.unmount();
     });
 
-    it("should set scroll disabled for 600ms when URL change", () => {
-        history.push(routeProps[1].path);
-
-        timer.tick(animationDuration / 2 + additionalDuration / 2);
-        expect(component.isScrollDisabled).to.be.true;
-
-        timer.tick(animationDuration / 2 + additionalDuration / 2);
-        expect(component.isScrollDisabled).to.be.false;
-    });
-
     it("should set next route when press arrow key down", () => {
         component.handleKeyPress(({key: "ArrowDown"}));
 
@@ -93,7 +82,7 @@ describe("<SwitchControl/>", () => {
     it("should ignore any switch control events when animation in progress", () => {
         component.handleKeyPress(({key: "ArrowDown"}));
 
-        timer.tick(animationDuration / 2 + additionalDuration / 2);
+        timer.tick(SwitchControl.scrollTimeout / 2);
         expect(component.isScrollDisabled).to.be.true;
         expect(history.location.pathname).to.be.equal(routeProps[1].path);
 
@@ -109,7 +98,7 @@ describe("<SwitchControl/>", () => {
         expect(component.isScrollDisabled).to.be.true;
         expect(history.location.pathname).to.be.equal(routeProps[1].path);
 
-        timer.tick(animationDuration / 2 + additionalDuration / 2);
+        timer.tick(SwitchControl.scrollTimeout / 2);
         expect(component.isScrollDisabled).to.be.false;
     });
 });
