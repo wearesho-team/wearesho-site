@@ -228,10 +228,23 @@ describe("<Form/>", () => {
     it("should call blur on time input after delay", () => {
         let blurTriggered = false;
         const input = {
-            blur: () => blurTriggered = true
+            className: "to",
+            onBlur: () => blurTriggered = true,
+            blur: () => blurTriggered = true,
         };
 
-        (wrapper.instance() as any).timeInputBlur(input as any);
+        (wrapper.instance() as any).timeInputBlur(input as any, input as any);
+
+        timer.tick(50);
+        expect(blurTriggered).to.be.false;
+
+        timer.tick(50);
+        expect(blurTriggered).to.be.true;
+
+        blurTriggered = false;
+        input.className = "form";
+
+        (wrapper.instance() as any).timeInputBlur(input as any, input as any);
 
         timer.tick(50);
         expect(blurTriggered).to.be.false;

@@ -1,6 +1,16 @@
 /**
 * Header styles
  */
+
+html[lang="en"] {
+  .header {
+    @include breakpoint($mobile-l) {
+
+      padding: 1.875em 1.35em .75em;
+    }
+  }
+}
+
 .header {
   position: fixed;
 

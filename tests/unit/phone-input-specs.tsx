@@ -12,7 +12,7 @@ describe("<PhoneInput/>", () => {
 
     const simulateChange = (value: string) => {
         wrapper.instance().context.value = value;
-        wrapper.find("input").simulate("change");
+        wrapper.find("input").simulate("input");
         wrapper.instance().forceUpdate();
     };
 
@@ -45,6 +45,7 @@ describe("<PhoneInput/>", () => {
     });
 
     it("Should set mask according to value length", () => {
+        wrapper.find("input").simulate("change");
         simulateChange("0000");
         expect((wrapper.getDOMNode() as any).value).to.equal("(000) 0");
 

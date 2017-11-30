@@ -35,19 +35,24 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
             ...nativeProps,
             ...{
                 onChange: this.handleChangeControl,
+                onKeyDown: this.handleKeyDown,
+                onKeyUp: this.handleKeyUp,
                 value: this.context.value,
                 onInput: this.handleInput,
+                onFocus: this.handleFocus,
+                onBlur: () => undefined,
                 ref: this.setElement,
-                type: "tel",
+                autoComplete: "off",
+                type: "tel"
             }
         };
 
         // tslint:disable:jsx-wrap-multiline
         return [
             <ReactInputMask {...inputProps} key="input"/>,
-            <div className="spinner__controls" key="controls">
-                <button type="button" className="btn btn_inc" onClick={this.handleIncrement}/>
-                <button type="button" className="btn btn_dec" onClick={this.handleDecrement}/>
+            <div className="spinner__controls" key="controls" >
+                <button type="button" tabIndex={-1} className="btn btn_inc" onClick={this.handleIncrement}/>
+                <button type="button" tabIndex={-1} className="btn btn_dec" onClick={this.handleDecrement}/>
             </div>
         ];
     }
@@ -67,7 +72,13 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         }
     };
 
-    protected handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    protected handleFocus = async (): Promise<void> => {
+        this.maskElement.setCursorPos(0);
+
+        return await this.context.onFocus();
+    };
+
+    protected handleInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
         this.currentCursorPosition = event.target.selectionStart
     };
 
@@ -84,10 +95,26 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
             this.currentCursorPosition >= value.join(":").length
             && isFunction(this.props.onCursorEnd)
         ) {
-            this.props.onCursorEnd(this.maskElement.input);
+            this.props.onCursorEnd(this.maskElement.input, this.context);
         }
 
         return await this.context.onChange(`${hours}:${minutes}`);
+    };
+
+    protected handleKeyDown = async (event: KeyboardEvent): Promise<void> => {
+        if (event.key === "ArrowDown") {
+            this.maskElement.setCursorPos(this.currentCursorPosition || 0);
+            await this.handleDecrement();
+        } else if (event.key === "ArrowUp") {
+            this.maskElement.setCursorPos(this.currentCursorPosition || 0);
+            await this.handleIncrement();
+        }
+    };
+
+    protected handleKeyUp = (event: KeyboardEvent): void => {
+        if (event.key === "Tab") {
+            this.maskElement.setCursorPos(this.currentCursorPosition || 0);
+        }
     };
 
     protected handleIncrement = async () => {

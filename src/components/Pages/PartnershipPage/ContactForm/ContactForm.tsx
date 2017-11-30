@@ -13,7 +13,8 @@ import {
     TransformTypes,
     FormContext,
     ModelError,
-    AutoFocus
+    AutoFocus,
+    InputContext
 } from "react-context-form";
 
 import {ContactFormModel, instantiateContactFormModel} from "../../../../models/ContactFormModel";
@@ -154,9 +155,13 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
         model.from = TimeDefaults.from;
     }
 
-    protected timeInputBlur = (input: HTMLInputElement) => {
+    protected timeInputBlur(input: HTMLInputElement, context: InputContext) {
         // IOS Auto focus bug
-        setTimeout(() => input.blur(), 100);
+        if (input.className.indexOf("to") !== -1) {
+            setTimeout(() => input.blur(), 100);
+        } else {
+            setTimeout(() => context.onBlur(), 100);
+        }
     };
 
     protected get Form(): JSX.Element {
@@ -178,7 +183,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                             errorClassName="has-error"
                             name="name"
                         >
-                            <AutoValidate groupName="name" onLength={NameRange.min}>
+                            <AutoValidate groupName="name" onLength={NameRange.min} onBlur={false}>
                                 <Input
                                     className="form__control"
                                     transform={TransformTypes.capitalize}
@@ -194,7 +199,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                             focusClassName="in-focus"
                             errorClassName="has-error"
                         >
-                            <AutoValidate groupName="phone" onLength={1}>
+                            <AutoValidate groupName="phone" onLength={1} onBlur={false}>
                                 <PhoneInput
                                     className="form__control"
                                     placeholder={translate("contactPage.form.placeholders.phone")}
@@ -227,7 +232,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                         <FormGroup name="from" className="spinner">
                             <Label className="spinner__label">{translate("contactPage.form.time.from")}</Label>
                             <AutoFocus to="to" groupName="from">
-                                <TimeInput className="form__control" onCursorEnd={this.timeInputBlur}/>
+                                <TimeInput className="form__control from" onCursorEnd={this.timeInputBlur}/>
                             </AutoFocus>
                         </FormGroup>
                         <OnMobile>
@@ -235,11 +240,11 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                         </OnMobile>
                         <FormGroup name="to" className="spinner">
                             <Label className="spinner__label">{translate("contactPage.form.time.to")}</Label>
-                            <TimeInput className="form__control"/>
+                            <TimeInput className="form__control to" onCursorEnd={this.timeInputBlur}/>
                         </FormGroup>
                     </div>
                 </div>
-                <SubmitButton label={translate("buttons.send")}/>
+                <SubmitButton label={translate("buttons.send")} tabIndex={0}/>
             </Form>
         );
     }

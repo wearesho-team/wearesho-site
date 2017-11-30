@@ -101,4 +101,14 @@ describe("<SwitchControl/>", () => {
         timer.tick(SwitchControl.scrollTimeout / 2);
         expect(component.isScrollDisabled).to.be.false;
     });
+
+    it("should ignore key events if active element not body", () => {
+        Object.defineProperty(document, "activeElement", {
+            get: () => document.createElement("div")
+        });
+
+        component.handleKeyPress(({key: "ArrowDown"}));
+
+        expect(history.location.pathname).to.be.equal(routeProps[0].path);
+    })
 });

@@ -13,6 +13,7 @@ describe("<TimeInput/>", () => {
     const commonHandler = () => undefined;
 
     let onChangeTriggered = false;
+    let onFocusTriggered = false;
 
     const onChange = (value) => {
         onChangeTriggered = true;
@@ -21,7 +22,7 @@ describe("<TimeInput/>", () => {
         return undefined;
     };
     const onAttributeChange = commonHandler;
-    const onFocus = commonHandler;
+    const onFocus = () => onFocusTriggered = true;
     const onMount = commonHandler;
     const onBlur = commonHandler;
 
@@ -41,9 +42,15 @@ describe("<TimeInput/>", () => {
     afterEach(() => {
         wrapper.unmount();
         onChangeTriggered = false;
+        onFocusTriggered = false;
     });
 
     it("Should set default time on mount", () => {
+        // cov improve
+        wrapper.find("input").simulate("blur");
+        wrapper.find("input").simulate("keyup", {
+            key: "Tab"
+        });
         expect((wrapper.find("input").getDOMNode() as HTMLInputElement).value).to.equal(defaultTime.join(":"));
     });
 
@@ -115,5 +122,25 @@ describe("<TimeInput/>", () => {
         wrapper.find("input").simulate("change");
 
         expect(triggered).to.be.true;
+    });
+
+    it("Should increment/decrement hours on key up/down", () => {
+        wrapper.find("input").simulate("keydown", {
+            key: "ArrowDown"
+        });
+
+        expect(node.inputValue).to.equal("11:00");
+
+        wrapper.find("input").simulate("keydown", {
+            key: "ArrowUp"
+        });
+
+        expect(node.inputValue).to.equal("12:00");
+    });
+
+    it("Should trigger context.handleFocus on focus", () => {
+        wrapper.find("input").simulate("focus");
+
+        expect(onFocusTriggered).to.be.true;
     });
 });
