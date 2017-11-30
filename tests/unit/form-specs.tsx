@@ -224,4 +224,19 @@ describe("<Form/>", () => {
 
         axios.interceptors.request.eject(interceptor);
     });
+
+    it("should call blur on time input after delay", () => {
+        let blurTriggered = false;
+        const input = {
+            blur: () => blurTriggered = true
+        };
+
+        (wrapper.instance() as any).timeInputBlur(input as any);
+
+        timer.tick(50);
+        expect(blurTriggered).to.be.false;
+
+        timer.tick(50);
+        expect(blurTriggered).to.be.true;
+    })
 });

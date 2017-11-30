@@ -30,6 +30,7 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
 
     public render(): any {
         const {onCursorEnd, ...nativeProps} = this.childProps as TimeInputProps;
+
         const inputProps = {
             ...nativeProps,
             ...{
@@ -79,21 +80,14 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         hours = hours > this.hoursFormat ? this.hoursFormat : toFixed(2, hours);
         minutes = minutes > this.minutesFormat ? this.minutesFormat : toFixed(2, minutes);
 
-        // tslint:disable:no-object-literal-type-assertion
-        const newEvent = {
-            currentTarget: {
-                value: `${hours}:${minutes}`
-            }
-        } as React.ChangeEvent<HTMLInputElement>;
-
-        await this.handleChange(newEvent);
-
         if (
             this.currentCursorPosition >= value.join(":").length
             && isFunction(this.props.onCursorEnd)
         ) {
             this.props.onCursorEnd(this.maskElement.input);
         }
+
+        return await this.context.onChange(`${hours}:${minutes}`);
     };
 
     protected handleIncrement = async () => {

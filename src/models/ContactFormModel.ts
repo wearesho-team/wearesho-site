@@ -58,40 +58,6 @@ export class ContactFormModel extends Model {
         }
     }
 
-    public async validate(group?: string, options: ValidationOptions = {}): Promise<ModelError[]> {
-        const newErrors = (await validate(
-            this as any,
-            {
-                skipMissingProperties: true,
-                ...options,
-                ...(group ? {
-                        groups: [group],
-                    } : {}
-                )
-            }
-        ))
-            .map((error: ValidationError): ModelError => {
-                return {
-                    attribute: error.property,
-                    details: Object.keys(error.constraints)
-                        .map((key: string) => error.constraints[key])
-                        .join(", "),
-                };
-            });
-
-        const oldErrors = group === undefined
-            ? []
-            : this.errors.filter(({attribute}) => !(this.groups()[group] || []).includes(attribute));
-
-        this.errors = [
-            ...newErrors,
-            ...oldErrors
-        ];
-
-        return group === undefined
-            ? this.errors
-            : newErrors;
-    }
 }
 
 export function instantiateContactFormModel() {
