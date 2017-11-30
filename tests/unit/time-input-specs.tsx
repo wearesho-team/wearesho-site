@@ -2,7 +2,7 @@ import * as React from "react";
 import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
-import {TimeInputProps, TimeInput} from "../../src/components/Pages/PartnershipPage/ContactForm/TimeInput";
+import {TimeInputProps, TimeInput} from "../../src/components/Pages/PartnershipPage/ContactForm/Partials/TimeInput";
 
 describe("<TimeInput/>", () => {
     let wrapper: ReactWrapper<TimeInputProps, undefined>;
@@ -14,8 +14,10 @@ describe("<TimeInput/>", () => {
 
     let onChangeTriggered = false;
 
-    const onChange = () => {
+    const onChange = (value) => {
         onChangeTriggered = true;
+        wrapper.context().value = value;
+        node.forceUpdate();
         return undefined;
     };
     const onAttributeChange = commonHandler;
@@ -23,14 +25,14 @@ describe("<TimeInput/>", () => {
     const onMount = commonHandler;
     const onBlur = commonHandler;
 
-    beforeEach(() => {
-        const context = {
-            onChange, onAttributeChange, onFocus, onMount, onBlur,
-            id: "id_test",
-            name: "name_test",
-            value: defaultTime.join(":")
-        };
+    const context = {
+        onChange, onAttributeChange, onFocus, onMount, onBlur,
+        id: "id_test",
+        name: "name_test",
+        value: defaultTime.join(":")
+    };
 
+    beforeEach(() => {
         wrapper = mount(<TimeInput/>, {context});
 
         node = wrapper.instance() as any;
@@ -45,7 +47,7 @@ describe("<TimeInput/>", () => {
         expect((wrapper.find("input").getDOMNode() as HTMLInputElement).value).to.equal(defaultTime.join(":"));
     });
 
-    it("Should take 1 hour on click button decrement", () => {
+    it("Should take 1 hour on click button decrement", async () => {
         wrapper.find(".btn_dec").simulate("click");
 
         const expectedTime = `${Number(defaultTime[0]) - 1}:${defaultTime[1]}`;
@@ -88,7 +90,7 @@ describe("<TimeInput/>", () => {
         (wrapper.find("input").getDOMNode() as HTMLInputElement).value = "25:00";
         wrapper.find("input").simulate("change");
 
-        expect(node.inputValue).to.equal("24:00");
+        expect(node.inputValue).to.equal("23:00");
     });
 
     it("Should set 59 minutes when minutes on input more than 59", () => {
@@ -98,4 +100,20 @@ describe("<TimeInput/>", () => {
         expect(node.inputValue).to.equal("12:59");
     });
 
+    it("Should call props.onCursorEnd if it pass when cursor on the end of input", () => {
+        wrapper.unmount();
+        let triggered = false;
+
+        wrapper = mount(<TimeInput onCursorEnd={() => triggered = true}/>, {context});
+
+        (wrapper.find("input").getDOMNode() as HTMLInputElement).value = "12:59";
+        wrapper.find("input").simulate("input", {
+            target: {
+                selectionStart: 5
+            }
+        });
+        wrapper.find("input").simulate("change");
+
+        expect(triggered).to.be.true;
+    });
 });

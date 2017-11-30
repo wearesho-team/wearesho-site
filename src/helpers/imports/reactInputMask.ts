@@ -12,6 +12,7 @@ interface Mask extends React.Component<any, any> {
     setInputValue: (newValue: string) => void;
     input: HTMLInputElement;
     setCursorPos: (pos: number) => void;
+    lastCursorPos: number;
 }
 
 // tslint:disable:no-submodule-imports

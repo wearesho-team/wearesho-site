@@ -1,8 +1,9 @@
 import * as React from "react";
 import {BaseInput, BaseInputDefaultProps} from "react-context-form";
 
-import {ReactInputMask} from "../../../../../helpers/imports/reactInputMask"
-import {toFixed} from "../../../../../helpers/toFixed";
+import {ReactInputMask} from "../../../../../../helpers/imports/reactInputMask"
+import {isFunction} from "../../../../../../helpers/isFunction";
+import {toFixed} from "../../../../../../helpers/toFixed";
 
 import {TimeInputDefaultProps, TimeInputProps, TimeInputPropTypes} from "./TimeInputProps";
 
@@ -13,11 +14,13 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         ...BaseInputDefaultProps
     };
 
-    public readonly hoursFormat = 24;
+    public readonly hoursFormat = 23;
     public readonly minutesFormat = 59;
 
     public props: TimeInputProps;
+
     protected maskElement: typeof ReactInputMask;
+    protected currentCursorPosition: number;
 
     public get inputValue(): string {
         return this.maskElement
@@ -26,12 +29,15 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
     }
 
     public render(): any {
+        const {onCursorEnd, ...nativeProps} = this.childProps as TimeInputProps;
+
         const inputProps = {
-            ...this.childProps,
+            ...nativeProps,
             ...{
                 onChange: this.handleChangeControl,
-                ref: this.setElement,
                 value: this.context.value,
+                onInput: this.handleInput,
+                ref: this.setElement,
                 type: "tel",
             }
         };
@@ -53,9 +59,16 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         }
 
         this.maskElement = element;
-        if (this.childProps.ref instanceof Function) {
+        if (
+            isFunction(this.childProps.ref) &&
+            this.childProps.ref instanceof Function
+        ) {
             this.childProps.ref(element.input);
         }
+    };
+
+    protected handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.currentCursorPosition = event.target.selectionStart
     };
 
     protected handleChangeControl = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
@@ -67,16 +80,14 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         hours = hours > this.hoursFormat ? this.hoursFormat : toFixed(2, hours);
         minutes = minutes > this.minutesFormat ? this.minutesFormat : toFixed(2, minutes);
 
-        this.maskElement && this.maskElement.setInputValue(`${hours}:${minutes}`);
+        if (
+            this.currentCursorPosition >= value.join(":").length
+            && isFunction(this.props.onCursorEnd)
+        ) {
+            this.props.onCursorEnd(this.maskElement.input);
+        }
 
-        // tslint:disable:no-object-literal-type-assertion
-        const newEvent = {
-            currentTarget: {
-                value: `${hours}:${minutes}`
-            }
-        } as React.ChangeEvent<HTMLInputElement>;
-
-        await this.handleChange(newEvent);
+        return await this.context.onChange(`${hours}:${minutes}`);
     };
 
     protected handleIncrement = async () => {

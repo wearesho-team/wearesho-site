@@ -80,21 +80,20 @@ translate.registerTranslations("en", {
     },
     processPage: {
         title: "Process",
-        subTitlePart1: "Total 6 steps for a full",
-        subTitlePart2: " cycle of IT services",
-        text1: "The studio works with large financial companies, creating a quality product for effective" +
-        " and a profitable business based on industry analysts. We provide ongoing technical support and" +
-        " product optimization.",
-        text2: "Features of the development process are discussed when the project is approved",
-        // text2: "Full information you can see in the presentation",
+        subTitlePart1: "Development services",
+        subTitlePart2: " for IT-product",
+        text1: "The Studio provides a full range of services to create, " +
+        " implement and maintain any software solutions for" +
+        " automation of business processes in financial institutions.",
+        text2: "Any process features are discussed when the project is agreed",
         stages: {
             title: {
-                planning: "Planning",
+                planning: "Project design",
                 design: "Design",
                 develop: "Development",
                 deploy: "Deployment",
                 promotion: "Promotion",
-                support: "Support"
+                support: "Customer support"
             },
             subTitle: {
                 basedOnData: "based on data",

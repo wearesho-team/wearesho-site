@@ -3,7 +3,7 @@ import {IsDefined, IsNotEmpty, Matches} from "class-validator";
 
 import {translate} from "../helpers/translate";
 
-import {namePattern, phonePattern, TimeDefaults, timePattern} from "./common/Rules";
+import {namePattern, TimeDefaults, timePattern} from "./common/Rules";
 
 export class ContactFormModel extends Model {
     @IsNotEmpty({
@@ -57,6 +57,7 @@ export class ContactFormModel extends Model {
             to: ["to"]
         }
     }
+
 }
 
 export function instantiateContactFormModel() {
