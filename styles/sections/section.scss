@@ -1,6 +1,20 @@
 /**
 * Section styles
  */
+html[lang="en"] {
+
+  .section {
+
+    &__title-part {
+
+      @include breakpoint($iphone5-p) {
+
+        display: block;
+      }
+    }
+  }
+}
+
 .section {
   position: relative;
 
