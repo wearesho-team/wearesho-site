@@ -1,6 +1,20 @@
 /**
-  Buttons styles
+* Buttons styles
  */
+html[lang="en"] {
+
+  .btn_transform {
+
+    &.transformed {
+
+      @include breakpoint($iphone5-p) {
+
+        height: 570px;
+      }
+    }
+  }
+}
+
 .btn {
   display: inline-block;
 
@@ -336,5 +350,172 @@
 
       transform: rotate(-45deg);
     }
+  }
+}
+
+.btn.btn_transform {
+  position: relative;
+
+  text-align: center;
+
+  font-size: initial !important;
+
+  color: $color-secondary;
+
+  overflow: hidden;
+
+  height: 48px;
+
+  will-change: width, height;
+
+  cursor: pointer;
+
+  @include breakpoint($mobile-l) {
+    display: none;
+
+    opacity: 0;
+
+    visibility: hidden;
+  }
+
+  > .btn-corners {
+
+    &:before,
+    &:after {
+      content: '';
+
+      width: 10px;
+      height: 10px;
+
+      position: absolute;
+
+      border-color: $color-secondary;
+      border-style: solid;
+    }
+
+    &:before {
+
+      left: 0;
+    }
+
+    &:after {
+
+      right: 0;
+    }
+
+    &_top {
+
+      &:before,
+      &:after {
+
+        top: 0;
+      }
+
+      &:before {
+
+        border-width: 1px 0 0 1px;
+      }
+
+      &:after {
+
+        border-width: 1px 1px 0 0;
+      }
+    }
+
+    &_bottom {
+
+      &:before,
+      &:after {
+
+        bottom: 0;
+      }
+
+      &:before {
+
+        border-width: 0 0 1px 1px;
+      }
+
+      &:after {
+
+        border-width: 0 1px 1px 0;
+      }
+    }
+  }
+
+  &.initial {
+    @include span(8 of 12 inside no-gutters);
+
+    float: none;
+
+    transition: width .5s ease .5s, height .5s ease !important;
+  }
+
+  &.transformed {
+    transition: width .5s ease, height .5s ease .5s !important;
+
+    height: 530px;
+
+    width: 100%;
+  }
+
+  > .inner-layout {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 92%;
+    width: 90%;
+
+    margin: auto;
+
+    opacity: 1;
+
+    transition: opacity .5s ease;
+
+    > .cooperate-text {
+      font-size: 1.19em;
+
+      line-height: 44px;
+    }
+
+    &.transform {
+      &-enter {
+        opacity: 0;
+
+        transition: none;
+      }
+
+      &-exit {
+
+        opacity: 0;
+      }
+    }
+  }
+
+  &:hover,
+  &:active {
+    box-shadow: none;
+
+    > .btn-corners {
+      &:before,
+      &:after {
+        width: 10px;
+
+        height: 10px;
+      }
+    }
+  }
+
+  .form__group_inline + .form__group {
+
+    margin: 1.875em 0 40px;
+  }
+
+  .btn {
+
+    margin-top: 40px;
   }
 }
