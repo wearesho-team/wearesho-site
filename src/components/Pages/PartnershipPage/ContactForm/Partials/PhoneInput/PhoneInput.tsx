@@ -29,6 +29,7 @@ export class PhoneInput extends BaseInput<HTMLInputElement> {
         this.maskElement.setCursorPos(this.maskElement.input.selectionStart);
         if (this.maskElement.value !== this.context.value) {
             // tslint:disable:no-object-literal-type-assertion
+
             await this.handleChange({
                 currentTarget: {
                     value: this.context.value
@@ -47,8 +48,9 @@ export class PhoneInput extends BaseInput<HTMLInputElement> {
         const inputProps = {
             ...nativeProps,
             ...{
-                onChange: this.handleChange,
+                onInput: this.handleChange,
                 onPaste: this.handlePaste,
+                onChange: () => undefined,
                 ref: this.setElement,
                 maskChar: "",
                 type: "tel",

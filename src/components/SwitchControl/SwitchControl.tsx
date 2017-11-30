@@ -58,6 +58,10 @@ export class SwitchControl extends React.Component<undefined, undefined> impleme
     }
 
     protected handleKeyPress = (event: KeyboardEvent) => {
+        if (document.activeElement !== document.body) {
+            return;
+        }
+
         if (event.key === "ArrowDown") {
             this.changeRoute(1);
         } else if (event.key === "ArrowUp") {

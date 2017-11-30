@@ -8,8 +8,8 @@ module.exports = {
     location: {
         city: "Kharkiv",
         coordinates: {
-            lat: 49.98081,
-            lng: 36.25272,
+            lat: 50.02699,
+            lng: 36.22604,
         },
         country: "Ukraine",
     },
