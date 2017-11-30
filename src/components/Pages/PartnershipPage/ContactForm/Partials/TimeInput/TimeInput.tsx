@@ -2,6 +2,7 @@ import * as React from "react";
 import {BaseInput, BaseInputDefaultProps} from "react-context-form";
 
 import {ReactInputMask} from "../../../../../../helpers/imports/reactInputMask"
+import {isFunction} from "../../../../../../helpers/isFunction";
 import {toFixed} from "../../../../../../helpers/toFixed";
 
 import {TimeInputDefaultProps, TimeInputProps, TimeInputPropTypes} from "./TimeInputProps";
@@ -13,7 +14,7 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         ...BaseInputDefaultProps
     };
 
-    public readonly hoursFormat = 24;
+    public readonly hoursFormat = 23;
     public readonly minutesFormat = 59;
 
     public props: TimeInputProps;
@@ -28,8 +29,9 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
     }
 
     public render(): any {
+        const {onCursorEnd, ...nativeProps} = this.childProps as TimeInputProps;
         const inputProps = {
-            ...this.childProps,
+            ...nativeProps,
             ...{
                 onChange: this.handleChangeControl,
                 value: this.context.value,
@@ -56,7 +58,10 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
         }
 
         this.maskElement = element;
-        if (this.childProps.ref instanceof Function) {
+        if (
+            isFunction(this.childProps.ref) &&
+            this.childProps.ref instanceof Function
+        ) {
             this.childProps.ref(element.input);
         }
     };
@@ -83,11 +88,11 @@ export class TimeInput extends BaseInput<HTMLInputElement> {
 
         await this.handleChange(newEvent);
 
-        if (this.currentCursorPosition >= value.join(":").length) {
-            // IOS Auto focus bug fix
-            setTimeout(() => {
-                (document.activeElement as any).blur();
-            }, 100);
+        if (
+            this.currentCursorPosition >= value.join(":").length
+            && isFunction(this.props.onCursorEnd)
+        ) {
+            this.props.onCursorEnd(this.maskElement.input);
         }
     };
 

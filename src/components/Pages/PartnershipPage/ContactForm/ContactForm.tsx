@@ -153,6 +153,11 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
         model.from = TimeDefaults.from;
     }
 
+    protected timeInputBlur = (input: HTMLInputElement) => {
+        // IOS Auto focus bug
+        setTimeout(() => input.blur(), 100);
+    };
+
     protected get Form(): JSX.Element {
         return (
             <Form
@@ -188,7 +193,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                             focusClassName="in-focus"
                             errorClassName="has-error"
                         >
-                            <AutoValidate groupName="phone">
+                            <AutoValidate groupName="phone" onLength={1}>
                                 <PhoneInput
                                     className="form__control"
                                     placeholder={translate("contactPage.form.placeholders.phone")}
@@ -221,7 +226,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                         <FormGroup name="from" className="spinner">
                             <Label className="spinner__label">{translate("contactPage.form.time.from")}</Label>
                             <AutoFocus to="to" groupName="from">
-                                <TimeInput className="form__control"/>
+                                <TimeInput className="form__control" onCursorEnd={this.timeInputBlur}/>
                             </AutoFocus>
                         </FormGroup>
                         <OnMobile>
@@ -237,5 +242,4 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
             </Form>
         );
     }
-
 }

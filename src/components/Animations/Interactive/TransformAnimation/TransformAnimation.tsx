@@ -2,6 +2,7 @@ import * as React from "react";
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 import {concat} from "../../../../helpers/concat";
+import {isFunction} from "../../../../helpers/isFunction";
 
 import {TransformAnimationState} from "./TransformAnimationState";
 import {TransformAnimationProps, TransformAnimationPropTypes} from "./TransformAnimationProps";
@@ -61,7 +62,7 @@ export class TransformAnimation extends React.Component<TransformAnimationProps,
 
         this.setState({transformed: true});
 
-        if ((typeof this.props.onEvent).toString().toLowerCase() === "function") {
+        if (isFunction(this.props.onEvent)) {
             this.props.onEvent();
         }
     }

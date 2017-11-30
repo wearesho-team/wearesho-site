@@ -2,6 +2,7 @@ import * as React from "react";
 import {BaseInput} from "react-context-form";
 
 import {ReactInputMask} from "../../../../../../helpers/imports/reactInputMask"
+import {isFunction} from "../../../../../../helpers/isFunction";
 
 import {PhoneInputProps, PhoneInputPropTypes} from "./PhoneInputProps";
 
@@ -68,7 +69,10 @@ export class PhoneInput extends BaseInput<HTMLInputElement> {
         }
 
         this.maskElement = element;
-        if (this.childProps.ref instanceof Function) {
+        if (
+            isFunction(this.childProps.ref) &&
+            this.childProps.ref instanceof Function
+        ) {
             this.childProps.ref(element.input);
         }
     };

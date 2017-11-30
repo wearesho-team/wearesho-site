@@ -3,8 +3,6 @@ import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 import {PhoneInputProps} from "../../src/components/Pages/PartnershipPage/ContactForm/Partials/PhoneInput/PhoneInputProps";
 import {PhoneInput} from "../../src/components/Pages/PartnershipPage/ContactForm/Partials/PhoneInput/PhoneInput";
-import {PhoneInputProps} from "../../src/components/Pages/PartnershipPage/ContactForm/PhoneInput/PhoneInputProps";
-import {PhoneInput} from "../../src/components/Pages/PartnershipPage/ContactForm/PhoneInput/PhoneInput";
 
 describe("<PhoneInput/>", () => {
     let wrapper: ReactWrapper<PhoneInputProps, undefined>;

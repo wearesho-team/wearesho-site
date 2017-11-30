@@ -1,9 +1,9 @@
-import {Model} from "react-context-form";
-import {IsDefined, IsNotEmpty, Matches} from "class-validator";
+import {Model, ModelError} from "react-context-form";
+import {IsDefined, IsNotEmpty, Matches, validate, ValidationError, ValidationOptions} from "class-validator";
 
 import {translate} from "../helpers/translate";
 
-import {namePattern, phonePattern, TimeDefaults, timePattern} from "./common/Rules";
+import {namePattern, TimeDefaults, timePattern} from "./common/Rules";
 
 export class ContactFormModel extends Model {
     @IsNotEmpty({
@@ -56,6 +56,41 @@ export class ContactFormModel extends Model {
             from: ["from"],
             to: ["to"]
         }
+    }
+
+    public async validate(group?: string, options: ValidationOptions = {}): Promise<ModelError[]> {
+        const newErrors = (await validate(
+            this as any,
+            {
+                skipMissingProperties: true,
+                ...options,
+                ...(group ? {
+                        groups: [group],
+                    } : {}
+                )
+            }
+        ))
+            .map((error: ValidationError): ModelError => {
+                return {
+                    attribute: error.property,
+                    details: Object.keys(error.constraints)
+                        .map((key: string) => error.constraints[key])
+                        .join(", "),
+                };
+            });
+
+        const oldErrors = group === undefined
+            ? []
+            : this.errors.filter(({attribute}) => !(this.groups()[group] || []).includes(attribute));
+
+        this.errors = [
+            ...newErrors,
+            ...oldErrors
+        ];
+
+        return group === undefined
+            ? this.errors
+            : newErrors;
     }
 }
 
