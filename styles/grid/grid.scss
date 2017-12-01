@@ -87,9 +87,21 @@ body.loaded {
   }
 
   @include breakpoint($laptop-xl) {
-    //max-width: 1220px;
 
     margin: 0 12%;
+  }
+
+  // iOS touch devices bottom panel bug fix
+  @include breakpoint($mobile) {
+    top: -70px;
+    transform: translateY(70px);
+    padding-bottom: 70px;
+  }
+
+  @include breakpoint($tablet-laptop) {
+    top: -70px;
+    transform: translateY(70px);
+    padding-bottom: 70px;
   }
 
   &__col {
