@@ -14,10 +14,14 @@
 
   position: fixed;
 
-  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+
+  // iOS bottom panel bug fix
+  top: -70px;
+  transform: translateY(70px);
+  padding-bottom: 70px;
 
   background: -webkit-linear-gradient(33deg, #330E1F 0%, #031C3C 100%);
   background: -moz-linear-gradient(33deg, #330E1F 0%, #031C3C 100%);
@@ -32,17 +36,4 @@
   z-index: $under-zindex;
 
   transition: opacity 3s ease 4s;
-
-  // iOS touch devices bottom panel bug fix
-  @include breakpoint($mobile) {
-    top: -70px;
-    transform: translateY(70px);
-    padding-bottom: 70px;
-  }
-
-  @include breakpoint($tablet-laptop) {
-    top: -70px;
-    transform: translateY(70px);
-    padding-bottom: 70px;
-  }
 }
