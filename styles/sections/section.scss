@@ -734,6 +734,17 @@ html[lang="en"] {
       font-size: .933em;
     }
 
+    > a {
+      color: #339FD0;
+
+      transition: color .5s ease;
+
+      &:hover {
+
+        color: #7BC6F5;
+      }
+    }
+
     &__item {
       margin: .7em 0;
 

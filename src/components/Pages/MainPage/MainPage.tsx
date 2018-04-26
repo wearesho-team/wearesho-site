@@ -1,18 +1,20 @@
 import * as React from "react";
+import { Link } from "react-router-dom"
 
-import {StartFeature} from "../../../data/Animations/StartFeature";
-import {Timing} from "../../../data/Animations/Timing";
+import { StartFeature } from "../../../data/Animations/StartFeature";
+import { Timing } from "../../../data/Animations/Timing";
+import { Config } from "../../../data/Config";
 
-import {OnMobile, OnTabletDesktop} from "../../../helpers/Breakpoints";
-import {translate} from "../../../helpers/translate";
+import { OnMobile, OnTabletDesktop } from "../../../helpers/Breakpoints";
+import { translate } from "../../../helpers/translate";
 
-import {CodeStyleAnimationSpeed} from "../../Animations/Static/CodeStyleAnimation/CodeStyleAnimationSpeed";
-import {CodeStyleAnimation} from "../../Animations/Static/CodeStyleAnimation/CodeStyleAnimation";
-import {CustomAnimation} from "../../Animations/Static/CustomAnimation/CustomAnimation";
-import {SmartBreakpoint} from "../../SmartBreakpoint/SmartBreakpoint";
-import {ClientsList} from "./Partials/ClientsList";
-import {TimeLine} from "../../TimeLine/TimeLine";
-import {BasePage} from "../BasePage";
+import { CodeStyleAnimationSpeed } from "../../Animations/Static/CodeStyleAnimation/CodeStyleAnimationSpeed";
+import { CodeStyleAnimation } from "../../Animations/Static/CodeStyleAnimation/CodeStyleAnimation";
+import { CustomAnimation } from "../../Animations/Static/CustomAnimation/CustomAnimation";
+import { SmartBreakpoint } from "../../SmartBreakpoint/SmartBreakpoint";
+import { ClientsList } from "./Partials/ClientsList";
+import { TimeLine } from "../../TimeLine/TimeLine";
+import { BasePage } from "../BasePage";
 
 export class MainPage extends BasePage {
 
@@ -30,12 +32,14 @@ export class MainPage extends BasePage {
                         <span className="section__title-part">
                             <span>{translate("mainPage.title.mainTwo.base")}&nbsp;</span>
                             <span className="section__title-part-variable">
-                                {translate("mainPage.title.mainTwo.additions.1")}
+                                {translate("mainPage.title.mainTwo.additions.1")}&nbsp;
                             </span>
+                            <span>{translate("mainPage.title.mainTwo.additions.2")}</span>
                         </span>
                     </h2>
                     <div className="container">
                         <div className="section__half">
+                            {/* Upper section start */}
                             <OnTabletDesktop>
                                 <h4 className="section__subtitle section__subtitle marker">
                                     <CodeStyleAnimation
@@ -43,7 +47,7 @@ export class MainPage extends BasePage {
                                         speed={CodeStyleAnimationSpeed.fast}
                                         startFeature={StartFeature}
                                     >
-                                        {translate("mainPage.articles.whatWeDo.title")}
+                                        {translate("mainPage.articles.whatWeDo.upper.title")}
                                     </CodeStyleAnimation>
                                 </h4>
                             </OnTabletDesktop>
@@ -54,7 +58,57 @@ export class MainPage extends BasePage {
                                     actionClassName="showing"
                                 >
                                     <h4 className="section__subtitle section__subtitle marker">
-                                        {translate("mainPage.articles.whatWeDo.title")}
+                                        {translate("mainPage.articles.whatWeDo.upper.title")}
+                                    </h4>
+                                </CustomAnimation>
+                            </OnMobile>
+                            <OnTabletDesktop>
+                                <div className="services-list">
+                                    <Link to="/partnership">
+                                        <CodeStyleAnimation
+                                            {...Timing.desktop.mainPage.items.servicesList}
+                                            speed={CodeStyleAnimationSpeed.fast}
+                                            startFeature={StartFeature}
+                                        >
+                                            {translate("mainPage.articles.whatWeDo.upper.items.1")}
+                                        </CodeStyleAnimation>
+                                    </Link>
+                                </div>
+                            </OnTabletDesktop>
+                            <OnMobile>
+                                <div className="services-list">
+                                    <Link to="/partnership">
+                                        <CodeStyleAnimation
+                                            {...Timing.mobile.mainPage.items.servicesList}
+                                            speed={CodeStyleAnimationSpeed.medium}
+                                            startFeature={StartFeature}
+                                        >
+                                            {translate("mainPage.articles.whatWeDo.upper.items.1")}
+                                        </CodeStyleAnimation>
+                                    </Link>
+                                </div>
+                            </OnMobile>
+                            {/* Upper section end */}
+                            {/* Lower section start */}
+                            <OnTabletDesktop>
+                                <h4 className="section__subtitle section__subtitle marker mt">
+                                    <CodeStyleAnimation
+                                        {...Timing.desktop.mainPage.articles.whatWeDo}
+                                        speed={CodeStyleAnimationSpeed.fast}
+                                        startFeature={StartFeature}
+                                    >
+                                        {translate("mainPage.articles.whatWeDo.lower.title")}
+                                    </CodeStyleAnimation>
+                                </h4>
+                            </OnTabletDesktop>
+                            <OnMobile>
+                                <CustomAnimation
+                                    {...Timing.mobile.mainPage.articles.whatWeDo}
+                                    startFeature={StartFeature}
+                                    actionClassName="showing"
+                                >
+                                    <h4 className="section__subtitle section__subtitle marker">
+                                        {translate("mainPage.articles.whatWeDo.lower.title")}
                                     </h4>
                                 </CustomAnimation>
                             </OnMobile>
@@ -65,11 +119,11 @@ export class MainPage extends BasePage {
                                         speed={CodeStyleAnimationSpeed.fast}
                                         startFeature={StartFeature}
                                     >
-                                        {translate("mainPage.articles.whatWeDo.items.1")}
-                                        {translate("mainPage.articles.whatWeDo.items.2")}
-                                        {translate("mainPage.articles.whatWeDo.items.3")}
-                                        {translate("mainPage.articles.whatWeDo.items.4")}
-                                        {translate("mainPage.articles.whatWeDo.items.5")}
+                                        {translate("mainPage.articles.whatWeDo.lower.items.1")}
+                                        {translate("mainPage.articles.whatWeDo.lower.items.2")}
+                                        {translate("mainPage.articles.whatWeDo.lower.items.3")}
+                                        {translate("mainPage.articles.whatWeDo.lower.items.4")}
+                                        {translate("mainPage.articles.whatWeDo.lower.items.5")}
                                     </CodeStyleAnimation>
                                 </div>
                             </OnTabletDesktop>
@@ -80,14 +134,15 @@ export class MainPage extends BasePage {
                                         speed={CodeStyleAnimationSpeed.medium}
                                         startFeature={StartFeature}
                                     >
-                                        {translate("mainPage.articles.whatWeDo.items.1")}
-                                        {translate("mainPage.articles.whatWeDo.items.2")}
-                                        {translate("mainPage.articles.whatWeDo.items.3")}
-                                        {translate("mainPage.articles.whatWeDo.items.4")}
-                                        {translate("mainPage.articles.whatWeDo.items.5")}
+                                        {translate("mainPage.articles.whatWeDo.lower.items.1")}
+                                        {translate("mainPage.articles.whatWeDo.lower.items.2")}
+                                        {translate("mainPage.articles.whatWeDo.lower.items.3")}
+                                        {translate("mainPage.articles.whatWeDo.lower.items.4")}
+                                        {translate("mainPage.articles.whatWeDo.lower.items.5")}
                                     </CodeStyleAnimation>
                                 </div>
                             </OnMobile>
+                            {/* Lower section end */}
                         </div>
                         <div className="section__half">
                             <h4 className="section__subtitle section__subtitle marker">
@@ -97,7 +152,7 @@ export class MainPage extends BasePage {
                                         speed={CodeStyleAnimationSpeed.medium}
                                         startFeature={StartFeature}
                                     >
-                                        {translate("mainPage.articles.howLong.title")}
+                                        {this.label}
                                     </CodeStyleAnimation>
                                 </OnTabletDesktop>
                                 <OnMobile>
@@ -107,7 +162,7 @@ export class MainPage extends BasePage {
                                         actionClassName="showing"
                                     >
                                         <span>
-                                            {translate("mainPage.articles.howLong.title")}
+                                            {this.label}
                                         </span>
                                     </CustomAnimation>
                                 </OnMobile>
@@ -142,7 +197,7 @@ export class MainPage extends BasePage {
                                     startFeature={StartFeature}
                                     actionClassName="showing"
                                 >
-                                    <ClientsList/>
+                                    <ClientsList />
                                 </CustomAnimation>
                             </OnTabletDesktop>
                             <OnMobile>
@@ -151,16 +206,32 @@ export class MainPage extends BasePage {
                                     startFeature={StartFeature}
                                     actionClassName="showing"
                                 >
-                                    <ClientsList/>
+                                    <ClientsList />
                                 </CustomAnimation>
                             </OnMobile>
                         </div>
                     </div>
                     <SmartBreakpoint match="min-width: 1024px">
-                        <TimeLine range={{min: 2014, max: 2019}}/>
+                        <TimeLine range={{ min: 2014, max: 2019 }} />
                     </SmartBreakpoint>
                 </div>
             </section>
         );
     }
+
+    protected get label(): string {
+        const hoursSinceOfFoundation = Math.floor(((new Date()).getTime() - Config.foundationDate.getTime()) / 3600000);
+        const hoursLastChar = Number(hoursSinceOfFoundation.toString().slice(-1));
+
+        switch (hoursLastChar) {
+            case 1:
+                return `${hoursSinceOfFoundation} ${translate("mainPage.articles.howLong.title.one")}`;
+            case 2:
+            case 3:
+                return `${hoursSinceOfFoundation} ${translate("mainPage.articles.howLong.title.two")}`;
+            default:
+                return `${hoursSinceOfFoundation} ${translate("mainPage.articles.howLong.title.three")}`;
+        }
+    }
 }
+// tslint:disable-next-line
