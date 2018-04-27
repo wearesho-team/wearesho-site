@@ -25,7 +25,7 @@ export class MainPage extends BasePage {
                     <h2 className="section__title">
                         <span className="section__title-part">
                             <span>{translate("mainPage.title.mainOne.base")}&nbsp;</span>
-                            <span className="section__title-part-variable">
+                            <span className="section__title-part-variable no_wrap">
                                 {translate("mainPage.title.mainOne.additions.1")}&nbsp;
                             </span>
                         </span>
@@ -62,32 +62,17 @@ export class MainPage extends BasePage {
                                     </h4>
                                 </CustomAnimation>
                             </OnMobile>
-                            <OnTabletDesktop>
-                                <div className="services-list">
+                            <div className="services-list">
+                                <CustomAnimation
+                                    {...Timing.mobile.mainPage.articles.whatWeDo}
+                                    actionClassName="showing"
+                                    startFeature={StartFeature}
+                                >
                                     <Link to="/partnership">
-                                        <CodeStyleAnimation
-                                            {...Timing.desktop.mainPage.items.servicesList}
-                                            speed={CodeStyleAnimationSpeed.fast}
-                                            startFeature={StartFeature}
-                                        >
-                                            {translate("mainPage.articles.whatWeDo.upper.items.1")}
-                                        </CodeStyleAnimation>
+                                        {translate("mainPage.articles.whatWeDo.upper.items.1")}
                                     </Link>
-                                </div>
-                            </OnTabletDesktop>
-                            <OnMobile>
-                                <div className="services-list">
-                                    <Link to="/partnership">
-                                        <CodeStyleAnimation
-                                            {...Timing.mobile.mainPage.items.servicesList}
-                                            speed={CodeStyleAnimationSpeed.medium}
-                                            startFeature={StartFeature}
-                                        >
-                                            {translate("mainPage.articles.whatWeDo.upper.items.1")}
-                                        </CodeStyleAnimation>
-                                    </Link>
-                                </div>
-                            </OnMobile>
+                                </CustomAnimation>
+                            </div>
                             {/* Upper section end */}
                             {/* Lower section start */}
                             <OnTabletDesktop>
@@ -107,7 +92,7 @@ export class MainPage extends BasePage {
                                     startFeature={StartFeature}
                                     actionClassName="showing"
                                 >
-                                    <h4 className="section__subtitle section__subtitle marker">
+                                    <h4 className="section__subtitle section__subtitle marker mt">
                                         {translate("mainPage.articles.whatWeDo.lower.title")}
                                     </h4>
                                 </CustomAnimation>

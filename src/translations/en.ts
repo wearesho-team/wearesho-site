@@ -27,7 +27,7 @@ translate.registerTranslations("en", {
                 upper: {
                     title: "Implement:",
                     items: {
-                        1: "«Turnkey» online loan service",
+                        1: "«Turn-key» online loan service",
                     }
                 },
                 lower: {

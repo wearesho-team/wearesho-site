@@ -592,12 +592,12 @@ html[lang="en"] {
 
           @include breakpoint($mobile) {
 
-            display: block;
+            display: inline-block;
           }
 
           @include breakpoint($tablet-p) {
 
-            display: block;
+            display: inline-block;
           }
         }
       }
@@ -724,6 +724,8 @@ html[lang="en"] {
 
     line-height: 2.1em;
 
+    width: 88%;
+
     @include breakpoint($tablet-p) {
 
       font-size: 1.2em;
@@ -735,13 +737,21 @@ html[lang="en"] {
     }
 
     > a {
+      display: inline;
+
       color: #339FD0;
 
       transition: color .5s ease;
 
+      border-bottom: 1px solid #339FD0;
+
+      line-height: 1.3em;
+
       &:hover {
 
         color: #7BC6F5;
+
+        border-bottom-color: #7BC6F5;
       }
     }
 
