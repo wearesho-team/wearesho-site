@@ -142,6 +142,7 @@ html[lang="en"] {
     }
   }
 
+  &.section-bobra-cs,
   &.section-process,
   &.section-partnership {
 
@@ -518,12 +519,136 @@ html[lang="en"] {
     }
   }
 
+  &.section-bobra-cs {
+
+    .section__title {
+
+      > span,
+      > .icon {
+        display: inline-block;
+
+        vertical-align: middle;
+      }
+
+      > span {
+        margin-right: .475em;
+        padding-right: .475em;
+
+        line-height: .725;
+
+        border-right: 1px solid rgba(197, 213, 224, .53);
+      }
+    }
+
+    .section__subtitle {
+      margin-top: 3em;
+
+      &.marker {
+
+        &:before {
+
+          left: -6px;
+        }
+      }
+    }
+
+    .content {
+
+      @include clearfix;
+    }
+
+    .bottom {
+      @include justify-content
+
+      @include valign-center;
+
+      margin-top: 4em;
+
+      > p {
+
+        font-size: 1.125em;
+      }
+    }
+
+    .section__half {
+
+      &.half_first {
+
+        .section__subtitle.marker,
+        .services-list {
+
+          padding-left: 28px;
+        }
+
+        .section__subtitle {
+
+          &:not(.marker) {
+
+            width: 480px;
+          }
+
+          &:first-child {
+
+            margin-top: 0;
+          }
+        }
+      }
+
+      &.half_second {
+
+        .section__subtitle {
+          margin-top: 0;
+
+          font-weight: $font-style-light;
+
+          > .text_increased {
+
+            font-size: 2.25em;
+          }
+        }
+      }
+    }
+
+    .services-list {
+
+      width: 100%;
+    }
+
+    .clients-list {
+      @include span(6 of 12 inside no-gutter);
+
+      @include justify-content;
+
+      margin-top: 0;
+
+      > a {
+        font-size: 0;
+
+        &:hover {
+
+          > .icon {
+
+            opacity: 1;
+          }
+        }
+
+        > .icon {
+          opacity: .45;
+
+          -webkit-backface-visibility: hidden;
+
+          transition: opacity .3s ease;
+        }
+      }
+    }
+  }
+
   .section__title {
     line-height: 1.35em;
 
     font-size: 3.375em;
     font-family: $font-secondary;
-    font-weight: $font-style-light;
+    font-weight: 200;
     color: #BECED9;
 
     @include breakpoint($mobile) {

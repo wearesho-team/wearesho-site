@@ -67,8 +67,12 @@ body {
   }
 
   a {
-
     display: inline-block;
+
+    &.inline {
+
+      color: $color-secondary;
+    }
   }
 }
 

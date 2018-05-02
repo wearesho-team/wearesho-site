@@ -1,0 +1,38 @@
+/*
+* Statistics styles
+ */
+.statistics {
+  @include clearfix;
+
+  &-item {
+    @include span(4 of 12 inside no-gutter);
+
+    padding-left: 1em;
+
+    &:last-child {
+
+      float: right;
+    }
+
+    .section__subtitle.marker {
+
+      &:before {
+
+        left: -17px !important;
+      }
+    }
+
+    .item__name {
+      margin: 1.125em 0 .125em;
+      font-size: .938em;
+      font-weight: $font-style-regular;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    > span {
+
+      font-size: .75em;
+    }
+  }
+}

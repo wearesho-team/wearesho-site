@@ -36,4 +36,43 @@ html[lang="en"] {
       height: 27px;
     }
   }
+
+  &_logo-bobra {
+    width: 152px;
+    height: 42px;
+
+    background-image: url('images/icon-logo-bobra.svg');
+  }
+
+  &_groshi247,
+  &_pozichka,
+  &_moneyboom,
+  &_cashme {
+
+    height: 30px;
+  }
+
+  &_groshi247 {
+    width: 80px;
+
+    background-image: url('images/icon-groshi247.svg');
+  }
+
+  &_pozichka {
+    width: 104px;
+
+    background-image: url('images/icon-pozichka.svg');
+  }
+
+  &_moneyboom {
+    width: 101px;
+
+    background-image: url('images/icon-moneyboom.svg');
+  }
+
+  &_cashme {
+    width: 97px;
+
+    background-image: url('images/icon-cashme.svg');
+  }
 }

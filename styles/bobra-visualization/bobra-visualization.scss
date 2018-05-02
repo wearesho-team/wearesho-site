@@ -1,0 +1,85 @@
+/*
+* Bobra visualization
+ */
+.bobra-visualization {
+  width: 100%;
+
+  position: relative;
+
+  margin-top: 40px;
+
+  font-size: 0;
+
+  > img {
+    width: 100%;
+
+    border-width: 7px 9px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, .08);
+  }
+
+  > .decor {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+
+      position: absolute;
+    }
+
+    &_horizontal {
+      $right-decor-width: 139px;
+      $left-decor-width: 958px;
+
+      &:before {
+        width: $left-decor-width;
+        height: 320px;
+
+        top: -247px;
+        left: (-$left-decor-width + 1);
+
+        background-image: url('images/bobra-decor-left.svg');
+      }
+
+      &:after {
+        width: $right-decor-width;
+        height: 68px;
+
+        top: -52px;
+        right: (-$right-decor-width);
+
+        background-image: url('images/bobra-decor-right.svg');
+      }
+    }
+
+    &_vertical {
+
+      &:before {
+        width: 685px;
+        height: 241px;
+
+        top: -230px;
+        right: -235px;
+
+        background-image: url('images/bobra-decor-top.svg');
+      }
+
+      &:after {
+        width: 571px;
+        height: 52px;
+
+        bottom: -46px;
+        right: -264px;
+
+        background-image: url('images/bobra-decor-bottom.svg');
+      }
+    }
+  }
+}

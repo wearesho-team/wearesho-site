@@ -74,7 +74,12 @@ const config = {
                 {
                     test: /\.(css|scss)$/,
                     loader: ExtractTextPlugin.extract({
-                            fallback: "style-loader",
+                            fallback: {
+                                loader: "style-loader",
+                                options: {
+                                    sourceMap: debug,
+                                },
+                            },
                             use: [
                                 {
                                     loader: 'css-loader',
@@ -104,6 +109,7 @@ const config = {
                                             path.resolve(__dirname + './styles'),
                                             path.resolve(__dirname, "./node_modules/compass-mixins/lib"),
                                         ],
+                                        sourceMap: debug,
                                     },
                                 },
                             ],
