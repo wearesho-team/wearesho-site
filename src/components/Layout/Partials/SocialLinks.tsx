@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import {Config} from "../../../data/Config";
+import { Config } from "../../../data/Config";
 
-import {GitIcon} from "../../Icons/GitIcon";
-import {BehanceIcon} from "../../Icons/BehanceIcon";
-import {LinkedinIcon} from "../../Icons/LinkedinIcon";
-import {TouchHover} from "../../../helpers/TouchHover";
+import { GitIcon } from "../../Icons/GitIcon";
+import { BehanceIcon } from "../../Icons/BehanceIcon";
+import { LinkedinIcon } from "../../Icons/LinkedinIcon";
+import { TouchHover } from "../../../helpers/TouchHover";
 
 export const SocialLinks: React.SFC<undefined> = (): JSX.Element => {
     return (
@@ -17,7 +17,7 @@ export const SocialLinks: React.SFC<undefined> = (): JSX.Element => {
                 rel="nofollow noopener"
                 {...TouchHover}
             >
-                <GitIcon/>
+                <GitIcon />
             </a>
             <a
                 href={Config.links.behance}
@@ -26,7 +26,7 @@ export const SocialLinks: React.SFC<undefined> = (): JSX.Element => {
                 rel="nofollow noopener"
                 {...TouchHover}
             >
-                <BehanceIcon/>
+                <BehanceIcon />
             </a>
             <a
                 href={Config.links.linkedin}
@@ -35,7 +35,7 @@ export const SocialLinks: React.SFC<undefined> = (): JSX.Element => {
                 rel="nofollow noopener"
                 {...TouchHover}
             >
-                <LinkedinIcon/>
+                <LinkedinIcon />
             </a>
         </div>
     );

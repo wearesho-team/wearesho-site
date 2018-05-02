@@ -45,7 +45,7 @@ const config = {
             noInfo: false,
             hot: true,
             inline: true,
-            open: true,
+            open: false,
             historyApiFallback: true,
             port: 8089,
         },

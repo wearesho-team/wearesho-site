@@ -6,10 +6,10 @@ import "./translations/ru";
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {createBrowserHistory} from "history";
+import { createBrowserHistory } from "history";
 
-import {Layout} from "./components/Layout";
-import {PreLoader} from "./components/PreLoader";
+import { Layout } from "./components/Layout";
+import { PreLoader } from "./components/PreLoader";
 
 const container = document.getElementById("content-overlay");
 
@@ -18,8 +18,7 @@ if (!container) {
     console.error("Can not found element for mounting Layout!");
 } else {
     ReactDOM.render(
-
-        <Layout preLoader={new PreLoader((window as any).hideTimeout || 2000)} history={createBrowserHistory()}/>,
+            <Layout preLoader={new PreLoader((window as any).hideTimeout || 2000)} history={createBrowserHistory()} />,
         container
     );
 }
