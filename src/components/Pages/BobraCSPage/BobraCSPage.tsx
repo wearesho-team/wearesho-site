@@ -11,10 +11,10 @@ export class BobraCSPage extends React.Component {
         return (
             <section className="section section-bobra-cs">
                 <div className="align-container">
-                    <div className="section__title">
+                    <a href="#" className="section__title">
                         <span className="section__title-text">BobraCS</span>
                         <i className="icon icon_logo-bobra" />
-                    </div>
+                    </a>
                     <SmartBreakpoint match={["max-width: 767px"]}>
                         <div className="content">
                             <div className="section__half half_first">
@@ -37,6 +37,10 @@ export class BobraCSPage extends React.Component {
                                     <li>{translate("bobraCSPage.articles.lower.item.3")}</li>
                                     <li>{translate("bobraCSPage.articles.lower.item.4")}</li>
                                 </ul>
+                                <p className="details">
+                                    <a href="#" className="inline">{translate("bobraCSPage.details.link")}</a>&nbsp;
+                                    {translate("bobraCSPage.details.text")}
+                                </p>
                             </div>
                             <div className="section__half half_second">
                                 <div className="statistics">
@@ -56,31 +60,45 @@ export class BobraCSPage extends React.Component {
                                         <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
                                     </div>
                                 </div>
-                                <div className="bobra-visualization">
-                                    <img src={BobraCS} width="582" height="322" alt="Image"/>
-                                    <div className="decor decor_vertical" />
-                                    <div className="decor decor_horizontal" />
+                                <div className="clients-list">
+                                    <a href="#">
+                                        <i className="icon icon_groshi247" />
+                                    </a>
+                                    <a href="https://pozichka.ua/">
+                                        <i className="icon icon_pozichka" />
+                                    </a>
+                                    <a href="https://moneyboom.ua/po">
+                                        <i className="icon icon_moneyboom" />
+                                    </a>
+                                    <a href="https://cashme.ua/">
+                                        <i className="icon icon_cashme" />
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div className="bottom">
-                            <p className="details">
-                                <a href="#" className="inline">Свяжитесь с нами</a>&nbsp;
-                                для обсуждения делатей.
-                            </p>
+                            <div className="bobra-visualization">
+                                <img src={BobraCS} width="582" height="322" alt="Image"/>
+                                <div className="decor decor_vertical" />
+                                <div className="decor decor_horizontal" />
+                            </div>
                             <div className="clients-list">
-                                <a href="#">
-                                    <i className="icon icon_groshi247" />
-                                </a>
-                                <a href="https://pozichka.ua/">
-                                    <i className="icon icon_pozichka" />
-                                </a>
-                                <a href="https://moneyboom.ua/po">
-                                    <i className="icon icon_moneyboom" />
-                                </a>
-                                <a href="https://cashme.ua/">
-                                    <i className="icon icon_cashme" />
-                                </a>
+                                <div className="row">
+                                    <a href="#">
+                                        <i className="icon icon_groshi247" />
+                                    </a>
+                                    <a href="https://pozichka.ua/">
+                                        <i className="icon icon_pozichka" />
+                                    </a>
+                                </div>
+                                <div className="row">
+                                    <a href="https://moneyboom.ua/po">
+                                        <i className="icon icon_moneyboom" />
+                                    </a>
+                                    <a href="https://cashme.ua/">
+                                        <i className="icon icon_cashme" />
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </SmartBreakpoint>
@@ -150,8 +168,8 @@ export class BobraCSPage extends React.Component {
                         </div>
                         <div className="bottom">
                             <p className="details">
-                                <a href="#" className="inline">Свяжитесь с нами</a>&nbsp;
-                                для обсуждения делатей.
+                                <a href="#" className="inline">{translate("bobraCSPage.details.link")}</a>&nbsp;
+                                {translate("bobraCSPage.details.text")}
                             </p>
                         </div>
                     </SmartBreakpoint>
@@ -216,8 +234,8 @@ export class BobraCSPage extends React.Component {
                         </div>
                         <div className="bottom">
                             <p className="details">
-                                <a href="#" className="inline">Свяжитесь с нами</a>&nbsp;
-                                для обсуждения делатей.
+                                <a href="#" className="inline">{translate("bobraCSPage.details.link")}</a>&nbsp;
+                                {translate("bobraCSPage.details.text")}
                             </p>
                             <div className="bobra-visualization">
                                 <img src={BobraCS} width="582" height="322" alt="Image"/>
@@ -246,7 +264,7 @@ export class BobraCSPage extends React.Component {
                                     <li>{translate("bobraCSPage.articles.lower.item.1")}</li>
                                     <li>{translate("bobraCSPage.articles.lower.item.2")}</li>
                                     <li>{translate("bobraCSPage.articles.lower.item.3")}</li>
-                                    <li>{translate("bobraCSPage.articles.lower.item.4")}</li>
+                                    <li className="cutted">{translate("bobraCSPage.articles.lower.item.4")}</li>
                                 </ul>
                             </div>
                             <div className="section__half half_second">
@@ -276,8 +294,8 @@ export class BobraCSPage extends React.Component {
                         </div>
                         <div className="bottom">
                             <p className="details">
-                                <a href="#" className="inline">Свяжитесь с нами</a>&nbsp;
-                                для обсуждения делатей.
+                                <a href="#" className="inline">{translate("bobraCSPage.details.link")}</a>&nbsp;
+                                {translate("bobraCSPage.details.text")}
                             </p>
                             <div className="clients-list">
                                 <a href="#">

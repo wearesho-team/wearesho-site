@@ -88,6 +88,10 @@ translate.registerTranslations("en", {
                 text2: "за 2 года",
             },
         },
+        details: {
+            link: "Свяжитесь с нами",
+            text: "для обсуждения делатей.",
+        },
     },
     contactPage: {
         title: "Partnership",

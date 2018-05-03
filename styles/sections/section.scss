@@ -548,6 +548,12 @@ html[lang="en"] {
     .section__subtitle {
       margin-top: 3em;
 
+      @include breakpoint($mobile) {
+        margin-top: 2.5em;
+
+        font-size: 17px;
+      }
+
       @include breakpoint($tablet-laptop) {
         margin-top: 2.5em;
 
@@ -578,6 +584,15 @@ html[lang="en"] {
           width: 480px;
         }
       }
+
+      .details {
+
+        @include breakpoint($mobile) {
+          margin: 2.5em 0 .75em;
+
+          font-size: 1.063em;
+        }
+      }
     }
 
     .bottom {
@@ -586,6 +601,12 @@ html[lang="en"] {
       @include valign-center;
 
       margin-top: 4em;
+
+      @include breakpoint($mobile) {
+        display: block;
+
+        margin-top: 0;
+      }
 
       @include breakpoint($tablet) {
 
@@ -621,6 +642,14 @@ html[lang="en"] {
           font-size: 1.063em;
         }
       }
+
+      > .clients-list {
+
+        @include breakpoint($mobile-l) {
+
+          display: none;
+        }
+      }
     }
 
     .section__half {
@@ -631,6 +660,11 @@ html[lang="en"] {
         .services-list {
           padding-left: 28px;
 
+          @include breakpoint($mobile) {
+
+            padding-left: 0;
+          }
+
           @include breakpoint($tablet-l) {
 
             padding-left: 16px;
@@ -639,6 +673,14 @@ html[lang="en"] {
           @include breakpoint($laptop-small) {
 
             padding-left: 16px;
+          }
+
+          &:before {
+
+            @include breakpoint($mobile) {
+
+              content: none;
+            }
           }
         }
 
@@ -682,11 +724,29 @@ html[lang="en"] {
             font-size: 2.25em;
           }
         }
+
+        > .clients-list {
+
+          @include breakpoint($mobile-p) {
+
+            display: none;
+          }
+
+          @include breakpoint($mobile-l) {
+
+            @include span(4 of 12 inside no-gutter)
+          }
+        }
       }
     }
 
     .services-list {
       width: 100%;
+
+      @include breakpoint($mobile)  {
+
+        line-height: 1.525em;
+      }
 
       @include breakpoint($tablet-l)  {
 
@@ -719,6 +779,19 @@ html[lang="en"] {
 
           font-size: 14px;
         }
+
+        &:not(:first-child) {
+
+          @include breakpoint($mobile)  {
+
+            margin-top: .75em;
+          }
+        }
+
+        &.cutted {
+
+          width: 73%;
+        }
       }
     }
 
@@ -728,6 +801,14 @@ html[lang="en"] {
       @include justify-content;
 
       margin-top: 0;
+
+      @include breakpoint($mobile) {
+        display: block;
+
+        @include span(12 of 12 inside no-gutter);
+
+        float: none;
+      }
 
       @include breakpoint($tablet) {
         display: inline-block;
@@ -749,7 +830,7 @@ html[lang="en"] {
 
         float: none;
 
-        margin: 0em auto;
+        margin: 0 auto;
 
         vertical-align: top;
       }
@@ -773,8 +854,40 @@ html[lang="en"] {
         }
       }
 
+      > .row {
+
+        @include breakpoint($mobile) {
+
+          @include clearfix;
+        }
+
+        > a {
+
+          &:nth-child(2n-1) {
+
+            @include breakpoint($mobile) {
+
+              float: left;
+            }
+          }
+
+          &:nth-child(2n) {
+
+            @include breakpoint($mobile) {
+
+              float: right;
+            }
+          }
+        }
+      }
+
       a {
         font-size: 0;
+
+        @include breakpoint($mobile) {
+
+          margin-top: 40px;
+        }
 
         &:not(:last-child) {
 
@@ -791,6 +904,14 @@ html[lang="en"] {
           @include breakpoint($laptop-small) {
 
             margin-bottom: 52px;
+          }
+        }
+
+        &:first-child {
+
+          @include breakpoint($mobile-l) {
+
+            margin-top: 0;
           }
         }
 

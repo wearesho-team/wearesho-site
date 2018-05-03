@@ -4,6 +4,11 @@
 .statistics {
   @include clearfix;
 
+  @include breakpoint($mobile-l) {
+
+    @include span(8 of 12 inside no-gutter)
+  }
+
   @include breakpoint($tablet) {
     width: 50%;
 
@@ -25,7 +30,7 @@
 
     padding-left: 1em;
 
-    @include breakpoint($tablet) {
+    @include breakpoint($mobile-tablet) {
 
       @include span(12 of 12 inside no-gutter);
 
@@ -42,10 +47,15 @@
     &:last-child {
       float: right;
 
-      @include breakpoint($tablet) {
+      @include breakpoint($mobile-tablet) {
         float: none;
 
         margin-top: 3em;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        margin-top: 3.25em;
       }
 
       @include breakpoint($tablet-l) {
@@ -62,6 +72,11 @@
 
     .section__subtitle {
 
+      @include breakpoint($mobile) {
+
+        font-size: 20px !important;
+      }
+
       @include breakpoint($tablet-l) {
 
         font-size: 20px !important;
@@ -77,6 +92,11 @@
 
         &:before {
           left: -17px !important;
+
+          @include breakpoint($mobile) {
+
+            left: -21px !important;
+          }
 
           @include breakpoint($tablet-laptop) {
 
