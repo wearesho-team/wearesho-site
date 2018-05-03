@@ -16,7 +16,7 @@ import { ClientsList } from "./Partials/ClientsList";
 import { TimeLine } from "../../TimeLine/TimeLine";
 import { BasePage } from "../BasePage";
 
-export class MainPage extends BasePage {
+export class MainPage extends BasePage<{date: number}> {
 
     public render(): JSX.Element {
         return (
@@ -205,7 +205,7 @@ export class MainPage extends BasePage {
     }
 
     protected get label(): string {
-        const hoursSinceOfFoundation = Math.floor(((new Date()).getTime() - Config.foundationDate.getTime()) / 3600000);
+        const hoursSinceOfFoundation = Math.floor((this.props.date - Config.foundationDate.getTime()) / 3600000);
         const hoursLastChar = Number(hoursSinceOfFoundation.toString().slice(-1));
 
         switch (hoursLastChar) {

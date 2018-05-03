@@ -68,7 +68,7 @@ describe("<Layout>", () => {
 
     it("should render <MainPage/> on `/`", () => {
 
-        expect(wrapper.contains(<MainPage/>)).to.be.true;
+        expect(wrapper.find(MainPage)).to.exist;
     });
 
     it("should render <PartnershipPage/> on `/partnership`", () => {
