@@ -4,21 +4,85 @@
 .statistics {
   @include clearfix;
 
+  @include breakpoint($tablet) {
+    width: 50%;
+
+    display: inline-block;
+
+    vertical-align: top;
+  }
+
+  @include breakpoint($laptop-small) {
+    width: 50%;
+
+    display: inline-block;
+
+    vertical-align: top;
+  }
+
   &-item {
     @include span(4 of 12 inside no-gutter);
 
     padding-left: 1em;
 
-    &:last-child {
+    @include breakpoint($tablet) {
 
-      float: right;
+      @include span(12 of 12 inside no-gutter);
+
+      float: none;
     }
 
-    .section__subtitle.marker {
+    @include breakpoint($laptop-small) {
 
-      &:before {
+      @include span(12 of 12 inside no-gutter);
 
-        left: -17px !important;
+      float: none;
+    }
+
+    &:last-child {
+      float: right;
+
+      @include breakpoint($tablet) {
+        float: none;
+
+        margin-top: 3em;
+      }
+
+      @include breakpoint($tablet-l) {
+
+        margin-top: 5.5em;
+      }
+
+      @include breakpoint($laptop-small) {
+        float: none;
+
+        margin-top: 5.5em;
+      }
+    }
+
+    .section__subtitle {
+
+      @include breakpoint($tablet-l) {
+
+        font-size: 20px !important;
+      }
+
+      @include breakpoint($laptop-small) {
+        float: none;
+
+        font-size: 20px !important;
+      }
+
+      &.marker {
+
+        &:before {
+          left: -17px !important;
+
+          @include breakpoint($tablet-laptop) {
+
+            left: -21px !important;
+          }
+        }
       }
     }
 
@@ -28,6 +92,11 @@
       font-weight: $font-style-regular;
       text-transform: uppercase;
       color: #fff;
+
+      @include breakpoint($laptop-medium) {
+
+        white-space: nowrap;
+      }
     }
 
     > span {
