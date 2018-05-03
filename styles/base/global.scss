@@ -70,8 +70,14 @@ body {
     display: inline-block;
 
     &.inline {
-
       color: $color-secondary;
+
+      transition: color .3s ease;
+
+      &:hover {
+
+        color: #7BC6F5;
+      }
     }
   }
 }

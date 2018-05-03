@@ -61,19 +61,19 @@ translate.registerTranslations("ru", {
             upper: {
                 title: "Автоматизирует процессы:",
                 item: {
-                    1: "выдачи online/offline кредитов банками и МФО,",
-                    2: "скорингового моделирования на базе ML,",
-                    3: "soft-collection и реструктуризации долга,",
-                    4: "анализа эффективности ведения бизнеса.",
+                    1: "выдачи online/offline кредитов банками и МФО",
+                    2: "скорингового моделирования на базе ML",
+                    3: "soft-collection и реструктуризации долга",
+                    4: "анализа эффективности ведения бизнеса",
                 },
             },
             lower: {
                 title: "Включает интеграции: ",
                 item: {
-                    1: "кредитные бюро: БКИ, МБКИ, ПВБКИ,",
-                    2: "платежные системы: Platon, iPay,",
-                    3: "терминалы: iBox, EasyPay, City24, TYME,",
-                    4: "CPA-сети: SalesDoubler, LoanGate, Admitad, Doaffiliate, PrimeLead.",
+                    1: "кредитные бюро: БКИ, МБКИ, ПВБКИ",
+                    2: "платежные системы: Platon, iPay",
+                    3: "терминалы: iBox, EasyPay, City24, TYME",
+                    4: "CPA-сети: SalesDoubler, LoanGate, Admitad, Doaffiliate, PrimeLead",
                 },
             },
         },
@@ -90,7 +90,7 @@ translate.registerTranslations("ru", {
         },
         details: {
             link: "Свяжитесь с нами",
-            text: "для обсуждения делатей.",
+            text: "для обсуждения деталей.",
         },
     },
     contactPage: {
@@ -133,7 +133,7 @@ translate.registerTranslations("ru", {
     processPage: {
         title: "Процесс",
         subTitlePart1: "Комплекс работ по созданию",
-        subTitlePart2: "IТ-продукта",
+        subTitlePart2: " IТ-продукта",
         text1: "Студия предоставляет полный комплекс работ по созданию, " +
             " внедрению и сопровождению программных решений для" +
             " автоматизации бизнес-процессов финансовых учреждений.",

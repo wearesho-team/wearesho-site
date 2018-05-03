@@ -10,14 +10,9 @@
 
   font-size: 0;
 
-  @include breakpoint($mobile) {
-
-    margin-bottom: 8px;
-  }
-
   @include breakpoint($tablet-p) {
-    margin-top: 0;
-    margin-bottom: 56px;
+    margin-top: 10px;
+    margin-bottom: 58px;
   }
 
   @include breakpoint($tablet-l) {
@@ -38,6 +33,8 @@
     border-width: 7px 9px;
     border-style: solid;
     border-color: rgba(255, 255, 255, .08);
+
+    opacity: .73;
   }
 
   > .decor {
@@ -48,10 +45,9 @@
     bottom: 0;
     left: 0;
 
-    @include breakpoint($mobile-p) {
+    pointer-events: none;
 
-      display: none;
-    }
+    opacity: .85;
 
     &:before,
     &:after {
@@ -78,7 +74,7 @@
 
         background-image: url('images/bobra-decor-left.svg');
 
-        @include breakpoint($mobile-l) {
+        @include breakpoint($mobile) {
           width: $left-decor-width-mob;
           height: 235px;
 
@@ -96,7 +92,9 @@
 
         background-image: url('images/bobra-decor-right.svg');
 
-        @include breakpoint($mobile-l) {
+        opacity: .8;
+
+        @include breakpoint($mobile) {
           width: $right-decor-width-mob;
           height: 54px;
 
@@ -117,7 +115,7 @@
 
         background-image: url('images/bobra-decor-top.svg');
 
-        @include breakpoint($mobile-l) {
+        @include breakpoint($mobile) {
           width: 500px;
           height: 176px;
 
@@ -135,7 +133,9 @@
 
         background-image: url('images/bobra-decor-bottom.svg');
 
-        @include breakpoint($mobile-l) {
+        opacity: .75;
+
+        @include breakpoint($mobile) {
           width: 470px;
           height: 43px;
 

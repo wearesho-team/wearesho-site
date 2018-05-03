@@ -28,6 +28,7 @@
   &-item {
     @include span(4 of 12 inside no-gutter);
 
+    margin-top: .5em;
     padding-left: 1em;
 
     @include breakpoint($mobile-tablet) {
@@ -35,6 +36,13 @@
       @include span(12 of 12 inside no-gutter);
 
       float: none;
+
+      margin-top: 0;
+    }
+
+    @include breakpoint($tablet-l) {
+
+      margin-top: .5em;
     }
 
     @include breakpoint($laptop-small) {
@@ -55,18 +63,18 @@
 
       @include breakpoint($mobile-l) {
 
-        margin-top: 3.25em;
+        margin-top: 5em;
       }
 
       @include breakpoint($tablet-l) {
 
-        margin-top: 5.5em;
+        margin-top: 6.5em;
       }
 
       @include breakpoint($laptop-small) {
         float: none;
 
-        margin-top: 5.5em;
+        margin-top: 6.5em;
       }
     }
 
@@ -91,24 +99,14 @@
       &.marker {
 
         &:before {
-          left: -17px !important;
 
-          @include breakpoint($mobile) {
-
-            left: -21px !important;
-          }
-
-          @include breakpoint($tablet-laptop) {
-
-            left: -21px !important;
-          }
+          left: -21px !important;
         }
       }
     }
 
     .item__name {
-      margin: 1.125em 0 .125em;
-      font-size: .938em;
+      margin: .4em 0 .125em;
       font-weight: $font-style-regular;
       text-transform: uppercase;
       color: #fff;

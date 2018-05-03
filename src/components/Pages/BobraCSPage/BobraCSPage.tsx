@@ -61,16 +61,16 @@ export class BobraCSPage extends React.Component {
                                     </div>
                                 </div>
                                 <div className="clients-list">
-                                    <a href="#">
+                                    <a href="#" target="_blank">
                                         <i className="icon icon_groshi247" />
                                     </a>
-                                    <a href="https://pozichka.ua/">
+                                    <a href="https://pozichka.ua/" target="_blank">
                                         <i className="icon icon_pozichka" />
                                     </a>
-                                    <a href="https://moneyboom.ua/po">
+                                    <a href="https://moneyboom.ua/" target="_blank">
                                         <i className="icon icon_moneyboom" />
                                     </a>
-                                    <a href="https://cashme.ua/">
+                                    <a href="https://cashme.ua/" target="_blank">
                                         <i className="icon icon_cashme" />
                                     </a>
                                 </div>
@@ -84,18 +84,18 @@ export class BobraCSPage extends React.Component {
                             </div>
                             <div className="clients-list">
                                 <div className="row">
-                                    <a href="#">
+                                    <a href="#" target="_blank">
                                         <i className="icon icon_groshi247" />
                                     </a>
-                                    <a href="https://pozichka.ua/">
+                                    <a href="https://pozichka.ua/" target="_blank">
                                         <i className="icon icon_pozichka" />
                                     </a>
                                 </div>
                                 <div className="row">
-                                    <a href="https://moneyboom.ua/po">
+                                    <a href="https://moneyboom.ua/" target="_blank">
                                         <i className="icon icon_moneyboom" />
                                     </a>
-                                    <a href="https://cashme.ua/">
+                                    <a href="https://cashme.ua/" target="_blank">
                                         <i className="icon icon_cashme" />
                                     </a>
                                 </div>
@@ -150,16 +150,16 @@ export class BobraCSPage extends React.Component {
                                 </div>
                                 <div className="clients-list">
                                     <div className="align-container">
-                                        <a href="#">
+                                        <a href="#" target="_blank">
                                             <i className="icon icon_groshi247" />
                                         </a>
-                                        <a href="https://pozichka.ua/">
+                                        <a href="https://pozichka.ua/" target="_blank">
                                             <i className="icon icon_pozichka" />
                                         </a>
-                                        <a href="https://moneyboom.ua/po">
+                                        <a href="https://moneyboom.ua/" target="_blank">
                                             <i className="icon icon_moneyboom" />
                                         </a>
-                                        <a href="https://cashme.ua/">
+                                        <a href="https://cashme.ua/" target="_blank">
                                             <i className="icon icon_cashme" />
                                         </a>
                                     </div>
@@ -216,16 +216,16 @@ export class BobraCSPage extends React.Component {
                                 </div>
                                 <div className="clients-list">
                                     <div className="align-container">
-                                        <a href="#">
+                                        <a href="#" target="_blank">
                                             <i className="icon icon_groshi247" />
                                         </a>
-                                        <a href="https://pozichka.ua/">
+                                        <a href="https://pozichka.ua/" target="_blank">
                                             <i className="icon icon_pozichka" />
                                         </a>
-                                        <a href="https://moneyboom.ua/po">
+                                        <a href="https://moneyboom.ua/" target="_blank">
                                             <i className="icon icon_moneyboom" />
                                         </a>
-                                        <a href="https://cashme.ua/">
+                                        <a href="https://cashme.ua/" target="_blank">
                                             <i className="icon icon_cashme" />
                                         </a>
                                     </div>
@@ -298,16 +298,16 @@ export class BobraCSPage extends React.Component {
                                 {translate("bobraCSPage.details.text")}
                             </p>
                             <div className="clients-list">
-                                <a href="#">
+                                <a href="#" target="_blank">
                                     <i className="icon icon_groshi247" />
                                 </a>
-                                <a href="https://pozichka.ua/">
+                                <a href="https://pozichka.ua/" target="_blank">
                                     <i className="icon icon_pozichka" />
                                 </a>
-                                <a href="https://moneyboom.ua/po">
+                                <a href="https://moneyboom.ua/" target="_blank">
                                     <i className="icon icon_moneyboom" />
                                 </a>
-                                <a href="https://cashme.ua/">
+                                <a href="https://cashme.ua/" target="_blank">
                                     <i className="icon icon_cashme" />
                                 </a>
                             </div>
