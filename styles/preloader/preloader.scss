@@ -12,7 +12,7 @@ body.loaded {
 
     .section.section-preloader {
 
-      &:before {
+      > svg {
         animation: appearance .5s ease;
         animation-fill-mode: forwards;
       }
@@ -84,9 +84,7 @@ body.loaded {
 
   padding-top: 0;
 
-  &:before {
-    content: '';
-
+  > svg {
     width: $glow-width;
     height: 180px;
 
@@ -97,12 +95,10 @@ body.loaded {
 
     margin: (-$glow-height / 2) 0 0 (-$glow-width / 2 + 2px);
 
-    background: url('images/preloader-glow.svg');
-
     opacity: 0;
-
-    z-index: $under-zindex;
-
+   
+    z-index: $under-zindex;   
+    
     @include breakpoint($mobile) {
 
       left: (100% / 3);

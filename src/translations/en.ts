@@ -8,31 +8,45 @@ translate.registerTranslations("en", {
     mainPage: {
         title: {
             mainOne: {
-                base: "Here your",
+                base: "Comprehensive",
                 additions: {
-                    1: "challenging",
+                    1: "IT-solutions",
                 }
+
             },
             mainTwo: {
-                base: "ideas are tranformed",
+                base: "for",
                 additions: {
-                    1: "into IT-product",
+                    1: "FinTech",
+                    2: "projects",
                 }
             }
         },
         articles: {
             whatWeDo: {
-                title: "We implement high-tech projects",
-                items: {
-                    1: "development of websites",
-                    2: "branding and design",
-                    3: "building of ERP and CRM-systems",
-                    4: "analytics and advertising",
-                    5: "technical support of projects"
+                upper: {
+                    title: "Implement:",
+                    items: {
+                        1: "«Turn-key» online loan service",
+                    }
+                },
+                lower: {
+                    title: "We will:",
+                    items: {
+                        1: "development of websites",
+                        2: "branding and design",
+                        3: "building of ERP and CRM-systems",
+                        4: "analytics and advertising",
+                        5: "technical support of projects"
+                    }
                 }
             },
             howLong: {
-                title: "More than 3 years",
+                title: {
+                    one: "hours",
+                    two: "hours",
+                    three: "hours"
+                },
                 subTitle: "of cooperation with such financial companies, as",
                 items: [
                     "NIKO Holding",

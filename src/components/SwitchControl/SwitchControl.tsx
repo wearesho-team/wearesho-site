@@ -1,9 +1,9 @@
 import * as React from "react"
 
-import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
-import {routeProps} from "../../data/routeProps";
+import { RouterContext, RouterContextTypes } from "../../data/RouterContext";
+import { routeProps } from "../../data/routeProps";
 
-import {ElementWithTimer, smartClearTimeout} from "../../helpers/smartClearTimeout";
+import { ElementWithTimer, smartClearTimeout } from "../../helpers/smartClearTimeout";
 
 export enum RouteIndexType {
     up = 1,
@@ -40,9 +40,9 @@ export class SwitchControl extends React.Component<undefined, undefined> impleme
             return;
         }
 
-        const {location: {pathname}} = this.context.router.history;
+        const { location: { pathname } } = this.context.router.history;
 
-        const nextRouteIndex = routeProps.findIndex(({path}) => path === pathname) + routeIndexDelta;
+        const nextRouteIndex = routeProps.findIndex(({ path }) => path === pathname) + routeIndexDelta;
 
         if (routeProps[nextRouteIndex]) {
             this.context.router.history.push(routeProps[nextRouteIndex].path);
@@ -70,6 +70,10 @@ export class SwitchControl extends React.Component<undefined, undefined> impleme
     };
 
     protected handleWheel = (event: MouseWheelEvent) => {
+        if (!event.deltaY) {
+            return;
+        }
+
         this.changeRoute(event.deltaY > 0 ? RouteIndexType.up : RouteIndexType.down);
     };
 }

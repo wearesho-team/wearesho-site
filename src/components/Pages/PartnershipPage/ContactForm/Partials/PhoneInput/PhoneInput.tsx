@@ -87,7 +87,7 @@ export class PhoneInput extends BaseInput<HTMLInputElement> {
     protected handlePaste = async (event: ClipboardEvent): Promise<void> => {
         event.preventDefault();
 
-        const value = event.clipboardData.getData("Text");
+        const value = event.clipboardData && event.clipboardData.getData("Text");
         if (!value) {
             return;
         }

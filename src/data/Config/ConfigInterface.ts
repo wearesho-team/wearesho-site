@@ -17,4 +17,5 @@ export interface ConfigInterface {
     reCaptchaApiKey: string,
     phone: number,
     baseUrl: string,
+    foundationDate: Date;
 }

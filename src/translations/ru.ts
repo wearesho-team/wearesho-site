@@ -1,5 +1,5 @@
-import {NameRange} from "../models/common/Rules";
-import {translate} from "../helpers/translate";
+import { NameRange } from "../models/common/Rules";
+import { translate } from "../helpers/translate";
 // tslint:disable:max-line-length
 translate.registerTranslations("ru", {
     header: {
@@ -8,31 +8,44 @@ translate.registerTranslations("ru", {
     mainPage: {
         title: {
             mainOne: {
-                base: "Здесь ваши",
+                base: "Комплексные",
                 additions: {
-                    1: "смелые",
+                    1: "IT-решения",
                 }
             },
             mainTwo: {
-                base: "идеи превращаются",
+                base: "для",
                 additions: {
-                    1: "в IT-продукт",
+                    1: "FinTech",
+                    2: "проектов",
                 }
             }
         },
         articles: {
             whatWeDo: {
-                title: "Реализуем высокотехнологичные проекты",
-                items: {
-                    1: "разработка сайтов",
-                    2: "брендинг и дизайн",
-                    3: "формирование ERP и CRM-систем",
-                    4: "аналитика и реклама",
-                    5: "техническая поддержка проектов"
+                upper: {
+                    title: "Реализуем:",
+                    items: {
+                        1: "Сервис онлайн кредитования «Под Ключ»",
+                    }
+                },
+                lower: {
+                    title: "Займемся:",
+                    items: {
+                        1: "разработкой сайта",
+                        2: "брендингом и дизайном",
+                        3: "формированием ERP и CRM-системы",
+                        4: "аналитикой и рекламой",
+                        5: "технической поддержкой проектов"
+                    }
                 }
             },
             howLong: {
-                title: "Более 3 лет",
+                title: {
+                    one: "час",
+                    two: "часа",
+                    three: "часов"
+                },
                 subTitle: "сотрудничества с финансовыми компаниями:",
                 items: [
                     "NIKO Holding",
@@ -82,10 +95,10 @@ translate.registerTranslations("ru", {
     processPage: {
         title: "Процесс",
         subTitlePart1: "Комплекс работ по созданию",
-        subTitlePart2: " ИТ-продукта",
+        subTitlePart2: "IТ-продукта",
         text1: "Студия предоставляет полный комплекс работ по созданию, " +
-        " внедрению и сопровождению программных решений для" +
-        " автоматизации бизнес-процессов финансовых учреждений.",
+            " внедрению и сопровождению программных решений для" +
+            " автоматизации бизнес-процессов финансовых учреждений.",
         text2: "Особенности процесса обсуждаются при согласовании проекта",
         stages: {
             title: {
