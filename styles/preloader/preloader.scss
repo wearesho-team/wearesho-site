@@ -115,41 +115,6 @@ body.loaded {
     }
   }
 
-  // &:before {
-  //   content: '';
-
-  //   width: $glow-width;
-  //   height: 180px;
-
-  //   position: absolute;
-
-  //   top: 50%;
-  //   left: 50%;
-
-  //   margin: (-$glow-height / 2) 0 0 (-$glow-width / 2 + 2px);
-
-  //   background: url('images/preloader-glow.svg');
-
-  //   opacity: 0;
-
-  //   z-index: $under-zindex;
-
-  //   @include breakpoint($mobile) {
-
-  //     left: (100% / 3);
-  //   }
-
-  //   @include breakpoint($tablet-l) {
-
-  //     margin: (-$glow-height / 2) 0 0 (-$glow-width / 2);
-  //   }
-
-  //   @include breakpoint($laptop-small) {
-
-  //     margin: (-$glow-height / 2) 0 0 (-$glow-width / 2);
-  //   }
-  // }
-
   > .greeting {
     @include span(4 of 12 inside no-gutters);
 
