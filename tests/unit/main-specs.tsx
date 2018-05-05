@@ -32,9 +32,9 @@ describe("<MainPage/>", () => {
     };
 
     it("Should set text according to time", () => {
-        wrapper = mount(<MainPage date={0} />,
+        wrapper = mount(<MainPage date={Config.foundationDate.getTime()} />,
             { context, childContextTypes: { ...LayoutContextTypes, ...RouterContextTypes } });
-        expect(wrapper.getDOMNode().innerHTML).to.contains(-Config.foundationDate.getTime() / 3600000);
+        expect(wrapper.getDOMNode().innerHTML).to.contains(0);
         wrapper.unmount();        
 
         wrapper = mount(<MainPage date={(Config.foundationDate.getTime() + 3600000)} />,

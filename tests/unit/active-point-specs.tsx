@@ -11,9 +11,7 @@ describe("<ActivePoint/>", () => {
 
     let onProjectChangeHasCalled: boolean;
     const onProjectChange = (element: HTMLElement, position: number) => {
-        if (element instanceof HTMLElement) {
-            onProjectChangeHasCalled = true;
-        }
+        onProjectChangeHasCalled = true;
     };
 
     let props: ActivePointProps = {

@@ -1,31 +1,29 @@
-if (typeof MutationObserver === "undefined") {
-    class MutationObserverMock implements MutationObserver {
-        public static mutations = [
-            {
-                type: undefined,
-                addedNodes: [],
-                target: undefined
-            }
-        ];
-
-        public constructor(func) {
-            func(MutationObserverMock.mutations);
-
-            this.takeRecords();
+class MutationObserverMock implements MutationObserver {
+    public static mutations = [
+        {
+            type: undefined,
+            addedNodes: [],
+            target: undefined
         }
+    ];
 
-        public disconnect() {
-            return undefined
-        };
+    public constructor(func) {
+        func(MutationObserverMock.mutations);
 
-        public observe() {
-            return undefined
-        };
-
-        public takeRecords() {
-            return undefined
-        };
+        this.takeRecords();
     }
 
-    MutationObserver = MutationObserverMock;
+    public disconnect() {
+        return undefined
+    };
+
+    public observe() {
+        return undefined
+    };
+
+    public takeRecords() {
+        return undefined
+    };
 }
+
+MutationObserver = MutationObserverMock;

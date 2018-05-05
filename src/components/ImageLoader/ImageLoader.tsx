@@ -4,7 +4,6 @@ import { ImageLoaderProps, ImageLoaderPropTypes, ImageLoaderDefaultProps } from 
 
 export interface ImageLoaderState {
     currentImage: number;
-    errorOnLoad: boolean;
 }
 
 export class ImageLoader extends React.Component<ImageLoaderProps, ImageLoaderState> {
@@ -14,7 +13,6 @@ export class ImageLoader extends React.Component<ImageLoaderProps, ImageLoaderSt
     public readonly imageStack = [this.props.initialImage, ...this.props.imageStack];
     public readonly state: ImageLoaderState = {
         currentImage: 0,
-        errorOnLoad: false
     };
 
     public render(): React.ReactNode {
@@ -23,12 +21,11 @@ export class ImageLoader extends React.Component<ImageLoaderProps, ImageLoaderSt
         return (
             <React.Fragment>
                 <img {...imageProps} src={this.getSrc(this.state.currentImage)} />
-                {(!this.isAllLoaded && !this.state.errorOnLoad) && (
+                {!this.isAllLoaded && (
                     <img
                         {...imageProps}
-                        src={this.getSrc(this.state.currentImage + 1)}
-                        onError={this.handleError}
                         onLoad={this.nextImage}
+                        src={this.getSrc(this.state.currentImage + 1)}
                     />
                 )}
             </React.Fragment>
@@ -49,9 +46,4 @@ export class ImageLoader extends React.Component<ImageLoaderProps, ImageLoaderSt
         }));
     }
 
-    protected handleError = (): void => {
-        this.setState({
-            errorOnLoad: true
-        });
-    }
 }
