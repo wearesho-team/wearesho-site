@@ -236,6 +236,10 @@ body.loaded {
 
       font-size: .824em;
       color: rgba(255, 255, 255, .7);
+
+      @include breakpoint($tablet-p) {
+        max-width: 194px;
+      }
     }
   }
 
@@ -246,7 +250,7 @@ body.loaded {
     font-size: inherit;
 
     text-align: left;
-    
+
     @include breakpoint($mobile) {
 
       padding-left: 1.25em;
