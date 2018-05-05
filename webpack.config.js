@@ -182,7 +182,7 @@ const config = {
             new CleanWebpackPlugin([path.resolve('./web')]),
             new webpack.IgnorePlugin(/caniuse-lite\/data\/regions/),
             new HtmlWebpackPlugin({
-                title: "SHO Art & Data",
+                title: "SHO?! Art & Data",
                 template: path.resolve('./templates/index.ejs'),
                 inline: fs.readFileSync("./templates/scripts.js", "utf8"),
                 minify: {

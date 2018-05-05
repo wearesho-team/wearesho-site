@@ -1,9 +1,9 @@
 import * as React from "react";
-import {translate} from "../../../helpers/translate";
-
-const BobraCS = require("../../../../images/bobraCS-100.png") as string;
-
+import { Link } from "react-router-dom";
 import { SmartBreakpoint } from "react-breakpoint";
+
+import { translate } from "../../../helpers/translate";
+import { ImageLoader } from "../../ImageLoader";
 
 export class BobraCSPage extends React.Component {
 
@@ -11,10 +11,10 @@ export class BobraCSPage extends React.Component {
         return (
             <section className="section section-bobra-cs">
                 <div className="align-container">
-                    <a href="#" className="section__title">
+                    <span className="section__title">
                         <span className="section__title-text">BobraCS</span>
                         <i className="icon icon_logo-bobra" />
-                    </a>
+                    </span>
                     <SmartBreakpoint match={["max-width: 767px"]}>
                         <div className="content">
                             <div className="section__half half_first">
@@ -38,7 +38,9 @@ export class BobraCSPage extends React.Component {
                                     <li>{translate("bobraCSPage.articles.lower.item.4")}</li>
                                 </ul>
                                 <p className="details">
-                                    <a href="#" className="inline">{translate("bobraCSPage.details.link")}</a>&nbsp;
+                                    <Link to="/partnership" className="inline">
+                                        {translate("bobraCSPage.details.link")}
+                                    </Link>&nbsp;
                                     {translate("bobraCSPage.details.text")}
                                 </p>
                             </div>
@@ -61,16 +63,16 @@ export class BobraCSPage extends React.Component {
                                     </div>
                                 </div>
                                 <div className="clients-list">
-                                    <a href="#">
+                                    <a href="#" target="_blank">
                                         <i className="icon icon_groshi247" />
                                     </a>
-                                    <a href="https://pozichka.ua/">
+                                    <a href="https://pozichka.ua/" target="_blank">
                                         <i className="icon icon_pozichka" />
                                     </a>
-                                    <a href="https://moneyboom.ua/po">
+                                    <a href="https://moneyboom.ua/" target="_blank">
                                         <i className="icon icon_moneyboom" />
                                     </a>
-                                    <a href="https://cashme.ua/">
+                                    <a href="https://cashme.ua/" target="_blank">
                                         <i className="icon icon_cashme" />
                                     </a>
                                 </div>
@@ -78,24 +80,35 @@ export class BobraCSPage extends React.Component {
                         </div>
                         <div className="bottom">
                             <div className="bobra-visualization">
-                                <img src={BobraCS} width="582" height="322" alt="Image"/>
+                                <ImageLoader
+                                    width="582"
+                                    height="322"
+                                    alt="Image"
+                                    imageStack={[
+                                        require("../../../../images/bobraCS-20.jpg"),
+                                        require("../../../../images/bobraCS-40.jpg"),
+                                        require("../../../../images/bobraCS-60.jpg"),
+                                        require("../../../../images/bobraCS-80.jpg"),
+                                        require("../../../../images/bobraCS-100.jpg"),
+                                    ]}
+                                />
                                 <div className="decor decor_vertical" />
                                 <div className="decor decor_horizontal" />
                             </div>
                             <div className="clients-list">
                                 <div className="row">
-                                    <a href="#">
+                                    <a href="#" target="_blank">
                                         <i className="icon icon_groshi247" />
                                     </a>
-                                    <a href="https://pozichka.ua/">
+                                    <a href="https://pozichka.ua/" target="_blank">
                                         <i className="icon icon_pozichka" />
                                     </a>
                                 </div>
                                 <div className="row">
-                                    <a href="https://moneyboom.ua/po">
+                                    <a href="https://moneyboom.ua/" target="_blank">
                                         <i className="icon icon_moneyboom" />
                                     </a>
-                                    <a href="https://cashme.ua/">
+                                    <a href="https://cashme.ua/" target="_blank">
                                         <i className="icon icon_cashme" />
                                     </a>
                                 </div>
@@ -127,7 +140,18 @@ export class BobraCSPage extends React.Component {
                             </div>
                             <div className="section__half half_second">
                                 <div className="bobra-visualization">
-                                    <img src={BobraCS} width="582" height="322" alt="Image"/>
+                                    <ImageLoader
+                                        width="582"
+                                        height="322"
+                                        alt="Image"
+                                        imageStack={[
+                                            require("../../../../images/bobraCS-20.jpg"),
+                                            require("../../../../images/bobraCS-40.jpg"),
+                                            require("../../../../images/bobraCS-60.jpg"),
+                                            require("../../../../images/bobraCS-80.jpg"),
+                                            require("../../../../images/bobraCS-100.jpg"),
+                                        ]}
+                                    />
                                     <div className="decor decor_vertical" />
                                     <div className="decor decor_horizontal" />
                                 </div>
@@ -150,16 +174,16 @@ export class BobraCSPage extends React.Component {
                                 </div>
                                 <div className="clients-list">
                                     <div className="align-container">
-                                        <a href="#">
+                                        <a href="#" target="_blank">
                                             <i className="icon icon_groshi247" />
                                         </a>
-                                        <a href="https://pozichka.ua/">
+                                        <a href="https://pozichka.ua/" target="_blank">
                                             <i className="icon icon_pozichka" />
                                         </a>
-                                        <a href="https://moneyboom.ua/po">
+                                        <a href="https://moneyboom.ua/" target="_blank">
                                             <i className="icon icon_moneyboom" />
                                         </a>
-                                        <a href="https://cashme.ua/">
+                                        <a href="https://cashme.ua/" target="_blank">
                                             <i className="icon icon_cashme" />
                                         </a>
                                     </div>
@@ -168,7 +192,9 @@ export class BobraCSPage extends React.Component {
                         </div>
                         <div className="bottom">
                             <p className="details">
-                                <a href="#" className="inline">{translate("bobraCSPage.details.link")}</a>&nbsp;
+                                <Link to="/partnership" className="inline">
+                                    {translate("bobraCSPage.details.link")}
+                                </Link>&nbsp;
                                 {translate("bobraCSPage.details.text")}
                             </p>
                         </div>
@@ -216,16 +242,16 @@ export class BobraCSPage extends React.Component {
                                 </div>
                                 <div className="clients-list">
                                     <div className="align-container">
-                                        <a href="#">
+                                        <a href="#" target="_blank">
                                             <i className="icon icon_groshi247" />
                                         </a>
-                                        <a href="https://pozichka.ua/">
+                                        <a href="https://pozichka.ua/" target="_blank">
                                             <i className="icon icon_pozichka" />
                                         </a>
-                                        <a href="https://moneyboom.ua/po">
+                                        <a href="https://moneyboom.ua/" target="_blank">
                                             <i className="icon icon_moneyboom" />
                                         </a>
-                                        <a href="https://cashme.ua/">
+                                        <a href="https://cashme.ua/" target="_blank">
                                             <i className="icon icon_cashme" />
                                         </a>
                                     </div>
@@ -234,11 +260,24 @@ export class BobraCSPage extends React.Component {
                         </div>
                         <div className="bottom">
                             <p className="details">
-                                <a href="#" className="inline">{translate("bobraCSPage.details.link")}</a>&nbsp;
+                                <Link to="/partnership" className="inline">
+                                    {translate("bobraCSPage.details.link")}
+                                </Link>&nbsp;
                                 {translate("bobraCSPage.details.text")}
                             </p>
                             <div className="bobra-visualization">
-                                <img src={BobraCS} width="582" height="322" alt="Image"/>
+                                <ImageLoader
+                                    width="582"
+                                    height="322"
+                                    alt="Image"
+                                    imageStack={[
+                                        require("../../../../images/bobraCS-20.jpg"),
+                                        require("../../../../images/bobraCS-40.jpg"),
+                                        require("../../../../images/bobraCS-60.jpg"),
+                                        require("../../../../images/bobraCS-80.jpg"),
+                                        require("../../../../images/bobraCS-100.jpg"),
+                                    ]}
+                                />
                                 <div className="decor decor_vertical" />
                                 <div className="decor decor_horizontal" />
                             </div>
@@ -286,7 +325,18 @@ export class BobraCSPage extends React.Component {
                                     </div>
                                 </div>
                                 <div className="bobra-visualization">
-                                    <img src={BobraCS} width="582" height="322" alt="Image"/>
+                                    <ImageLoader
+                                        width="582"
+                                        height="322"
+                                        alt="Image"
+                                        imageStack={[
+                                            require("../../../../images/bobraCS-20.jpg"),
+                                            require("../../../../images/bobraCS-40.jpg"),
+                                            require("../../../../images/bobraCS-60.jpg"),
+                                            require("../../../../images/bobraCS-80.jpg"),
+                                            require("../../../../images/bobraCS-100.jpg"),
+                                        ]}
+                                    />
                                     <div className="decor decor_vertical" />
                                     <div className="decor decor_horizontal" />
                                 </div>
@@ -294,20 +344,22 @@ export class BobraCSPage extends React.Component {
                         </div>
                         <div className="bottom">
                             <p className="details">
-                                <a href="#" className="inline">{translate("bobraCSPage.details.link")}</a>&nbsp;
+                                <Link to="/partnership" className="inline">
+                                    {translate("bobraCSPage.details.link")}
+                                </Link>&nbsp;
                                 {translate("bobraCSPage.details.text")}
                             </p>
                             <div className="clients-list">
                                 <a href="#">
                                     <i className="icon icon_groshi247" />
                                 </a>
-                                <a href="https://pozichka.ua/">
+                                <a href="https://pozichka.ua/" target="_blank">
                                     <i className="icon icon_pozichka" />
                                 </a>
-                                <a href="https://moneyboom.ua/po">
+                                <a href="https://moneyboom.ua/" target="_blank">
                                     <i className="icon icon_moneyboom" />
                                 </a>
-                                <a href="https://cashme.ua/">
+                                <a href="https://cashme.ua/" target="_blank">
                                     <i className="icon icon_cashme" />
                                 </a>
                             </div>
@@ -319,3 +371,4 @@ export class BobraCSPage extends React.Component {
         );
     }
 }
+// tslint:disable-next-line

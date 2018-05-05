@@ -61,18 +61,18 @@ translate.registerTranslations("ru", {
             upper: {
                 title: "Автоматизирует процессы:",
                 item: {
-                    1: "выдачи online/offline кредитов банками и МФО,",
-                    2: "скорингового моделирования на базе ML,",
-                    3: "soft-collection и реструктуризации долга,",
+                    1: "выдачи online/offline кредитов банками и МФО",
+                    2: "скорингового моделирования на базе ML",
+                    3: "soft-collection и реструктуризации долга",
                     4: "анализа эффективности ведения бизнеса.",
                 },
             },
             lower: {
                 title: "Включает интеграции: ",
                 item: {
-                    1: "кредитные бюро: БКИ, МБКИ, ПВБКИ,",
-                    2: "платежные системы: Platon, iPay,",
-                    3: "терминалы: iBox, EasyPay, City24, TYME,",
+                    1: "кредитные бюро: БКИ, МБКИ, ПВБКИ",
+                    2: "платежные системы: Platon, iPay",
+                    3: "терминалы: iBox, EasyPay, City24, TYME",
                     4: "CPA-сети: SalesDoubler, LoanGate, Admitad, Doaffiliate, PrimeLead.",
                 },
             },
@@ -84,7 +84,7 @@ translate.registerTranslations("ru", {
                 text2: "каждый день",
             },
             item2: {
-                text1: "обработано заявок",
+                text1: "обработанных заявок",
                 text2: "за 2 года",
             },
         },
@@ -133,7 +133,7 @@ translate.registerTranslations("ru", {
     processPage: {
         title: "Процесс",
         subTitlePart1: "Комплекс работ по созданию",
-        subTitlePart2: "IТ-продукта",
+        subTitlePart2: " IТ-продукта",
         text1: "Студия предоставляет полный комплекс работ по созданию, " +
             " внедрению и сопровождению программных решений для" +
             " автоматизации бизнес-процессов финансовых учреждений.",
@@ -205,3 +205,4 @@ translate.registerTranslations("ru", {
     Ukraine: "Украина",
     SHO: "ШО",
 });
+// tslint:disable-next-line

@@ -57,7 +57,12 @@ export const Timing = {
             articles: {
                 whatWeDo: {
                     delay: showingDelay,
-                    duration: 2000,
+                    duration: 3500,
+                    caretTimeout: undefined
+                },
+                whatWeDoLink: {
+                    delay: showingDelay + 500,
+                    duration: 3500,
                     caretTimeout: undefined
                 },
                 howLong: {

@@ -73,11 +73,7 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
                         </SmartBreakpoint>
                         <SmartBreakpoint match="max-width: 1439px">
                             <ScrollControl>
-<<<<<<< HEAD
                                 {routeProps.map((prop) => prop.render())}
-=======
-                                {routeProps.map((prop) => <prop.component key={prop.path} />)}
->>>>>>> feature/image-loader
                             </ScrollControl>
                         </SmartBreakpoint>
                     </ErrorBounder>

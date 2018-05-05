@@ -64,7 +64,7 @@ export class MainPage extends BasePage<{date: number}> {
                             </OnMobile>
                             <div className="services-list">
                                 <CustomAnimation
-                                    {...Timing.mobile.mainPage.articles.whatWeDo}
+                                    {...Timing.mobile.mainPage.articles.whatWeDoLink}
                                     actionClassName="showing"
                                     startFeature={StartFeature}
                                 >
