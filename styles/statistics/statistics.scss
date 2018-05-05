@@ -1,0 +1,127 @@
+/*
+* Statistics styles
+ */
+.statistics {
+  @include clearfix;
+
+  @include breakpoint($mobile-l) {
+
+    @include span(8 of 12 inside no-gutter)
+  }
+
+  @include breakpoint($tablet) {
+    width: 50%;
+
+    display: inline-block;
+
+    vertical-align: top;
+  }
+
+  @include breakpoint($laptop-small) {
+    width: 50%;
+
+    display: inline-block;
+
+    vertical-align: top;
+  }
+
+  &-item {
+    @include span(4 of 12 inside no-gutter);
+
+    padding-left: 1em;
+
+    @include breakpoint($mobile-tablet) {
+
+      @include span(12 of 12 inside no-gutter);
+
+      float: none;
+    }
+
+    @include breakpoint($laptop-small) {
+
+      @include span(12 of 12 inside no-gutter);
+
+      float: none;
+    }
+
+    &:last-child {
+      float: right;
+
+      @include breakpoint($mobile-tablet) {
+        float: none;
+
+        margin-top: 3em;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        margin-top: 3.25em;
+      }
+
+      @include breakpoint($tablet-l) {
+
+        margin-top: 5.5em;
+      }
+
+      @include breakpoint($laptop-small) {
+        float: none;
+
+        margin-top: 5.5em;
+      }
+    }
+
+    .section__subtitle {
+
+      @include breakpoint($mobile) {
+
+        font-size: 20px !important;
+      }
+
+      @include breakpoint($tablet-l) {
+
+        font-size: 20px !important;
+      }
+
+      @include breakpoint($laptop-small) {
+        float: none;
+
+        font-size: 20px !important;
+      }
+
+      &.marker {
+
+        &:before {
+          left: -17px !important;
+
+          @include breakpoint($mobile) {
+
+            left: -21px !important;
+          }
+
+          @include breakpoint($tablet-laptop) {
+
+            left: -21px !important;
+          }
+        }
+      }
+    }
+
+    .item__name {
+      margin: 1.125em 0 .125em;
+      font-size: .938em;
+      font-weight: $font-style-regular;
+      text-transform: uppercase;
+      color: #fff;
+
+      @include breakpoint($laptop-medium) {
+
+        white-space: nowrap;
+      }
+    }
+
+    > span {
+
+      font-size: .75em;
+    }
+  }
+}
