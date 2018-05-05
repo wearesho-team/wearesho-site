@@ -14,7 +14,7 @@ export const routeProps = [
     {
         exact: false,
         path: "/bobra-cs",
-        render: () => <BobraCSPage />,
+        render: () => <BobraCSPage key="/bobra-cs"/>,
     },
     {
         exact: false,
