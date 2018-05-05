@@ -15,4 +15,5 @@ module.exports = {
     },
     mail: "office@wearesho.com",
     phone: 380660249402,
+    foundationDate: new Date("August 7, 2014 00:00:00")
 };

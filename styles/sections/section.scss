@@ -76,7 +76,7 @@ html[lang="en"] {
      }
 
     .section__half {
-      padding: 6em 0 0 1.875em;
+      padding: 4.2em 0 0 1.875em;
 
       @include breakpoint($mobile) {
 
@@ -142,6 +142,7 @@ html[lang="en"] {
     }
   }
 
+  &.section-bobra-cs,
   &.section-process,
   &.section-partnership {
 
@@ -518,12 +519,450 @@ html[lang="en"] {
     }
   }
 
+  &.section-bobra-cs {
+
+    @include breakpoint($laptop-medium) {
+
+      padding-bottom: 0;
+    }
+
+    .section__title {
+
+      > span,
+      > .icon {
+        display: inline-block;
+
+        vertical-align: middle;
+      }
+
+      > span {
+        margin-right: .475em;
+        padding-right: .475em;
+
+        line-height: .725;
+
+        border-right: 1px solid rgba(197, 213, 224, .53);
+      }
+    }
+
+    .section__subtitle {
+      margin-top: 3em;
+
+      @include breakpoint($mobile) {
+
+        margin-top: 2.25em;
+      }
+
+      @include breakpoint($mobile-p) {
+
+        font-size: 17px;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        font-size: 18px;
+      }
+
+      @include breakpoint($tablet-laptop) {
+        margin-top: 2.5em;
+
+        font-size: 18px;
+      }
+
+      @include breakpoint($tablet-p) {
+        margin-top: 2.5em;
+
+        font-size: 20px;
+      }
+
+      &.marker {
+
+        &:before {
+
+          left: -6px;
+        }
+      }
+    }
+
+    .content {
+      @include clearfix;
+
+      > .section__subtitle {
+
+        @include breakpoint($tablet-l) {
+
+          width: 480px;
+        }
+
+        @include breakpoint($laptop-small) {
+
+          width: 480px;
+        }
+      }
+
+      .details {
+        color: #fff;
+
+        @include breakpoint($mobile-p) {
+          margin: 2.5em 0 .75em;
+
+          font-size: 1.133em;
+        }
+
+        @include breakpoint($mobile-l) {
+          margin: 2.5em 0 1.75em;
+
+          font-size: 1.2em;
+        }
+      }
+    }
+
+    .bottom {
+      @include justify-content;
+
+      @include valign-center;
+
+      margin-top: 4em;
+
+      @include breakpoint($mobile) {
+        display: block;
+
+        margin-top: 0;
+      }
+
+      @include breakpoint($tablet) {
+
+        margin-top: 2.5em;
+      }
+
+      @include breakpoint($tablet-l) {
+
+        display: block;
+      }
+
+      @include breakpoint($laptop-small) {
+        display: block;
+
+        margin-top: 2.5em;
+      }
+
+      > .details {
+        font-size: 1.125em;
+        color: #fff;
+
+        @include breakpoint($tablet-p) {
+
+          font-size: 1.25em;
+        }
+      }
+
+      > .clients-list {
+
+        @include breakpoint($mobile-l) {
+
+          display: none;
+        }
+      }
+    }
+
+    .section__half {
+
+      &.half_first {
+
+        .section__subtitle.marker,
+        .services-list {
+          padding-left: 28px;
+
+          @include breakpoint($mobile) {
+
+            padding-left: 0;
+          }
+
+          @include breakpoint($tablet-l) {
+
+            padding-left: 16px;
+          }
+
+          @include breakpoint($laptop-small) {
+
+            padding-left: 16px;
+          }
+
+          &:before {
+
+            @include breakpoint($mobile) {
+
+              content: none;
+            }
+          }
+        }
+
+        .section__subtitle {
+
+          &:not(.marker) {
+            width: 480px;
+
+            @include breakpoint($mobile) {
+
+              width: 100%;
+            }
+
+            @include breakpoint($tablet-p) {
+
+              width: 100%;
+            }
+
+            @include breakpoint($laptop-medium) {
+
+              width: 420px;
+            }
+
+            @include breakpoint($laptop-large) {
+
+              width: 420px;
+            }
+          }
+
+          &:first-child {
+
+            margin-top: 0;
+          }
+        }
+      }
+
+      &.half_second {
+
+        .section__subtitle {
+          margin-top: 0;
+
+          font-weight: $font-style-light;
+
+          @include breakpoint($mobile) {
+
+            margin-bottom: .3em;
+          }
+
+          > .text_increased {
+
+            font-size: 2.25em;
+          }
+        }
+
+        > .clients-list {
+
+          @include breakpoint($mobile-p) {
+
+            display: none;
+          }
+
+          @include breakpoint($mobile-l) {
+
+            @include span(4 of 12 inside no-gutter)
+          }
+        }
+      }
+    }
+
+    .services-list {
+      width: 100%;
+
+      @include breakpoint($mobile)  {
+
+        line-height: 1.525em;
+      }
+
+      @include breakpoint($tablet-l)  {
+
+        line-height: 1.875em;
+      }
+
+      @include breakpoint($laptop-small)  {
+
+        line-height: 1.875em;
+      }
+
+      @include breakpoint($laptop-medium)  {
+
+        line-height: 1.875em;
+      }
+
+      > li {
+
+        @include breakpoint($tablet-l)  {
+
+          font-size: 14px;
+        }
+
+        @include breakpoint($laptop-small)  {
+
+          font-size: 14px;
+        }
+
+        @include breakpoint($laptop-medium)  {
+
+          font-size: 14px;
+        }
+
+        &:not(:first-child) {
+
+          @include breakpoint($mobile)  {
+
+            margin-top: .75em;
+          }
+        }
+
+        &.cutted {
+
+          width: 73%;
+        }
+      }
+    }
+
+    .clients-list {
+      @include span(6 of 12 inside no-gutter);
+
+      @include justify-content;
+
+      margin-top: 0;
+
+      @include breakpoint($mobile) {
+        display: block;
+
+        @include span(12 of 12 inside no-gutter);
+
+        float: none;
+      }
+
+      @include breakpoint($tablet) {
+        display: inline-block;
+
+        float: none;
+
+        margin: 0 auto;
+
+        vertical-align: top;
+      }
+
+      @include breakpoint($tablet-l) {
+
+        margin-top: .5em;
+      }
+
+      @include breakpoint($laptop-small) {
+        display: inline-block;
+
+        float: none;
+
+        margin: .5em auto 0;
+
+        vertical-align: top;
+      }
+
+      > .align-container {
+
+        @include breakpoint($tablet) {
+          width: 140px;
+
+          margin: 0 auto;
+
+          text-align: center;
+        }
+
+        @include breakpoint($laptop-small) {
+          width: 140px;
+
+          margin: 0 auto;
+
+          text-align: center;
+        }
+      }
+
+      > .row {
+
+        @include breakpoint($mobile) {
+
+          @include clearfix;
+        }
+
+        > a {
+
+          &:nth-child(2n-1) {
+
+            @include breakpoint($mobile) {
+
+              float: left;
+            }
+          }
+
+          &:nth-child(2n) {
+
+            @include breakpoint($mobile) {
+
+              float: right;
+            }
+          }
+        }
+      }
+
+      a {
+        font-size: 0;
+
+        @include breakpoint($mobile) {
+
+          margin-top: 40px;
+        }
+
+        &:not(:last-child) {
+
+          @include breakpoint($tablet-p) {
+
+            margin-bottom: 36px;
+          }
+
+          @include breakpoint($tablet-l) {
+
+            margin-bottom: 52px;
+          }
+
+          @include breakpoint($laptop-small) {
+
+            margin-bottom: 52px;
+          }
+        }
+
+        &:first-child {
+
+          @include breakpoint($mobile-l) {
+
+            margin-top: 0;
+          }
+        }
+
+        &:hover {
+
+          > .icon {
+
+            opacity: 1;
+          }
+        }
+
+        > .icon {
+          opacity: .45;
+
+          -webkit-backface-visibility: hidden;
+
+          transition: opacity .3s ease;
+        }
+      }
+    }
+  }
+
   .section__title {
     line-height: 1.35em;
 
     font-size: 3.375em;
     font-family: $font-secondary;
-    font-weight: $font-style-light;
+    font-weight: 200;
     color: #BECED9;
 
     @include breakpoint($mobile) {
@@ -592,12 +1031,12 @@ html[lang="en"] {
 
           @include breakpoint($mobile) {
 
-            display: block;
+            display: inline-block;
           }
 
           @include breakpoint($tablet-p) {
 
-            display: block;
+            display: inline-block;
           }
         }
       }
@@ -724,6 +1163,8 @@ html[lang="en"] {
 
     line-height: 2.1em;
 
+    width: 88%;
+
     @include breakpoint($tablet-p) {
 
       font-size: 1.2em;
@@ -732,6 +1173,24 @@ html[lang="en"] {
     @include breakpoint($laptop-medium) {
 
       font-size: .933em;
+    }
+
+    > a {
+      display: inline;
+
+      color: #339FD0;
+
+      transition: color .3s ease, border-bottom-color .3s ease;
+
+      border-bottom: 1px solid #339fd0;
+
+      line-height: 1.3em;
+
+      &:hover {
+        color: #7BC6F5;
+
+        border-bottom-color: #339fd0;
+      }
     }
 
     &__item {
@@ -746,7 +1205,7 @@ html[lang="en"] {
 
   .clients-list {
     margin-top: 1.1em;
-
+    
     &__item {
 
       &:not(:last-child) {
@@ -766,6 +1225,8 @@ html[lang="en"] {
       font-weight: $font-style-regular;
       color: $color-secondary;
 
+      transition: color .3s ease;
+
       @include breakpoint($mobile) {
         width: auto;
 
@@ -782,10 +1243,14 @@ html[lang="en"] {
 
         margin: .3em 0;
       }
+
+      &:hover {
+        color: #7BC6F5;
+      }
     }
 
     &__text {
-      opacity: .25;
+      opacity: .3;
 
       font-size: .933em;
       color: #94B1BC;

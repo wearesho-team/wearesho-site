@@ -33,7 +33,7 @@ export class YearItem extends React.Component<YearItemProps, undefined> {
     public render(): JSX.Element {
         const className = concat(
             this.baseClassName,
-            this.props.children > (new Date()).getFullYear() ? this.tabletHiddenClassName : ""
+            this.props.children >= (new Date()).getFullYear() ? this.tabletHiddenClassName : ""
         );
 
         return (
