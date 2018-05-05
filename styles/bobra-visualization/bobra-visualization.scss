@@ -1,0 +1,148 @@
+/*
+* Bobra visualization
+ */
+.bobra-visualization {
+  width: 100%;
+
+  position: relative;
+
+  margin-top: 40px;
+
+  font-size: 0;
+
+  @include breakpoint($mobile) {
+
+    margin-bottom: 8px;
+  }
+
+  @include breakpoint($tablet-p) {
+    margin-top: 0;
+    margin-bottom: 56px;
+  }
+
+  @include breakpoint($tablet-l) {
+    max-width: 79%;
+
+    margin: 78px auto 0;
+  }
+
+  @include breakpoint($laptop-small) {
+    max-width: 79%;
+
+    margin: 78px auto 0;
+  }
+
+  > img {
+    width: 100%;
+
+    border-width: 7px 9px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, .08);
+  }
+
+  > .decor {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    @include breakpoint($mobile-p) {
+
+      display: none;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+
+      position: absolute;
+
+      z-index: $under-zindex;
+    }
+
+    &_horizontal {
+      $right-decor-width: 139px;
+      $right-decor-width-mob: 110px;
+      $left-decor-width: 958px;
+      $left-decor-width-mob: 700px;
+
+      &:before {
+        width: $left-decor-width;
+        height: 320px;
+
+        top: -247px;
+        left: (-$left-decor-width + 1);
+
+        background-image: url('images/bobra-decor-left.svg');
+
+        @include breakpoint($mobile-l) {
+          width: $left-decor-width-mob;
+          height: 235px;
+
+          top: -180px;
+          left: (-$left-decor-width-mob + 1);
+        }
+      }
+
+      &:after {
+        width: $right-decor-width;
+        height: 68px;
+
+        top: -52px;
+        right: -$right-decor-width;
+
+        background-image: url('images/bobra-decor-right.svg');
+
+        @include breakpoint($mobile-l) {
+          width: $right-decor-width-mob;
+          height: 54px;
+
+          top: -42px;
+          right: -$right-decor-width-mob;
+        }
+      }
+    }
+
+    &_vertical {
+
+      &:before {
+        width: 685px;
+        height: 241px;
+
+        top: -230px;
+        right: -235px;
+
+        background-image: url('images/bobra-decor-top.svg');
+
+        @include breakpoint($mobile-l) {
+          width: 500px;
+          height: 176px;
+
+          top: -127px;
+          right: -199px;
+        }
+      }
+
+      &:after {
+        width: 571px;
+        height: 52px;
+
+        right: -264px;
+        bottom: -46px;
+
+        background-image: url('images/bobra-decor-bottom.svg');
+
+        @include breakpoint($mobile-l) {
+          width: 470px;
+          height: 43px;
+
+          right: -216px;
+          bottom: -38px;
+        }
+      }
+    }
+  }
+}
