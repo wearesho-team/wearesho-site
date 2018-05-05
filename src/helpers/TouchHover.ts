@@ -13,7 +13,7 @@ const touchHandler = (event: React.TouchEvent<HTMLElement>) => {
     }, delay);
 };
 
-export const TouchHover: React.HTMLProps<HTMLElement> = {
+export const TouchHover = {
     onTouchEnd: touchHandler,
-    onTouchStart: touchHandler
+    onTouchStart: touchHandler,
 };
