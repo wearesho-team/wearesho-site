@@ -126,6 +126,8 @@ body.loaded {
 
     transition: transform 1s ease, opacity 1s ease;
 
+    text-align: right;
+
     @include breakpoint($tablet-p) {
 
       @include span(12 of 12 inside no-gutters);
@@ -219,6 +221,14 @@ body.loaded {
       }
     }
 
+    > span.text_medium {
+      display: inline-block;
+
+      width: 100%;
+
+      text-align: right;
+    }
+
     > span.text_medium + span {
       display: inline-block;
 
@@ -234,6 +244,9 @@ body.loaded {
     padding-left: 1.6em;
 
     font-size: inherit;
+
+    text-align: left;
+    
     @include breakpoint($mobile) {
 
       padding-left: 1.25em;

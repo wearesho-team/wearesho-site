@@ -68,7 +68,7 @@ export class MainPage extends BasePage<{date: number}> {
                                     actionClassName="showing"
                                     startFeature={StartFeature}
                                 >
-                                    <Link to="/partnership">
+                                    <Link to="/bobra-cs">
                                         {translate("mainPage.articles.whatWeDo.upper.items.1")}
                                     </Link>
                                 </CustomAnimation>
