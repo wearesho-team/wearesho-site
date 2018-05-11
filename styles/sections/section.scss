@@ -549,15 +549,30 @@ html[lang="en"] {
       margin-top: 3em;
 
       @include breakpoint($mobile) {
-        margin-top: 2.5em;
+
+        margin-top: 2.25em;
+      }
+
+      @include breakpoint($mobile-p) {
 
         font-size: 17px;
+      }
+
+      @include breakpoint($mobile-l) {
+
+        font-size: 18px;
       }
 
       @include breakpoint($tablet-laptop) {
         margin-top: 2.5em;
 
-        font-size: 17px;
+        font-size: 18px;
+      }
+
+      @include breakpoint($tablet-p) {
+        margin-top: 2.5em;
+
+        font-size: 20px;
       }
 
       &.marker {
@@ -586,11 +601,18 @@ html[lang="en"] {
       }
 
       .details {
+        color: #fff;
 
-        @include breakpoint($mobile) {
+        @include breakpoint($mobile-p) {
           margin: 2.5em 0 .75em;
 
-          font-size: 1.063em;
+          font-size: 1.133em;
+        }
+
+        @include breakpoint($mobile-l) {
+          margin: 2.5em 0 1.75em;
+
+          font-size: 1.2em;
         }
       }
     }
@@ -626,20 +648,11 @@ html[lang="en"] {
 
       > .details {
         font-size: 1.125em;
+        color: #fff;
 
-        @include breakpoint($tablet-l) {
+        @include breakpoint($tablet-p) {
 
-          font-size: 1.063em;
-        }
-
-        @include breakpoint($laptop-small) {
-
-          font-size: 1.063em;
-        }
-
-        @include breakpoint($laptop-medium) {
-
-          font-size: 1.063em;
+          font-size: 1.25em;
         }
       }
 
@@ -701,7 +714,12 @@ html[lang="en"] {
 
             @include breakpoint($laptop-medium) {
 
-              width: 450px;
+              width: 420px;
+            }
+
+            @include breakpoint($laptop-large) {
+
+              width: 420px;
             }
           }
 
@@ -718,6 +736,11 @@ html[lang="en"] {
           margin-top: 0;
 
           font-weight: $font-style-light;
+
+          @include breakpoint($mobile) {
+
+            margin-bottom: .3em;
+          }
 
           > .text_increased {
 
@@ -820,9 +843,9 @@ html[lang="en"] {
         vertical-align: top;
       }
 
-      @include breakpoint($tablet-p) {
+      @include breakpoint($tablet-l) {
 
-        margin-top: .625em;
+        margin-top: .5em;
       }
 
       @include breakpoint($laptop-small) {
@@ -830,7 +853,7 @@ html[lang="en"] {
 
         float: none;
 
-        margin: 0 auto;
+        margin: .5em auto 0;
 
         vertical-align: top;
       }
@@ -1159,15 +1182,14 @@ html[lang="en"] {
 
       transition: color .3s ease, border-bottom-color .3s ease;
 
-      border-bottom: 1px solid #339fd06e;
+      border-bottom: 1px solid #339fd0;
 
       line-height: 1.3em;
 
       &:hover {
-
         color: #7BC6F5;
 
-        border-bottom-color: #339fd0ba;
+        border-bottom-color: #339fd0;
       }
     }
 
