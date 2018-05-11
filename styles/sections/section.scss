@@ -546,7 +546,7 @@ html[lang="en"] {
     }
 
     .section__subtitle {
-      margin-top: 3em;
+      margin-top: 2.875em;
 
       @include breakpoint($mobile) {
 
@@ -584,6 +584,17 @@ html[lang="en"] {
       }
     }
 
+    .section__half {
+
+      &.half_second {
+
+        @include breakpoint($mobile) {
+
+          padding-top: 58px;
+        }
+      }
+    }
+
     .content {
       @include clearfix;
 
@@ -601,6 +612,7 @@ html[lang="en"] {
       }
 
       .details {
+        font-weight: 400;
         color: #fff;
 
         @include breakpoint($mobile-p) {
@@ -858,6 +870,16 @@ html[lang="en"] {
         vertical-align: top;
       }
 
+      // Temp
+      > a {
+
+        &:first-child {
+          pointer-events: none;
+
+          cursor: auto;
+        }
+      }
+
       > .align-container {
 
         @include breakpoint($tablet) {
@@ -874,6 +896,16 @@ html[lang="en"] {
           margin: 0 auto;
 
           text-align: center;
+        }
+
+        // Temp
+        > a {
+
+          &:first-child {
+            pointer-events: none;
+
+            cursor: auto;
+          }
         }
       }
 
