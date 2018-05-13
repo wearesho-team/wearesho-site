@@ -9,7 +9,7 @@ Scenario("Arrows control", async (I) => {
     I.waitForElement("body.loaded", timeout);
     I.wait(2);
     I.pressKey("ArrowDown");
-    I.waitForElement(".section-partnership", timeout);
+    I.waitForElement(".section-bobra-cs", timeout);
 
     I.pressKey("ArrowUp");
     I.waitForElement(".section-main", timeout);
