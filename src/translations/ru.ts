@@ -62,7 +62,7 @@ translate.registerTranslations("ru", {
                 title: "Автоматизирует процессы:",
                 item: {
                     1: "выдачи online/offline кредитов банками и МФО",
-                    2: "скорингового моделирования на базе ML",
+                    2: "скорингового моделирования с использованием машинного обучения",
                     3: "soft-collection и реструктуризации долга",
                     4: "анализа эффективности ведения бизнеса.",
                 },
@@ -73,7 +73,7 @@ translate.registerTranslations("ru", {
                     1: "кредитные бюро: БКИ, МБКИ, ПВБКИ",
                     2: "платежные системы: Platon, iPay",
                     3: "терминалы: iBox, EasyPay, City24, TYME",
-                    4: "CPA-сети: SalesDoubler, LoanGate, Admitad, Doaffiliate, PrimeLead.",
+                    4: "CPA: SalesDoubler, LoanGate, Admitad, Doaffiliate, PrimeLead.",
                 },
             },
         },
