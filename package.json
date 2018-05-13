@@ -1,6 +1,4 @@
 {
-  "name": "wearesho-site",
-  "version": "1.0.0",
   "description": "Website for SHO Studio",
   "scripts": {
     "test": "cross-env TS_NODE_PROJECT=tsconfig.test.json  NODE_ENV=test ./node_modules/.bin/nyc mocha -r jsdom-global/register -r ts-node/register -r source-map-support/register tests/unit/bootstrap.ts tests/unit/**-specs.tsx tests/unit/**-specs.ts",
