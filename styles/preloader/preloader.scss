@@ -12,7 +12,7 @@ body.loaded {
 
     .section.section-preloader {
 
-      &:before {
+      > svg {
         animation: appearance .5s ease;
         animation-fill-mode: forwards;
       }
@@ -84,9 +84,7 @@ body.loaded {
 
   padding-top: 0;
 
-  &:before {
-    content: '';
-
+  > svg {
     width: $glow-width;
     height: 180px;
 
@@ -97,12 +95,10 @@ body.loaded {
 
     margin: (-$glow-height / 2) 0 0 (-$glow-width / 2 + 2px);
 
-    background: url('images/preloader-glow.svg');
-
     opacity: 0;
-
-    z-index: $under-zindex;
-
+   
+    z-index: $under-zindex;   
+    
     @include breakpoint($mobile) {
 
       left: (100% / 3);
@@ -129,6 +125,8 @@ body.loaded {
     @include clearfix;
 
     transition: transform 1s ease, opacity 1s ease;
+
+    text-align: right;
 
     @include breakpoint($tablet-p) {
 
@@ -223,6 +221,14 @@ body.loaded {
       }
     }
 
+    > span.text_medium {
+      display: inline-block;
+
+      width: 100%;
+
+      text-align: right;
+    }
+
     > span.text_medium + span {
       display: inline-block;
 
@@ -230,6 +236,10 @@ body.loaded {
 
       font-size: .824em;
       color: rgba(255, 255, 255, .7);
+
+      @include breakpoint($tablet-p) {
+        max-width: 194px;
+      }
     }
   }
 
@@ -238,6 +248,9 @@ body.loaded {
     padding-left: 1.6em;
 
     font-size: inherit;
+
+    text-align: left;
+
     @include breakpoint($mobile) {
 
       padding-left: 1.25em;

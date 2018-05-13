@@ -23,7 +23,7 @@ Scenario("Scrolling", async (I) => {
     }
 
     I.wait(1);
-    I.seeInCurrentUrl("/partnership");
+    I.seeInCurrentUrl("/process");
 
     for (let i = 0; i < count; i++) {
         I.pressKey("ArrowUp");

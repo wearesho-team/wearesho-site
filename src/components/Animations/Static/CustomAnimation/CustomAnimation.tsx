@@ -1,10 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import {ElementWithTimer, smartClearTimeout} from "../../../../helpers/smartClearTimeout";
+import { ElementWithTimer, smartClearTimeout } from "../../../../helpers/smartClearTimeout";
 
-import {CustomAnimationDefaultProps, CustomAnimationProps, CustomAnimationPropTypes} from "./CustomAnimationProps";
-import {CustomAnimationState} from "./CustomAnimationState";
+import { CustomAnimationDefaultProps, CustomAnimationProps, CustomAnimationPropTypes } from "./CustomAnimationProps";
+import { CustomAnimationState } from "./CustomAnimationState";
 
 export class CustomAnimation extends React.Component<CustomAnimationProps, CustomAnimationState>
     implements ElementWithTimer {
@@ -16,9 +16,9 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
 
     protected clearTimeout = smartClearTimeout.bind(this);
     protected observer = new MutationObserver((mutations) => {
-        const {target} = mutations[0];
+        const { target } = mutations[0] as any;
 
-        const {element, attribute, value} = this.props.startFeature;
+        const { element, attribute, value } = this.props.startFeature;
         if (target !== element || target.attributes.getNamedItem(attribute).value !== value) {
             return;
         }
@@ -43,7 +43,10 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
             return;
         }
 
-        this.observer.observe(document.body, {attributeFilter: [this.props.startFeature.attribute], attributes: true});
+        this.observer.observe(document.body, {
+            attributeFilter: [this.props.startFeature.attribute],
+            attributes: true
+        });
 
         this.setState({
             DOMNode: ReactDOM.findDOMNode(this)

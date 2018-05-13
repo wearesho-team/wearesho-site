@@ -8,38 +8,90 @@ translate.registerTranslations("en", {
     mainPage: {
         title: {
             mainOne: {
-                base: "Here your",
+                base: "Complex",
                 additions: {
-                    1: "challenging",
+                    1: "IT-solutions",
                 }
+
             },
             mainTwo: {
-                base: "ideas are tranformed",
+                base: "for",
                 additions: {
-                    1: "into IT-product",
+                    1: "FinTech",
+                    2: "projects",
                 }
             }
         },
         articles: {
             whatWeDo: {
-                title: "We implement high-tech projects",
-                items: {
-                    1: "development of websites",
-                    2: "branding and design",
-                    3: "building of ERP and CRM-systems",
-                    4: "analytics and advertising",
-                    5: "technical support of projects"
+                upper: {
+                    title: "Implement:",
+                    items: {
+                        1: "«Turn-key» online loan service",
+                    }
+                },
+                lower: {
+                    title: "We will be engaged in:",
+                    items: {
+                        1: "web-site development",
+                        2: "branding and design",
+                        3: "ERP and CRM-system formation",
+                        4: "analytics and advertising",
+                        5: "technical support of projects"
+                    }
                 }
             },
             howLong: {
-                title: "More than 3 years",
-                subTitle: "of cooperation with such financial companies, as",
+                title: {
+                    one: "hours",
+                    two: "hours",
+                    three: "hours"
+                },
+                subTitle: "of cooperation with such financial companies:",
                 items: [
                     "NIKO Holding",
                     "INFINANCE"
                 ]
             }
         }
+    },
+    bobraCSPage: {
+        subTitle: "BobraCS is a credit system for automation of microlender's business processes",
+        articles: {
+            upper: {
+                title: "It automates the following processes:",
+                item: {
+                    1: "issue of online/offline credits by banks and microlenders",
+                    2: "scoring modeling with use of computer-aided learning",
+                    3: "soft-collection and debt restructurisation",
+                    4: "analysis of business effectiveness.",
+                },
+            },
+            lower: {
+                title: "It includes the following integrations:",
+                item: {
+                    1: "credit bureaus: БКИ, МБКИ, ПВБКИ",
+                    2: "payment systems: Platon, iPay",
+                    3: "terminals: iBox, EasyPay, City24, TYME",
+                    4: "CPA: SalesDoubler, LoanGate, Admitad, Doaffiliate, PrimeLead.",
+                },
+            },
+        },
+        statistics: {
+            item1: {
+                title: "More than",
+                text1: "financial operations",
+                text2: "every day",
+            },
+            item2: {
+                text1: "processed applications",
+                text2: "for 2 years",
+            },
+        },
+        details: {
+            link: "Contact us",
+            text: "for further details.",
+        },
     },
     contactPage: {
         title: "Partnership",
@@ -152,3 +204,4 @@ translate.registerTranslations("en", {
     Ukraine: "Ukraine",
     SHO: "SHO",
 });
+// tslint:disable-next-line

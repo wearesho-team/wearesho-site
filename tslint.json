@@ -10,8 +10,8 @@
       true,
       "never"
     ],
+    "jsx-no-multiline-js": false,
     "jsx-key": true,
-    "no-var-requires": false,
     "jsx-no-bind": true,
     "jsx-no-lambda": true,
     "jsx-no-string-ref": true,

@@ -45,7 +45,7 @@ const config = {
             noInfo: false,
             hot: true,
             inline: true,
-            open: true,
+            open: false,
             historyApiFallback: true,
             port: 8089,
         },
@@ -74,7 +74,12 @@ const config = {
                 {
                     test: /\.(css|scss)$/,
                     loader: ExtractTextPlugin.extract({
-                            fallback: "style-loader",
+                            fallback: {
+                                loader: "style-loader",
+                                options: {
+                                    sourceMap: debug,
+                                },
+                            },
                             use: [
                                 {
                                     loader: 'css-loader',
@@ -104,6 +109,7 @@ const config = {
                                             path.resolve(__dirname + './styles'),
                                             path.resolve(__dirname, "./node_modules/compass-mixins/lib"),
                                         ],
+                                        sourceMap: debug,
                                     },
                                 },
                             ],
@@ -176,7 +182,7 @@ const config = {
             new CleanWebpackPlugin([path.resolve('./web')]),
             new webpack.IgnorePlugin(/caniuse-lite\/data\/regions/),
             new HtmlWebpackPlugin({
-                title: "SHO Art & Data",
+                title: "SHO?! Art & Data",
                 template: path.resolve('./templates/index.ejs'),
                 inline: fs.readFileSync("./templates/scripts.js", "utf8"),
                 minify: {

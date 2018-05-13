@@ -201,7 +201,14 @@
   &__projects {
     font-size: .813em;
     color: $color-secondary;
+    
+    > a {
+      transition: color .3s ease;
 
+      &:hover {
+        color: #7BC6F5;
+      }
+    }
   }
 
   &__services {

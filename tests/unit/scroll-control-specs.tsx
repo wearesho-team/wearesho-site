@@ -30,7 +30,7 @@ describe("<ScrollControl/>", () => {
         wrapper = mount(
             <Router history={history}>
                 <ScrollControl>
-                    {routeProps.map((prop) => <prop.component key={prop.path}/>)}
+                    {routeProps.map((prop) => prop.render())}
                 </ScrollControl>
             </Router>
         );
