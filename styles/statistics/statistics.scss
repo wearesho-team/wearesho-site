@@ -78,6 +78,14 @@
       }
     }
 
+    .marker {
+
+      &:before {
+
+        line-height: .85em;
+      }
+    }
+
     .section__subtitle {
 
       @include breakpoint($mobile) {
