@@ -90,7 +90,7 @@ translate.registerTranslations("ru", {
         },
         details: {
             link: "Свяжитесь с нами",
-            text: "для обсуждения делатей.",
+            text: "для обсуждения деталей.",
         },
     },
     contactPage: {

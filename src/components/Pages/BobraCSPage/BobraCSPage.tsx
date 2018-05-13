@@ -346,7 +346,7 @@ export class BobraCSPage extends React.Component {
                                 {translate("bobraCSPage.details.text")}
                             </p>
                             <div className="clients-list">
-                                <a href="#">
+                                <a href="#" target="_blank">
                                     <i className="icon icon_groshi247" />
                                 </a>
                                 <a href="https://pozichka.ua/" target="_blank">
