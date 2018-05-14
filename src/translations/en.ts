@@ -31,11 +31,11 @@ translate.registerTranslations("en", {
                     }
                 },
                 lower: {
-                    title: "We will:",
+                    title: "We will be engaged in:",
                     items: {
-                        1: "development of websites",
+                        1: "web-site development",
                         2: "branding and design",
-                        3: "building of ERP and CRM-systems",
+                        3: "ERP and CRM-system formation",
                         4: "analytics and advertising",
                         5: "technical support of projects"
                     }
@@ -47,7 +47,7 @@ translate.registerTranslations("en", {
                     two: "hours",
                     three: "hours"
                 },
-                subTitle: "of cooperation with such financial companies, as",
+                subTitle: "of cooperation with such financial companies:",
                 items: [
                     "NIKO Holding",
                     "INFINANCE"
@@ -56,41 +56,41 @@ translate.registerTranslations("en", {
         }
     },
     bobraCSPage: {
-        subTitle: "BobraCS − кредитная система для автоматизации бизнес-процессов МФО",
+        subTitle: "BobraCS is a credit system for automation of microlender's business processes",
         articles: {
             upper: {
-                title: "Автоматизирует процессы:",
+                title: "It automates the following processes:",
                 item: {
-                    1: "выдачи online/offline кредитов банками и МФО",
-                    2: "скорингового моделирования на базе ML",
-                    3: "soft-collection и реструктуризации долга",
-                    4: "анализа эффективности ведения бизнеса.",
+                    1: "issue of online/offline credits by banks and microlenders",
+                    2: "scoring modeling with use of computer-aided learning",
+                    3: "soft-collection and debt restructurisation",
+                    4: "analysis of business effectiveness.",
                 },
             },
             lower: {
-                title: "Включает интеграции: ",
+                title: "It includes the following integrations:",
                 item: {
-                    1: "кредитные бюро: БКИ, МБКИ, ПВБКИ",
-                    2: "платежные системы: Platon, iPay",
-                    3: "терминалы: iBox, EasyPay, City24, TYME",
-                    4: "CPA-сети: SalesDoubler, LoanGate, Admitad, Doaffiliate, PrimeLead.",
+                    1: "credit bureaus: БКИ, МБКИ, ПВБКИ",
+                    2: "payment systems: Platon, iPay",
+                    3: "terminals: iBox, EasyPay, City24, TYME",
+                    4: "CPA: SalesDoubler, LoanGate, Admitad, Doaffiliate, PrimeLead.",
                 },
             },
         },
         statistics: {
             item1: {
-                title: "более",
-                text1: "финансовых операций",
-                text2: "каждый день",
+                title: "More than",
+                text1: "financial operations",
+                text2: "every day",
             },
             item2: {
-                text1: "обработанных заявок",
-                text2: "за 2 года",
+                text1: "processed applications",
+                text2: "for 2 years",
             },
         },
         details: {
-            link: "Свяжитесь с нами",
-            text: "для обсуждения делатей.",
+            link: "Contact us",
+            text: "for further details.",
         },
     },
     contactPage: {

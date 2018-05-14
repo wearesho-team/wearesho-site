@@ -1,6 +1,4 @@
 {
-  "name": "wearesho-site",
-  "version": "1.0.0",
   "description": "Website for SHO Studio",
   "scripts": {
     "test": "cross-env TS_NODE_PROJECT=tsconfig.test.json  NODE_ENV=test ./node_modules/.bin/nyc mocha -r jsdom-global/register -r ts-node/register -r source-map-support/register tests/unit/bootstrap.ts tests/unit/**-specs.tsx tests/unit/**-specs.ts",
@@ -34,12 +32,7 @@
     "@types/enzyme": "^2.8.9",
     "@types/history": "^4.6.0",
     "@types/mocha": "^2.2.44",
-    "@types/node": "^10.0.4",
     "@types/prop-types": "^15.5.1",
-    "@types/react": "^16.3.13",
-    "@types/react-modal": "2.2.1",
-    "@types/react-router-dom": "^4.0.7",
-    "@types/react-scroll": "^1.5.1",
     "@types/sinon": "^2.3.3",
     "chai": "^4.1.2",
     "codeceptjs-webdriverio": "^1.1.0",
@@ -60,6 +53,11 @@
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
+    "@types/react": "^16.3.13",
+    "@types/react-modal": "2.2.1",
+    "@types/react-router-dom": "^4.0.7",
+    "@types/react-scroll": "^1.5.1",
+    "@types/node": "^10.0.4",
     "autoprefixer": "^7.1.2",
     "awesome-typescript-loader": "^3.2.2",
     "axios": "^0.16.2",
