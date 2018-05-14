@@ -8,7 +8,7 @@ translate.registerTranslations("en", {
     mainPage: {
         title: {
             mainOne: {
-                base: "Comprehensive",
+                base: "Complex",
                 additions: {
                     1: "IT-solutions",
                 }
@@ -25,9 +25,9 @@ translate.registerTranslations("en", {
         articles: {
             whatWeDo: {
                 upper: {
-                    title: "Implement:",
+                    title: "We implement:",
                     items: {
-                        1: "«Turn-key» online loan service",
+                        1: "«On a turnkey basis» on-line crediting service",
                     }
                 },
                 lower: {
