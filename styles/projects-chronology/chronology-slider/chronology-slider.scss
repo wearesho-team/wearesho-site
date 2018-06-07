@@ -226,7 +226,8 @@
 }
 
 .map-container,
-.section-error {
+.section-error,
+.section-services {
 
   .slider {
     transition: opacity .3s ease;
@@ -422,6 +423,27 @@
           background: linear-gradient(to bottom, rgb(235, 75, 124) 0%, rgba(235, 75, 124, 0) 100%);
         }
       }
+    }
+  }
+}
+
+.section-services {
+
+  .slider {
+    width: 24px;
+
+    transform: rotate(-90deg);
+
+    margin-left: -34px;
+
+    &:before {
+
+      content: none;
+    }
+
+    &__bar {
+
+      height: 0;
     }
   }
 }

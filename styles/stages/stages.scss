@@ -7,6 +7,45 @@ $indent-medium: 10.25em;
 $indent-medium-laptop: 7.5em;
 $indent-mobile: 3.5em;
 
+.section-services {
+
+  .stage {
+    @include span(12 of 12 inside no-gutter);
+
+    float: none;
+
+    padding-left: 0;
+
+    &-body {
+
+      &:hover {
+
+        transform: none;
+      }
+    }
+
+    &__number {
+      font-size: 3.375em;
+      font-weight: 300;
+      color: #fff;
+      text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);
+    }
+
+    &__title {
+      margin-bottom: .063em;
+
+      opacity: 1;
+
+      font-size: 2.063em;
+    }
+
+    &__description {
+      font-size: .875em;
+      color: #C5D5E0;
+    }
+  }
+}
+
 .section__half {
 
   > .align-container {

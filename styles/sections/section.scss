@@ -989,6 +989,35 @@ html[lang="en"] {
     }
   }
 
+  &.section-services {
+
+    > .align-container {
+
+      @include clearfix;
+    }
+
+    .section {
+
+      &-main {
+        @include span(8 of 12 inside no-gutter);
+
+        .accordion {
+
+          margin-top: 2.25em;
+        }
+      }
+
+      &-aside {
+        @include span(4 of 12 inside no-gutter);
+      }
+    }
+
+    .bottom {
+
+      margin-top: 12.5em;
+    }
+  }
+
   .section__title {
     line-height: 1.35em;
 
