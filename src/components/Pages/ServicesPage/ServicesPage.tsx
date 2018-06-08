@@ -10,7 +10,7 @@ export class ServicesPage extends React.Component {
                     <div className="section-main">
                         <Develop />
                     </div>
-                    <div className="section-aside"></div>
+                    <div className="section-aside" />
                 </div>
             </section>
         );

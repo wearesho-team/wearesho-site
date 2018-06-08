@@ -100,13 +100,29 @@ export class Develop extends React.Component {
                     </div>
                 </div>
                 <div className="bottom">
-                    <div className="align-container">
-                        <h5>Особенности процесса обсуждаются при согласовании проекта</h5>
+                    <div className="half half_first">
+                        <h5>
+                            {translate("servicesPage.development.bottom.text1")}&nbsp;
+                            <a href="#" className="inline">{translate("servicesPage.development.bottom.link1")}</a>
+                        </h5>
                         <a className="btn btn_primary" href="/partnership">
-                            Написать нам
+                            {translate("servicesPage.development.bottom.btn")}
                             <span className="btn-corners btn-corners_top" />
                             <span className="btn-corners btn-corners_bottom" />
                         </a>
+                    </div>
+                    <div className="half half_second">
+                        <div className="employee-data">
+                            <span className="employee__name marker">
+                                {translate("servicesPage.development.bottom.employeeData.name")}
+                            </span>
+                            <span className="employee__position">
+                                {translate("servicesPage.development.bottom.employeeData.position")}
+                            </span>
+                        </div>
+                        <blockquote>
+                            &laquo;{translate("servicesPage.development.bottom.blockquote")}&raquo;
+                        </blockquote>
                     </div>
                 </div>
             </div>
