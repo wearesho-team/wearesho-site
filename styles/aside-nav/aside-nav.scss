@@ -1,0 +1,21 @@
+/*
+* Aside nav styles
+ */
+.aside-nav {
+  width: 50%;
+
+  float: right;
+
+  padding-left: .875em;
+
+  > li {
+
+    .marker {
+
+      &:before {
+
+        left: -20px;
+      }
+    }
+  }
+}

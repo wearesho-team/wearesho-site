@@ -992,8 +992,10 @@ html[lang="en"] {
   &.section-services {
 
     > .align-container {
-
       @include clearfix;
+
+      @include flex;
+      @include valign-center;
     }
 
     .section {
@@ -1008,8 +1010,9 @@ html[lang="en"] {
       }
 
       &-aside {
-
         @include span(4 of 12 inside no-gutter);
+
+        @include clearfix;
       }
     }
 
