@@ -15,33 +15,66 @@ $indent-mobile: 3.5em;
     float: none;
 
     padding-left: 0;
+  }
 
-    &-body {
+  .section-main {
+
+    .stage {
+
+      &-body {
+
+        &:hover {
+
+          transform: none;
+        }
+      }
+
+      &__number {
+        font-size: 3.375em;
+        font-weight: 300;
+        color: #fff;
+        text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);
+      }
+
+      &__title {
+        margin-bottom: .063em;
+
+        opacity: 1;
+
+        font-size: 2.063em;
+      }
+
+      &__description {
+        font-size: .875em;
+        color: #C5D5E0;
+      }
+    }
+  }
+
+  .section-aside {
+
+    .stage {
 
       &:hover {
 
-        transform: none;
+        .stage-body {
+
+          transform: translateX(10px);
+        }
       }
-    }
 
-    &__number {
-      font-size: 3.375em;
-      font-weight: 300;
-      color: #fff;
-      text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);
-    }
+      .stage-body {
 
-    &__title {
-      margin-bottom: .063em;
+        &:hover {
 
-      opacity: 1;
+          transform: translateX(0);
+        }
 
-      font-size: 2.063em;
-    }
+        .stage__title {
 
-    &__description {
-      font-size: .875em;
-      color: #C5D5E0;
+          pointer-events: none;
+        }
+      }
     }
   }
 }
@@ -197,7 +230,7 @@ $indent-mobile: 3.5em;
 .stage {
   padding-left: 1em;
 
-  cursor: default;
+  cursor: pointer;
 
   @include breakpoint($mobile) {
     @include span(8 of 12 inside no-gutters);
@@ -240,6 +273,8 @@ $indent-mobile: 3.5em;
   }
 
   &-body {
+    will-change: transform;
+
     transition: transform .3s ease;
 
     &:hover {
