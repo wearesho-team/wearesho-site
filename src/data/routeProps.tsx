@@ -1,8 +1,9 @@
 import * as React from "react";
 
 import { MainPage } from "../components/Pages/MainPage";
-import { ProcessPage } from "../components/Pages/ProcessPage";
 import { BobraCSPage } from "../components/Pages/BobraCSPage";
+import { ProcessPage } from "../components/Pages/ProcessPage";
+import { ServicesPage } from "../components/Pages/ServicesPage";
 import { PartnershipPage } from "../components/Pages/PartnershipPage";
 
 export const routeProps = [
@@ -20,6 +21,11 @@ export const routeProps = [
         exact: false,
         path: "/process",
         render: () => <ProcessPage key="/process" />
+    },
+    {
+        exact: false,
+        path: "/process/services",
+        render: () => <ServicesPage key="/process/services" />
     },
     {
         exact: false,

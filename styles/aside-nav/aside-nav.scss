@@ -1,0 +1,44 @@
+/*
+* Aside nav styles
+ */
+.aside-nav {
+  width: 50%;
+
+  float: right;
+
+  padding-left: .875em;
+
+  > .stage {
+
+    &.active-control {
+
+      display: none;
+    }
+
+    & + .stage {
+
+      margin-top: 1.5em;
+    }
+
+    > .stage__number {
+
+      font-size: 1.125em;
+    }
+
+    .stage__title {
+
+      font-size: .688em;
+    }
+
+    .marker {
+      line-height: 1em;
+
+      font-size: 1.125em;
+
+      &:before {
+
+        left: -20px;
+      }
+    }
+  }
+}

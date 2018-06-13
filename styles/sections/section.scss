@@ -989,6 +989,102 @@ html[lang="en"] {
     }
   }
 
+  &.section-services {
+
+    > .align-container {
+      @include clearfix;
+
+      @include flex;
+      @include valign-center;
+    }
+
+    .section {
+
+      &-main {
+        @include span(8 of 12 inside no-gutter);
+
+        .accordion {
+
+          margin-top: 2.25em;
+        }
+      }
+
+      &-aside {
+        @include span(4 of 12 inside no-gutter);
+
+        @include clearfix;
+      }
+    }
+
+    .bottom {
+      @include clearfix;
+
+      margin-top: 12.5em;
+
+      .half {
+        @include span(6 of 12 inside no-gutter);
+
+        &_second {
+
+          padding-left: 1.2em;
+        }
+      }
+
+      h5 {
+        width: 250px;
+
+        margin-bottom: 2em;
+
+        font-size: .938em;
+        font-weight: $font-style-regular;
+        color: #C5D5E0;
+      }
+
+      .btn {
+
+        font-size: 1.125em;
+      }
+
+      blockquote {
+        margin: 1.5em 0 0;
+
+        font-size: .818em;
+        font-weight: $font-style-light;
+      }
+    }
+
+    .employee-data {
+
+      > span {
+
+        display: block;
+      }
+
+      .employee__name {
+        font-size: .938em;
+        font-weight: $font-style-regular;
+        color: #C5D5E0;
+
+        &:before {
+          content: '\00A9';
+
+          left: -27px;
+
+          line-height: 1em;
+
+          font-size: 1.5em;
+          font-weight: $font-style-bold;
+          color: rgba(197, 213, 224, .45);
+        }
+      }
+
+      .employee__position {
+        font-size: .75em;
+        font-weight: $font-style-regular;
+      }
+    }
+  }
+
   .section__title {
     line-height: 1.35em;
 

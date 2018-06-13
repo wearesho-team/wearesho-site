@@ -85,4 +85,36 @@ html[lang="en"] {
 
     background-image: url('images/icon-cashme.svg');
   }
+
+  &_postgreSQL,
+  &_react,
+  &_yii,
+  &_php {
+
+    height: 23px;
+  }
+
+  &_postgreSQL {
+    width: 23px;
+
+    background-image: url('images/icon-postgreSQL.svg');
+  }
+
+  &_react {
+    width: 25px;
+
+    background-image: url('images/icon-react.svg');
+  }
+
+  &_yii {
+    width: 22px;
+
+    background-image: url('images/icon-yii.svg');
+  }
+
+  &_php {
+    width: 48px;
+
+    background-image: url('images/icon-php.svg');
+  }
 }

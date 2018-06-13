@@ -76,7 +76,7 @@ export class MainPage extends BasePage<{date: number}> {
                             {/* Upper section end */}
                             {/* Lower section start */}
                             <OnTabletDesktop>
-                                <h4 className="section__subtitle section__subtitle marker mt">
+                                <h4 className="section__subtitle marker mt">
                                     <CodeStyleAnimation
                                         {...Timing.desktop.mainPage.articles.whatWeDo}
                                         speed={CodeStyleAnimationSpeed.fast}
@@ -92,7 +92,7 @@ export class MainPage extends BasePage<{date: number}> {
                                     startFeature={StartFeature}
                                     actionClassName="showing"
                                 >
-                                    <h4 className="section__subtitle section__subtitle marker mt">
+                                    <h4 className="section__subtitle marker mt">
                                         {translate("mainPage.articles.whatWeDo.lower.title")}
                                     </h4>
                                 </CustomAnimation>
@@ -130,7 +130,7 @@ export class MainPage extends BasePage<{date: number}> {
                             {/* Lower section end */}
                         </div>
                         <div className="section__half">
-                            <h4 className="section__subtitle section__subtitle marker">
+                            <h4 className="section__subtitle marker">
                                 <OnTabletDesktop>
                                     <CodeStyleAnimation
                                         {...Timing.desktop.mainPage.articles.howLong}

@@ -7,6 +7,78 @@ $indent-medium: 10.25em;
 $indent-medium-laptop: 7.5em;
 $indent-mobile: 3.5em;
 
+.section-services {
+
+  .stage {
+    @include span(12 of 12 inside no-gutter);
+
+    float: none;
+
+    padding-left: 0;
+  }
+
+  .section-main {
+
+    .stage {
+
+      &-body {
+
+        &:hover {
+
+          transform: none;
+        }
+      }
+
+      &__number {
+        font-size: 3.375em;
+        font-weight: 300;
+        color: #fff;
+        text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);
+      }
+
+      &__title {
+        margin-bottom: .063em;
+
+        opacity: 1;
+
+        font-size: 2.063em;
+      }
+
+      &__description {
+        font-size: .875em;
+        color: #C5D5E0;
+      }
+    }
+  }
+
+  .section-aside {
+
+    .stage {
+
+      &:hover {
+
+        .stage-body {
+
+          transform: translateX(10px);
+        }
+      }
+
+      .stage-body {
+
+        &:hover {
+
+          transform: translateX(0);
+        }
+
+        .stage__title {
+
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
+
 .section__half {
 
   > .align-container {
@@ -158,7 +230,7 @@ $indent-mobile: 3.5em;
 .stage {
   padding-left: 1em;
 
-  cursor: default;
+  cursor: pointer;
 
   @include breakpoint($mobile) {
     @include span(8 of 12 inside no-gutters);
@@ -201,6 +273,8 @@ $indent-mobile: 3.5em;
   }
 
   &-body {
+    will-change: transform;
+
     transition: transform .3s ease;
 
     &:hover {
