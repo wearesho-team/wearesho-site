@@ -16,8 +16,19 @@
 
   &-header,
   &-body {
-
     @include span(6 of 12 inside no-gutter);
+
+    @include  breakpoint($mobile) {
+      @include span(12 of 12 inside no-gutter);
+
+      float: none;
+    }
+
+    @include  breakpoint($tablet-p) {
+      @include span(12 of 12 inside no-gutter);
+
+      float: none;
+    }
   }
 
   &-header {
@@ -91,6 +102,26 @@
 
     // Temp
     opacity: 0;
+
+    @include breakpoint($mobile) {
+      position: relative;
+
+      top: auto;
+      right: auto;
+
+      padding-left: 0;
+
+      opacity: 1;
+    }
+
+    @include breakpoint($tablet-p) {
+      position: relative;
+
+      top: auto;
+      right: auto;
+
+      opacity: 1;
+    }
 
     .section__subtitle {
       font-size: 1.2em;

@@ -47,6 +47,16 @@ $indent-mobile: 3.5em;
       &__description {
         font-size: .875em;
         color: #C5D5E0;
+
+        @include breakpoint($mobile-tablet) {
+
+          font-size: .938em;
+        }
+
+        @include breakpoint($laptop-small) {
+
+          font-size: .938em;
+        }
       }
     }
   }

@@ -34,7 +34,7 @@
       }
     }
 
-    &:not(:first-child) {
+    &:last-child {
       pointer-events: none;
 
       cursor: auto;
@@ -65,10 +65,10 @@
     }
 
     &_soc-be {
-      cursor: auto;
-
       width: 20px;
       height: 12px;
+
+      cursor: auto;
 
       @include breakpoint($mobile) {
         width: 26px;
@@ -77,8 +77,6 @@
     }
 
     &_soc-li {
-      cursor: auto;
-
       width: 16px;
       height: 16px;
 
