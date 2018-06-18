@@ -3,6 +3,8 @@ import * as React from "react";
 import { translate } from "../../../../helpers/translate";
 import { Config } from "../../../../data/Config";
 
+import { OnMobileTablet, OnDesktop } from "../../../../helpers/Breakpoints";
+
 export class Develop extends React.Component {
 
     public render() {
@@ -101,28 +103,56 @@ export class Develop extends React.Component {
                 </div>
                 <div className="bottom">
                     <div className="half half_first">
-                        <h5>
-                            {translate("servicesPage.development.bottom.text1")}&nbsp;
-                            <a href="#" className="inline">{translate("servicesPage.development.bottom.link1")}</a>
-                        </h5>
-                        <a className="btn btn_primary" href="/partnership">
-                            {translate("servicesPage.development.bottom.btn")}
-                            <span className="btn-corners btn-corners_top" />
-                            <span className="btn-corners btn-corners_bottom" />
-                        </a>
+                        <OnMobileTablet>
+                            <div className="employee-data">
+                                <span className="employee__name marker">
+                                    {translate("servicesPage.development.bottom.employeeData.name")}
+                                </span>
+                                    <span className="employee__position">
+                                    {translate("servicesPage.development.bottom.employeeData.position")}
+                                </span>
+                            </div>
+                            <blockquote>
+                                &laquo;{translate("servicesPage.development.bottom.blockquote")}&raquo;
+                            </blockquote>
+                        </OnMobileTablet>
+                        <OnDesktop>
+                            <h5>
+                                {translate("servicesPage.development.bottom.text1")}&nbsp;
+                                <a href="#" className="inline">{translate("servicesPage.development.bottom.link1")}</a>
+                            </h5>
+                            <a className="btn btn_primary" href="/partnership">
+                                {translate("servicesPage.development.bottom.btn")}
+                                <span className="btn-corners btn-corners_top" />
+                                <span className="btn-corners btn-corners_bottom" />
+                            </a>
+                        </OnDesktop>
                     </div>
                     <div className="half half_second">
-                        <div className="employee-data">
-                            <span className="employee__name marker">
-                                {translate("servicesPage.development.bottom.employeeData.name")}
-                            </span>
-                            <span className="employee__position">
-                                {translate("servicesPage.development.bottom.employeeData.position")}
-                            </span>
-                        </div>
-                        <blockquote>
-                            &laquo;{translate("servicesPage.development.bottom.blockquote")}&raquo;
-                        </blockquote>
+                        <OnMobileTablet>
+                            <h5>
+                                {translate("servicesPage.development.bottom.text1")}&nbsp;
+                                <a href="#" className="inline">{translate("servicesPage.development.bottom.link1")}</a>
+                            </h5>
+                            <a className="btn btn_primary" href="/partnership">
+                                {translate("servicesPage.development.bottom.btn")}
+                                <span className="btn-corners btn-corners_top" />
+                                <span className="btn-corners btn-corners_bottom" />
+                            </a>
+                        </OnMobileTablet>
+                        <OnDesktop>
+                            <div className="employee-data">
+                                <span className="employee__name marker">
+                                    {translate("servicesPage.development.bottom.employeeData.name")}
+                                </span>
+                                <span className="employee__position">
+                                    {translate("servicesPage.development.bottom.employeeData.position")}
+                                </span>
+                            </div>
+                            <blockquote>
+                                &laquo;{translate("servicesPage.development.bottom.blockquote")}&raquo;
+                            </blockquote>
+                        </OnDesktop>
                     </div>
                 </div>
             </div>

@@ -9,8 +9,17 @@
   &-item {
 
     &:not(:last-child) {
-
       margin-bottom: .5em;
+
+      @include breakpoint($mobile-tablet) {
+
+        margin-bottom: 1.75em;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        margin-bottom: 1.75em;
+      }
     }
   }
 
@@ -68,6 +77,11 @@
         transform: translateX(24px);
 
         color: rgba(51, 159, 208, 1);
+
+        @include breakpoint($mobile) {
+
+          transform: none;
+        }
       }
     }
 
@@ -77,6 +91,11 @@
       opacity: 0;
 
       transition: transform .3s ease, opacity .3s ease;
+
+      @include breakpoint($mobile) {
+
+        display: none;
+      }
     }
 
     > .accordion-title {
@@ -89,6 +108,31 @@
       font-size: .938em;
 
       transition: transform .3s ease, color .3s ease;
+
+      @include breakpoint($mobile-tablet) {
+
+        color: $color-secondary;
+      }
+
+      @include breakpoint($mobile) {
+
+        font-size: 1.125em;
+      }
+
+      @include breakpoint($tablet-p) {
+
+        font-size: 1.25em;
+      }
+
+      @include breakpoint($tablet-l) {
+
+        font-size: 1.063em;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        font-size: 1.063em;
+      }
     }
   }
 
@@ -125,7 +169,18 @@
 
     .section__subtitle {
       font-size: 1.2em;
+
       color: #C5D5E0;
+
+      @include breakpoint($mobile-tablet) {
+
+        display: none;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        display: none;
+      }
 
       &.marker {
 
@@ -140,10 +195,20 @@
       line-height: 26px;
 
       font-size: .938em;
+
+      @include breakpoint($tablet-p) {
+
+        font-size: 1.125em;
+      }
     }
 
     .icon-list {
       margin-top: 3em;
+
+      @include breakpoint($mobile) {
+
+        margin-top: 1.75em;
+      }
 
       > .icon {
 

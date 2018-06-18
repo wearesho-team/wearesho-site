@@ -42,6 +42,11 @@ $indent-mobile: 3.5em;
         opacity: 1;
 
         font-size: 2.063em;
+
+        @include breakpoint($mobile) {
+
+          margin-top: .75em;
+        }
       }
 
       &__description {
