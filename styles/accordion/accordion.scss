@@ -13,12 +13,12 @@
 
       @include breakpoint($mobile-tablet) {
 
-        margin-bottom: 1.75em;
+        margin-bottom: 1.5em;
       }
 
       @include breakpoint($laptop-small) {
 
-        margin-bottom: 1.75em;
+        margin-bottom: 1.5em;
       }
     }
   }
@@ -82,6 +82,11 @@
 
           transform: none;
         }
+
+        @include breakpoint($tablet-p) {
+
+          transform: translateX(30px);
+        }
       }
     }
 
@@ -120,6 +125,7 @@
       }
 
       @include breakpoint($tablet-p) {
+        margin-bottom: 0.875em;
 
         font-size: 1.25em;
       }
@@ -156,6 +162,11 @@
       padding-left: 0;
 
       opacity: 1;
+    }
+
+    @include breakpoint($tablet-laptop-sm) {
+
+      padding-left: 1.875em;
     }
 
     @include breakpoint($tablet-p) {
@@ -200,6 +211,25 @@
 
         font-size: 1.125em;
       }
+
+      &.marker {
+
+        &:before {
+          content: none;
+
+          left: -36px;
+
+          @include breakpoint($tablet-l) {
+
+            content: '+';
+          }
+
+          @include breakpoint($laptop-small) {
+
+            content: '+';
+          }
+        }
+      }
     }
 
     .icon-list {
@@ -208,6 +238,11 @@
       @include breakpoint($mobile) {
 
         margin-top: 1.75em;
+      }
+
+      @include breakpoint($tablet-p) {
+
+        margin-top: 3.75em;
       }
 
       > .icon {

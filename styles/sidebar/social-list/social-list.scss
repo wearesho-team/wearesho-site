@@ -6,8 +6,10 @@
 
   position: absolute;
 
-  right: 44px;
   bottom: 44px;
+  left: 50%;
+
+  transform: translateX(-50%);
 
   text-align: center;
 

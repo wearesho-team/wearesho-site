@@ -106,6 +106,15 @@ body,
   }
 }
 
+#content {
+
+  > .header,
+  > .sidebar {
+    // Temp
+    display: none;
+  }
+}
+
 .translate-container {
   position: relative;
 

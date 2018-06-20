@@ -25,4 +25,66 @@
 
     width: 92px;
   }
+
+  // Services inner page
+  &-services {
+    display: none;
+
+    @include breakpoint($tablet-laptop-sm) {
+
+      display: block;
+    }
+
+    .aside-nav {
+      width: auto;
+
+      float: none;
+
+      position: absolute;
+
+      right: 0;
+      left: 0;
+
+      padding-left: 0;
+
+      @include breakpoint($tablet-laptop-sm) {
+
+        top: 212px;
+      }
+
+      @include breakpoint($tablet-p) {
+
+        top: 320px;
+      }
+
+      .stage {
+        width: 100%;
+
+        padding-left: 0;
+
+        &.active-control {
+
+          .stage__number {
+            opacity: 1;
+
+            text-shadow: 2px 1px 3px rgba(255, 255, 255, .53);
+          }
+        }
+
+        &:not(:last-child) {
+
+          @include breakpoint($tablet-laptop-sm) {
+
+            margin-bottom: 1em;
+          }
+        }
+      }
+
+      .stage__number {
+        opacity: .45;
+
+        font-size: 17px;
+      }
+    }
+  }
 }

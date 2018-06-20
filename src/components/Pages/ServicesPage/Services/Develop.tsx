@@ -3,7 +3,7 @@ import * as React from "react";
 import { translate } from "../../../../helpers/translate";
 import { Config } from "../../../../data/Config";
 
-import { OnMobileTablet, OnDesktop } from "../../../../helpers/Breakpoints";
+import { SmartBreakpoint } from "../../../SmartBreakpoint/SmartBreakpoint";
 
 export class Develop extends React.Component {
 
@@ -34,7 +34,7 @@ export class Develop extends React.Component {
                             <h4 className="section__subtitle marker">
                                 {translate("servicesPage.development.accordion.item1.title")}
                             </h4>
-                            <p>{translate("servicesPage.development.accordion.item1.body.text")}</p>
+                            <p className="marker">{translate("servicesPage.development.accordion.item1.body.text")}</p>
                             <div className="icon-list">
                                 <i className="icon icon_postgreSQL" />
                                 <i className="icon icon_react" />
@@ -103,7 +103,7 @@ export class Develop extends React.Component {
                 </div>
                 <div className="bottom">
                     <div className="half half_first">
-                        <OnMobileTablet>
+                        <SmartBreakpoint match="max-width: 1023px">
                             <div className="employee-data">
                                 <span className="employee__name marker">
                                     {translate("servicesPage.development.bottom.employeeData.name")}
@@ -115,8 +115,8 @@ export class Develop extends React.Component {
                             <blockquote>
                                 &laquo;{translate("servicesPage.development.bottom.blockquote")}&raquo;
                             </blockquote>
-                        </OnMobileTablet>
-                        <OnDesktop>
+                        </SmartBreakpoint>
+                        <SmartBreakpoint match="min-width: 1024px">
                             <h5>
                                 {translate("servicesPage.development.bottom.text1")}&nbsp;
                                 <a href="#" className="inline">{translate("servicesPage.development.bottom.link1")}</a>
@@ -126,10 +126,10 @@ export class Develop extends React.Component {
                                 <span className="btn-corners btn-corners_top" />
                                 <span className="btn-corners btn-corners_bottom" />
                             </a>
-                        </OnDesktop>
+                        </SmartBreakpoint>
                     </div>
                     <div className="half half_second">
-                        <OnMobileTablet>
+                        <SmartBreakpoint match="max-width: 1023px">
                             <h5>
                                 {translate("servicesPage.development.bottom.text1")}&nbsp;
                                 <a href="#" className="inline">{translate("servicesPage.development.bottom.link1")}</a>
@@ -139,8 +139,8 @@ export class Develop extends React.Component {
                                 <span className="btn-corners btn-corners_top" />
                                 <span className="btn-corners btn-corners_bottom" />
                             </a>
-                        </OnMobileTablet>
-                        <OnDesktop>
+                        </SmartBreakpoint>
+                        <SmartBreakpoint match="min-width: 1024px">
                             <div className="employee-data">
                                 <span className="employee__name marker">
                                     {translate("servicesPage.development.bottom.employeeData.name")}
@@ -152,7 +152,7 @@ export class Develop extends React.Component {
                             <blockquote>
                                 &laquo;{translate("servicesPage.development.bottom.blockquote")}&raquo;
                             </blockquote>
-                        </OnDesktop>
+                        </SmartBreakpoint>
                     </div>
                 </div>
             </div>
