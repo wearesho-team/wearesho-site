@@ -6,7 +6,6 @@
 
   position: fixed;
 
-  //top: 0;
   right: 0;
   bottom: 0;
 
@@ -24,6 +23,11 @@
   @include breakpoint($tablet) {
 
     width: 92px;
+  }
+
+  @include breakpoint($laptop-small) {
+
+    width: 118px;
   }
 
   // Services inner page
