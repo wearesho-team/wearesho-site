@@ -193,6 +193,11 @@
         display: none;
       }
 
+      @include breakpoint($laptop-medium) {
+
+        display: none;
+      }
+
       &.marker {
 
         &:before {
@@ -212,6 +217,16 @@
         font-size: 1.125em;
       }
 
+      @include breakpoint($laptop-medium) {
+
+        margin-right: -7em;
+      }
+
+      @include breakpoint($laptop-large) {
+
+        margin-right: -7em;
+      }
+
       &.marker {
 
         &:before {
@@ -227,6 +242,12 @@
           @include breakpoint($laptop-small) {
 
             content: '+';
+          }
+
+          @include breakpoint($laptop-medium) {
+            content: '+';
+
+            left: -24px;
           }
         }
       }
