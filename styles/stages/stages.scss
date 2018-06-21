@@ -15,6 +15,11 @@ $indent-mobile: 3.5em;
     float: none;
 
     padding-left: 0;
+
+    &.active-control {
+
+      pointer-events: none;
+    }
   }
 
   .section-main {
@@ -70,7 +75,8 @@ $indent-mobile: 3.5em;
 
     .stage {
 
-      &:hover {
+      &:hover,
+      &.active-control {
 
         .stage-body {
 
@@ -258,7 +264,8 @@ $indent-mobile: 3.5em;
     width: 100%;
   }
 
-  &:hover {
+  &:hover,
+  &.active-control {
 
     .stage__number {
       text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);
@@ -276,6 +283,15 @@ $indent-mobile: 3.5em;
     .stage__title {
 
       opacity: 1;
+    }
+
+    .stage-body {
+      transform: translateX(15px);
+
+      @include breakpoint($mobile) {
+
+        transform: translateX(9px);
+      }
     }
   }
 
