@@ -254,16 +254,16 @@
     }
 
     .icon-list {
-      margin-top: 3em;
+      margin-top: 1.25em;
 
       @include breakpoint($mobile) {
 
-        margin-top: 1.75em;
+        margin-top: 1.5em;
       }
 
       @include breakpoint($tablet-p) {
 
-        margin-top: 3.75em;
+        margin-top: 1.75em;
       }
 
       > .icon {
