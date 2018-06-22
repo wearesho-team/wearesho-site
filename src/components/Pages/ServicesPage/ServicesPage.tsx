@@ -1,10 +1,10 @@
 import * as React from "react";
-import { Develop } from "./Services";
 import { translate } from "../../../helpers/translate";
 
 import { Link } from "react-router-dom";
 import { ServicesHeader } from "./ServicesHeader";
 import { ServicesSidebar } from "./ServicesSidebar";
+import { Develop } from "./Services";
 
 export class ServicesPage extends React.Component {
 
@@ -14,6 +14,7 @@ export class ServicesPage extends React.Component {
                 <ServicesHeader />
                 <ServicesSidebar />
                 <section className="section section-services">
+                    <div className="services-decor" />
                     <div className="align-container">
                         <div className="section-main">
                             <Develop />

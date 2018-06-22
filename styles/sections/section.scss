@@ -1064,21 +1064,21 @@ html[lang="en"] {
     .bottom {
       @include clearfix;
 
-      margin-top: 12.5em;
+      margin-top: 14em;
 
       @include breakpoint($mobile) {
 
-        margin-top: 2.75em;
+        margin-top: 3.25em;
       }
 
       @include breakpoint($tablet-laptop-sm) {
 
-        margin-top: 7.5em;
+        margin-top: 4.625em;
       }
 
-      @include breakpoint($tablet-p) {
+      @include breakpoint($laptop-medium) {
 
-        margin-top: 4.25em;
+        margin-top: 7.5em;
       }
 
       .half {

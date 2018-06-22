@@ -1,0 +1,42 @@
+/*
+* Services decor styles
+ */
+.services-decor {
+  width: 2847px;
+  height: 1546px;
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  margin: -7em 0 0 -6em;
+
+  background: url('images/services-decor.svg') no-repeat;
+
+  pointer-events: none;
+
+  z-index: $under-zindex;
+
+  @include breakpoint($laptop-medium) {
+    width: 2470px;
+    height: 1342px;
+
+    top: 43%;
+    left: 53%;
+
+    margin: 0;
+  }
+
+  @include breakpoint($laptop-large) {
+    width: 2470px;
+    height: 1342px;
+
+    top: 43%;
+    left: 53%;
+
+    margin: 0;
+  }
+}
