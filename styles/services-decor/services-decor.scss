@@ -18,7 +18,16 @@
 
   pointer-events: none;
 
-  z-index: $under-zindex;
+  will-change: transform;
+
+  &:hover {
+
+    animation: services-decor-appearance 4s ease;
+  }
+
+
+
+  //z-index: $under-zindex;
 
   @include breakpoint($laptop-medium) {
     width: 2470px;
