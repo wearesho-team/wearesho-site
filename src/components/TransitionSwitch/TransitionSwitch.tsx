@@ -1,15 +1,15 @@
 import * as React from "react";
-import {Route} from "react-router-dom";
-import {RouteProps} from "react-router";
-import {TransitionGroup, CSSTransition} from "react-transition-group";
+import { Route } from "react-router-dom";
+import { RouteProps } from "react-router";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
+import { RouterContext, RouterContextTypes } from "data/RouterContext";
 
-import {smartClearTimeout, ElementWithTimer} from "../../helpers/smartClearTimeout";
-import {concat} from "../../helpers/concat";
+import { smartClearTimeout, ElementWithTimer } from "helpers/smartClearTimeout";
+import { concat } from "helpers/concat";
 
-import {TransitionSwitchProps, TransitionSwitchPropTypes} from "./TransitionSwitchProps";
-import {TransitionSwitchState} from "./TransitionSwitchState";
+import { TransitionSwitchProps, TransitionSwitchPropTypes } from "./TransitionSwitchProps";
+import { TransitionSwitchState } from "./TransitionSwitchState";
 
 export class TransitionSwitch extends React.Component<TransitionSwitchProps, TransitionSwitchState>
     implements ElementWithTimer {
@@ -42,7 +42,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
 
         this.timer = setTimeout(
             () => {
-                this.setState({directionClassName: TransitionSwitch.standByClassName});
+                this.setState({ directionClassName: TransitionSwitch.standByClassName });
             },
             TransitionSwitch.animationDuration + this.additionalTimeout
         );
@@ -52,11 +52,11 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
         return Object.keys(this.props.children)
             .map((field, key) => {
                 return {
-                    ...{key},
+                    ...{ key },
                     ...this.props.children[field].props
                 }
             })
-            .find(({path}) => path === this.context.router.history.location.pathname);
+            .find(({ path }) => path === this.context.router.history.location.pathname);
     }
 
     public render(): JSX.Element {
@@ -78,7 +78,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
         return (
             <TransitionGroup className={concat(this.props.className, this.state.directionClassName)}>
                 <CSSTransition {...transitionProps}>
-                    <Route {...currentRouteProps}/>
+                    <Route {...currentRouteProps} />
                 </CSSTransition>
             </TransitionGroup>
         );

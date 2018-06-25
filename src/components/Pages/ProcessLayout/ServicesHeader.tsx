@@ -1,27 +1,28 @@
 import * as React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import {Languages} from "../../../data/Languages";
+import { OnMobileTablet, OnDesktop } from "../../../helpers/Breakpoints";
 
-import {TouchHover} from "../../../helpers/TouchHover";
-import {translate} from "../../../helpers/translate";
+import { Languages } from "../../../data/Languages";
 
-import {LayoutContext, LayoutContextTypes} from "../LayoutContext";
+import { TouchHover } from "../../../helpers/TouchHover";
+import { LayoutContext, LayoutContextTypes } from "../../Layout/LayoutContext";
+import { translate } from "../../../helpers/translate";
 
-export class Header extends React.Component<undefined, undefined> {
+export class ServicesHeader extends React.Component<undefined, undefined> {
     public static readonly contextTypes = LayoutContextTypes;
 
     public context: LayoutContext;
 
     public render(): JSX.Element {
         return (
-            <header className="header">
+            <header className="header header-services">
                 <Link to="/" className="logo">
-                    <i className="icon icon_logo"/>
+                    <i className="icon icon_logo" />
                     <span className="logo__text">Art &amp; Data Studio</span>
                 </Link>
                 <div className="header__right">
-                    {this.props.children}
+                    <button className="btn btn_close" />
                     <button type="button" className="header__lang-toggle" onClick={this.changeLanguage} {...TouchHover}>
                         {this.languageLabel}
                     </button>

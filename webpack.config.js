@@ -63,8 +63,10 @@ const config = {
             modules: [
                 path.resolve('node_modules'),
                 path.resolve('src'),
+                path.resolve('./images'),                
             ],
             alias: {
+                "@images": path.resolve('./images'),
                 normalize: path.join(__dirname, '/node_modules/normalize.css'),
             }
         },

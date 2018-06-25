@@ -1,29 +1,26 @@
 import axios from "axios";
 import * as React from "react";
-import { Router } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 
-import { routeProps } from "../../data/routeProps";
-import { Languages } from "../../data/Languages";
-
-import { getRoutesWithProps } from "../../helpers/getRoutesWithProps";
-import { getLinksWithProps } from "../../helpers/getLinksWithProps";
-import { translate } from "../../helpers/translate";
+import { translate } from "helpers/translate";
+import { Languages } from "data/Languages";
 
 import { LayoutContext, LayoutContextTypes } from "./LayoutContext"
 import { LayoutProps, LayoutPropTypes } from "./LayoutProps";
-import { ErrorBounder } from "../ErrorBounder/ErrorBounder";
-import { Header, SideBar, SoundSwitch } from "./Partials";
-import { TransitionSwitch } from "../TransitionSwitch";
-import { SmartBreakpoint } from "../SmartBreakpoint";
-import { SwitchControl } from "../SwitchControl";
-import { ScrollControl } from "../ScrollControl";
-import { LayoutState } from "./LayoutState";
+
+import { MainLayout } from "./MainLayout";
+import { ProcessLayout } from "./ProcessLayout";
+
+export interface LayoutState {
+    isScrollDisabled: boolean;
+    language: Languages;
+}
 
 export class Layout extends React.Component<LayoutProps, LayoutState> {
-    public static readonly propTypes = LayoutPropTypes;
     public static readonly childContextTypes = LayoutContextTypes;
+    public static readonly propTypes = LayoutPropTypes;
 
-    public constructor(props) {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -38,8 +35,8 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
 
     public getChildContext(): LayoutContext {
         return {
-            language: this.state.language,
             isScrollDisabled: this.state.isScrollDisabled,
+            language: this.state.language,
             setLanguage: this.setLanguage
         }
     }
@@ -57,26 +54,10 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
         return (
             <Router history={this.props.history}>
                 <div id="content">
-                    <Header />
-                    <SideBar>
-                        {getLinksWithProps()}
-                    </SideBar>
-                    <SoundSwitch />
-                    <div className="section-gradient" />
-                    <ErrorBounder>
-                        <SmartBreakpoint match="min-width: 1440px">
-                            <SwitchControl>
-                                <TransitionSwitch className="translate-container" classNames="translateY">
-                                    {getRoutesWithProps()}
-                                </TransitionSwitch>
-                            </SwitchControl>
-                        </SmartBreakpoint>
-                        <SmartBreakpoint match="max-width: 1439px">
-                            <ScrollControl>
-                                {routeProps.map((prop) => prop.render())}
-                            </ScrollControl>
-                        </SmartBreakpoint>
-                    </ErrorBounder>
+                    <Switch>
+                        <Route exact path="/process/*" component={ProcessLayout} />
+                        <Route path="/" component={MainLayout} />                        
+                    </Switch>
                 </div>
             </Router>
         );
