@@ -9,7 +9,7 @@ export const SideBar: React.SFC<undefined> = (props, context: RouterContext): JS
     const {location} = context.router.history;
     const children = props.children as JSX.Element [];
 
-    const defaultClassName = "main-nav__item main-nav__item";
+    const defaultClassName = "main-nav__item";
     const activeClassName = "is-active";
 
     const getItemProps = (element: JSX.Element): object => {

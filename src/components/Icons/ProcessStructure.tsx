@@ -88,11 +88,13 @@ export const ProcessStructure: React.SFC<undefined> = () => (
                 </linearGradient>
                 <g id="base_path">
                     <linearGradient id="base_1_" gradientUnits="userSpaceOnUse" x1="-1973.4674" y1="-118.0219" x2="-1972.4701" y2="-118.0018" gradientTransform="matrix(1920.0339 0 0 -572.7452 3787134.5 -68262.3438)">
-                        <stop  offset="0" stopColor="#FFFFFF" stopOpacity="0"/>
-                        <stop  offset="0.32" stopColor="#5C9DA8" stopOpacity="0.969"/>
-                        <stop  offset="0.501" stopColor="#CCACFF"/>
-                        <stop  offset="0.765" stopColor="#FFBFE2" stopOpacity="0.969"/>
-                        <stop  offset="1" stopColor="#FFFFFF" stopOpacity="0"/>
+                        <stop offset="0" stopColor="#fff" stopOpacity="0"/>
+                        <stop offset="0.015" stopColor="#e3eef0" stopOpacity="0"/>
+                        <stop offset="0.32" stopColor="#5c9da8" stopOpacity="0.969"/>
+                        <stop offset="0.501" stopColor="#ccacff"/>
+                        <stop offset="0.714" stopColor="#ffbfe2" stopOpacity="0.969"/>
+                        <stop offset="0.966" stopColor="#ffeaf6" stopOpacity="0"/>
+                        <stop offset="1" stopColor="#fff" stopOpacity="0"/>
                     </linearGradient>
                     <path id="base" opacity="0.171" fill="url(#base_1_)" d="M-1990-958l136.1,64.3l134.1,27.4l418.1,93.6l41.7,31.1l49.7,83.4l51,63.4l87.6,46.9l28.9,36.9l83.9,0.8l43.8-50.1l74-46.9l39.5-74.4l118.8-94.6l111.8-59.1l82.9-14.9l44.2-15.9l77.9,4L-70-894.1v39.4h-209.9l-208.3,9.3l-82.9,13.8l-57.6,27.8l-49.8,31.8l-96.6,70.1l-26.6,27.5l-11,26.4l-6.3,34.9l38.4,64.3l104.7,50.4l56.3,16.4l38.7,11.3l195.2,6.3l315.8-6.3l-5.2,85.3l-262.2-67.6l-65.4-8.7l-178.1-8.3l-83.8-13.9l-121-66l0,0l-37.9-67.6l-3.5-0.1l-2.2,2.2l-12,13.9l-80.4,51.6l-37.4,39.4l-83.9-0.8l-26.1-30.7l-81.6-33.3l-61-83.2l-35.8-53.2l-12.6-25.9l-42.8-34.4l-397.9-91.6l-285.7-45.8L-1990-958z"/>
                     <path id="Path_1859" fillOpacity="2.600000e-02" fill="#F9F9F9"  d="M-1229.5-690.4l1,1.7l133.7,80.8l65.5,44l152.5-85.3l56.6-16.3l3.1-1.4l5.8-0.8v4.2l9.5-18.1l-60.5,21.1l-167,94.6l-62.6-43.8L-1229.5-690.4z"/>

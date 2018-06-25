@@ -1,16 +1,29 @@
 import * as React from "react"
+import * as PropTypes from "prop-types";
 
-import { RouterContext, RouterContextTypes } from "../../data/RouterContext";
-import { routeProps } from "../../data/routeProps";
+import { RouterContext, RouterContextTypes } from "data/RouterContext";
 
-import { ElementWithTimer, smartClearTimeout } from "../../helpers/smartClearTimeout";
+import { ElementWithTimer, smartClearTimeout } from "helpers/smartClearTimeout";
 
 export enum RouteIndexType {
     up = 1,
     down = -1,
 }
 
-export class SwitchControl extends React.Component<undefined, undefined> implements ElementWithTimer {
+export interface SwitchControlProps {
+    routeProps: Array<{
+        path: string;
+    }>;
+}
+
+export const SwitchControlPropTypes: {[P in keyof SwitchControlProps]: PropTypes.Validator<any>} = {
+    routeProps: PropTypes.arrayOf(PropTypes.shape({
+        path: PropTypes.string.isRequired
+    }).isRequired).isRequired
+};
+
+export class SwitchControl extends React.Component<SwitchControlProps> implements ElementWithTimer {
+    public static readonly propTypes = SwitchControlPropTypes;
     public static readonly contextTypes = RouterContextTypes;
     public static readonly scrollTimeout = 1500;
 
@@ -42,10 +55,10 @@ export class SwitchControl extends React.Component<undefined, undefined> impleme
 
         const { location: { pathname } } = this.context.router.history;
 
-        const nextRouteIndex = routeProps.findIndex(({ path }) => path === pathname) + routeIndexDelta;
+        const nextRouteIndex = this.props.routeProps.findIndex(({ path }) => path === pathname) + routeIndexDelta;
 
-        if (routeProps[nextRouteIndex]) {
-            this.context.router.history.push(routeProps[nextRouteIndex].path);
+        if (this.props.routeProps[nextRouteIndex]) {
+            this.context.router.history.push(this.props.routeProps[nextRouteIndex].path);
             this.forceUpdate();
             this.isScrollDisabled = true;
 

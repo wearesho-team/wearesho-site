@@ -996,6 +996,16 @@ html[lang="en"] {
 
       @include flex;
       @include valign-center;
+
+      @include breakpoint($mobile-tablet) {
+
+        display: block;
+      }
+
+      @include breakpoint($laptop-small) {
+
+        display: block;
+      }
     }
 
     .section {
@@ -1003,9 +1013,25 @@ html[lang="en"] {
       &-main {
         @include span(8 of 12 inside no-gutter);
 
-        .accordion {
+        @include breakpoint($mobile) {
+          @include span(12 of 12 inside no-gutter);
 
+          float: none;
+        }
+
+        @include breakpoint($tablet-laptop-sm) {
+          @include span(12 of 12 inside no-gutter);
+
+          float: none;
+        }
+
+        .accordion {
           margin-top: 2.25em;
+
+          @include breakpoint($mobile) {
+
+            margin-top: 2.5em;
+          }
         }
       }
 
@@ -1013,20 +1039,93 @@ html[lang="en"] {
         @include span(4 of 12 inside no-gutter);
 
         @include clearfix;
+
+        @include breakpoint($mobile) {
+
+          display: none;
+        }
+
+        @include breakpoint($tablet-p) {
+          @include span(12 of 12 inside no-gutter);
+
+          float: none;
+        }
+
+        > .aside-nav {
+
+          @include breakpoint($tablet-laptop-sm) {
+
+            display: none;
+          }
+        }
       }
     }
 
     .bottom {
       @include clearfix;
 
-      margin-top: 12.5em;
+      margin-top: 14em;
+
+      @include breakpoint($mobile) {
+
+        margin-top: 3.25em;
+      }
+
+      @include breakpoint($tablet-laptop-sm) {
+
+        margin-top: 4.625em;
+      }
+
+      @include breakpoint($laptop-medium) {
+
+        margin-top: 7.5em;
+      }
 
       .half {
         @include span(6 of 12 inside no-gutter);
 
-        &_second {
+        @include breakpoint($mobile) {
+          @include span(12 of 12 inside no-gutter);
 
+          float: none;
+        }
+
+        @include breakpoint($tablet-p) {
+          @include span(12 of 12 inside no-gutter);
+
+          float: none;
+        }
+
+        &_first {
+
+          @include breakpoint($mobile) {
+
+            padding-left: 1.2em;
+          }
+
+          @include breakpoint($tablet-p) {
+
+            padding-left: 1.875em;
+          }
+        }
+
+        &_second {
           padding-left: 1.2em;
+
+          @include breakpoint($mobile) {
+
+            padding-left: 0;
+          }
+
+          @include breakpoint($tablet-laptop-sm) {
+
+            padding-left: 1.875em;
+          }
+
+          @include breakpoint($tablet-p) {
+
+            padding-left: 0;
+          }
         }
       }
 
@@ -1038,6 +1137,34 @@ html[lang="en"] {
         font-size: .938em;
         font-weight: $font-style-regular;
         color: #C5D5E0;
+
+        @include breakpoint($mobile) {
+          width: auto;
+
+          margin-top: 3.75em;
+
+          font-size: 1.125em;
+        }
+
+        @include breakpoint($tablet-p) {
+          width: auto;
+
+          margin-top: 3.5em;
+
+          font-size: 1.25em;
+        }
+
+        @include breakpoint($tablet-l) {
+          width: 300px;
+
+          font-size: 1.063em;
+        }
+
+        @include breakpoint($laptop-small) {
+          width: 300px;
+
+          font-size: 1.063em;
+        }
       }
 
       .btn {
@@ -1050,6 +1177,26 @@ html[lang="en"] {
 
         font-size: .818em;
         font-weight: $font-style-light;
+
+        @include breakpoint($mobile) {
+
+          font-size: .938em;
+        }
+
+        @include breakpoint($tablet-p) {
+
+          font-size: 1.125em;
+        }
+
+        @include breakpoint($tablet-l) {
+
+          font-size: .938em;
+        }
+
+        @include breakpoint($laptop-small) {
+
+          font-size: .938em;
+        }
       }
     }
 
@@ -1065,6 +1212,26 @@ html[lang="en"] {
         font-weight: $font-style-regular;
         color: #C5D5E0;
 
+        @include breakpoint($mobile) {
+
+          font-size: 1.125em;
+        }
+
+        @include breakpoint($tablet-p) {
+
+          font-size: 1.25em;
+        }
+
+        @include breakpoint($tablet-l) {
+
+          font-size: 1.063em;
+        }
+
+        @include breakpoint($laptop-small) {
+
+          font-size: 1.063em;
+        }
+
         &:before {
           content: '\00A9';
 
@@ -1075,12 +1242,45 @@ html[lang="en"] {
           font-size: 1.5em;
           font-weight: $font-style-bold;
           color: rgba(197, 213, 224, .45);
+
+          @include breakpoint($tablet-laptop-sm) {
+
+            left: -39px;
+          }
         }
       }
 
       .employee__position {
         font-size: .75em;
         font-weight: $font-style-regular;
+
+        @include breakpoint($mobile) {
+
+          font-size: .938em;
+        }
+
+        @include breakpoint($tablet-p) {
+
+          font-size: .938em;
+        }
+
+        @include breakpoint($tablet-l) {
+
+          font-size: .875em;
+        }
+
+        @include breakpoint($laptop-small) {
+
+          font-size: .875em;
+        }
+      }
+    }
+
+    .marker {
+
+      @include breakpoint($mobile) {
+
+        margin-bottom: .375em;
       }
     }
   }

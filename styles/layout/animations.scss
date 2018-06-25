@@ -831,3 +831,14 @@ $indent-tablet: -66px;
     width: 0;
   }
 }
+
+@keyframes services-decor-appearance {
+  0% {
+    transform: translate(-50%, -50%) rotate(120deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0);
+    opacity: 1;
+  }
+}

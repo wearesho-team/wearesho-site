@@ -10,11 +10,6 @@
 
   > .stage {
 
-    &.active-control {
-
-      display: none;
-    }
-
     & + .stage {
 
       margin-top: 1.5em;

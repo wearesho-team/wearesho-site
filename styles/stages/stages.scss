@@ -15,11 +15,17 @@ $indent-mobile: 3.5em;
     float: none;
 
     padding-left: 0;
+
+    &.active-control {
+
+      pointer-events: none;
+    }
   }
 
   .section-main {
 
     .stage {
+      pointer-events: none;
 
       &-body {
 
@@ -42,11 +48,26 @@ $indent-mobile: 3.5em;
         opacity: 1;
 
         font-size: 2.063em;
+
+        @include breakpoint($mobile) {
+
+          margin-top: .75em;
+        }
       }
 
       &__description {
         font-size: .875em;
         color: #C5D5E0;
+
+        @include breakpoint($mobile-tablet) {
+
+          font-size: .938em;
+        }
+
+        @include breakpoint($laptop-small) {
+
+          font-size: .938em;
+        }
       }
     }
   }
@@ -55,7 +76,8 @@ $indent-mobile: 3.5em;
 
     .stage {
 
-      &:hover {
+      &:hover,
+      &.active-control {
 
         .stage-body {
 
@@ -68,11 +90,6 @@ $indent-mobile: 3.5em;
         &:hover {
 
           transform: translateX(0);
-        }
-
-        .stage__title {
-
-          pointer-events: none;
         }
       }
     }
@@ -243,7 +260,8 @@ $indent-mobile: 3.5em;
     width: 100%;
   }
 
-  &:hover {
+  &:hover,
+  &.active-control {
 
     .stage__number {
       text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);
@@ -261,6 +279,15 @@ $indent-mobile: 3.5em;
     .stage__title {
 
       opacity: 1;
+    }
+
+    .stage-body {
+      transform: translateX(15px);
+
+      @include breakpoint($mobile) {
+
+        transform: translateX(9px);
+      }
     }
   }
 
