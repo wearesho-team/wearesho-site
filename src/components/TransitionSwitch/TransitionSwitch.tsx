@@ -29,7 +29,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
 
     protected readonly additionalTimeout = 100;
 
-    protected previousRouteKey: number = this.routeProps.key;
+    protected previousRouteKey: number = this.routeProps ? this.routeProps.key : 0;
     protected clearTimeout = smartClearTimeout.bind(this);
 
     public componentWillUnmount() {
@@ -38,6 +38,10 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
 
     public componentWillReceiveProps() {
         this.clearTimeout();
+        if (!this.routeProps) {
+            return;
+        }
+
         this.setDirection(this.routeProps.key);
 
         this.timer = setTimeout(
@@ -48,7 +52,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
         );
     }
 
-    protected get routeProps(): any {
+    protected get routeProps(): any | undefined {
         return Object.keys(this.props.children)
             .map((field, key) => {
                 return {
@@ -63,7 +67,7 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
         const transitionProps: any = {
             ...this.props,
             ...{
-                key: this.routeProps.key,
+                key: this.routeProps ? this.routeProps.key : this.previousRouteKey,
                 timeout: TransitionSwitch.animationDuration,
             }
         };

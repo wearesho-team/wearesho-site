@@ -5,6 +5,7 @@ import { Config } from "data/Config";
 
 import { SmartBreakpoint } from "components/SmartBreakpoint/SmartBreakpoint";
 import { BasePage } from "../../BasePage";
+import { PreloaderLinkButton } from "helpers/PreloaderLinkButton";
 
 export class DevelopmentPage extends BasePage {
 
@@ -17,8 +18,12 @@ export class DevelopmentPage extends BasePage {
                             <div className="stage">
                                 <span className="stage__number">03</span>
                                 <div className="stage-body">
-                                    <h3 className="stage__title">{translate("processPage.stages.title.develop")}</h3>
-                                    <p className="stage__description">{translate("processPage.stages.subTitle.frontBack")}</p>
+                                    <h3 className="stage__title">
+                                        {translate("processPage.stages.title.develop")}
+                                    </h3>
+                                    <p className="stage__description">
+                                        {translate("processPage.stages.subTitle.frontBack")}
+                                    </p>
                                 </div>
                             </div>
                             <div className="accordion">
@@ -38,7 +43,9 @@ export class DevelopmentPage extends BasePage {
                                         <h4 className="section__subtitle marker">
                                             {translate("servicesPage.development.accordion.item1.title")}
                                         </h4>
-                                        <p className="marker">{translate("servicesPage.development.accordion.item1.body.text")}</p>
+                                        <p className="marker">
+                                            {translate("servicesPage.development.accordion.item1.body.text")}
+                                        </p>
                                         <div className="icon-list">
                                             <i className="icon icon_postgreSQL" />
                                             <i className="icon icon_react" />
@@ -118,31 +125,35 @@ export class DevelopmentPage extends BasePage {
                                         </div>
                                         <blockquote>
                                             &laquo;{translate("servicesPage.development.bottom.blockquote")}&raquo;
-                            </blockquote>
+                                        </blockquote>
                                     </SmartBreakpoint>
                                     <SmartBreakpoint match="min-width: 1024px">
                                         <h5>
                                             {translate("servicesPage.development.bottom.text1")}&nbsp;
-                                <a href="#" className="inline">{translate("servicesPage.development.bottom.link1")}</a>
+                                            <a href="#" className="inline">
+                                                {translate("servicesPage.development.bottom.link1")}
+                                            </a>
                                         </h5>
-                                        <a className="btn btn_primary" href="/partnership">
+                                        <PreloaderLinkButton className="btn btn_primary" to="/partnership">
                                             {translate("servicesPage.development.bottom.btn")}
                                             <span className="btn-corners btn-corners_top" />
                                             <span className="btn-corners btn-corners_bottom" />
-                                        </a>
+                                        </PreloaderLinkButton>
                                     </SmartBreakpoint>
                                 </div>
                                 <div className="half half_second">
                                     <SmartBreakpoint match="max-width: 1023px">
                                         <h5>
                                             {translate("servicesPage.development.bottom.text1")}&nbsp;
-                                <a href="#" className="inline">{translate("servicesPage.development.bottom.link1")}</a>
+                                            <a href="#" className="inline">
+                                                {translate("servicesPage.development.bottom.link1")}
+                                            </a>
                                         </h5>
-                                        <a className="btn btn_primary" href="/partnership">
+                                        <PreloaderLinkButton className="btn btn_primary" to="/partnership">
                                             {translate("servicesPage.development.bottom.btn")}
                                             <span className="btn-corners btn-corners_top" />
                                             <span className="btn-corners btn-corners_bottom" />
-                                        </a>
+                                        </PreloaderLinkButton>
                                     </SmartBreakpoint>
                                     <SmartBreakpoint match="min-width: 1024px">
                                         <div className="employee-data">
@@ -155,7 +166,7 @@ export class DevelopmentPage extends BasePage {
                                         </div>
                                         <blockquote>
                                             &laquo;{translate("servicesPage.development.bottom.blockquote")}&raquo;
-                            </blockquote>
+                                        </blockquote>
                                     </SmartBreakpoint>
                                 </div>
                             </div>

@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import {translate} from "helpers/translate";
+import { translate } from "helpers/translate";
 
-import {ContactFormData, ContactFormDataPropTypes} from "../ContactFormState";
+import { ContactFormData, ContactFormDataPropTypes } from "../ContactFormState";
 
 export const ErrorMessage: React.SFC<ContactFormData> = (props: ContactFormData): JSX.Element => (
     <p className="section__text request request-error">

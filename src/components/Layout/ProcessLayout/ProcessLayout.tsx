@@ -4,9 +4,12 @@ import { NavLink, Route, Link } from "react-router-dom";
 import { toFixed } from "helpers/toFixed";
 import { processRouteProps } from "data/routeProps";
 import { OnMobile, OnTabletDesktop } from "helpers/Breakpoints";
+import { PreloaderLinkButton } from "helpers/PreloaderLinkButton";
 
 import { Header, SoundSwitch, SocialLinks } from "../Partials";
 
+import { PreLoader } from "components/PreLoader";
+import { ErrorBounder } from "components/ErrorBounder";
 import { SwitchControl } from "components/SwitchControl";
 import { ScrollControl } from "components/ScrollControl";
 import { SmartBreakpoint } from "components/SmartBreakpoint";
@@ -14,11 +17,19 @@ import { TransitionSwitch } from "components/TransitionSwitch";
 
 export class ProcessLayout extends React.Component {
 
+    public componentDidMount() {
+        PreLoader.hide();
+    }
+
+    public componentWillUnmount() {
+        PreLoader.show();
+    }
+
     public render(): React.ReactNode {
         return (
             <React.Fragment>
                 <Header>
-                    <Link to="/process" className="btn btn_close" />
+                    <PreloaderLinkButton to="/process" className="btn btn_close" />
                 </Header>
                 <OnMobile>
                     <aside className="sidebar sidebar-services">
@@ -30,31 +41,33 @@ export class ProcessLayout extends React.Component {
                 </OnMobile>
                 <SoundSwitch />
                 <div className="section-gradient" />
-                <div className="services-decor" />                
-                <SmartBreakpoint match="min-width: 1440px">
-                    <SwitchControl routeProps={processRouteProps}>
-                        <TransitionSwitch className="translate-container" classNames="translateY">
+                <div className="services-decor" />
+                <ErrorBounder>
+                    <SmartBreakpoint match="min-width: 1440px">
+                        <SwitchControl routeProps={processRouteProps}>
+                            <TransitionSwitch className="translate-container" classNames="translateY">
+                                {this.routesWithProps}
+                            </TransitionSwitch>
+                        </SwitchControl>
+                    </SmartBreakpoint>
+                    <SmartBreakpoint match="max-width: 1439px">
+                        <ScrollControl routeProps={processRouteProps}>
                             {this.routesWithProps}
-                        </TransitionSwitch>
-                    </SwitchControl>
-                </SmartBreakpoint>
-                <SmartBreakpoint match="max-width: 1439px">
-                    <ScrollControl routeProps={processRouteProps}>
-                        {this.routesWithProps}
-                    </ScrollControl>
-                </SmartBreakpoint>
-                <OnTabletDesktop>
-                    <div className="section-aside">
-                        <div className="aside-nav">
-                            {this.linksWithProps}
+                        </ScrollControl>
+                    </SmartBreakpoint>
+                    <OnTabletDesktop>
+                        <div className="section-aside">
+                            <div className="aside-nav">
+                                {this.linksWithProps}
+                            </div>
                         </div>
-                    </div>
-                </OnTabletDesktop>
+                    </OnTabletDesktop>
+                </ErrorBounder>
             </React.Fragment>
         );
     }
 
-    protected get linksWithProps(): Array<JSX.Element> {
+    protected get linksWithProps(): JSX.Element[] {
         return processRouteProps.map((props, i) => (
             <NavLink className="stage" to={props.path} key={props.path}>
                 <OnMobile>
@@ -72,7 +85,9 @@ export class ProcessLayout extends React.Component {
         ));
     }
 
-    protected get routesWithProps(): Array<JSX.Element> {
+    protected get routesWithProps(): JSX.Element[] {
         return processRouteProps.map((props) => <Route {...props} key={props.path} />)
     }
 }
+
+export default ProcessLayout;

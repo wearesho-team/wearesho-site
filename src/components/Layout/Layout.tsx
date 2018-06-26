@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as React from "react";
 import { Router, Switch, Route } from "react-router-dom";
+import { AsyncRoutesController } from "react-async-controller";
 
 import { translate } from "helpers/translate";
 import { Languages } from "data/Languages";
@@ -8,11 +9,12 @@ import { Languages } from "data/Languages";
 import { LayoutContext, LayoutContextTypes } from "./LayoutContext"
 import { LayoutProps, LayoutPropTypes } from "./LayoutProps";
 
+import { PreLoader } from "../PreLoader";
 import { MainLayout } from "./MainLayout";
 import { ProcessLayout } from "./ProcessLayout";
 
 export interface LayoutState {
-    isScrollDisabled: boolean;
+    isScrollEnabled: boolean;
     language: Languages;
 }
 
@@ -27,38 +29,39 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
             language: localStorage.getItem("app.language") === Languages.ru
                 ? Languages.ru
                 : Languages.en,
-            isScrollDisabled: true
+            isScrollEnabled: false,
         };
+
+        PreLoader.hide();
 
         translate.setLocale(this.state.language);
     }
 
     public getChildContext(): LayoutContext {
         return {
-            isScrollDisabled: this.state.isScrollDisabled,
+            isScrollDisabled: !this.state.isScrollEnabled,
             language: this.state.language,
-            setLanguage: this.setLanguage
+            setLanguage: this.setLanguage,
         }
     }
 
-    public async componentDidMount() {
-        await this.props.preLoader.hide();
-        this.setState({ isScrollDisabled: false });
-    }
-
-    public async componentWillUnmount() {
-        await this.props.preLoader.show();
-    }
-
-    public render(): JSX.Element {
+    public render(): React.ReactNode {
         return (
             <Router history={this.props.history}>
-                <div id="content">
-                    <Switch>
-                        <Route exact path="/process/*" component={ProcessLayout} />
-                        <Route path="/" component={MainLayout} />                        
-                    </Switch>
-                </div>
+                <AsyncRoutesController
+                    availableRoutes={{
+                        process: {
+                            path: "/process/*",
+                            resolveComponent:
+                                () => import(/* webpackChunkName: "process" */ "./ProcessLayout/ProcessLayout")
+                        },
+                        main: {
+                            path: "/",
+                            resolveComponent:
+                                () => import(/* webpackChunkName: "main" */ "./MainLayout/MainLayout")
+                        }
+                    }}
+                />
             </Router>
         );
     }
@@ -74,5 +77,9 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
         translate.setLocale(nextLanguage);
         // pass to context
         this.setState({ language: nextLanguage });
+    }
+
+    protected handleSetScrollState = (isScrollEnabled: boolean): void => {
+        this.setState({ isScrollEnabled });
     }
 }

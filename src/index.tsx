@@ -13,12 +13,14 @@ import { PreLoader } from "./components/PreLoader";
 
 const container = document.getElementById("content-overlay");
 
+PreLoader.duration = (window as any).hideTimeout || 2000;
+
 if (!container) {
     // tslint:disable-next-line
     console.error("Can not found element for mounting Layout!");
 } else {
     ReactDOM.render(
-            <Layout preLoader={new PreLoader((window as any).hideTimeout || 2000)} history={createBrowserHistory()} />,
+        <Layout history={createBrowserHistory()} />,
         container
     );
 }

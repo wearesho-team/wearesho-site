@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 
 import { stages } from "data/ProjectStages/stages";
 
+import { PreloaderLinkButton } from "helpers/PreloaderLinkButton";
 import { OnMobile } from "helpers/Breakpoints";
 import { translate } from "helpers/translate";
 import { toFixed } from "helpers/toFixed";
@@ -10,7 +10,7 @@ import { toFixed } from "helpers/toFixed";
 import { LayoutContext, LayoutContextTypes } from "components/Layout/LayoutContext";
 import { processRouteProps } from "data/routeProps";
 
-export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
+export class Stages extends React.Component<React.HTMLProps<any>> {
     public static readonly contextTypes = LayoutContextTypes;
 
     public readonly context: LayoutContext;
@@ -66,7 +66,7 @@ export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
             .splice(from, count)
             .map(({ title, subTitle, link }, i) => {
                 return (
-                    <Link to={link} className="stage" key={i}>
+                    <PreloaderLinkButton to={link} className="stage" key={i}>
                         <span className="stage__number marker">
                             {toFixed(2, i + from + 1)}
                         </span>
@@ -75,8 +75,9 @@ export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
                             <p className="stage__description">{subTitle}</p>
                             <span className="stage__detail">&gt;&gt;</span>
                         </div>
-                    </Link>
+                    </PreloaderLinkButton>
                 );
             });
     }
+
 }

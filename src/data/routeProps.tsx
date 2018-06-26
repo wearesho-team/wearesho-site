@@ -64,7 +64,7 @@ export const processRouteProps = [
         exact: false,
         path: "/process/promotion",
         label: translate("processPage.stages.title.promotion"),
-        render: () => <DeploymentPage key="/process/promotion" />
+        render: () => <PromotionPage key="/process/promotion" />
     },
     {
         exact: false,

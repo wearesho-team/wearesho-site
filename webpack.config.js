@@ -54,6 +54,7 @@ const config = {
             filename: '[name].[hash:6].js',
             path: path.resolve('./web'),
             publicPath: "/",
+            chunkFilename: "[name].[chunkhash:6].js",
         },
 
         devtool: debug ? "source-map" : false,
@@ -143,7 +144,7 @@ const config = {
                                         },
                                     }],
                                 ],
-                                "plugins": ["transform-object-rest-spread"]
+                                "plugins": ["transform-object-rest-spread", "syntax-dynamic-import"]
                             },
                         },
                         "awesome-typescript-loader",
@@ -164,7 +165,7 @@ const config = {
                                 },
                             }]
                         ],
-                        "plugins": ["transform-object-rest-spread"]
+                        "plugins": ["transform-object-rest-spread", "syntax-dynamic-import"]
                     },
                 },
                 {
@@ -312,6 +313,5 @@ if (isApache) {
         ])
     );
 }
-
 
 module.exports = config;
