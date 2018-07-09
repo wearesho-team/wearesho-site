@@ -52,7 +52,7 @@ export class ProcessLayout extends React.Component {
                     </SmartBreakpoint>
                     <SmartBreakpoint match="max-width: 1439px">
                         <ScrollControl routeProps={processRouteProps}>
-                            {this.routesWithProps}
+                            {processRouteProps.map((prop) => prop.render())}
                         </ScrollControl>
                     </SmartBreakpoint>
                     <OnTabletDesktop>
