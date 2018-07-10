@@ -1,8 +1,9 @@
-import {expect} from "chai";
+import { expect } from "chai";
 import * as React from "react";
-import {mount, ReactWrapper} from "enzyme";
-import {TouchHover} from "../../src/helpers/TouchHover";
-import {useFakeTimers, SinonFakeTimers} from "sinon";
+import { mount, ReactWrapper } from "enzyme";
+import { useFakeTimers, SinonFakeTimers } from "sinon";
+
+import { TouchHover } from "../../src/helpers/TouchHover";
 
 describe("TouchHover", () => {
     let wrapper: ReactWrapper<any, any>;
@@ -11,7 +12,7 @@ describe("TouchHover", () => {
     const delay = 600;
 
     beforeEach(() => {
-        wrapper = mount(<button className="button" {...TouchHover}/>);
+        wrapper = mount(<button className="button" {...TouchHover} />);
 
         timer = useFakeTimers();
     });

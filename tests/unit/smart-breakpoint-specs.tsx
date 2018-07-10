@@ -1,9 +1,9 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
-import {useFakeTimers, SinonFakeTimers} from "sinon";
+import { ReactWrapper, mount } from "enzyme";
+import { useFakeTimers, SinonFakeTimers } from "sinon";
 
-import {SmartBreakpoint, SmartBreakpointProps} from "../../src/components/SmartBreakpoint";
+import { SmartBreakpoint, SmartBreakpointProps } from "../../src/components/SmartBreakpoint";
 
 describe("<SmartBreakpoint/>", () => {
     let wrapper: ReactWrapper<SmartBreakpointProps, undefined>;
@@ -19,7 +19,7 @@ describe("<SmartBreakpoint/>", () => {
 
         wrapper = mount(
             <SmartBreakpoint {...props}>
-                <div/>
+                <div />
             </SmartBreakpoint>
         );
 
@@ -86,7 +86,7 @@ describe("<SmartBreakpoint/>", () => {
 
         wrapper = mount(
             <SmartBreakpoint {...props} delay={100}>
-                <div/>
+                <div />
             </SmartBreakpoint>
         );
 

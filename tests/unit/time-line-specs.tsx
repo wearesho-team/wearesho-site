@@ -1,11 +1,11 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
-import {useFakeTimers, SinonFakeTimers} from "sinon";
+import { ReactWrapper, mount } from "enzyme";
+import { useFakeTimers, SinonFakeTimers } from "sinon";
 
-import {TimeLine, TimeLineState, TimeLineProps} from "../../src/components/TimeLine";
-import {YearItem} from "../../src/components/TimeLine/YearItem";
-import {projects} from "../../src/data/Projects";
+import { TimeLine, TimeLineState, TimeLineProps } from "../../src/components/TimeLine";
+import { YearItem } from "../../src/components/TimeLine/YearItem";
+import { projects } from "../../src/data/Projects";
 
 describe("<TimeLine/>", () => {
     let wrapper: ReactWrapper<TimeLineProps, TimeLineState>;
@@ -22,7 +22,7 @@ describe("<TimeLine/>", () => {
     };
 
     beforeEach(() => {
-        wrapper = mount(<TimeLine {...props}/>);
+        wrapper = mount(<TimeLine {...props} />);
 
         timer = useFakeTimers();
     });
@@ -104,7 +104,7 @@ describe("<TimeLine/>", () => {
         });
 
         expect(
-            Array.from(wrapper.getDOMNode().children).find(({className}) => !className.search("slider"))
+            Array.from(wrapper.getDOMNode().children).find(({ className }) => !className.search("slider"))
         ).to.exist;
     });
 
@@ -137,7 +137,7 @@ describe("<TimeLine/>", () => {
             }
         };
 
-        wrapper = mount(<TimeLine {...props}/>);
+        wrapper = mount(<TimeLine {...props} />);
 
         expect((wrapper.instance() as any)
             .handleChangeProject(wrapper.getDOMNode(), 0, 2021)).to.not.exist;
@@ -146,7 +146,7 @@ describe("<TimeLine/>", () => {
     });
 
     it("should remove `move` class name from `<Slider/>` after animation delay when active project changed", () => {
-        wrapper = mount(<TimeLine {...props}/>);
+        wrapper = mount(<TimeLine {...props} />);
 
         Object.defineProperty(wrapper.getDOMNode().parentNode, "parentNode", {
             get: () => {

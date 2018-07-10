@@ -1,8 +1,8 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
+import { ReactWrapper, mount } from "enzyme";
 
-import {ActivePoint, ActivePointProps} from "../../src/components/TimeLine/YearItem/ActivePoint";
+import { ActivePoint, ActivePointProps } from "../../src/components/TimeLine/YearItem/ActivePoint";
 
 describe("<ActivePoint/>", () => {
     let wrapper: ReactWrapper<ActivePointProps, undefined>;
@@ -22,7 +22,7 @@ describe("<ActivePoint/>", () => {
     };
 
     beforeEach(() => {
-        wrapper = mount(<ActivePoint {...props}/>);
+        wrapper = mount(<ActivePoint {...props} />);
 
         node = wrapper.instance() as any;
         DOMNode = wrapper.getDOMNode();
@@ -47,7 +47,7 @@ describe("<ActivePoint/>", () => {
 
         onProjectChangeHasCalled = false;
 
-        wrapper = mount(<ActivePoint {...props}/>);
+        wrapper = mount(<ActivePoint {...props} />);
 
         expect(onProjectChangeHasCalled).to.be.false;
     });

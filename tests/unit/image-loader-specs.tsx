@@ -1,6 +1,7 @@
 import { expect } from "chai";
 import * as React from "react";
 import { ReactWrapper, mount } from "enzyme";
+
 const path = require("path");
 
 import { ImageLoader } from "../../src/components/ImageLoader";
@@ -12,8 +13,8 @@ describe("<MainPage/>", () => {
         wrapper = mount(
             <ImageLoader imageStack={[
                 path.resolve("images/bobraCS-20.jpg"),
-                path.resolve("images/bobraCS-40.jpg")                
-            ]}/>
+                path.resolve("images/bobraCS-40.jpg")
+            ]} />
         );
     });
 

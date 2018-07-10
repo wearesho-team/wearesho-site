@@ -54,10 +54,12 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
     public render(): JSX.Element {
 
         return (
-            <TransitionGroup className="form-container">
+            <div className="form-container">
                 {this.Form}
-                {this.message}
-            </TransitionGroup>
+                <TransitionGroup component={null}>
+                    {this.message}
+                </TransitionGroup>
+            </div>
         );
     }
 

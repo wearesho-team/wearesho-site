@@ -1,17 +1,17 @@
-import {PreLoader} from "../../src/components/PreLoader";
-import {expect} from "chai";
-const time = 500;
+import { expect } from "chai";
+
+import { PreLoader } from "../../src/components/PreLoader";
+
 describe("PreLoader animations", () => {
-    const preLoader = new PreLoader(time);
 
     it("should add `loaded` class on hiding", async () => {
-        await preLoader.hide();
+        await PreLoader.hide();
         expect(document.body.className).to.contain("loaded");
     });
 
     it("should remove classes (`loaded`) on showing", async () => {
         expect(document.body.className).to.contain("loaded");
-        await preLoader.show();
+        await PreLoader.show();
         expect(document.body.className).to.not.contain("loaded");
     });
 
@@ -19,7 +19,7 @@ describe("PreLoader animations", () => {
         let isTriggered = false;
         (window as any).onBundleLoaded = () => isTriggered = true;
 
-        await preLoader.hide();
+        await PreLoader.hide();
         expect(isTriggered).to.be.true;
     });
 });

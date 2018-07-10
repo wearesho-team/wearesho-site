@@ -1,5 +1,6 @@
-import {expect} from "chai";
-import {checkForStringArrayInstance} from "../../src/helpers/checkForStringArrayInstance";
+import { expect } from "chai";
+
+import { checkForStringArrayInstance } from "../../src/helpers/checkForStringArrayInstance";
 
 describe("checkForStringArrayInstance()", () => {
 

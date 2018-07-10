@@ -1,14 +1,14 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
-import {createMemoryHistory, History} from "history";
-import {Router} from "react-router";
-import {useFakeTimers, SinonFakeTimers} from "sinon";
+import { Router } from "react-router";
+import { ReactWrapper, mount } from "enzyme";
+import { createMemoryHistory, History } from "history";
+import { useFakeTimers, SinonFakeTimers } from "sinon";
 
-import {ScrollControl} from "../../src/components/ScrollControl";
-import {routeProps} from "../../src/data/routeProps";
-import {RouterContext} from "../../src/data/RouterContext";
-import {LayoutContext} from "../../src/components/Layout/LayoutContext";
+import { mainRouteProps } from "../../src/data/routeProps";
+import { RouterContext } from "../../src/data/RouterContext";
+import { ScrollControl } from "../../src/components/ScrollControl";
+import { LayoutContext } from "../../src/components/Layout/LayoutContext";
 
 describe("<ScrollControl/>", () => {
     let wrapper: ReactWrapper<undefined, undefined>;
@@ -29,8 +29,8 @@ describe("<ScrollControl/>", () => {
 
         wrapper = mount(
             <Router history={history}>
-                <ScrollControl>
-                    {routeProps.map((prop) => prop.render())}
+                <ScrollControl routeProps={mainRouteProps}>
+                    {mainRouteProps.map((prop) => prop.render())}
                 </ScrollControl>
             </Router>
         );
@@ -41,7 +41,7 @@ describe("<ScrollControl/>", () => {
     });
 
     afterEach(() => {
-        history.push(routeProps[0].path);
+        history.push(mainRouteProps[0].path);
         timer.restore();
         wrapper.unmount();
     });
@@ -82,7 +82,7 @@ describe("<ScrollControl/>", () => {
         (node as any).handleScroll();
         timer.tick(ScrollControl.scrollListenDelay);
 
-        expect(history.location.pathname).to.equal(routeProps[1].path);
+        expect(history.location.pathname).to.equal(mainRouteProps[1].path);
     });
 
     it("Should return on scroll if element dose not exist", () => {
@@ -92,7 +92,7 @@ describe("<ScrollControl/>", () => {
         (node as any).handleScroll();
         timer.tick(ScrollControl.scrollListenDelay);
 
-        expect(history.location.pathname).to.equal(routeProps[0].path);
+        expect(history.location.pathname).to.equal(mainRouteProps[0].path);
     });
 
     it("Should set page offset on mount according to url", () => {

@@ -1,11 +1,12 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
-import {LayoutContext, LayoutContextTypes} from "../../src/components/Layout/LayoutContext";
-import {RouterContext, RouterContextTypes} from "../../src/data/RouterContext";
-import {ProcessPage} from "../../src/components/Pages/ProcessPage/ProcessPage";
-import {Languages} from "../../src/data/Languages";
-import {useFakeTimers, SinonFakeTimers} from "sinon";
+import { ReactWrapper, mount } from "enzyme";
+import { useFakeTimers, SinonFakeTimers } from "sinon";
+
+import { LayoutContext, LayoutContextTypes } from "../../src/components/Layout/LayoutContext";
+import { ProcessPage } from "../../src/components/Pages/MainLayout/ProcessPage/ProcessPage";
+import { RouterContext, RouterContextTypes } from "../../src/data/RouterContext";
+import { Languages } from "../../src/data/Languages";
 
 describe("<ProcessPage/>", () => {
     let wrapper: ReactWrapper<any, any>;
@@ -32,8 +33,8 @@ describe("<ProcessPage/>", () => {
 
     beforeEach(() => {
         wrapper = mount(
-            <ProcessPage/>,
-            {context, childContextTypes: {...LayoutContextTypes, ...RouterContextTypes}}
+            <ProcessPage />,
+            { context, childContextTypes: { ...LayoutContextTypes, ...RouterContextTypes } }
         );
 
         timer = useFakeTimers();
@@ -74,9 +75,9 @@ describe("<ProcessPage/>", () => {
                 left: 0
             }
         };
-       wrapper.setState({
-           currentIndex: 0
-       });
+        wrapper.setState({
+            currentIndex: 0
+        });
 
         wrapper.getDOMNode().dispatchEvent(new MouseEvent("mousemove"));
         expect(wrapper.instance().state.className).to.equal(ProcessPage.baseClassName);
@@ -141,7 +142,7 @@ describe("<ProcessPage/>", () => {
         };
 
         wrapper.getDOMNode().dispatchEvent(new Event("touchstart", {
-            touches: [{clientX: 1000}]
+            touches: [{ clientX: 1000 }]
         } as any));
 
         expect(ProcessPage.demonstrationMode).to.be.false;

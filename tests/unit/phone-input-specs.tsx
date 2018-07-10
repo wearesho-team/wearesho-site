@@ -1,8 +1,8 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
-import {PhoneInputProps} from "../../src/components/Pages/PartnershipPage/ContactForm/Partials/PhoneInput/PhoneInputProps";
-import {PhoneInput} from "../../src/components/Pages/PartnershipPage/ContactForm/Partials/PhoneInput/PhoneInput";
+import { ReactWrapper, mount } from "enzyme";
+
+import { PhoneInputProps, PhoneInput } from "../../src/components/Pages/MainLayout/PartnershipPage/ContactForm/Partials";
 
 describe("<PhoneInput/>", () => {
     let wrapper: ReactWrapper<PhoneInputProps, undefined>;
@@ -34,7 +34,7 @@ describe("<PhoneInput/>", () => {
             value: defaultValue
         };
 
-        wrapper = mount(<PhoneInput maskList={maskList}/>, {context});
+        wrapper = mount(<PhoneInput maskList={maskList} />, { context });
 
         node = wrapper.instance() as any;
     });

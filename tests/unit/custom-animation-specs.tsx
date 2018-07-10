@@ -1,18 +1,18 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
-import {useFakeTimers, SinonFakeTimers} from "sinon";
+import { ReactWrapper, mount } from "enzyme";
+import { useFakeTimers, SinonFakeTimers } from "sinon";
 
-import {CustomAnimationProps} from "../../src/components/Animations/Static/CustomAnimation/CustomAnimationProps";
-import {CustomAnimationState} from "../../src/components/Animations/Static/CustomAnimation/CustomAnimationState";
-import {CustomAnimation} from "../../src/components/Animations/Static/CustomAnimation/CustomAnimation";
+import { CustomAnimationProps } from "../../src/components/Animations/Static/CustomAnimation/CustomAnimationProps";
+import { CustomAnimationState } from "../../src/components/Animations/Static/CustomAnimation/CustomAnimationState";
+import { CustomAnimation } from "../../src/components/Animations/Static/CustomAnimation/CustomAnimation";
 
 describe("<CustomAnimation/>", () => {
     let wrapper: ReactWrapper<CustomAnimationProps, CustomAnimationState>;
     let timer: SinonFakeTimers;
 
     const actionClassName = "animate";
-    const child = <div className="child"/>;
+    const child = <div className="child" />;
     const delay = 100;
     const duration = 200;
     const startFeature = {
@@ -71,7 +71,7 @@ describe("<CustomAnimation/>", () => {
     it("Should start animation after delay from props", () => {
         simulateMutation({
             ...wrapper.props(),
-            ...{delay}
+            ...{ delay }
         });
 
         timer.tick(delay);
@@ -104,7 +104,7 @@ describe("<CustomAnimation/>", () => {
         expect(wrapper.getDOMNode().className).to.contains("child");
 
         wrapper.setProps({
-            children: <span className="span"/>
+            children: <span className="span" />
         });
 
         expect(wrapper.getDOMNode().className).to.contains("span");

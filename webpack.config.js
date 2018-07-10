@@ -67,7 +67,6 @@ const config = {
                 path.resolve('./images'),                
             ],
             alias: {
-                "@images": path.resolve('./images'),
                 normalize: path.join(__dirname, '/node_modules/normalize.css'),
             }
         },

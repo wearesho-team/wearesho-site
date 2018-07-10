@@ -85,9 +85,9 @@ export class BobraCSPage extends React.Component {
                                     height="322"
                                     alt="Image"
                                     imageStack={[
-                                        require("@images/bobraCS-20.jpg"),
-                                        require("@images/bobraCS-60.jpg"),
-                                        require("@images/bobraCS-80.jpg"),
+                                        require("../../../../../images/bobraCS-20.jpg"),
+                                        require("../../../../../images/bobraCS-60.jpg"),
+                                        require("../../../../../images/bobraCS-80.jpg"),
                                     ]}
                                 />
                                 <div className="decor decor_vertical" />
@@ -143,9 +143,9 @@ export class BobraCSPage extends React.Component {
                                         height="322"
                                         alt="Image"
                                         imageStack={[
-                                            require("@images/bobraCS-40.jpg"),
-                                            require("@images/bobraCS-60.jpg"),
-                                            require("@images/bobraCS-80.jpg"),
+                                            require("../../../../../images/bobraCS-40.jpg"),
+                                            require("../../../../../images/bobraCS-60.jpg"),
+                                            require("../../../../../images/bobraCS-80.jpg"),
                                         ]}
                                     />
                                     <div className="decor decor_vertical" />
@@ -267,10 +267,10 @@ export class BobraCSPage extends React.Component {
                                     height="322"
                                     alt="Image"
                                     imageStack={[
-                                        require("@images/bobraCS-20.jpg"),
-                                        require("@images/bobraCS-40.jpg"),
-                                        require("@images/bobraCS-60.jpg"),
-                                        require("@images/bobraCS-80.jpg"),
+                                        require("../../../../../images/bobraCS-20.jpg"),
+                                        require("../../../../../images/bobraCS-40.jpg"),
+                                        require("../../../../../images/bobraCS-60.jpg"),
+                                        require("../../../../../images/bobraCS-80.jpg"),
                                     ]}
                                 />
                                 <div className="decor decor_vertical" />
@@ -325,10 +325,10 @@ export class BobraCSPage extends React.Component {
                                         height="322"
                                         alt="Image"
                                         imageStack={[
-                                            require("@images/bobraCS-20.jpg"),
-                                            require("@images/bobraCS-40.jpg"),
-                                            require("@images/bobraCS-60.jpg"),
-                                            require("@images/bobraCS-80.jpg"),
+                                            require("../../../../../images/bobraCS-20.jpg"),
+                                            require("../../../../../images/bobraCS-40.jpg"),
+                                            require("../../../../../images/bobraCS-60.jpg"),
+                                            require("../../../../../images/bobraCS-80.jpg"),
                                         ]}
                                     />
                                     <div className="decor decor_vertical" />

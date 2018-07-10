@@ -1,5 +1,6 @@
-import {concat} from "../../src/helpers/concat";
-import {expect} from "chai";
+import { expect } from "chai";
+
+import { concat } from "../../src/helpers/concat";
 
 describe("concat()", () => {
 

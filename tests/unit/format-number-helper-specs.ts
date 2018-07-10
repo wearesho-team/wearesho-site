@@ -1,5 +1,6 @@
-import {formatNumber} from "../../src/helpers/formatNumber";
-import {expect} from "chai";
+import { expect } from "chai";
+
+import { formatNumber } from "../../src/helpers/formatNumber";
 
 describe("formatNumber()", () => {
 

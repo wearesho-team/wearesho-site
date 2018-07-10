@@ -1,18 +1,18 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
-import {useFakeTimers, SinonFakeTimers} from "sinon";
+import { ReactWrapper, mount } from "enzyme";
+import { useFakeTimers, SinonFakeTimers } from "sinon";
 
-import {TransformAnimationProps} from "../../src/components/Animations/Interactive/TransformAnimation";
-import {TransformAnimationState} from "../../src/components/Animations/Interactive/TransformAnimation";
-import {TransformAnimation} from "../../src/components/Animations/Interactive/TransformAnimation";
+import { TransformAnimationProps } from "../../src/components/Animations/Interactive/TransformAnimation";
+import { TransformAnimationState } from "../../src/components/Animations/Interactive/TransformAnimation";
+import { TransformAnimation } from "../../src/components/Animations/Interactive/TransformAnimation";
 
 describe("<TransformAnimation/>", () => {
     let wrapper: ReactWrapper<TransformAnimationProps, TransformAnimationState>;
     let timer: SinonFakeTimers;
 
-    const initialComponent = <div className="initial"/>;
-    const transformedComponent = <div className="transformed"/>;
+    const initialComponent = <div className="initial" />;
+    const transformedComponent = <div className="transformed" />;
     const duration = 100;
 
     const props = {
@@ -23,7 +23,7 @@ describe("<TransformAnimation/>", () => {
     };
 
     beforeEach(() => {
-        wrapper = mount(<TransformAnimation {...props}/>);
+        wrapper = mount(<TransformAnimation {...props} />);
         timer = useFakeTimers();
     });
 

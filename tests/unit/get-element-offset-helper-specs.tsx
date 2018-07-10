@@ -1,8 +1,8 @@
+import { expect } from "chai";
 import * as React from "react";
-import {getElementOffset} from "../../src/helpers/getElementOffset";
+import { mount, ReactWrapper } from "enzyme";
 
-import {expect} from "chai";
-import {mount, ReactWrapper} from "enzyme";
+import { getElementOffset } from "../../src/helpers/getElementOffset";
 
 describe("getElementOffset()", () => {
     let wrapper: ReactWrapper<any, undefined>;
@@ -14,7 +14,7 @@ describe("getElementOffset()", () => {
             <div className="body">
                 <div className="grandParent">
                     <div className="parent">
-                        <div className="child"/>
+                        <div className="child" />
                     </div>
                 </div>
             </div>

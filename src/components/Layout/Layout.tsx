@@ -9,7 +9,6 @@ import { Languages } from "data/Languages";
 import { LayoutContext, LayoutContextTypes } from "./LayoutContext"
 import { LayoutProps, LayoutPropTypes } from "./LayoutProps";
 
-import { PreLoader } from "../PreLoader";
 import { MainLayout } from "./MainLayout";
 import { ProcessLayout } from "./ProcessLayout";
 
@@ -31,8 +30,6 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
                 : Languages.en,
             isScrollEnabled: false,
         };
-
-        PreLoader.hide();
 
         translate.setLocale(this.state.language);
     }

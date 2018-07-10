@@ -15,8 +15,7 @@
     "paths": {
       "*": [
         "*"
-      ],
-      "@images/*": ["../images/*"]
+      ]
     }
   },
   "exclude": [

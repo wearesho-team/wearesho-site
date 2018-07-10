@@ -7,7 +7,7 @@ export interface ImageLoaderProps
 }
 
 export const ImageLoaderPropTypes: {[P in keyof ImageLoaderProps]: PropTypes.Validator<any>} = {
-    imageStack: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    imageStack: PropTypes.array.isRequired,
     initialImage: PropTypes.string
 };
 

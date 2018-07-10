@@ -1,11 +1,11 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
+import { ReactWrapper, mount } from "enzyme";
 
-import {Header} from "../../src/components/Layout/Partials";
-import {LayoutContext, LayoutContextTypes} from "../../src/components/Layout/LayoutContext";
-import {Languages} from "../../src/data/Languages";
-import {RouterContext, RouterContextTypes} from "../../src/data/RouterContext";
+import { Languages } from "../../src/data/Languages";
+import { Header } from "../../src/components/Layout/Partials";
+import { RouterContext, RouterContextTypes } from "../../src/data/RouterContext";
+import { LayoutContext, LayoutContextTypes } from "../../src/components/Layout/LayoutContext";
 
 describe("<Header/>", () => {
     let wrapper: ReactWrapper<undefined, undefined>;
@@ -31,8 +31,8 @@ describe("<Header/>", () => {
 
     beforeEach(() => {
         wrapper = mount(
-            <Header/>,
-            {context, childContextTypes: {...LayoutContextTypes, ...RouterContextTypes}}
+            <Header />,
+            { context, childContextTypes: { ...LayoutContextTypes, ...RouterContextTypes } }
         );
     });
 

@@ -1,13 +1,12 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
-import {useFakeTimers, SinonFakeTimers} from "sinon";
+import { ReactWrapper, mount } from "enzyme";
+import { Router, Route } from "react-router";
+import { useFakeTimers, SinonFakeTimers } from "sinon";
+import { createMemoryHistory, History } from "history";
 
-import {createMemoryHistory, History} from "history";
-
-import {TransitionSwitch, TransitionSwitchProps, TransitionSwitchState} from "../../src/components/TransitionSwitch";
-import {Router, Route} from "react-router";
-import {SwitchControl} from "../../src/components/SwitchControl";
+import { TransitionSwitch, TransitionSwitchProps, TransitionSwitchState } from "../../src/components/TransitionSwitch";
+import { SwitchControl } from "../../src/components/SwitchControl";
 
 const upClassName = "up";
 const downClassName = "down";
@@ -26,18 +25,18 @@ describe("<TransitionSwitch/>", () => {
         timeout: animationDuration,
     };
 
-    const PageFirst = () => <div id="p_0"/>;
-    const PageSecond = () => <div id="p_1"/>;
+    const PageFirst = () => <div id="p_0" />;
+    const PageSecond = () => <div id="p_1" />;
 
     beforeEach(() => {
         history = createMemoryHistory();
 
         wrapper = mount(
             <Router history={history}>
-                <SwitchControl>
+                <SwitchControl routeProps={[{ path: "/" }, { path: "/view-1" }]}>
                     <TransitionSwitch {...wrapperProps}>
-                        <Route exact path="/" component={PageFirst}/>
-                        <Route path="/view-1" component={PageSecond}/>
+                        <Route exact path="/" component={PageFirst} />
+                        <Route path="/view-1" component={PageSecond} />
                     </TransitionSwitch>
                 </SwitchControl>
             </Router>
@@ -52,7 +51,7 @@ describe("<TransitionSwitch/>", () => {
     });
 
     it("should render one page on mount", () => {
-        expect(wrapper.contains(<div id="p_0"/>)).to.be.true;
+        expect(wrapper.contains(<div id="p_0" />)).to.be.true;
         expect(wrapper.getDOMNode().children).to.have.length(1);
     });
 
@@ -60,8 +59,8 @@ describe("<TransitionSwitch/>", () => {
         history.push("/view-1");
         wrapper.update();
 
-        expect(wrapper.contains(<div id="p_0"/>)).to.be.true;
-        expect(wrapper.contains(<div id="p_1"/>)).to.be.true;
+        expect(wrapper.contains(<div id="p_0" />)).to.be.true;
+        expect(wrapper.contains(<div id="p_1" />)).to.be.true;
         expect(wrapper.getDOMNode().children).to.have.length(2);
     });
 
@@ -71,13 +70,13 @@ describe("<TransitionSwitch/>", () => {
 
         timer.tick(animationDuration / 2 + additionalDuration / 2);
 
-        expect(wrapper.contains(<div id="p_0"/>)).to.be.true;
-        expect(wrapper.contains(<div id="p_1"/>)).to.be.true;
+        expect(wrapper.contains(<div id="p_0" />)).to.be.true;
+        expect(wrapper.contains(<div id="p_1" />)).to.be.true;
         expect(wrapper.getDOMNode().children).to.have.length(2);
 
         timer.tick(animationDuration / 2 + additionalDuration / 2);
 
-        expect(wrapper.contains(<div id="p_1"/>)).to.be.true;
+        expect(wrapper.contains(<div id="p_1" />)).to.be.true;
         expect(wrapper.getDOMNode().children).to.have.length(1);
     });
 

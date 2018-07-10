@@ -1,5 +1,6 @@
-import {expect} from "chai";
-import {compareDates} from "../../src/helpers/compareDates";
+import { expect } from "chai";
+
+import { compareDates } from "../../src/helpers/compareDates";
 
 describe("compareDates()", () => {
     const dateOne = {
