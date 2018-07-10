@@ -845,6 +845,16 @@ html[lang="en"] {
         float: none;
       }
 
+      @include breakpoint($mobile-l) {
+
+        padding-right: 11%;
+      }
+
+      @include breakpoint($iphone5-l) {
+
+        padding-right: 0;
+      }
+
       @include breakpoint($tablet) {
         display: inline-block;
 
