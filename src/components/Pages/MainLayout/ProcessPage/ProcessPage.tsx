@@ -13,7 +13,7 @@ import { ProcessStructure } from "components/Icons/ProcessStructure";
 import { getCorners } from "components/Buttons/SubmitButton";
 import { ProcessPageState } from "./ProcessPageState";
 import { BasePage } from "../../BasePage";
-import { Stages } from "./Stages/Stages";
+import { Stages } from "./Stages";
 
 export class ProcessPage extends BasePage<{}, ProcessPageState> implements ElementWithTimer {
     public static readonly baseClassName = "section section-process";
