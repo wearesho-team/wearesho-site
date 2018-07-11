@@ -12,14 +12,23 @@ import { SwitchControl } from "components/SwitchControl";
 import { ScrollControl } from "components/ScrollControl";
 import { SmartBreakpoint } from "components/SmartBreakpoint";
 import { TransitionSwitch } from "components/TransitionSwitch";
+import { LayoutContextTypes, LayoutContext } from "../LayoutContext";
 
 export class MainLayout extends React.Component {
-    public componentDidMount() {
-        PreLoader.hide();
+    public static readonly contextTypes = LayoutContextTypes;
+
+    public readonly context: LayoutContext;
+
+    public async componentDidMount() {
+        await PreLoader.hide();
+
+        this.context.setScrollState(true);
     }
 
     public componentWillUnmount() {
         PreLoader.show();
+
+        this.context.setScrollState(false);
     }
 
     public render(): React.ReactNode {

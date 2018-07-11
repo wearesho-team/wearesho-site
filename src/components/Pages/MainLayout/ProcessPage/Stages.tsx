@@ -2,13 +2,12 @@ import * as React from "react";
 
 import { stages } from "data/ProjectStages/stages";
 import { processRouteProps } from "data/routeProps";
-
-import { PreloaderLinkButton } from "helpers/PreloaderLinkButton";
 import { OnMobile } from "helpers/Breakpoints";
 import { translate } from "helpers/translate";
 import { toFixed } from "helpers/toFixed";
 
 import { LayoutContext, LayoutContextTypes } from "components/Layout/LayoutContext";
+import { PreloaderLinkButton } from "components/Buttons/PreloaderLinkButton";
 
 export class Stages extends React.Component<React.HTMLProps<any>> {
     public static readonly contextTypes = LayoutContextTypes;

@@ -13,8 +13,6 @@ describe("<Layout>", () => {
 
     let history: History;
 
-    const commonHandler = async () => undefined;
-
     beforeEach(() => {
         wrapper = mount(
             <Layout history={history = createMemoryHistory()} />
@@ -37,6 +35,8 @@ describe("<Layout>", () => {
     });
 
     it("Should set language from localStorage on mount", () => {
+        history.push("/process/project-design");
+
         localStorage.getItem = () => Languages.en;
         wrapper.unmount().mount();
         expect(wrapper.instance().state.language).to.equal(Languages.en);

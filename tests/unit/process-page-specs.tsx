@@ -5,8 +5,11 @@ import { useFakeTimers, SinonFakeTimers } from "sinon";
 
 import { LayoutContext, LayoutContextTypes } from "../../src/components/Layout/LayoutContext";
 import { ProcessPage } from "../../src/components/Pages/MainLayout/ProcessPage/ProcessPage";
+import { Stages } from "../../src/components/Pages/MainLayout/ProcessPage/Stages";
 import { RouterContext, RouterContextTypes } from "../../src/data/RouterContext";
 import { Languages } from "../../src/data/Languages";
+
+import { translate } from "../../src/helpers/translate";
 
 describe("<ProcessPage/>", () => {
     let wrapper: ReactWrapper<any, any>;
@@ -130,6 +133,9 @@ describe("<ProcessPage/>", () => {
     it("Should stop demonstrate when user is active", () => {
         ProcessPage.demonstrationMode = true;
         wrapper.unmount().mount();
+        wrapper.setContext({
+            language: Languages.ru
+        });
 
         timer.tick(ProcessPage.demonstrationDelay);
         expect(wrapper.instance().state.currentIndex).to.equal(0);

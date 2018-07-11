@@ -37,8 +37,9 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
     public getChildContext(): LayoutContext {
         return {
             isScrollDisabled: !this.state.isScrollEnabled,
+            setScrollState: this.handleSetScrollState,
             language: this.state.language,
-            setLanguage: this.setLanguage,
+            setLanguage: this.setLanguage
         }
     }
 

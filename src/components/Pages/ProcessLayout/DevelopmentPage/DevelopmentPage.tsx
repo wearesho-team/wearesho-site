@@ -4,8 +4,9 @@ import { translate } from "helpers/translate";
 import { Config } from "data/Config";
 
 import { SmartBreakpoint } from "components/SmartBreakpoint/SmartBreakpoint";
+import { PreloaderLinkButton } from "components/Buttons/PreloaderLinkButton";
+
 import { BasePage } from "../../BasePage";
-import { PreloaderLinkButton } from "helpers/PreloaderLinkButton";
 
 export class DevelopmentPage extends BasePage {
 

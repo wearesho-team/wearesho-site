@@ -4,7 +4,6 @@ import { NavLink, Route, Link } from "react-router-dom";
 import { toFixed } from "helpers/toFixed";
 import { processRouteProps } from "data/routeProps";
 import { OnMobile, OnTabletDesktop } from "helpers/Breakpoints";
-import { PreloaderLinkButton } from "helpers/PreloaderLinkButton";
 
 import { Header, SoundSwitch, SocialLinks } from "../Partials";
 
@@ -14,15 +13,25 @@ import { SwitchControl } from "components/SwitchControl";
 import { ScrollControl } from "components/ScrollControl";
 import { SmartBreakpoint } from "components/SmartBreakpoint";
 import { TransitionSwitch } from "components/TransitionSwitch";
+import { PreloaderLinkButton } from "components/Buttons/PreloaderLinkButton";
+
+import { LayoutContextTypes, LayoutContext } from "../LayoutContext";
 
 export class ProcessLayout extends React.Component {
+    public static readonly contextTypes = LayoutContextTypes;
 
-    public componentDidMount() {
-        PreLoader.hide();
+    public readonly context: LayoutContext;
+
+    public async componentDidMount() {
+        await PreLoader.hide();
+
+        this.context.setScrollState(true);
     }
 
     public componentWillUnmount() {
         PreLoader.show();
+
+        this.context.setScrollState(false);
     }
 
     public render(): React.ReactNode {
