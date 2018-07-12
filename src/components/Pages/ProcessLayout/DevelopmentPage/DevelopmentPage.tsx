@@ -8,7 +8,7 @@ import { PreloaderLinkButton } from "components/Buttons/PreloaderLinkButton";
 
 import { BasePage } from "../../BasePage";
 
-import { developmentList } from "./DevelopmentList";
+import { developmentList } from "./developmentList";
 
 export class DevelopmentPage extends BasePage {
 
