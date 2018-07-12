@@ -4,18 +4,22 @@ import {Link} from "react-router-dom";
 import {Languages} from "../../../data/Languages";
 
 import {TouchHover} from "../../../helpers/TouchHover";
-import {translate} from "../../../helpers/translate";
 
 import {LayoutContext, LayoutContextTypes} from "../LayoutContext";
 
-export class Header extends React.Component<undefined, undefined> {
+export const HeaderDefaultProps = {
+    className: "header"
+};
+
+export class Header extends React.Component<React.HTMLProps<HTMLDivElement>> {
     public static readonly contextTypes = LayoutContextTypes;
+    public static readonly defaultProps = HeaderDefaultProps;
 
     public context: LayoutContext;
 
     public render(): JSX.Element {
         return (
-            <header className="header">
+            <header {...this.props}>
                 <Link to="/" className="logo">
                     <i className="icon icon_logo"/>
                     <span className="logo__text">Art &amp; Data Studio</span>

@@ -1001,39 +1001,9 @@ html[lang="en"] {
 
   &.section-services {
 
-    > .align-container {
-      @include clearfix;
-
-      @include flex;
-      @include valign-center;
-
-      @include breakpoint($mobile-tablet) {
-
-        display: block;
-      }
-
-      @include breakpoint($laptop-small) {
-
-        display: block;
-      }
-    }
-
     .section {
 
       &-main {
-        @include span(8 of 12 inside no-gutter);
-
-        @include breakpoint($mobile) {
-          @include span(12 of 12 inside no-gutter);
-
-          float: none;
-        }
-
-        @include breakpoint($tablet-laptop-sm) {
-          @include span(12 of 12 inside no-gutter);
-
-          float: none;
-        }
 
         .accordion {
           margin-top: 2.25em;
@@ -1041,31 +1011,6 @@ html[lang="en"] {
           @include breakpoint($mobile) {
 
             margin-top: 2.5em;
-          }
-        }
-      }
-
-      &-aside {
-        @include span(4 of 12 inside no-gutter);
-
-        @include clearfix;
-
-        @include breakpoint($mobile) {
-
-          display: none;
-        }
-
-        @include breakpoint($tablet-p) {
-          @include span(12 of 12 inside no-gutter);
-
-          float: none;
-        }
-
-        > .aside-nav {
-
-          @include breakpoint($tablet-laptop-sm) {
-
-            display: none;
           }
         }
       }

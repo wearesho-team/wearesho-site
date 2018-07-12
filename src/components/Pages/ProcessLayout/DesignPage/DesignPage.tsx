@@ -17,6 +17,11 @@ export class DesignPage extends BasePage {
                                     <h3 className="stage__title">
                                         {translate("processPage.stages.title.design")}
                                     </h3>
+                                    <p className="stage__description">
+                                        <span>{translate("processPage.stages.subTitle.sketches")}</span>
+                                        &nbsp;/&nbsp;
+                                        <span>{translate("processPage.stages.subTitle.prototypes")}</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
