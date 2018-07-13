@@ -43,14 +43,12 @@ export class ProcessLayout extends React.Component {
                         <PreloaderLinkButton to="/process" className="btn btn_close" />
                     </Header>
                     <div className="align-container">
-                        <OnMobile>
-                            <aside className="sidebar sidebar-services">
-                                <div className="aside-nav">
-                                    {this.linksWithProps}
-                                </div>
-                                <SocialLinks />
-                            </aside>
-                        </OnMobile>
+                        <aside className="sidebar sidebar-services">
+                            <div className="aside-nav">
+                                {this.linksWithProps}
+                            </div>
+                            <SocialLinks />
+                        </aside>
                         <SoundSwitch />
                         <div className="section-gradient" />
                         <div className="services-decor" />

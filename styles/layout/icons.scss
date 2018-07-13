@@ -117,4 +117,96 @@ html[lang="en"] {
 
     background-image: url('images/icon-php.svg');
   }
+
+  &_photoshop,
+  &_illustrator,
+  &_after-effects,
+  &_draw,
+  &_in-design,
+  &_xd,
+  &_sketch,
+  &_istudio {
+
+    height: 20px;
+  }
+
+  &_photoshop {
+    width: 26px;
+
+    background-image: url('images/icon-photoshop.svg');
+  }
+
+  &_illustrator {
+    width: 22px;
+
+    background-image: url('images/icon-illustrator.svg');
+  }
+
+  &_after-effects {
+    width: 27px;
+
+    background-image: url('images/icon-after-effects.svg');
+  }
+
+  &_draw {
+    width: 27px;
+
+    background-image: url('images/icon-draw.svg');
+  }
+
+  &_in-design {
+    width: 21px;
+
+    background-image: url('images/icon-in-design.svg');
+  }
+
+  &_xd {
+    width: 27px;
+
+    background-image: url('images/icon-xd.svg');
+  }
+
+  &_sketch {
+    width: 22px;
+
+    background-image: url('images/icon-sketch.svg');
+  }
+
+  &_istudio {
+    width: 20px;
+
+    background-image: url('images/icon-istudio.svg');
+  }
+
+  &_google-analitics,
+  &_google-adwords,
+  &_fb-ads,
+  &_woopra {
+
+    height: 23px;
+  }
+
+  &_google-analitics {
+    width: 65px;
+
+    background-image: url('images/icon-google-analitics.svg');
+  }
+
+  &_google-adwords {
+    width: 72px;
+
+    background-image: url('images/icon-google-adwords.svg');
+  }
+
+  &_fb-ads {
+    width: 60px;
+
+    background-image: url('images/icon-fb-ads.svg');
+  }
+
+  &_woopra {
+    width: 39px;
+
+    background-image: url('images/icon-woopra.svg');
+  }
 }

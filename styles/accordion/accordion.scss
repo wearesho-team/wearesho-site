@@ -101,6 +101,11 @@
 
         display: none;
       }
+
+      @include breakpoint($tablet-p) {
+
+        margin-top: -47px;
+      }
     }
 
     > .accordion-title {
@@ -179,7 +184,7 @@
     }
 
     .section__subtitle {
-      font-size: 1.2em;
+      font-size: 1.125em;
 
       color: #C5D5E0;
 
@@ -201,8 +206,9 @@
       &.marker {
 
         &:before {
-
           left: -24px;
+
+          color: rgba(255, 255, 255, .35);
         }
       }
     }
@@ -215,11 +221,6 @@
       @include breakpoint($tablet-p) {
 
         font-size: 1.125em;
-      }
-
-      @include breakpoint($laptop-medium) {
-
-        margin-right: -7em;
       }
 
       @include breakpoint($laptop-large) {
@@ -254,23 +255,27 @@
     }
 
     .icon-list {
-      margin-top: 1.25em;
+      margin-top: 20px;
+
+      opacity: .7;
+
+      font-size: 0;
 
       @include breakpoint($mobile) {
 
-        margin-top: 1.5em;
+        margin-top: 24px;
       }
 
       @include breakpoint($tablet-p) {
 
-        margin-top: 1.75em;
+        margin-top: 28px;
       }
 
       > .icon {
 
         &:not(:last-child) {
 
-          margin-right: .818em;
+          margin-right: 13px;
         }
       }
     }

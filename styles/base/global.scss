@@ -296,4 +296,44 @@ body,
   }
 }
 
+.marker {
+  position: relative;
 
+  white-space: pre-line;
+
+  margin-bottom: .222em;
+
+  @include breakpoint($mobile) {
+
+    margin-bottom: 1em;
+  }
+
+  &:before {
+    content: '+';
+    display: block;
+
+    position: absolute;
+
+    left: -34px;
+
+    line-height: 1.25em;
+
+    font-size: 22px;
+    font-weight: $font-style-regular;
+    font-family: $font-secondary;
+
+    color: #797979;
+
+    @include breakpoint($laptop-large) {
+      left: -31px;
+
+      font-size: 20px;
+    }
+  }
+
+  > .section__subtitle_reduced {
+    position: relative;
+
+    white-space: pre-line;
+  }
+}
