@@ -1,4 +1,5 @@
 import * as React from "react";
+import { ExpandController } from "react-expand";
 import { NavLink, Route, Link } from "react-router-dom";
 
 import { toFixed } from "helpers/toFixed";
@@ -36,7 +37,7 @@ export class ProcessLayout extends React.Component {
 
     public render(): React.ReactNode {
         return (
-            <React.Fragment>
+            <ExpandController>
                 <Header>
                     <PreloaderLinkButton to="/process" className="btn btn_close" />
                 </Header>
@@ -72,7 +73,7 @@ export class ProcessLayout extends React.Component {
                         </div>
                     </OnTabletDesktop>
                 </ErrorBounder>
-            </React.Fragment>
+            </ExpandController>
         );
     }
 
