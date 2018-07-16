@@ -1,36 +1,34 @@
 import axios from "axios";
 import * as React from "react";
-import { Router } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
+import { AsyncRoutesController } from "react-async-controller";
 
-import { routeProps } from "../../data/routeProps";
-import { Languages } from "../../data/Languages";
-
-import { getRoutesWithProps } from "../../helpers/getRoutesWithProps";
-import { getLinksWithProps } from "../../helpers/getLinksWithProps";
-import { translate } from "../../helpers/translate";
+import { translate } from "helpers/translate";
+import { Languages } from "data/Languages";
 
 import { LayoutContext, LayoutContextTypes } from "./LayoutContext"
 import { LayoutProps, LayoutPropTypes } from "./LayoutProps";
-import { ErrorBounder } from "../ErrorBounder/ErrorBounder";
-import { Header, SideBar, SoundSwitch } from "./Partials";
-import { TransitionSwitch } from "../TransitionSwitch";
-import { SmartBreakpoint } from "../SmartBreakpoint";
-import { SwitchControl } from "../SwitchControl";
-import { ScrollControl } from "../ScrollControl";
-import { LayoutState } from "./LayoutState";
+
+import { MainLayout } from "./MainLayout";
+import { ProcessLayout } from "./ProcessLayout";
+
+export interface LayoutState {
+    isScrollEnabled: boolean;
+    language: Languages;
+}
 
 export class Layout extends React.Component<LayoutProps, LayoutState> {
-    public static readonly propTypes = LayoutPropTypes;
     public static readonly childContextTypes = LayoutContextTypes;
+    public static readonly propTypes = LayoutPropTypes;
 
-    public constructor(props) {
+    constructor(props) {
         super(props);
 
         this.state = {
             language: localStorage.getItem("app.language") === Languages.ru
                 ? Languages.ru
                 : Languages.en,
-            isScrollDisabled: true
+            isScrollEnabled: false,
         };
 
         translate.setLocale(this.state.language);
@@ -38,46 +36,30 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
 
     public getChildContext(): LayoutContext {
         return {
+            isScrollDisabled: !this.state.isScrollEnabled,
+            setScrollState: this.handleSetScrollState,
             language: this.state.language,
-            isScrollDisabled: this.state.isScrollDisabled,
             setLanguage: this.setLanguage
         }
     }
 
-    public async componentDidMount() {
-        await this.props.preLoader.hide();
-        this.setState({ isScrollDisabled: false });
-    }
-
-    public async componentWillUnmount() {
-        await this.props.preLoader.show();
-    }
-
-    public render(): JSX.Element {
+    public render(): React.ReactNode {
         return (
             <Router history={this.props.history}>
-                <div id="content">
-                    <Header />
-                    <SideBar>
-                        {getLinksWithProps()}
-                    </SideBar>
-                    <SoundSwitch />
-                    <div className="section-gradient" />
-                    <ErrorBounder>
-                        <SmartBreakpoint match="min-width: 1440px">
-                            <SwitchControl>
-                                <TransitionSwitch className="translate-container" classNames="translateY">
-                                    {getRoutesWithProps()}
-                                </TransitionSwitch>
-                            </SwitchControl>
-                        </SmartBreakpoint>
-                        <SmartBreakpoint match="max-width: 1439px">
-                            <ScrollControl>
-                                {routeProps.map((prop) => prop.render())}
-                            </ScrollControl>
-                        </SmartBreakpoint>
-                    </ErrorBounder>
-                </div>
+                <AsyncRoutesController
+                    availableRoutes={{
+                        process: {
+                            path: "/process/*",
+                            resolveComponent:
+                                () => import(/* webpackChunkName: "process" */ "./ProcessLayout/ProcessLayout")
+                        },
+                        main: {
+                            path: "/",
+                            resolveComponent:
+                                () => import(/* webpackChunkName: "main" */ "./MainLayout/MainLayout")
+                        }
+                    }}
+                />
             </Router>
         );
     }
@@ -93,5 +75,9 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
         translate.setLocale(nextLanguage);
         // pass to context
         this.setState({ language: nextLanguage });
+    }
+
+    protected handleSetScrollState = (isScrollEnabled: boolean): void => {
+        this.setState({ isScrollEnabled });
     }
 }

@@ -1,10 +1,10 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
-import {useFakeTimers, SinonFakeTimers} from "sinon";
+import { ReactWrapper, mount } from "enzyme";
+import { useFakeTimers, SinonFakeTimers } from "sinon";
 
-import {PartnershipPage, PartnershipPageState} from "../../src/components/Pages/PartnershipPage";
-import {SubmitButton} from "../../src/components/Buttons";
+import { PartnershipPage, PartnershipPageState } from "../../src/components/Pages/MainLayout";
+import { SubmitButton } from "../../src/components/Buttons";
 
 describe("<PartnershipPage/>", () => {
     let wrapper: ReactWrapper<any, PartnershipPageState>;
@@ -15,7 +15,7 @@ describe("<PartnershipPage/>", () => {
 
     beforeEach(() => {
         document.body.innerHTML = "";
-        wrapper = mount(<PartnershipPage/>);
+        wrapper = mount(<PartnershipPage />);
         modal = document.body.querySelector(".ReactModalPortal");
         timer = useFakeTimers();
     });

@@ -1,5 +1,6 @@
-import {compareArrays} from "../../src/helpers/compareArrays";
-import {expect} from "chai";
+import { expect } from "chai";
+
+import { compareArrays } from "../../src/helpers/compareArrays";
 
 describe("compareArrays()", () => {
 
@@ -8,7 +9,7 @@ describe("compareArrays()", () => {
     const arrayThree = ["1", "2", "3", "4"];
 
     it("should return true if arrays equals", () => {
-      expect(compareArrays(arrayOne, arrayOne)).to.be.true;
+        expect(compareArrays(arrayOne, arrayOne)).to.be.true;
     });
 
     it("should return false if arrays not equals", () => {

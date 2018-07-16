@@ -1,12 +1,18 @@
 import * as React from "react";
 
-import { MainPage } from "../components/Pages/MainPage";
-import { BobraCSPage } from "../components/Pages/BobraCSPage";
-import { ProcessPage } from "../components/Pages/ProcessPage";
-import { ServicesPage } from "../components/Pages/ServicesPage";
-import { PartnershipPage } from "../components/Pages/PartnershipPage";
+import { translate } from "helpers/translate";
 
-export const routeProps = [
+import { MainPage, BobraCSPage, ProcessPage, PartnershipPage } from "components/Pages/MainLayout";
+import {
+    CustomerSupportPage,
+    ProjectDesignPage,
+    DevelopmentPage,
+    DeploymentPage,
+    PromotionPage,
+    DesignPage
+} from "components/Pages/ProcessLayout";
+
+export const mainRouteProps = [
     {
         exact: true,
         path: "/",
@@ -15,21 +21,55 @@ export const routeProps = [
     {
         exact: false,
         path: "/bobra-cs",
-        render: () => <BobraCSPage key="/bobra-cs"/>,
+        render: () => <BobraCSPage key="/bobra-cs" />,
     },
     {
-        exact: false,
+        exact: true,
         path: "/process",
         render: () => <ProcessPage key="/process" />
     },
     {
         exact: false,
-        path: "/process/services",
-        render: () => <ServicesPage key="/process/services" />
+        path: "/partnership",
+        render: () => <PartnershipPage key="/partnership" />
+    }
+];
+
+export const processRouteProps = [
+    {
+        exact: false,
+        path: "/process/project-design",
+        label: translate("processPage.stages.title.planning"),
+        render: () => <ProjectDesignPage key="/process/project-design" />
+    },
+    {
+        exact: true,
+        path: "/process/design",
+        label: translate("processPage.stages.title.design"),
+        render: () => <DesignPage key="/process/design" />
     },
     {
         exact: false,
-        path: "/partnership",
-        render: () => <PartnershipPage key="/partnership" />
+        path: "/process/development",
+        label: translate("processPage.stages.title.develop"),
+        render: () => <DevelopmentPage key="/process/development" />
+    },
+    {
+        exact: false,
+        path: "/process/deployment",
+        label: translate("processPage.stages.title.deploy"),
+        render: () => <DeploymentPage key="/process/deployment" />
+    },
+    {
+        exact: false,
+        path: "/process/promotion",
+        label: translate("processPage.stages.title.promotion"),
+        render: () => <PromotionPage key="/process/promotion" />
+    },
+    {
+        exact: false,
+        path: "/process/customer-support",
+        label: translate("processPage.stages.title.support"),
+        render: () => <CustomerSupportPage key="/process/customer-support" />
     }
 ];

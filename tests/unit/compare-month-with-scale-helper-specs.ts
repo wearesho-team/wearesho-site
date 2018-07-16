@@ -1,5 +1,6 @@
-import {compareMonthWithScale} from "../../src/helpers/compareMonthWithScale";
-import {expect} from "chai";
+import { expect } from "chai";
+
+import { compareMonthWithScale } from "../../src/helpers/compareMonthWithScale";
 
 describe("compareMonthWithScale()", () => {
 

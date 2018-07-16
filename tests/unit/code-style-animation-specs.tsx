@@ -1,12 +1,12 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
-import {useFakeTimers, SinonFakeTimers} from "sinon";
+import { ReactWrapper, mount } from "enzyme";
+import { useFakeTimers, SinonFakeTimers } from "sinon";
 
-import {CodeStyleAnimationProps} from "../../src/components/Animations/Static/CodeStyleAnimation/CodeStyleAnimationProps";
-import {CodeStyleAnimationState} from "../../src/components/Animations/Static/CodeStyleAnimation/CodeStyleAnimationState";
-import {CodeStyleAnimation} from "../../src/components/Animations/Static/CodeStyleAnimation/CodeStyleAnimation";
-import {CodeStyleAnimationSpeed} from "../../src/components/Animations/Static/CodeStyleAnimation/CodeStyleAnimationSpeed";
+import { CodeStyleAnimationProps } from "../../src/components/Animations/Static/CodeStyleAnimation/CodeStyleAnimationProps";
+import { CodeStyleAnimationState } from "../../src/components/Animations/Static/CodeStyleAnimation/CodeStyleAnimationState";
+import { CodeStyleAnimationSpeed } from "../../src/components/Animations/Static/CodeStyleAnimation/CodeStyleAnimationSpeed";
+import { CodeStyleAnimation } from "../../src/components/Animations/Static/CodeStyleAnimation/CodeStyleAnimation";
 
 describe("<CodeStyleAnimation/>", () => {
     let wrapper: ReactWrapper<CodeStyleAnimationProps, CodeStyleAnimationState>;
@@ -114,10 +114,9 @@ describe("<CodeStyleAnimation/>", () => {
         // bad situation
         expect(() =>
             wrapper.setProps({
-                children: <div/> as any
+                children: <div /> as any
             })
-        )
-            .to.throw("Incorrect type of children. Only string or string [] are available");
+        ).to.throw("Incorrect type of children. Only string or string [] are available");
     });
 
     it("Should end typing on unmount", () => {

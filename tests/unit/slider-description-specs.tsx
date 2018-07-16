@@ -1,8 +1,8 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
+import { ReactWrapper, mount } from "enzyme";
 
-import {SliderDescription, SliderDescriptionProps} from "../../src/components/TimeLine/Slider/Partials";
+import { SliderDescription, SliderDescriptionProps } from "../../src/components/TimeLine/Slider/Partials";
 
 describe("<SliderDescription/>", () => {
     let wrapper: ReactWrapper<SliderDescriptionProps, undefined>;
@@ -18,7 +18,7 @@ describe("<SliderDescription/>", () => {
     };
 
     beforeEach(() => {
-        wrapper = mount(<SliderDescription {...props}/>);
+        wrapper = mount(<SliderDescription {...props} />);
 
         DOMNode = wrapper.getDOMNode();
     });

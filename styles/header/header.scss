@@ -79,6 +79,50 @@ html[lang="en"] {
       display: block;
     }
   }
+
+  // Services inner page
+  &-services {
+
+    .header__right {
+
+      position: relative;
+    }
+
+    .header__lang-toggle,
+    .btn_close {
+
+      vertical-align: middle;
+    }
+
+    .header__lang-toggle {
+      float: right;
+
+      margin-top: 3em;
+      padding: 0;
+
+      @include breakpoint($mobile-p) {
+        float: none;
+
+        margin-top: 0;
+        margin-right: 1.5em;
+      }
+    }
+
+    .btn_close {
+      margin-right: -1.5em;
+
+      @include breakpoint($mobile-p) {
+
+        margin-right: 0;
+      }
+
+      &:before,
+      &:after {
+
+        background-color: #fff;
+      }
+    }
+  }
 }
 
 .header__right {

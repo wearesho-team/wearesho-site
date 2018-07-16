@@ -1,9 +1,9 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
+import { ReactWrapper, mount } from "enzyme";
 
-import {Slider, SliderProps} from "../../src/components/TimeLine/Slider";
-import {projects, ProjectInterface} from "../../src/data/Projects";
+import { Slider, SliderProps } from "../../src/components/TimeLine/Slider";
+import { projects, ProjectInterface } from "../../src/data/Projects";
 
 describe("<Slider/>", () => {
     let wrapper: ReactWrapper<SliderProps, undefined>;
@@ -18,7 +18,7 @@ describe("<Slider/>", () => {
     };
 
     beforeEach(() => {
-        wrapper = mount(<Slider {...props}/>);
+        wrapper = mount(<Slider {...props} />);
 
         DOMNode = wrapper.getDOMNode();
     });
@@ -32,7 +32,7 @@ describe("<Slider/>", () => {
     });
 
     it("should format date to `d.m.Y`", () => {
-        const {date} = props.project;
+        const { date } = props.project;
 
         const format = `${date.day}. ${String("0" + date.month).slice(-2)}. ${date.year}`;
 

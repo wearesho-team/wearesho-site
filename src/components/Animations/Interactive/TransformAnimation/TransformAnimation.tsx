@@ -1,11 +1,11 @@
 import * as React from "react";
-import {TransitionGroup, CSSTransition} from "react-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-import {concat} from "../../../../helpers/concat";
-import {isFunction} from "../../../../helpers/isFunction";
+import { concat } from "helpers/concat";
+import { isFunction } from "helpers/isFunction";
 
-import {TransformAnimationState} from "./TransformAnimationState";
-import {TransformAnimationProps, TransformAnimationPropTypes} from "./TransformAnimationProps";
+import { TransformAnimationState } from "./TransformAnimationState";
+import { TransformAnimationProps, TransformAnimationPropTypes } from "./TransformAnimationProps";
 
 export class TransformAnimation extends React.Component<TransformAnimationProps, TransformAnimationState> {
     public static readonly propTypes = TransformAnimationPropTypes;
@@ -21,7 +21,7 @@ export class TransformAnimation extends React.Component<TransformAnimationProps,
     public render(): JSX.Element {
         const transitionProps = {
             classNames: "transform",
-            key: this.state.transformed,
+            key: String(this.state.transformed),
             timeout: this.props.duration,
         };
 
@@ -31,14 +31,16 @@ export class TransformAnimation extends React.Component<TransformAnimationProps,
         };
 
         return (
-            <TransitionGroup className={this.containerClassName}>
-                <CSSTransition {...transitionProps}>
-                    <div {...rootProps}>
-                        {this.innerLayout}
-                    </div>
-                </CSSTransition>
+            <div className={this.containerClassName}>
+                <TransitionGroup component={null}>
+                    <CSSTransition {...transitionProps}>
+                        <div {...rootProps}>
+                            {this.innerLayout}
+                        </div>
+                    </CSSTransition>
+                </TransitionGroup>
                 {this.props.staticComponent}
-            </TransitionGroup>
+            </div>
         );
     }
 
@@ -49,7 +51,7 @@ export class TransformAnimation extends React.Component<TransformAnimationProps,
         )
     }
 
-    protected get innerLayout(): JSX.Element | JSX.Element [] {
+    protected get innerLayout(): JSX.Element | JSX.Element[] {
         return this.state.transformed
             ? this.props.transformedComponent
             : this.props.initialComponent;
@@ -60,7 +62,7 @@ export class TransformAnimation extends React.Component<TransformAnimationProps,
             return;
         }
 
-        this.setState({transformed: true});
+        this.setState({ transformed: true });
 
         if (isFunction(this.props.onEvent)) {
             this.props.onEvent();

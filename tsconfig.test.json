@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "target": "es2016",
     "sourceMap": true,
     "removeComments": true,
@@ -7,7 +8,12 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
-    "allowJs": true
+    "allowJs": true,
+    "paths": {
+      "*": [
+        "*"
+      ]
+    }
   },
   "exclude": [
     "./node_modules/**/*"

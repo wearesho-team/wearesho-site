@@ -1,9 +1,10 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
-import {ErrorBounder} from "../../src/components/ErrorBounder/ErrorBounder";
-import {Router} from "react-router";
-import {createMemoryHistory, History} from "history";
+import { Router } from "react-router";
+import { ReactWrapper, mount } from "enzyme";
+import { createMemoryHistory, History } from "history";
+
+import { ErrorBounder } from "../../src/components/ErrorBounder";
 
 describe("<ErrorBounder/>", () => {
     let wrapper: ReactWrapper<undefined>;
@@ -15,7 +16,7 @@ describe("<ErrorBounder/>", () => {
         wrapper = mount(
             <Router history={history}>
                 <ErrorBounder>
-                    <div/>
+                    <div />
                 </ErrorBounder>
             </Router>
         );

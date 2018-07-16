@@ -1,22 +1,20 @@
 import * as React from "react";
-import {expect} from "chai";
+import { expect } from "chai";
 import axios from "axios";
-import {ReactWrapper, mount} from "enzyme";
-import {useFakeTimers, SinonFakeTimers} from "sinon";
-import {Form, FormContext, Model} from "react-context-form";
+import { ReactWrapper, mount } from "enzyme";
+import { useFakeTimers, SinonFakeTimers } from "sinon";
+import { Form, FormContext, Model } from "react-context-form";
 
-import {ContactForm} from "../../src/components/Pages/PartnershipPage/ContactForm/ContactForm";
-import {ContactFormModel} from "../../src/models/ContactFormModel";
-import {ValidationError} from "../../src/data/ValidationError";
-import {ContactFormState} from "../../src/components/Pages/PartnershipPage/ContactForm/ContactFormState";
-import {SubmitStatus} from "../../src/components/Pages/PartnershipPage/ContactForm/SubmitStatus";
+import { ContactForm, ContactFormState, SubmitStatus } from "../../src/components/Pages/MainLayout";
+import { ContactFormModel } from "../../src/models/ContactFormModel";
+import { ValidationError } from "../../src/data/ValidationError";
 
 describe("<Form/>", () => {
     let wrapper: ReactWrapper<any, ContactFormState>;
     let timer: SinonFakeTimers;
 
     beforeEach(() => {
-        wrapper = mount(<ContactForm/>);
+        wrapper = mount(<ContactForm />);
         timer = useFakeTimers();
     });
 

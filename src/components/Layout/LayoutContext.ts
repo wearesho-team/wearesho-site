@@ -1,14 +1,17 @@
 import * as PropTypes from "prop-types";
-import {Languages} from "../../data/Languages";
+
+import { Languages } from "data/Languages";
 
 export interface LayoutContext {
-    isScrollDisabled?: boolean,
-    language?: Languages,
-    setLanguage?: (nextLanguage: Languages) => void,
+    language?: Languages;
+    isScrollDisabled?: boolean;
+    setScrollState?: (scrollState: boolean) => void;
+    setLanguage?: (nextLanguage: Languages) => void;
 }
 
-export const LayoutContextTypes = {
+export const LayoutContextTypes: { [P in keyof LayoutContext]: PropTypes.Validator<any> } = {
     isScrollDisabled: PropTypes.bool,
-    language: PropTypes.string,
+    setScrollState: PropTypes.func,
     setLanguage: PropTypes.func,
+    language: PropTypes.string
 };

@@ -20,15 +20,6 @@ export const SocialLinks: React.SFC<undefined> = (): JSX.Element => {
                 <GitIcon />
             </a>
             <a
-                href={Config.links.behance}
-                className="social-list__item"
-                target="_blank"
-                rel="nofollow noopener"
-                {...TouchHover}
-            >
-                <BehanceIcon />
-            </a>
-            <a
                 href={Config.links.linkedin}
                 className="social-list__item"
                 target="_blank"
@@ -36,6 +27,15 @@ export const SocialLinks: React.SFC<undefined> = (): JSX.Element => {
                 {...TouchHover}
             >
                 <LinkedinIcon />
+            </a>
+            <a
+                href={Config.links.behance}
+                className="social-list__item"
+                target="_blank"
+                rel="nofollow noopener"
+                {...TouchHover}
+            >
+                <BehanceIcon />
             </a>
         </div>
     );

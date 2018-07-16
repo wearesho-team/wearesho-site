@@ -1,12 +1,12 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
+import { ReactWrapper, mount } from "enzyme";
 
-import {YearItem, YearItemProps, SideTypes} from "../../src/components/TimeLine/YearItem";
-import {projects, DateInterface} from "../../src/data/Projects";
-import {TimeLine} from "../../src/components/TimeLine";
-import {ActivePoint} from "../../src/components/TimeLine/YearItem/ActivePoint";
-import {EmptyPoint} from "../../src/components/TimeLine/YearItem/EmptyPoint";
+import { YearItem, YearItemProps, SideTypes } from "../../src/components/TimeLine/YearItem";
+import { ActivePoint } from "../../src/components/TimeLine/YearItem/ActivePoint";
+import { EmptyPoint } from "../../src/components/TimeLine/YearItem/EmptyPoint";
+import { projects, DateInterface } from "../../src/data/Projects";
+import { TimeLine } from "../../src/components/TimeLine";
 
 describe("<YearItem/>", () => {
     let wrapper: ReactWrapper<YearItemProps, undefined>;
@@ -31,7 +31,7 @@ describe("<YearItem/>", () => {
     };
 
     beforeEach(() => {
-        wrapper = mount(<YearItem {...props}/>);
+        wrapper = mount(<YearItem {...props} />);
 
         node = wrapper.instance() as any;
         DOMNode = wrapper.getDOMNode();
@@ -45,7 +45,7 @@ describe("<YearItem/>", () => {
     });
 
     it("should find all projects for current component year", () => {
-        (node as any).currentYearProjects.forEach(({date: {year}}) => {
+        (node as any).currentYearProjects.forEach(({ date: { year } }) => {
             expect(year).to.equal(date.year);
         })
     });

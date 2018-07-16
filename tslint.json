@@ -10,6 +10,8 @@
       true,
       "never"
     ],
+    "no-default-export": false,
+    "no-submodule-imports": false,
     "jsx-no-multiline-js": false,
     "jsx-key": true,
     "jsx-no-bind": true,
@@ -23,9 +25,9 @@
     "await-promise": true,
     "no-empty": true,
     "no-var-requires": false,
-    "no-floating-promises": true,
+    "no-floating-promises": false,
     "no-invalid-this": true,
-    "no-null-keyword": true,
+    "no-null-keyword": false,
     "no-var-keyword": true,
     "triple-equals": true,
     "typeof-compare": true,
@@ -37,7 +39,6 @@
       true,
       200
     ],
-    "no-default-export": true,
     "no-duplicate-imports": true,
     "prefer-const": true,
     "trailing-comma": [

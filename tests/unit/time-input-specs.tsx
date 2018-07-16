@@ -1,8 +1,8 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
+import { ReactWrapper, mount } from "enzyme";
 
-import {TimeInputProps, TimeInput} from "../../src/components/Pages/PartnershipPage/ContactForm/Partials/TimeInput";
+import { TimeInputProps, TimeInput } from "../../src/components/Pages/MainLayout/PartnershipPage/ContactForm/Partials";
 
 describe("<TimeInput/>", () => {
     let wrapper: ReactWrapper<TimeInputProps, undefined>;
@@ -34,7 +34,7 @@ describe("<TimeInput/>", () => {
     };
 
     beforeEach(() => {
-        wrapper = mount(<TimeInput/>, {context});
+        wrapper = mount(<TimeInput />, { context });
 
         node = wrapper.instance() as any;
     });
@@ -111,7 +111,7 @@ describe("<TimeInput/>", () => {
         wrapper.unmount();
         let triggered = false;
 
-        wrapper = mount(<TimeInput onCursorEnd={() => triggered = true}/>, {context});
+        wrapper = mount(<TimeInput onCursorEnd={() => triggered = true} />, { context });
 
         (wrapper.find("input").getDOMNode() as HTMLInputElement).value = "12:59";
         wrapper.find("input").simulate("input", {

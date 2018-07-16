@@ -1,5 +1,6 @@
-import {expect} from "chai";
-import {getElementCoords} from "../../src/helpers/getElementCoords";
+import { expect } from "chai";
+
+import { getElementCoords } from "../../src/helpers/getElementCoords";
 
 describe("getElementCoords()", () => {
 

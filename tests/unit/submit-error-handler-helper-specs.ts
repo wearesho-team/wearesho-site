@@ -1,6 +1,7 @@
-import {expect} from "chai";
-import {submitErrorHandler} from "../../src/helpers/submitErrorHandler";
-import {ValidationError} from "../../src/data/ValidationError";
+import { expect } from "chai";
+
+import { submitErrorHandler } from "../../src/helpers/submitErrorHandler";
+import { ValidationError } from "../../src/data/ValidationError";
 
 describe("submitErrorHandler()", () => {
 

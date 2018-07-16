@@ -1,29 +1,24 @@
-import {sleep} from "../../helpers/sleep";
-import {PreLoaderInterface} from "./PreLoaderInterface";
+import { sleep } from "../../helpers/sleep";
 
-export class PreLoader implements PreLoaderInterface {
-    public duration: number;
+export class PreLoader {
+    public static duration: number;
+    public static isVisible: boolean = false;
 
-    public constructor(hideDuration) {
-        this.duration = hideDuration;
-    }
-
-    public async hide() {
-        const {onBundleLoaded} = window as any;
+    public static async hide(): Promise<void> {
+        const { onBundleLoaded } = window as any;
         if (onBundleLoaded instanceof Function) {
             onBundleLoaded();
         }
 
-        await sleep(this.duration);
+        await sleep(PreLoader.duration);
 
         document.body.classList.add("loaded");
-
-        return this;
+        PreLoader.isVisible = false;
     }
 
-    public async show() {
+    public static show(): void {
         document.body.classList.remove("loaded");
-
-        return this;
+        PreLoader.isVisible = true;
     }
+
 }

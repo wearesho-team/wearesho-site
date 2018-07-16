@@ -1,8 +1,8 @@
+import { expect } from "chai";
 import * as React from "react";
-import {expect} from "chai";
-import {ReactWrapper, mount} from "enzyme";
+import { ReactWrapper, mount } from "enzyme";
 
-import {EmptyPoint, EmptyPointProps} from "../../src/components/TimeLine/YearItem/EmptyPoint";
+import { EmptyPoint, EmptyPointProps } from "../../src/components/TimeLine/YearItem/EmptyPoint";
 
 describe("<ActivePoint/>", () => {
     let wrapper: ReactWrapper<EmptyPointProps, undefined>;
@@ -13,7 +13,7 @@ describe("<ActivePoint/>", () => {
     };
 
     beforeEach(() => {
-        wrapper = mount(<EmptyPoint {...props}/>);
+        wrapper = mount(<EmptyPoint {...props} />);
 
         DOMNode = wrapper.getDOMNode();
     });
