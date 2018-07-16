@@ -322,7 +322,9 @@ body,
     font-weight: $font-style-regular;
     font-family: $font-secondary;
 
-    color: #797979;
+    color: rgba(255, 255, 255, .3);
+
+    transition: color .3s ease;
 
     @include breakpoint($laptop-large) {
       left: -31px;
