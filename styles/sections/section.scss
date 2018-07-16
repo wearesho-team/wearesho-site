@@ -879,17 +879,7 @@ html[lang="en"] {
 
         vertical-align: top;
       }
-
-      // Temp
-      > a {
-
-        &:first-child {
-          pointer-events: none;
-
-          cursor: auto;
-        }
-      }
-
+      
       > .align-container {
 
         @include breakpoint($tablet) {
