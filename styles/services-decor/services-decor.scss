@@ -16,6 +16,8 @@
 
   background: url('images/services-decor.svg') no-repeat;
 
+  opacity: .75;
+
   pointer-events: none;
 
   will-change: transform;
@@ -31,13 +33,6 @@
 
     display: none;
   }
-
-  //@include breakpoint($tablet-laptop-sm) {
-  //  width: 1024px;
-  //  height: 768px;
-  //
-  //  background: url('images/services-decor-tablet.svg') no-repeat;
-  //}
 
   @include breakpoint($laptop-medium) {
     width: 2470px;

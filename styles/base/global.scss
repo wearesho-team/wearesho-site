@@ -103,16 +103,6 @@ body,
   }
 }
 
-.translate-container,
-.scroll-container {
-
-  > .header,
-  > .sidebar {
-    // Temp
-    display: none;
-  }
-}
-
 .translate-container {
   position: relative;
 

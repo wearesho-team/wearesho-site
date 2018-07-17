@@ -145,13 +145,13 @@ translate.registerTranslations("ru", {
                 develop: "Разработка",
                 deploy: "Развертывание",
                 promotion: "Продвижение",
-                support: "Тех. поддержка"
+                support: "Тех.поддержка"
             },
             subTitle: {
                 basedOnData: "на основе данных",
                 sketches: "скетчи",
                 prototypes: "прототипы",
-                frontBack: "front & back end",
+                frontBack: "front & back ends",
                 applicationsOnServers: "приложений на серверах",
                 online: "online",
                 offline: "offline",

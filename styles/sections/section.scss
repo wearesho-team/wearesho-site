@@ -1009,7 +1009,7 @@ html[lang="en"] {
     .bottom {
       @include clearfix;
 
-      margin-top: 14em;
+      margin-top: 13.125em;
 
       @include breakpoint($mobile) {
 
@@ -1075,11 +1075,11 @@ html[lang="en"] {
       }
 
       h5 {
-        width: 250px;
+        width: 278px;
 
         margin-bottom: 2em;
 
-        line-height: 1.6em;
+        line-height: 23px;
 
         font-size: .938em;
         font-weight: $font-style-regular;
