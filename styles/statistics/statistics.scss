@@ -4,9 +4,18 @@
 .statistics {
   @include clearfix;
 
+  @include breakpoint($mobile-p) {
+
+    margin-top: 56px;
+  }
+
   @include breakpoint($mobile-l) {
 
-    @include span(8 of 12 inside no-gutter)
+    @include span(8 of 12 inside no-gutter);
+
+    float: none;
+
+    margin-bottom: 56px;
   }
 
   @include breakpoint($tablet) {

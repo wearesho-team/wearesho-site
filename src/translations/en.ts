@@ -79,7 +79,6 @@ translate.registerTranslations("en", {
         },
         statistics: {
             item1: {
-                title: "More than",
                 text1: "financial operations",
                 text2: "every day",
             },

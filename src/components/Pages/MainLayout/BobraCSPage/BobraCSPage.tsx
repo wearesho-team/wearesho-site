@@ -17,8 +17,74 @@ export class BobraCSPage extends React.Component {
                     </span>
                     <SmartBreakpoint match={["max-width: 767px"]}>
                         <div className="content">
-                            <div className="section__half half_first">
+                            <div className="section__half half_second">
                                 <h4 className="section__subtitle">{translate("bobraCSPage.subTitle")}</h4>
+                                <div className="statistics">
+                                    <div className="statistics-item">
+                                        <h4 className="section__subtitle marker">
+                                            <span className="text_increased">1300</span>
+                                        </h4>
+                                        <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
+                                        <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
+                                    </div>
+                                    <div className="statistics-item">
+                                        <h4 className="section__subtitle marker">
+                                            <span className="text_increased">910000</span>
+                                        </h4>
+                                        <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
+                                        <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
+                                    </div>
+                                </div>
+                                <div className="clients-list">
+                                    <a href="https://moneyboom.ua/" target="_blank" rel="noopener nofollow">
+                                        <i className="icon icon_moneyboom" />
+                                    </a>
+                                    <a href="https://cashme.ua/" target="_blank" rel="noopener nofollow">
+                                        <i className="icon icon_cashme" />
+                                    </a>
+                                    <a href="https://pozichka.ua/" target="_blank" rel="noopener nofollow">
+                                        <i className="icon icon_pozichka" />
+                                    </a>
+                                    <a href="https://groshi247.com" target="_blank" rel="noopener nofollow">
+                                        <i className="icon icon_groshi247" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bottom">
+                            <div className="bobra-visualization">
+                                <ImageLoader
+                                    width="582"
+                                    height="322"
+                                    alt="Image"
+                                    imageStack={[
+                                        require("../../../../../images/bobraCS-20.jpg"),
+                                        require("../../../../../images/bobraCS-60.jpg"),
+                                        require("../../../../../images/bobraCS-80.jpg"),
+                                    ]}
+                                />
+                                <div className="decor decor_vertical" />
+                                <div className="decor decor_horizontal" />
+                            </div>
+                            <div className="clients-list">
+                                <div className="row">
+                                    <a href="https://moneyboom.ua/" target="_blank" rel="nofollow noopener">
+                                        <i className="icon icon_moneyboom" />
+                                    </a>
+                                    <a href="https://cashme.ua/" target="_blank" rel="nofollow noopener">
+                                        <i className="icon icon_cashme" />
+                                    </a>
+                                </div>
+                                <div className="row">
+                                    <a href="https://pozichka.ua/" target="_blank" rel="nofollow noopener">
+                                        <i className="icon icon_pozichka" />
+                                    </a>
+                                    <a href="https://groshi247.com" target="_blank" rel="nofollow noopener">
+                                        <i className="icon icon_groshi247" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="section__half half_first">
                                 <h4 className="section__subtitle marker">
                                     {translate("bobraCSPage.articles.upper.title")}
                                 </h4>
@@ -43,73 +109,6 @@ export class BobraCSPage extends React.Component {
                                     </Link>&nbsp;
                                     {translate("bobraCSPage.details.text")}
                                 </p>
-                            </div>
-                            <div className="section__half half_second">
-                                <div className="statistics">
-                                    <div className="statistics-item">
-                                        <h4 className="section__subtitle marker">
-                                            {translate("bobraCSPage.statistics.item1.title")}
-                                            <span className="text_increased">1000</span>
-                                        </h4>
-                                        <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
-                                        <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
-                                    </div>
-                                    <div className="statistics-item">
-                                        <h4 className="section__subtitle marker">
-                                            <span className="text_increased">570000</span>
-                                        </h4>
-                                        <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
-                                        <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
-                                    </div>
-                                </div>
-                                <div className="clients-list">
-                                    <a href="https://groshi247.com" target="_blank" rel="nofollow noopener">
-                                        <i className="icon icon_groshi247" />
-                                    </a>
-                                    <a href="https://pozichka.ua/" target="_blank" rel="nofollow noopener">
-                                        <i className="icon icon_pozichka" />
-                                    </a>
-                                    <a href="https://moneyboom.ua/" target="_blank" rel="nofollow noopener">
-                                        <i className="icon icon_moneyboom" />
-                                    </a>
-                                    <a href="https://cashme.ua/" target="_blank" rel="nofollow noopener">
-                                        <i className="icon icon_cashme" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="bottom">
-                            <div className="bobra-visualization">
-                                <ImageLoader
-                                    width="582"
-                                    height="322"
-                                    alt="Image"
-                                    imageStack={[
-                                        require("../../../../../images/bobraCS-20.jpg"),
-                                        require("../../../../../images/bobraCS-60.jpg"),
-                                        require("../../../../../images/bobraCS-80.jpg"),
-                                    ]}
-                                />
-                                <div className="decor decor_vertical" />
-                                <div className="decor decor_horizontal" />
-                            </div>
-                            <div className="clients-list">
-                                <div className="row">
-                                    <a href="https://groshi247.com" target="_blank" rel="nofollow noopener">
-                                        <i className="icon icon_groshi247" />
-                                    </a>
-                                    <a href="https://pozichka.ua/" target="_blank" rel="nofollow noopener">
-                                        <i className="icon icon_pozichka" />
-                                    </a>
-                                </div>
-                                <div className="row">
-                                    <a href="https://moneyboom.ua/" target="_blank" rel="nofollow noopener">
-                                        <i className="icon icon_moneyboom" />
-                                    </a>
-                                    <a href="https://cashme.ua/" target="_blank" rel="nofollow noopener">
-                                        <i className="icon icon_cashme" />
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </SmartBreakpoint>
@@ -154,15 +153,14 @@ export class BobraCSPage extends React.Component {
                                 <div className="statistics">
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            {translate("bobraCSPage.statistics.item1.title")}
-                                            <span className="text_increased">1000</span>
+                                            <span className="text_increased">1300</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
                                     </div>
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            <span className="text_increased">570000</span>
+                                            <span className="text_increased">910000</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
@@ -170,17 +168,17 @@ export class BobraCSPage extends React.Component {
                                 </div>
                                 <div className="clients-list">
                                     <div className="align-container">
-                                        <a href="https://groshi247.com" target="_blank" rel="nofollow noopener">
-                                            <i className="icon icon_groshi247" />
-                                        </a>
-                                        <a href="https://pozichka.ua/" target="_blank" rel="nofollow noopener">
-                                            <i className="icon icon_pozichka" />
-                                        </a>
-                                        <a href="https://moneyboom.ua/" target="_blank" rel="nofollow noopener">
+                                        <a href="https://moneyboom.ua/" target="_blank" rel="noopener nofollow">
                                             <i className="icon icon_moneyboom" />
                                         </a>
-                                        <a href="https://cashme.ua/" target="_blank" rel="nofollow noopener">
+                                        <a href="https://cashme.ua/" target="_blank" rel="noopener nofollow">
                                             <i className="icon icon_cashme" />
+                                        </a>
+                                        <a href="https://pozichka.ua/" target="_blank" rel="noopener nofollow">
+                                            <i className="icon icon_pozichka" />
+                                        </a>
+                                        <a href="https://groshi247.com/" target="_blank" rel="noopener nofollow">
+                                            <i className="icon icon_groshi247" />
                                         </a>
                                     </div>
                                 </div>
@@ -222,15 +220,14 @@ export class BobraCSPage extends React.Component {
                                 <div className="statistics">
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            {translate("bobraCSPage.statistics.item1.title")}
-                                            <span className="text_increased">1000</span>
+                                            <span className="text_increased">1300</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
                                     </div>
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            <span className="text_increased">570000</span>
+                                            <span className="text_increased">910000</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
@@ -238,17 +235,17 @@ export class BobraCSPage extends React.Component {
                                 </div>
                                 <div className="clients-list">
                                     <div className="align-container">
-                                        <a href="https://groshi247.com" target="_blank" rel="nofollow noopener">
-                                            <i className="icon icon_groshi247" />
-                                        </a>
-                                        <a href="https://pozichka.ua" target="_blank" rel="nofollow noopener">
-                                            <i className="icon icon_pozichka" />
-                                        </a>
-                                        <a href="https://moneyboom.ua/" target="_blank" rel="nofollow noopener">
+                                        <a href="https://moneyboom.ua/" target="_blank" rel="noopener nofollow">
                                             <i className="icon icon_moneyboom" />
                                         </a>
-                                        <a href="https://cashme.ua/" target="_blank" rel="nofollow noopener">
+                                        <a href="https://cashme.ua/" target="_blank" rel="noopener nofollow">
                                             <i className="icon icon_cashme" />
+                                        </a>
+                                        <a href="https://pozichka.ua/" target="_blank" rel="noopener nofollow">
+                                            <i className="icon icon_pozichka" />
+                                        </a>
+                                        <a href="https://groshi247.com" target="_blank" rel="noopener nofollow">
+                                            <i className="icon icon_groshi247" />
                                         </a>
                                     </div>
                                 </div>
@@ -305,15 +302,14 @@ export class BobraCSPage extends React.Component {
                                 <div className="statistics">
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            {translate("bobraCSPage.statistics.item1.title")}
-                                            <span className="text_increased">1000</span>
+                                            <span className="text_increased">1300</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
                                     </div>
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            <span className="text_increased">570000</span>
+                                            <span className="text_increased">910000</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
@@ -344,17 +340,17 @@ export class BobraCSPage extends React.Component {
                                 {translate("bobraCSPage.details.text")}
                             </p>
                             <div className="clients-list">
-                                <a href="https://groshi247.com" target="_blank" rel="nofollow noopener">
-                                    <i className="icon icon_groshi247" />
-                                </a>
-                                <a href="https://pozichka.ua/" target="_blank" rel="nofollow noopener">
-                                    <i className="icon icon_pozichka" />
-                                </a>
-                                <a href="https://moneyboom.ua/" target="_blank" rel="nofollow noopener">
+                                <a href="https://moneyboom.ua/" target="_blank" rel="noopener nofollow">
                                     <i className="icon icon_moneyboom" />
                                 </a>
-                                <a href="https://cashme.ua/" target="_blank" rel="nofollow noopener">
+                                <a href="https://cashme.ua/" target="_blank" rel="noopener nofollow">
                                     <i className="icon icon_cashme" />
+                                </a>
+                                <a href="https://pozichka.ua/" target="_blank" rel="noopener nofollow">
+                                    <i className="icon icon_pozichka" />
+                                </a>
+                                <a href="https://groshi247.com" target="_blank" rel="noopener nofollow">
+                                    <i className="icon icon_groshi247" />
                                 </a>
                             </div>
                         </div>
