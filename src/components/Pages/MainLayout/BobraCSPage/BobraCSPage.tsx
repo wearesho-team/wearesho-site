@@ -49,39 +49,39 @@ export class BobraCSPage extends React.Component {
                                         <i className="icon icon_groshi247" />
                                     </a>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="bottom">
-                            <div className="bobra-visualization">
-                                <ImageLoader
-                                    width="582"
-                                    height="322"
-                                    alt="Image"
-                                    imageStack={[
-                                        require("../../../../../images/bobraCS-20.jpg"),
-                                        require("../../../../../images/bobraCS-60.jpg"),
-                                        require("../../../../../images/bobraCS-80.jpg"),
-                                    ]}
-                                />
-                                <div className="decor decor_vertical" />
-                                <div className="decor decor_horizontal" />
-                            </div>
-                            <div className="clients-list">
-                                <div className="row">
-                                    <a href="https://moneyboom.ua/" target="_blank" rel="nofollow noopener">
-                                        <i className="icon icon_moneyboom" />
-                                    </a>
-                                    <a href="https://cashme.ua/" target="_blank" rel="nofollow noopener">
-                                        <i className="icon icon_cashme" />
-                                    </a>
-                                </div>
-                                <div className="row">
-                                    <a href="https://pozichka.ua/" target="_blank" rel="nofollow noopener">
-                                        <i className="icon icon_pozichka" />
-                                    </a>
-                                    <a href="https://groshi247.com" target="_blank" rel="nofollow noopener">
-                                        <i className="icon icon_groshi247" />
-                                    </a>
+                                <div className="bottom">
+                                    <div className="bobra-visualization">
+                                        <ImageLoader
+                                            width="582"
+                                            height="322"
+                                            alt="Image"
+                                            imageStack={[
+                                                require("../../../../../images/bobraCS-20.jpg"),
+                                                require("../../../../../images/bobraCS-60.jpg"),
+                                                require("../../../../../images/bobraCS-80.jpg"),
+                                            ]}
+                                        />
+                                        <div className="decor decor_vertical" />
+                                        <div className="decor decor_horizontal" />
+                                    </div>
+                                    <div className="clients-list">
+                                        <div className="row">
+                                            <a href="https://moneyboom.ua/" target="_blank" rel="nofollow noopener">
+                                                <i className="icon icon_moneyboom" />
+                                            </a>
+                                            <a href="https://cashme.ua/" target="_blank" rel="nofollow noopener">
+                                                <i className="icon icon_cashme" />
+                                            </a>
+                                        </div>
+                                        <div className="row">
+                                            <a href="https://pozichka.ua/" target="_blank" rel="nofollow noopener">
+                                                <i className="icon icon_pozichka" />
+                                            </a>
+                                            <a href="https://groshi247.com" target="_blank" rel="nofollow noopener">
+                                                <i className="icon icon_groshi247" />
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="section__half half_first">
