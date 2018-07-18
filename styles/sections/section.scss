@@ -584,17 +584,6 @@ html[lang="en"] {
       }
     }
 
-    .section__half {
-
-      &.half_second {
-
-        @include breakpoint($mobile) {
-
-          padding-top: 58px;
-        }
-      }
-    }
-
     .content {
       @include clearfix;
 
@@ -615,14 +604,18 @@ html[lang="en"] {
         font-weight: 400;
         color: #fff;
 
+        @include breakpoint($mobile) {
+
+          margin: 2.5em 0 0;
+        }
+
         @include breakpoint($mobile-p) {
-          margin: 2.5em 0 .75em;
+
 
           font-size: 1.133em;
         }
 
         @include breakpoint($mobile-l) {
-          margin: 2.5em 0 1.75em;
 
           font-size: 1.2em;
         }
@@ -680,6 +673,11 @@ html[lang="en"] {
     .section__half {
 
       &.half_first {
+
+        @include breakpoint($mobile) {
+
+          padding-top: 58px;
+        }
 
         .section__subtitle.marker,
         .services-list {
@@ -760,6 +758,23 @@ html[lang="en"] {
           }
         }
 
+        .statistics,
+        > .clients-list {
+
+          @include breakpoint($mobile) {
+            display: inline-block;
+
+            float: none;
+
+            vertical-align: top;
+          }
+
+          @include breakpoint($mobile-l) {
+
+            margin-top: 58px;
+          }
+        }
+
         > .clients-list {
 
           @include breakpoint($mobile-p) {
@@ -770,6 +785,8 @@ html[lang="en"] {
           @include breakpoint($mobile-l) {
 
             @include span(4 of 12 inside no-gutter)
+
+            float: none;
           }
         }
       }
@@ -880,16 +897,6 @@ html[lang="en"] {
         vertical-align: top;
       }
 
-      // Temp
-      > a {
-
-        &:first-child {
-          pointer-events: none;
-
-          cursor: auto;
-        }
-      }
-
       > .align-container {
 
         @include breakpoint($tablet) {
@@ -906,16 +913,6 @@ html[lang="en"] {
           margin: 0 auto;
 
           text-align: center;
-        }
-
-        // Temp
-        > a {
-
-          &:first-child {
-            pointer-events: none;
-
-            cursor: auto;
-          }
         }
       }
 
@@ -949,9 +946,14 @@ html[lang="en"] {
       a {
         font-size: 0;
 
-        @include breakpoint($mobile) {
+        @include breakpoint($mobile-p) {
 
           margin-top: 40px;
+        }
+
+        @include breakpoint($mobile-l) {
+
+          margin-top: 37px;
         }
 
         &:not(:last-child) {

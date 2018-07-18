@@ -66,6 +66,11 @@ html[lang="en"] {
     width: 80px;
 
     background-image: url('images/icon-groshi247.svg');
+
+    @include breakpoint($mobile-l) {
+      width: 102px;
+      height: 38px;
+    }
   }
 
   &_pozichka {

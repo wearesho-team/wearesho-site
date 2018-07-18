@@ -79,7 +79,6 @@ translate.registerTranslations("ru", {
         },
         statistics: {
             item1: {
-                title: "более",
                 text1: "финансовых операций",
                 text2: "каждый день",
             },
