@@ -784,7 +784,7 @@ html[lang="en"] {
 
           @include breakpoint($mobile-l) {
 
-            @include span(4 of 12 inside no-gutter)
+            @include span(4 of 12 inside no-gutter);
 
             float: none;
           }

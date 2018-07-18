@@ -34,7 +34,7 @@
       }
     }
 
-    &:not(:first-child) {
+    &:nth-child(2) {
       pointer-events: none;
 
       cursor: auto;
