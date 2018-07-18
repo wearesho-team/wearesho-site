@@ -7,95 +7,6 @@ $indent-medium: 10.25em;
 $indent-medium-laptop: 7.5em;
 $indent-mobile: 3.5em;
 
-.section-services {
-
-  .stage {
-    @include span(12 of 12 inside no-gutter);
-
-    float: none;
-
-    padding-left: 0;
-
-    &.active-control {
-
-      pointer-events: none;
-    }
-  }
-
-  .section-main {
-
-    .stage {
-      pointer-events: none;
-
-      &-body {
-
-        &:hover {
-
-          transform: none;
-        }
-      }
-
-      &__number {
-        font-size: 3.375em;
-        font-weight: 300;
-        color: #fff;
-        text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);
-      }
-
-      &__title {
-        margin-bottom: .063em;
-
-        opacity: 1;
-
-        font-size: 2.063em;
-
-        @include breakpoint($mobile) {
-
-          margin-top: .75em;
-        }
-      }
-
-      &__description {
-        font-size: .875em;
-        color: #C5D5E0;
-
-        @include breakpoint($mobile-tablet) {
-
-          font-size: .938em;
-        }
-
-        @include breakpoint($laptop-small) {
-
-          font-size: .938em;
-        }
-      }
-    }
-  }
-
-  .section-aside {
-
-    .stage {
-
-      &:hover,
-      &.active-control {
-
-        .stage-body {
-
-          transform: translateX(10px);
-        }
-      }
-
-      .stage-body {
-
-        &:hover {
-
-          transform: translateX(0);
-        }
-      }
-    }
-  }
-}
-
 .section__half {
 
   > .align-container {
@@ -261,7 +172,7 @@ $indent-mobile: 3.5em;
   }
 
   &:hover,
-  &.active-control {
+  &.active {
 
     .stage__number {
       text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);

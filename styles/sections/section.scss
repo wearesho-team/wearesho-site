@@ -880,16 +880,6 @@ html[lang="en"] {
         vertical-align: top;
       }
 
-      // Temp
-      > a {
-
-        &:first-child {
-          pointer-events: none;
-
-          cursor: auto;
-        }
-      }
-
       > .align-container {
 
         @include breakpoint($tablet) {
@@ -1001,71 +991,16 @@ html[lang="en"] {
 
   &.section-services {
 
-    > .align-container {
-      @include clearfix;
-
-      @include flex;
-      @include valign-center;
-
-      @include breakpoint($mobile-tablet) {
-
-        display: block;
-      }
-
-      @include breakpoint($laptop-small) {
-
-        display: block;
-      }
-    }
-
     .section {
 
       &-main {
-        @include span(8 of 12 inside no-gutter);
-
-        @include breakpoint($mobile) {
-          @include span(12 of 12 inside no-gutter);
-
-          float: none;
-        }
-
-        @include breakpoint($tablet-laptop-sm) {
-          @include span(12 of 12 inside no-gutter);
-
-          float: none;
-        }
 
         .accordion {
-          margin-top: 2.25em;
+          margin-top: 2.75em;
 
           @include breakpoint($mobile) {
 
             margin-top: 2.5em;
-          }
-        }
-      }
-
-      &-aside {
-        @include span(4 of 12 inside no-gutter);
-
-        @include clearfix;
-
-        @include breakpoint($mobile) {
-
-          display: none;
-        }
-
-        @include breakpoint($tablet-p) {
-          @include span(12 of 12 inside no-gutter);
-
-          float: none;
-        }
-
-        > .aside-nav {
-
-          @include breakpoint($tablet-laptop-sm) {
-
-            display: none;
           }
         }
       }
@@ -1074,7 +1009,7 @@ html[lang="en"] {
     .bottom {
       @include clearfix;
 
-      margin-top: 14em;
+      margin-top: 13.125em;
 
       @include breakpoint($mobile) {
 
@@ -1140,9 +1075,11 @@ html[lang="en"] {
       }
 
       h5 {
-        width: 250px;
+        width: 278px;
 
         margin-bottom: 2em;
+
+        line-height: 23px;
 
         font-size: .938em;
         font-weight: $font-style-regular;
@@ -1184,6 +1121,8 @@ html[lang="en"] {
 
       blockquote {
         margin: 1.5em 0 0;
+
+        line-height: 22px;
 
         font-size: .818em;
         font-weight: $font-style-light;
@@ -1449,48 +1388,6 @@ html[lang="en"] {
 
         font-size: .778em;
       }
-    }
-  }
-
-  .marker {
-    position: relative;
-
-    white-space: pre-line;
-
-    margin-bottom: .222em;
-
-    @include breakpoint($mobile) {
-
-      margin-bottom: 1em;
-    }
-
-    &:before {
-      content: '+';
-      display: block;
-
-      position: absolute;
-
-      left: -34px;
-
-      line-height: 1.25em;
-
-      font-size: 22px;
-      font-weight: $font-style-regular;
-      font-family: $font-secondary;
-
-      color: #797979;
-
-      @include breakpoint($laptop-large) {
-        left: -31px;
-
-        font-size: 20px;
-      }
-    }
-
-    > .section__subtitle_reduced {
-      position: relative;
-      
-      white-space: pre-line;
     }
   }
 

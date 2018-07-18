@@ -26,6 +26,8 @@ export class DevelopmentPage extends BasePage {
                                     </h3>
                                     <p className="stage__description">
                                         {translate("processPage.stages.subTitle.frontBack")}
+                                        &nbsp;/&nbsp;
+                                        {translate("processPage.stages.subTitle.testing")}
                                     </p>
                                 </div>
                             </div>
@@ -47,13 +49,10 @@ export class DevelopmentPage extends BasePage {
                                     </SmartBreakpoint>
                                     <SmartBreakpoint match="min-width: 1024px">
                                         <h5>
-                                            {translate("servicesPage.development.bottom.text1")}&nbsp;
-                                            <a href="#" className="inline">
-                                                {translate("servicesPage.development.bottom.link1")}
-                                            </a>
+                                            {translate("servicesPage.bottom.text1")}&nbsp;
                                         </h5>
                                         <PreloaderLinkButton className="btn btn_primary" to="/partnership">
-                                            {translate("servicesPage.development.bottom.btn")}
+                                            {translate("servicesPage.bottom.btn")}
                                             <span className="btn-corners btn-corners_top" />
                                             <span className="btn-corners btn-corners_bottom" />
                                         </PreloaderLinkButton>
@@ -62,13 +61,10 @@ export class DevelopmentPage extends BasePage {
                                 <div className="half half_second">
                                     <SmartBreakpoint match="max-width: 1023px">
                                         <h5>
-                                            {translate("servicesPage.development.bottom.text1")}&nbsp;
-                                            <a href="#" className="inline">
-                                                {translate("servicesPage.development.bottom.link1")}
-                                            </a>
+                                            {translate("servicesPage.bottom.text1")}&nbsp;
                                         </h5>
                                         <PreloaderLinkButton className="btn btn_primary" to="/partnership">
-                                            {translate("servicesPage.development.bottom.btn")}
+                                            {translate("servicesPage.bottom.btn")}
                                             <span className="btn-corners btn-corners_top" />
                                             <span className="btn-corners btn-corners_bottom" />
                                         </PreloaderLinkButton>

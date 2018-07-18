@@ -34,9 +34,14 @@
   &-services {
     display: none;
 
-    @include breakpoint($tablet-laptop-sm) {
+    @include breakpoint($tablet-laptop) {
 
       display: block;
+    }
+
+    @include breakpoint($laptop-medium) {
+
+      width: 118px;
     }
 
     .aside-nav {
@@ -51,7 +56,7 @@
 
       padding-left: 0;
 
-      @include breakpoint($tablet-laptop-sm) {
+      @include breakpoint($tablet-laptop) {
 
         top: 212px;
       }
@@ -66,7 +71,7 @@
 
         padding-left: 0;
 
-        &.active-control {
+        &.active {
 
           .stage__number {
             opacity: 1;
@@ -77,10 +82,18 @@
 
         &:not(:last-child) {
 
-          @include breakpoint($tablet-laptop-sm) {
+          @include breakpoint($tablet-laptop) {
 
             margin-bottom: 1em;
           }
+        }
+      }
+
+      .stage__title {
+
+        @include breakpoint($tablet-laptop) {
+
+          display: none;
         }
       }
 
@@ -88,6 +101,14 @@
         opacity: .45;
 
         font-size: 17px;
+      }
+
+      .marker {
+
+        &:before {
+
+          content: none;
+        }
       }
     }
   }

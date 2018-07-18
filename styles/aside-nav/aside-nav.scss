@@ -12,7 +12,7 @@
 
     & + .stage {
 
-      margin-top: 1.5em;
+      margin-top: 2em;
     }
 
     > .stage__number {
@@ -21,6 +21,7 @@
     }
 
     .stage__title {
+      margin: .275em 0;
 
       font-size: .688em;
     }
@@ -32,7 +33,7 @@
 
       &:before {
 
-        left: -20px;
+        top: -2px;
       }
     }
   }

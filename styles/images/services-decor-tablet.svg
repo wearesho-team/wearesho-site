@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 995.286 585.878">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.505;
+      }
+
+      .cls-2 {
+        opacity: 0.053;
+        fill: url(#linear-gradient);
+      }
+
+      .cls-3 {
+        opacity: 0.171;
+        fill: url(#linear-gradient-2);
+      }
+    </style>
+    <linearGradient id="linear-gradient" y1="0.557" x2="0.997" y2="0.537" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.22" stop-color="#5c9da8" stop-opacity="0.969"/>
+      <stop offset="0.445" stop-color="#ccacff"/>
+      <stop offset="0.501" stop-color="#ffbfe2" stop-opacity="0.969"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" y1="0.557" x2="0.997" y2="0.537" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.32" stop-color="#5c9da8" stop-opacity="0.969"/>
+      <stop offset="0.501" stop-color="#ccacff"/>
+      <stop offset="0.765" stop-color="#ffbfe2" stop-opacity="0.969"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Path_crop_tablet" data-name="Path crop tablet" class="cls-1" transform="matrix(0.985, -0.174, 0.174, 0.985, -5624.708, -430.559)">
+    <path id="part_light_blur_2" data-name="part light blur 2" class="cls-2" d="M1172.45-16.345l30.582,66.315L731.266,61h0Z" transform="matrix(-0.974, 0.225, -0.225, -0.974, 7099.75, 1663.432)"/>
+    <path id="base" class="cls-3" d="M5438.984,2685.109l87.96,156.954,387.774,186.761,82.874,24.219,125.6,36.705,143.256,41.865v2.508l-157.526-26.148-152.76-25.356L5901.808,3053,5507.963,2838.36h0l-68.979-153.251Z" transform="translate(0.555 -1142.866)"/>
+  </g>
+</svg>

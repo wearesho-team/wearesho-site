@@ -16,15 +16,22 @@
 
   background: url('images/services-decor.svg') no-repeat;
 
+  opacity: .75;
+
   pointer-events: none;
 
   will-change: transform;
 
   z-index: $under-zindex;
 
-  &:hover {
+  @include breakpoint($mobile) {
 
-    animation: services-decor-appearance 4s ease;
+    display: none;
+  }
+
+  @include breakpoint($tablet-laptop) {
+
+    display: none;
   }
 
   @include breakpoint($laptop-medium) {

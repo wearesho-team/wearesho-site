@@ -1,0 +1,302 @@
+/*
+* Services inner page
+ */
+.services-inner {
+  height: 100%;
+
+  position: relative;
+
+  @include breakpoint($laptop-medium) {
+
+    padding: 0 13%;
+  }
+
+  @include breakpoint($laptop-large) {
+
+    padding: 0 11em;
+  }
+
+  @include breakpoint($laptop-xl) {
+
+    padding: 0 12%;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+
+    width: 198px;
+    height: 100%;
+
+    position: absolute;
+
+    top: 0;
+
+    pointer-events: none;
+  }
+
+  &:before {
+    left: 0;
+
+    background: linear-gradient(to right, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  &:after {
+    right: 0;
+
+    background: linear-gradient(to left, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  > .align-container {
+    @include flex;
+    @include valign-center;
+
+    max-width: 1380px;
+    height: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    @include clearfix;
+
+    @include breakpoint($mobile) {
+
+      display: block;
+    }
+
+    @include breakpoint($tablet-laptop) {
+
+      display: block;
+    }
+
+    // Temp
+    > .section-aside {
+
+      @include breakpoint($tablet-laptop) {
+
+        display: none;
+      }
+    }
+  }
+
+  .header {
+
+    .header__right {
+
+      position: relative;
+    }
+
+    .header__lang-toggle,
+    .btn_close {
+
+      vertical-align: middle;
+    }
+
+    .header__lang-toggle {
+      float: right;
+
+      margin-top: 3em;
+      padding: 0;
+
+      @include breakpoint($mobile-p) {
+        float: none;
+
+        margin-top: 0;
+        margin-right: 1.5em;
+      }
+    }
+
+    .btn_close {
+      margin-right: -1.5em;
+
+      @include breakpoint($mobile-p) {
+        float: right;
+
+        margin-right: 0;
+      }
+
+      &:before,
+      &:after {
+
+        background-color: #fff;
+      }
+    }
+  }
+
+  .translate-container {
+    @include span(8 of 12 inside no-gutter);
+
+    @include breakpoint($mobile) {
+      @include span(12 of 12 inside no-gutter);
+
+      float: none;
+    }
+
+    @include breakpoint($tablet-laptop-sm) {
+      @include span(12 of 12 inside no-gutter);
+
+      float: none;
+    }
+
+    @include breakpoint($laptop-large) {
+
+      padding: 0;
+    }
+
+    @include breakpoint($laptop-xl) {
+
+      padding: 0;
+    }
+
+    &:before,
+    &:after {
+
+      content: none;
+    }
+
+    .section-main {
+
+      .stage {
+        pointer-events: none;
+
+        &-body {
+
+          &:hover {
+
+            transform: none;
+          }
+        }
+
+        &__number {
+          font-size: 3.375em;
+          font-weight: 300;
+          color: #fff;
+          text-shadow: 2px 1px 7px rgba(255, 255, 255, .55);
+        }
+
+        &__title {
+          margin-top: .325em;
+          margin-bottom: .063em;
+
+          opacity: 1;
+
+          font-size: 2.063em;
+          font-weight: 300;
+
+          @include breakpoint($mobile) {
+
+            margin-top: .75em;
+          }
+        }
+
+        &__description {
+          font-size: .875em;
+          color: #C5D5E0;
+
+          @include breakpoint($mobile-tablet) {
+
+            font-size: .938em;
+          }
+
+          @include breakpoint($laptop-small) {
+
+            font-size: .938em;
+          }
+        }
+      }
+    }
+  }
+
+  .scroll-container {
+
+    @include breakpoint($mobile-tablet) {
+
+      padding-bottom: 6.4em;
+    }
+
+    @include breakpoint($laptop-small) {
+
+      padding-bottom: 6.4em;
+    }
+
+    @include breakpoint($laptop-medium) {
+
+      overflow: initial;
+    }
+
+    .section {
+      @include breakpoint($laptop-medium) {
+        overflow: initial;
+
+        padding: 6.4em 0;
+      }
+    }
+  }
+
+  .section-aside {
+    @include span(4 of 12 inside no-gutter);
+
+    @include clearfix;
+
+    @include breakpoint($mobile) {
+
+      display: none;
+    }
+
+    @include breakpoint($tablet-p) {
+      @include span(12 of 12 inside no-gutter);
+
+      float: none;
+    }
+
+    > .aside-nav {
+
+      @include breakpoint($tablet-laptop-sm) {
+
+        display: none;
+      }
+    }
+
+    .stage {
+
+      &:hover,
+      &.active {
+
+        .stage-body {
+
+          transform: translateX(10px);
+        }
+
+        .marker {
+
+          &:before {
+
+            color: rgba(255, 255, 255, .65);
+          }
+        }
+      }
+
+      .stage-body {
+
+        &:hover {
+
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+
+  .stage {
+    @include span(12 of 12 inside no-gutter);
+
+    float: none;
+
+    padding-left: 0;
+
+    &.active {
+
+      pointer-events: none;
+    }
+  }
+}

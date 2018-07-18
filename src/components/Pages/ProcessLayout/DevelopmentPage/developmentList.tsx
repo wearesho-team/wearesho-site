@@ -29,7 +29,7 @@ export const developmentList = [
                 <h4 className="section__subtitle marker">
                     {translate("servicesPage.development.accordion.item2.title")}
                 </h4>
-                <p>{translate("servicesPage.development.accordion.item2.body.text")}</p>
+                <p className="marker">{translate("servicesPage.development.accordion.item2.body.text")}</p>
             </React.Fragment>
         )
     },
@@ -40,7 +40,7 @@ export const developmentList = [
                 <h4 className="section__subtitle marker">
                     {translate("servicesPage.development.accordion.item3.title")}
                 </h4>
-                <p>{translate("servicesPage.development.accordion.item3.body.text")}</p>
+                <p className="marker">{translate("servicesPage.development.accordion.item3.body.text")}</p>
             </React.Fragment>
         )
     },
@@ -51,7 +51,7 @@ export const developmentList = [
                 <h4 className="section__subtitle marker">
                     {translate("servicesPage.development.accordion.item4.title")}
                 </h4>
-                <p>{translate("servicesPage.development.accordion.item4.body.text")}</p>
+                <p className="marker">{translate("servicesPage.development.accordion.item4.body.text")}</p>
             </React.Fragment>
         )
     }

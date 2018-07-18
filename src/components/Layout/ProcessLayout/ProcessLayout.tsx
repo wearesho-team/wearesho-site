@@ -38,41 +38,43 @@ export class ProcessLayout extends React.Component {
     public render(): React.ReactNode {
         return (
             <ExpandController>
-                <Header>
-                    <PreloaderLinkButton to="/process" className="btn btn_close" />
-                </Header>
-                <OnMobile>
-                    <aside className="sidebar sidebar-services">
-                        <div className="aside-nav">
-                            {this.linksWithProps}
-                        </div>
-                        <SocialLinks />
-                    </aside>
-                </OnMobile>
-                <SoundSwitch />
-                <div className="section-gradient" />
-                <div className="services-decor" />
-                <ErrorBounder>
-                    <SmartBreakpoint match="min-width: 1440px">
-                        <SwitchControl routeProps={processRouteProps}>
-                            <TransitionSwitch className="translate-container" classNames="translateY">
-                                {this.routesWithProps}
-                            </TransitionSwitch>
-                        </SwitchControl>
-                    </SmartBreakpoint>
-                    <SmartBreakpoint match="max-width: 1439px">
-                        <ScrollControl routeProps={processRouteProps}>
-                            {processRouteProps.map((prop) => prop.render())}
-                        </ScrollControl>
-                    </SmartBreakpoint>
-                    <OnTabletDesktop>
-                        <div className="section-aside">
+                <main className="services-inner">
+                    <Header className="header">
+                        <PreloaderLinkButton to="/process" className="btn btn_close" />
+                    </Header>
+                    <div className="align-container">
+                        <aside className="sidebar sidebar-services">
                             <div className="aside-nav">
                                 {this.linksWithProps}
                             </div>
-                        </div>
-                    </OnTabletDesktop>
-                </ErrorBounder>
+                            <SocialLinks />
+                        </aside>
+                        <SoundSwitch />
+                        <div className="section-gradient" />
+                        <div className="services-decor" />
+                        <ErrorBounder>
+                            <SmartBreakpoint match="min-width: 1440px">
+                                <SwitchControl routeProps={processRouteProps}>
+                                    <TransitionSwitch className="translate-container" classNames="translateY">
+                                        {this.routesWithProps}
+                                    </TransitionSwitch>
+                                </SwitchControl>
+                            </SmartBreakpoint>
+                            <SmartBreakpoint match="max-width: 1439px">
+                                <ScrollControl routeProps={processRouteProps}>
+                                    {processRouteProps.map((prop) => prop.render())}
+                                </ScrollControl>
+                            </SmartBreakpoint>
+                            <OnTabletDesktop>
+                                <div className="section-aside">
+                                    <div className="aside-nav">
+                                        {this.linksWithProps}
+                                    </div>
+                                </div>
+                            </OnTabletDesktop>
+                        </ErrorBounder>
+                    </div>
+                </main>
             </ExpandController>
         );
     }
