@@ -67,6 +67,11 @@ html[lang="en"] {
 
     background-image: url('images/icon-groshi247.svg');
 
+    @include breakpoint($mobile-p) {
+      width: 92px;
+      height: 33px;
+    }
+
     @include breakpoint($mobile-l) {
       width: 102px;
       height: 38px;

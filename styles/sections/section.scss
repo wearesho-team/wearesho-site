@@ -758,6 +758,14 @@ html[lang="en"] {
           }
         }
 
+        > .section__subtitle {
+
+          @include breakpoint($mobile) {
+
+            font-weight: 400;
+          }
+        }
+
         .statistics,
         > .clients-list {
 
@@ -979,6 +987,14 @@ html[lang="en"] {
           @include breakpoint($mobile-l) {
 
             margin-top: 0;
+          }
+        }
+
+        &:last-child {
+
+          @include breakpoint($mobile-p) {
+
+            margin-top: 37px;
           }
         }
 
