@@ -150,10 +150,11 @@ translate.registerTranslations("en", {
                 basedOnData: "based on data",
                 sketches: "sketches",
                 prototypes: "prototypes",
-                frontBack: "front & back end",
+                frontBack: "front & back ends",
                 applicationsOnServers: "applications on servers",
                 online: "online",
                 offline: "offline",
+                testing: "testing",
                 PR: "PR",
                 dev: "dev",
                 dsgn: "dsgn"
