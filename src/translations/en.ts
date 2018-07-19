@@ -71,9 +71,9 @@ translate.registerTranslations("en", {
                 title: "It includes the following integrations:",
                 item: {
                     1: "credit bureaus: БКИ, МБКИ, ПВБКИ",
-                    2: "payment systems: Platon, iPay",
+                    2: "payment systems: LiqPay, Platon, iPay, Portmone",
                     3: "terminals: iBox, EasyPay, City24, TYME",
-                    4: "CPA: SalesDoubler, LoanGate, Admitad, Doaffiliate, PrimeLead.",
+                    4: "CPA: SalesDoubler, Admitad, LoanGate, DoAffiliate, Primelead, Leads, Finline.",
                 },
             },
         },
