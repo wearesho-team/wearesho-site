@@ -8,6 +8,8 @@ import {translate} from "../../../helpers/translate";
 
 import {LayoutContext, LayoutContextTypes} from "../LayoutContext";
 
+import { SmartBreakpoint } from "../../SmartBreakpoint";
+
 export class Header extends React.Component<undefined, undefined> {
     public static readonly contextTypes = LayoutContextTypes;
 
@@ -17,8 +19,13 @@ export class Header extends React.Component<undefined, undefined> {
         return (
             <header className="header">
                 <Link to="/" className="logo">
-                    <i className="icon icon_logo"/>
-                    <span className="logo__text">Art &amp; Data Studio</span>
+                    <SmartBreakpoint match="max-width: 1439px">
+                        <i className="icon icon_logo"/>
+                        <span className="logo__text">Art &amp; Data Studio</span>
+                    </SmartBreakpoint>
+                    <SmartBreakpoint match="min-width: 1440px">
+                        <i className="icon icon_logo-new"/>
+                    </SmartBreakpoint>
                 </Link>
                 <div className="header__right">
                     <Link to="/partnership" className="header__new-project">{translate("header.newProject")}</Link>

@@ -277,9 +277,11 @@ body.loaded {
 
         font-size: .933em;
       }
+
+      @include breakpoint($laptop-small) {
+        
+        display: block;
+      }
     }
   }
 }
-
-
-
