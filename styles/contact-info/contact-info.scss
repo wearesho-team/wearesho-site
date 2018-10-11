@@ -95,6 +95,8 @@
     font-weight: $font-style-regular;
     color: $color-secondary;
 
+    transition: color .3s ease;
+
     @include breakpoint($tablet-p) {
 
       font-size: 1.3327em;
@@ -108,6 +110,11 @@
     @include breakpoint($laptop-small) {
 
       font-size: 1.266em;
+    }
+
+    &:hover {
+
+      color: #7bc6f5;
     }
 
     &:not(:first-child) {

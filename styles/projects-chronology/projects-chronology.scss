@@ -109,6 +109,8 @@
 
     font-size: 11px;
 
+    transition: transform .3s ease;
+
     &-outer,
     &-outer:before,
     &-outer:after {
@@ -310,10 +312,14 @@
 
             box-shadow: 0 0 1px 0 #fff;
           }
+        }
+
+        &:hover {
+          transform: scale(1.35);
 
           > .prj-chronology__div-glow {
-
-            opacity: .75;
+            -webkit-filter: blur(3px);
+            filter: blur(3px);
           }
         }
 
@@ -354,7 +360,7 @@
     -webkit-filter: blur(2px);
     filter: blur(2px);
 
-    opacity: 0;
+    opacity: .75;
 
     cursor: pointer;
 

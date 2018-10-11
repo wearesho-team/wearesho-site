@@ -408,7 +408,7 @@ html[lang="en"] {
       }
 
       > .align-container {
-
+        
         @include breakpoint($tablet-p) {
           width: 50%;
 
@@ -819,8 +819,14 @@ html[lang="en"] {
       }
 
       @include breakpoint($laptop-medium)  {
+        width: 92%;
 
         line-height: 1.875em;
+      }
+
+      @include breakpoint($laptop-large)  {
+
+        width: 82%;
       }
 
       > li {
@@ -849,8 +855,17 @@ html[lang="en"] {
         }
 
         &.cutted {
-
           width: 73%;
+
+          @include breakpoint($laptop-medium) {
+
+            width: 100%;
+          }
+
+          @include breakpoint($laptop-large) {
+
+            width: 100%;
+          }
         }
       }
     }
