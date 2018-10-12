@@ -109,6 +109,8 @@ $indent-mobile: 3.5em;
   }
 
   .stage {
+    padding-top: 0;
+    padding-bottom: 0;
 
     @include breakpoint($mobile) {
 
@@ -462,6 +464,11 @@ $indent-mobile: 3.5em;
 
         height: auto;
       }
+    }
+
+    &:nth-child(2) {
+
+      float: right;
     }
 
     &:last-child {

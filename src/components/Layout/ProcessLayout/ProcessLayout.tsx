@@ -74,6 +74,7 @@ export class ProcessLayout extends React.Component {
                             </OnTabletDesktop>
                         </ErrorBounder>
                     </div>
+                    <SocialLinks />
                 </main>
             </ExpandController>
         );
