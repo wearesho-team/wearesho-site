@@ -280,8 +280,19 @@ body,
     }
 
     > .align-container {
-
       @include clearfix;
+
+      @include breakpoint($mobile-l) {
+        position: relative;
+
+        z-index: 600;
+      }
+
+      @include breakpoint($tablet-laptop) {
+        position: relative;
+
+        z-index: 600;
+      }
     }
   }
 }

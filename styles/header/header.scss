@@ -40,7 +40,7 @@ html[lang="en"] {
 
   @include breakpoint($mobile-p) {
 
-    padding: 1.875em 1.875em 0;
+    padding: 1.875em 1.875em 1.25em;
   }
 
   @include breakpoint($mobile-l) {
