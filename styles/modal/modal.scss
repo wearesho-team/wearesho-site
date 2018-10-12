@@ -131,6 +131,16 @@
 
     font-size: 0;
 
+    @include breakpoint($tablet-l) {
+
+      padding: 30px 70px 0;
+    }
+
+    @include breakpoint($laptop-small) {
+
+      padding: 30px 70px 0;
+    }
+
     > .logo {
 
       @include breakpoint($mobile) {
@@ -191,6 +201,8 @@
 
     font-size: 29px;
     font-weight: $font-style-light;
+    font-weight: 200;
+    color: #BECED9;
 
     @include breakpoint($iphone5) {
 
@@ -203,12 +215,15 @@
     }
 
     @include breakpoint($tablet-l) {
-
       margin: 20px 0 42px;
+
+      text-align: left;
     }
 
     @include breakpoint($laptop-small) {
       margin: 20px 0 42px;
+
+      text-align: left;
 
       font-size: 47px;
     }

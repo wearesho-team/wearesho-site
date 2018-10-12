@@ -34,7 +34,11 @@ import {SubmitButton} from "../../../Buttons/SubmitButton";
 import {ContactFormState} from "./ContactFormState";
 import {SubmitStatus} from "./SubmitStatus";
 
-export class ContactForm extends React.Component<undefined, ContactFormState> implements ElementWithTimer {
+export interface ContactFormProps {
+    onClose?: () => void;
+}
+
+export class ContactForm extends React.Component<ContactFormProps, ContactFormState> implements ElementWithTimer {
     public static formStorageKey = "formData";
     public static readonly standByDelay = 5000;
     public static readonly standByDuration = 500;
@@ -74,6 +78,8 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
         this.timer = setTimeout(() => {
             this.setState({
                 status: SubmitStatus.standBy
+            }, () => {
+                this.props.onClose && this.props.onClose();
             });
         }, ContactForm.standByDelay);
     }
@@ -175,7 +181,7 @@ export class ContactForm extends React.Component<undefined, ContactFormState> im
                 <OnDesktop>
                     <p className="section__text">{translate("contactPage.form.titleExtended")}</p>
                 </OnDesktop>
-                <div className="form-half">
+                <div className="form-half form-half_first">
                     <div className="form__group_inline">
                         <FormGroup
                             className="form__group"

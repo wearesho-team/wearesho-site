@@ -54,7 +54,12 @@ html[lang="en"] {
     font-weight: $font-style-regular;
   }
 
-  @include breakpoint($laptop-not-large) {
+  @include breakpoint($laptop-small) {
+
+    padding: 2.75em 2.75em .75em 1.825em;
+  }
+
+  @include breakpoint($laptop-medium) {
 
     padding: 2.75em 2.75em .75em;
   }

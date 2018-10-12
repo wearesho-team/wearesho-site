@@ -707,6 +707,22 @@ html[lang="en"] {
           }
         }
 
+        .services-list {
+
+          &:last-child {
+
+            @include breakpoint($tablet-l) {
+
+              padding-right: 2em;
+            }
+    
+            @include breakpoint($laptop-small) {
+    
+              padding-right: 4em;
+            }
+          }
+        }
+
         .section__subtitle {
 
           &:not(.marker) {

@@ -148,7 +148,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 <h3 className="modal__title">{translate("contactPage.form.title")}</h3>
                             </div>
                             <div className="modal__body">
-                                <ContactForm/>
+                                <ContactForm onClose={this.handleCloseModal}/>
                             </div>
                         </ReactModal>
                     </OnMobileTablet>

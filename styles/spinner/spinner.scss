@@ -45,7 +45,7 @@ html[lang="en"] {
     width: 46%;
   }
 
-  @include breakpoint($tablet) {
+  @include breakpoint($tablet-laptop-sm) {
 
     width: auto;
   }
@@ -59,7 +59,7 @@ html[lang="en"] {
 
     > .form__control {
 
-      @include breakpoint($tablet) {
+      @include breakpoint($tablet-laptop-sm) {
 
         margin-right: .4em;
       }
@@ -127,7 +127,7 @@ html[lang="en"] {
       font-size: 1.706em;
     }
 
-    @include breakpoint($tablet) {
+    @include breakpoint($tablet-laptop-sm) {
       width: 96px;
 
       border-bottom: 1px solid $color-primary;
@@ -151,6 +151,11 @@ html[lang="en"] {
     font-size: 0;
 
     @include breakpoint($mobile-tablet) {
+
+      display: none;
+    }
+
+    @include breakpoint($laptop-small) {
 
       display: none;
     }
