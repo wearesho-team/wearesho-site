@@ -6,7 +6,7 @@ html[lang="en"] {
   .header {
     @include breakpoint($mobile-l) {
 
-      padding: 1.875em 1.35em .75em;
+      padding: 1.875em 1.625em 0 1.35em;
     }
   }
 }
@@ -40,23 +40,23 @@ html[lang="en"] {
 
   @include breakpoint($mobile-p) {
 
-    padding: 1.875em 1.875em;
+    padding: 1.875em 1.875em 1.25em;
   }
 
   @include breakpoint($mobile-l) {
 
-    padding: 1.875em 1.625em .75em;
+    padding: 1.875em 1.625em 0;
   }
 
   @include breakpoint($tablet) {
-    padding: 2.5em 1.875em .75em;
+    padding: 2.5em 1.875em 0;
 
     font-weight: $font-style-regular;
   }
 
   @include breakpoint($laptop-not-large) {
 
-    padding: 2.75em 2.75em .75em;
+    padding: 2.75em 2.75em 0;
   }
 
   &:before {

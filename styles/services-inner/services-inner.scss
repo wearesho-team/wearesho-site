@@ -299,4 +299,46 @@
       pointer-events: none;
     }
   }
+
+  > .social-list {
+    left: auto;
+    right: 47px;
+
+    transform: translateX(0);
+
+    @include breakpoint($mobile) {
+      width: 100%;
+
+      position: static;
+
+      text-align: left;
+    }
+
+    @include breakpoint($mobile-p) {
+      margin: 0 0 2.5em;
+      padding: 0 1.875em;
+    }
+
+    @include breakpoint($mobile-l) {
+      margin: 0 0 2.5em;
+      padding: 0 4.5em;
+    }
+
+    @include breakpoint($tablet-laptop) {
+
+      display: none;
+    }
+
+    .social-list__item {
+
+      @include breakpoint($mobile) {
+        width: 20px;
+
+        margin-right: calc(100% / 3 - 20px);
+        margin-bottom: 0;
+
+        vertical-align: middle;
+      }
+    }
+  }
 }
