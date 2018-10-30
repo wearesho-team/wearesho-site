@@ -54,7 +54,12 @@ html[lang="en"] {
     font-weight: $font-style-regular;
   }
 
-  @include breakpoint($laptop-not-large) {
+  @include breakpoint($laptop-small) {
+
+    padding: 2.75em 2.75em .75em 1.825em;
+  }
+
+  @include breakpoint($laptop-medium) {
 
     padding: 2.75em 2.75em .75em;
   }
@@ -67,7 +72,7 @@ html[lang="en"] {
     bottom: 0;
     left: 0;
 
-    background: linear-gradient(33deg, rgba(51, 14, 31, 1) -140%, rgba(3, 28, 60, 1) 100%);
+    background: linear-gradient(33deg,#081b38 -140%,#021c3b 100%);
 
     -webkit-filter: blur(8px);
     filter: blur(8px);
@@ -242,9 +247,11 @@ html[lang="en"] {
 
   text-transform: uppercase;
 
+  font-weight: 300;
+
   @include breakpoint($mobile) {
 
-    line-height: 22px;
+    line-height: 19px;
   }
 
   @include breakpoint($tablet) {
