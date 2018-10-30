@@ -13,8 +13,7 @@ pipeline {
     stages {
         stage('Releasing') {
             steps {
-                sh 'builder --config=meta.json > deploy.json'
-                sh 'curl -X POST -d @./deploy.json --header "Content-Type:application/json" --header "X-Authorization:$DEPLOYER_SECRET" $DEPLOYER_URL --fail'
+                sh 'builder --config=meta.json --to=deploy.json'
                 sh 'telegram-release-notify --token=$TELEGRAM_TOKEN --recipient=$TELEGRAM_RECIPIENT --file=deploy.json'
             }
         }
