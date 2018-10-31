@@ -10,3 +10,9 @@ axios.interceptors.response.use(
     undefined,
     submitErrorHandler
 );
+
+declare const BUILD_VERSION: string;
+declare const BUILD_TIME: string;
+
+// tslint:disable:no-console
+console.log(`Build version: ${BUILD_VERSION}, build time: ${BUILD_TIME}`);
