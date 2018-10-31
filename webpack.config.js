@@ -20,6 +20,8 @@ const
     CopyWebpackPlugin = require('copy-webpack-plugin'),
     ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
+const meta = require("./meta.json");
+
 const debug = process.env.NODE_ENV !== 'production';
 const env = debug ? 'local' : 'production';
 const favicon = path.resolve('./templates/favicon.png');
@@ -206,6 +208,8 @@ const config = {
                 'process.env': {
                     'NODE_ENV': JSON.stringify(env),
                 },
+                BUILD_TIME: JSON.stringify(new Date().toISOString()),
+                BUILD_VERSION: JSON.stringify(meta.version),
             }),
         ]
     }
