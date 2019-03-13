@@ -1271,6 +1271,16 @@ html[lang="en"] {
 
     width: 88%;
 
+    @include breakpoint($mobile-p) {
+
+      width: 78.5%;
+    }
+
+    @include breakpoint($iphone5-p) {
+
+      width: 88%;
+    }
+
     @include breakpoint($tablet-p) {
 
       font-size: 1.2em;
