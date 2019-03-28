@@ -17,7 +17,7 @@ export class YearItem extends React.Component<YearItemProps, undefined> {
     public readonly baseClassName = "prj-chronology__item";
     public readonly yearClassName = "prj-chronology__div prj-chronology__div_wide";
     public readonly yearMutedClassName = "color-muted";
-    public readonly tabletHiddenClassName = "tablet-hidden";
+    public readonly tabletHiddenClassName = "";
 
     protected currentYearProjects: ProjectInterface [];
 

@@ -22,20 +22,23 @@ export class BobraCSPage extends React.Component {
                                 <div className="statistics">
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            <span className="text_increased">1300</span>
+                                            <span className="text_increased">2100</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
                                     </div>
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            <span className="text_increased">910000</span>
+                                            <span className="text_increased">1800000</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
                                     </div>
                                 </div>
                                 <div className="clients-list">
+                                    <a href="https://credit-pro.com.ua/" target="_blank" rel="noopener nofollow">
+                                        <i className="icon icon_credit-pro" />
+                                    </a>
                                     <a href="https://moneyboom.ua/" target="_blank" rel="noopener nofollow">
                                         <i className="icon icon_moneyboom" />
                                     </a>
@@ -79,6 +82,15 @@ export class BobraCSPage extends React.Component {
                                             </a>
                                             <a href="https://groshi247.com" target="_blank" rel="noopener nofollow">
                                                 <i className="icon icon_groshi247" />
+                                            </a>
+                                        </div>
+                                        <div className="row">
+                                            <a
+                                                href="https://credit-pro.com.ua/"
+                                                target="_blank"
+                                                rel="noopener nofollow"
+                                            >
+                                                <i className="icon icon_credit-pro" />
                                             </a>
                                         </div>
                                     </div>
@@ -153,14 +165,14 @@ export class BobraCSPage extends React.Component {
                                 <div className="statistics">
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            <span className="text_increased">1300</span>
+                                            <span className="text_increased">2100</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
                                     </div>
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            <span className="text_increased">910000</span>
+                                            <span className="text_increased">1800000</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
@@ -168,6 +180,9 @@ export class BobraCSPage extends React.Component {
                                 </div>
                                 <div className="clients-list">
                                     <div className="align-container">
+                                        <a href="https://credit-pro.com.ua/" target="_blank" rel="noopener nofollow">
+                                            <i className="icon icon_credit-pro" />
+                                        </a>
                                         <a href="https://moneyboom.ua/" target="_blank" rel="noopener nofollow">
                                             <i className="icon icon_moneyboom" />
                                         </a>
@@ -220,14 +235,14 @@ export class BobraCSPage extends React.Component {
                                 <div className="statistics">
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            <span className="text_increased">1300</span>
+                                            <span className="text_increased">2100</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
                                     </div>
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            <span className="text_increased">910000</span>
+                                            <span className="text_increased">1800000</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
@@ -235,6 +250,9 @@ export class BobraCSPage extends React.Component {
                                 </div>
                                 <div className="clients-list">
                                     <div className="align-container">
+                                        <a href="https://credit-pro.com.ua/" target="_blank" rel="noopener nofollow">
+                                            <i className="icon icon_credit-pro" />
+                                        </a>
                                         <a href="https://moneyboom.ua/" target="_blank" rel="noopener nofollow">
                                             <i className="icon icon_moneyboom" />
                                         </a>
@@ -303,14 +321,14 @@ export class BobraCSPage extends React.Component {
                                 <div className="statistics">
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            <span className="text_increased">1300</span>
+                                            <span className="text_increased">2100</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
                                     </div>
                                     <div className="statistics-item">
                                         <h4 className="section__subtitle marker">
-                                            <span className="text_increased">910000</span>
+                                            <span className="text_increased">1800000</span>
                                         </h4>
                                         <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
                                         <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
@@ -342,6 +360,9 @@ export class BobraCSPage extends React.Component {
                                 {translate("bobraCSPage.details.text")}
                             </p>
                             <div className="clients-list">
+                                <a href="https://credit-pro.com.ua/" target="_blank" rel="noopener nofollow">
+                                    <i className="icon icon_credit-pro" />
+                                </a>
                                 <a href="https://moneyboom.ua/" target="_blank" rel="noopener nofollow">
                                     <i className="icon icon_moneyboom" />
                                 </a>

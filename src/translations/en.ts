@@ -33,11 +33,10 @@ translate.registerTranslations("en", {
                 lower: {
                     title: "We will be engaged in:",
                     items: {
-                        1: "web-site development",
-                        2: "branding and design",
-                        3: "ERP and CRM-system formation",
-                        4: "analytics and advertising",
-                        5: "technical support of projects"
+                        1: "ERP and CRM-system formation",
+                        2: "application and web-site development",
+                        3: "analytics and advertising",
+                        4: "technical support of projects"
                     }
                 }
             },
@@ -178,7 +177,8 @@ translate.registerTranslations("en", {
         logistics: "#logistics",
         finances: "#finances",
         crediting: "#crediting",
-        consulting: "#consulting"
+        consulting: "#consulting",
+        realEstate: "#real estate"
     },
     validation: {
         incorrect: {

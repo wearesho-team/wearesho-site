@@ -45,12 +45,12 @@
 
     @include breakpoint($tablet) {
 
-      @include span (3 of 12 inside no-gutters);
+      @include span (2 of 12 inside no-gutters);
     }
 
     @include breakpoint($laptop-small) {
 
-      @include span (3 of 12 inside no-gutters);
+      @include span (2 of 12 inside no-gutters);
     }
 
     &:before,

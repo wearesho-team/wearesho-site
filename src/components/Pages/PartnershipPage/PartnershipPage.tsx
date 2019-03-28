@@ -74,7 +74,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                         <div className="contact-info">
                             <OnDesktop>
                                 <a href={`tel:+${Config.phone}`} className="contact-info__link">
-                                    {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
+                                    {formatNumber(Config.phone, "+xxx xx xxx-xx-xx")}
                                 </a>
                                 <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 <p className="contact-info__text contact-info__text_indented">
@@ -99,7 +99,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 </p>
                                 <div className="align-container">
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
-                                        {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}
+                                        {formatNumber(Config.phone, "+xxx xx xxx-xx-xx")}
                                     </a>
                                     <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>
@@ -125,7 +125,7 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
                                 </p>
                                 <div className="align-container">
                                     <a href={`tel:+${Config.phone}`} className="contact-info__link">
-                                        {formatNumber(Config.phone, "xxx xx xxx-xx-xx")}&nbsp;
+                                        {formatNumber(Config.phone, "+xxx xx xxx-xx-xx")}&nbsp;
                                     </a>
                                     <a href={`mailto:${Config.mail}`} className="contact-info__link">{Config.mail}</a>
                                 </div>

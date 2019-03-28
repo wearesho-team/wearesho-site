@@ -868,7 +868,8 @@ html[lang="en"] {
         }
 
         @include breakpoint($laptop-small)  {
-
+          padding-right: 2em;
+          
           font-size: 14px;
         }
 
@@ -949,6 +950,16 @@ html[lang="en"] {
         margin: .5em auto 0;
 
         vertical-align: top;
+      }
+
+      @include breakpoint($laptop-medium) {
+       
+        width: 62%;
+      }
+
+      @include breakpoint($laptop-large) {
+       
+        width: 58%;
       }
 
       > .align-container {
@@ -1335,6 +1346,8 @@ html[lang="en"] {
     }
 
     &__link {
+      display: inline-block;
+
       width: 150px;
 
       font-size: 1.2em;
