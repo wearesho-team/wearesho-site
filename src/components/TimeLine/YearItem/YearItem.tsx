@@ -17,7 +17,7 @@ export class YearItem extends React.Component<YearItemProps, undefined> {
     public readonly baseClassName = "prj-chronology__item";
     public readonly yearClassName = "prj-chronology__div prj-chronology__div_wide";
     public readonly yearMutedClassName = "color-muted";
-    public readonly tabletHiddenClassName = "tablet-hidden";
+    public readonly tabletHiddenClassName = "";
 
     protected currentYearProjects: ProjectInterface [];
 
@@ -31,8 +31,13 @@ export class YearItem extends React.Component<YearItemProps, undefined> {
     }
 
     public render(): JSX.Element {
+        const className = concat(
+            this.baseClassName,
+            this.props.children >= (new Date()).getFullYear() ? this.tabletHiddenClassName : ""
+        );
+
         return (
-            <div className={this.baseClassName}>
+            <div className={className}>
                 {this.scaleItems}
             </div>
         );
