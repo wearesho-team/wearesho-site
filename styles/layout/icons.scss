@@ -65,7 +65,8 @@
   &_groshi247,
   &_pozichka,
   &_moneyboom,
-  &_cashme {
+  &_cashme,
+  &_credit-pro {
 
     height: 30px;
   }
@@ -83,6 +84,11 @@
     @include breakpoint($mobile-l) {
       width: 102px;
       height: 38px;
+    }
+
+    @include breakpoint($tablet-p) {
+      width: 98px;
+      height: 35px;
     }
   }
 
@@ -102,5 +108,11 @@
     width: 97px;
 
     background-image: url('images/icon-cashme.svg');
+  }
+
+  &_credit-pro {
+    width: 130px;
+
+    background-image: url('images/icon-credit-pro.svg');
   }
 }

@@ -108,7 +108,6 @@ export class MainPage extends BasePage<{date: number}> {
                                         {translate("mainPage.articles.whatWeDo.lower.items.2")}
                                         {translate("mainPage.articles.whatWeDo.lower.items.3")}
                                         {translate("mainPage.articles.whatWeDo.lower.items.4")}
-                                        {translate("mainPage.articles.whatWeDo.lower.items.5")}
                                     </CodeStyleAnimation>
                                 </div>
                             </OnTabletDesktop>
@@ -123,7 +122,6 @@ export class MainPage extends BasePage<{date: number}> {
                                         {translate("mainPage.articles.whatWeDo.lower.items.2")}
                                         {translate("mainPage.articles.whatWeDo.lower.items.3")}
                                         {translate("mainPage.articles.whatWeDo.lower.items.4")}
-                                        {translate("mainPage.articles.whatWeDo.lower.items.5")}
                                     </CodeStyleAnimation>
                                 </div>
                             </OnMobile>

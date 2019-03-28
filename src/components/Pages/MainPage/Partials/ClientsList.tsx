@@ -47,5 +47,14 @@ export const ClientsList: React.SFC<undefined> = () => (
                 {translate("hashTags.finances")}
             </span>
         </li>
+        <li className="clients-list__item">
+            <span className="clients-list__link">
+                City Gold
+            </span>
+            <span className="clients-list__text">
+                {translate("hashTags.realEstate")}&nbsp;
+                {translate("hashTags.crediting")}
+            </span>
+        </li>
     </ul>
 );
