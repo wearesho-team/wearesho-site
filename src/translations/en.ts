@@ -61,7 +61,7 @@ translate.registerTranslations("en", {
                 title: "It automates the following processes:",
                 item: {
                     1: "issue of online/offline credits by banks and microlenders",
-                    2: "scoring modeling with use of computer-aided learning",
+                    2: "scoring modeling based on computer-aided learning",
                     3: "soft-collection and debt restructurisation",
                     4: "analysis of business effectiveness.",
                 },
