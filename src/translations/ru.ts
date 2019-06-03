@@ -69,7 +69,7 @@ translate.registerTranslations("ru", {
             lower: {
                 title: "Включает интеграции: ",
                 item: {
-                    1: "кредитные бюро: БКИ, МБКИ, ПВБКИ",
+                    1: "кредитные бюро: БКИ, МБКИ, ПВБКИ, BankID",
                     2: "платежные системы: LiqPay, Platon, iPay, Portmone",
                     3: "терминалы: iBox, EasyPay, City24, TYME",
                     4: "CPA: SalesDoubler, Admitad, LoanGate, DoAffiliate, Primelead, Leads, Finline.",
