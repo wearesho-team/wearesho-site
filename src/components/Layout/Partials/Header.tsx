@@ -19,13 +19,7 @@ export class Header extends React.Component<undefined, undefined> {
         return (
             <header className="header">
                 <Link to="/" className="logo">
-                    <SmartBreakpoint match="max-width: 1439px">
-                        <i className="icon icon_logo"/>
-                        <span className="logo__text">Art &amp; Data Studio</span>
-                    </SmartBreakpoint>
-                    <SmartBreakpoint match="min-width: 1440px">
-                        <i className="icon icon_logo-new"/>
-                    </SmartBreakpoint>
+                    <i className="icon icon_logo"/>
                 </Link>
                 <div className="header__right">
                     <Link to="/partnership" className="header__new-project">{translate("header.newProject")}</Link>
