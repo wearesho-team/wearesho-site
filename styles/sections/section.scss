@@ -1075,6 +1075,8 @@ html[lang="en"] {
   }
 
   .section__title {
+    max-width: 660px;
+
     line-height: 1.35em;
 
     font-size: 3.375em;
@@ -1107,56 +1109,24 @@ html[lang="en"] {
       margin-top: .75em;
     }
 
-    &-part {
-      display: block;
+    > span {
 
-      @include breakpoint($mobile-p) {
+      &:after {
 
-        display: inline;
+        content: " ";
       }
 
       &:first-child {
 
-        > span {
+        @include breakpoint($mobile-p) {
 
-          @include breakpoint($mobile-l) {
-
-            display: inline-block;
-          }
-
-          &:first-child {
-
-            @include breakpoint($mobile-p) {
-
-              display: block;
-            }
-          }
-        }
-
-        &-variable {
-
-          @include breakpoint($mobile-p) {
-
-            display: inline;
-          }
+          display: block;
         }
       }
+    }
 
-      &:last-child {
-
-        > .section__title-part-variable {
-
-          @include breakpoint($mobile) {
-
-            display: inline-block;
-          }
-
-          @include breakpoint($tablet-p) {
-
-            display: inline-block;
-          }
-        }
-      }
+    &-part {
+      display: inline-block;
 
       &-variable {
 
