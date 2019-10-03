@@ -23,19 +23,15 @@ export class MainPage extends BasePage<{date: number}> {
             <section className="section section-main">
                 <div className="align-container">
                     <h2 className="section__title">
-                        <span className="section__title-part">
-                            <span>{translate("mainPage.title.mainOne.base")}&nbsp;</span>
-                            <span className="section__title-part-variable no_wrap">
-                                {translate("mainPage.title.mainOne.additions.1")}&nbsp;
-                            </span>
+                        <span>{translate("mainPage.title.mainOne.base")}</span>
+                        <span className="section__title-part-variable">
+                            {translate("mainPage.title.mainOne.additions.1")}
                         </span>
-                        <span className="section__title-part">
-                            <span>{translate("mainPage.title.mainTwo.base")}&nbsp;</span>
-                            <span className="section__title-part-variable">
-                                {translate("mainPage.title.mainTwo.additions.1")}&nbsp;
-                            </span>
-                            <span>{translate("mainPage.title.mainTwo.additions.2")}</span>
+                        <span>{translate("mainPage.title.mainTwo.base")}</span>
+                        <span className="section__title-part-variable">
+                            {translate("mainPage.title.mainTwo.additions.1")}
                         </span>
+                        <span>{translate("mainPage.title.mainTwo.additions.2")}</span>
                     </h2>
                     <div className="container">
                         <div className="section__half">
