@@ -33,7 +33,7 @@ phases:
       - echo Pushing the Docker image...
       - docker push $IMAGE_REPOSITORY:$IMAGE_TAG
       - echo Generating update definition file...
-      - echo '[{"name":"backend","imageUri":"'$IMAGE_REPOSITORY':'$IMAGE_TAG'"}]' > deploy.json
+      - echo '[{"name":"static","imageUri":"'$IMAGE_REPOSITORY':'$IMAGE_TAG'"}]' > deploy.json
 
 artifacts:
   files:

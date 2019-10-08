@@ -16,8 +16,8 @@ const images = (): Array<[ number, string ]> => canUseWebP() ? [
     [ 100, require("../../../../images/bobraCS-100.jpg") ],
 ];
 
-const shortStack = [ 20, 60, 80 ];
-const defaultStack = [ 20, 40, 100 ];
+const shortStack = [ 20, 40 ];
+const defaultStack = [ 20, 40, 60 ];
 
 export const ImageStack: React.FC<{ stack?: number[] }> = React.memo(({ stack = defaultStack }) => {
     const imageStack: string[] = React.useMemo(
