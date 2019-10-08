@@ -1,9 +1,8 @@
 # Wearesho Studio Website
-[![Build Status](https://scrutinizer-ci.com/g/Wearesho-team/wearesho-site/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Wearesho-team/wearesho-site/build-status/master)
-[![Build Status](https://travis-ci.org/wearesho-team/wearesho-site.svg?branch=master)](https://travis-ci.org/wearesho-team/wearesho-site)
 [![codecov](https://codecov.io/gh/wearesho-team/wearesho-site/branch/master/graph/badge.svg)](https://codecov.io/gh/wearesho-team/wearesho-site)
 
-[Visit us](https://wearesho.com)
+# Production ![Production Build Status](https://codebuild.eu-central-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoibHVpMnpmQ1R1RnBvNmhXM04xRTBDcCtxTS9YaU9NcGdhYmZ2RlR0a3ZKZXIyTjNIQlhzeUNnWkRieGtlSitCQVdmZ21lQnBrUGVoc3pLOEpSQXQxajM4PSIsIml2UGFyYW1ldGVyU3BlYyI6IlJMcjN6dG1TcDdTaVZ2SGQiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+[wearesho.com](https://wearesho.com/)
 
 ## Stack
 ### Dev
