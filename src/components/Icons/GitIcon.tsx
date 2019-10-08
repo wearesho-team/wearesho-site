@@ -1,7 +1,7 @@
 // tslint:disable:max-line-length
 import * as React from "react";
 
-export const GitIcon: React.SFC<undefined> = () => (
+export const GitIcon: React.FC<{}> = () => (
     <svg className="icon icon_soc-git" xmlns="http://www.w3.org/2000/svg" viewBox="1855 809 20 21.655">
         <g transform="translate(1835.433 809)">
             <path

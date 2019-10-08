@@ -1,11 +1,11 @@
 import * as PropTypes from "prop-types";
-import {BaseInputProps, InputContext} from "react-context-form";
+import {BaseInputProps} from "react-context-form";
 
-export interface TimeInputProps extends BaseInputProps<HTMLInputElement> {
+export interface TimeInputProps extends BaseInputProps {
     mask?: string,
     alwaysShowMask?: boolean,
     maskChar?: string,
-    onCursorEnd?: (element: HTMLInputElement, context: InputContext) => void
+    onCursorEnd?: (element: HTMLInputElement, context: any) => void
 }
 
 export const TimeInputPropTypes = {

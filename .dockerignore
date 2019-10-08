@@ -1,9 +1,10 @@
 node_modules
 npm-debug.log
-build
 .scrutinizer.yml
 .travis.yml
 condecept.conf.js
 tslint.json
 backend
 tests
+.git/
+web/

@@ -1,7 +1,7 @@
 import * as React from "react";
-import {LayoutContext, LayoutContextTypes} from "../Layout/LayoutContext";
+import {LayoutContext, LayoutContextTypes} from "../Layout";
 
-export class BasePage<P = undefined, S = undefined> extends React.Component<P, S> {
+export class BasePage<P = {}, S = undefined> extends React.Component<P, S> {
     public static readonly contextTypes = LayoutContextTypes;
     public context: LayoutContext;
 

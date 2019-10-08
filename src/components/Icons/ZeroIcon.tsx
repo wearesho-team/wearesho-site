@@ -3,7 +3,7 @@ import * as React from "react";
 
 const feDropShadow = React.createElement("feDropShadow", {dx: "0", dy: "0", stdDeviation: "0"});
 
-export const ZeroIcon: React.SFC<undefined> = (): JSX.Element => (
+export const ZeroIcon: React.FC<{}> = (): JSX.Element => (
     <svg
         className="icon_zero"
         xmlns="http://www.w3.org/2000/svg"

@@ -1,7 +1,7 @@
 import * as PropTypes from "prop-types";
 import {BaseInputProps} from "react-context-form";
 
-export interface PhoneInputProps extends BaseInputProps<HTMLInputElement> {
+export interface PhoneInputProps extends BaseInputProps {
     maskList: string [];
 }
 

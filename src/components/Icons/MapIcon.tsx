@@ -1,7 +1,7 @@
 // tslint:disable
 import * as React from "react";
 
-export const MapIcon: React.SFC<undefined> = () => (
+export const MapIcon: React.FC<{}> = () => (
     <svg id='Слой_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 969.9 953.2'>
         <g transform='translate(5409.699 885.577)' opacity='.246'>
             <linearGradient id='SVGID_1_' gradientUnits='userSpaceOnUse' x1='-5493.913'

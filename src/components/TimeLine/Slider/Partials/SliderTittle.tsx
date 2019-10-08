@@ -1,6 +1,11 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
+interface TitleElement {
+    name: string,
+    url: string
+}
+
 export interface SliderTitleProps {
     title: Array<{
         name: string,
@@ -8,14 +13,14 @@ export interface SliderTitleProps {
     }>
 }
 
-export const SliderTitlePropTypes = {
-    title: PropTypes.arrayOf(PropTypes.shape({
+export const SliderTitlePropTypes = Object.freeze({
+    title: PropTypes.arrayOf(PropTypes.shape<React.ValidationMap<TitleElement>>({
         name: PropTypes.string.isRequired,
         url: PropTypes.string.isRequired
     }).isRequired).isRequired
-};
+}) as React.ValidationMap<SliderTitleProps>;
 
-export const SliderTitle: React.SFC<SliderTitleProps> = ({title}): JSX.Element => {
+export const SliderTitle: React.SFC<SliderTitleProps> = ({ title }): JSX.Element => {
     const content: Array<JSX.Element | string> = [];
 
     const linkProps = {
@@ -23,7 +28,7 @@ export const SliderTitle: React.SFC<SliderTitleProps> = ({title}): JSX.Element =
         rel: "nofollow noopener"
     };
 
-    title.forEach(({name, url}) => content.push(<a href={url} key={url} {...linkProps}>{name}</a>, " / "));
+    title.forEach(({ name, url }) => content.push(<a href={url} key={url} {...linkProps}>{name}</a>, " / "));
 
     content.pop();
 

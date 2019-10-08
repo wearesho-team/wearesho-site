@@ -1,27 +1,18 @@
-FROM ubuntu:trusty
+FROM node:12 AS build
 
-RUN apt-get update
-RUN apt-get -y install curl
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - 
-RUN apt-get -y install python build-essential nodejs nginx
-RUN apt-get -y install git
+WORKDIR /usr/src/app
 
-WORKDIR /usr/src/site
+COPY package.json package-lock.json /usr/src/app/
 
-COPY package.json .
-COPY package-lock.json .
-
-RUN npm i --production
+RUN npm i --production --no-audit --loglevel silent
 
 COPY . .
-RUN npm run build
-RUN rm -r ./styles && \
-    rm -r ./src && \
-    rm -r ./config && \
-    rm -r ./node_modules
+ARG NODE_ENV
+RUN NODE_ENV=$NODE_ENV npm run build
 
-COPY templates/nginx.conf /etc/nginx/nginx.conf
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+FROM nginx:1.16-alpine
 
-EXPOSE 80
-CMD service nginx start
+EXPOSE 8080
+
+COPY templates/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /usr/src/app/web /var/www

@@ -1,23 +1,22 @@
 import * as React from "react";
 import ReactModal from "react-modal";
 
-import {Config} from "../../../data/Config";
+import { Config } from "../../../data/Config";
 
-import {OnMobile, OnMobileTablet, OnDesktop, OnTablet} from "../../../helpers/Breakpoints";
-import {smoothScrollTo} from "../../../helpers/smoothScrollTo";
-import {formatNumber} from "../../../helpers/formatNumber";
-import {translate} from "../../../helpers/translate";
+import { OnMobile, OnMobileTablet, OnDesktop, OnTablet } from "../../../helpers/Breakpoints";
+import { smoothScrollTo } from "../../../helpers/smoothScrollTo";
+import { formatNumber } from "../../../helpers/formatNumber";
+import { translate } from "../../../helpers/translate";
 
-import {TransformAnimation} from "../../Animations/Interactive/TransformAnimation";
-import {getCorners, getLabel} from "../../Buttons/SubmitButton";
-import {SocialLinks} from "../../Layout/Partials/SocialLinks";
-import {PartnershipPageState} from "./PartnershipPageState";
-import {CloseButton, SubmitButton} from "../../Buttons";
-import {MapIcon} from "../../Icons/MapIcon";
-import {ContactForm} from "./ContactForm";
-import {BasePage} from "../BasePage";
+import { TransformAnimation } from "../../Animations/Interactive/TransformAnimation";
+import { getCorners, getLabel, CloseButton, SubmitButton } from "../../Buttons";
+import { SocialLinks } from "../../Layout/Partials";
+import { PartnershipPageState } from "./PartnershipPageState";
+import { MapIcon } from "../../Icons/MapIcon";
+import { ContactForm } from "./ContactForm";
+import { BasePage } from "../BasePage";
 
-export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
+export class PartnershipPage extends BasePage<{}, PartnershipPageState> {
     public state: PartnershipPageState = {
         isModalOpen: false,
     };
@@ -48,9 +47,9 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
             initialComponent: getLabel(),
             className: "btn btn_transform",
             onEvent() {
-                const {className, duration} = this as any;
+                const { className, duration } = this as any;
                 smoothScrollTo(
-                    document.getElementsByClassName(className)[0] as HTMLElement,
+                    document.getElementsByClassName(className)[ 0 ] as HTMLElement,
                     -105,
                     "top",
                     duration,
@@ -176,10 +175,10 @@ export class PartnershipPage extends BasePage<undefined, PartnershipPageState> {
     }
 
     protected handleCloseModal = () => {
-        this.setState({isModalOpen: false});
+        this.setState({ isModalOpen: false });
     };
 
     protected handleOpenModal = () => {
-        this.setState({isModalOpen: true});
+        this.setState({ isModalOpen: true });
     };
 }

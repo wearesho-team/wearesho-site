@@ -2,7 +2,7 @@ import * as React from "react";
 
 import {translate} from "../../../../helpers/translate";
 
-export const ClientsList: React.SFC<undefined> = () => (
+export const ClientsList: React.FC<{}> = () => (
     <ul className="clients-list">
         <li className="clients-list__item">
             <a

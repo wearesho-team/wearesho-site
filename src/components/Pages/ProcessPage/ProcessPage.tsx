@@ -1,21 +1,21 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
-import {ElementWithTimer, smartClearTimeout} from "../../../helpers/smartClearTimeout";
-import {getElementCoords} from "../../../helpers/getElementCoords";
-import {OnTabletDesktop} from "../../../helpers/Breakpoints";
-import {translate} from "../../../helpers/translate";
-import {concat} from "../../../helpers/concat";
+import { ElementWithTimer, smartClearTimeout } from "../../../helpers/smartClearTimeout";
+import { getElementCoords } from "../../../helpers/getElementCoords";
+import { OnTabletDesktop } from "../../../helpers/Breakpoints";
+import { translate } from "../../../helpers/translate";
+import { concat } from "../../../helpers/concat";
 
-import {SmartBreakpoint} from "../../SmartBreakpoint/SmartBreakpoint";
-import {ProcessStructure} from "../../Icons/ProcessStructure";
-import {getCorners} from "../../Buttons/SubmitButton";
-import {ProcessPageState} from "./ProcessPageState";
-import {Stages} from "./Stages/Stages";
-import {BasePage} from "../BasePage";
+import { SmartBreakpoint } from "../../SmartBreakpoint";
+import { ProcessStructure } from "../../Icons/ProcessStructure";
+import { getCorners } from "../../Buttons";
+import { ProcessPageState } from "./ProcessPageState";
+import { Stages } from "./Stages/Stages";
+import { BasePage } from "../BasePage";
 
-export class ProcessPage extends BasePage<undefined, ProcessPageState> implements ElementWithTimer {
+export class ProcessPage extends BasePage<{}, ProcessPageState> implements ElementWithTimer {
     public static readonly baseClassName = "section section-process";
     public static readonly demonstrationDuration = 4000;
     public static readonly demonstrationDelay = 400;
@@ -109,7 +109,7 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
         );
     }
 
-    protected setContainer = (element: Stages) => this.stagesContainer = ReactDOM.findDOMNode(element);
+    protected setContainer = (element: Stages) => this.stagesContainer = ReactDOM.findDOMNode(element) as HTMLElement;
 
     protected handleHoverControl = (event: MouseEvent | TouchEvent): void => {
         if (!this.stagesContainer) {
@@ -117,7 +117,7 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
         }
 
         const clientX = event.hasOwnProperty("touches")
-            ? (event as TouchEvent).touches[0].clientX
+            ? (event as TouchEvent).touches[ 0 ].clientX
             : (event as MouseEvent).clientX;
 
         const left = getElementCoords(this.stagesContainer).left;
@@ -142,22 +142,22 @@ export class ProcessPage extends BasePage<undefined, ProcessPageState> implement
         // if current grid already active or timer for it active
         if (
             this.state.currentIndex === index
-            || this.timers[index] !== undefined
+            || this.timers[ index ] !== undefined
             || isNaN(index)
         ) {
             return;
         }
 
-        this.timers[index] = setTimeout(() => {
-            this.setState(({className}) => ({
+        this.timers[ index ] = setTimeout(() => {
+            this.setState(({ className }) => ({
                 className: className.replace(new RegExp(`([\\s]\*from-${index + 1}[\\s]\*)`), " ").trim()
             }));
 
-            clearTimeout(this.timers[index]);
-            this.timers[index] = undefined;
+            clearTimeout(this.timers[ index ]);
+            this.timers[ index ] = undefined;
         }, ProcessPage.animationDuration);
 
-        this.setState(({className}) => ({
+        this.setState(({ className }) => ({
             className: concat(
                 className,
                 `from-${index + 1}`

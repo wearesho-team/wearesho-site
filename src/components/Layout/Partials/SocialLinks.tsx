@@ -7,7 +7,7 @@ import { BehanceIcon } from "../../Icons/BehanceIcon";
 import { LinkedinIcon } from "../../Icons/LinkedinIcon";
 import { TouchHover } from "../../../helpers/TouchHover";
 
-export const SocialLinks: React.SFC<undefined> = (): JSX.Element => {
+export const SocialLinks: React.FC<{}> = (): JSX.Element => {
     return (
         <div className="social-list">
             <a

@@ -1,0 +1,28 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [
+            "safari >= 10",
+            "chrome >= 41",
+            "> 2%"
+          ]
+        },
+        "useBuiltIns": "usage",
+        "corejs": 3,
+        "exclude": [
+          "@babel/plugin-transform-regenerator"
+        ]
+      }
+    ],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-proposal-class-properties"
+  ]
+}

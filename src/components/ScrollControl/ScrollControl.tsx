@@ -1,15 +1,15 @@
 import * as React from "react";
-import {Location} from "history";
-import {animateScroll} from "react-scroll";
+import { Location } from "history";
+import { animateScroll } from "react-scroll";
 
-import {compareArrays} from "../../helpers/compareArrays";
-import {smartClearTimeout, ElementWithTimer} from "../../helpers/smartClearTimeout";
+import { compareArrays } from "../../helpers/compareArrays";
+import { smartClearTimeout, ElementWithTimer } from "../../helpers/smartClearTimeout";
 
-import {routeProps} from "../../data/routeProps";
-import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
-import {LayoutContext, LayoutContextTypes} from "../Layout/LayoutContext";
+import { routeProps } from "../../data/routeProps";
+import { RouterContext, RouterContextTypes } from "../../data/RouterContext";
+import { LayoutContext, LayoutContextTypes } from "../Layout";
 
-export class ScrollControl extends React.Component<undefined, undefined> implements ElementWithTimer {
+export class ScrollControl extends React.Component<{}, undefined> implements ElementWithTimer {
     public static readonly contextTypes = {
         ...RouterContextTypes,
         ...LayoutContextTypes
@@ -36,7 +36,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
 
     // set scroll position according to location on body loaded
     public getMutations = (mutations) => {
-        const {target} = mutations[0];
+        const { target } = mutations[ 0 ];
 
         if (target !== document.body || target.attributes.getNamedItem("class").value !== "loaded") {
             return;
@@ -49,7 +49,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
     public componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
         this.unlisten = this.context.router.history.listen(this.listenPathChange);
-        this.observer.observe(document.body, {attributeFilter: ["class"], attributes: true});
+        this.observer.observe(document.body, { attributeFilter: [ "class" ], attributes: true });
     }
 
     public componentWillUnmount() {
@@ -93,8 +93,8 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
                 return activeZone > topOffset && activeZone < fullOffset;
             });
 
-        routeProps[currentPathIndex]
-        && this.context.router.history.push(routeProps[currentPathIndex].path, {scroll: true});
+        routeProps[ currentPathIndex ]
+        && this.context.router.history.push(routeProps[ currentPathIndex ].path, { scroll: true });
     };
 
     protected handleScroll = () => {
@@ -108,7 +108,7 @@ export class ScrollControl extends React.Component<undefined, undefined> impleme
             return;
         }
 
-        const currentPathIndex = routeProps.findIndex(({path}) => location.pathname === path);
+        const currentPathIndex = routeProps.findIndex(({ path }) => location.pathname === path);
 
         this.childrenDom.item(currentPathIndex) && animateScroll
             .scrollTo((this.childrenDom.item(currentPathIndex) as HTMLElement).offsetTop, {

@@ -1,7 +1,7 @@
 // tslint:disable:max-line-length
 import * as React from "react";
 
-export const BehanceIcon: React.SFC<undefined> = () => (
+export const BehanceIcon: React.FC<{}> = () => (
     <svg className="icon icon_soc-be" xmlns="http://www.w3.org/2000/svg" viewBox="1855 855 20 12.451">
         <g transform="translate(1855 764.756)">
             <path

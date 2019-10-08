@@ -1,12 +1,12 @@
 import * as React from "react";
-import {BaseInput} from "react-context-form";
+import { BaseInput, BaseInputProps } from "react-context-form";
 
-import {ReactInputMask} from "../../../../../../helpers/imports/reactInputMask"
-import {isFunction} from "../../../../../../helpers/isFunction";
+import { ReactInputMask } from "../../../../../../helpers/imports/reactInputMask"
+import { isFunction } from "../../../../../../helpers/isFunction";
 
-import {PhoneInputProps, PhoneInputPropTypes} from "./PhoneInputProps";
+import { PhoneInputProps, PhoneInputPropTypes } from "./PhoneInputProps";
 
-export class PhoneInput extends BaseInput<HTMLInputElement> {
+export class PhoneInput extends BaseInput<BaseInputProps> {
     public static readonly propTypes = PhoneInputPropTypes;
 
     public props: PhoneInputProps;
@@ -30,17 +30,18 @@ export class PhoneInput extends BaseInput<HTMLInputElement> {
         if (this.maskElement.value !== this.context.value) {
             // tslint:disable:no-object-literal-type-assertion
 
-            await this.handleChange({
+            await Promise.resolve(this.handleChange({
                 currentTarget: {
                     value: this.context.value
                 }
-            } as React.ChangeEvent<HTMLInputElement>);
+            } as React.ChangeEvent<HTMLInputElement>));
             this.maskElement.setCursorPos(this.maskElement.input.selectionStart);
         }
     }
 
     public render(): JSX.Element {
-        const {maskList, ...nativeProps} = this.childProps as PhoneInputProps;
+        // noinspection JSUnusedLocalSymbols
+        const { maskList, ...nativeProps } = this.childProps as PhoneInputProps;
 
         const value = this.context.value || "";
         const mask = this.getCurrentMask(value.replace(/\D/g, "").length);
@@ -93,10 +94,10 @@ export class PhoneInput extends BaseInput<HTMLInputElement> {
         }
 
         // tslint:disable:no-object-literal-type-assertion
-        await this.handleChange({
+        await Promise.resolve(this.handleChange({
             currentTarget: {
                 value: event.clipboardData.getData("Text")
             }
-        } as React.ChangeEvent<HTMLInputElement>);
+        } as React.ChangeEvent<HTMLInputElement>));
     }
 }

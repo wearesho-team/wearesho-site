@@ -1,13 +1,23 @@
-import {layoutGenerator} from "react-break";
+import * as React from "react";
+import { SmartBreakpoint } from "react-breakpoint";
 
-const layout: any = layoutGenerator({
-    mobile: 0,
-    tablet: 768,
-    desktop: 1280
+export const OnMobile: React.FC<{}> = (props) => React.createElement(SmartBreakpoint, {
+    ...props,
+    match: ["max-width: 767px"],
 });
-
-export const OnMobile = layout.is("mobile");
-export const OnTablet = layout.is("tablet");
-export const OnDesktop = layout.is("desktop");
-export const OnTabletDesktop = layout.isAtLeast("tablet");
-export const OnMobileTablet = layout.isAtMost("tablet");
+export const OnTablet: React.FC<{}> = (props) => React.createElement(SmartBreakpoint, {
+    ...props,
+    match: ["max-width: 1279px", "min-width: 768px"],
+});
+export const OnDesktop: React.FC<{}> = (props) => React.createElement(SmartBreakpoint, {
+    ...props,
+    match: ["min-width: 1280px"],
+});
+export const OnTabletDesktop: React.FC<{}> = (props) => React.createElement(SmartBreakpoint, {
+    ...props,
+    match: ["min-width: 768px"],
+});
+export const OnMobileTablet: React.FC<{}> = (props) => React.createElement(SmartBreakpoint, {
+    ...props,
+    match: ["max-width: 1279px"],
+});

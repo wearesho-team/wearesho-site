@@ -1,7 +1,7 @@
 // tslint:disable
 import * as React from "react";
 
-export const ProcessStructure: React.SFC<undefined> = () => (
+export const ProcessStructure: React.FC<{}> = () => (
     <svg className="process-structure" version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
          viewBox="0 0 1921 589.7">
         <g id="Path" transform="translate(1988 958)">

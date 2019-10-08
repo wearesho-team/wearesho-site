@@ -49,7 +49,7 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
         });
 
         this.setState({
-            DOMNode: ReactDOM.findDOMNode(this)
+            DOMNode: ReactDOM.findDOMNode(this) as HTMLDivElement
         }, () => {
             this.state.DOMNode.setAttribute("style", "opacity: 0");
         });
@@ -66,7 +66,7 @@ export class CustomAnimation extends React.Component<CustomAnimationProps, Custo
         }
 
         this.setState({
-            DOMNode: ReactDOM.findDOMNode(this)
+            DOMNode: ReactDOM.findDOMNode(this) as HTMLDivElement
         });
     }
 

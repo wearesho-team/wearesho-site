@@ -11,10 +11,8 @@ import {
     Input,
     Label,
     TransformTypes,
-    FormContext,
     ModelError,
-    AutoFocus,
-    InputContext
+    AutoFocus
 } from "react-context-form";
 
 import {ContactFormModel, instantiateContactFormModel} from "../../../../models/ContactFormModel";
@@ -30,7 +28,7 @@ import {translate} from "../../../../helpers/translate";
 import {concat} from "../../../../helpers/concat";
 
 import {ErrorMessage, SuccessMessage, PhoneInput, TimeInput} from "./Partials";
-import {SubmitButton} from "../../../Buttons/SubmitButton";
+import {SubmitButton} from "../../../Buttons";
 import {ContactFormState} from "./ContactFormState";
 import {SubmitStatus} from "./SubmitStatus";
 
@@ -110,7 +108,7 @@ export class ContactForm extends React.Component<ContactFormProps, ContactFormSt
         }
     }
 
-    protected handleSubmit = async (model: ContactFormModel, context: FormContext) => {
+    protected handleSubmit = async (model: ContactFormModel, context: any) => {
         let data: any = {};
         model.attributes()
             .forEach((field) => data = {...data, ...{[field]: model[field]}});
@@ -151,7 +149,7 @@ export class ContactForm extends React.Component<ContactFormProps, ContactFormSt
             }
         }
 
-        smoothScrollTo(ReactDOM.findDOMNode(this), -105, "top", 1000, 0);
+        smoothScrollTo(ReactDOM.findDOMNode(this) as HTMLElement, -105, "top", 1000, 0);
     };
 
     protected clearFields(model: ContactFormModel) {
@@ -161,7 +159,7 @@ export class ContactForm extends React.Component<ContactFormProps, ContactFormSt
         model.from = TimeDefaults.from;
     }
 
-    protected timeInputBlur(input: HTMLInputElement, context: InputContext) {
+    protected timeInputBlur(input: HTMLInputElement, context: any) {
         // IOS Auto focus bug
         if (input.className.indexOf("to") !== -1) {
             setTimeout(() => input.blur(), 100);

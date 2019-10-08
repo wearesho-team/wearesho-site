@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export class SoundSwitch extends React.Component<undefined, undefined> {
+export class SoundSwitch extends React.Component<{}, undefined> {
 
     public render(): JSX.Element {
         return (

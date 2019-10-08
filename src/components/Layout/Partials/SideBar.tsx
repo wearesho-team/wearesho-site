@@ -4,7 +4,7 @@ import {SocialLinks} from "./SocialLinks";
 import {concat} from "../../../helpers/concat";
 import {RouterContext, RouterContextTypes} from "../../../data/RouterContext";
 
-export const SideBar: React.SFC<undefined> = (props, context: RouterContext): JSX.Element => {
+export const SideBar: React.FC<{}> = (props, context: RouterContext): JSX.Element => {
 
     const {location} = context.router.history;
     const children = props.children as JSX.Element [];

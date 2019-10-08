@@ -8,9 +8,7 @@ import {translate} from "../../../helpers/translate";
 
 import {LayoutContext, LayoutContextTypes} from "../LayoutContext";
 
-import { SmartBreakpoint } from "../../SmartBreakpoint";
-
-export class Header extends React.Component<undefined, undefined> {
+export class Header extends React.Component<{}, undefined> {
     public static readonly contextTypes = LayoutContextTypes;
 
     public context: LayoutContext;

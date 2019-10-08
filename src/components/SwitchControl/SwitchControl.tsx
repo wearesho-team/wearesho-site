@@ -10,7 +10,7 @@ export enum RouteIndexType {
     down = -1,
 }
 
-export class SwitchControl extends React.Component<undefined, undefined> implements ElementWithTimer {
+export class SwitchControl extends React.Component<{}, undefined> implements ElementWithTimer {
     public static readonly contextTypes = RouterContextTypes;
     public static readonly scrollTimeout = 1500;
 

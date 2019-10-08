@@ -5,7 +5,7 @@ import {toFixed} from "../../../helpers/toFixed";
 import {SliderProps, SliderPropTypes} from "./SliderProps";
 import {SliderTitle, SliderDescription} from "./Partials";
 
-export const Slider: React.SFC<SliderProps> = (props): JSX.Element => {
+export const Slider: React.FC<SliderProps> = (props): JSX.Element => {
     if (!props.offset) {
         // tslint:disable:no-null-keyword
         return null;
@@ -35,4 +35,4 @@ export const Slider: React.SFC<SliderProps> = (props): JSX.Element => {
     );
 };
 
-Slider.propTypes = SliderPropTypes;
+Slider.propTypes = SliderPropTypes as React.ValidationMap<SliderProps>;
