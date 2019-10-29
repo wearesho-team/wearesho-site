@@ -156,6 +156,10 @@ const config = {
                     from: path.resolve("./templates/static/"),
                     to: path.resolve("./web/static/"),
                 },
+                {
+                    from: path.resolve("./meta.json"),
+                    to: path.resolve("./web/meta.json"),
+                },
             ]),
         ],
         optimization: {

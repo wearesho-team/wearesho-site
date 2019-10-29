@@ -2,38 +2,39 @@ version: 0.2
 
 env:
   variables:
-    AWS_DEFAULT_REGION: "eu-central-1"
+    NODE_VERSION: "12"
+    NODE_ENV: "production"
+    NODE_BUILD_PATH: "/app"
 
 phases:
   install:
     runtime-versions:
       docker: 18
     commands:
-      - pip install --upgrade awscli
+      - BUILD_MESSAGE=$(git log -1 --pretty=%B 2> /dev/null || echo "Unknown Change")
+      - BUILD_NAME=$(jq -r '.name' < meta.json)
+      - BUILD_VERSION=$(jq -r '.version' < meta.json)
+      - S3_BUCKET=${BUILD_NAME-"wearesho-site"}
+      - S3_URI=s3://${S3_BUCKET}
+
   pre_build:
     commands:
-      - AWS_ACCOUNT_ID=$(aws sts get-caller-identity | jq -r '.Account')
-      - DOCKER_REGISTRY=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-      - echo Logging in to Amazon ECR $DOCKER_REGISTRY ...
-      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
-      - IMAGE_REPOSITORY=$DOCKER_REGISTRY/$(jq -r '.name' < meta.json); IMAGE_TAG=$(jq -r '.version' < meta.json);
-      - echo Inspecting registry manifest ...
-      - |
-        if DOCKER_CLI_EXPERIMENTAL=enabled docker manifest inspect $IMAGE_REPOSITORY:$IMAGE_TAG > /dev/null; then
-          echo "Manifest exist. Cancelling..."
-          aws codebuild stop-build --id ${CODEBUILD_BUILD_ID}
-        fi
+      - docker run --rm -w ${NODE_BUILD_PATH} -v $PWD:${NODE_BUILD_PATH} node:${NODE_VERSION-12}-slim npm i --production --no-audit --loglevel error
+
   build:
     commands:
-      - echo Build $IMAGE_REPOSITORY:$IMAGE_TAG started on `date`
-      - docker build -t $IMAGE_REPOSITORY:$IMAGE_TAG -f ./docker/Dockerfile --build-arg NODE_ENV=$NODE_ENV .
+      - docker run --rm -w ${NODE_BUILD_PATH} -v $PWD:${NODE_BUILD_PATH} -e NODE_ENV node:${NODE_VERSION-12}-slim npm run build
+
   post_build:
     commands:
-      - echo Build completed on `date`
-      - echo Pushing the Docker image...
-      - docker push $IMAGE_REPOSITORY:$IMAGE_TAG
-      - echo Generating update definition file...
-      - echo '[{"name":"static","imageUri":"'$IMAGE_REPOSITORY':'$IMAGE_TAG'"}]' > deploy.json
+      - aws s3 sync ./web ${S3_URI} --delete
+    finally:
+      - ([ "$CODEBUILD_BUILD_SUCCEEDING" == "1" ] && (jq ". + {\"bucketUri\":\"$S3_URI\"}" meta.json) || (jq '. + {"failed":true}' meta.json)) > deploy.json
+      - |
+        if [ -d ".git" ]; then
+          DEPLOY_INFO=$(jq ". + {\"comment\":\"$(git log -1 --pretty=%B 2> /dev/null || echo "Unknown Change")\"}" deploy.json)
+          echo $DEPLOY_INFO > deploy.json
+        fi;
 
 artifacts:
   files:
