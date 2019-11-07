@@ -116,6 +116,22 @@ html[lang="en"] {
 
         line-height: 1.4em;
       }
+
+      > span {
+
+        &:after {
+
+          content: " ";
+        }
+
+        &:first-child {
+
+          @include breakpoint($mobile-p) {
+
+            display: block;
+          }
+        }
+      }
     }
 
     .section__subtitle_reduced {
@@ -1107,22 +1123,6 @@ html[lang="en"] {
     @include breakpoint($square) {
 
       margin-top: .75em;
-    }
-
-    > span {
-
-      &:after {
-
-        content: " ";
-      }
-
-      &:first-child {
-
-        @include breakpoint($mobile-p) {
-
-          display: block;
-        }
-      }
     }
 
     &-part {
