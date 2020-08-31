@@ -83,7 +83,7 @@ translate.registerTranslations("ru", {
             },
             item2: {
                 text1: "обработанных заявок",
-                text2: "за 2 года",
+                text2: "за 6 лет",
             },
         },
         details: {
