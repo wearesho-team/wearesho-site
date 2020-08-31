@@ -557,6 +557,14 @@ html[lang="en"] {
         line-height: .725;
 
         border-right: 1px solid rgba(197, 213, 224, .53);
+
+        &:first-child {
+
+          @include breakpoint($mobile-p) {
+
+            display: inline-block;
+          }
+        }
       }
     }
 

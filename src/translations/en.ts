@@ -83,7 +83,7 @@ translate.registerTranslations("en", {
             },
             item2: {
                 text1: "processed applications",
-                text2: "for 2 years",
+                text2: "for 6 years",
             },
         },
         details: {

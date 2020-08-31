@@ -1,37 +1,22 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { SmartBreakpoint } from "react-breakpoint";
-
+import {Statistics} from "./Statistics";
 import { translate } from "../../../helpers/translate";
 import { ImageStack, ShortImageStack } from "./ImageStack";
 
 export const BobraCSPage: React.FC<{}> = () => (
     <section className="section section-bobra-cs">
         <div className="align-container">
-                    <span className="section__title">
-                        <span className="section__title-text">BobraCS</span>
-                        <i className="icon icon_logo-bobra" />
-                    </span>
+            <span className="section__title">
+                <span className="section__title-text">BobraCS</span>
+                <i className="icon icon_logo-bobra" />
+            </span>
             <SmartBreakpoint match={["max-width: 767px"]}>
                 <div className="content">
                     <div className="section__half half_second">
                         <h4 className="section__subtitle">{translate("bobraCSPage.subTitle")}</h4>
-                        <div className="statistics">
-                            <div className="statistics-item">
-                                <h4 className="section__subtitle marker">
-                                    <span className="text_increased">2100</span>
-                                </h4>
-                                <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
-                                <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
-                            </div>
-                            <div className="statistics-item">
-                                <h4 className="section__subtitle marker">
-                                    <span className="text_increased">1800000</span>
-                                </h4>
-                                <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
-                                <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
-                            </div>
-                        </div>
+                        <Statistics />
                         <div className="clients-list">
                             <a href="https://credit-pro.com.ua/" target="_blank" rel="noopener nofollow">
                                 <i className="icon icon_credit-pro" />
@@ -141,22 +126,7 @@ export const BobraCSPage: React.FC<{}> = () => (
                             <div className="decor decor_vertical" />
                             <div className="decor decor_horizontal" />
                         </div>
-                        <div className="statistics">
-                            <div className="statistics-item">
-                                <h4 className="section__subtitle marker">
-                                    <span className="text_increased">2100</span>
-                                </h4>
-                                <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
-                                <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
-                            </div>
-                            <div className="statistics-item">
-                                <h4 className="section__subtitle marker">
-                                    <span className="text_increased">1800000</span>
-                                </h4>
-                                <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
-                                <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
-                            </div>
-                        </div>
+                        <Statistics />
                         <div className="clients-list">
                             <div className="align-container">
                                 <a href="https://credit-pro.com.ua/" target="_blank" rel="noopener nofollow">
@@ -211,22 +181,7 @@ export const BobraCSPage: React.FC<{}> = () => (
                         </ul>
                     </div>
                     <div className="section__half half_second">
-                        <div className="statistics">
-                            <div className="statistics-item">
-                                <h4 className="section__subtitle marker">
-                                    <span className="text_increased">2100</span>
-                                </h4>
-                                <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
-                                <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
-                            </div>
-                            <div className="statistics-item">
-                                <h4 className="section__subtitle marker">
-                                    <span className="text_increased">1800000</span>
-                                </h4>
-                                <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
-                                <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
-                            </div>
-                        </div>
+                        <Statistics />
                         <div className="clients-list">
                             <div className="align-container">
                                 <a href="https://credit-pro.com.ua/" target="_blank" rel="noopener nofollow">
@@ -286,22 +241,7 @@ export const BobraCSPage: React.FC<{}> = () => (
                         </ul>
                     </div>
                     <div className="section__half half_second">
-                        <div className="statistics">
-                            <div className="statistics-item">
-                                <h4 className="section__subtitle marker">
-                                    <span className="text_increased">2100</span>
-                                </h4>
-                                <p className="item__name">{translate("bobraCSPage.statistics.item1.text1")}</p>
-                                <span>{translate("bobraCSPage.statistics.item1.text2")}</span>
-                            </div>
-                            <div className="statistics-item">
-                                <h4 className="section__subtitle marker">
-                                    <span className="text_increased">1800000</span>
-                                </h4>
-                                <p className="item__name">{translate("bobraCSPage.statistics.item2.text1")}</p>
-                                <span>{translate("bobraCSPage.statistics.item2.text2")}</span>
-                            </div>
-                        </div>
+                        <Statistics />
                         <div className="bobra-visualization">
                             <ImageStack />
                             <div className="decor decor_vertical" />
