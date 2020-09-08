@@ -1,5 +1,23 @@
 language: node_js
 node_js:
-  - "8"
+  - 8
+
+install: npm ci
+
+script:
+  - npm run build
 
 after_success: npm run coverage
+
+cache:
+  npm: true
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
+  local_dir: ./web
+  fqdn: wearesho.com

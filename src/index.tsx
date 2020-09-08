@@ -1,6 +1,8 @@
 import "../styles/main.scss";
-import "./bootstrap";
+import "normalize.css/normalize.css";
+import "resets.css/resets.css";
 
+import "./bootstrap";
 import "./translations/en";
 import "./translations/ru";
 

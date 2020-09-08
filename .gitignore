@@ -2,6 +2,8 @@
 npm-debug.log
 node_modules/
 web/
+.cache
+dist
 tests/acceptance/*.js
 tests/acceptance/*.js.map
 .nyc_output/
