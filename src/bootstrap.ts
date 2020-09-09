@@ -12,4 +12,4 @@ axios.interceptors.response.use(
 );
 
 // tslint:disable:no-console
-console.log(`Build version: 1, build time: 2`);
+console.log(`Build version: ${process.env.TRAVIS_BUILD_NUMBER}, build time: ${process.env.BUILD_TIME}`);

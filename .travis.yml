@@ -4,10 +4,16 @@ node_js:
 
 install: npm ci
 
-script:
-  - npm run build
+env: URL=https://wearesho.com
 
-after_success: npm run coverage
+script:
+  - BUILD_TIME=$(TZ=":Europe/Kiev" date '+%Y-%m-%d %H:%M:%S %z') npm run build
+
+after_success:
+  - curl --request GET "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=Wearesho%20site%0ABuild%20%23${TRAVIS_BUILD_NUMBER}.%20Succeeded%0ACommit:%20%22${TRAVIS_COMMIT_MESSAGE}%22%0A${URL}" npm run coverage
+
+after_failure:
+  - curl --request GET "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=Wearesho%20site%0ABuild%20%23${TRAVIS_BUILD_NUMBER}.%20Failed%0ACommit:%20%22${TRAVIS_COMMIT_MESSAGE}%22"
 
 cache:
   npm: true
@@ -16,8 +22,7 @@ deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
-  keep-history: true
   on:
     branch: master
-  local_dir: ./web
-  fqdn: wearesho.com
+  local_dir: ./dist
+  fqdn: $URL
