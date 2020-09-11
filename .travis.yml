@@ -9,7 +9,7 @@ env: URL=https://wearesho.com
 script:
   - BUILD_TIME=$(TZ=":Europe/Kiev" date '+%Y-%m-%d %H:%M:%S %z') npm run build
 
-after_success:
+after_deploy:
   - curl --request GET "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=Wearesho%20site%0ABuild%20%23${TRAVIS_BUILD_NUMBER}.%20Succeeded%0ACommit:%20%22${TRAVIS_COMMIT_MESSAGE}%22%0A${URL}" npm run coverage
 
 after_failure:
