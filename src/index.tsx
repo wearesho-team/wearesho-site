@@ -1,6 +1,8 @@
 import "../styles/main.scss";
-import "./bootstrap";
+import "normalize.css/normalize.css";
+import "resets.css/resets.css";
 
+import "./bootstrap";
 import "./translations/en";
 import "./translations/ru";
 
@@ -18,7 +20,7 @@ if (!container) {
     console.error("Can not found element for mounting Layout!");
 } else {
     ReactDOM.render(
-            <Layout preLoader={new PreLoader((window as any).hideTimeout || 2000)} history={createBrowserHistory()} />,
+        <Layout preLoader={new PreLoader((window as any).hideTimeout || 2000)} history={createBrowserHistory()} />,
         container
     );
 }

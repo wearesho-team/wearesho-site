@@ -2,7 +2,7 @@ import axios from "axios";
 
 import {submitErrorHandler} from "./helpers/submitErrorHandler";
 
-import {Config} from "./data/Config/Config";
+import {Config} from "./data/Config";
 
 axios.defaults.baseURL = Config.baseUrl;
 axios.defaults.headers["accept-language"] = (window as any).language;
@@ -11,8 +11,5 @@ axios.interceptors.response.use(
     submitErrorHandler
 );
 
-declare const BUILD_VERSION: string;
-declare const BUILD_TIME: string;
-
 // tslint:disable:no-console
-console.log(`Build version: ${BUILD_VERSION}, build time: ${BUILD_TIME}`);
+console.log(`Build version: ${process.env.TRAVIS_BUILD_NUMBER}, build time: ${process.env.BUILD_TIME}`);
