@@ -21,7 +21,6 @@ export class TransformAnimation extends React.Component<TransformAnimationProps,
     public render(): JSX.Element {
         const transitionProps = {
             classNames: "transform",
-            key: this.state.transformed,
             timeout: this.props.duration,
         };
 

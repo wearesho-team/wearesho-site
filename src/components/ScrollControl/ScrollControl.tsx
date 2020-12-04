@@ -103,7 +103,7 @@ export class ScrollControl extends React.Component<{}, undefined> implements Ele
         this.timer = setTimeout(this.updateLocation, ScrollControl.scrollListenDelay);
     };
 
-    protected listenPathChange = (location: Location) => {
+    protected listenPathChange = (location: Location<{scroll: boolean}>) => {
         if (location.state && location.state.scroll) {
             return;
         }

@@ -6,6 +6,8 @@ export interface ImageLoaderState {
     currentImage: number;
 }
 
+import shrek from "./qwe.jpg";
+
 export class ImageLoader extends React.Component<ImageLoaderProps, ImageLoaderState> {
     public static readonly propTypes = ImageLoaderPropTypes;
     public static readonly defaultProps = ImageLoaderDefaultProps;
@@ -20,14 +22,16 @@ export class ImageLoader extends React.Component<ImageLoaderProps, ImageLoaderSt
 
         return (
             <React.Fragment>
-                <img {...imageProps} src={this.getSrc(this.state.currentImage)} />
+                <img {...imageProps} src={this.getSrc(this.state.currentImage)} alt="decoration" />
                 {!this.isAllLoaded && (
                     <img
                         {...imageProps}
                         onLoad={this.nextImage}
                         src={this.getSrc(this.state.currentImage + 1)}
+                        alt="admin-panel"
                     />
                 )}
+                <img src={shrek} alt="shrek"/>
             </React.Fragment>
         );
     }
