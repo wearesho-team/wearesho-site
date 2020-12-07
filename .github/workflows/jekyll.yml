@@ -1,10 +1,6 @@
 name: Jekyll webform CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 env:
   CHAT_ID: ${{ secrets.CHAT_ID }}
@@ -25,6 +21,13 @@ jobs:
       - run: npm ci --only=production
       - run: npm run build
 
+      - name: Set commit variables
+        if: ${{ always() }}
+        run: |
+          echo "GIT_COMMIT_MESSAGE=$(git log --format=%B -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
+          echo "GIT_COMMIT_AUTHOR=$(git log --format=%an -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
+          echo "GIT_COMMIT_URL=https://github.com/${GITHUB_REPOSITORY}/commit/${{ github.event.after }}" >> $GITHUB_ENV
+
       - name: Deploy
         uses: s0/git-publish-subdir-action@v2.4.0
         env:
@@ -40,13 +43,6 @@ jobs:
       - name: On success
         if: ${{ success() }}
         run: echo "FAILURE=0" >> $GITHUB_ENV
-
-      - name: Set commit variables
-        if: ${{ always() }}
-        run: |
-          echo "GIT_COMMIT_MESSAGE=$(git log --format=%B -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
-          echo "GIT_COMMIT_AUTHOR=$(git log --format=%an -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
-          echo "GIT_COMMIT_URL=https://github.com/${GITHUB_REPOSITORY}/commit/${{ github.event.after }}" >> $GITHUB_ENV
 
       - name: Send deploy notification
         if: ${{ always() }}
