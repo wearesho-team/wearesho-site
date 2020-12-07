@@ -18,9 +18,6 @@ const
     CopyWebpackPlugin = require('copy-webpack-plugin'),
     TerserPlugin = require("terser-webpack-plugin");
 
-const autoPrefixer = require("autoprefixer");
-const cssNano = require("cssnano");
-
 const meta = require("./meta.json");
 
 const debug = process.env.NODE_ENV !== 'production';
@@ -45,6 +42,7 @@ const config = {
         chunkFilename: '[name].[chunkHash:8].js',
         path: path.resolve('./web'),
         publicPath: "/",
+        assetModuleFilename: '[name].[hash:6][ext]',
     },
 
     devtool: debug ? "source-map" : false,
@@ -59,7 +57,7 @@ const config = {
             normalize: path.join(__dirname, '/node_modules/normalize.css'),
         },
         fallback: {
-            util: require.resolve("util/")
+            util: require.resolve("util/"),
         }
     },
 
@@ -107,11 +105,12 @@ const config = {
                 ],
             },
             {
-                test: /\.(gif|png|jpe?g|svg|woff2?|ttf|eot|otf|webp)$/i,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[hash:6].[ext]',
-                },
+                test: /\.(gif|png|jpe?g|webp)$/i,
+                type: "asset/resource",
+            },
+            {
+                test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+                type: "asset/inline",
             },
             {
                 test: /\.tsx?$/,

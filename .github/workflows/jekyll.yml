@@ -1,0 +1,56 @@
+name: Jekyll webform CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.10.0"
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@v2.4.0
+        env:
+          REPO: self
+          BRANCH: gh-pages
+          FOLDER: dist
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: On failure
+        if: ${{ failure() }}
+        run: echo "FAILURE=1" >> $GITHUB_ENV
+
+      - name: On success
+        if: ${{ success() }}
+        run: echo "FAILURE=0" >> $GITHUB_ENV
+
+      - name: Set commit variables
+        if: ${{ always() }}
+        run: |
+          echo "GIT_COMMIT_MESSAGE=$(git log --format=%B -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
+          echo "GIT_COMMIT_AUTHOR=$(git log --format=%an -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
+          echo "GIT_COMMIT_URL=https://github.com/${GITHUB_REPOSITORY}/commit/${{ github.event.after }}" >> $GITHUB_ENV
+
+      - name: Send deploy notification
+        if: ${{ always() }}
+        env:
+          FAILURE: ${{ env.FAILURE }}
+          GIT_COMMIT_MESSAGE: ${{ env.GIT_COMMIT_MESSAGE }}
+          GIT_COMMIT_AUTHOR: ${{ env.GIT_COMMIT_AUTHOR }}
+          GIT_COMMIT_URL: ${{ env.GIT_COMMIT_URL }}
+        run: |
+          npm i -g @horat1us/release-utils@3.9.1
+          telegram-notify-deploy
