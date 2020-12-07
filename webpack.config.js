@@ -108,15 +108,10 @@ const config = {
             },
             {
                 test: /\.(gif|png|jpe?g|svg|woff2?|ttf|eot|otf|webp)$/i,
-                type: "asset",
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[hash:6].[ext]',
-                        },
-                    }
-                ],
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[hash:6].[ext]',
+                },
             },
             {
                 test: /\.tsx?$/,
