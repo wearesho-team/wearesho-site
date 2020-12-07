@@ -11,5 +11,8 @@ axios.interceptors.response.use(
     submitErrorHandler
 );
 
+declare const BUILD_VERSION: string;
+declare const BUILD_TIME: string;
+
 // tslint:disable:no-console
-console.log(`Build version: ${process.env.TRAVIS_BUILD_NUMBER}, build time: ${process.env.BUILD_TIME}`);
+console.log(`Build version: ${BUILD_VERSION}, build time: ${BUILD_TIME}`);

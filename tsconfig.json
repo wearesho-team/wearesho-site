@@ -9,7 +9,8 @@
     "jsx": "react",
     "allowJs": true,
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true
+    "skipDefaultLibCheck": true,
+    "module": "esnext"
   },
   "exclude": [
     "./node_modules/**/*",

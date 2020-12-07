@@ -2,18 +2,29 @@ import * as React from "react";
 import { ImageLoader } from "../../ImageLoader";
 import { canUseWebP } from "react-img-webp";
 
+import webp20 from "../../../../images/bobraCS-20.webp";
+import webp40 from "../../../../images/bobraCS-40.webp";
+import webp60 from "../../../../images/bobraCS-60.webp";
+import webp80 from "../../../../images/bobraCS-80.webp";
+import webp100 from "../../../../images/bobraCS-100.webp";
+import jpeg20 from "../../../../images/bobraCS-20.jpg";
+import jpeg40 from "../../../../images/bobraCS-40.jpg";
+import jpeg60 from "../../../../images/bobraCS-60.jpg";
+import jpeg80 from "../../../../images/bobraCS-80.jpg";
+import jpeg100 from "../../../../images/bobraCS-100.jpg";
+
 const images = (): Array<[ number, string ]> => canUseWebP() ? [
-    [ 20, require("../../../../images/bobraCS-20.webp") ],
-    [ 40, require("../../../../images/bobraCS-40.webp") ],
-    [ 60, require("../../../../images/bobraCS-60.webp") ],
-    [ 80, require("../../../../images/bobraCS-80.webp") ],
-    [ 100, require("../../../../images/bobraCS-100.webp") ],
+    [ 20, webp20 ],
+    [ 40, webp40 ],
+    [ 60, webp60 ],
+    [ 80, webp80 ],
+    [ 100, webp100 ],
 ] : [
-    [ 20, require("../../../../images/bobraCS-20.jpg") ],
-    [ 40, require("../../../../images/bobraCS-40.jpg") ],
-    [ 60, require("../../../../images/bobraCS-60.jpg") ],
-    [ 80, require("../../../../images/bobraCS-80.jpg") ],
-    [ 100, require("../../../../images/bobraCS-100.jpg") ],
+    [ 20, jpeg20 ],
+    [ 40, jpeg40 ],
+    [ 60, jpeg60 ],
+    [ 80, jpeg80 ],
+    [ 100, jpeg100 ],
 ];
 
 const shortStack = [ 20, 40 ];

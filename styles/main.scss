@@ -10,6 +10,8 @@
 @import "~compass-mixins/lib/compass/css3/_animation.scss";
 @import "~susy/sass/susy";
 @import "~breakpoint-sass/stylesheets/breakpoint";
+@import '~normalize.css/normalize.css';
+@import "~resets.css/resets.css";
 
 // Base
 @import 'base/variables';
