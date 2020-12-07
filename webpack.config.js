@@ -165,6 +165,10 @@ const config = {
                     from: path.resolve("./meta.json"),
                     to: path.resolve("./web/meta.json"),
                 },
+                {
+                    from: path.resolve("./templates/CNAME"),
+                    to: path.resolve("./web/"),
+                },
             ]
         }),
     ],
