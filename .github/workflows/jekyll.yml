@@ -26,7 +26,7 @@ jobs:
         env:
           REPO: self
           BRANCH: gh-pages
-          FOLDER: dist
+          FOLDER: web
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: On failure
