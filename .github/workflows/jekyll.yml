@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  CHAT_ID: ${{ secrets.CHAT_ID }}
+  BOT_API_KEY: ${{ secrets.BOT_API_KEY }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
