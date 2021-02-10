@@ -41,9 +41,9 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
         };
     }
 
-    // shouldComponentUpdate(nextProps: Readonly<LayoutProps>, nextState: Readonly<LayoutState>): boolean {
-    //     return (this.state.language !== nextState.language) || (this.state.isScrollDisabled !== nextState.isScrollDisabled)
-    // }
+    shouldComponentUpdate(nextProps: Readonly<LayoutProps>, nextState: Readonly<LayoutState>): boolean {
+        return (this.state.language !== nextState.language) || (this.state.isScrollDisabled !== nextState.isScrollDisabled)
+    }
 
     public async componentDidMount() {
         await this.props.preLoader.hide();
