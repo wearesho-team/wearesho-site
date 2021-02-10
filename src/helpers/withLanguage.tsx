@@ -1,5 +1,5 @@
 import React from "react";
-import {LayoutContext, LayoutContextValue} from "../components/Layout";
+import {LayoutContext} from "../components/Layout";
 import {Languages} from "../data/Languages";
 
 export type LanguageProps = {
@@ -8,19 +8,14 @@ export type LanguageProps = {
 
 export type WithLanguage = <P extends object>(component: React.ComponentType<P>) => React.ComponentType<Omit<P, keyof LanguageProps>>
 
-export const withLanguage: WithLanguage = <P extends object>(component) => class extends React.Component<P> {
-    public static readonly contextType = LayoutContext;
-    public context: LayoutContextValue;
+export const withLanguage: WithLanguage = <P extends object>(component) => (props) => {
+    const context = React.useContext(LayoutContext);
     
-    render() {
-        const props: P & LanguageProps = {
-            ...this.props,
-            language: this.context.language
-        };
-        
-        return React.createElement(
-            component,
-            props
-        );
-    }
+    return React.createElement(
+        component,
+        {
+            ...props,
+            language: context.language
+        }
+    );
 };
