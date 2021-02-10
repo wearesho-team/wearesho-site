@@ -7,10 +7,10 @@ interface TitleElement {
 }
 
 export interface SliderTitleProps {
-    title: {
+    title: Array<{
         name: string,
         url: string
-    }[]
+    }>
 }
 
 export const SliderTitlePropTypes = Object.freeze({
@@ -21,7 +21,7 @@ export const SliderTitlePropTypes = Object.freeze({
 }) as React.ValidationMap<SliderTitleProps>;
 
 export const SliderTitle: React.SFC<SliderTitleProps> = ({ title }): JSX.Element => {
-    const content: (JSX.Element | string)[] = [];
+    const content: Array<JSX.Element | string> = [];
 
     const linkProps = {
         target: "_blank",
