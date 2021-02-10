@@ -1,24 +1,22 @@
 import * as React from "react";
+import {RouteComponentProps, withRouter} from "react-router";
 
-import { routeProps } from "../../data/routeProps";
-import { RouterContext, RouterContextTypes } from "../../data/RouterContext";
+import {routeProps} from "../../data/routeProps";
 
-import { ErrorPage } from "../Pages/ErrorPage";
+import {ErrorPage} from "../Pages/ErrorPage";
 
-export class ErrorBounder extends React.Component<{}, undefined> {
-    public static readonly contextTypes = RouterContextTypes;
-
-    public context: RouterContext;
-
+class ErrorBounderComponent extends React.Component<RouteComponentProps, undefined> {
     public render(): any {
         if (
             !routeProps
-                .map(({ path }) => path)
-                .includes(this.context.router.history.location.pathname)
+                .map(({path}) => path)
+                .includes(this.props.history.location.pathname)
         ) {
-            return <ErrorPage/>
+            return <ErrorPage/>;
         }
-
+        
         return this.props.children;
     }
 }
+
+export const ErrorBounder = withRouter(ErrorBounderComponent);

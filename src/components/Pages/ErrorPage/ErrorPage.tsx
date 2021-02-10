@@ -3,9 +3,9 @@ import * as React from "react";
 import {translate} from "../../../helpers/translate";
 
 import {ZeroIcon} from "../../Icons/ZeroIcon";
-import {BasePage} from "../BasePage";
 
-export class ErrorPage extends BasePage {
+export class ErrorPage extends React.Component {
+    
     public render() {
         return(
             <section className="section section-error">

@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as React from "react";
-import {Router} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 import {Languages} from "../../data/Languages";
 
 import {routeProps} from "../../data/routeProps";
@@ -41,9 +41,9 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
         };
     }
 
-    shouldComponentUpdate(nextProps: Readonly<LayoutProps>, nextState: Readonly<LayoutState>): boolean {
-        return (this.state.language !== nextState.language) || (this.state.isScrollDisabled !== nextState.isScrollDisabled)
-    }
+    // shouldComponentUpdate(nextProps: Readonly<LayoutProps>, nextState: Readonly<LayoutState>): boolean {
+    //     return (this.state.language !== nextState.language) || (this.state.isScrollDisabled !== nextState.isScrollDisabled)
+    // }
 
     public async componentDidMount() {
         await this.props.preLoader.hide();
@@ -56,7 +56,7 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
 
     public render(): JSX.Element {
         return (
-            <Router history={this.props.history}>
+            <Router>
                 <LayoutContext.Provider value={this.getContext()}>
                     <div id="content">
                         <Header/>

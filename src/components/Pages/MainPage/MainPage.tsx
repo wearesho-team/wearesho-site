@@ -1,23 +1,22 @@
 import * as React from "react";
-import { Link } from "react-router-dom"
+import {Link} from "react-router-dom";
 
-import { StartFeature } from "../../../data/Animations/StartFeature";
-import { Timing } from "../../../data/Animations/Timing";
-import { Config } from "../../../data/Config";
+import {StartFeature} from "../../../data/Animations/StartFeature";
+import {Timing} from "../../../data/Animations/Timing";
+import {Config} from "../../../data/Config";
 
-import { OnMobile, OnTabletDesktop } from "../../../helpers/Breakpoints";
-import { translate } from "../../../helpers/translate";
+import {OnMobile, OnTabletDesktop} from "../../../helpers/Breakpoints";
+import {translate} from "../../../helpers/translate";
+import {CodeStyleAnimation} from "../../Animations/Static/CodeStyleAnimation/CodeStyleAnimation";
 
-import { CodeStyleAnimationSpeed } from "../../Animations/Static/CodeStyleAnimation/CodeStyleAnimationSpeed";
-import { CodeStyleAnimation } from "../../Animations/Static/CodeStyleAnimation/CodeStyleAnimation";
-import { CustomAnimation } from "../../Animations/Static/CustomAnimation/CustomAnimation";
-import { SmartBreakpoint } from "../../SmartBreakpoint/SmartBreakpoint";
-import { ClientsList } from "./Partials/ClientsList";
-import { TimeLine } from "../../TimeLine/TimeLine";
-import { BasePage } from "../BasePage";
+import {CodeStyleAnimationSpeed} from "../../Animations/Static/CodeStyleAnimation/CodeStyleAnimationSpeed";
+import {CustomAnimation} from "../../Animations/Static/CustomAnimation/CustomAnimation";
+import {SmartBreakpoint} from "../../SmartBreakpoint/SmartBreakpoint";
+import {TimeLine} from "../../TimeLine/TimeLine";
+import {ClientsList} from "./Partials/ClientsList";
 
-export class MainPage extends BasePage<{date: number}> {
-
+export class MainPage extends React.Component<{ date: number }> {
+    
     public render(): JSX.Element {
         return (
             <section className="section section-main">
@@ -176,7 +175,7 @@ export class MainPage extends BasePage<{date: number}> {
                                     startFeature={StartFeature}
                                     actionClassName="showing"
                                 >
-                                    <ClientsList />
+                                    <ClientsList/>
                                 </CustomAnimation>
                             </OnTabletDesktop>
                             <OnMobile>
@@ -185,23 +184,23 @@ export class MainPage extends BasePage<{date: number}> {
                                     startFeature={StartFeature}
                                     actionClassName="showing"
                                 >
-                                    <ClientsList />
+                                    <ClientsList/>
                                 </CustomAnimation>
                             </OnMobile>
                         </div>
                     </div>
                     <SmartBreakpoint match="min-width: 1024px">
-                        <TimeLine range={{ min: 2014, max: 2019 }} />
+                        <TimeLine range={{min: 2014, max: 2019}}/>
                     </SmartBreakpoint>
                 </div>
             </section>
         );
     }
-
+    
     protected get label(): string {
         const hoursSinceOfFoundation = Math.floor((this.props.date - Config.foundationDate.getTime()) / 3600000);
         const hoursLastChar = Number(hoursSinceOfFoundation.toString().slice(-1));
-
+        
         switch (hoursLastChar) {
             case 1:
                 return `${hoursSinceOfFoundation} ${translate("mainPage.articles.howLong.title.one")}`;

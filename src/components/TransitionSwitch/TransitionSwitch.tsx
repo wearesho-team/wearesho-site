@@ -1,80 +1,76 @@
 import * as React from "react";
+import {RouteComponentProps, RouteProps, withRouter} from "react-router";
 import {Route} from "react-router-dom";
-import {RouteProps} from "react-router";
-import {TransitionGroup, CSSTransition} from "react-transition-group";
-
-import {RouterContext, RouterContextTypes} from "../../data/RouterContext";
-
-import {smartClearTimeout, ElementWithTimer} from "../../helpers/smartClearTimeout";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 import {concat} from "../../helpers/concat";
+
+import {ElementWithTimer, smartClearTimeout} from "../../helpers/smartClearTimeout";
 
 import {TransitionSwitchProps, TransitionSwitchPropTypes} from "./TransitionSwitchProps";
 import {TransitionSwitchState} from "./TransitionSwitchState";
 
-export class TransitionSwitch extends React.Component<TransitionSwitchProps, TransitionSwitchState>
+class TransitionSwitchComponent extends React.Component<TransitionSwitchProps & RouteComponentProps, TransitionSwitchState>
     implements ElementWithTimer {
-
+    
     public static readonly propTypes = TransitionSwitchPropTypes;
-    public static readonly contextTypes = RouterContextTypes;
     public static readonly downDirectionClassName = "down";
     public static readonly upDirectionClassName = "up";
     public static readonly animationDuration = 501;
     public static readonly standByClassName = "";
-
+    
     public timer: any;
-    public context: RouterContext;
     public state: TransitionSwitchState = {
-        directionClassName: TransitionSwitch.standByClassName,
+        directionClassName: TransitionSwitchComponent.standByClassName,
     };
-
+    
     protected readonly additionalTimeout = 100;
-
+    
     protected previousRouteKey: number = this.routeProps.key;
     protected clearTimeout = smartClearTimeout.bind(this);
-
+    
     public componentWillUnmount() {
         this.clearTimeout();
     }
-
+    
     public componentWillReceiveProps() {
         this.clearTimeout();
         this.setDirection(this.routeProps.key);
-
+        
         this.timer = setTimeout(
             () => {
-                this.setState({directionClassName: TransitionSwitch.standByClassName});
+                this.setState({directionClassName: TransitionSwitchComponent.standByClassName});
             },
-            TransitionSwitch.animationDuration + this.additionalTimeout
+            TransitionSwitchComponent.animationDuration + this.additionalTimeout
         );
     }
-
+    
     protected get routeProps(): any {
         return Object.keys(this.props.children)
             .map((field, key) => {
                 return {
                     ...{key},
                     ...this.props.children[field].props
-                }
+                };
             })
-            .find(({path}) => path === this.context.router.history.location.pathname);
+            .find(({path}) => path === this.props.history.location.pathname);
     }
-
+    
     public render(): JSX.Element {
         const transitionProps: any = {
             ...this.props,
             ...{
                 key: this.routeProps.key,
-                timeout: TransitionSwitch.animationDuration,
+                timeout: TransitionSwitchComponent.animationDuration,
             }
         };
-
+        
         const currentRouteProps: RouteProps = {
             ...this.routeProps,
             ...{
-                location: this.context.router.history.location,
+                location: this.props.history.location,
             },
         };
-
+        
         return (
             <TransitionGroup className={concat(this.props.className, this.state.directionClassName)}>
                 <CSSTransition {...transitionProps}>
@@ -83,16 +79,18 @@ export class TransitionSwitch extends React.Component<TransitionSwitchProps, Tra
             </TransitionGroup>
         );
     }
-
+    
     protected setDirection(key: number) {
         if (this.previousRouteKey === key) {
             return;
         }
-
+        
         this.state.directionClassName = this.previousRouteKey > this.routeProps.key
-            ? TransitionSwitch.downDirectionClassName
-            : TransitionSwitch.upDirectionClassName;
-
+            ? TransitionSwitchComponent.downDirectionClassName
+            : TransitionSwitchComponent.upDirectionClassName;
+        
         this.previousRouteKey = key;
     }
 }
+
+export const TransitionSwitch = withRouter(TransitionSwitchComponent);

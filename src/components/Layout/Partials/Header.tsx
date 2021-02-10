@@ -10,7 +10,6 @@ import {LayoutContext, LayoutContextValue} from "../LayoutContext";
 
 export class Header extends React.Component<{}, undefined> {
     public static readonly contextType = LayoutContext;
-
     public context: LayoutContextValue;
 
     public render(): JSX.Element {

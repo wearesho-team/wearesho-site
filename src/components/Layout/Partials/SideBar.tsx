@@ -1,17 +1,17 @@
 import * as React from "react";
+import {withRouter} from "react-router";
+import {concat} from "../../../helpers/concat";
 
 import {SocialLinks} from "./SocialLinks";
-import {concat} from "../../../helpers/concat";
-import {RouterContext, RouterContextTypes} from "../../../data/RouterContext";
 
-export const SideBar: React.FC<{}> = (props, context: RouterContext): JSX.Element => {
-
-    const {location} = context.router.history;
+export const SideBar = withRouter((props): JSX.Element => {
+    
+    const {location} = props.history;
     const children = props.children as JSX.Element [];
-
+    
     const defaultClassName = "main-nav__item main-nav__item";
     const activeClassName = "is-active";
-
+    
     const getItemProps = (element: JSX.Element): object => {
         return {
             className: concat(
@@ -20,7 +20,7 @@ export const SideBar: React.FC<{}> = (props, context: RouterContext): JSX.Elemen
             )
         };
     };
-
+    
     return (
         <aside className="sidebar">
             <nav className="main-nav">
@@ -31,6 +31,4 @@ export const SideBar: React.FC<{}> = (props, context: RouterContext): JSX.Elemen
             <SocialLinks/>
         </aside>
     );
-};
-
-SideBar.contextTypes = RouterContextTypes;
+});
