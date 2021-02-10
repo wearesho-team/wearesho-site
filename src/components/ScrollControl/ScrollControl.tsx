@@ -1,26 +1,20 @@
+import {Location} from "history";
 import * as React from "react";
-import { Location } from "history";
-import { animateScroll } from "react-scroll";
+import {RouteComponentProps, withRouter} from "react-router";
+import {animateScroll} from "react-scroll";
 
-import { compareArrays } from "../../helpers/compareArrays";
-import { smartClearTimeout, ElementWithTimer } from "../../helpers/smartClearTimeout";
+import {routeProps} from "../../data/routeProps";
 
-import { routeProps } from "../../data/routeProps";
-import { RouterContext, RouterContextTypes } from "../../data/RouterContext";
-import { LayoutContext, LayoutContextTypes } from "../Layout";
+import {compareArrays} from "../../helpers/compareArrays";
+import {ElementWithTimer, smartClearTimeout} from "../../helpers/smartClearTimeout";
 
-export class ScrollControl extends React.Component<{}, undefined> implements ElementWithTimer {
-    public static readonly contextTypes = {
-        ...RouterContextTypes,
-        ...LayoutContextTypes
-    };
+class ScrollControlComponent extends React.Component<RouteComponentProps<any, any, { scroll: boolean }>, undefined> implements ElementWithTimer {
     public static readonly scrollAnimationDelay = 500;
     public static readonly scrollListenDelay = 50;
 
     // 0 - exactly
     public readonly viewZoneRange = 0.4;
 
-    public context: RouterContext & LayoutContext;
     public timer: any;
 
     protected childrenDom: HTMLCollection;
@@ -36,20 +30,20 @@ export class ScrollControl extends React.Component<{}, undefined> implements Ele
 
     // set scroll position according to location on body loaded
     public getMutations = (mutations) => {
-        const { target } = mutations[ 0 ];
+        const {target} = mutations[0];
 
         if (target !== document.body || target.attributes.getNamedItem("class").value !== "loaded") {
             return;
         }
 
-        this.context.router.history.location.state = undefined;
-        this.listenPathChange(this.context.router.history.location);
+        this.props.history.location.state = undefined;
+        this.listenPathChange(this.props.history.location);
     };
 
     public componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
-        this.unlisten = this.context.router.history.listen(this.listenPathChange);
-        this.observer.observe(document.body, { attributeFilter: [ "class" ], attributes: true });
+        this.unlisten = this.props.history.listen(this.listenPathChange);
+        this.observer.observe(document.body, {attributeFilter: ["class"], attributes: true});
     }
 
     public componentWillUnmount() {
@@ -58,11 +52,11 @@ export class ScrollControl extends React.Component<{}, undefined> implements Ele
         this.unlisten();
     }
 
-    public shouldComponentUpdate(nextProps: any, nextState: any, nextContext: RouterContext & LayoutContext): boolean {
+    public shouldComponentUpdate(nextProps: any, nextState: any): boolean {
         return compareArrays(
             React.Children.toArray(nextProps.children),
             React.Children.toArray(this.props.children)
-        ) || this.context.language !== nextContext.language
+        );
     }
 
     public render(): JSX.Element {
@@ -93,28 +87,29 @@ export class ScrollControl extends React.Component<{}, undefined> implements Ele
                 return activeZone > topOffset && activeZone < fullOffset;
             });
 
-        routeProps[ currentPathIndex ]
-        && this.context.router.history.push(routeProps[ currentPathIndex ].path, { scroll: true });
+        routeProps[currentPathIndex] && this.props.history.push(routeProps[currentPathIndex].path, {scroll: true});
     };
 
     protected handleScroll = () => {
         this.clearTimeout();
 
-        this.timer = setTimeout(this.updateLocation, ScrollControl.scrollListenDelay);
+        this.timer = setTimeout(this.updateLocation, ScrollControlComponent.scrollListenDelay);
     };
 
-    protected listenPathChange = (location: Location<{scroll: boolean}>) => {
+    protected listenPathChange = (location: Location<{ scroll: boolean }>) => {
         if (location.state && location.state.scroll) {
             return;
         }
 
-        const currentPathIndex = routeProps.findIndex(({ path }) => location.pathname === path);
+        const currentPathIndex = routeProps.findIndex(({path}) => location.pathname === path);
 
         this.childrenDom.item(currentPathIndex) && animateScroll
             .scrollTo((this.childrenDom.item(currentPathIndex) as HTMLElement).offsetTop, {
-                duration: ScrollControl.scrollAnimationDelay,
+                duration: ScrollControlComponent.scrollAnimationDelay,
                 delay: 0,
                 smooth: "easeInOutCubic",
             });
     };
 }
+
+export const ScrollControl = withRouter(ScrollControlComponent);

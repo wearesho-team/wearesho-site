@@ -213,4 +213,3 @@ export class MainPage extends BasePage<{date: number}> {
         }
     }
 }
-// tslint:disable-next-line

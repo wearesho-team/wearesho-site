@@ -3,20 +3,20 @@ import * as React from "react";
 import {stages} from "../../../../data/ProjectStages/stages";
 
 import {OnMobile} from "../../../../helpers/Breakpoints";
-import {translate} from "../../../../helpers/translate";
 import {toFixed} from "../../../../helpers/toFixed";
+import {translate} from "../../../../helpers/translate";
 
-import {LayoutContext, LayoutContextTypes} from "../../../Layout/LayoutContext";
+import {LayoutContext, LayoutContextType} from "../../../Layout/LayoutContext";
 
 export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
-    public static readonly contextTypes = LayoutContextTypes;
+    public static readonly contextType = LayoutContext;
 
-    public readonly context: LayoutContext;
+    public readonly context: LayoutContextType;
 
-    protected stageList: Array<{
+    protected stageList: {
         title: string,
         subTitle: string
-    }>;
+    }[];
 
     public constructor(props) {
         super(props);
@@ -25,19 +25,17 @@ export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
             return {
                 title: translate(`processPage.stages.title.${title}`),
                 subTitle: subTitle.map((item) => translate(`processPage.stages.subTitle.${item}`)).join(" / ")
-            }
+            };
         });
     }
 
-    public componentWillUpdate(P: any, S: undefined, nextContext: LayoutContext) {
-        if (nextContext.language !== this.context.language) {
-            this.stageList = stages.map(({title, subTitle}) => {
-                return {
-                    title: translate(`processPage.stages.title.${title}`),
-                    subTitle: subTitle.map((item) => translate(`processPage.stages.subTitle.${item}`)).join(" / ")
-                }
-            });
-        }
+    public componentWillUpdate(P: any, S: undefined) {
+        this.stageList = stages.map(({title, subTitle}) => {
+            return {
+                title: translate(`processPage.stages.title.${title}`),
+                subTitle: subTitle.map((item) => translate(`processPage.stages.subTitle.${item}`)).join(" / ")
+            };
+        });
     }
 
     public render(): JSX.Element {

@@ -9,7 +9,8 @@
     "start:production": "docker-compose up",
     "selenium": "selenium-standalone install && selenium-standalone start",
     "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "lint": "true || ./node_modules/.bin/tslint --exclude '**/*.js' --project ."
+    "lint": "true || ./node_modules/.bin/tslint --exclude '**/*.js' --project .",
+    "lint:fix": "./node_modules/.bin/tslint --fix --exclude '**/*.js' --project ."
   },
   "repository": {
     "type": "git",

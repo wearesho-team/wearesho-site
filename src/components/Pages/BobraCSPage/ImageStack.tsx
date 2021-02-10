@@ -13,7 +13,7 @@ import jpeg60 from "../../../../images/bobraCS-60.jpg";
 import jpeg80 from "../../../../images/bobraCS-80.jpg";
 import jpeg100 from "../../../../images/bobraCS-100.jpg";
 
-const images = (): Array<[ number, string ]> => canUseWebP() ? [
+const images = (): [ number, string ][] => canUseWebP() ? [
     [ 20, webp20 ],
     [ 40, webp40 ],
     [ 60, webp60 ],

@@ -21,11 +21,6 @@ export class PartnershipPage extends BasePage<{}, PartnershipPageState> {
         isModalOpen: false,
     };
 
-    public shouldComponentUpdate(nextProps: undefined, nextState: PartnershipPageState, nextContext: any): boolean {
-        return super.shouldComponentUpdate(nextProps, nextState, nextContext)
-            || this.state.isModalOpen !== nextState.isModalOpen;
-    }
-
     public render(): JSX.Element {
         const modalProps = {
             className: {

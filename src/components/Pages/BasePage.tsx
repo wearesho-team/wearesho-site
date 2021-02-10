@@ -1,11 +1,7 @@
 import * as React from "react";
-import {LayoutContext, LayoutContextTypes} from "../Layout";
+import {LayoutContext, LayoutContextType} from "../Layout";
 
 export class BasePage<P = {}, S = undefined> extends React.Component<P, S> {
-    public static readonly contextTypes = LayoutContextTypes;
-    public context: LayoutContext;
-
-    public shouldComponentUpdate(nextProps: P, nextState: S, nextContext: any): boolean {
-        return this.context.language !== nextContext.language;
-    }
+    public static readonly contextType = LayoutContext;
+    public context: LayoutContextType;
 }

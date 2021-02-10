@@ -41,9 +41,8 @@ export class ProcessPage extends BasePage<{}, ProcessPageState> implements Eleme
         this.timers = [];
     }
 
-    public shouldComponentUpdate(nextProps: any, nextState: any, nextContext: any) {
-        return super.shouldComponentUpdate(nextProps, nextState, nextContext)
-            || nextState.className !== this.state.className;
+    public shouldComponentUpdate(nextProps: any, nextState: any) {
+        return nextState.className !== this.state.className;
     }
 
     public componentDidMount() {

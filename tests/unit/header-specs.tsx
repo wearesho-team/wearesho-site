@@ -3,7 +3,7 @@ import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
 import {Header} from "../../src/components/Layout/Partials";
-import {LayoutContext, LayoutContextTypes} from "../../src/components/Layout/LayoutContext";
+import {LayoutContext, LayoutContextType} from "../../src/components/Layout/LayoutContext";
 import {Languages} from "../../src/data/Languages";
 import {RouterContext, RouterContextTypes} from "../../src/data/RouterContext";
 
@@ -12,14 +12,12 @@ describe("<Header/>", () => {
 
     const commonHandler = () => undefined;
 
-    const context: LayoutContext & RouterContext = {
+    const context: LayoutContextType & RouterContext = {
         language: Languages.en,
         setLanguage: (nextLanguage: Languages) => context.language = nextLanguage,
         router: {
             history: {
                 push: commonHandler,
-                createHref: commonHandler,
-                replace: commonHandler,
                 listen: commonHandler,
                 location: "test"
             },
@@ -32,7 +30,7 @@ describe("<Header/>", () => {
     beforeEach(() => {
         wrapper = mount(
             <Header/>,
-            {context, childContextTypes: {...LayoutContextTypes, ...RouterContextTypes}}
+            {context}
         );
     });
 

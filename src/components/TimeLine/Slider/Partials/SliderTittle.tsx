@@ -7,10 +7,10 @@ interface TitleElement {
 }
 
 export interface SliderTitleProps {
-    title: Array<{
+    title: {
         name: string,
         url: string
-    }>
+    }[]
 }
 
 export const SliderTitlePropTypes = Object.freeze({
@@ -21,14 +21,14 @@ export const SliderTitlePropTypes = Object.freeze({
 }) as React.ValidationMap<SliderTitleProps>;
 
 export const SliderTitle: React.SFC<SliderTitleProps> = ({ title }): JSX.Element => {
-    const content: Array<JSX.Element | string> = [];
+    const content: (JSX.Element | string)[] = [];
 
     const linkProps = {
         target: "_blank",
         rel: "nofollow noopener"
     };
 
-    title.forEach(({ name, url }) => content.push(<a href={url} key={url} {...linkProps}>{name}</a>, " / "));
+    title.forEach(({ name, url }) => content.push(<a href={url} key={url || name} {...linkProps}>{name}</a>, " / "));
 
     content.pop();
 
