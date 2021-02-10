@@ -6,12 +6,12 @@ import {OnMobile} from "../../../../helpers/Breakpoints";
 import {toFixed} from "../../../../helpers/toFixed";
 import {translate} from "../../../../helpers/translate";
 
-import {LayoutContext, LayoutContextType} from "../../../Layout/LayoutContext";
+import {LayoutContext, LayoutContextValue} from "../../../Layout/LayoutContext";
 
-export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
+export class Stages extends React.PureComponent<React.HTMLProps<any>, undefined> {
     public static readonly contextType = LayoutContext;
 
-    public readonly context: LayoutContextType;
+    public readonly context: LayoutContextValue;
     
     protected stageList: Array<{
         title: string,

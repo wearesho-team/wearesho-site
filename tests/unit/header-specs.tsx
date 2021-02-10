@@ -3,7 +3,7 @@ import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
 import {Header} from "../../src/components/Layout/Partials";
-import {LayoutContextType} from "../../src/components/Layout/LayoutContext";
+import {LayoutContextValue} from "../../src/components/Layout/LayoutContext";
 import {Languages} from "../../src/data/Languages";
 import {RouterContext} from "../../src/data/RouterContext";
 
@@ -12,7 +12,7 @@ describe("<Header/>", () => {
 
     const commonHandler = () => undefined;
 
-    const context: LayoutContextType & RouterContext = {
+    const context: LayoutContextValue & RouterContext = {
         language: Languages.en,
         setLanguage: (nextLanguage: Languages) => context.language = nextLanguage,
         router: {

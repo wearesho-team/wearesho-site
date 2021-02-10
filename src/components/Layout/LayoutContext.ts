@@ -1,11 +1,11 @@
 import React from "react";
 import {Languages} from "../../data/Languages";
 
-export interface LayoutContextType {
+export interface LayoutContextValue {
     isScrollDisabled?: boolean,
     language?: Languages,
     setLanguage?: (nextLanguage: Languages) => void,
 }
 
-export const LayoutContext = React.createContext<LayoutContextType>({language: Languages.ru});
+export const LayoutContext = React.createContext<LayoutContextValue>({language: Languages.ru});
 
