@@ -3,9 +3,9 @@ import {expect} from "chai";
 import {ReactWrapper, mount} from "enzyme";
 
 import {Header} from "../../src/components/Layout/Partials";
-import {LayoutContext, LayoutContextType} from "../../src/components/Layout/LayoutContext";
+import {LayoutContextType} from "../../src/components/Layout/LayoutContext";
 import {Languages} from "../../src/data/Languages";
-import {RouterContext, RouterContextTypes} from "../../src/data/RouterContext";
+import {RouterContext} from "../../src/data/RouterContext";
 
 describe("<Header/>", () => {
     let wrapper: ReactWrapper<undefined, undefined>;
