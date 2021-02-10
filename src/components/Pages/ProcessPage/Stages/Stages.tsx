@@ -12,11 +12,11 @@ export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
     public static readonly contextType = LayoutContext;
 
     public readonly context: LayoutContextType;
-
-    protected stageList: {
+    
+    protected stageList: Array<{
         title: string,
         subTitle: string
-    }[];
+    }>;
 
     public constructor(props) {
         super(props);
