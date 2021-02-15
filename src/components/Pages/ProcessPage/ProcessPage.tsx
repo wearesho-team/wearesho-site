@@ -108,7 +108,7 @@ class ProcessPageComponent extends React.Component<LanguageProps, ProcessPageSta
         );
     }
     
-    protected setContainer = (element: Stages) => this.stagesContainer = ReactDOM.findDOMNode(element) as HTMLElement;
+    protected setContainer = (element: React.ReactInstance) => this.stagesContainer = ReactDOM.findDOMNode(element) as HTMLElement;
     
     protected handleHoverControl = (event: MouseEvent | TouchEvent): void => {
         if (!this.stagesContainer) {

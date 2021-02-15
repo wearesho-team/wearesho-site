@@ -6,16 +6,24 @@ export type LanguageProps = {
     language: Languages
 }
 
-export type WithLanguage = <P extends object>(component: React.ComponentType<P>) => React.ComponentType<Omit<P, keyof LanguageProps>>
+type BaseProps = React.PropsWithRef<LanguageProps>
 
-export const withLanguage: WithLanguage = <P extends object>(component) => (props) => {
-    const context = React.useContext(LayoutContext);
-    
-    return React.createElement(
-        component,
-        {
+type ModifyProps<P extends BaseProps> = Omit<P, keyof LanguageProps>
+
+type ReturnType<P extends BaseProps, T> = React.ForwardRefExoticComponent<React.PropsWithoutRef<ModifyProps<P>> & React.RefAttributes<T>>
+
+export const withLanguage = <P extends BaseProps, T extends Element>(component: React.ComponentType<P>): ReturnType<P, T> =>
+    React.forwardRef<T, ModifyProps<P>>((props, ref) => {
+        const context = React.useContext(LayoutContext);
+        
+        const nextProps = {
             ...props,
+            ref,
             language: context.language
-        }
-    );
-};
+        };
+        
+        return React.createElement<ModifyProps<P>>(
+            component,
+            nextProps as ModifyProps<P>
+        );
+    });

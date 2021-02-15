@@ -11,7 +11,7 @@ import {LanguageProps, withLanguage} from "../../helpers/withLanguage";
 
 type ScrollControlProps = React.PropsWithChildren<RouteComponentProps<any, any, { scroll: boolean }> & LanguageProps>
 
-class ScrollControlComponent extends React.Component<ScrollControlProps> implements ElementWithTimer {
+export class ScrollControlComponent extends React.Component<ScrollControlProps> implements ElementWithTimer {
     public static readonly scrollAnimationDelay = 500;
     public static readonly scrollListenDelay = 50;
     
@@ -115,4 +115,4 @@ class ScrollControlComponent extends React.Component<ScrollControlProps> impleme
     };
 }
 
-export const ScrollControl = withLanguage(withRouter(ScrollControlComponent));
+export const ScrollControl = withRouter(withLanguage(ScrollControlComponent) as React.ComponentType<Omit<ScrollControlProps, keyof LanguageProps>>);
