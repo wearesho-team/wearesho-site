@@ -5,14 +5,12 @@ import {createMemoryHistory, History} from "history";
 import {Router} from "react-router";
 import {useFakeTimers, SinonFakeTimers} from "sinon";
 
-import {ScrollControl} from "../../src/components/ScrollControl";
+import {ScrollControl, ScrollControlComponent} from "../../src/components/ScrollControl";
 import {routeProps} from "../../src/data/routeProps";
-import {RouterContext} from "../../src/data/RouterContext";
-import {LayoutContext} from "../../src/components/Layout/LayoutContext";
 
 describe("<ScrollControl/>", () => {
     let wrapper: ReactWrapper<undefined, undefined>;
-    let node: ScrollControl;
+    let node: ScrollControlComponent;
     let DOMNode: Element;
     let history: History;
     let timer: SinonFakeTimers;
@@ -80,7 +78,7 @@ describe("<ScrollControl/>", () => {
 
         // we cant emulate window events
         (node as any).handleScroll();
-        timer.tick(ScrollControl.scrollListenDelay);
+        timer.tick(ScrollControlComponent.scrollListenDelay);
 
         expect(history.location.pathname).to.equal(routeProps[1].path);
     });
@@ -90,7 +88,7 @@ describe("<ScrollControl/>", () => {
         wrapper.unmount();
         // we cant emulate window events
         (node as any).handleScroll();
-        timer.tick(ScrollControl.scrollListenDelay);
+        timer.tick(ScrollControlComponent.scrollListenDelay);
 
         expect(history.location.pathname).to.equal(routeProps[0].path);
     });

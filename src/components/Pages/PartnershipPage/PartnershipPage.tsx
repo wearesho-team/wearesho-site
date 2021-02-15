@@ -1,31 +1,26 @@
 import * as React from "react";
 import ReactModal from "react-modal";
 
-import { Config } from "../../../data/Config";
+import {Config} from "../../../data/Config";
 
-import { OnMobile, OnMobileTablet, OnDesktop, OnTablet } from "../../../helpers/Breakpoints";
-import { smoothScrollTo } from "../../../helpers/smoothScrollTo";
-import { formatNumber } from "../../../helpers/formatNumber";
-import { translate } from "../../../helpers/translate";
+import {OnDesktop, OnMobile, OnMobileTablet, OnTablet} from "../../../helpers/Breakpoints";
+import {formatNumber} from "../../../helpers/formatNumber";
+import {smoothScrollTo} from "../../../helpers/smoothScrollTo";
+import {translate} from "../../../helpers/translate";
 
-import { TransformAnimation } from "../../Animations/Interactive/TransformAnimation";
-import { getCorners, getLabel, CloseButton, SubmitButton } from "../../Buttons";
-import { SocialLinks } from "../../Layout/Partials";
-import { PartnershipPageState } from "./PartnershipPageState";
-import { MapIcon } from "../../Icons/MapIcon";
-import { ContactForm } from "./ContactForm";
-import { BasePage } from "../BasePage";
+import {TransformAnimation} from "../../Animations/Interactive/TransformAnimation";
+import {CloseButton, getCorners, getLabel, SubmitButton} from "../../Buttons";
+import {MapIcon} from "../../Icons/MapIcon";
+import {SocialLinks} from "../../Layout/Partials";
+import {ContactForm} from "./ContactForm";
+import {PartnershipPageState} from "./PartnershipPageState";
 
-export class PartnershipPage extends BasePage<{}, PartnershipPageState> {
+export class PartnershipPage extends React.Component<{}, PartnershipPageState> {
+    
     public state: PartnershipPageState = {
         isModalOpen: false,
     };
-
-    public shouldComponentUpdate(nextProps: undefined, nextState: PartnershipPageState, nextContext: any): boolean {
-        return super.shouldComponentUpdate(nextProps, nextState, nextContext)
-            || this.state.isModalOpen !== nextState.isModalOpen;
-    }
-
+    
     public render(): JSX.Element {
         const modalProps = {
             className: {
@@ -40,16 +35,16 @@ export class PartnershipPage extends BasePage<{}, PartnershipPageState> {
             },
             closeTimeoutMS: 500
         };
-
+        
         const transformAnimationProps = {
             transformedComponent: <ContactForm/>,
             staticComponent: getCorners(),
             initialComponent: getLabel(),
             className: "btn btn_transform",
             onEvent() {
-                const { className, duration } = this as any;
+                const {className, duration} = this as any;
                 smoothScrollTo(
-                    document.getElementsByClassName(className)[ 0 ] as HTMLElement,
+                    document.getElementsByClassName(className)[0] as HTMLElement,
                     -105,
                     "top",
                     duration,
@@ -59,7 +54,7 @@ export class PartnershipPage extends BasePage<{}, PartnershipPageState> {
             duration: 1000,
             event: "onClick"
         };
-
+        
         return (
             <section className="section section-partnership">
                 <div className="align-container">
@@ -173,12 +168,12 @@ export class PartnershipPage extends BasePage<{}, PartnershipPageState> {
             </section>
         );
     }
-
+    
     protected handleCloseModal = () => {
-        this.setState({ isModalOpen: false });
+        this.setState({isModalOpen: false});
     };
-
+    
     protected handleOpenModal = () => {
-        this.setState({ isModalOpen: true });
+        this.setState({isModalOpen: true});
     };
 }

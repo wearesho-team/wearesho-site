@@ -28,7 +28,7 @@ export const SliderTitle: React.SFC<SliderTitleProps> = ({ title }): JSX.Element
         rel: "nofollow noopener"
     };
 
-    title.forEach(({ name, url }) => content.push(<a href={url} key={url} {...linkProps}>{name}</a>, " / "));
+    title.forEach(({ name, url }) => content.push(<a href={url} key={url || name} {...linkProps}>{name}</a>, " / "));
 
     content.pop();
 

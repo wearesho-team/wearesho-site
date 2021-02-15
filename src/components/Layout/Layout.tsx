@@ -1,28 +1,25 @@
 import axios from "axios";
 import * as React from "react";
-import { Router } from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
+import {Languages} from "../../data/Languages";
 
-import { routeProps } from "../../data/routeProps";
-import { Languages } from "../../data/Languages";
+import {routeProps} from "../../data/routeProps";
+import {getLinksWithProps} from "../../helpers/getLinksWithProps";
 
-import { getRoutesWithProps } from "../../helpers/getRoutesWithProps";
-import { getLinksWithProps } from "../../helpers/getLinksWithProps";
-import { translate } from "../../helpers/translate";
+import {getRoutesWithProps} from "../../helpers/getRoutesWithProps";
+import {translate} from "../../helpers/translate";
+import {ErrorBounder} from "../ErrorBounder/ErrorBounder";
+import {ScrollControl} from "../ScrollControl";
+import {SmartBreakpoint} from "../SmartBreakpoint";
+import {SwitchControl} from "../SwitchControl";
+import {TransitionSwitch} from "../TransitionSwitch";
 
-import { LayoutContext, LayoutContextTypes } from "./LayoutContext"
-import { LayoutProps, LayoutPropTypes } from "./LayoutProps";
-import { ErrorBounder } from "../ErrorBounder/ErrorBounder";
-import { Header, SideBar, SoundSwitch } from "./Partials";
-import { TransitionSwitch } from "../TransitionSwitch";
-import { SmartBreakpoint } from "../SmartBreakpoint";
-import { SwitchControl } from "../SwitchControl";
-import { ScrollControl } from "../ScrollControl";
-import { LayoutState } from "./LayoutState";
+import {LayoutContext} from "./LayoutContext";
+import {LayoutProps} from "./LayoutProps";
+import {LayoutState} from "./LayoutState";
+import {Header, SideBar, SoundSwitch} from "./Partials";
 
 export class Layout extends React.Component<LayoutProps, LayoutState> {
-    public static readonly propTypes = LayoutPropTypes;
-    public static readonly childContextTypes = LayoutContextTypes;
-
     public constructor(props) {
         super(props);
 
@@ -36,17 +33,21 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
         translate.setLocale(this.state.language);
     }
 
-    public getChildContext(): LayoutContext {
+    public getContext() {
         return {
             language: this.state.language,
             isScrollDisabled: this.state.isScrollDisabled,
             setLanguage: this.setLanguage
-        }
+        };
+    }
+
+    shouldComponentUpdate(nextProps: Readonly<LayoutProps>, nextState: Readonly<LayoutState>): boolean {
+        return (this.state.language !== nextState.language) || (this.state.isScrollDisabled !== nextState.isScrollDisabled)
     }
 
     public async componentDidMount() {
         await this.props.preLoader.hide();
-        this.setState({ isScrollDisabled: false });
+        this.setState({isScrollDisabled: false});
     }
 
     public async componentWillUnmount() {
@@ -55,29 +56,31 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
 
     public render(): JSX.Element {
         return (
-            <Router history={this.props.history}>
-                <div id="content">
-                    <Header />
-                    <SideBar>
-                        {getLinksWithProps()}
-                    </SideBar>
-                    <SoundSwitch />
-                    <div className="section-gradient" />
-                    <ErrorBounder>
-                        <SmartBreakpoint match="min-width: 1440px">
-                            <SwitchControl>
-                                <TransitionSwitch className="translate-container" classNames="translateY">
-                                    {getRoutesWithProps()}
-                                </TransitionSwitch>
-                            </SwitchControl>
-                        </SmartBreakpoint>
-                        <SmartBreakpoint match="max-width: 1439px">
-                            <ScrollControl>
-                                {routeProps.map((prop) => prop.render())}
-                            </ScrollControl>
-                        </SmartBreakpoint>
-                    </ErrorBounder>
-                </div>
+            <Router>
+                <LayoutContext.Provider value={this.getContext()}>
+                    <div id="content">
+                        <Header/>
+                        <SideBar>
+                            {getLinksWithProps()}
+                        </SideBar>
+                        <SoundSwitch/>
+                        <div className="section-gradient"/>
+                        <ErrorBounder>
+                            <SmartBreakpoint match="min-width: 1440px">
+                                <SwitchControl>
+                                    <TransitionSwitch className="translate-container" classNames="translateY">
+                                        {getRoutesWithProps()}
+                                    </TransitionSwitch>
+                                </SwitchControl>
+                            </SmartBreakpoint>
+                            <SmartBreakpoint match="max-width: 1439px">
+                                <ScrollControl>
+                                    {routeProps.map((prop) => prop.render())}
+                                </ScrollControl>
+                            </SmartBreakpoint>
+                        </ErrorBounder>
+                    </div>
+                </LayoutContext.Provider>
             </Router>
         );
     }
@@ -92,6 +95,6 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
         // translate text
         translate.setLocale(nextLanguage);
         // pass to context
-        this.setState({ language: nextLanguage });
-    }
+        this.setState({language: nextLanguage});
+    };
 }

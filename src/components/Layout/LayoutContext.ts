@@ -1,14 +1,11 @@
-import * as PropTypes from "prop-types";
+import React from "react";
 import {Languages} from "../../data/Languages";
 
-export interface LayoutContext {
+export interface LayoutContextValue {
     isScrollDisabled?: boolean,
     language?: Languages,
     setLanguage?: (nextLanguage: Languages) => void,
 }
 
-export const LayoutContextTypes = {
-    isScrollDisabled: PropTypes.bool,
-    language: PropTypes.string,
-    setLanguage: PropTypes.func,
-};
+export const LayoutContext = React.createContext<LayoutContextValue>({language: Languages.ru});
+

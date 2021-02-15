@@ -3,43 +3,40 @@ import * as React from "react";
 import {stages} from "../../../../data/ProjectStages/stages";
 
 import {OnMobile} from "../../../../helpers/Breakpoints";
-import {translate} from "../../../../helpers/translate";
 import {toFixed} from "../../../../helpers/toFixed";
+import {translate} from "../../../../helpers/translate";
+import {LanguageProps, withLanguage} from "../../../../helpers/withLanguage";
 
-import {LayoutContext, LayoutContextTypes} from "../../../Layout/LayoutContext";
+export type StagesComponentProps = React.HTMLProps<any> & LanguageProps
 
-export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
-    public static readonly contextTypes = LayoutContextTypes;
-
-    public readonly context: LayoutContext;
-
+class StagesComponent extends React.PureComponent<StagesComponentProps, undefined> {
     protected stageList: Array<{
         title: string,
         subTitle: string
     }>;
-
+    
     public constructor(props) {
         super(props);
-
+        
         this.stageList = stages.map(({title, subTitle}) => {
             return {
                 title: translate(`processPage.stages.title.${title}`),
                 subTitle: subTitle.map((item) => translate(`processPage.stages.subTitle.${item}`)).join(" / ")
-            }
+            };
         });
     }
-
-    public componentWillUpdate(P: any, S: undefined, nextContext: LayoutContext) {
-        if (nextContext.language !== this.context.language) {
+    
+    public componentWillUpdate(P: StagesComponentProps, S: undefined) {
+        if (this.props.language !== P.language) {
             this.stageList = stages.map(({title, subTitle}) => {
                 return {
                     title: translate(`processPage.stages.title.${title}`),
                     subTitle: subTitle.map((item) => translate(`processPage.stages.subTitle.${item}`)).join(" / ")
-                }
+                };
             });
         }
     }
-
+    
     public render(): JSX.Element {
         return (
             <div {...this.props}>
@@ -55,7 +52,7 @@ export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
             </div>
         );
     }
-
+    
     protected getStages(from: number, count: number): JSX.Element [] {
         return Array.from(this.stageList)
             .splice(from, count)
@@ -75,3 +72,5 @@ export class Stages extends React.Component<React.HTMLProps<any>, undefined> {
             });
     }
 }
+
+export const Stages = withLanguage(StagesComponent);

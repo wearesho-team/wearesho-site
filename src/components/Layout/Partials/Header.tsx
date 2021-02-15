@@ -6,12 +6,11 @@ import {Languages} from "../../../data/Languages";
 import {TouchHover} from "../../../helpers/TouchHover";
 import {translate} from "../../../helpers/translate";
 
-import {LayoutContext, LayoutContextTypes} from "../LayoutContext";
+import {LayoutContext, LayoutContextValue} from "../LayoutContext";
 
 export class Header extends React.Component<{}, undefined> {
-    public static readonly contextTypes = LayoutContextTypes;
-
-    public context: LayoutContext;
+    public static readonly contextType = LayoutContext;
+    public context: LayoutContextValue;
 
     public render(): JSX.Element {
         return (
